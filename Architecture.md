@@ -1,35 +1,59 @@
+---
+type: Architecture
+title: Принцип и структура волта
+description: Четырёхслойная архитектура Reference → Methods → Projects → Templates. Теперь также OKF-бандл.
+timestamp: 2026-06-27
+---
 ## **Принцип, на котором строим**
 
-Один источник правды по OpenCode, разделённый на четыре слоя: справочник (как устроен OpenCode сам по себе), методы (твои рабочие приёмы и протоколы), проекты (живые карточки каждого репозитория со списком его агентов/команд/скриптов), и шаблоны (заготовки, из которых ты клонируешь новое). Всё остальное — производное от этих четырёх.
+Один источник правды по OpenCode, организованный как **OKF-бандл** (Open Knowledge Format v0.1): справочник (как устроен OpenCode сам по себе), методы (твои рабочие приёмы и протоколы), проекты (живые карточки каждого репозитория), память (контекст сессий), и шаблоны (заготовки для новых проектов).
 
 >Главное правило, которое спасёт от хаоса: методичка описывает приёмы абстрактно, а карточки проектов содержат конкретику. Когда захочешь проапгрейдить все проекты разом — ты меняешь метод в одном месте и прогоняешь по карточкам. Карточка проекта никогда не дублирует объяснение приёма, она только ссылается на него и фиксирует, что именно из него внедрено.
+>
+>Память — OKF-подбандл `04-Memory/`. Три уровня: active-context (фокус сессии), facts (реестр фактов), session-log (хроника). При старте librarian читает их — и не перечитывает весь волт целиком.
 
-**Структура волта**
+**Структура волта (OKF v0.1 Knowledge Bundle)**
 
-OpenCode-Vault/                    ← сам по себе OpenCode-проект
-├── .opencode/
-│   ├── agent/
-│   │   └── librarian.md           ← агент волта: ищет, отвечает, дописывает
-│   └── command/
-│       ├── ask.md                 ← /ask "как я настраивал verifier?"
-│       ├── capture.md             ← /capture — оформить идею из инбокса в метод
-│       └── project.md             ← /project dv-hub — собрать сводку по проекту
-├── [[AGENTS]].md                       ← правила для librarian: только волт, не трогать docs
-├── 00-INDEX.md                     ← дашборд: точка входа, таблица проектов, статусы
-├── 01-Reference/                   ← возможности OpenCode (выжимка фактов)
-│   ├── agents.md
-│   ├── commands.md
-│   ├── config.md
-│   ├── permissions.md
-│   └── plugins.md                  ← env-guard, notify, compaction — у тебя уже есть
-├── 02-Methods/                     ← твои приёмы (closed-loop, verifier, distill, memory)
-├── 03-Projects/                    ← карточка на каждый проект (главная ценность)
-│   ├── dv-hub.md
-│   ├── SERPlux.md
-│   └── dotfiles.md
-└── 99-Inbox.md                     ← быстрый сброс, librarian разгребает через /capture
-
-	00 — вход, 05 — выход (клонируемое), 99 — буфер.
+OpenCode-Vault/                    ← OKF-бандл + OpenCode-проект
+├── index.md                       ← OKF bundle root index (генерируемый, для навигации)
+├── log.md                         ← OKF bundle update log
+├── .opencode/                     ← конфигурация OpenCode (не часть OKF)
+│   ├── agent/librarian.md
+│   └── command/{ask,capture,project}.md
+├── AGENTS.md                      ← правила для librarian
+├── 00-INDEX.md                    ← дашборд: детальная таблица проектов и конвенции
+├── 01-Reference/                  ← OKF-концепты: возможности OpenCode
+│   ├── agents.md                  → type: Reference
+│   ├── commands.md                → type: Reference
+│   ├── config.md                  → type: Reference
+│   ├── memory.md                  → type: Reference (система памяти на OKF)
+│   ├── permissions.md             → type: Reference
+│   ├── plugins.md                 → type: Reference
+│   └── rules-AGENTS.md            → type: Reference (формат AGENTS.md)
+├── 02-Methods/                    ← OKF-концепты: приёмы
+│   ├── closed-loop.md             → type: Method
+│   ├── context-as-docs.md         → type: Method
+│   ├── distill-pattern.md         → type: Method
+│   ├── memory-management.md       → type: Method
+│   ├── model-routing.md           → type: Method
+│   └── verifier-pattern.md        → type: Method
+├── 03-Projects/                   ← OKF-концепты: карточки проектов
+│   ├── dv-hub.md                  → type: Project Card
+│   ├── SERPlux.md                 → type: Project Card
+│   ├── dotfiles.md                → type: Project Card
+│   └── vault.md                   → type: Project Card
+├── 04-Memory/                     ← OKF-подбандл: система памяти
+│   ├── index.md                   ← OKF sub-bundle index
+│   ├── log.md                     ← OKF sub-bundle log
+│   ├── active-context.md          → type: Active Context
+│   ├── facts.md                   → type: Fact Registry
+│   └── session-log/               → type: Session Log
+│       └── 2026-06-27.md
+├── 05-Templates/                  ← [ПЛАН] шаблоны для клонирования новых проектов
+├── 99-Inbox.md                    ← type: Inbox — буфер сырых заметок
+├── Architecture.md                ← этот файл, type: Architecture
+├── DEVELOPMENT-ROADMAP.md         ← type: Roadmap
+└── .obsidian/                     ← конфиги редактора (не OKF)
 
 ---
 ## Как заполнять Reference без переписывания доков

@@ -1,3 +1,10 @@
+---
+type: Reference
+title: OpenCode — Права (permissions)
+description: Ключи прав, значения (allow/ask/deny), тонкая настройка, примеры для проектов волта.
+tags: [opencode, permissions]
+timestamp: 2026-06-27
+---
 # OpenCode: Права (permissions)
 
 > Выжимка из opencode.ai/docs/agents#permissions. Проверено: 2026-06-26.

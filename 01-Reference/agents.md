@@ -1,3 +1,10 @@
+---
+type: Reference
+title: OpenCode — Агенты
+description: Типы агентов (primary/subagent), фронтматтер, параллельность, создание.
+tags: [opencode, agents]
+timestamp: 2026-06-27
+---
 # OpenCode: Агенты
 
 > Выжимка из opencode.ai/docs/agents. Проверено: 2026-06-26.

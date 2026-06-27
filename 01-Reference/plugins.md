@@ -1,3 +1,10 @@
+---
+type: Reference
+title: OpenCode — Плагины
+description: Lifecycle-хуки, реестр плагинов проектов (env-guard, notify, compaction), заметки по SDK.
+tags: [opencode, plugins]
+timestamp: 2026-06-27
+---
 # OpenCode: Плагины
 
 > На основе реальных плагинов из моих проектов. Официальную спеку API — [проверить] на opencode.ai/docs.

@@ -1,3 +1,10 @@
+---
+type: Reference
+title: OpenCode — Команды
+description: Определение команд (opencode.json / .opencode/command/), фронтматтер, плейсхолдеры, встроенные.
+tags: [opencode, commands]
+timestamp: 2026-06-27
+---
 # OpenCode: Команды
 
 > Выжимка из opencode.ai/docs/commands. Проверено: 2026-06-26.
@@ -27,3 +34,11 @@ subtask: true           # форсить вызов как subagent (не зас
 
 ## Встроенные
 `/init` · `/undo` · `/redo` · `/share` · `/help`. Свои с тем же именем переопределяют встроенные.
+
+## Кастомные команды волта
+| Команда | Агент | Назначение |
+|---------|-------|-----------|
+| `/ask` | librarian | Ответить на вопрос по волту |
+| `/capture` | librarian | Оформить инбокс в методы/карточки |
+| `/project` | librarian | Сводка по проекту |
+| [`/commit`](/.opencode/command/commit.md) | librarian | Закоммитить изменения в волте (subtask) |

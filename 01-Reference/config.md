@@ -1,4 +1,10 @@
-
+---
+type: Reference
+title: OpenCode — Конфигурация
+description: Файлы конфига (глобальный/проектный), скелет JSON, провайдеры, модели.
+tags: [opencode, config]
+timestamp: 2026-06-27
+---
 # OpenCode: Конфигурация
 
 > Выжимка из opencode.ai/docs/config. Проверено: 2026-06-26.

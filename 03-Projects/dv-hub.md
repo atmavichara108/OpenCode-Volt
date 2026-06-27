@@ -20,7 +20,13 @@ stack: TypeScript strict / Hono / better-sqlite3 / Vanilla JS + Tailwind / Vite
 - Constant: TS strict, Vanilla JS ES-modules, Tailwind, Vite, Auth = Telegram Login + email magic-link (Resend)
 
 ## Архитектура
-src/index.tsx Hono app, HTML shell, OG meta src/routes/api.ts REST endpoints src/lib/auth.ts Telegram verify, magic-link, sessions public/static/app.js + modules/_.js SPA (hash routing) migrations/NNNN__.sql
+```
+src/index.tsx        Hono app, HTML shell, OG meta
+src/routes/api.ts    REST endpoints
+src/lib/auth.ts      Telegram verify, magic-link, sessions
+public/static/       app.js + modules/*.js — SPA (hash routing)
+migrations/NNNN__.sql
+```
 
 Таблицы: cells, users, materials, topics, discussion_rooms, messages, publications, sessions.
 
@@ -51,12 +57,13 @@ architecture.md (ADR) · product-vision.md · roadmap.md · glossary.md · infra
 - Workflow задач: задача в context/.../Kanban/Tasks/ → spec → build/infra → lint+test → commit.
 - Submodule flow через `/sync-task`.
 
-## Состояние методов
+## Состояние внедрения методов
 | Метод | Статус |
 |-------|--------|
 | [[closed-loop]] | ❌ |
-| [[verifier-pattern]] | ❌ (verifier планируется глобальным) |
-| [[memory-management]] | 🟡 claude-mem упомянут в README, [проверить] установлен ли |
+| [[verifier-pattern]] | ❌ |
+| [[memory-management]] | ❌ (система памяти волта — в разработке) |
 
 ## Лог изменений
 - 2026-06-26: карточка заведена из состояния репо
+- 2026-06-27: убрано упоминание claude-mem; статус memory-management обновлён

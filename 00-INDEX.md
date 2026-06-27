@@ -1,12 +1,21 @@
+---
+type: Dashboard
+title: OpenCode Vault — Dashboard
+description: Точка входа, таблица проектов, методы, конвенции волта.
+timestamp: 2026-06-27
+---
 # OpenCode Vault — Dashboard
 
-> Справочник по OpenCode и моим проектам. Веду по ходу.
-> Reference = факты об OpenCode. Methods = мои приёмы. Projects = состояние каждого проекта.
+> Справочник по OpenCode и моим проектам. OKF v0.1 Knowledge Bundle.
+> Reference = факты об OpenCode. Methods = мои приёмы. Projects = состояние каждого проекта. Memory = контекст сессий.
 
 ## Быстрый вход
 - Спросить базу → `/ask "..."`
 - Разгрести инбокс → `/capture`
 - Сводка по проекту → `/project <имя>`
+- Посмотреть дорожную карту → [[DEVELOPMENT-ROADMAP]]
+- Навигация по OKF → [index.md](index.md)
+- Трекер задач → [[TASKS]]
 
 ## Проекты
 | Проект | Тип | Стек | OpenCode-агент особый | Карточка |
@@ -17,15 +26,20 @@
 | vault | справочник | markdown | librarian | [[vault]] |
 
 ## Reference (возможности OpenCode)
-[[agents]] · [[commands]] · [[config]] · [[permissions]] · [[plugins]]
+[[agents]] · [[commands]] · [[config]] · [[memory]] · [[permissions]] · [[plugins]]
 
 ## Methods (мои приёмы)
-[[closed-loop]] · [[verifier-pattern]] · [[memory-management]]
+[[closed-loop]] · [[context-as-docs]] · [[distill-pattern]] · [[memory-management]] · [[model-routing]] · [[verifier-pattern]]
+
+## Память (04-Memory/ — OKF sub-bundle)
+[[active-context]] · [[facts]] · [[session-log/2026-06-27]] · [index](04-Memory/index.md) · [log](04-Memory/log.md)
 
 ## Конвенции
 - Метод описывается ОДИН раз в `02-Methods/`. Карточки только ссылаются [[wikilink]].
 - Карточка = реальное состояние репо (агенты/команды/скрипты/окружение), не копия кода.
 - Новое знание → `99-Inbox.md` → оформляется через `/capture`.
+- Память сессии → `04-Memory/` → читается при старте, пишется по ходу и в конце.
 - Статусы внедрения: ❌ нет · 🟡 частично · ✅ внедрено
 - Неподтверждённые факты по OpenCode помечать `[проверить]`.
 - Reference — выжимка, источник правды доки opencode.ai (с датой проверки).
+- ВСЕГДА думать и отвечать на русском, если не указано иное.
