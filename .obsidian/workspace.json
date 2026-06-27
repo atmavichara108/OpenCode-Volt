@@ -1,0 +1,221 @@
+{
+  "main": {
+    "id": "36015350e8ebe605",
+    "type": "split",
+    "children": [
+      {
+        "id": "4519525b09ac5199",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "93c31bf96a7a6d65",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Architecture.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Architecture"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "064f10eb9878c6ef",
+    "type": "split",
+    "children": [
+      {
+        "id": "05731724815d94f6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0eef8d3093134834",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Файловый менеджер"
+            }
+          },
+          {
+            "id": "69f854e7a556e113",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Поиск"
+            }
+          },
+          {
+            "id": "1cf710c39a3c84e4",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Закладки"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "c793cbef8ff138e1",
+    "type": "split",
+    "children": [
+      {
+        "id": "51b095c3de8d1842",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e4b27ba8e169fc57",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Architecture.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Обратные ссылки для Architecture"
+            }
+          },
+          {
+            "id": "760591ff4c915828",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Architecture.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Исходящие ссылки из Architecture"
+            }
+          },
+          {
+            "id": "a529d20745e11d65",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Теги"
+            }
+          },
+          {
+            "id": "1d8ee56096c9430f",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Все свойства"
+            }
+          },
+          {
+            "id": "6e352c94d86fa2a4",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Architecture.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Структура Architecture"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Меню быстрого перехода": false,
+      "graph:Граф": false,
+      "canvas:Создать новый холст": false,
+      "daily-notes:Сегодняшняя заметка": false,
+      "templates:Вставить шаблон": false,
+      "command-palette:Открыть палитру команд": false,
+      "bases:Создать новую базу": false
+    }
+  },
+  "active": "93c31bf96a7a6d65",
+  "lastOpenFiles": [
+    "01-Reference/commands.md",
+    "01-Reference/permissions.md",
+    "01-Reference/agents.md",
+    "03-Projects/vault.md",
+    "03-Projects/dotfiles.md",
+    "03-Projects/dv-hub.md",
+    "03-Projects/SERPlux.md",
+    "01-Reference/plugins.md",
+    "00-INDEX.md",
+    "Architecture.md",
+    "99-Inbox.md.md",
+    "AGENTS.md",
+    "AGENTS.md.md",
+    "wikilink.md",
+    "05-Templates/_opencode.md",
+    "05-Templates/_command-loop.md",
+    "05-Templates/_agent-generic.md",
+    "03-Protocols/upgrade-all-projects.md",
+    "03-Protocols/audit-project.md",
+    "03-Protocols/add-command.md",
+    "03-Protocols/add-agent.md",
+    "03-Protocols/new-project.md",
+    "02-Methods/verifier-pattern.md",
+    "02-Methods/model-routing.md",
+    "02-Methods/context-as-docs.md",
+    "02-Methods/memory-management.md",
+    "05-Templates/Без названия",
+    "03-Projects",
+    "03-Protocols",
+    "02-Methods",
+    "01-Reference",
+    "05-Templates"
+  ]
+}
