@@ -10,22 +10,22 @@ timestamp: 2026-06-27
 > Автоматически обновляется librarian. Читается при старте каждой сессии.
 
 ## Текущий фокус
-- **Проект:** vault (этот волт)
-- **Задача:** первичный аудит и настройка волта, исправление багов, создание дорожной карты
+- **Проект:** vault (командный центр)
+- **Задача:** перенастройка librarian'а под роль командного центра проектов
 
 ## Активная задача
-_Нет. Следующая: T-001 — `opencode.json` в корне волта._
+T-004: Наполнить config.md — doom_loop, budget, steps (cost control)
 
 ## Завершённые изменения (эта сессия)
-- [x] TASKS.md — трекер задач создан
-- [x] Команда `/commit` — создана (subtask, agent: librarian)
-- [x] librarian.md — протокол авто-документирования задач
-- [x] 01-Reference/commands.md — добавлен `/commit`
-- [x] 00-INDEX.md, index.md — ссылки на TASKS
+- [x] T-001: `opencode.json` создан
+- [x] T-002: верификация `wikilink`
+- [x] T-003: config.md — OpenCode Zen провайдер
+- [x] T-004: config.md — cost control (steps, doom_loop, budgetTokens)
+- [x] **Роль librarian переписана:** командный центр проектов (steps: 15, doom_loop: allow, git pull, новый промпт)
+- [x] **AGENTS.md обновлён** под новую роль
 
 ## Ожидают в Planned
-T-001: opencode.json в корне волта
-T-002: Консистентность [[wikilink]] ссылок
+T-005: permissions.md — skills, doom_loop
 T-003—T-006: Наполнение Reference
 T-007—T-009: Обновление карточек проектов
 T-010: 05-Templates/

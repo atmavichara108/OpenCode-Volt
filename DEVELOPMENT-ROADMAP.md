@@ -34,8 +34,8 @@ timestamp: 2026-06-27
 | 8 | **Обновить AGENTS.md** — убрать claude-mem, вписать новую память | ✅ | Обновлён |
 | 9 | **Обновить Architecture.md** — OKF-структура | ✅ | Отражает OKF-бандл |
 | 10 | **Наполнить rules-AGENTS.md** | ✅ | Описан формат AGENTS.md |
-| 11 | **Создать opencode.json** в корне волта (с $schema) | ❌ | Явный default agent + валидация |
-| 12 | **Проверить консистентность ссылок** | ❌ | [[wikilink]] vs markdown links |
+| 11 | **Создать opencode.json** в корне волта (с $schema) | ✅ | default_agent: librarian, $schema, LSP |
+| 12 | **Проверить консистентность ссылок** | ✅ | all `[[wikilink]]` valid, mixed formats unified |
 
 ## P2 — Reference (справочник OpenCode)
 
@@ -44,8 +44,8 @@ timestamp: 2026-06-27
 | # | Задача | Статус | Примечание |
 |---|--------|--------|-----------|
 | 12 | **memory.md** — наполнить под новую систему | ✅ | Готово |
-| 13 | **OpenCode Zen** провайдер в config.md | ❌ | `opencode/claude-sonnet-4-6` — модель по умолчанию |
-| 14 | **doom_loop, budget, steps** — cost control | ❌ | Используется в конфигах, не описано |
+| 13 | **OpenCode Zen** провайдер в config.md | ✅ | Полный раздел: подключение, модели, конфиг |
+| 14 | **doom_loop, budget, steps** — cost control | ✅ | Полный раздел: steps, doom_loop, budgetTokens с примерами |
 | 15 | **skills** — отдельный инструмент OpenCode | ❌ | Упомянут в permissions, без контекста |
 | 16 | **Plugin SDK** (@opencode-ai/plugin) | ❌ | Уже установлен, не описан |
 

@@ -14,7 +14,7 @@ timestamp: 2026-06-27
 - Разгрести инбокс → `/capture`
 - Сводка по проекту → `/project <имя>`
 - Посмотреть дорожную карту → [[DEVELOPMENT-ROADMAP]]
-- Навигация по OKF → [index.md](index.md)
+- Навигация по OKF → [[index]]
 - Трекер задач → [[TASKS]]
 
 ## Проекты
@@ -32,10 +32,10 @@ timestamp: 2026-06-27
 [[closed-loop]] · [[context-as-docs]] · [[distill-pattern]] · [[memory-management]] · [[model-routing]] · [[verifier-pattern]]
 
 ## Память (04-Memory/ — OKF sub-bundle)
-[[active-context]] · [[facts]] · [[session-log/2026-06-27]] · [index](04-Memory/index.md) · [log](04-Memory/log.md)
+[[active-context]] · [[facts]] · [[session-log/2026-06-27]] · [[04-Memory/index]] · [[04-Memory/log]]
 
 ## Конвенции
-- Метод описывается ОДИН раз в `02-Methods/`. Карточки только ссылаются [[wikilink]].
+- Метод описывается ОДИН раз в `02-Methods/`. Карточки только ссылаются `wikilink`.
 - Карточка = реальное состояние репо (агенты/команды/скрипты/окружение), не копия кода.
 - Новое знание → `99-Inbox.md` → оформляется через `/capture`.
 - Память сессии → `04-Memory/` → читается при старте, пишется по ходу и в конце.

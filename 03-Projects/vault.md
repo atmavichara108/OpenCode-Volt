@@ -9,7 +9,7 @@ stack: markdown + OpenCode
 Дашборд-справочник по OpenCode и проектам. OKF v0.1 Knowledge Bundle + OpenCode-проект.
 
 **Запуск:** `opencode` в папке волта.
-**Агент:** librarian (primary) — читает и ведёт знания, наружу ходит только для `/project` (external_directory: allow, bash ограничен).
+**Агент:** librarian (primary) — командный центр проектов: мониторинг, апдейты, управление знаниями.
 
 ## Структура (OKF)
 - `index.md` + `log.md` — OKF bundle root
@@ -27,7 +27,7 @@ stack: markdown + OpenCode
 ## Агент (.opencode/agent/)
 | Агент | Назначение |
 |-------|-----------|
-| librarian | ответы по волту, ведение заметок, разгребание инбокса |
+| librarian | командный центр: мониторинг проектов, апдейты, управление знаниями |
 
 ## Команды (.opencode/command/)
 /ask · /capture · /project
@@ -43,7 +43,8 @@ stack: markdown + OpenCode
 - [x] DEVELOPMENT-ROADMAP — полный план с приоритетами
 - [x] rules-AGENTS.md — наполнен
 - [x] TASKS.md — трекер задач создан
-- [ ] opencode.json в корне волта — T-001 (Active)
+- [x] opencode.json в корне волта — T-001 (Done)
+- [x] T-002: верификация `wikilink` по всему волту
 - [ ] методы 02-Methods/ — 6 файлов пусты (заполняет пользователь)
 - [ ] 05-Templates/ — не создан
 - [ ] dotfiles — после создания репо

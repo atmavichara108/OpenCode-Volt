@@ -23,10 +23,6 @@ timestamp: 2026-06-27
 
 | ID | Задача | Приоритет | Связано |
 |----|--------|-----------|---------|
-| T-001 | Создать `opencode.json` в корне волта (с `$schema`) | P1 | [[DEVELOPMENT-ROADMAP]] |
-| T-002 | Проверить консистентность [[wikilink]] ссылок по всему волту | P1 | [[DEVELOPMENT-ROADMAP]] |
-| T-003 | Наполнить `config.md` — OpenCode Zen провайдер | P2 | [[01-Reference/config.md]] |
-| T-004 | Наполнить `config.md` — doom_loop, budget, steps (cost control) | P2 | [[01-Reference/config.md]] |
 | T-005 | Наполнить `permissions.md` — skills, doom_loop | P2 | [[01-Reference/permissions.md]] |
 | T-006 | Наполнить `plugins.md` — Plugin SDK (@opencode-ai/plugin) | P2 | [[01-Reference/plugins.md]] |
 | T-007 | SERPlux — добавить список команд в карточку | P3 | [[03-Projects/SERPlux.md]] |
@@ -60,6 +56,10 @@ timestamp: 2026-06-27
 | T-000 | Создать команду `/commit` | P1 | 2026-06-27 | [[.opencode/command/commit.md]] |
 | T-000 | Прописать авто-документирование в librarian.md | P1 | 2026-06-27 | [[.opencode/agent/librarian.md]] |
 | T-000 | Добавить `/commit` в 01-Reference/commands.md | P1 | 2026-06-27 | [[01-Reference/commands.md]] |
+| T-001 | Создать `opencode.json` в корне волта (с `$schema`) | P1 | 2026-06-27 | [[opencode.json]] |
+| T-002 | Проверить консистентность `wikilink` ссылок по всему волту | P1 | 2026-06-27 | [[DEVELOPMENT-ROADMAP]] |
+| T-003 | Наполнить `config.md` — OpenCode Zen провайдер | P2 | 2026-06-27 | [[01-Reference/config.md]] |
+| T-004 | Наполнить `config.md` — doom_loop, budget, steps (cost control) | P2 | 2026-06-27 | [[01-Reference/config.md]] |
 
 ---
 
@@ -75,6 +75,6 @@ timestamp: 2026-06-27
 - **ID** — T-NNN (уникальный номер)
 - **Описание** — что конкретно сделать
 - **Приоритет** — P0..P4
-- **Связано** — [[wikilink]] на файл/карточку/метод
+- **Связано** — `wikilink` на файл/карточку/метод
 
 Номера ID в Done неуникальные (T-000) — при переходе на нумерованные ID проставить сквозную нумерацию.
