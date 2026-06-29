@@ -44,20 +44,22 @@ timestamp: 2026-06-27
 ### SERPlux
 - Репо: `/home/rudra/Projects/serp`
 - GitHub remote: `atmavichara108/SERPlux`
-- Стек: DeepSeek labeler + Zen primary
-- OpenCode-агенты: build/plan, collector-dev, reviewer (primary/subagent без команды)
+- Стек: Python 3.11+ / requests / gspread / FastAPI / DeepSeek (labeler) / SQLite
+- OpenCode-агенты: build (Sonnet 4.6), plan (Sonnet 4.6), collector-dev (Sonnet 4.6, subagent), reviewer (GPT-5.3-codex, subagent)
 - Команд OpenCode нет
-- Статус методов: context-as-docs ✅, memory-management ❌, всё остальное ❌
+- Плагины: env-guard.js, notify.js
+- Статус методов: context-as-docs 🟡, model-routing 🟡, остальные ❌
 
 ### dv-hub
 - Репо: `/home/rudra/Projects/dv-hub`
 - GitHub remote: `atmavichara108/dv-hub`
 - Стек: TypeScript strict / Hono / better-sqlite3 / Vanilla JS + Tailwind / Vite
-- 6 OpenCode-агентов: plan, build, reviewer, researcher, infra (+ sysop для деплоя)
-- 9 команд: /morning · /spec · /review · /hygiene · /sync-context · /sync-context-self · /sync-task · /problem · /plan
+- 5 OpenCode-агентов: plan (qwen3.7-max), build (deepseek-v4-flash), reviewer (deepseek-v4-pro, subagent), researcher (qwen3.6-plus, subagent), infra (qwen3.7-max)
+- 7 команд: /morning · /spec · /review · /hygiene · /sync-context · /sync-context-self · /sync-task
 - 3 плагина: compaction.ts · env-guard.ts · notify.ts
-- Статус методов: ❌ все 6
+- Статус методов: distill-pattern ✅, model-routing ✅, context-as-docs 🟡, memory-management 🟡, closed-loop ❌, verifier-pattern ❌
 - Git submodule: context/ → dv-project
+- Docs: 8 файлов (architecture, product-vision, roadmap, glossary, infra-runbook, backend-conventions, mirotalk-setup, known-issues)
 
 ### dotfiles
 - Репо: `/home/rudra/dotfiles`
@@ -68,7 +70,8 @@ timestamp: 2026-06-27
 ### vault (OpenCode-Vault)
 - Репо: `/home/rudra/Projects/OpenCode-Vault`
 - Это командный центр знаний, не код проекта
-- 1 агент: librarian
+- 1 агент: librarian (deepseek-v4-flash-free, primary)
 - 6 команд: /ask · /capture · /project · /commit · /project-add · /audit
 - Pre-commit hook: проверка пустых файлов + валидация викилинков
 - 6 методов заполнены в 02-Methods/
+- Статус методов (собственные): context-as-docs ✅, distill-pattern ✅, memory-management 🟡, model-routing ➖, closed-loop ❌, verifier-pattern ❌

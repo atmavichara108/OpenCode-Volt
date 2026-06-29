@@ -36,14 +36,16 @@ timestamp: 2026-06-29
 
 ### Статус внедрения методов по проектам
 
+> **Источник правды:** карточка проекта (`03-Projects/<name>.md`). Метод-файл ссылается, не определяет.
+
 | Метод | SERPlux | dv-hub | dotfiles | vault |
 |-------|---------|--------|----------|-------|
-| [[closed-loop]] | ❌ | ❌ | ➖ | ➖ |
-| [[verifier-pattern]] | ❌ | ❌ | ➖ | ➖ |
-| [[context-as-docs]] | 🟡 | ❌ | ➖ | ➖ |
-| [[memory-management]] | ❌ | ❌ | ➖ | ➖ |
-| [[model-routing]] | ❌ | ❌ | ➖ | ➖ |
-| [[distill-pattern]] | ❌ | ❌ | ➖ | ➖ |
+| [[closed-loop]] | ❌ | ❌ | ➖ | ❌ |
+| [[verifier-pattern]] | ❌ | ❌ | ➖ | ❌ |
+| [[context-as-docs]] | 🟡 | 🟡 | ➖ | ✅ |
+| [[distill-pattern]] | ❌ | ✅ | ➖ | ✅ |
+| [[memory-management]] | ❌ | 🟡 | ➖ | 🟡 |
+| [[model-routing]] | 🟡 | ✅ | ➖ | ➖ |
 
 > ❌ не внедрён · 🟡 частично · ✅ внедрён · ➖ не применимо
 
@@ -51,7 +53,7 @@ timestamp: 2026-06-29
 [[05-Templates/README]] · [[05-Templates/project-card]] · [[05-Templates/method]]
 
 ## Память (04-Memory/ — OKF sub-bundle)
-[[active-context]] · [[facts]] · [[session-log/2026-06-27]] · [[session-log/2026-06-29]] · [[04-Memory/index]] · [[04-Memory/log]]
+[[active-context]] · [[facts]] · [[session-log/2026-06-27]] · [[session-log/2026-06-29]] · [[session-log/2026-06-30]] · [[04-Memory/index]] · [[04-Memory/log]]
 
 ## Конвенции
 - Метод описывается ОДИН раз в `02-Methods/`. Карточки только ссылаются `wikilink`.

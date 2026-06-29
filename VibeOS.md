@@ -1,7 +1,7 @@
 ---
 type: VibeOS
 title: VibeOS — Персональная система вайбкодинга
-version: 0.2.0
+version: 0.2.1
 description: Концептуальный дашборд-путеводитель по стилю, методам, проектам и философии Макса как вайбкодера.
 timestamp: 2026-06-30
 tags: [meta, system, vibe-coding]
@@ -9,7 +9,7 @@ tags: [meta, system, vibe-coding]
 
 # VibeOS v0.2.0 — Персональная система вайбкодинга
 
-> Это не журнал. Это концептуальный слепок того, как я кодирую с ИИ, какие
+> Это не журнал. Это концептуальный слепок того, как я кодирую и какие экосистемы и пайплайны создаю с ИИ. Своеобразный дашборд, показывает какие подходы и 
 > приёмы использую, какие проекты веду и куда расту. Версионируется вместе со
 > мной — эволюция подходов, инструментов и философии.
 
@@ -122,12 +122,12 @@ tags: [meta, system, vibe-coding]
 
 | Метод | SERPlux | dv-hub | dotfiles | vault |
 |-------|---------|--------|----------|-------|
-| [[02-Methods/context-as-docs|context-as-docs]] | 🟡 | 🟡 | ➖ | ➖ |
-| [[02-Methods/distill-pattern|distill-pattern]] | ❌ | ✅ | ➖ | ➖ |
-| [[02-Methods/memory-management|memory-management]] | ❌ | 🟡 | ➖ | ➖ |
-| [[02-Methods/model-routing|model-routing]] | 🟡 | 🟡 | ➖ | ➖ |
-| [[02-Methods/closed-loop|closed-loop]] | ❌ | ❌ | ➖ | ➖ |
-| [[02-Methods/verifier-pattern|verifier-pattern]] | ❌ | ❌ | ➖ | ➖ |
+| [[02-Methods/context-as-docs|context-as-docs]] | 🟡 | 🟡 | ➖ | ✅ |
+| [[02-Methods/distill-pattern|distill-pattern]] | ❌ | ✅ | ➖ | ✅ |
+| [[02-Methods/memory-management|memory-management]] | ❌ | 🟡 | ➖ | 🟡 |
+| [[02-Methods/model-routing|model-routing]] | 🟡 | ✅ | ➖ | ➖ |
+| [[02-Methods/closed-loop|closed-loop]] | ❌ | ❌ | ➖ | ❌ |
+| [[02-Methods/verifier-pattern|verifier-pattern]] | ❌ | ❌ | ➖ | ❌ |
 
 ### Легенда
 
@@ -138,32 +138,39 @@ tags: [meta, system, vibe-coding]
 
 ### Развёрнутый анализ
 
-#### ✅ distill-pattern (dv-hub)
-dv-hub — единственный проект, где паттерн дистилляции работает в полную силу.
-6+ команд (`/morning`, `/spec`, `/review`, `/hygiene`, `/sync-context`,
-`/sync-task`) автоматизируют рутину. Образец для остальных проектов.
+#### ✅ distill-pattern (dv-hub + vault)
+dv-hub — 7 команд (`/morning`, `/spec`, `/review`, `/hygiene`, `/sync-context`,
+`/sync-context-self`, `/sync-task`). vault — 6 команд (`/ask`, `/capture`,
+`/project`, `/commit`, `/project-add`, `/audit`). Образец для SERPlux.
 
-#### 🟡 context-as-docs (SERPlux + dv-hub)
-- **SERPlux**: `docs/contracts.md` и `docs/decisions.md` есть, но не
-  формализованы как spec-driven development. DoD не прописан.
+#### ✅ context-as-docs (vault) + 🟡 (SERPlux, dv-hub)
+- **vault**: AGENTS.md + Architecture.md + OKF-структура = документация как
+  инфраструктура в чистом виде. Волт документирует сам себя.
+- **SERPlux**: `docs/contracts.md` и `docs/decisions.md` есть, но без
+  формального DoD.
 - **dv-hub**: `docs/architecture.md` (ADR), `docs/product-vision.md`,
-  `context/` submodule. AGENTS.md с конвенциями. Сильная база, но без
-  формальных DoD для задач.
+  `context/` submodule, AGENTS.md. Сильная база, но без формального DoD.
 
-#### 🟡 memory-management (dv-hub)
-Плагин `compaction.ts` управляет сжатием контекста. Flush-протокол (сброс
-ключевых решений в файлы до компакции) — не реализован.
+#### ✅ model-routing (dv-hub)
+dv-hub — полная реализация static routing: 5 агентов на 4 моделях
+(plan=qwen3.7-max, build=deepseek-v4-flash, reviewer=deepseek-v4-pro,
+researcher=qwen3.6-plus, infra=qwen3.7-max). Роли разведены по назначению.
 
-#### 🟡 model-routing (оба проекта)
-Оба проекта используют Sonnet 4.6 для build И plan. Это нормально для 2-3
-агентов, но plan потенциально можно поднять на Opus (качество планирования),
-а навигацию — опустить на Haiku (экономия).
+#### 🟡 model-routing (SERPlux)
+build/plan/collector-dev на Sonnet 4.6, reviewer на GPT-5.3-codex —
+частичное разведение (только reviewer отделён).
 
-#### ❌ closed-loop (оба проекта)
-Нигде не внедрён. Нет команды `/loop`, нет автоматической итерации
+#### 🟡 memory-management (dv-hub + vault)
+- **dv-hub**: плагин `compaction.ts` управляет сжатием. Flush-протокол не
+  реализован.
+- **vault**: 04-Memory/ (active-context + facts + session-log). Flush-протокол
+  не формализован (librarian пишет в конце сессии, не перед компакцией).
+
+#### ❌ closed-loop (все проекты)
+Нигде не внедрён. Нет команды `/loop`, нет автономной итерации
 build → verify → fix. Самый жирный кандидат на апгрейд.
 
-#### ❌ verifier-pattern (оба проекта)
+#### ❌ verifier-pattern (все проекты)
 Нет агента-верификатора, который проверяет работу независимо. build сам себе
 судья — дыры и баги просачиваются.
 
@@ -180,18 +187,19 @@ build → verify → fix. Самый жирный кандидат на апгр
 
 ### SERPlux
 **Сбор позиций Google** через Topvisor Snapshots API → классификация URL
-(DeepSeek/Zen) → выгрузка в Google Sheets.
-- Методы: только context-as-docs 🟡
-- Агенты: build, plan, collector-dev, reviewer
+(DeepSeek) → выгрузка в Google Sheets.
+- Методы: context-as-docs 🟡, model-routing 🟡, остальные ❌
+- Агенты: build (Sonnet 4.6), plan (Sonnet 4.6), collector-dev (Sonnet 4.6), reviewer (GPT-5.3-codex)
 - Команды: нет — чистый кандидат на дистилляцию
 - Болевая точка: нет CI, нет verifier, нет closed-loop
 
 ### dv-hub
 **Платформа сообщества** (re-search.wiki). Миграция с Cloudflare на VPS.
-- Методы: distill-pattern ✅, остальные 🟡 или ❌
-- Агенты: plan, build, reviewer, researcher, infra
-- Команды: 6+ — образец дистилляции
-- Плагины: compaction, env-guard, notify
+- Методы: distill-pattern ✅, model-routing ✅, context-as-docs 🟡, memory-management 🟡, closed-loop ❌, verifier-pattern ❌
+- Агенты: plan (qwen3.7-max), build (deepseek-v4-flash), reviewer (deepseek-v4-pro), researcher (qwen3.6-plus), infra (qwen3.7-max)
+- Команды: 7 — образец дистилляции
+- Плагины: compaction.ts, env-guard.ts, notify.ts
+- Docs: 8 файлов (architecture, product-vision, roadmap, glossary, infra-runbook, backend-conventions, mirotalk-setup, known-issues)
 - Submodule: context/ → dv-project (Obsidian-волт)
 
 ### dotfiles
@@ -215,13 +223,16 @@ build → verify → fix. Самый жирный кандидат на апгр
 
 | Агент | Проект | Mode | Модель | Назначение |
 |-------|--------|------|--------|-----------|
-| librarian | vault | primary | DeepSeek v4-flash-free | Командный центр |
-| build | SERPlux/dv-hub | primary | Sonnet 4.6 | Разработка |
-| plan | SERPlux/dv-hub | primary | Sonnet 4.6 | Планирование |
-| collector-dev | SERPlux | primary | — | Модуль сбора |
-| reviewer | SERPlux/dv-hub | subagent | — | Ревью |
-| researcher | dv-hub | subagent | — | Tech spike |
-| infra | dv-hub | subagent | — | DevOps |
+| librarian | vault | primary | deepseek-v4-flash-free | Командный центр |
+| build | SERPlux | primary | claude-sonnet-4-6 | Разработка |
+| plan | SERPlux | primary | claude-sonnet-4-6 | Планирование |
+| collector-dev | SERPlux | subagent | claude-sonnet-4-6 | Модуль сбора |
+| reviewer | SERPlux | subagent | gpt-5.3-codex | Ревью |
+| build | dv-hub | primary | deepseek-v4-flash | Разработка |
+| plan | dv-hub | primary | qwen3.7-max | Планирование |
+| reviewer | dv-hub | subagent | deepseek-v4-pro | Ревью |
+| researcher | dv-hub | subagent | qwen3.6-plus | Tech spike |
+| infra | dv-hub | primary | qwen3.7-max | DevOps |
 | sysop | dotfiles (план) | primary | — | Инспектор системы |
 
 ### Команды (все проекты)
@@ -229,7 +240,7 @@ build → verify → fix. Самый жирный кандидат на апгр
 **vault (6 команд):**
 `/ask` · `/capture` · `/project` · `/commit` · `/project-add` · `/audit`
 
-**dv-hub (6+ команд):**
+**dv-hub (7 команд):**
 `/morning` · `/spec` · `/review` · `/hygiene` · `/sync-context` ·
 `/sync-context-self` · `/sync-task`
 
@@ -377,6 +388,13 @@ build → verify → fix. Самый жирный кандидат на апгр
 ---
 
 ## Чейнджлог
+
+### v0.2.1 (2026-06-30)
+- **Ревью**: исправлены все расхождения статусов методов (17 багов)
+- model-routing dv-hub: 🟡 → ✅ (5 агентов на 4 моделях)
+- vault получил собственные статусы: context-as-docs ✅, distill ✅, memory-mgmt 🟡
+- Модели агентов актуализированы во всём волте
+- Добавлена конвенция: карточка проекта — источник правды для статусов
 
 ### v0.2.0 (2026-06-30)
 - **Создан** VibeOS — концептуальный дашборд всей системы вайбкодинга

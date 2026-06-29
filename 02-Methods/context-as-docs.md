@@ -29,4 +29,4 @@ tags: [method]
 ## Связанные
 - Reference: [[config]], [[agents]]
 - Питает: [[closed-loop]] (DoD), [[verifier-pattern]] (критерии)
-- Внедрён в: [[dv-hub]] ✅, [[SERPlux]] ✅
+- Внедрён в: [[SERPlux]] 🟡, [[dv-hub]] 🟡, [[vault]] ✅

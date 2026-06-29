@@ -26,4 +26,4 @@ tags: [method]
 ## Связанные
 - Reference: [[plugins]], [[config]]
 - Дополняет: [[context-as-docs]] (куда флашить)
-- Внедрён в: [[dv-hub]] 🟡 (compaction есть, flush-протокол ❌), [[SERPlux]] ❌
+- Внедрён в: [[dv-hub]] 🟡 (compaction есть, flush-протокол ❌), [[vault]] 🟡 (04-Memory/ есть, flush ❌), [[SERPlux]] ❌

@@ -45,4 +45,4 @@ HARD STOP after 5 verify cycles. If still FAIL, report blockers and STOP.
 - Reference: [[commands]], [[agents]]
 - Зависит от: [[verifier-pattern]]
 - Рамка задачи: [[context-as-docs]] (DoD берётся из спеки)
-- Внедрён в: [[SERPlux]] ❌, [[dv-hub]] ❌
+- Внедрён в: [[SERPlux]] ❌, [[dv-hub]] ❌, [[vault]] ❌

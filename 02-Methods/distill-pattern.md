@@ -32,4 +32,4 @@ tags: [method]
 
 ## Связанные
 - Reference: [[commands]], [[agents]]
-- Внедрён в: [[dv-hub]] ✅ (6 команд), [[SERPlux]] ❌ (0 команд)
+- Внедрён в: [[dv-hub]] ✅ (7 команд), [[vault]] ✅ (6 команд), [[SERPlux]] ❌ (0 команд)

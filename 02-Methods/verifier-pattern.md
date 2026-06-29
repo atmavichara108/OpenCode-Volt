@@ -46,4 +46,4 @@ If FAIL: numbered list of minimal fixes for the build agent.
 - Reference: [[agents]], [[permissions]]
 - Используется в: [[closed-loop]] (verify-фаза)
 - Модель: [[model-routing]] (почему именно sonnet, а не haiku)
-- Внедрён в: [[SERPlux]] ❌, [[dv-hub]] ❌
+- Внедрён в: [[SERPlux]] ❌ (reviewer не выносит PASS/FAIL), [[dv-hub]] ❌, [[vault]] ❌
