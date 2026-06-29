@@ -64,8 +64,12 @@ timestamp: 2026-06-27
 ### dotfiles
 - Репо: `/home/rudra/dotfiles`
 - GitHub remote: `atmavichara108/dotfiles`
-- Стек: shell / Manjaro configs
-- OpenCode не инициализирован
+- Стек: shell / GNU Stow / конфиги Manjaro (23 пакета: zsh, nvim, tmux, git, qtile, alacritty, rofi, picom, btop, bat, dunst, htop, lazygit, neofetch, ranger, screenlayout, scripts, systemd, taskwarrior, wal, weathr, x11, xdg)
+- OpenCode инициализирован 2026-06-30
+- 1 агент: sysop (deepseek-v4-flash-free, primary, read-only, external_directory: allow)
+- 1 команда: /sysaudit
+- Статус методов: context-as-docs 🟡, distill-pattern 🟡, остальные ❌ или ➖
+- Скрипты: stow.sh (массовый stow), add-package.sh (новый пакет)
 
 ### vault (OpenCode-Vault)
 - Репо: `/home/rudra/Projects/OpenCode-Vault`

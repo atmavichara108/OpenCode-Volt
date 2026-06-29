@@ -1,7 +1,8 @@
 # Memory Bundle Update Log
 
 ## 2026-06-30
-* **VibeOS.md**: Создан v0.2.0 → обновлён до v0.2.1 (ревью)
+* **dotfiles**: OpenCode инициализирован — sysop, /sysaudit, AGENTS.md, opencode.json
+* **VibeOS.md**: Создан v0.2.0 → обновлён до v0.2.1 (ревью) → исправлена разметка таблиц
 * **Модель librarian**: Claude Sonnet 4.6 → DeepSeek v4-flash-free
 * **Ревью**: 17 багов исправлены (статусы методов, модели, команды, docs)
 * **config.md**: Обновлены используемые модели

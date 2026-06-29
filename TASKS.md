@@ -26,7 +26,7 @@ timestamp: 2026-06-27
 | T-015 | Telegram-бот для приёма фич и подходов | P5 | [[DEVELOPMENT-ROADMAP]] |
 | T-016 | Классификация фич по проектам (автомат) | P5 | [[DEVELOPMENT-ROADMAP]] |
 | T-017 | Команда `/project-upgrade` — авто-внедрение методов | P5 | [[DEVELOPMENT-ROADMAP]] |
-| T-019 | Инициализировать OpenCode в dotfiles (вручную) | P3 | [[03-Projects/dotfiles.md]] |
+| T-019 | ~~Инициализировать OpenCode в dotfiles (вручную)~~ | P3 | 2026-06-30 | [[03-Projects/dotfiles.md]] |
 
 ## 🟤 Backlog — идеи на потом
 
@@ -41,6 +41,7 @@ timestamp: 2026-06-27
 | T-020 | Создать VibeOS — концептуальный дашборд системы вайбкодинга | P2 | 2026-06-30 | [[VibeOS]] |
 | T-021 | Смена модели librarian Claude Sonnet 4.6 → DeepSeek v4-flash-free | P2 | 2026-06-30 | [[04-Memory/facts.md]] |
 | T-022 | Ревью волта: исправить 17 багов (статусы, модели, команды, docs) | P1 | 2026-06-30 | [[Architecture]] |
+| T-023 | Инициализировать OpenCode в dotfiles — sysop, /sysaudit | P3 | 2026-06-30 | [[03-Projects/dotfiles]] |
 | T-000 | Переименовать `99-Inbox.md.md` → `99-Inbox.md` | P0 | 2026-06-27 | — |
 | T-000 | Убрать claude-mem из всей базы | P0 | 2026-06-27 | [[01-Reference/memory.md]] |
 | T-000 | Создать OKF-подбандл памяти `04-Memory/` | P0 | 2026-06-27 | [[04-Memory/index.md]] |
