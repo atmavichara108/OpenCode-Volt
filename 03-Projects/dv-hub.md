@@ -1,6 +1,6 @@
 ---
 type: project
-repo: github.com/atmavichara108/dv-hub
+repo: /home/rudra/Projects/dv-hub
 kind: волонтёрский
 stack: TypeScript strict / Hono / better-sqlite3 / Vanilla JS + Tailwind / Vite
 ---

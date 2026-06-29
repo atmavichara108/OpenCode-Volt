@@ -1,6 +1,6 @@
 ---
 type: project
-repo: github.com/atmavichara108/SERPlux
+repo: /home/rudra/Projects/serp
 kind: коммерция
 stack: Python 3.11+ / requests / gspread / FastAPI / google-generativeai / SQLite
 ---
