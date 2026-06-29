@@ -2,7 +2,7 @@
 type: Architecture
 title: Принцип и структура волта
 description: Четырёхслойная архитектура Reference → Methods → Projects → Templates. Теперь также OKF-бандл.
-timestamp: 2026-06-27
+timestamp: 2026-06-29
 ---
 ## **Принцип, на котором строим**
 
@@ -19,7 +19,7 @@ OpenCode-Vault/                    ← OKF-бандл + OpenCode-проект
 ├── log.md                         ← OKF bundle update log
 ├── .opencode/                     ← конфигурация OpenCode (не часть OKF)
 │   ├── agent/librarian.md
-│   └── command/{ask,capture,project}.md
+│   └── command/{ask,capture,project,commit,project-add,audit}.md
 ├── AGENTS.md                      ← правила для librarian
 ├── 00-INDEX.md                    ← дашборд: детальная таблица проектов и конвенции
 ├── 01-Reference/                  ← OKF-концепты: возможности OpenCode
@@ -48,8 +48,9 @@ OpenCode-Vault/                    ← OKF-бандл + OpenCode-проект
 │   ├── active-context.md          → type: Active Context
 │   ├── facts.md                   → type: Fact Registry
 │   └── session-log/               → type: Session Log
-│       └── 2026-06-27.md
-├── 05-Templates/                  ← шаблоны для клонирования (project-card.md, method.md, README.md)
+│       ├── 2026-06-27.md
+│       └── 2026-06-29.md
+├── 05-Templates/                  ← шаблоны (project-card, method, README, pre-commit-check, archive-session-log)
 ├── 99-Inbox.md                    ← type: Inbox — буфер сырых заметок
 ├── Architecture.md                ← этот файл, type: Architecture
 ├── DEVELOPMENT-ROADMAP.md         ← type: Roadmap
