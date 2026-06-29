@@ -19,15 +19,15 @@ tags: [meta, system, vibe-coding]
 
 | Раздел | О чём |
 |--------|-------|
-| [[#Философия|Философия]] | Как я мыслю вайбкодинг, принципы, нетривиальные решения |
-| [[#Система|Система]] | Как устроена моя экосистема: волт, OpenCode, проекты |
-| [[#Методы|Методы]] | Все приёмы с реальным статусом внедрения |
-| [[#Проекты|Проекты]] | Все проекты с их стадией и стеком |
-| [[#Инвентарь|Инвентарь]] | Агенты, команды, плагины, шаблоны, скрипты |
-| [[#Внедрено vs Готово vs В планах|Внедрено vs Готово vs В планах]] | Что уже работает, что ждёт внедрения, что в перспективе |
-| [[#Нетривиальные решения|Нетривиальные решения]] | Что отличает мою систему от типовой |
-| [[#Вектор роста|Вектор роста]] | Куда развиваюсь, какие навыки/методы осваиваю |
-| [[#Чейнджлог|Чейнджлог]] | История версий VibeOS |
+| [[#Философия\|Философия]] | Как я мыслю вайбкодинг, принципы, нетривиальные решения |
+| [[#Система\|Система]] | Как устроена моя экосистема: волт, OpenCode, проекты |
+| [[#Методы\|Методы]] | Все приёмы с реальным статусом внедрения |
+| [[#Проекты\|Проекты]] | Все проекты с их стадией и стеком |
+| [[#Инвентарь\|Инвентарь]] | Агенты, команды, плагины, шаблоны, скрипты |
+| [[#Внедрено vs Готово vs В планах\|Внедрено vs Готово vs В планах]] | Что уже работает, что ждёт внедрения, что в перспективе |
+| [[#Нетривиальные решения\|Нетривиальные решения]] | Что отличает мою систему от типовой |
+| [[#Вектор роста\|Вектор роста]] | Куда развиваюсь, какие навыки/методы осваиваю |
+| [[#Чейнджлог\|Чейнджлог]] | История версий VibeOS |
 
 ---
 
@@ -122,12 +122,12 @@ tags: [meta, system, vibe-coding]
 
 | Метод | SERPlux | dv-hub | dotfiles | vault |
 |-------|---------|--------|----------|-------|
-| [[02-Methods/context-as-docs|context-as-docs]] | 🟡 | 🟡 | ➖ | ✅ |
-| [[02-Methods/distill-pattern|distill-pattern]] | ❌ | ✅ | ➖ | ✅ |
-| [[02-Methods/memory-management|memory-management]] | ❌ | 🟡 | ➖ | 🟡 |
-| [[02-Methods/model-routing|model-routing]] | 🟡 | ✅ | ➖ | ➖ |
-| [[02-Methods/closed-loop|closed-loop]] | ❌ | ❌ | ➖ | ❌ |
-| [[02-Methods/verifier-pattern|verifier-pattern]] | ❌ | ❌ | ➖ | ❌ |
+| [[02-Methods/context-as-docs\|context-as-docs]] | 🟡 | 🟡 | ➖ | ✅ |
+| [[02-Methods/distill-pattern\|distill-pattern]] | ❌ | ✅ | ➖ | ✅ |
+| [[02-Methods/memory-management\|memory-management]] | ❌ | 🟡 | ➖ | 🟡 |
+| [[02-Methods/model-routing\|model-routing]] | 🟡 | ✅ | ➖ | ➖ |
+| [[02-Methods/closed-loop\|closed-loop]] | ❌ | ❌ | ➖ | ❌ |
+| [[02-Methods/verifier-pattern\|verifier-pattern]] | ❌ | ❌ | ➖ | ❌ |
 
 ### Легенда
 
@@ -180,10 +180,10 @@ build → verify → fix. Самый жирный кандидат на апгр
 
 | Проект | Тип | Стек | Стадия | OpenCode |
 |--------|-----|------|--------|----------|
-| [[03-Projects/SERPlux|SERPlux]] | Коммерция | Python/FastAPI/SQLite | Работает, без методов | ✅ |
-| [[03-Projects/dv-hub|dv-hub]] | Волонтёрский | TS/Hono/better-sqlite3 | Активная разработка | ✅ (6 агентов) |
-| [[03-Projects/dotfiles|dotfiles]] | Система | shell/конфиги Manjaro | Создан, не инициирован | 🟡 (план) |
-| [[03-Projects/vault|vault]] | Справочник | markdown/OpenCode | ✅ Рабочий командный центр | ✅ (librarian) |
+| [[03-Projects/SERPlux\|SERPlux]] | Коммерция | Python/FastAPI/SQLite | Работает, без методов | ✅ |
+| [[03-Projects/dv-hub\|dv-hub]] | Волонтёрский | TS/Hono/better-sqlite3 | Активная разработка | ✅ (6 агентов) |
+| [[03-Projects/dotfiles\|dotfiles]] | Система | shell/конфиги Manjaro | Создан, не инициирован | 🟡 (план) |
+| [[03-Projects/vault\|vault]] | Справочник | markdown/OpenCode | ✅ Рабочий командный центр | ✅ (librarian) |
 
 ### SERPlux
 **Сбор позиций Google** через Topvisor Snapshots API → классификация URL
@@ -262,11 +262,11 @@ build → verify → fix. Самый жирный кандидат на апгр
 
 | Шаблон | Назначение |
 |--------|-----------|
-| [[05-Templates/project-card|project-card]] | Заготовка карточки проекта |
-| [[05-Templates/method|method]] | Заготовка описания метода |
-| [[05-Templates/README|README]] | Заготовка README для шаблонов |
-| [[05-Templates/pre-commit-check|pre-commit-check.sh]] | Хук проверки пустых файлов + викилинков |
-| [[05-Templates/archive-session-log|archive-session-log.sh]] | Архивация старых логов сессий |
+| [[05-Templates/project-card\|project-card]] | Заготовка карточки проекта |
+| [[05-Templates/method\|method]] | Заготовка описания метода |
+| [[05-Templates/README\|README]] | Заготовка README для шаблонов |
+| [[05-Templates/pre-commit-check\|pre-commit-check.sh]] | Хук проверки пустых файлов + викилинков |
+| [[05-Templates/archive-session-log\|archive-session-log.sh]] | Архивация старых логов сессий |
 
 ---
 
@@ -304,8 +304,8 @@ build → verify → fix. Самый жирный кандидат на апгр
 | **Telegram-бот** для фич | P5 roadmap | T-015 |
 | **Классификация фич** по проектам | P5 roadmap | T-016 |
 | **`/project-upgrade`** — авто-внедрение методов | P5 roadmap | T-017 |
-| **Closed-loop** в SERPlux/dv-hub | После verifier | [[02-Methods/closed-loop|closed-loop]] |
-| **Verifier-pattern** глобальный | След. приоритет | [[02-Methods/verifier-pattern|verifier-pattern]] |
+| **Closed-loop** в SERPlux/dv-hub | После verifier | [[02-Methods/closed-loop\|closed-loop]] |
+| **Verifier-pattern** глобальный | След. приоритет | [[02-Methods/verifier-pattern\|verifier-pattern]] |
 | **VibeOS Telegram-интеграция** | P5+ | T-015 + T-016 |
 | **SERPlux команды** | P3 | /review, /pipeline-check |
 
