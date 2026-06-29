@@ -18,13 +18,14 @@ echo "🔍 Pre-commit check: битые [[wikilink]]..."
 while read -r target; do
   [[ "$target" == "..." ]] && continue
   [[ "$target" == *"#"* ]] && continue  # anchor-ссылка
+  target="${target%\\}"                 # отрезать \ перед | в таблицах
   found=false
-  for ext in "" ".md" ".json" ".jsonc" ".js"; do
+  for ext in "" ".md" ".json" ".jsonc" ".js" ".sh"; do
     [ -f "$target$ext" ] && { found=true; break; }
   done
   if ! $found; then
     for dir in "" "01-Reference/" "02-Methods/" "03-Projects/" "04-Memory/" ".opencode/agent/" ".opencode/command/"; do
-      for ext in "" ".md" ".json" ".jsonc"; do
+      for ext in "" ".md" ".json" ".jsonc" ".sh"; do
         [ -f "${dir}${target}${ext}" ] && { found=true; break 2; }
       done
     done

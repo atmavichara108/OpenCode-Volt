@@ -31,6 +31,7 @@
 
 ## System
 * [dashboard](/00-INDEX.md) — Полный дашборд с таблицей проектов и конвенциями
+* [vibeos](/VibeOS.md) — Концептуальный дашборд системы вайбкодинга (философия, методы, проекты, рост)
 * [architecture](/Architecture.md) — Принципы и структура волта
 * [agents](/AGENTS.md) — Правила librarian-агента
 * [roadmap](/DEVELOPMENT-ROADMAP.md) — Стратегический план P0–P4

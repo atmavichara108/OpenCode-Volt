@@ -2,7 +2,7 @@
 ---
 description: Командный центр проектов. Мониторинг, апдейты, управление знаниями.
 mode: primary
-model: opencode/claude-sonnet-4-6
+model: opencode/deepseek-v4-flash-free
 temperature: 0.2
 steps: 15
 permission:

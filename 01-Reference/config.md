@@ -63,8 +63,8 @@ timestamp: 2026-06-27
 4. `/models` → выбрать модель (напр. `opencode/claude-sonnet-4-6`)
 
 **Используемые модели волта:**
-- `opencode/claude-sonnet-4-6` — librarian (по умолчанию)
-- `opencode/deepseek-v4-flash-free` — free-тир (если доступен)
+- `opencode/deepseek-v4-flash-free` — librarian (по умолчанию, бывшая основная модель)
+- `opencode/claude-sonnet-4-6` — запасная (для сложных задач, если DeepSeek не тянет)
 
 **Схожие провайдеры OpenCode:**
 - **OpenCode Go** — subscription-based (доступ по подписке), curated subset моделей
@@ -73,7 +73,7 @@ timestamp: 2026-06-27
 ### Конфигурация в opencode.json
 ```json
 {
-  "model": "opencode/claude-sonnet-4-6",
+  "model": "opencode/deepseek-v4-flash-free",
   "small_model": "opencode/claude-haiku-4-5"
 }
 ```
@@ -98,7 +98,7 @@ steps: 15   # в frontmatter агента
 **Значения в волте:**
 | Агент | steps |
 |-------|-------|
-| librarian | 15 |
+| librarian | 15 (DeepSeek v4-flash-free) |
 | build (SERPlux) | 30 |
 | plan (SERPlux) | 20 |
 

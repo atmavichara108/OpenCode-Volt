@@ -16,7 +16,8 @@ timestamp: 2026-06-27
 - Дочерние агенты не поддерживаются в агентской архитектуре OpenCode (только subagent в командах/скриптах).
 
 ### Конфигурация
-- `opencode.json` — корневой конфиг: `default_agent: librarian`, `lsp: true`, `$schema`, модель `opencode/claude-sonnet-4-6`.
+- `opencode.json` — корневой конфиг: `default_agent: librarian`, `lsp: true`, `$schema`, модель `opencode/deepseek-v4-flash-free`.
+- Модель librarian изменена с `opencode/claude-sonnet-4-6` на `opencode/deepseek-v4-flash-free` (2026-06-30) — бесплатная модель для работы командного центра.
 - `steps` в агенте = число шагов агента (действий). `steps: 15` достаточно для задач командного центра.
 - `doom_loop: allow` — разрешает recovery-промпты при повторах.
 - `budgetTokens` — не включён в конфиг волта (не требуется для командного центра).
