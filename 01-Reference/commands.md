@@ -42,3 +42,4 @@ subtask: true           # форсить вызов как subagent (не зас
 | `/capture` | librarian | Оформить инбокс в методы/карточки |
 | `/project` | librarian | Сводка по проекту |
 | [`/commit`](/.opencode/command/commit.md) | librarian | Закоммитить изменения в волте (subtask) |
+| [`/project-add`](/.opencode/command/project-add.md) | librarian | Создать карточку нового проекта: имя путь описание [тип] [стек] |

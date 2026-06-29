@@ -32,6 +32,11 @@ timestamp: 2026-06-27
 | T-011 | Пре-коммит хук на проверку пустых файлов | P4 | [[DEVELOPMENT-ROADMAP]] |
 | T-012 | Плагин валидации викилинков | P4 | [[DEVELOPMENT-ROADMAP]] |
 | T-013 | Авто-архивация session-log раз в месяц | P4 | [[DEVELOPMENT-ROADMAP]] |
+| T-014 | Команда `/audit` — пакетный обход всех проектов | P3 | [[DEVELOPMENT-ROADMAP]] |
+| T-018 | Сводка состояния проектов на дашборд | P3 | [[00-INDEX.md]] |
+| T-015 | Telegram-бот для приёма фич и подходов | P5 | [[DEVELOPMENT-ROADMAP]] |
+| T-016 | Классификация фич по проектам (автомат) | P5 | [[DEVELOPMENT-ROADMAP]] |
+| T-017 | Команда `/project-upgrade` — авто-внедрение методов | P5 | [[DEVELOPMENT-ROADMAP]] |
 
 ## 🟤 Backlog — идеи на потом
 
