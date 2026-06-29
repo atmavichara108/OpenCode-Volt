@@ -14,15 +14,19 @@ timestamp: 2026-06-27
 - **Задача:** перенастройка librarian'а под роль командного центра проектов
 
 ## Активная задача
-T-004: Наполнить config.md — doom_loop, budget, steps (cost control)
+T-018: Сводка состояния проектов на дашборд
 
 ## Завершённые изменения (эта сессия)
-- [x] T-001: `opencode.json` создан
-- [x] T-002: верификация `wikilink`
-- [x] T-003: config.md — OpenCode Zen провайдер
-- [x] T-004: config.md — cost control (steps, doom_loop, budgetTokens)
-- [x] **Роль librarian переписана:** командный центр проектов (steps: 15, doom_loop: allow, git pull, новый промпт)
-- [x] **AGENTS.md обновлён** под новую роль
+- [x] T-001 — T-004: базовая структура волта
+- [x] T-005: permissions.md — skills, doom_loop
+- [x] T-006: plugins.md — Plugin SDK, events, custom tools
+- [x] T-007: SERPlux — список команд (нет команд, отмечено)
+- [x] T-008: SERPlux — статусы методов обновлены, карточка дополнена
+- [x] T-009: таблица «Статус методов × Проекты» в 00-INDEX.md
+- [x] T-010: 05-Templates/ — project-card, method, README
+- [x] T-011: pre-commit хук (пустые файлы)
+- [x] T-012: валидация викилинков (встроена в pre-commit)
+- [x] T-013: скрипт архивации session-log
 
 ## Ожидают в Planned
 T-005: permissions.md — skills, doom_loop

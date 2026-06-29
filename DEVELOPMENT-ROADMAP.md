@@ -35,7 +35,7 @@ timestamp: 2026-06-27
 | 9 | **Обновить Architecture.md** — OKF-структура | ✅ | Отражает OKF-бандл |
 | 10 | **Наполнить rules-AGENTS.md** | ✅ | Описан формат AGENTS.md |
 | 11 | **Создать opencode.json** в корне волта (с $schema) | ✅ | default_agent: librarian, $schema, LSP |
-| 12 | **Проверить консистентность ссылок** | ✅ | all `[[wikilink]]` valid, mixed formats unified |
+| 12 | **Проверить консистентность ссылок** | ✅ | all wikilink valid, mixed formats unified |
 
 ## P2 — Reference (справочник OpenCode)
 
@@ -46,8 +46,8 @@ timestamp: 2026-06-27
 | 12 | **memory.md** — наполнить под новую систему | ✅ | Готово |
 | 13 | **OpenCode Zen** провайдер в config.md | ✅ | Полный раздел: подключение, модели, конфиг |
 | 14 | **doom_loop, budget, steps** — cost control | ✅ | Полный раздел: steps, doom_loop, budgetTokens с примерами |
-| 15 | **skills** — отдельный инструмент OpenCode | ❌ | Упомянут в permissions, без контекста |
-| 16 | **Plugin SDK** (@opencode-ai/plugin) | ❌ | Уже установлен, не описан |
+| 15 | **skills** — отдельный инструмент OpenCode | ✅ | Описан в permissions.md: механизм, SKILL.md, контроль доступа |
+| 16 | **Plugin SDK** (@opencode-ai/plugin) | ✅ | plugins.md: SDK, events, custom tools, хуки проектов |
 
 ## P3 — Проекты и карточки
 
@@ -91,7 +91,7 @@ flowchart LR
 
 | # | Задача | Статус | Примечание |
 |---|--------|--------|-----------|
-| 25 | **Команда `/audit`** — пакетный обход проектов | ❌ | Без аргумента — все, с аргументом — один проект |
+| 25 | **Команда `/audit`** — пакетный обход проектов | ✅ | git pull + сверка карточки + сводная таблица |
 | 26 | **Telegram-бот** — присылает фичи, librarian классифицирует | ❌ | Фичи → какой проект? нужен апгрейд? |
 | 27 | **Классификация фич по проектам** — автомат | ❌ | Бот принёс → librarian решил куда |
 | 28 | **Команда `/project-upgrade`** — применить метод к проекту | ❌ | В будущем — авто-внедрение |

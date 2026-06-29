@@ -17,13 +17,12 @@ timestamp: 2026-06-27
 
 | ID | Задача | Приоритет | Связано |
 |----|--------|-----------|---------|
-| | _Нет активной задачи. Возьми из Planned._ | | |
+| T-018 | Сводка состояния проектов на дашборд | P3 | [[00-INDEX.md]] |
 
 ## 🔵 Planned — следующие задачи
 
 | ID | Задача | Приоритет | Связано |
 |----|--------|-----------|---------|
-| T-005 | Наполнить `permissions.md` — skills, doom_loop | P2 | [[01-Reference/permissions.md]] |
 | T-006 | Наполнить `plugins.md` — Plugin SDK (@opencode-ai/plugin) | P2 | [[01-Reference/plugins.md]] |
 | T-007 | SERPlux — добавить список команд в карточку | P3 | [[03-Projects/SERPlux.md]] |
 | T-008 | Обновить карточку SERPlux — актуальные статусы методов | P3 | [[03-Projects/SERPlux.md]] |
@@ -65,6 +64,16 @@ timestamp: 2026-06-27
 | T-002 | Проверить консистентность `wikilink` ссылок по всему волту | P1 | 2026-06-27 | [[DEVELOPMENT-ROADMAP]] |
 | T-003 | Наполнить `config.md` — OpenCode Zen провайдер | P2 | 2026-06-27 | [[01-Reference/config.md]] |
 | T-004 | Наполнить `config.md` — doom_loop, budget, steps (cost control) | P2 | 2026-06-27 | [[01-Reference/config.md]] |
+| T-005 | Наполнить `permissions.md` — skills, doom_loop | P2 | 2026-06-29 | [[01-Reference/permissions.md]] |
+| T-006 | Наполнить `plugins.md` — Plugin SDK (@opencode-ai/plugin) | P2 | 2026-06-29 | [[01-Reference/plugins.md]] |
+| T-007 | SERPlux — добавить список команд в карточку | P3 | 2026-06-29 | [[03-Projects/SERPlux.md]] |
+| T-008 | Обновить карточку SERPlux — актуальные статусы методов | P3 | 2026-06-29 | [[03-Projects/SERPlux.md]] |
+| T-009 | Создать единую таблицу «Статус методов × Проекты» | P3 | 2026-06-29 | [[00-INDEX.md]] |
+| T-010 | Создать `05-Templates/` — шаблоны проектов и методов | P2 | 2026-06-29 | [[Architecture.md]] |
+| T-011 | Пре-коммит хук на проверку пустых файлов | P4 | 2026-06-29 | [[05-Templates/pre-commit-check.sh]] |
+| T-012 | Плагин валидации викилинков | P4 | 2026-06-29 | [[05-Templates/pre-commit-check.sh]] |
+| T-013 | Авто-архивация session-log раз в месяц | P4 | 2026-06-29 | [[05-Templates/archive-session-log.sh]] |
+| T-014 | Команда `/audit` — пакетный обход проектов | P3 | 2026-06-29 | [[.opencode/command/audit.md]] |
 
 ---
 

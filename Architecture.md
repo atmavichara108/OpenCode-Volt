@@ -49,7 +49,7 @@ OpenCode-Vault/                    ← OKF-бандл + OpenCode-проект
 │   ├── facts.md                   → type: Fact Registry
 │   └── session-log/               → type: Session Log
 │       └── 2026-06-27.md
-├── 05-Templates/                  ← [ПЛАН] шаблоны для клонирования новых проектов
+├── 05-Templates/                  ← шаблоны для клонирования (project-card.md, method.md, README.md)
 ├── 99-Inbox.md                    ← type: Inbox — буфер сырых заметок
 ├── Architecture.md                ← этот файл, type: Architecture
 ├── DEVELOPMENT-ROADMAP.md         ← type: Roadmap

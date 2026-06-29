@@ -25,11 +25,29 @@ timestamp: 2026-06-27
 | dotfiles | система | shell/configs | **sysop** (ходит по системе) | [[dotfiles]] |
 | vault | справочник | markdown | librarian | [[vault]] |
 
+> 📊 **Сводка:** `/audit` — проверить все проекты · Таблица статусов методов ниже
+
 ## Reference (возможности OpenCode)
 [[agents]] · [[commands]] · [[config]] · [[memory]] · [[permissions]] · [[plugins]]
 
 ## Methods (мои приёмы)
-[[closed-loop]] · [[context-as-docs]] · [[distill-pattern]] · [[memory-management]] · [[model-routing]] · [[verifier-pattern]]
+[[closed-loop]] · [[verifier-pattern]] · [[context-as-docs]] · [[memory-management]] · [[model-routing]] · [[distill-pattern]]
+
+### Статус внедрения методов по проектам
+
+| Метод | SERPlux | dv-hub | dotfiles | vault |
+|-------|---------|--------|----------|-------|
+| [[closed-loop]] | ❌ | ❌ | ➖ | ➖ |
+| [[verifier-pattern]] | ❌ | ❌ | ➖ | ➖ |
+| [[context-as-docs]] | 🟡 | ❌ | ➖ | ➖ |
+| [[memory-management]] | ❌ | ❌ | ➖ | ➖ |
+| [[model-routing]] | ❌ | ❌ | ➖ | ➖ |
+| [[distill-pattern]] | ❌ | ❌ | ➖ | ➖ |
+
+> ❌ не внедрён · 🟡 частично · ✅ внедрён · ➖ не применимо
+
+## Шаблоны (05-Templates/)
+[[05-Templates/README]] · [[05-Templates/project-card]] · [[05-Templates/method]]
 
 ## Память (04-Memory/ — OKF sub-bundle)
 [[active-context]] · [[facts]] · [[session-log/2026-06-27]] · [[04-Memory/index]] · [[04-Memory/log]]

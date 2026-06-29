@@ -6,12 +6,13 @@ stack: Python 3.11+ / requests / gspread / FastAPI / google-generativeai / SQLit
 ---
 # SERPlux
 
-Сбор позиций Google через topvisor Snapshots API, классификация URL, выгрузка в Google Sheets.
+Сбор позиций Google через topvisor Snapshots API, классификация URL (DeepSeek / Zen), выгрузка в Google Sheets.
 
 **Окружение:** Python venv. Секреты в `.env` (см. `.env.example`).
 **Запуск:** `python main.py`
-**CI / проверка:** `python -m pytest -q`  [проверить: настроены ли тесты — pytest разрешён в конфиге, но тестовых файлов в дереве не видно]
-**Особенность:** webhook.py и apps_script.gs пустые — заготовки на будущее.
+**CI / проверка:** `python -m pytest -q` [проверить: тестов мало, pytest разрешён]
+**Провайдер:** OpenCode Zen (primary) + DeepSeek (labeler)
+**Особенность:** webhook.py пуст — заготовка на будущее.
 
 ## Архитектура (пайплайн)
 config → collector (topvisor) → storage (кэш) → labeler (классификация) → exporter (Sheets)
@@ -46,14 +47,16 @@ env-guard.js · notify.js
 ## Конфиг (opencode.json)
 edit: allow · bash: whitelist (git/ls/cat/pytest/python) · push и rm = ask · webfetch allow · lsp on
 
-## Docs
-docs/contracts.md (контракты модулей) · docs/decisions.md · docs/progress.md · docs/topvisor-api.md
-
 ## Состояние методов
 | Метод | Статус |
 |-------|--------|
 | [[closed-loop]] | ❌ |
 | [[verifier-pattern]] | ❌ |
+| [[context-as-docs]] | 🟡 (docs/ есть, но не формализованы как context-as-docs) |
+| [[distill-pattern]] | ❌ |
+| [[memory-management]] | ❌ |
+| [[model-routing]] | ❌ |
 
 ## Лог изменений
 - 2026-06-26: карточка заведена из состояния репо
+- 2026-06-29: обновлён стек (DeepSeek labeler, Zen primary), добавлены статусы всех методов
