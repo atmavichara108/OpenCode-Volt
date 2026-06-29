@@ -30,7 +30,7 @@ stack: markdown + OpenCode
 | librarian | командный центр: мониторинг проектов, апдейты, управление знаниями |
 
 ## Команды (.opencode/command/)
-/ask · /capture · /project
+/ask · /capture · /project · /commit · /project-add · /audit
 
 ## Состояние
 - [x] OKF v0.1 — все концепты имеют YAML frontmatter с type
@@ -40,16 +40,20 @@ stack: markdown + OpenCode
 - [x] Reference — все разделы заполнены (memory.md — OKF-based)
 - [x] карточки SERPlux, dv-hub, vault
 - [x] 04-Memory — OKF-подбандл памяти (index + log + 3 концепта)
-- [x] DEVELOPMENT-ROADMAP — полный план с приоритетами
+- [x] DEVELOPMENT-ROADMAP — полный план с приоритетами (включая P5 будущее)
 - [x] rules-AGENTS.md — наполнен
 - [x] TASKS.md — трекер задач создан
-- [x] opencode.json в корне волта — T-001 (Done)
+- [x] opencode.json в корне волта (default_agent: librarian)
 - [x] T-002: верификация `wikilink` по всему волту
-- [x] методы 02-Methods/ — 6 файлов, список в [[00-INDEX#Methods]]
-- [ ] 05-Templates/ — не создан
-- [ ] dotfiles — после создания репо
-- [ ] единая таблица статусов «Методы × Проекты»
+- [x] методы 02-Methods/ — 6 файлов непусты
+- [x] 05-Templates/ — project-card, method, README, pre-commit hook, archive script
+- [x] единая таблица статусов «Методы × Проекты» в 00-INDEX.md
+- [x] Reference — config.md (Zen + cost control) · permissions.md (skills + doom_loop) · plugins.md (Plugin SDK)
+- [x] Команды: `/commit`, `/project-add`, `/audit`
+- [x] dotfiles — репо создан, путь зафиксирован в карточке
+- [ ] дорожная карта P5: Telegram-бот, классификация фич, /project-upgrade
 
 ## Лог изменений
 - 2026-06-26: волт заведён и наполнен готовыми данными
 - 2026-06-27: полный аудит, переименован 99-Inbox, убрано claude-mem, создана 04-Memory, DEVELOPMENT-ROADMAP, обновлён librarian (права + память)
+- 2026-06-29: librarian переписан под командный центр; выполнены T-001 — T-018; Reference дополнен; 05-Templates/; pre-commit hook; /audit; таблица статусов

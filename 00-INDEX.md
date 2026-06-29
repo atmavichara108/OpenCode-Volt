@@ -2,7 +2,7 @@
 type: Dashboard
 title: OpenCode Vault — Dashboard
 description: Точка входа, таблица проектов, методы, конвенции волта.
-timestamp: 2026-06-27
+timestamp: 2026-06-29
 ---
 # OpenCode Vault — Dashboard
 
@@ -50,7 +50,7 @@ timestamp: 2026-06-27
 [[05-Templates/README]] · [[05-Templates/project-card]] · [[05-Templates/method]]
 
 ## Память (04-Memory/ — OKF sub-bundle)
-[[active-context]] · [[facts]] · [[session-log/2026-06-27]] · [[04-Memory/index]] · [[04-Memory/log]]
+[[active-context]] · [[facts]] · [[session-log/2026-06-27]] · [[session-log/2026-06-29]] · [[04-Memory/index]] · [[04-Memory/log]]
 
 ## Конвенции
 - Метод описывается ОДИН раз в `02-Methods/`. Карточки только ссылаются `wikilink`.

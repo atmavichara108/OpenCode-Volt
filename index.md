@@ -11,12 +11,12 @@
 * [plugins](/01-Reference/plugins.md) — Lifecycle hooks, plugin registry
 
 ## Methods (техники и паттерны)
-* [closed-loop](/02-Methods/closed-loop.md) — [пусто]
-* [context-as-docs](/02-Methods/context-as-docs.md) — [пусто]
-* [distill-pattern](/02-Methods/distill-pattern.md) — [пусто]
-* [memory-management](/02-Methods/memory-management.md) — [пусто]
-* [model-routing](/02-Methods/model-routing.md) — [пусто]
-* [verifier-pattern](/02-Methods/verifier-pattern.md) — [пусто]
+* [closed-loop](/02-Methods/closed-loop.md) — Итеративный цикл: план → действие → проверка
+* [context-as-docs](/02-Methods/context-as-docs.md) — Контекстные файлы как документация для ИИ
+* [distill-pattern](/02-Methods/distill-pattern.md) — Сжатие/структурирование знаний в заметки
+* [memory-management](/02-Methods/memory-management.md) — Управление памятью сессии + файловая память
+* [model-routing](/02-Methods/model-routing.md) — Разные модели для разных шагов
+* [verifier-pattern](/02-Methods/verifier-pattern.md) — Проверка через отдельный скрипт/воркфлоу
 
 ## Projects (карточки проектов)
 * [dv-hub](/03-Projects/dv-hub.md) — Волонтёрская платформа, TS/Hono/SQLite

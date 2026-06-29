@@ -62,8 +62,12 @@ architecture.md (ADR) · product-vision.md · roadmap.md · glossary.md · infra
 |-------|--------|
 | [[closed-loop]] | ❌ |
 | [[verifier-pattern]] | ❌ |
-| [[memory-management]] | ❌ (система памяти волта — в разработке) |
+| [[context-as-docs]] | ❌ |
+| [[distill-pattern]] | ❌ |
+| [[memory-management]] | ❌ |
+| [[model-routing]] | ❌ |
 
 ## Лог изменений
 - 2026-06-26: карточка заведена из состояния репо
 - 2026-06-27: убрано упоминание claude-mem; статус memory-management обновлён
+- 2026-06-29: добавлены статусы всех 6 методов
