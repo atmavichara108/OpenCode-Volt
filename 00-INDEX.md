@@ -21,14 +21,17 @@ timestamp: 2026-06-29
 - Трекер задач → [[TASKS]]
 
 ## Проекты
-| Проект | Тип | Стек | OpenCode-агент особый | Карточка |
-|--------|-----|------|----------------------|----------|
-| SERPlux | коммерция | Python | collector-dev, reviewer | [[SERPlux]] |
-| dv-hub | волонтёрский | TS / Hono | plan, build, reviewer, researcher, infra | [[dv-hub]] |
-| dotfiles | система | shell/configs | **multi-agent** (7 агентов, 8 пайплайнов) | [[dotfiles]] |
-| vault | справочник | markdown | librarian | [[vault]] |
+| Проект | Тип | Стек | OpenCode-агент особый | Карточка | Статус |
+|--------|-----|------|----------------------|----------|--------|
+| SERPlux | коммерция | Python | collector-dev, reviewer | [[SERPlux]] | ✅ active |
+| dv-hub | волонтёрский | TS / Hono | plan, build, reviewer, researcher, infra | [[dv-hub]] | ✅ active |
+| dotfiles | система | shell/configs | **multi-agent** (7 агентов, 8 пайплайнов) | [[dotfiles]] | ✅ active |
+| vault | справочник | markdown | librarian | [[vault]] | ✅ active |
+| rudra-phone | инфраструктура | Kotlin/Flutter/Telegram API | — | [[rudra-phone]] | 🟢 planning |
+| prod-monitor | инфраструктура | Prometheus/Python/Bash | — | [[prod-monitor]] | 🟢 planning |
+| rudra-ai | mobile/ai | Kotlin/Jetpack Compose | — | [[rudra-ai]] | 🟢 planning |
 
-> 📊 **Сводка:** `/audit` — проверить все проекты · Таблица статусов методов ниже
+> 📊 **Сводка:** `/audit` — проверить все проекты · Таблица статусов методов ниже · Новые проекты в planning
 
 ## Reference (возможности OpenCode)
 [[agents]] · [[commands]] · [[config]] · [[memory]] · [[permissions]] · [[plugins]]
