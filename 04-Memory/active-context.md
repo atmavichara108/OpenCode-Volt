@@ -19,6 +19,7 @@ timestamp: 2026-06-30
 ## Завершённые изменения (все сессии)
 - [x] README.md — визитка репозитория как VibeOS (для GitHub, основа для лендинга)
 - [x] LICENSE — GPL-3.0 (copyleft + коммерция разрешена) + секция в README + упоминание фонда инженера
+- [x] Имя пользователя: Макс/Max → Max Rudra / Rudra / mr — обновлено во всех файлах волта + LICENSE + facts.md
 - [x] distill-pipeline + multi-agent-pipeline метод — дистилляция пайплайнов
 - [x] dotfiles v2: полная мульти-агентная архитектура (7 агентов, 8 пайплайнов, память, UX)
 - [x] dotfiles: OpenCode инициализирован — sysop, /sysaudit, AGENTS.md, opencode.json

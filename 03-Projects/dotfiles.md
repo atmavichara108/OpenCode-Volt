@@ -50,7 +50,7 @@ stack: shell / GNU Stow / конфиги Manjaro (23 пакета) / OpenCode mu
 
 ## Память
 
-- `.opencode/memory/user-profile.md` — кто Макс, как работает, предпочтения UX
+- `.opencode/memory/user-profile.md` — кто Rudra, как работает, предпочтения UX
 - `.opencode/memory/decisions.md` — реестр ADR
 - `docs/cheatsheets/` — шпаргалки для пользователя
 
