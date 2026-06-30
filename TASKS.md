@@ -45,6 +45,7 @@ timestamp: 2026-06-27
 | T-024 | dotfiles v2 — мульти-агентная архитектура (7 агентов, 8 пайплайнов) | P2 | 2026-06-30 | [[03-Projects/dotfiles]] |
 | T-025 | distill-pipeline + multi-agent-pipeline метод | P2 | 2026-06-30 | [[02-Methods/multi-agent-pipeline]] |
 | T-026 | Создать README.md — визитка репозитория как VibeOS | P1 | 2026-06-30 | [[README]] |
+| T-027 | Добавить лицензию GPL-3.0 + секция в README (copyleft, коммерция, фонд инженера) | P1 | 2026-06-30 | [[LICENSE]] |
 | T-000 | Переименовать `99-Inbox.md.md` → `99-Inbox.md` | P0 | 2026-06-27 | — |
 | T-000 | Убрать claude-mem из всей базы | P0 | 2026-06-27 | [[01-Reference/memory.md]] |
 | T-000 | Создать OKF-подбандл памяти `04-Memory/` | P0 | 2026-06-27 | [[04-Memory/index.md]] |
