@@ -2,91 +2,88 @@
 type: project
 repo: /home/rudra/dotfiles
 kind: система
-stack: shell / GNU Stow / конфиги Manjaro (zsh, nvim, tmux, qtile, alacritty, git...)
+stack: shell / GNU Stow / конфиги Manjaro (23 пакета) / OpenCode multi-agent
 ---
 # dotfiles
 
-Точка входа в систему через интерфейс OpenCode. Управление конфигами Manjaro + аудит установленного софта.
+Операционная система для управления конфигами Manjaro через OpenCode. Мульти-агентная архитектура с пайплайнами, субагентами, памятью и UX-осознанностью.
 
-**Окружение:** Manjaro (Arch-based). Менеджер дотфайлов — **GNU Stow**.
-**CI / проверка:** нет (это конфиги, не приложение).
-**Провайдер:** OpenCode Zen, модель `opencode/deepseek-v4-flash-free`
+**Окружение:** Manjaro (Arch-based). Менеджер — **GNU Stow** (23 пакета).
+**CI / проверка:** нет (конфиги, не приложение).
+**Провайдер:** OpenCode Zen, все агенты на `opencode/deepseek-v4-flash-free` (тесты)
 
 ## Структура (пакеты Stow)
 
-| Пакет | Что конфигурит |
-|-------|---------------|
-| zsh | .zshrc, p10k, shell aliases |
-| nvim | Neovim конфиги |
-| tmux | .tmux.conf + TPM |
-| git | .gitconfig |
-| qtile | WM конфиги |
-| alacritty | терминал |
-| rofi | лаунчер |
-| picom | композитор |
-| btop | мониторинг |
-| bat | cat replacement |
-| dunst | уведомления |
-| htop | процесс-монитор |
-| lazygit | TUI git |
-| neofetch | системная информация |
-| ranger | файловый менеджер |
-| screenlayout | раскладки экранов |
-| scripts | пользовательские скрипты |
-| systemd | юниты пользователя |
-| taskwarrior | task manager |
-| wal | цветовые схемы |
-| weathr | виджет погоды |
-| x11 | X-конфиги |
-| xdg | mimeapps, user-dirs |
+23 пакета: zsh, nvim, tmux, git, qtile, alacritty, rofi, picom, btop, bat, dunst, htop, lazygit, neofetch, ranger, screenlayout, scripts, systemd, taskwarrior, wal, weathr, x11, xdg.
 
-> 23 пакета конфигов. Скрипты: `stow.sh` (массовый stow), `add-package.sh` (новый пакет).
+Скрипты: `stow.sh` (массовый stow), `add-package.sh` (новый пакет).
 
-## Агенты (.opencode/agent/)
+## Агенты
 
-| Агент | Mode | Модель | Назначение |
-|-------|------|--------|-----------|
-| sysop | primary | deepseek-v4-flash-free | Системный оператор: инспекция, аудит, предложения |
+### Primary (3)
+| Агент | Модель | Назначение |
+|-------|--------|-----------|
+| sysop | deepseek-v4-flash-free | Инспектор системы (read-only аудит) |
+| planner | deepseek-v4-flash-free | Архитектор (ADR, планы, дизайн) |
+| builder | deepseek-v4-flash-free | Строитель (конфиги, скрипты, модули) |
 
-### sysop — права и ограничения
-- `external_directory: allow` — читает всю систему ($HOME, /etc, /var)
-- `edit: deny` — **не меняет** конфиги, только предлагает текстом
-- bash whitelist: ls, cat, grep, find, pacman -Q*, which, systemctl status, stow -n, uname, hostnamectl, df, free, ps, du, lsblk, ip, ss
-- bash deny: rm, sudo, pacman -S/R, yay, paru, systemctl start/stop/restart, chmod, chown, mkfs, mount
-- **НИКОГДА** не ставит/удаляет пакеты и не правит /etc — только предлагает команды текстом
+### Subagent (4)
+| Агент | Модель | Назначение |
+|-------|--------|-----------|
+| reviewer | deepseek-v4-flash-free | Ревьюер (PASS/FAIL, безопасность) |
+| qtile-dev | deepseek-v4-flash-free | Qtile-специалист (WM, виджеты, Python) |
+| bash-dev | deepseek-v4-flash-free | Bash-специалист (скрипты, автоматизация) |
+| util-dev | deepseek-v4-flash-free | Утилиты (макросы, нотификации, rofi) |
 
-## Команды (.opencode/command/)
+## Пайплайны (команды)
 
-`/sysaudit` — полный аудит системы: пакеты, конфиги вне репо, дрейф, сервисы
+| Команда | Пайплайн | Назначение |
+|---------|----------|-----------|
+| `/sysaudit` | sysop | Аудит: пакеты, конфиги, дрейф, сервисы |
+| `/script` | planner → bash-dev → reviewer | Bash-скрипты |
+| `/qtile` | planner → qtile-dev → reviewer | Qtile: конфиги, виджеты, хуки |
+| `/util` | planner → util-dev → reviewer | Утилиты: btop, wal, neofetch |
+| `/prompt` | builder → docs/cheatsheets/ | Чит-шиты, подсказки |
+| `/notify` | util-dev → reviewer | Уведомления (dunst) |
+| `/macro` | util-dev → reviewer | Макросы: sxhkd, rofi-меню |
+| `/plugin` | builder → reviewer | Плагины: nvim, rofi, btop |
+
+## Память
+
+- `.opencode/memory/user-profile.md` — кто Макс, как работает, предпочтения UX
+- `.opencode/memory/decisions.md` — реестр ADR
+- `docs/cheatsheets/` — шпаргалки для пользователя
 
 ## Конфиг (opencode.json)
-- `default_agent`: sysop
-- `model`: opencode/deepseek-v4-flash-free
+- `default_agent`: planner
+- `model`: opencode/deepseek-v4-flash-free (все агенты)
 - `lsp`: false
-- `edit`: ask (спросить перед изменением)
-- `external_directory`: allow
+- `edit`: ask, `external_directory`: allow
 
 ## Состояние внедрения методов
 | Метод | Статус | Основание |
 |-------|--------|-----------|
-| [[closed-loop]] | ➖ | не применимо к конфигам |
-| [[verifier-pattern]] | ➖ | не применимо |
-| [[context-as-docs]] | 🟡 | AGENTS.md есть, docs/ нет |
-| [[distill-pattern]] | 🟡 | 1 команда (/sysaudit), можно расширить |
-| [[memory-management]] | ❌ | нет плагинов компакции |
-| [[model-routing]] | ➖ | один агент, роутинг не нужен |
+| [[closed-loop]] | 🟡 | Пайплайны с reviewer (PASS/FAIL) — зачатки closed-loop |
+| [[verifier-pattern]] | 🟡 | reviewer с PASS/FAIL вердиктом, но не глобальный |
+| [[context-as-docs]] | ✅ | AGENTS.md + user-profile.md + decisions.md + docs/ |
+| [[distill-pattern]] | ✅ | 8 команд-пайплайнов — образец дистилляции |
+| [[memory-management]] | 🟡 | .opencode/memory/ есть, flush-протокол не формализован |
+| [[model-routing]] | ➖ | все на DeepSeek (тесты), роутинг позже |
 
 ## Состояние
 - [x] репо dotfiles создан (GitHub + локально)
 - [x] GNU Stow — менеджер дотфайлов
 - [x] OpenCode инициализирован (2026-06-30)
-- [x] sysop агент создан
-- [x] команда /sysaudit создана
-- [x] AGENTS.md — правила и конвенции
+- [x] Мульти-агентная архитектура: 3 primary + 4 subagent
+- [x] 8 пайплайнов-команд
+- [x] Система памяти: user-profile + decisions + cheatsheets
+- [x] UX-профиль: все агенты знают для кого работают
 - [ ] первый /sysaudit
-- [ ] добавить docs/ с описанием архитектуры
+- [ ] model-routing (после тестов)
+- [ ] closed-loop формализация
 
 ## Лог изменений
 - 2026-06-26: карточка-план заведена
-- 2026-06-29: обновлён repo path, репо создано
-- 2026-06-30: OpenCode инициализирован — sysop, /sysaudit, AGENTS.md, opencode.json
+- 2026-06-29: репо создано
+- 2026-06-30 (v1): OpenCode инициализирован — sysop, /sysaudit
+- 2026-06-30 (v2): полная архитектура — 7 агентов, 8 пайплайнов, память, UX-профиль

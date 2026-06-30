@@ -1,13 +1,13 @@
 ---
 type: VibeOS
 title: VibeOS — Персональная система вайбкодинга
-version: 0.2.1
+version: 0.2.2
 description: Концептуальный дашборд-путеводитель по стилю, методам, проектам и философии Макса как вайбкодера.
 timestamp: 2026-06-30
 tags: [meta, system, vibe-coding]
 ---
 
-# VibeOS v0.2.0 — Персональная система вайбкодинга
+# VibeOS v0.2.2 — Персональная система вайбкодинга
 
 > Это не журнал. Это концептуальный слепок того, как я кодирую и какие экосистемы и пайплайны создаю с ИИ. Своеобразный дашборд, показывает какие подходы и 
 > приёмы использую, какие проекты веду и куда расту. Версионируется вместе со
@@ -203,10 +203,12 @@ build → verify → fix. Самый жирный кандидат на апгр
 - Submodule: context/ → dv-project (Obsidian-волт)
 
 ### dotfiles
-**Системные конфиги Manjaro**. OpenCode пока не инициирован.
-- Замысел: sysop-агент — read-only инспектор системы
-- Команды: /sysaudit (в плане)
-- Статус: минимальный — репо создан
+**Операционная система для управления конфигами Manjaro.** Мульти-агентная архитектура.
+- Методы: context-as-docs ✅, distill-pattern ✅, closed-loop 🟡, verifier-pattern 🟡, memory-management 🟡
+- Агенты: 3 primary (sysop, planner, builder) + 4 subagent (reviewer, qtile-dev, bash-dev, util-dev)
+- Команды: 8 пайплайнов — /sysaudit, /script, /qtile, /util, /prompt, /notify, /macro, /plugin
+- Память: .opencode/memory/ (user-profile.md + decisions.md)
+- 23 пакета Stow, все агенты на deepseek-v4-flash-free
 
 ### vault (текущий волт)
 **Командный центр знаний.** librarian управляет проектами отсюда.
@@ -233,7 +235,13 @@ build → verify → fix. Самый жирный кандидат на апгр
 | reviewer | dv-hub | subagent | deepseek-v4-pro | Ревью |
 | researcher | dv-hub | subagent | qwen3.6-plus | Tech spike |
 | infra | dv-hub | primary | qwen3.7-max | DevOps |
-| sysop | dotfiles (план) | primary | — | Инспектор системы |
+| sysop | dotfiles | primary | deepseek-v4-flash-free | Инспектор системы |
+| planner | dotfiles | primary | deepseek-v4-flash-free | Архитектор |
+| builder | dotfiles | primary | deepseek-v4-flash-free | Строитель |
+| reviewer | dotfiles | subagent | deepseek-v4-flash-free | Ревьюер |
+| qtile-dev | dotfiles | subagent | deepseek-v4-flash-free | Qtile-специалист |
+| bash-dev | dotfiles | subagent | deepseek-v4-flash-free | Bash-специалист |
+| util-dev | dotfiles | subagent | deepseek-v4-flash-free | Утилиты |
 
 ### Команды (все проекты)
 
@@ -247,8 +255,8 @@ build → verify → fix. Самый жирный кандидат на апгр
 **SERPlux:**
 — нет команд —
 
-**dotfiles (план):**
-`/sysaudit`
+**dotfiles (8 команд):**
+`/sysaudit` · `/script` · `/qtile` · `/util` · `/prompt` · `/notify` · `/macro` · `/plugin`
 
 ### Плагины
 
@@ -278,7 +286,9 @@ build → verify → fix. Самый жирный кандидат на апгр
 - **librarian** — командный центр с правами, памятью, автодокументированием
 - **Команды vault** — /ask, /capture, /project, /commit, /project-add, /audit
 - **6 методов в 02-Methods/** — все описаны, статусы проставлены
-- **Distill-pattern в dv-hub** — 6+ команд, работает в production
+- **Distill-pattern в dv-hub** — 7 команд, работает в production
+- **Distill-pattern в dotfiles** — 8 пайплайнов, мульти-агентная архитектура
+- **Мульти-агент dotfiles** — 3 primary + 4 subagent, память, UX-профиль
 - **Плагины env-guard + notify** — в SERPlux и dv-hub
 - **Pre-commit hook** — проверка пустых файлов + викилинков
 - **Карточки проектов** — SERPlux, dv-hub, dotfiles, vault — синхронизированы
@@ -388,6 +398,14 @@ build → verify → fix. Самый жирный кандидат на апгр
 ---
 
 ## Чейнджлог
+
+### v0.2.2 (2026-06-30)
+- **dotfiles v2**: полная мульти-агентная архитектура
+  - 3 primary (sysop, planner, builder) + 4 subagent (reviewer, qtile-dev, bash-dev, util-dev)
+  - 8 пайплайнов-команд: /sysaudit, /script, /qtile, /util, /prompt, /notify, /macro, /plugin
+  - Система памяти: user-profile.md + decisions.md
+  - UX-профиль: все агенты знают для кого работают
+  - Все агенты на deepseek-v4-flash-free (тесты)
 
 ### v0.2.1 (2026-06-30)
 - **Ревью**: исправлены все расхождения статусов методов (17 багов)

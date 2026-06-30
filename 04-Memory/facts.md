@@ -64,12 +64,14 @@ timestamp: 2026-06-27
 ### dotfiles
 - Репо: `/home/rudra/dotfiles`
 - GitHub remote: `atmavichara108/dotfiles`
-- Стек: shell / GNU Stow / конфиги Manjaro (23 пакета: zsh, nvim, tmux, git, qtile, alacritty, rofi, picom, btop, bat, dunst, htop, lazygit, neofetch, ranger, screenlayout, scripts, systemd, taskwarrior, wal, weathr, x11, xdg)
-- OpenCode инициализирован 2026-06-30
-- 1 агент: sysop (deepseek-v4-flash-free, primary, read-only, external_directory: allow)
-- 1 команда: /sysaudit
-- Статус методов: context-as-docs 🟡, distill-pattern 🟡, остальные ❌ или ➖
-- Скрипты: stow.sh (массовый stow), add-package.sh (новый пакет)
+- Стек: shell / GNU Stow / 23 пакета конфигов / OpenCode multi-agent
+- OpenCode: полная мульти-агентная архитектура (2026-06-30 v2)
+- 3 primary агента: sysop (инспектор), planner (архитектор), builder (строитель)
+- 4 subagent: reviewer, qtile-dev, bash-dev, util-dev
+- 8 команд-пайплайнов: /sysaudit, /script, /qtile, /util, /prompt, /notify, /macro, /plugin
+- Память: .opencode/memory/ (user-profile.md + decisions.md)
+- Все агенты на deepseek-v4-flash-free (тестовый период)
+- Статус методов: context-as-docs ✅, distill-pattern ✅, closed-loop 🟡, verifier-pattern 🟡, memory-management 🟡
 
 ### vault (OpenCode-Vault)
 - Репо: `/home/rudra/Projects/OpenCode-Vault`

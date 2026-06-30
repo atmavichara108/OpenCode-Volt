@@ -17,6 +17,7 @@ timestamp: 2026-06-30
 Все задачи сессии выполнены. Ожидание следующей.
 
 ## Завершённые изменения (все сессии)
+- [x] dotfiles v2: полная мульти-агентная архитектура (7 агентов, 8 пайплайнов, память, UX)
 - [x] dotfiles: OpenCode инициализирован — sysop, /sysaudit, AGENTS.md, opencode.json
 - [x] VibeOS v0.2.0 — создан концептуальный дашборд системы вайбкодинга
 - [x] Модель librarian: Claude Sonnet 4.6 → DeepSeek v4-flash-free
