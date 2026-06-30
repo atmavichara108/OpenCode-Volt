@@ -222,9 +222,9 @@ opencode-vault/
 
 ## Связаться
 
-Это личный проект [Max Rudra](https://github.com/max-ai). Если хотите обсудить
+Это личный проект [Max Rudra](https://github.com/atmavichara108). Если хотите обсудить
 VibeOS, предложить идею или коллаборацию — открывайте issue или пишите в
-Telegram (ссылка появится с запуском бота).
+Telegram: [@Atma_Vichara108](https://t.me/Atma_Vichara108).
 
 ---
 
