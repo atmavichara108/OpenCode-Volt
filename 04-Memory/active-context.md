@@ -17,6 +17,7 @@ timestamp: 2026-06-30
 Все задачи сессии выполнены. Ожидание следующей.
 
 ## Завершённые изменения (все сессии)
+- [x] README.md — визитка репозитория как VibeOS (для GitHub, основа для лендинга)
 - [x] distill-pipeline + multi-agent-pipeline метод — дистилляция пайплайнов
 - [x] dotfiles v2: полная мульти-агентная архитектура (7 агентов, 8 пайплайнов, память, UX)
 - [x] dotfiles: OpenCode инициализирован — sysop, /sysaudit, AGENTS.md, opencode.json
@@ -44,4 +45,4 @@ timestamp: 2026-06-30
 - (нет открытых вопросов на данный момент)
 
 ## Последнее обновление
-2026-06-30 — dotfiles: OpenCode инициализирован (sysop, /sysaudit, AGENTS.md, opencode.json)
+2026-06-30 — README.md создан. VibeOS позиционирован как персональная ОС вайбкодинга.
