@@ -1,13 +1,13 @@
 ---
 type: VibeOS
 title: VibeOS — Персональная система вайбкодинга
-version: 0.2.2
+version: 0.2.3
 description: Концептуальный дашборд-путеводитель по стилю, методам, проектам и философии Макса как вайбкодера.
 timestamp: 2026-06-30
 tags: [meta, system, vibe-coding]
 ---
 
-# VibeOS v0.2.2 — Персональная система вайбкодинга
+# VibeOS v0.2.3 — Персональная система вайбкодинга
 
 > Это не журнал. Это концептуальный слепок того, как я кодирую и какие экосистемы и пайплайны создаю с ИИ. Своеобразный дашборд, показывает какие подходы и 
 > приёмы использую, какие проекты веду и куда расту. Версионируется вместе со
@@ -122,12 +122,13 @@ tags: [meta, system, vibe-coding]
 
 | Метод | SERPlux | dv-hub | dotfiles | vault |
 |-------|---------|--------|----------|-------|
-| [[02-Methods/context-as-docs\|context-as-docs]] | 🟡 | 🟡 | ➖ | ✅ |
-| [[02-Methods/distill-pattern\|distill-pattern]] | ❌ | ✅ | ➖ | ✅ |
-| [[02-Methods/memory-management\|memory-management]] | ❌ | 🟡 | ➖ | 🟡 |
+| [[02-Methods/context-as-docs\|context-as-docs]] | 🟡 | 🟡 | ✅ | ✅ |
+| [[02-Methods/distill-pattern\|distill-pattern]] | ❌ | ✅ | ✅ | ✅ |
+| [[02-Methods/memory-management\|memory-management]] | ❌ | 🟡 | 🟡 | 🟡 |
 | [[02-Methods/model-routing\|model-routing]] | 🟡 | ✅ | ➖ | ➖ |
-| [[02-Methods/closed-loop\|closed-loop]] | ❌ | ❌ | ➖ | ❌ |
-| [[02-Methods/verifier-pattern\|verifier-pattern]] | ❌ | ❌ | ➖ | ❌ |
+| [[02-Methods/closed-loop\|closed-loop]] | ❌ | ❌ | 🟡 | ❌ |
+| [[02-Methods/verifier-pattern\|verifier-pattern]] | ❌ | ❌ | 🟡 | ❌ |
+| [[02-Methods/multi-agent-pipeline\|multi-agent-pipeline]] | ❌ | ❌ | ✅ | ❌ |
 
 ### Легенда
 
@@ -173,6 +174,12 @@ build → verify → fix. Самый жирный кандидат на апгр
 #### ❌ verifier-pattern (все проекты)
 Нет агента-верификатора, который проверяет работу независимо. build сам себе
 судья — дыры и баги просачиваются.
+
+#### ✅ multi-agent-pipeline (dotfiles)
+dotfiles v2 — эталонная реализация: 3 primary + 4 subagent, 8 пайплайнов,
+память (user-profile + decisions), UX-осознанность. Паттерн описан в
+[[02-Methods/multi-agent-pipeline|multi-agent-pipeline]] и может быть
+воспроизведён для любого проекта с несколькими доменами.
 
 ---
 
@@ -398,6 +405,12 @@ build → verify → fix. Самый жирный кандидат на апгр
 ---
 
 ## Чейнджлог
+
+### v0.2.3 (2026-06-30)
+- **distill-pipeline**: команда `/distill-pipeline` — фиксация состояния пайплайнов
+- **multi-agent-pipeline**: новый метод — описание паттерна мульти-агентной архитектуры
+- distill-pattern.md обновлён: dotfiles v2 как эталонная реализация
+- VibeOS: таблица методов дополнена, статусы dotfiles обновлены
 
 ### v0.2.2 (2026-06-30)
 - **dotfiles v2**: полная мульти-агентная архитектура

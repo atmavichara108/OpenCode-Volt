@@ -1,0 +1,10 @@
+# Editor
+.obsidian/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# OpenCode runtime
+.opencode/node_modules/
+.opencode/package-lock.json

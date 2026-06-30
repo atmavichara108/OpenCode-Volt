@@ -20,10 +20,13 @@ tags: [method]
 
 1. Частая ручная задача → `.opencode/command/X.md` (см. [[commands]]).
 2. Контекст, который агент должен подтягивать сам → skill с описанием в SKILL.md. [проверить точную поддержку skills в OpenCode на opencode.ai/docs/skills]
+3. Мульти-агентный пайплайн → [[multi-agent-pipeline]] — когда задача требует нескольких ролей с проверкой.
 
-Реальные кандидаты:
-- dv-hub: уже дистиллировано — /morning, /spec, /review, /sync-task. Это образец.
-- SERPlux: команд НЕТ. Кандидаты: /pipeline-check (прогнать пайплайн на тест-ключах), /review.
+Реальные примеры:
+- dv-hub: 7 команд (/morning, /spec, /review, /hygiene, /sync-context, /sync-context-self, /sync-task) — образец дистилляции задач.
+- vault: 7 команд (/ask, /capture, /project, /commit, /project-add, /audit, /distill-pipeline) — дистилляция управления знаниями.
+- dotfiles v2: 8 пайплайнов (/sysaudit, /script, /qtile, /util, /prompt, /notify, /macro, /plugin) — эталонная реализация [[multi-agent-pipeline]].
+- SERPlux: команд НЕТ. Кандидаты: /pipeline-check, /review.
 
 ## Когда применять / когда НЕ применять
 - Применять: паттерн повторился ≥3 раз и стабилен.
@@ -32,4 +35,5 @@ tags: [method]
 
 ## Связанные
 - Reference: [[commands]], [[agents]]
-- Внедрён в: [[dv-hub]] ✅ (7 команд), [[vault]] ✅ (6 команд), [[SERPlux]] ❌ (0 команд)
+- Питает: [[multi-agent-pipeline]] (пайплайны = дистиллированные цепочки)
+- Внедрён в: [[dv-hub]] ✅ (7 команд), [[vault]] ✅ (7 команд), [[dotfiles]] ✅ (8 пайплайнов), [[SERPlux]] ❌ (0 команд)

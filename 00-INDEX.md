@@ -14,6 +14,7 @@ timestamp: 2026-06-29
 - Спросить базу → `/ask "..."`
 - Разгрести инбокс → `/capture`
 - Сводка по проекту → `/project <имя>`
+- Дистилляция пайплайнов → `/distill-pipeline`
 - Посмотреть дорожную карту → [[DEVELOPMENT-ROADMAP]]
 - Навигация по OKF → [[index]]
 - Трекер задач → [[TASKS]]
@@ -23,7 +24,7 @@ timestamp: 2026-06-29
 |--------|-----|------|----------------------|----------|
 | SERPlux | коммерция | Python | collector-dev, reviewer | [[SERPlux]] |
 | dv-hub | волонтёрский | TS / Hono | plan, build, reviewer, researcher, infra | [[dv-hub]] |
-| dotfiles | система | shell/configs | **sysop** (ходит по системе) | [[dotfiles]] |
+| dotfiles | система | shell/configs | **multi-agent** (7 агентов, 8 пайплайнов) | [[dotfiles]] |
 | vault | справочник | markdown | librarian | [[vault]] |
 
 > 📊 **Сводка:** `/audit` — проверить все проекты · Таблица статусов методов ниже
@@ -32,7 +33,7 @@ timestamp: 2026-06-29
 [[agents]] · [[commands]] · [[config]] · [[memory]] · [[permissions]] · [[plugins]]
 
 ## Methods (мои приёмы)
-[[closed-loop]] · [[verifier-pattern]] · [[context-as-docs]] · [[memory-management]] · [[model-routing]] · [[distill-pattern]]
+[[closed-loop]] · [[verifier-pattern]] · [[context-as-docs]] · [[memory-management]] · [[model-routing]] · [[distill-pattern]] · [[multi-agent-pipeline]]
 
 ### Статус внедрения методов по проектам
 
@@ -40,12 +41,13 @@ timestamp: 2026-06-29
 
 | Метод | SERPlux | dv-hub | dotfiles | vault |
 |-------|---------|--------|----------|-------|
-| [[closed-loop]] | ❌ | ❌ | ➖ | ❌ |
-| [[verifier-pattern]] | ❌ | ❌ | ➖ | ❌ |
-| [[context-as-docs]] | 🟡 | 🟡 | ➖ | ✅ |
-| [[distill-pattern]] | ❌ | ✅ | ➖ | ✅ |
-| [[memory-management]] | ❌ | 🟡 | ➖ | 🟡 |
+| [[closed-loop]] | ❌ | ❌ | 🟡 | ❌ |
+| [[verifier-pattern]] | ❌ | ❌ | 🟡 | ❌ |
+| [[context-as-docs]] | 🟡 | 🟡 | ✅ | ✅ |
+| [[distill-pattern]] | ❌ | ✅ | ✅ | ✅ |
+| [[memory-management]] | ❌ | 🟡 | 🟡 | 🟡 |
 | [[model-routing]] | 🟡 | ✅ | ➖ | ➖ |
+| [[multi-agent-pipeline]] | ❌ | ❌ | ✅ | ❌ |
 
 > ❌ не внедрён · 🟡 частично · ✅ внедрён · ➖ не применимо
 
