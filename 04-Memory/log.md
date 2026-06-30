@@ -1,8 +1,11 @@
 # Memory Bundle Update Log
 
 ## 2026-06-30
+* **distill-pipeline**: команда /distill-pipeline — фиксация пайплайнов
+* **multi-agent-pipeline**: новый метод — паттерн мульти-агентной архитектуры
+* **VibeOS v0.2.3**: distill-pipeline, multi-agent-pipeline, статусы
+* **.gitignore**: .obsidian/ убран из tracked
 * **dotfiles v2**: полная мульти-агентная архитектура — 7 агентов, 8 пайплайнов, память, UX-профиль
-* **VibeOS v0.2.2**: обновлён с dotfiles v2
 * **Модель librarian**: Claude Sonnet 4.6 → DeepSeek v4-flash-free
 * **Ревью**: 17 багов исправлены (статусы методов, модели, команды, docs)
 * **config.md**: Обновлены используемые модели
