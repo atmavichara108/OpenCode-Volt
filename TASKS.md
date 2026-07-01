@@ -17,7 +17,7 @@ timestamp: 2026-06-27
 
 | ID | Задача | Приоритет | Связано |
 |----|--------|-----------|---------|
-| T-028 | Планирование новой архитектуры: 4 направления (Phone Remote, VibeAndroid, ProdWatch, Rudra AI) | P1 | [[99-Inbox]], [[03-Projects/rudra-phone]], [[03-Projects/prod-monitor]], [[03-Projects/rudra-ai]] |
+| T-028 | Планирование новой архитектуры: 4 направления (Phone Remote, VibeAndroid, ProdWatch, Rudra AI) — **пауза, активен SERPlux** | P1 | [[99-Inbox]] |
 
 ## 🔵 Planned — следующие задачи
 
@@ -59,6 +59,7 @@ timestamp: 2026-06-27
 | T-025 | distill-pipeline + multi-agent-pipeline метод | P2 | 2026-06-30 | [[02-Methods/multi-agent-pipeline]] |
 | T-026 | Создать README.md — визитка репозитория как VibeOS | P1 | 2026-06-30 | [[README]] |
 | T-027 | Добавить лицензию GPL-3.0 + секция в README (copyleft, коммерция, фонд инженера) | P1 | 2026-06-30 | [[LICENSE]] |
+| T-043 | SERP Factory — архитектура в волте: SERPlux как продукт, агенты ux-dev + infra-dev, команды /interface /container /deploy | P1 | 2026-06-30 | [[03-Projects/SERPlux]] |
 | T-019 | Инициализировать OpenCode в dotfiles — sysop, /sysaudit | P3 | 2026-06-30 | [[03-Projects/dotfiles]] |
 | T-000 | Переименовать `99-Inbox.md.md` → `99-Inbox.md` | P0 | 2026-06-27 | — |
 | T-000 | Убрать claude-mem из всей базы | P0 | 2026-06-27 | [[01-Reference/memory.md]] |

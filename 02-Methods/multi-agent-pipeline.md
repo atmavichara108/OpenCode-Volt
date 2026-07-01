@@ -98,6 +98,30 @@ tags: [method, architecture, multi-agent]
 - Нет повторяющихся паттернов
 - Один агент справляется
 
+## Variant: Software Factory (SERP Factory)
+
+Для продуктов, где ядро готово, а нужна обёртка (UI + Docker + Deploy), применяется
+**Factory variant** — облегчённая версия multi-agent-pipeline с фокусом на сборку продукта.
+
+### Отличия от эталона (dotfiles)
+| Аспект | dotfiles (эталон) | SERP Factory (products) |
+|--------|------------------|------------------------|
+| Цель | Управление конфигами | Производство deployable-продуктов |
+| Роли | sysop + planner + builder | architect + builder + infra + ux |
+| Subagent | domain-dev (qtile, bash, util) | ux-dev, infra-dev, collector-dev, labeler-dev |
+| Команды | 8 пайплайнов | `/interface`, `/container`, `/deploy`, `/pipeline` |
+| После деплоя | — | Глубокая модернизация каждого куска |
+
+### Когда применять
+- Core-функционал продукта готов (data pipeline написан)
+- Нужно: UI + Docker-сборка + деплой
+- Дедлайн горит (first approximation)
+- После деплоя — полный multi-agent-pipeline
+
+### Внедрён в
+- [[dotfiles]] ✅ — эталонная реализация v2
+- [[SERPlux]] 🟡 — первый продукт SERP Factory (first approximation, дедлайн сегодня)
+
 ## Связанные
 - Reference: [[agents]], [[commands]], [[permissions]]
 - Зависит от: [[distill-pattern]] (пайплайны = дистиллированные команды)

@@ -123,12 +123,12 @@ tags: [meta, system, vibe-coding]
 | Метод | SERPlux | dv-hub | dotfiles | vault |
 |-------|---------|--------|----------|-------|
 | [[02-Methods/context-as-docs\|context-as-docs]] | 🟡 | 🟡 | ✅ | ✅ |
-| [[02-Methods/distill-pattern\|distill-pattern]] | ❌ | ✅ | ✅ | ✅ |
+| [[02-Methods/distill-pattern\|distill-pattern]] | 🟡 | ✅ | ✅ | ✅ |
 | [[02-Methods/memory-management\|memory-management]] | ❌ | 🟡 | 🟡 | 🟡 |
 | [[02-Methods/model-routing\|model-routing]] | 🟡 | ✅ | ➖ | ➖ |
 | [[02-Methods/closed-loop\|closed-loop]] | ❌ | ❌ | 🟡 | ❌ |
-| [[02-Methods/verifier-pattern\|verifier-pattern]] | ❌ | ❌ | 🟡 | ❌ |
-| [[02-Methods/multi-agent-pipeline\|multi-agent-pipeline]] | ❌ | ❌ | ✅ | ❌ |
+| [[02-Methods/verifier-pattern\|verifier-pattern]] | 🟡 | ❌ | 🟡 | ❌ |
+| [[02-Methods/multi-agent-pipeline\|multi-agent-pipeline]] | 🟡 | ❌ | ✅ | ❌ |
 
 ### Легенда
 
@@ -181,24 +181,31 @@ dotfiles v2 — эталонная реализация: 3 primary + 4 subagent,
 [[02-Methods/multi-agent-pipeline|multi-agent-pipeline]] и может быть
 воспроизведён для любого проекта с несколькими доменами.
 
+#### 🟡 multi-agent-pipeline (SERPlux — Factory variant)
+SERPlux как первый продукт [[03-Projects/SERPlux|SERP Factory]]:
+- Агенты: architect + builder + ux-dev + infra-dev + collector-dev + reviewer
+- Команды (first approximation): `/interface`, `/container`, `/deploy`, `/review`
+- Статус: 🟡 — архитектура спроектирована, внедрение в процессе (дедлайн сегодня)
+
 ---
 
 ## Проекты
 
 | Проект | Тип | Стек | Стадия | OpenCode |
 |--------|-----|------|--------|----------|
-| [[03-Projects/SERPlux\|SERPlux]] | Коммерция | Python/FastAPI/SQLite | Работает, без методов | ✅ |
+| [[03-Projects/SERPlux\|SERPlux]] | Продукт SERP Factory | Python/FastAPI/SQLite/Tailwind/Docker | Core готов | UI + Docker + Deploy | ✅ (6 агентов) |
 | [[03-Projects/dv-hub\|dv-hub]] | Волонтёрский | TS/Hono/better-sqlite3 | Активная разработка | ✅ (6 агентов) |
-| [[03-Projects/dotfiles\|dotfiles]] | Система | shell/конфиги Manjaro | Создан, не инициирован | 🟡 (план) |
+| [[03-Projects/dotfiles\|dotfiles]] | Система | shell/конфиги Manjaro | Мульти-агент v2 | ✅ (7 агентов) |
 | [[03-Projects/vault\|vault]] | Справочник | markdown/OpenCode | ✅ Рабочий командный центр | ✅ (librarian) |
 
-### SERPlux
+### SERPlux — первый продукт SERP Factory
 **Сбор позиций Google** через Topvisor Snapshots API → классификация URL
-(DeepSeek) → выгрузка в Google Sheets.
-- Методы: context-as-docs 🟡, model-routing 🟡, остальные ❌
-- Агенты: build (Sonnet 4.6), plan (Sonnet 4.6), collector-dev (Sonnet 4.6), reviewer (GPT-5.3-codex)
-- Команды: нет — чистый кандидат на дистилляцию
-- Болевая точка: нет CI, нет verifier, нет closed-loop
+(DeepSeek) → выгрузка в Google Sheets. Core готов.
+- **Сейчас:** UI (FastAPI + Tailwind) + Docker + Deploy на сервер (дедлайн сегодня)
+- **Методы:** context-as-docs 🟡, distill-pattern 🟡, model-routing 🟡, verifier-pattern 🟡, multi-agent-pipeline 🟡, closed-loop ❌, memory-management ❌
+- **Агенты:** architect (Sonnet 4.6), builder (Sonnet 4.6), ux-dev (Sonnet 4.6), infra-dev (DeepSeek-free), collector-dev (Sonnet 4.6), reviewer (GPT-5.3-codex)
+- **Команды:** /interface, /container, /deploy, /review
+- **Болевая точка:** нет CI, нет closed-loop, память не управляется
 
 ### dv-hub
 **Платформа сообщества** (re-search.wiki). Миграция с Cloudflare на VPS.
@@ -233,9 +240,11 @@ dotfiles v2 — эталонная реализация: 3 primary + 4 subagent,
 | Агент | Проект | Mode | Модель | Назначение |
 |-------|--------|------|--------|-----------|
 | librarian | vault | primary | deepseek-v4-flash-free | Командный центр |
-| build | SERPlux | primary | claude-sonnet-4-6 | Разработка |
-| plan | SERPlux | primary | claude-sonnet-4-6 | Планирование |
+| architect | SERPlux | primary | claude-sonnet-4-6 | Архитектура, спеки |
+| builder | SERPlux | primary | claude-sonnet-4-6 | Разработка |
 | collector-dev | SERPlux | subagent | claude-sonnet-4-6 | Модуль сбора |
+| ux-dev | SERPlux | subagent | claude-sonnet-4-6 | Web UI (FastAPI + Tailwind) |
+| infra-dev | SERPlux | subagent | deepseek-v4-flash-free | Docker + deploy |
 | reviewer | SERPlux | subagent | gpt-5.3-codex | Ревью |
 | build | dv-hub | primary | deepseek-v4-flash | Разработка |
 | plan | dv-hub | primary | qwen3.7-max | Планирование |
@@ -259,8 +268,8 @@ dotfiles v2 — эталонная реализация: 3 primary + 4 subagent,
 `/morning` · `/spec` · `/review` · `/hygiene` · `/sync-context` ·
 `/sync-context-self` · `/sync-task`
 
-**SERPlux:**
-— нет команд —
+**SERPlux (4 команды, first approximation):**
+`/interface` · `/container` · `/deploy` · `/review`
 
 **dotfiles (8 команд):**
 `/sysaudit` · `/script` · `/qtile` · `/util` · `/prompt` · `/notify` · `/macro` · `/plugin`
