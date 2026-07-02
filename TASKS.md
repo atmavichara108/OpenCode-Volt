@@ -44,6 +44,7 @@ timestamp: 2026-06-27
 | T-042 | ProdWatch Фаза 3 — полная observability (логи, метрики, интеграция с rudra-phone) | P4 | [[prod-monitor]] |
 | T-047 | prompt-engineer агент — специализированный агент-промптовик в Vault/экосистеме: свои команды (/prompt по образцу dotfiles + расширения), встроен в skills (авто-подгрузка при формулировке задач субагентам) и пайплайны (промпт-фаза перед делегированием); librarian и build перестают формулировать промты ad-hoc — вызывают prompt-engineer как роль; зависит от: skills-поддержка в OpenCode [проверить], distill-pattern, multi-agent-pipeline; референс: /prompt (dotfiles, planner→docs) | P3 | [[02-Methods/multi-agent-pipeline]], [[03-Projects/dotfiles]] |
 | T-048 | Вернуть Zen-модели после пополнения кредитов (профили моделей под провайдера — будущий апгрейд) | P3 | [[04-Memory/facts.md]] |
+| T-049 | Профили моделей под провайдера (Zen/Go): переключение одной правкой. Абстракция model-routing — чтобы следующий переезд Zen↔Go не был ручной перестановкой всех агентов | P2 | [[02-Methods/model-routing]] |
 
 ## 🟤 Backlog — идеи на потом
 
