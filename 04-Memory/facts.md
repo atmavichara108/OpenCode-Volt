@@ -3,7 +3,7 @@ type: Fact Registry
 title: Реестр фактов
 description: Подтверждённые факты об OpenCode и проектах. Факты попадают сюда после разрешения [проверить].
 tags: [memory]
-timestamp: 2026-06-27
+timestamp: 2026-07-02
 ---
 # Реестр фактов
 
@@ -23,8 +23,9 @@ timestamp: 2026-06-27
 - Дочерние агенты не поддерживаются в агентской архитектуре OpenCode (только subagent в командах/скриптах).
 
 ### Конфигурация
-- `opencode.json` — корневой конфиг: `default_agent: librarian`, `lsp: true`, `$schema`, модель `opencode/deepseek-v4-flash-free`.
-- Модель librarian изменена с `opencode/claude-sonnet-4-6` на `opencode/deepseek-v4-flash-free` (2026-06-30) — бесплатная модель для работы командного центра.
+- `opencode.json` — корневой конфиг: `default_agent: librarian`, `lsp: true`, `$schema`, модель `opencode-go/deepseek-v4-flash-free` (дефолт для субагентов).
+- Модель librarian: `opencode-go/qwen3.7-max` (сильная модель Go-подписки для дирижёра).
+- Субагенты general/build/explore явно зафиксированы на Go-моделях (не наследуют от вызывающего).
 - `steps` в агенте = число шагов агента (действий). `steps: 15` достаточно для задач командного центра.
 - `doom_loop: allow` — разрешает recovery-промпты при повторах.
 - `budgetTokens` — не включён в конфиг волта (не требуется для командного центра).
@@ -46,17 +47,22 @@ timestamp: 2026-06-27
 | [[memory-management]] | Управление памятью сессии + файловая память |
 | [[model-routing]] | Разные модели для разных шагов (дешёвая/fast → дорогая/точная) |
 
+### Границы /loop (closed-loop)
+- **Применим:** задачи с быстрой автоматической проверкой (тесты секунды-минуты) и чётким DoD
+- **Не применим:** UI-задачи без автопроверки (Apps Script/Sheets), дорогая/долгая проверка, размытые критерии
+- **SERPlux:** 64 pytest-теста → /loop идеален для core-модулей; для Apps Script UI — не сработает, нужен другой механизм
+
 ## Проекты
 
 ### SERPlux
 - Репо: `/home/rudra/Projects/serp`
 - GitHub remote: `atmavichara108/SERPlux`
-- Стек: Python 3.11+ / requests / gspread / FastAPI / DeepSeek (labeler) / SQLite / Jinja2 / Tailwind CSS / Docker
-- OpenCode-агенты: 6 агентов — build (Sonnet 4.6, primary), plan (Sonnet 4.6, primary), collector-dev (Sonnet 4.6, subagent), reviewer (GPT-5.3-codex, subagent), ui-dev (Sonnet 4.6, subagent), infra-dev (DeepSeek v4-flash-free, subagent)
-- Команды OpenCode: `/interface` (ui-dev), `/container` (infra-dev), `/deploy` (infra-dev)
+- Стек: Python 3.11+ / requests / gspread / FastAPI / DeepSeek (labeler) / SQLite / Docker
+- OpenCode-агенты (Go-подписка, 2026-07-02): 6 агентов — build (kimi-k2.7-code, primary), plan (glm-5.2, primary), collector-dev (kimi-k2.7-code, subagent), reviewer (glm-5.2, subagent), ui-dev (kimi-k2.7-code, subagent, PAUSED), infra-dev (qwen3.7-plus, subagent)
+- Команды OpenCode: `/interface` (ui-dev, ⏸), `/container` (infra-dev), `/deploy` (infra-dev), `/loop` (build, глобальный)
 - Плагины: env-guard.js, notify.js
-- Статус: Core ✅, Docker ✅, Deploy ✅, Web UI ❌ (приоритет)
-- Статус методов: context-as-docs ✅, model-routing ✅, multi-agent-pipeline ✅, distill-pattern ✅, verifier-pattern 🟡, closed-loop ❌, memory-management ❌
+- Статус: Core ✅, Docker ✅, Deploy ✅, Web UI ⏸ (ADR: только Sheets)
+- Статус методов: context-as-docs ✅, model-routing ✅, multi-agent-pipeline ✅, distill-pattern ✅, verifier-pattern ✅, closed-loop ✅, memory-management ❌
 
 ### dv-hub
 - Репо: `/home/rudra/Projects/dv-hub`
@@ -84,8 +90,8 @@ timestamp: 2026-06-27
 ### vault (OpenCode-Vault)
 - Репо: `/home/rudra/Projects/OpenCode-Vault`
 - Это командный центр знаний, не код проекта
-- 1 агент: librarian (deepseek-v4-flash-free, primary)
+- 1 агент: librarian (opencode-go/qwen3.7-max, primary)
 - 6 команд: /ask · /capture · /project · /commit · /project-add · /audit
 - Pre-commit hook: проверка пустых файлов + валидация викилинков
 - 6 методов заполнены в 02-Methods/
-- Статус методов (собственные): context-as-docs ✅, distill-pattern ✅, memory-management 🟡, model-routing ➖, closed-loop ❌, verifier-pattern ❌
+- Статус методов (собственные): context-as-docs ✅, distill-pattern ✅, memory-management 🟡, model-routing ➖, closed-loop ✅, verifier-pattern ✅
