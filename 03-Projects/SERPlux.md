@@ -10,7 +10,7 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Tailwin
 > **SERPlux** — первый продукт фабрики.
 
 Сбор позиций Google через Topvisor Snapshots API, классификация URL (DeepSeek), выгрузка в Google Sheets.
-**Статус:** Core ✅, Docker ✅, Deploy ✅, Web UI ❌ (приоритет сейчас). Безопасность: тесты пройдены, техдолг зафиксирован.
+**Статус:** Core ✅, Docker ✅, Deploy ✅. Интерфейс = Google Sheets. Web UI — приостановлено (не запрошено заказчиком, требуется ADR). Безопасность: тесты пройдены, техдолг зафиксирован.
 
 **Окружение:** Python venv / Docker. Секреты в `.env` (см. `.env.example`).
 **Запуск (dev):** `python main.py`
@@ -41,18 +41,13 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Tailwin
 
 ## Что делаем сейчас
 
-### 🎯 Приоритет: Веб-интерфейс
-Расширить FastAPI-заглушку (webhook.py) в полноценный веб-интерфейс:
-- Дашборд: последний сбор, статус, метрики
-- Форма запуска прогона с параметрами
-- Просмотр результатов (таблица с фильтрацией)
-- Статус прогона в реальном времени (polling)
-- Jinja2 + Tailwind CSS, без тяжёлых фреймворков
-
-### Следующее (после UI)
-- Мультиклиентность: профили клиентов в SQLite, API /clients
-- Мультипровайдерность: фолбек-цепочка LLM, API /providers
+### 🎯 Приоритет: Мультиклиентность и мультипровайдерность
+- Профили клиентов в SQLite, API /clients
+- Фолбек-цепочка LLM, API /providers
 - Закрытие техдолга (docs/techdebt.md)
+
+### ⏸ Приостановлено
+- **Web UI** — не запрошено заказчиком. Требует отдельного ADR. docs/ui-spec.md Q20.
 
 ---
 
@@ -64,13 +59,14 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Tailwin
 | **plan** | primary | claude-sonnet-4-6 | Планирование, анализ | deny |
 | **collector-dev** | subagent | claude-sonnet-4-6 | Topvisor + сбор данных | allow |
 | **reviewer** | subagent | gpt-5.3-codex | PASS/FAIL верификация | deny |
-| **ui-dev** | subagent **(NEW)** | claude-sonnet-4-6 | Web UI: FastAPI + Jinja2 + Tailwind | allow |
+| **ui-dev** | subagent **(PAUSED)** | claude-sonnet-4-6 | Web UI (приостановлено — требуется ADR) | allow |
 | **infra-dev** | subagent **(NEW)** | deepseek-v4-flash-free | Docker + deploy + сервер | allow |
 
 ### ui-dev
 - **Режим:** subagent (вызывается из build или через `/interface`)
+- **Статус:** ⏸ ПРИОСТАНОВЛЕНО — не запрошено заказчиком, требуется ADR
 - **Модель:** claude-sonnet-4-6 (UI требует качества)
-- **Назначение:** проектирование и реализация веб-интерфейса SERPlux
+- **Назначение:** проектирование и реализация веб-интерфейса SERPlux (если будет одобрен)
 - **Права:** edit: allow, bash (python*, curl*, cat*, ls*)
 - **Контекст:** FastAPI + Jinja2 + Tailwind CSS + Vanilla JS
 - **Anti-goals:** не лезть в core-модули (collector, labeler, etc.), не менять Docker
@@ -89,7 +85,7 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Tailwin
 
 | Команда | Агент | Что делает |
 |---------|-------|-----------|
-| `/interface` | ui-dev | Реализовать веб-интерфейс: дашборд, запуск, история, статус |
+| `/interface` | ui-dev | Веб-интерфейс (⏸ приостановлено — требуется ADR) |
 | `/container` | infra-dev | Создать/обновить Dockerfile + docker-compose |
 | `/deploy` | infra-dev | Развернуть на сервере: проверка, обновление, proxy, SSL |
 | `/review` | reviewer (через build) | Code review по запросу |
@@ -118,10 +114,8 @@ env-guard.js · notify.js
 
 ---
 
-## После UI (что модернизируем)
-- Мультиклиентность: профили клиентов, API /clients
-- Мультипровайдерность: фолбек-цепочка LLM, API /providers
-- Закрытие техдолга (docs/techdebt.md) — провайдеры, project_id, date, валидация
+## После мультиклиентности (что модернизируем)
+- Web UI (если заказчик одобрит через ADR)
 - verifier-pattern ✅ — reviewer с PASS/FAIL
 - closed-loop — авто-итерация
 - memory-management — flush-протокол
@@ -133,4 +127,4 @@ env-guard.js · notify.js
 - 2026-06-26: карточка заведена из состояния репо
 - 2026-06-29: обновлён стек, статусы методов
 - 2026-06-30: ревью — модели, stack, labeler; SERP Factory — SERPlux как продукт
-- 2026-07-02: **Core ✅, Docker ✅, Deploy ✅**. Созданы агенты ui-dev + infra-dev. Команды /interface, /container, /deploy. Приоритет — веб-интерфейс.
+- 2026-07-02: **Core ✅, Docker ✅, Deploy ✅**. Созданы агенты ui-dev + infra-dev. Команды /interface, /container, /deploy. Web UI — приостановлено (не запрошено заказчиком, требуется ADR).
