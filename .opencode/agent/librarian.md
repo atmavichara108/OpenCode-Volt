@@ -2,7 +2,7 @@
 ---
 description: Центральная нервная система экосистемы. Дирижёр, не музыкант.
 mode: primary
-model: opencode/deepseek-v4-flash-free
+model: opencode/claude-sonnet-4-6
 temperature: 0.2
 steps: 15
 permission:
