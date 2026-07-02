@@ -3,7 +3,7 @@ type: Reference
 title: OpenCode — Агенты
 description: Типы агентов (primary/subagent), фронтматтер, параллельность, создание.
 tags: [opencode, agents]
-timestamp: 2026-06-27
+timestamp: 2026-07-02
 ---
 # OpenCode: Агенты
 
@@ -66,7 +66,7 @@ color: "#hex"|primary|accent|...
 | plan | primary | claude-sonnet-4-6 | Планирование, анализ |
 | collector-dev | subagent | claude-sonnet-4-6 | Topvisor API + сбор данных |
 | reviewer | subagent | gpt-5.3-codex | PASS/FAIL верификация |
-| ui-dev | subagent | claude-sonnet-4-6 | Веб-интерфейс: FastAPI + Jinja2 + Tailwind |
+| ui-dev | subagent ⏸ | claude-sonnet-4-6 | Google Sheets UI (Apps Script). Web UI — приостановлен, требует ADR |
 | infra-dev | subagent | deepseek-v4-flash-free | Docker, deploy, серверная инфраструктура |
 
 ### dv-hub (`/home/rudra/Projects/dv-hub`)

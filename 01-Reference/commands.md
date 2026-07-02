@@ -3,7 +3,7 @@ type: Reference
 title: OpenCode — Команды
 description: Определение команд (opencode.json / .opencode/command/), фронтматтер, плейсхолдеры, встроенные.
 tags: [opencode, commands]
-timestamp: 2026-06-27
+timestamp: 2026-07-02
 ---
 # OpenCode: Команды
 
@@ -54,7 +54,7 @@ subtask: true           # форсить вызов как subagent (не зас
 
 | Команда | Агент | Назначение |
 |---------|-------|-----------|
-| `/interface` | ui-dev | Реализовать веб-интерфейс: дашборд, запуск, история, статус |
+| `/interface` | ui-dev | Google Sheets UI (Apps Script меню, лист Настройки). Web UI ⏸ ADR |
 | `/container` | infra-dev | Создать/обновить Dockerfile + docker-compose |
 | `/deploy` | infra-dev | Развернуть на сервере: проверка, обновление, proxy, SSL |
 

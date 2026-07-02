@@ -2,7 +2,7 @@
 type: project
 repo: /home/rudra/Projects/serp
 kind: коммерция / продукт SERP Factory
-stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Tailwind CSS / Docker / Jinja2
+stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Docker
 ---
 # SERPlux — продукт SERP Factory
 
@@ -68,7 +68,7 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Tailwin
 - **Модель:** claude-sonnet-4-6 (UI требует качества)
 - **Назначение:** проектирование и реализация веб-интерфейса SERPlux (если будет одобрен)
 - **Права:** edit: allow, bash (python*, curl*, cat*, ls*)
-- **Контекст:** FastAPI + Jinja2 + Tailwind CSS + Vanilla JS
+- **Контекст:** Google Sheets (Apps Script). Web UI ⏸ — если одобрят через ADR: FastAPI + Jinja2 + Tailwind
 - **Anti-goals:** не лезть в core-модули (collector, labeler, etc.), не менять Docker
 
 ### infra-dev
