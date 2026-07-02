@@ -103,14 +103,14 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Docker
 | [[verifier-pattern]] | ✅ | verifier.md создан (GLM-5.2), PASS/FAIL верификация активна |
 | [[context-as-docs]] | ✅ | docs/contracts.md, decisions.md, ui-spec.md, techdebt.md, progress.md |
 | [[distill-pattern]] | ✅ | `/interface`, `/container`, `/deploy` — команды-пайплайны |
-| [[memory-management]] | ❌ | нет flush-протокола |
+| [[memory-management]] | 🟡 | compaction.js: flush summary в docs/decisions.md + persistent-context в summary; команда /dream |
 | [[model-routing]] | ✅ | build на Kimi K2.7 Code, plan на GLM-5.2, ui-dev на Kimi K2.7 Code, infra-dev на Qwen 3.7 Plus, reviewer на GLM-5.2 |
 | [[multi-agent-pipeline]] | ✅ | 2 primary + 4 subagent, команды через .opencode/command/ |
 
 ---
 
 ## Плагины
-env-guard.js · notify.js
+env-guard.js · notify.js · compaction.js
 
 ---
 
@@ -118,7 +118,7 @@ env-guard.js · notify.js
 - Web UI (если заказчик одобрит через ADR)
 - verifier-pattern ✅ — reviewer с PASS/FAIL
 - closed-loop — авто-итерация
-- memory-management — flush-протокол
+- memory-management — flush-протокол ✅ (compaction.js + /dream, см. Шаг 4)
 - SERP Factory: вторая линия (новый продукт)
 
 ---
@@ -128,3 +128,4 @@ env-guard.js · notify.js
 - 2026-06-29: обновлён стек, статусы методов
 - 2026-06-30: ревью — модели, stack, labeler; SERP Factory — SERPlux как продукт
 - 2026-07-02: **Core ✅, Docker ✅, Deploy ✅**. Созданы агенты ui-dev + infra-dev. Команды /interface, /container, /deploy. **ADR: интерфейс = только Google Sheets**, Web UI не строим.
+- 2026-07-03: Шаг 4 memory-management — плагин `compaction.js` (flush в docs/decisions.md + persistent-context в summary), команда `/dream`, правило flush-протокола в AGENTS.md. Статус метода: ❌ → 🟡.

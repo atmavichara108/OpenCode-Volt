@@ -21,7 +21,15 @@ permission:
     "git pull*": allow
     "mv*": allow
   webfetch: allow
-  edit: allow
+  edit:
+    "**/.opencode/**": allow
+    "~/.config/opencode/**": allow
+    "/home/rudra/Projects/OpenCode-Vault/**": allow
+    "*.py": deny
+    "*.gs": deny
+    "docker-compose*": deny
+    ".env*": deny
+    "Dockerfile*": deny
   read: allow
   glob: allow
   grep: allow

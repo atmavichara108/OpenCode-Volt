@@ -49,7 +49,7 @@ timestamp: 2026-06-29
 | [[verifier-pattern]] | ✅ | ❌ | 🟡 | ❌ |
 | [[context-as-docs]] | ✅ | 🟡 | ✅ | ✅ |
 | [[distill-pattern]] | ✅ | ✅ | ✅ | ✅ |
-| [[memory-management]] | ❌ | 🟡 | 🟡 | 🟡 |
+| [[memory-management]] | 🟡 | 🟡 | 🟡 | 🟡 |
 | [[model-routing]] | ✅ | ✅ | ➖ | ➖ |
 | [[multi-agent-pipeline]] | ✅ | ❌ | ✅ | ❌ |
 

@@ -62,12 +62,12 @@ color: "#hex"|primary|accent|...
 
 | Агент | Mode | Модель | Назначение |
 |-------|------|--------|-----------|
-| build | primary | claude-sonnet-4-6 | Основная разработка |
-| plan | primary | claude-sonnet-4-6 | Планирование, анализ |
-| collector-dev | subagent | claude-sonnet-4-6 | Topvisor API + сбор данных |
-| reviewer | subagent | gpt-5.3-codex | PASS/FAIL верификация |
-| ui-dev | subagent ⏸ | claude-sonnet-4-6 | Google Sheets UI (Apps Script). Web UI — приостановлен, требует ADR |
-| infra-dev | subagent | deepseek-v4-flash-free | Docker, deploy, серверная инфраструктура |
+| build | primary | opencode-go/kimi-k2.7-code | Основная разработка |
+| plan | primary | opencode-go/glm-5.2 | Планирование, анализ |
+| collector-dev | subagent | opencode-go/kimi-k2.7-code | Topvisor API + сбор данных |
+| reviewer | subagent | opencode-go/glm-5.2 | PASS/FAIL верификация |
+| ui-dev | subagent | opencode-go/kimi-k2.7-code | Google Sheets UI (Apps Script). Web UI — будущая опция под ADR |
+| infra-dev | subagent | opencode-go/qwen3.7-plus | Docker, deploy, серверная инфраструктура |
 
 ### dv-hub (`/home/rudra/Projects/dv-hub`)
 

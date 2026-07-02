@@ -25,4 +25,4 @@ tags: [method]
 ## Связанные
 - Reference: [[plugins]], [[config]]
 - Дополняет: [[context-as-docs]] (куда флашить)
-- Внедрён в: [[dv-hub]] 🟡 (compaction есть, flush-протокол ❌), [[vault]] 🟡 (04-Memory/ есть, flush ❌), [[SERPlux]] ❌
+- Внедрён в: [[dv-hub]] 🟡 (compaction есть, flush-протокол ❌), [[vault]] 🟡 (04-Memory/ есть, flush ❌), [[SERPlux]] 🟡 (compaction.js: flush в docs/decisions.md + persistent-context в summary; команда /dream)
