@@ -91,7 +91,7 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Tailwin
 | `/review` | reviewer (через build) | Code review по запросу |
   }
 }
-```
+
 
 ---
 
