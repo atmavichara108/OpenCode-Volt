@@ -18,14 +18,12 @@ timestamp: 2026-07-02
 Реализация веб-интерфейса SERPlux через команду `/interface` (агент ui-dev) в репо SERPlux (`/home/rudra/Projects/serp`).
 Волт: мониторинг, документация, поддержка архитектуры.
 
-## Что сделано в этой сессии (2026-07-02)
-- [x] Аудит репо SERP: Core ✅, Docker ✅, Deploy ✅, Web UI ❌
-- [x] Создан агент ui-dev (.opencode/agents/ui-dev.md)
-- [x] Создан агент infra-dev (.opencode/agents/infra-dev.md)
-- [x] Созданы команды: /interface, /container, /deploy
-- [x] Обновлён opencode.json (default_agent: build)
-- [x] Обновлена карточка SERPlux.md в волте
-- [x] Обновлён facts.md
+## Что сделано в этой сессии (2026-07-02, part2)
+- [x] Централизованное удаление claude-mem из экосистемы
+  - [x] Удалён плагин `~/.config/opencode/plugins/claude-mem.js`
+  - [x] Очищен `~/.config/opencode/AGENTS.md` (блок `<claude-mem-context>`)
+  - [x] Обновлён `02-Methods/memory-management.md` (убрана строка с `[проверить]`)
+- [x] Создан бэкап `claude-mem.js.bak`
 
 ## Завершённые изменения (все сессии)
 - [x] README.md — визитка репозитория как VibeOS (для GitHub, основа для лендинга)
@@ -51,4 +49,4 @@ timestamp: 2026-07-02
 - (нет открытых вопросов на данный момент)
 
 ## Последнее обновление
-2026-07-02 — SERPlux: аудит репо, созданы ui-dev + infra-dev агенты, команды /interface /container /deploy, карточка актуализирована. Приоритет — веб-интерфейс.
+2026-07-02 (part2) — Централизованное удаление claude-mem: плагин, AGENTS.md, memory-management.md.
