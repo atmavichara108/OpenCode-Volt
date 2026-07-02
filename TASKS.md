@@ -43,6 +43,7 @@ timestamp: 2026-06-27
 | T-041 | Rudra AI Фаза 4 — Full Assistant (multi-agent, голос, контекст) | P4 | [[rudra-ai]] |
 | T-042 | ProdWatch Фаза 3 — полная observability (логи, метрики, интеграция с rudra-phone) | P4 | [[prod-monitor]] |
 | T-047 | prompt-engineer агент — специализированный агент-промптовик в Vault/экосистеме: свои команды (/prompt по образцу dotfiles + расширения), встроен в skills (авто-подгрузка при формулировке задач субагентам) и пайплайны (промпт-фаза перед делегированием); librarian и build перестают формулировать промты ad-hoc — вызывают prompt-engineer как роль; зависит от: skills-поддержка в OpenCode [проверить], distill-pattern, multi-agent-pipeline; референс: /prompt (dotfiles, planner→docs) | P3 | [[02-Methods/multi-agent-pipeline]], [[03-Projects/dotfiles]] |
+| T-048 | Вернуть Zen-модели после пополнения кредитов (профили моделей под провайдера — будущий апгрейд) | P3 | [[04-Memory/facts.md]] |
 
 ## 🟤 Backlog — идеи на потом
 

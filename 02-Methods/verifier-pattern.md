@@ -18,7 +18,7 @@ tags: [method]
 ---
 description: Strict acceptance verifier. Checks work against DoD. Returns PASS/FAIL, never edits.
 mode: subagent
-model: opencode/claude-sonnet-4-6
+model: opencode-go/glm-5.2
 temperature: 0.1
 permission:
   edit: deny
@@ -46,4 +46,4 @@ If FAIL: numbered list of minimal fixes for the build agent.
 - Reference: [[agents]], [[permissions]]
 - Используется в: [[closed-loop]] (verify-фаза)
 - Модель: [[model-routing]] (почему именно sonnet, а не haiku)
-- Внедрён в: [[SERPlux]] ❌ (reviewer не выносит PASS/FAIL), [[dv-hub]] ❌, [[vault]] ❌
+- Внедрён в: [[SERPlux]] ✅, [[dv-hub]] ❌, [[vault]] ❌

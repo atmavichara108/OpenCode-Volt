@@ -55,12 +55,12 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Docker
 
 | Агент | Mode | Модель | Назначение | edit |
 |-------|------|--------|-----------|------|
-| **build** | primary | claude-sonnet-4-6 | Основная разработка | allow |
-| **plan** | primary | claude-sonnet-4-6 | Планирование, анализ | deny |
-| **collector-dev** | subagent | claude-sonnet-4-6 | Topvisor + сбор данных | allow |
-| **reviewer** | subagent | gpt-5.3-codex | PASS/FAIL верификация | deny |
-| **ui-dev** | subagent **(PAUSED)** | claude-sonnet-4-6 | Web UI (приостановлено — требуется ADR) | allow |
-| **infra-dev** | subagent **(NEW)** | deepseek-v4-flash-free | Docker + deploy + сервер | allow |
+| **build** | primary | opencode-go/kimi-k2.7-code | Основная разработка | allow |
+| **plan** | primary | opencode-go/glm-5.2 | Планирование, анализ | deny |
+| **collector-dev** | subagent | opencode-go/kimi-k2.7-code | Topvisor + сбор данных | allow |
+| **reviewer** | subagent | opencode-go/glm-5.2 | PASS/FAIL верификация | deny |
+| **ui-dev** | subagent **(PAUSED)** | opencode-go/kimi-k2.7-code | Web UI (приостановлено — требуется ADR) | allow |
+| **infra-dev** | subagent **(NEW)** | opencode-go/qwen3.7-plus | Docker + deploy + сервер | allow |
 
 ### ui-dev
 - **Режим:** subagent (вызывается из build или через `/interface`)
@@ -100,11 +100,11 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Docker
 | Метод | Статус | Основание |
 |-------|--------|-----------|
 | [[closed-loop]] | ❌ | нет команды /loop |
-| [[verifier-pattern]] | 🟡 | reviewer есть, PASS/FAIL в процессе внедрения |
+| [[verifier-pattern]] | ✅ | verifier.md создан (GLM-5.2), PASS/FAIL верификация активна |
 | [[context-as-docs]] | ✅ | docs/contracts.md, decisions.md, ui-spec.md, techdebt.md, progress.md |
 | [[distill-pattern]] | ✅ | `/interface`, `/container`, `/deploy` — команды-пайплайны |
 | [[memory-management]] | ❌ | нет flush-протокола |
-| [[model-routing]] | ✅ | build/plan на Sonnet, ui-dev на Sonnet, infra-dev на DeepSeek, reviewer на GPT |
+| [[model-routing]] | ✅ | build на Kimi K2.7 Code, plan на GLM-5.2, ui-dev на Kimi K2.7 Code, infra-dev на Qwen 3.7 Plus, reviewer на GLM-5.2 |
 | [[multi-agent-pipeline]] | ✅ | 2 primary + 4 subagent, команды через .opencode/command/ |
 
 ---
