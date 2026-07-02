@@ -24,7 +24,7 @@ timestamp: 2026-07-02
 
 ### Конфигурация
 - `opencode.json` — корневой конфиг: `default_agent: librarian`, `lsp: true`, `$schema`, модель `opencode-go/deepseek-v4-flash-free` (дефолт для субагентов).
-- Модель librarian: `opencode-go/qwen3.7-max` (сильная модель Go-подписки для дирижёра).
+- Модель librarian: `opencode-go/glm-5.2` (сильная модель Go-подписки для дирижёра).
 - Субагенты general/build/explore явно зафиксированы на Go-моделях (не наследуют от вызывающего).
 - `steps` в агенте = число шагов агента (действий). `steps: 15` достаточно для задач командного центра.
 - `doom_loop: allow` — разрешает recovery-промпты при повторах.
@@ -90,7 +90,7 @@ timestamp: 2026-07-02
 ### vault (OpenCode-Vault)
 - Репо: `/home/rudra/Projects/OpenCode-Vault`
 - Это командный центр знаний, не код проекта
-- 1 агент: librarian (opencode-go/qwen3.7-max, primary)
+- 1 агент: librarian (opencode-go/glm-5.2, primary)
 - 6 команд: /ask · /capture · /project · /commit · /project-add · /audit
 - Pre-commit hook: проверка пустых файлов + валидация викилинков
 - 6 методов заполнены в 02-Methods/

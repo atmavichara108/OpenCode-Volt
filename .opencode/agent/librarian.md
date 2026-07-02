@@ -2,7 +2,7 @@
 ---
 description: Центральная нервная система экосистемы. Дирижёр, не музыкант.
 mode: primary
-model: opencode-go/qwen3.7-max
+model: opencode-go/glm-5.2
 temperature: 0.2
 steps: 15
 permission:
