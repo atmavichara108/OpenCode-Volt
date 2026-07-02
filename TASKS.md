@@ -42,6 +42,7 @@ timestamp: 2026-06-27
 | T-040 | Android-приложение rudra-phone (нативный UI, Jetpack Compose) | P4 | [[rudra-phone]] |
 | T-041 | Rudra AI Фаза 4 — Full Assistant (multi-agent, голос, контекст) | P4 | [[rudra-ai]] |
 | T-042 | ProdWatch Фаза 3 — полная observability (логи, метрики, интеграция с rudra-phone) | P4 | [[prod-monitor]] |
+| T-047 | prompt-engineer агент — специализированный агент-промптовик в Vault/экосистеме: свои команды (/prompt по образцу dotfiles + расширения), встроен в skills (авто-подгрузка при формулировке задач субагентам) и пайплайны (промпт-фаза перед делегированием); librarian и build перестают формулировать промты ad-hoc — вызывают prompt-engineer как роль; зависит от: skills-поддержка в OpenCode [проверить], distill-pattern, multi-agent-pipeline; референс: /prompt (dotfiles, planner→docs) | P3 | [[02-Methods/multi-agent-pipeline]], [[03-Projects/dotfiles]] |
 
 ## 🟤 Backlog — идеи на потом
 
@@ -110,4 +111,4 @@ timestamp: 2026-06-27
 - **Связано** — `wikilink` на файл/карточку/метод
 
 Номера ID в Done — T-000 для задач первой волны (без сквозной нумерации), T-001+ для нумерованных задач.
-T-044 — последняя закрытая задача. T-045 — следующая (активная) — реализация веб-интерфейса SERPlux.
+T-044 — последняя закрытая задача. T-045 — активная (мультиклиентность SERPlux). T-047 — последняя добавленная (prompt-engineer агент).
