@@ -46,7 +46,7 @@ timestamp: 2026-06-27
 | T-048 | Вернуть Zen-модели после пополнения кредитов (профили моделей под провайдера — будущий апгрейд) | P3 | [[04-Memory/facts.md]] |
 | T-049 | Профили моделей под провайдера (Zen/Go): переключение одной правкой. Абстракция model-routing — чтобы следующий переезд Zen↔Go не был ручной перестановкой всех агентов | P2 | [[02-Methods/model-routing]] |
 | T-050 | Дистиллировать verify-gate в метод (02-Methods/) после обкатки в SERPlux /commit | P3 | [[02-Methods/verifier-pattern]] |
-| T-051 | Git pre-commit hook как жёсткий дубль verify-gate (запуск тестов до коммита) | P4 | [[03-Projects/SERPlux]] |
+| T-051 | Git pre-commit hook с verifier (жёсткий дубль /commit гейта). **Подтверждено:** `opencode run --agent verifier --format json` — headless-запуск verifier из хука. Без него /commit гейт дырявый (можно коммитить напрямую через git). Реализация: `.git/hooks/pre-commit` → `opencode run --agent verifier "Проверь staged" → парсить VERDICT → exit 1 если FAIL | P1 | [[03-Projects/SERPlux]], [[02-Methods/verifier-pattern]] |
 
 ## 🟤 Backlog — идеи на потом
 
