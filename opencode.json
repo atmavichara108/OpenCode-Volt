@@ -5,7 +5,7 @@
   "model": "opencode/deepseek-v4-flash-free",
   "agent": {
     "general": {
-      "model": "opencode/deepseek-v4-flash-free"
+      "model": "opencode-go/qwen3.7-max"
     },
     "build": {
       "model": "opencode/deepseek-v4-flash-free"

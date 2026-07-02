@@ -45,7 +45,7 @@ timestamp: 2026-06-29
 
 | Метод | SERPlux | dv-hub | dotfiles | vault |
 |-------|---------|--------|----------|-------|
-| [[closed-loop]] | ❌ | ❌ | 🟡 | ❌ |
+| [[closed-loop]] | ✅ | ❌ | 🟡 | ❌ |
 | [[verifier-pattern]] | ✅ | ❌ | 🟡 | ❌ |
 | [[context-as-docs]] | ✅ | 🟡 | ✅ | ✅ |
 | [[distill-pattern]] | ✅ | ✅ | ✅ | ✅ |

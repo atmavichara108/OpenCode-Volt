@@ -99,7 +99,7 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Docker
 
 | Метод | Статус | Основание |
 |-------|--------|-----------|
-| [[closed-loop]] | ❌ | нет команды /loop |
+| [[closed-loop]] | ✅ | /loop создан (глобальный), зависит от @verifier |
 | [[verifier-pattern]] | ✅ | verifier.md создан (GLM-5.2), PASS/FAIL верификация активна |
 | [[context-as-docs]] | ✅ | docs/contracts.md, decisions.md, ui-spec.md, techdebt.md, progress.md |
 | [[distill-pattern]] | ✅ | `/interface`, `/container`, `/deploy` — команды-пайплайны |
