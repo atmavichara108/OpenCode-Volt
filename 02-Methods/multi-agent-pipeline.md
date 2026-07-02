@@ -107,9 +107,9 @@ tags: [method, architecture, multi-agent]
 | Аспект | dotfiles (эталон) | SERP Factory (products) |
 |--------|------------------|------------------------|
 | Цель | Управление конфигами | Производство deployable-продуктов |
-| Роли | sysop + planner + builder | architect + builder + infra + ux |
-| Subagent | domain-dev (qtile, bash, util) | ux-dev, infra-dev, collector-dev, labeler-dev |
-| Команды | 8 пайплайнов | `/interface`, `/container`, `/deploy`, `/pipeline` |
+| Роли | sysop + planner + builder | build + plan + domain-dev |
+| Subagent | domain-dev (qtile, bash, util) | ui-dev, infra-dev, collector-dev, reviewer |
+| Команды | 8 пайплайнов | `/interface`, `/container`, `/deploy` |
 | После деплоя | — | Глубокая модернизация каждого куска |
 
 ### Когда применять
@@ -120,7 +120,9 @@ tags: [method, architecture, multi-agent]
 
 ### Внедрён в
 - [[dotfiles]] ✅ — эталонная реализация v2
-- [[SERPlux]] 🟡 — первый продукт SERP Factory (first approximation, дедлайн сегодня)
+- [[SERPlux]] ✅ — первый продукт SERP Factory (6 агентов, 3 команды)
+- [[dv-hub]] ❌ — 5 агентов, но без пайплайнов-команд
+- [[vault]] ❌ — 1 агент (librarian)
 
 ## Связанные
 - Reference: [[agents]], [[commands]], [[permissions]]

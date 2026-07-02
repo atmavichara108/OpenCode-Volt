@@ -23,7 +23,7 @@ timestamp: 2026-06-29
 ## Проекты
 | Проект | Тип | Стек | OpenCode-агент особый | Карточка | Статус |
 |--------|-----|------|----------------------|----------|--------|
-| SERPlux | коммерция | Python | collector-dev, reviewer | [[SERPlux]] | ✅ active |
+| SERPlux | коммерция | Python / FastAPI | **6 агентов**: build, plan, collector-dev, reviewer, ui-dev, infra-dev · 3 команды | [[SERPlux]] | ✅ active |
 | dv-hub | волонтёрский | TS / Hono | plan, build, reviewer, researcher, infra | [[dv-hub]] | ✅ active |
 | dotfiles | система | shell/configs | **multi-agent** (7 агентов, 8 пайплайнов) | [[dotfiles]] | ✅ active |
 | vault | справочник | markdown | librarian | [[vault]] | ✅ active |
@@ -47,11 +47,11 @@ timestamp: 2026-06-29
 |-------|---------|--------|----------|-------|
 | [[closed-loop]] | ❌ | ❌ | 🟡 | ❌ |
 | [[verifier-pattern]] | 🟡 | ❌ | 🟡 | ❌ |
-| [[context-as-docs]] | 🟡 | 🟡 | ✅ | ✅ |
-| [[distill-pattern]] | 🟡 | ✅ | ✅ | ✅ |
+| [[context-as-docs]] | ✅ | 🟡 | ✅ | ✅ |
+| [[distill-pattern]] | ✅ | ✅ | ✅ | ✅ |
 | [[memory-management]] | ❌ | 🟡 | 🟡 | 🟡 |
-| [[model-routing]] | 🟡 | ✅ | ➖ | ➖ |
-| [[multi-agent-pipeline]] | 🟡 | ❌ | ✅ | ❌ |
+| [[model-routing]] | ✅ | ✅ | ➖ | ➖ |
+| [[multi-agent-pipeline]] | ✅ | ❌ | ✅ | ❌ |
 
 > ❌ не внедрён · 🟡 частично · ✅ внедрён · ➖ не применимо
 

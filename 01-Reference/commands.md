@@ -44,3 +44,41 @@ subtask: true           # форсить вызов как subagent (не зас
 | [`/commit`](/.opencode/command/commit.md) | librarian | Закоммитить изменения в волте (subtask) |
 | [`/project-add`](/.opencode/command/project-add.md) | librarian | Создать карточку нового проекта: имя путь описание [тип] [стек] |
 | [`/audit`](/.opencode/command/audit.md) | librarian | Аудит проектов: pull, сверка карточки с репо. Без аргумента — все проекты |
+
+## Кастомные команды проектов
+
+> Каждый проект определяет свои команды в `.opencode/command/*.md`.
+> Команда auto-discover'ится по имени файла (без .md). Вызов: `/имя`.
+
+### SERPlux (`/home/rudra/Projects/serp`)
+
+| Команда | Агент | Назначение |
+|---------|-------|-----------|
+| `/interface` | ui-dev | Реализовать веб-интерфейс: дашборд, запуск, история, статус |
+| `/container` | infra-dev | Создать/обновить Dockerfile + docker-compose |
+| `/deploy` | infra-dev | Развернуть на сервере: проверка, обновление, proxy, SSL |
+
+### dv-hub (`/home/rudra/Projects/dv-hub`)
+
+| Команда | Агент | Назначение |
+|---------|-------|-----------|
+| `/morning` | plan | Утренний статус: что сделано, что дальше, блокеры |
+| `/spec` | plan | Создать спецификацию задачи |
+| `/review` | reviewer | Код-ревью последних изменений |
+| `/hygiene` | build | Гигиена кода: линтер, формат, неиспользуемые импорты |
+| `/sync-context` | build | Синхронизировать контекст с dv-project submodule |
+| `/sync-context-self` | build | Синхронизировать свой контекст |
+| `/sync-task` | build | Синхронизировать задачу из трекера |
+
+### dotfiles (`/home/rudra/dotfiles`)
+
+| Команда | Агент | Назначение |
+|---------|-------|-----------|
+| `/sysaudit` | sysop | Аудит системы: софт, дрейф конфигов, статус пакетов |
+| `/script` | builder | Создать/обновить shell-скрипт |
+| `/qtile` | qtile-dev | Конфигурация qtile window manager |
+| `/util` | util-dev | Утилита/инструмент |
+| `/prompt` | planner | Промпт для задачи |
+| `/notify` | builder | Настроить уведомления |
+| `/macro` | builder | Макрос/автозамена |
+| `/plugin` | builder | Плагин для OpenCode |

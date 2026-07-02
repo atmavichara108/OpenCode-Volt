@@ -52,3 +52,47 @@ color: "#hex"|primary|accent|...
 
 ## Создание
 `opencode agent create` — интерактивно: место, описание, права, генерит markdown.
+
+## Кастомные агенты по проектам
+
+> Каждый проект определяет своих агентов в `.opencode/agents/*.md`.
+> Агент auto-discover'ится по имени файла (без .md).
+
+### SERPlux (`/home/rudra/Projects/serp`)
+
+| Агент | Mode | Модель | Назначение |
+|-------|------|--------|-----------|
+| build | primary | claude-sonnet-4-6 | Основная разработка |
+| plan | primary | claude-sonnet-4-6 | Планирование, анализ |
+| collector-dev | subagent | claude-sonnet-4-6 | Topvisor API + сбор данных |
+| reviewer | subagent | gpt-5.3-codex | PASS/FAIL верификация |
+| ui-dev | subagent | claude-sonnet-4-6 | Веб-интерфейс: FastAPI + Jinja2 + Tailwind |
+| infra-dev | subagent | deepseek-v4-flash-free | Docker, deploy, серверная инфраструктура |
+
+### dv-hub (`/home/rudra/Projects/dv-hub`)
+
+| Агент | Mode | Модель | Назначение |
+|-------|------|--------|-----------|
+| plan | primary | qwen3.7-max | Планирование, спецификации |
+| build | primary | deepseek-v4-flash | Основная разработка |
+| infra | primary | qwen3.7-max | Инфраструктура |
+| reviewer | subagent | deepseek-v4-pro | Код-ревью |
+| researcher | subagent | qwen3.6-plus | Исследование, анализ |
+
+### dotfiles (`/home/rudra/dotfiles`)
+
+| Агент | Mode | Модель | Назначение |
+|-------|------|--------|-----------|
+| sysop | primary | deepseek-v4-flash-free | Системный инспектор |
+| planner | primary | deepseek-v4-flash-free | Архитектор |
+| builder | primary | deepseek-v4-flash-free | Строитель |
+| reviewer | subagent | deepseek-v4-flash-free | Код-ревью |
+| qtile-dev | subagent | deepseek-v4-flash-free | Конфиг qtile |
+| bash-dev | subagent | deepseek-v4-flash-free | Shell-скрипты |
+| util-dev | subagent | deepseek-v4-flash-free | Утилиты |
+
+### vault (`/home/rudra/Projects/OpenCode-Vault`)
+
+| Агент | Mode | Модель | Назначение |
+|-------|------|--------|-----------|
+| librarian | primary | deepseek-v4-flash-free | Командный центр знаний |
