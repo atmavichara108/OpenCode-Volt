@@ -1,9 +1,9 @@
 ---
 type: Active Context
 title: Активный контекст
-description: SERP Factory — SERPlux как первый продукт. Core готов, UI + Docker + Deploy.
+description: SERPlux — Core ✅, Docker ✅, Deploy ✅. Приоритет: веб-интерфейс. Агенты ui-dev + infra-dev созданы.
 tags: [memory]
-timestamp: 2026-06-30
+timestamp: 2026-07-02
 ---
 
 # Активный контекст
@@ -12,11 +12,20 @@ timestamp: 2026-06-30
 
 ## Текущий фокус
 - **Проект:** SERPlux / SERP Factory
-- **Задача:** SERPlux — первый продукт фабрики. Core готов, UI + Docker + Deploy (дедлайн сегодня). Архитектура спроектирована в волте, реализация — в репо SERPlux.
+- **Задача:** Веб-интерфейс SERPlux — дашборд, запуск прогона, история, статус. Агенты ui-dev + infra-dev созданы, команды /interface /container /deploy готовы.
 
 ## Активная задача
-Реализация UI + Docker + Deploy выполняется в репо SERPlux (`/home/rudra/Projects/serp`).
+Реализация веб-интерфейса SERPlux через команду `/interface` (агент ui-dev) в репо SERPlux (`/home/rudra/Projects/serp`).
 Волт: мониторинг, документация, поддержка архитектуры.
+
+## Что сделано в этой сессии (2026-07-02)
+- [x] Аудит репо SERP: Core ✅, Docker ✅, Deploy ✅, Web UI ❌
+- [x] Создан агент ui-dev (.opencode/agents/ui-dev.md)
+- [x] Создан агент infra-dev (.opencode/agents/infra-dev.md)
+- [x] Созданы команды: /interface, /container, /deploy
+- [x] Обновлён opencode.json (default_agent: build)
+- [x] Обновлена карточка SERPlux.md в волте
+- [x] Обновлён facts.md
 
 ## Завершённые изменения (все сессии)
 - [x] README.md — визитка репозитория как VibeOS (для GitHub, основа для лендинга)
@@ -29,6 +38,7 @@ timestamp: 2026-06-30
 - [x] opencode.json, config.md, facts.md, 00-INDEX, Architecture.md — обновлены
 - [x] Модель librarian: Claude Sonnet 4.6 → DeepSeek v4-flash-free
 - [x] OKF v0.1 — полная архитектура волта, 6 методов, 4 карточки проектов, память, трекер
+- [x] SERPlux: агенты ui-dev + infra-dev, команды /interface /container /deploy, карточка актуализирована
 
 ## Отложено (P5 будущее)
 - T-015: Telegram-бот для классификации фич
@@ -40,4 +50,4 @@ timestamp: 2026-06-30
 - (нет открытых вопросов на данный момент)
 
 ## Последнее обновление
-2026-06-30 — SERP Factory: SERPlux как продукт. Агенты ux-dev + infra-dev. Команды /interface /container /deploy. Core готов, UI + Docker + Deploy — активная работа в репо SERPlux.
+2026-07-02 — SERPlux: аудит репо, созданы ui-dev + infra-dev агенты, команды /interface /container /deploy, карточка актуализирована. Приоритет — веб-интерфейс.

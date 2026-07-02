@@ -2,7 +2,7 @@
 type: project
 repo: /home/rudra/Projects/serp
 kind: коммерция / продукт SERP Factory
-stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Tailwind CSS / Docker
+stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Tailwind CSS / Docker / Jinja2
 ---
 # SERPlux — продукт SERP Factory
 
@@ -10,159 +10,89 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Tailwin
 > **SERPlux** — первый продукт фабрики.
 
 Сбор позиций Google через Topvisor Snapshots API, классификация URL (DeepSeek), выгрузка в Google Sheets.
-**MVP почти готов:** осталось собрать UI, упаковать в Docker, развернуть на сервере.
+**Статус:** Core ✅, Docker ✅, Deploy ✅, Web UI ❌ (приоритет сейчас). Безопасность: тесты пройдены, техдолг зафиксирован.
 
-**Окружение:** Python venv. Секреты в `.env` (см. `.env.example`).
+**Окружение:** Python venv / Docker. Секреты в `.env` (см. `.env.example`).
 **Запуск (dev):** `python main.py`
+**Запуск (prod):** `docker compose up -d`
 **Провайдер:** OpenCode Zen (primary) + DeepSeek (labeler)
-**Дедлайн деплоя:** сегодня
+**Сервер:** задеплоено, собственный домен
 
 ---
 
-## Что сделано (core ready)
+## Что сделано (✅ готово)
 
 - ✅ Коллектор: topvisor.py (run_check / poll_status / get_snapshot)
 - ✅ Сборщик: collector.py (collect(config) → list[Row])
 - ✅ Классификатор: labeler.py (кэш + DeepSeek LLM)
 - ✅ Хранилище: storage.py (SQLite — кэш, история)
 - ✅ Экспортёр: exporter.py (Google Sheets с цветовой разметкой)
-- ✅ Отчётность: reporter.py
+- ✅ Отчётность: reporter.py (матрица под формат заказчика)
 - ✅ Конфиг: config.py (управляющий Google Sheet)
-- ✅ Webhook: webhook.py (FastAPI endpoint — пустая заготовка)
+- ✅ Webhook: webhook.py (FastAPI: /health, /status, /run)
+- ✅ Apps Script: apps_script.gs (меню SERPlux в Google Sheets)
+- ✅ Docker: Dockerfile (multi-stage, non-root, healthcheck)
+- ✅ Docker Compose: docker-compose.yml (volume, credentials, ресурсы)
+- ✅ Deploy: на сервере с собственным доменом
+- ✅ Безопасность: тесты пройдены, критических дыр нет
+- ✅ Техдолг: зафиксирован в docs/techdebt.md
+- ✅ UI-спецификация: docs/ui-spec.md (609 строк, подробная)
 - ✅ Модульная архитектура с контрактами (docs/contracts.md)
 
-## Что делаем сейчас (first approximation)
+## Что делаем сейчас
 
-### 1. UI / Интерфейс
+### 🎯 Приоритет: Веб-интерфейс
 Расширить FastAPI-заглушку (webhook.py) в полноценный веб-интерфейс:
 - Дашборд: последний сбор, статус, метрики
-- Кнопка ручного запуска сбора
+- Форма запуска прогона с параметрами
 - Просмотр результатов (таблица с фильтрацией)
-- Tailwind CSS, без тяжёлых фреймворков
+- Статус прогона в реальном времени (polling)
+- Jinja2 + Tailwind CSS, без тяжёлых фреймворков
 
-### 2. Docker
-- `Dockerfile` — Python-приложение + зависимости
-- `docker-compose.yml` — сервис + SQLite + nginx (опционально)
-- Multi-stage сборка для минимального размера
-
-### 3. Deploy
-- VPS (хостинг)
-- Поднять контейнер
-- Настроить CI (git push → авто-деплой, опционально)
+### Следующее (после UI)
+- Мультиклиентность: профили клиентов в SQLite, API /clients
+- Мультипровайдерность: фолбек-цепочка LLM, API /providers
+- Закрытие техдолга (docs/techdebt.md)
 
 ---
 
-## Архитектура (MVP)
-
-```
-                    ┌──────────────────┐
-                    │   Google Sheets  │
-                    │   (управление +   │
-                    │    отчётность)    │
-                    └────────┬─────────┘
-                             │
-┌────────────────────────────┴────────────────────────────┐
-│                   SERPlux (FastAPI)                      │
-│                                                          │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌─────────┐ │
-│  │ Collector│→│ Labeler  │→│ Storage  │→│Exporter │ │
-│  │(topvisor)│  │(DeepSeek)│  │(SQLite)  │  │(Sheets) │ │
-│  └──────────┘  └──────────┘  └──────────┘  └─────────┘ │
-│                                                          │
-│  ┌──────────────────────────────────────────────────┐   │
-│  │  Web UI (FastAPI routes + Tailwind)              │   │
-│  │  / ─ дашборд · /run — запуск · /history — лог   │   │
-│  └──────────────────────────────────────────────────┘   │
-└────────────────────────────┬────────────────────────────┘
-                             │
-                    ┌────────┴────────┐
-                    │   Docker контейнер │
-                    │   (alpine + Python)│
-                    └─────────────────┘
-                             │
-                    ┌────────┴────────┐
-                    │   VPS / Сервер   │
-                    └─────────────────┘
-```
-
----
-
-## Агенты (первое приближение)
-
-> Расширение текущей архитектуры под дедлайн. После деплоя — глубокая модернизация.
+## Агенты (актуально на 2026-07-02)
 
 | Агент | Mode | Модель | Назначение | edit |
 |-------|------|--------|-----------|------|
-| **architect** | primary | claude-sonnet-4-6 | Спеки, ADR, архитектура | deny |
-| **builder** | primary | claude-sonnet-4-6 | Разработка (код, тесты, докеризация) | allow |
+| **build** | primary | claude-sonnet-4-6 | Основная разработка | allow |
+| **plan** | primary | claude-sonnet-4-6 | Планирование, анализ | deny |
 | **collector-dev** | subagent | claude-sonnet-4-6 | Topvisor + сбор данных | allow |
 | **reviewer** | subagent | gpt-5.3-codex | PASS/FAIL верификация | deny |
-| **ux-dev** | **subagent (NEW)** | claude-sonnet-4-6 | Web UI: FastAPI-роуты + Tailwind | allow |
-| **infra-dev** | **subagent (NEW)** | deepseek-v4-flash-free | Docker + deploy + сервер | allow |
+| **ui-dev** | subagent **(NEW)** | claude-sonnet-4-6 | Web UI: FastAPI + Jinja2 + Tailwind | allow |
+| **infra-dev** | subagent **(NEW)** | deepseek-v4-flash-free | Docker + deploy + сервер | allow |
 
-### ux-dev
-- **Режим:** subagent (вызывается из контекста builder)
+### ui-dev
+- **Режим:** subagent (вызывается из build или через `/interface`)
 - **Модель:** claude-sonnet-4-6 (UI требует качества)
 - **Назначение:** проектирование и реализация веб-интерфейса SERPlux
-- **Права:** edit: allow, bash (python*, npm*, cat*, ls*)
-- **Контекст:** FastAPI + Jinja2 или Vanilla JS + Tailwind
-- **Anti-goals:** не лезть в core-модули (collector, labeler, etc.)
+- **Права:** edit: allow, bash (python*, curl*, cat*, ls*)
+- **Контекст:** FastAPI + Jinja2 + Tailwind CSS + Vanilla JS
+- **Anti-goals:** не лезть в core-модули (collector, labeler, etc.), не менять Docker
 
 ### infra-dev
-- **Режим:** subagent (вызывается из builder)
+- **Режим:** subagent (вызывается из build или через `/container`, `/deploy`)
 - **Модель:** deepseek-v4-flash-free (дешёвая, инфра-задачи)
-- **Назначение:** Docker, docker-compose, deploy, CI/CD
-- **Права:** edit: allow, bash (docker*, python*, cat*, ls*)
-- **Контекст:** alpine + Python multi-stage Dockerfile
-- **Anti-goals:** не трогать код приложения, не менять окружение
+- **Назначение:** Docker, docker-compose, deploy, CI/CD, сервер
+- **Права:** edit: allow, bash (docker*, nginx*, certbot*, cat*, ls*)
+- **Контекст:** multi-stage Dockerfile, docker-compose, reverse proxy
+- **Anti-goals:** не трогать код приложения (.py файлы)
 
 ---
 
-## Команды (пайплайны первого приближения)
+## Команды (пайплайны)
 
-| Команда | Пайплайн | Что делает |
-|---------|----------|-----------|
-| `/interface` | ux-dev → builder → reviewer | Спроектировать и реализовать веб-интерфейс |
-| `/container` | infra-dev → builder → reviewer | Создать Dockerfile + docker-compose |
-| `/deploy` | infra-dev → builder | Развернуть на сервере (первый деплой) |
-| `/review` | reviewer | Code review по запросу |
-
-После деплоя: `/pipeline` (architect → builder → reviewer) — полный цикл фабрики.
-
----
-
-## Конфиг (opencode.json — предлагаемые изменения)
-
-```json
-{
-  "default_agent": "builder",
-  "agent": {
-    "architect": {
-      "mode": "primary",
-      "model": "opencode/claude-sonnet-4-6",
-      "permission": { "edit": "deny", "task": { "*": "allow" } }
-    },
-    "builder": {
-      "mode": "primary",
-      "model": "opencode/claude-sonnet-4-6",
-      "steps": 30,
-      "permission": { "task": { "*": "allow" } }
-    },
-    "ux-dev": {
-      "mode": "subagent",
-      "model": "opencode/claude-sonnet-4-6",
-      "permission": { "edit": "allow", "bash": { "*": "ask", "python*": "allow", "cat*": "allow", "ls*": "allow" } }
-    },
-    "infra-dev": {
-      "mode": "subagent",
-      "model": "opencode/deepseek-v4-flash-free",
-      "permission": { "edit": "allow", "bash": { "*": "ask", "docker*": "allow", "python*": "allow", "cat*": "allow", "ls*": "allow" } }
-    },
-    "reviewer": {
-      "mode": "subagent",
-      "model": "opencode/gpt-5.3-codex",
-      "permission": { "edit": "deny" }
-    }
+| Команда | Агент | Что делает |
+|---------|-------|-----------|
+| `/interface` | ui-dev | Реализовать веб-интерфейс: дашборд, запуск, история, статус |
+| `/container` | infra-dev | Создать/обновить Dockerfile + docker-compose |
+| `/deploy` | infra-dev | Развернуть на сервере: проверка, обновление, proxy, SSL |
+| `/review` | reviewer (через build) | Code review по запросу |
   }
 }
 ```
@@ -175,11 +105,11 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Tailwin
 |-------|--------|-----------|
 | [[closed-loop]] | ❌ | нет команды /loop |
 | [[verifier-pattern]] | 🟡 | reviewer есть, PASS/FAIL в процессе внедрения |
-| [[context-as-docs]] | 🟡 | docs/contracts.md + decisions.md есть, DoD не формализован |
-| [[distill-pattern]] | 🟡 | `/interface`, `/container`, `/deploy` — первые команды |
+| [[context-as-docs]] | ✅ | docs/contracts.md, decisions.md, ui-spec.md, techdebt.md, progress.md |
+| [[distill-pattern]] | ✅ | `/interface`, `/container`, `/deploy` — команды-пайплайны |
 | [[memory-management]] | ❌ | нет flush-протокола |
-| [[model-routing]] | 🟡 | architect/builder на Sonnet, infra-dev на DeepSeek, reviewer на GPT — 3 модели |
-| [[multi-agent-pipeline]] | 🟡 | Первое приближение: 2 primary + 4 subagent |
+| [[model-routing]] | ✅ | build/plan на Sonnet, ui-dev на Sonnet, infra-dev на DeepSeek, reviewer на GPT |
+| [[multi-agent-pipeline]] | ✅ | 2 primary + 4 subagent, команды через .opencode/command/ |
 
 ---
 
@@ -188,12 +118,13 @@ env-guard.js · notify.js
 
 ---
 
-## После деплоя (что модернизируем)
-- Полноценный `/pipeline` — architect → builder → reviewer
+## После UI (что модернизируем)
+- Мультиклиентность: профили клиентов, API /clients
+- Мультипровайдерность: фолбек-цепочка LLM, API /providers
+- Закрытие техдолга (docs/techdebt.md) — провайдеры, project_id, date, валидация
 - verifier-pattern ✅ — reviewer с PASS/FAIL
 - closed-loop — авто-итерация
 - memory-management — flush-протокол
-- model-routing — полное разведение
 - SERP Factory: вторая линия (новый продукт)
 
 ---
@@ -201,5 +132,5 @@ env-guard.js · notify.js
 ## Лог изменений
 - 2026-06-26: карточка заведена из состояния репо
 - 2026-06-29: обновлён стек, статусы методов
-- 2026-06-30: ревью — модели, stack, labeler
-- 2026-06-30: **SERP Factory** — SERPlux как продукт фабрики. Агенты: architect, ux-dev, infra-dev. Команды: /interface, /container, /deploy. Дедлайн деплоя: сегодня.
+- 2026-06-30: ревью — модели, stack, labeler; SERP Factory — SERPlux как продукт
+- 2026-07-02: **Core ✅, Docker ✅, Deploy ✅**. Созданы агенты ui-dev + infra-dev. Команды /interface, /container, /deploy. Приоритет — веб-интерфейс.

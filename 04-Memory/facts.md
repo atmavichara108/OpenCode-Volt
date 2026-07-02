@@ -51,11 +51,12 @@ timestamp: 2026-06-27
 ### SERPlux
 - Репо: `/home/rudra/Projects/serp`
 - GitHub remote: `atmavichara108/SERPlux`
-- Стек: Python 3.11+ / requests / gspread / FastAPI / DeepSeek (labeler) / SQLite
-- OpenCode-агенты: build (Sonnet 4.6), plan (Sonnet 4.6), collector-dev (Sonnet 4.6, subagent), reviewer (GPT-5.3-codex, subagent)
-- Команд OpenCode нет
+- Стек: Python 3.11+ / requests / gspread / FastAPI / DeepSeek (labeler) / SQLite / Jinja2 / Tailwind CSS / Docker
+- OpenCode-агенты: 6 агентов — build (Sonnet 4.6, primary), plan (Sonnet 4.6, primary), collector-dev (Sonnet 4.6, subagent), reviewer (GPT-5.3-codex, subagent), ui-dev (Sonnet 4.6, subagent), infra-dev (DeepSeek v4-flash-free, subagent)
+- Команды OpenCode: `/interface` (ui-dev), `/container` (infra-dev), `/deploy` (infra-dev)
 - Плагины: env-guard.js, notify.js
-- Статус методов: context-as-docs 🟡, model-routing 🟡, остальные ❌
+- Статус: Core ✅, Docker ✅, Deploy ✅, Web UI ❌ (приоритет)
+- Статус методов: context-as-docs ✅, model-routing ✅, multi-agent-pipeline ✅, distill-pattern ✅, verifier-pattern 🟡, closed-loop ❌, memory-management ❌
 
 ### dv-hub
 - Репо: `/home/rudra/Projects/dv-hub`
