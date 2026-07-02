@@ -47,7 +47,7 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Tailwin
 - Закрытие техдолга (docs/techdebt.md)
 
 ### ⏸ Приостановлено
-- **Web UI** — не запрошено заказчиком. Требует отдельного ADR. docs/ui-spec.md Q20.
+- **Web UI** — ADR от 2026-07-02: единственный UI = Google Sheets. Веб-фронт не строим без явного запроса заказчика.
 
 ---
 
@@ -127,4 +127,4 @@ env-guard.js · notify.js
 - 2026-06-26: карточка заведена из состояния репо
 - 2026-06-29: обновлён стек, статусы методов
 - 2026-06-30: ревью — модели, stack, labeler; SERP Factory — SERPlux как продукт
-- 2026-07-02: **Core ✅, Docker ✅, Deploy ✅**. Созданы агенты ui-dev + infra-dev. Команды /interface, /container, /deploy. Web UI — приостановлено (не запрошено заказчиком, требуется ADR).
+- 2026-07-02: **Core ✅, Docker ✅, Deploy ✅**. Созданы агенты ui-dev + infra-dev. Команды /interface, /container, /deploy. **ADR: интерфейс = только Google Sheets**, Web UI не строим.
