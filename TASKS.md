@@ -24,6 +24,7 @@ timestamp: 2026-06-27
 | ID | Задача | Приоритет | Связано |
 |----|--------|-----------|---------|
 | T-028 | Планирование новой архитектуры: 4 направления (Phone Remote, VibeAndroid, ProdWatch, Rudra AI) — **пауза, активен SERPlux** | P2 | [[99-Inbox]] |
+| T-046 | R-005: Project Orchestrator — оркестрация из волта всеми проектами + Android-управление | P2 | [[99-Inbox]] (R-005) |
 | T-015 | Telegram-бот для приёма фич и подходов | P5 | [[DEVELOPMENT-ROADMAP]] |
 | T-016 | Классификация фич по проектам (автомат) | P5 | [[DEVELOPMENT-ROADMAP]] |
 | T-017 | Команда `/project-upgrade` — авто-внедрение методов | P5 | [[DEVELOPMENT-ROADMAP]] |
