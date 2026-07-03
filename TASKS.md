@@ -61,6 +61,7 @@ timestamp: 2026-06-27
 | ID | Задача | Приоритет | Когда | Связано |
 |----|--------|-----------|-------|---------|
 | T-051 | Git pre-commit hook + commit-guard плагин (tool.execute.before) — неотвратимый гейт: pytest перед коммитом | P1 | 2026-07-03 | [[03-Projects/SERPlux]], [[01-Reference/plugins]] |
+| T-056 | Инфраструктурный техдолг Уровня 0: модель librarian, verifier, факты, /done, session-flush | P1 | 2026-07-03 | [[01-Reference/agents]], [[01-Reference/commands]], [[01-Reference/plugins]], [[04-Memory/facts]] |
 | T-052 | Глобальный мета-агент infra (@meta) — создан ~/.config/opencode/agent/meta.md, виден из всех проектов | P1 | 2026-07-02 | [[01-Reference/agents]] |
 | T-044 | SERPlux: создать ui-dev + infra-dev агентов, команды /interface /container /deploy, актуализировать карточку | P1 | 2026-07-02 | [[03-Projects/SERPlux]] |
 | T-020 | Создать VibeOS — концептуальный дашборд системы вайбкодинга | P2 | 2026-06-30 | [[VibeOS]] |
