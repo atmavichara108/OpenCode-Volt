@@ -13,6 +13,7 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Docker
 **Статус:** Core ✅, Docker ✅, Deploy ✅. Интерфейс = Google Sheets. Web UI — приостановлено (не запрошено заказчиком, требуется ADR). Безопасность: тесты пройдены, техдолг зафиксирован.
 
 **Окружение:** Python venv / Docker. Секреты в `.env` (см. `.env.example`).
+**Структура:** FLAT layout — все модули (.py) в корне репозитория. Каталога `src/` нет и не будет.
 **Запуск (dev):** `python main.py`
 **Запуск (prod):** `docker compose up -d`
 **Провайдер:** OpenCode Zen (primary) + DeepSeek (labeler)
