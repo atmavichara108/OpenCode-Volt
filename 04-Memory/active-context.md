@@ -1,7 +1,7 @@
 ---
 type: Active Context
 title: Активный контекст
-description: SERPlux — Core ✅, Docker ✅, Deploy ✅, мультиклиентность ✅. plan-агент: делегирование build ✅. Приоритет: мультипровайдерность + техдолг.
+description: SERPlux — Core ✅, Docker ✅, Deploy ✅, мультиклиентность ✅. plan-агент: делегирование build ✅. dotfiles + vault прокачаны (verifier, closed-loop, flush). Приоритет: мультипровайдерность.
 tags: [memory]
 timestamp: 2026-07-03
 ---
@@ -11,11 +11,11 @@ timestamp: 2026-07-03
 > Автоматически обновляется librarian. Читается при старте каждой сессии.
 
 ## Текущий фокус
-- **Проекты:** dotfiles + vault (одновременная прокачка)
-- **Задача:** verifier-pattern + closed-loop в dotfiles, memory-management flush-протокол (dotfiles + vault). SERPlux: мультипровайдерность — следующий приоритет.
+- **Проекты:** SERPlux — мультипровайдерность (следующий приоритет). dotfiles и vault — прокачка завершена.
+- **Задача:** SERPlux: мультипровайдерность (T-045, следующая итерация)
 
 ## Активная задача
-dotfiles: verifier (T-059) + /loop (T-060) + flush-протокол (T-061). vault: flush-протокол (T-061). Параллельная прокачка двух проектов.
+SERPlux: мультипровайдерность (T-045, следующая итерация)
 
 ## Завершённые изменения (все сессии)
 - [x] README.md — визитка репозитория как VibeOS (для GitHub, основа для лендинга)
@@ -39,6 +39,9 @@ dotfiles: verifier (T-059) + /loop (T-060) + flush-протокол (T-061). vau
 - [x] SERPlux T-002: режим `domains` разметки + справочник `domain_labels` + `confidence` (без LLM)
 - [x] SERPlux T-003: идемпотентность migrate.py (любое состояние БД)
 - [x] SERPlux T-004: расширение POST /run (client_id, label_mode=domains default, force_relabel) + валидация. 111/111 тестов.
+- [x] T-059: verifier-pattern в dotfiles — `.opencode/subagent/verifier.md`, builder whitelist
+- [x] T-060: closed-loop в dotfiles — `.opencode/command/loop.md` (build → verify → fix, HARD STOP 5)
+- [x] T-061: flush-протокол (dotfiles + vault) — pre-compaction flush, /flush команда, planner scoped edit, librarian flush перед compact
 
 ## Отложено (P5 будущее)
 - T-015: Telegram-бот для классификации фич
@@ -51,4 +54,4 @@ dotfiles: verifier (T-059) + /loop (T-060) + flush-протокол (T-061). vau
 - (нет открытых вопросов на данный момент)
 
 ## Последнее обновление
-2026-07-03 — SERPlux: мультиклиентность + domains mode (T-001..T-004, 111 тестов). Актуализация волта по реальному состоянию репо. Приоритет сместился на мультипровайдерность.
+2026-07-03 — dotfiles: verifier+closed-loop+flush (T-059/060/061). vault: flush-протокол. VibeOS v0.2.5. Следующий приоритет: SERPlux мультипровайдерность.
