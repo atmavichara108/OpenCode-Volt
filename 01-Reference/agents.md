@@ -71,7 +71,7 @@ color: "#hex"|primary|accent|...
 | build | primary | opencode-go/kimi-k2.7-code | Основная разработка |
 | plan | primary | opencode-go/glm-5.2 | Планирование, анализ |
 | collector-dev | subagent | opencode-go/kimi-k2.7-code | Topvisor API + сбор данных |
-| reviewer | subagent | opencode-go/glm-5.2 | PASS/FAIL верификация |
+| reviewer | subagent | opencode-go/glm-5.2 | Код-ревью: контракты, безопасность, идемпотентность |
 | ui-dev | subagent | opencode-go/kimi-k2.7-code | Google Sheets UI (Apps Script). Web UI — будущая опция под ADR |
 | infra-dev | subagent | opencode-go/qwen3.7-plus | Docker, deploy, серверная инфраструктура |
 
@@ -101,4 +101,4 @@ color: "#hex"|primary|accent|...
 
 | Агент | Mode | Модель | Назначение |
 |-------|------|--------|-----------|
-| librarian | primary | deepseek-v4-flash-free | Командный центр знаний |
+| librarian | primary | opencode-go/glm-5.2 | Командный центр знаний |
