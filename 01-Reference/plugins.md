@@ -112,6 +112,7 @@ export const CustomToolsPlugin: Plugin = async (ctx) => {
 | commit-guard | SERPlux (.js) | перехватывает `git commit` через `tool.execute.before`, запускает pytest, блокирует если FAIL |
 | notify | SERPlux (.js), dv-hub (.ts) | уведомления (звук/сообщение) о событиях (`session.*`) |
 | compaction | dv-hub (.ts) | управление сжатием длинного контекста (`experimental.session.compacting`) |
+| session-flush | глобальный (.ts) | копит `file.edited`, при `session.idle` дописывает в `04-Memory/session-log/YYYY-MM-DD.md`. Детерминированный, агентов не вызывает |
 
 ## Заметки
 - В SERPlux плагины на `.js`, в dv-hub на `.ts` — стоит унифицировать [проверить какой формат предпочтительнее].

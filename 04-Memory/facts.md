@@ -3,7 +3,7 @@ type: Fact Registry
 title: Реестр фактов
 description: Подтверждённые факты об OpenCode и проектах. Факты попадают сюда после разрешения [проверить].
 tags: [memory]
-timestamp: 2026-07-02
+timestamp: 2026-07-03
 ---
 # Реестр фактов
 
@@ -24,11 +24,16 @@ timestamp: 2026-07-02
 
 ### Конфигурация
 - `opencode.json` — корневой конфиг: `default_agent: librarian`, `lsp: true`, `$schema`, модель `opencode-go/deepseek-v4-flash-free` (дефолт для субагентов).
-- Модель librarian: `opencode-go/glm-5.2` (сильная модель Go-подписки для дирижёра).
+- Модель librarian: `opencode-go/qwen3.7-plus` (сильная модель Go-подписки для дирижёра).
 - Субагенты general/build/explore явно зафиксированы на Go-моделях (не наследуют от вызывающего).
 - `steps` в агенте = число шагов агента (действий). `steps: 15` достаточно для задач командного центра.
 - `doom_loop: allow` — разрешает recovery-промпты при повторах.
 - `budgetTokens` — не включён в конфиг волта (не требуется для командного центра).
+
+### Папки агентов и плагины
+- Папки агентов: глобальные = `~/.config/opencode/agent/` (ед.ч.), SERPlux = `.opencode/agents/` (мн.ч.). Verifier и meta — глобальные субагенты, видны в проектах через мёрж (OpenCode свежей версии).
+- `commit-guard` плагин = неотвратимый гейт на `tool.execute.before`.
+- `session-flush` плагин (глобальный, `~/.config/opencode/plugins/`) — копит `file.edited`, при `session.idle` дописывает в `04-Memory/session-log/YYYY-MM-DD.md`. Детерминированный, агентов не вызывает.
 
 ### Права и система плагинов
 - `permissions` в opencode.json — права доступа для агента (external_directory, bash, edit и т.д.).
@@ -91,8 +96,8 @@ timestamp: 2026-07-02
 ### vault (OpenCode-Vault)
 - Репо: `/home/rudra/Projects/OpenCode-Vault`
 - Это командный центр знаний, не код проекта
-- 1 агент: librarian (opencode-go/glm-5.2, primary)
-- 6 команд: /ask · /capture · /project · /commit · /project-add · /audit
+- 1 агент: librarian (opencode-go/qwen3.7-plus, primary)
+- 7 команд: /ask · /capture · /project · /commit · /project-add · /audit · /done (глобальная)
 - Pre-commit hook: проверка пустых файлов + валидация викилинков
 - 6 методов заполнены в 02-Methods/
 - Статус методов (собственные): context-as-docs ✅, distill-pattern ✅, memory-management 🟡, model-routing ➖, closed-loop ✅, verifier-pattern ✅

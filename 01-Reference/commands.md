@@ -3,7 +3,7 @@ type: Reference
 title: OpenCode — Команды
 description: Определение команд (opencode.json / .opencode/command/), фронтматтер, плейсхолдеры, встроенные.
 tags: [opencode, commands]
-timestamp: 2026-07-02
+timestamp: 2026-07-03
 ---
 # OpenCode: Команды
 
@@ -44,6 +44,7 @@ subtask: true           # форсить вызов как subagent (не зас
 | [`/commit`](/.opencode/command/commit.md) | librarian | Закоммитить изменения в волте (subtask) |
 | [`/project-add`](/.opencode/command/project-add.md) | librarian | Создать карточку нового проекта: имя путь описание [тип] [стек] |
 | [`/audit`](/.opencode/command/audit.md) | librarian | Аудит проектов: pull, сверка карточки с репо. Без аргумента — все проекты |
+| [`/done`](~/.config/opencode/command/done.md) | librarian | Протокол завершения задачи: TASKS.md → Done, описание созданного, VibeOS, active-context, коммит |
 
 ## Кастомные команды проектов
 

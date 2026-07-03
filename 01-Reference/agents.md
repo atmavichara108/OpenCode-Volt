@@ -101,4 +101,4 @@ color: "#hex"|primary|accent|...
 
 | Агент | Mode | Модель | Назначение |
 |-------|------|--------|-----------|
-| librarian | primary | opencode-go/glm-5.2 | Командный центр знаний |
+| librarian | primary | opencode-go/qwen3.7-plus | Командный центр знаний |
