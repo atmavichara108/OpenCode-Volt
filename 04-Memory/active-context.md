@@ -18,13 +18,6 @@ timestamp: 2026-07-03
 Реализация веб-интерфейса SERPlux через команду `/interface` (агент ui-dev) в репо SERPlux (`/home/rudra/Projects/serp`).
 Волт: мониторинг, документация, поддержка архитектуры.
 
-## Что сделано в этой сессии (2026-07-02, part2)
-- [x] Централизованное удаление claude-mem из экосистемы
-  - [x] Удалён плагин `~/.config/opencode/plugins/claude-mem.js`
-  - [x] Очищен `~/.config/opencode/AGENTS.md` (блок `<claude-mem-context>`)
-  - [x] Обновлён `02-Methods/memory-management.md` (убрана строка с `[проверить]`)
-- [x] Создан бэкап `claude-mem.js.bak`
-
 ## Завершённые изменения (все сессии)
 - [x] README.md — визитка репозитория как VibeOS (для GitHub, основа для лендинга)
 - [x] LICENSE — GPL-3.0 (copyleft + коммерция разрешена) + секция в README + упоминание фонда инженера
@@ -37,6 +30,11 @@ timestamp: 2026-07-03
 - [x] Модель librarian: Claude Sonnet 4.6 → DeepSeek v4-flash-free
 - [x] OKF v0.1 — полная архитектура волта, 6 методов, 4 карточки проектов, память, трекер
 - [x] SERPlux: агенты ui-dev + infra-dev, команды /interface /container /deploy, карточка актуализирована
+- [x] Централизованное удаление claude-mem из экосистемы (плагин, AGENTS.md, memory-management.md, бэкап)
+- [x] Инфраструктурный техдолг Уровня 0 (T-056): модель librarian qwen3.7-plus, verifier whitelist, факты, /done, session-flush
+- [x] Убрана привязка `agent: librarian` из /done — команда работает во всех проектах
+- [x] Создан `01-Reference/global-config.md` — документация глобальной инфраструктуры (~/.config/opencode/)
+- [x] Фикс commit-guard (T-057): pytest-вывод захвачен через `.quiet()`, TUI чист
 
 ## Отложено (P5 будущее)
 - T-015: Telegram-бот для классификации фич
@@ -47,18 +45,6 @@ timestamp: 2026-07-03
 
 ## Открытые вопросы
 - (нет открытых вопросов на данный момент)
-
-## Что сделано в этой сессии (2026-07-03)
-- [x] Инфраструктурный техдолг Уровня 0
-  - [x] Модель librarian: glm-5.2 → qwen3.7-plus
-  - [x] Синхронизация модели в agents.md (таблица vault)
-  - [x] verifier.md: bash-whitelist python → ./venv/bin/python
-  - [x] Факты: папки агентов (ед./мн.ч.), commit-guard, session-flush
-  - [x] Команда /done (протокол завершения задачи)
-  - [x] Плагин session-flush (file.edited → session-log при idle)
-- [x] Убрана привязка `agent: librarian` из /done (команда теперь работает во всех проектах)
-- [x] Создан 01-Reference/global-config.md — документация глобальной инфраструктуры (~/.config/opencode/)
-- [x] Фикс commit-guard: pytest-вывод захватывается через `.quiet()`, в TUI только итог
 
 ## Последнее обновление
 2026-07-03 — Фикс commit-guard (pytest-вывод), документация глобальной конфигурации.
