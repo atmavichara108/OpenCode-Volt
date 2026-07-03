@@ -52,32 +52,32 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Docker
 
 ---
 
-## Агенты (актуально на 2026-07-02)
+## Агенты (актуально на 2026-07-03)
 
 | Агент | Mode | Модель | Назначение | edit |
 |-------|------|--------|-----------|------|
-| **build** | primary | opencode-go/kimi-k2.7-code | Основная разработка | allow |
-| **plan** | primary | opencode-go/glm-5.2 | Планирование, анализ, делегирование build | deny |
-| **collector-dev** | subagent | opencode-go/kimi-k2.7-code | Topvisor + сбор данных | allow |
-| **reviewer** | subagent | opencode-go/glm-5.2 | PASS/FAIL верификация | deny |
-| **ui-dev** | subagent **(PAUSED)** | opencode-go/kimi-k2.7-code | Web UI (приостановлено — требуется ADR) | allow |
-| **infra-dev** | subagent **(NEW)** | opencode-go/qwen3.7-plus | Docker + deploy + сервер | allow |
+| **build** | primary | opencode-go/kimi-k2.7-code | Основная разработка, коммит через `/commit` | allow |
+| **plan** | primary | opencode-go/glm-5.2 | Планирование, анализ, делегирование build (task: build allow) | deny |
+| **collector-dev** | subagent | opencode-go/kimi-k2.7-code | Topvisor + сбор данных (topvisor.py, collector.py) | allow |
+| **reviewer** | subagent | opencode-go/glm-5.2 | PASS/FAIL верификация контрактов | deny |
+| **ui-dev** | subagent | opencode-go/kimi-k2.7-code | Google Sheets UI (Apps Script меню, лист «Настройки») | allow |
+| **infra-dev** | subagent | opencode-go/qwen3.7-plus | Docker, deploy, серверная инфраструктура | allow |
 
 ### ui-dev
 - **Режим:** subagent (вызывается из build или через `/interface`)
-- **Статус:** ⏸ ПРИОСТАНОВЛЕНО — не запрошено заказчиком, требуется ADR
-- **Модель:** claude-sonnet-4-6 (UI требует качества)
-- **Назначение:** проектирование и реализация веб-интерфейса SERPlux (если будет одобрен)
-- **Права:** edit: allow, bash (python*, curl*, cat*, ls*)
-- **Контекст:** Google Sheets (Apps Script). Web UI ⏸ — если одобрят через ADR: FastAPI + Jinja2 + Tailwind
-- **Anti-goals:** не лезть в core-модули (collector, labeler, etc.), не менять Docker
+- **Статус:** ✅ активен — Google Sheets UI (Apps Script). Web UI ⏸ приостановлен (требуется ADR)
+- **Модель:** opencode-go/kimi-k2.7-code
+- **Назначение:** Apps Script меню (apps_script.gs), лист «Настройки», связь Sheets ↔ webhook
+- **Права:** edit: allow, bash (python*, curl*, cat*, ls*; прочее — ask)
+- **Контекст:** Google Sheets — основной UI. Web UI не строим (опция под будущий ADR)
+- **Anti-goals:** не трогать core-модули (.py кроме webhook.py), не менять Docker
 
 ### infra-dev
 - **Режим:** subagent (вызывается из build или через `/container`, `/deploy`)
-- **Модель:** deepseek-v4-flash-free (дешёвая, инфра-задачи)
-- **Назначение:** Docker, docker-compose, deploy, CI/CD, сервер
-- **Права:** edit: allow, bash (docker*, nginx*, certbot*, cat*, ls*)
-- **Контекст:** multi-stage Dockerfile, docker-compose, reverse proxy
+- **Модель:** opencode-go/qwen3.7-plus
+- **Назначение:** Docker, docker-compose, deploy, CI/CD, сервер, reverse proxy, SSL
+- **Права:** edit: allow, bash (docker*, python*, nginx*, certbot*, systemctl*, cat*, ls*, curl*; прочее — ask)
+- **Контекст:** multi-stage Dockerfile (python:3.11-slim, non-root), docker-compose, volume, healthcheck
 - **Anti-goals:** не трогать код приложения (.py файлы)
 
 ---
@@ -86,13 +86,11 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Docker
 
 | Команда | Агент | Что делает |
 |---------|-------|-----------|
-| `/interface` | ui-dev | Веб-интерфейс (⏸ приостановлено — требуется ADR) |
+| `/commit` | build (deepseek-v4-flash, subtask) | Коммит с conventional-сообщением; тесты — через commit-guard |
+| `/interface` | ui-dev | Google Sheets UI: Apps Script меню, лист «Настройки», webhook |
 | `/container` | infra-dev | Создать/обновить Dockerfile + docker-compose |
 | `/deploy` | infra-dev | Развернуть на сервере: проверка, обновление, proxy, SSL |
-| `/review` | reviewer (через build) | Code review по запросу |
-  }
-}
-
+| `/dream` | build | Финальный memory-flush сессии в docs/ (decisions/progress/techdebt) |
 
 ---
 
@@ -131,3 +129,4 @@ env-guard.js · notify.js · compaction.js
 - 2026-07-02: **Core ✅, Docker ✅, Deploy ✅**. Созданы агенты ui-dev + infra-dev. Команды /interface, /container, /deploy. **ADR: интерфейс = только Google Sheets**, Web UI не строим.
 - 2026-07-03: Шаг 4 memory-management — плагин `compaction.js` (flush в docs/decisions.md + persistent-context в summary), команда `/dream`, правило flush-протокола в AGENTS.md. Статус метода: ❌ → 🟡.
 - 2026-07-03: plan-агент → `.opencode/agents/plan.md` (был inline в opencode.json). Добавлено `task: { build: allow }` — plan делегирует исполнение build через task-tool. edit/bash deny сохранены.
+- 2026-07-03: **Актуализация карточки по реальному состоянию репо.** Агенты: ui-dev — активен (Google Sheets UI, kimi-k2.7-code), не PAUSED; infra-dev — qwen3.7-plus (не deepseek-v4-flash). Команды: добавлены `/commit` и `/dream`, убран несуществующий `/review`. Убран мусор (stray `}`). Таблицы агентов/команд приведены в соответствие с `.opencode/`.
