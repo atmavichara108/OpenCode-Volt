@@ -34,7 +34,7 @@ timestamp: 2026-06-29
 > 📊 **Сводка:** `/audit` — проверить все проекты · Таблица статусов методов ниже · Новые проекты в planning
 
 ## Reference (возможности OpenCode)
-[[agents]] · [[commands]] · [[config]] · [[memory]] · [[permissions]] · [[plugins]]
+[[agents]] · [[commands]] · [[config]] · [[global-config]] · [[memory]] · [[permissions]] · [[plugins]]
 
 ## Methods (мои приёмы)
 [[closed-loop]] · [[verifier-pattern]] · [[context-as-docs]] · [[memory-management]] · [[model-routing]] · [[distill-pattern]] · [[multi-agent-pipeline]]
