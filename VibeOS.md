@@ -1,13 +1,13 @@
 ---
 type: VibeOS
 title: VibeOS — Персональная система вайбкодинга
-version: 0.2.3
+version: 0.2.4
 description: Концептуальный дашборд-путеводитель по стилю, методам, проектам и философии Max Rudra как вайбкодера.
-timestamp: 2026-06-30
+timestamp: 2026-07-03
 tags: [meta, system, vibe-coding]
 ---
 
-# VibeOS v0.2.3 — Персональная система вайбкодинга
+# VibeOS v0.2.4 — Персональная система вайбкодинга
 
 > Это не журнал. Это концептуальный слепок того, как я кодирую и какие экосистемы и пайплайны создаю с ИИ. Своеобразный дашборд, показывает какие подходы и 
 > приёмы использую, какие проекты веду и куда расту. Версионируется вместе со
@@ -122,13 +122,13 @@ tags: [meta, system, vibe-coding]
 
 | Метод | SERPlux | dv-hub | dotfiles | vault |
 |-------|---------|--------|----------|-------|
-| [[02-Methods/context-as-docs\|context-as-docs]] | 🟡 | 🟡 | ✅ | ✅ |
-| [[02-Methods/distill-pattern\|distill-pattern]] | 🟡 | ✅ | ✅ | ✅ |
-| [[02-Methods/memory-management\|memory-management]] | ❌ | 🟡 | 🟡 | 🟡 |
-| [[02-Methods/model-routing\|model-routing]] | 🟡 | ✅ | ➖ | ➖ |
-| [[02-Methods/closed-loop\|closed-loop]] | ❌ | ❌ | 🟡 | ❌ |
-| [[02-Methods/verifier-pattern\|verifier-pattern]] | 🟡 | ❌ | 🟡 | ❌ |
-| [[02-Methods/multi-agent-pipeline\|multi-agent-pipeline]] | 🟡 | ❌ | ✅ | ❌ |
+| [[02-Methods/context-as-docs\|context-as-docs]] | ✅ | 🟡 | ✅ | ✅ |
+| [[02-Methods/distill-pattern\|distill-pattern]] | ✅ | ✅ | ✅ | ✅ |
+| [[02-Methods/memory-management\|memory-management]] | 🟡 | 🟡 | 🟡 | 🟡 |
+| [[02-Methods/model-routing\|model-routing]] | ✅ | ✅ | ➖ | ➖ |
+| [[02-Methods/closed-loop\|closed-loop]] | ✅ | ❌ | 🟡 | ❌ |
+| [[02-Methods/verifier-pattern\|verifier-pattern]] | ✅ | ❌ | 🟡 | ❌ |
+| [[02-Methods/multi-agent-pipeline\|multi-agent-pipeline]] | ✅ | ❌ | ✅ | ❌ |
 
 ### Легенда
 
@@ -152,40 +152,38 @@ dv-hub — 7 команд (`/morning`, `/spec`, `/review`, `/hygiene`, `/sync-co
 - **dv-hub**: `docs/architecture.md` (ADR), `docs/product-vision.md`,
   `context/` submodule, AGENTS.md. Сильная база, но без формального DoD.
 
-#### ✅ model-routing (dv-hub)
-dv-hub — полная реализация static routing: 5 агентов на 4 моделях
-(plan=qwen3.7-max, build=deepseek-v4-flash, reviewer=deepseek-v4-pro,
-researcher=qwen3.6-plus, infra=qwen3.7-max). Роли разведены по назначению.
+#### ✅ model-routing (dv-hub + SERPlux)
+- **dv-hub** — полная реализация static routing: 5 агентов на 4 моделях
+  (plan=qwen3.7-max, build=deepseek-v4-flash, reviewer=deepseek-v4-pro,
+  researcher=qwen3.6-plus, infra=qwen3.7-max). Роли разведены по назначению.
+- **SERPlux** — 6 агентов на 3 моделях: build/collector-dev/ui-dev на
+  kimi-k2.7-code, plan/reviewer на glm-5.2, infra-dev на qwen3.7-plus.
+  Роли разведены по назначению и стоимости.
 
-#### 🟡 model-routing (SERPlux)
-build/plan/collector-dev на Sonnet 4.6, reviewer на GPT-5.3-codex —
-частичное разведение (только reviewer отделён).
-
-#### 🟡 memory-management (dv-hub + vault)
+#### 🟡 memory-management (все проекты)
+- **SERPlux**: плагин `compaction.js` (flush summary в docs/decisions.md +
+  persistent-context в summary) + команда `/dream` (финальный flush сессии).
 - **dv-hub**: плагин `compaction.ts` управляет сжатием. Flush-протокол не
   реализован.
 - **vault**: 04-Memory/ (active-context + facts + session-log). Flush-протокол
   не формализован (librarian пишет в конце сессии, не перед компакцией).
 
-#### ❌ closed-loop (все проекты)
-Нигде не внедрён. Нет команды `/loop`, нет автономной итерации
-build → verify → fix. Самый жирный кандидат на апгрейд.
+#### ✅ closed-loop (SERPlux)
+SERPlux — `/loop` создан (глобальный), зависит от @verifier. Автономная
+итерация build → verify → fix доступна. dv-hub/dotfiles — кандидаты.
 
-#### ❌ verifier-pattern (все проекты)
-Нет агента-верификатора, который проверяет работу независимо. build сам себе
-судья — дыры и баги просачиваются.
+#### ✅ verifier-pattern (SERPlux)
+SERPlux — `verifier.md` создан (GLM-5.2), PASS/FAIL верификация контрактов
+активна. reviewer как subagent с deny-edit. dv-hub/dotfiles — кандидаты.
 
-#### ✅ multi-agent-pipeline (dotfiles)
-dotfiles v2 — эталонная реализация: 3 primary + 4 subagent, 8 пайплайнов,
-память (user-profile + decisions), UX-осознанность. Паттерн описан в
-[[02-Methods/multi-agent-pipeline|multi-agent-pipeline]] и может быть
-воспроизведён для любого проекта с несколькими доменами.
-
-#### 🟡 multi-agent-pipeline (SERPlux — Factory variant)
-SERPlux как первый продукт [[03-Projects/SERPlux|SERP Factory]]:
-- Агенты: architect + builder + ux-dev + infra-dev + collector-dev + reviewer
-- Команды (first approximation): `/interface`, `/container`, `/deploy`, `/review`
-- Статус: 🟡 — архитектура спроектирована, внедрение в процессе (дедлайн сегодня)
+#### ✅ multi-agent-pipeline (dotfiles + SERPlux)
+- **dotfiles v2** — эталонная реализация: 3 primary + 4 subagent, 8 пайплайнов,
+  память (user-profile + decisions), UX-осознанность. Паттерн описан в
+  [[02-Methods/multi-agent-pipeline|multi-agent-pipeline]] и может быть
+  воспроизведён для любого проекта с несколькими доменами.
+- **SERPlux** — Factory variant: 2 primary (build, plan) + 4 subagent
+  (collector-dev, reviewer, ui-dev, infra-dev), 5 команд-пайплайнов.
+  plan делегирует исполнение build через task-tool (`task: { build: allow }`).
 
 ---
 
@@ -193,19 +191,23 @@ SERPlux как первый продукт [[03-Projects/SERPlux|SERP Factory]]:
 
 | Проект | Тип | Стек | Стадия | OpenCode |
 |--------|-----|------|--------|----------|
-| [[03-Projects/SERPlux\|SERPlux]] | Продукт SERP Factory | Python/FastAPI/SQLite/Tailwind/Docker | Core готов | UI + Docker + Deploy | ✅ (6 агентов) |
+| [[03-Projects/SERPlux\|SERPlux]] | Продукт SERP Factory | Python/FastAPI/SQLite/Docker | Core ✅, Docker ✅, Deploy ✅, мультиклиентность ✅ | ✅ (6 агентов) |
 | [[03-Projects/dv-hub\|dv-hub]] | Волонтёрский | TS/Hono/better-sqlite3 | Активная разработка | ✅ (6 агентов) |
 | [[03-Projects/dotfiles\|dotfiles]] | Система | shell/конфиги Manjaro | Мульти-агент v2 | ✅ (7 агентов) |
 | [[03-Projects/vault\|vault]] | Справочник | markdown/OpenCode | ✅ Рабочий командный центр | ✅ (librarian) |
 
 ### SERPlux — первый продукт SERP Factory
 **Сбор позиций Google** через Topvisor Snapshots API → классификация URL
-(DeepSeek) → выгрузка в Google Sheets. Core готов.
-- **Сейчас:** UI (FastAPI + Tailwind) + Docker + Deploy на сервер (дедлайн сегодня)
-- **Методы:** context-as-docs 🟡, distill-pattern 🟡, model-routing 🟡, verifier-pattern 🟡, multi-agent-pipeline 🟡, closed-loop ❌, memory-management ❌
-- **Агенты:** architect (Sonnet 4.6), builder (Sonnet 4.6), ux-dev (Sonnet 4.6), infra-dev (DeepSeek-free), collector-dev (Sonnet 4.6), reviewer (GPT-5.3-codex)
-- **Команды:** /interface, /container, /deploy, /review
-- **Болевая точка:** нет CI, нет closed-loop, память не управляется
+(DeepSeek) → выгрузка в Google Sheets. **Core ✅, Docker ✅, Deploy ✅,
+мультиклиентность ✅.** Интерфейс = Google Sheets (ADR от 2026-07-02: Web UI
+не строим без явного запроса заказчика). FLAT layout — все модули в корне репо.
+- **Сейчас:** приоритет — мультипровайдерность (фолбек-цепочка LLM, API
+  /providers) + закрытие техдолга (httpx/starlette deprecation). 111/111 тестов.
+- **Методы:** context-as-docs ✅, distill-pattern ✅, model-routing ✅, verifier-pattern ✅, multi-agent-pipeline ✅, closed-loop ✅, memory-management 🟡
+- **Агенты:** build (kimi-k2.7-code), plan (glm-5.2), collector-dev (kimi-k2.7-code), reviewer (glm-5.2), ui-dev (kimi-k2.7-code), infra-dev (qwen3.7-plus)
+- **Команды:** /commit, /container, /deploy, /dream, /interface (5 команд)
+- **Плагины:** env-guard.js, notify.js, compaction.js, commit-guard.js
+- **CI:** commit-guard.js (проверка перед коммитом)
 
 ### dv-hub
 **Платформа сообщества** (re-search.wiki). Миграция с Cloudflare на VPS.
@@ -240,12 +242,12 @@ SERPlux как первый продукт [[03-Projects/SERPlux|SERP Factory]]:
 | Агент | Проект | Mode | Модель | Назначение |
 |-------|--------|------|--------|-----------|
 | librarian | vault | primary | deepseek-v4-flash-free | Командный центр |
-| architect | SERPlux | primary | claude-sonnet-4-6 | Архитектура, спеки |
-| builder | SERPlux | primary | claude-sonnet-4-6 | Разработка |
-| collector-dev | SERPlux | subagent | claude-sonnet-4-6 | Модуль сбора |
-| ux-dev | SERPlux | subagent | claude-sonnet-4-6 | Web UI (FastAPI + Tailwind) |
-| infra-dev | SERPlux | subagent | deepseek-v4-flash-free | Docker + deploy |
-| reviewer | SERPlux | subagent | gpt-5.3-codex | Ревью |
+| build | SERPlux | primary | kimi-k2.7-code | Основная разработка, коммит через /commit |
+| plan | SERPlux | primary | glm-5.2 | Планирование, анализ, делегирование build (task: build allow) |
+| collector-dev | SERPlux | subagent | kimi-k2.7-code | Topvisor + сбор данных |
+| reviewer | SERPlux | subagent | glm-5.2 | PASS/FAIL верификация контрактов |
+| ui-dev | SERPlux | subagent | kimi-k2.7-code | Google Sheets UI (Apps Script) |
+| infra-dev | SERPlux | subagent | qwen3.7-plus | Docker, deploy, сервер |
 | build | dv-hub | primary | deepseek-v4-flash | Разработка |
 | plan | dv-hub | primary | qwen3.7-max | Планирование |
 | reviewer | dv-hub | subagent | deepseek-v4-pro | Ревью |
@@ -268,8 +270,8 @@ SERPlux как первый продукт [[03-Projects/SERPlux|SERP Factory]]:
 `/morning` · `/spec` · `/review` · `/hygiene` · `/sync-context` ·
 `/sync-context-self` · `/sync-task`
 
-**SERPlux (4 команды, first approximation):**
-`/interface` · `/container` · `/deploy` · `/review`
+**SERPlux (5 команд):**
+`/commit` · `/container` · `/deploy` · `/dream` · `/interface`
 
 **dotfiles (8 команд):**
 `/sysaudit` · `/script` · `/qtile` · `/util` · `/prompt` · `/notify` · `/macro` · `/plugin`
@@ -280,7 +282,8 @@ SERPlux как первый продукт [[03-Projects/SERPlux|SERP Factory]]:
 |--------|-----|------|-----------|
 | env-guard | SERPlux + dv-hub | .js / .ts | Защита .env |
 | notify | SERPlux + dv-hub | .js / .ts | Уведомления |
-| compaction | dv-hub | .ts | Управление сжатием контекста |
+| compaction | SERPlux + dv-hub | .js / .ts | Управление сжатием контекста (flush summary) |
+| commit-guard | SERPlux | .js | Проверка перед коммитом (CI) |
 
 ### Шаблоны (05-Templates/)
 
@@ -304,8 +307,18 @@ SERPlux как первый продукт [[03-Projects/SERPlux|SERP Factory]]:
 - **6 методов в 02-Methods/** — все описаны, статусы проставлены
 - **Distill-pattern в dv-hub** — 7 команд, работает в production
 - **Distill-pattern в dotfiles** — 8 пайплайнов, мульти-агентная архитектура
+- **Distill-pattern в SERPlux** — 5 команд (/commit, /container, /deploy, /dream, /interface)
 - **Мульти-агент dotfiles** — 3 primary + 4 subagent, память, UX-профиль
+- **Мульти-агент SERPlux** — 2 primary + 4 subagent, 5 команд-пайплайнов
+- **Verifier-pattern в SERPlux** — reviewer (glm-5.2), PASS/FAIL верификация контрактов
+- **Closed-loop в SERPlux** — /loop (глобальный) + @verifier, автономная итерация
+- **Model-routing в SERPlux** — 6 агентов на 3 моделях (kimi-k2.7-code / glm-5.2 / qwen3.7-plus)
+- **Делегирование plan→build в SERPlux** — plan (edit deny) делегирует исполнение build через task-tool
+- **FLAT layout в SERPlux** — все модули в корне репо, каталога src/ нет и не будет
+- **Мультиклиентность в SERPlux** — схема clients/positions/labels, режим domains, migrate.py идемпотентен
 - **Плагины env-guard + notify** — в SERPlux и dv-hub
+- **Плагин compaction** — в SERPlux (.js) и dv-hub (.ts), flush summary
+- **Плагин commit-guard в SERPlux** — CI-проверка перед коммитом
 - **Pre-commit hook** — проверка пустых файлов + викилинков
 - **Карточки проектов** — SERPlux, dv-hub, dotfiles, vault — синхронизированы
 - **04-Memory/** — OKF-подбандл: active-context + facts + session-log
@@ -316,10 +329,10 @@ SERPlux как первый продукт [[03-Projects/SERPlux|SERP Factory]]:
 
 | Что | Готовность | Куда внедрять |
 |-----|-----------|--------------|
-| **context-as-docs** формализация | doD-формат описан в методе | SERPlux 🟡→✅, dv-hub 🟡→✅ |
-| **model-routing** | Таблица ролей составлена, модель под каждую роль определена | Оба проекта 🟡→✅ |
-| **memory-management** flush-протокол | Метод описывает pre-compaction flush | dv-hub 🟡→✅ |
-| **Distill-pattern** | 3+ кандидатов на команды | SERPlux ❌→🟡 (/review, /pipeline-check) |
+| **context-as-docs** формализация | doD-формат описан в методе | dv-hub 🟡→✅ |
+| **model-routing** | Таблица ролей составлена, модель под каждую роль определена | dotfiles (после тестов) |
+| **memory-management** flush-протокол | Метод описывает pre-compaction flush | SERPlux 🟡→✅, dv-hub 🟡→✅ |
+| **Distill-pattern** | 3+ кандидатов на команды | dv-hub — расширение, dotfiles — расширение |
 | **dotfiles инициализация** | Карточка, план, sysop-спека — готовы | dotfiles |
 | **session-log архивация** | archive-session-log.sh готов | Настроить cron |
 
@@ -330,10 +343,10 @@ SERPlux как первый продукт [[03-Projects/SERPlux|SERP Factory]]:
 | **Telegram-бот** для фич | P5 roadmap | T-015 |
 | **Классификация фич** по проектам | P5 roadmap | T-016 |
 | **`/project-upgrade`** — авто-внедрение методов | P5 roadmap | T-017 |
-| **Closed-loop** в SERPlux/dv-hub | После verifier | [[02-Methods/closed-loop\|closed-loop]] |
-| **Verifier-pattern** глобальный | След. приоритет | [[02-Methods/verifier-pattern\|verifier-pattern]] |
+| **Closed-loop** в dv-hub | После verifier в dv-hub | [[02-Methods/closed-loop\|closed-loop]] |
+| **Verifier-pattern** в dv-hub | След. приоритет | [[02-Methods/verifier-pattern\|verifier-pattern]] |
 | **VibeOS Telegram-интеграция** | P5+ | T-015 + T-016 |
-| **SERPlux команды** | P3 | /review, /pipeline-check |
+| **Мультипровайдерность SERPlux** | Текущий приоритет | фолбек-цепочка LLM, API /providers |
 
 ---
 
@@ -380,9 +393,25 @@ SERPlux как первый продукт [[03-Projects/SERPlux|SERP Factory]]:
 ### 6. Jamstack-агенты
 Агенты строятся из модулей:
 - Команды — под частые задачи
-- Плагины — под инфраструктурные хуки (env-guard, notify, compaction)
+- Плагины — под инфраструктурные хуки (env-guard, notify, compaction, commit-guard)
 - Шаблоны — для новых проектов и методов
 - AGENTS.md — конвенции проекта
+
+### 7. Делегирование plan→build (SERPlux)
+plan-агент с `edit: deny` и `task: { build: allow }` — думает, но не пишет
+код. Делегирует исполнение build через task-tool. Разделение «думать» и
+«делать» на уровне прав доступа, а не только ролей.
+
+### 8. FLAT layout (SERPlux)
+Отказ от каталога `src/` — все модули (.py) в корне репозитория. Проще
+импорт, меньше слоёв, быстрее навигация. Контракт: FLAT layout — это
+архитектурное решение, а не беспорядок.
+
+### 9. Мультиклиентность через схему БД (SERPlux)
+Схема clients / positions / labels с версионированием меток. Режим `domains`
+разметки — справочник `domain_labels` без LLM, поле `confidence`, параметр
+`client_id`. migrate.py идемпотентен: любое состояние БД → корректная схема.
+111/111 тестов.
 
 ---
 
@@ -394,9 +423,10 @@ SERPlux как первый продукт [[03-Projects/SERPlux|SERP Factory]]:
 - **Аудит проектов** — `/audit`, сверка карточек с репо
 
 ### Что буду осваивать (ближайшие сессии)
-- **Verifier-pattern** — создание глобального subagent-верификатора
-- **Closed-loop** — пилот в dv-hub или SERPlux
-- **SERPlux команды** — дистилляция первых команд
+- **Verifier-pattern в dv-hub** — создание subagent-верификатора по образцу SERPlux
+- **Closed-loop в dv-hub** — пилот по образцу SERPlux (после verifier)
+- **Мультипровайдерность SERPlux** — фолбек-цепочка LLM, API /providers
+- **Memory-management flush-протокол** — формализация pre-compaction flush в SERPlux/dv-hub
 
 ### Долгосрочное развитие
 - **Telegram-бот** — внешний канал приёма фич и подходов
@@ -414,6 +444,27 @@ SERPlux как первый продукт [[03-Projects/SERPlux|SERP Factory]]:
 ---
 
 ## Чейнджлог
+
+### v0.2.4 (2026-07-03)
+- **SERPlux актуализация по реальному состоянию репо:**
+  - Агенты: build (kimi-k2.7-code), plan (glm-5.2), collector-dev (kimi-k2.7-code),
+    reviewer (glm-5.2), ui-dev (kimi-k2.7-code), infra-dev (qwen3.7-plus)
+  - Команды: 5 — /commit, /container, /deploy, /dream, /interface (убран /review)
+  - Плагины: +commit-guard.js (CI), compaction.js теперь и в SERPlux
+- **Статусы методов SERPlux обновлены:**
+  - context-as-docs 🟡→✅, distill-pattern 🟡→✅, model-routing 🟡→✅
+  - closed-loop ❌→✅, verifier-pattern 🟡→✅, multi-agent-pipeline 🟡→✅
+  - memory-management ❌→🟡 (compaction.js + /dream)
+- **Проект SERPlux:** Core ✅, Docker ✅, Deploy ✅, мультиклиентность ✅.
+  UI = Google Sheets (ADR). Приоритет: мультипровайдерность + техдолг.
+- **Нетривиальные решения добавлены:** делегирование plan→build (task-tool),
+  FLAT layout, мультиклиентность через схему БД (clients/positions/labels).
+- **Внедрено:** commit-guard, мультиклиентность, FLAT layout, делегирование
+  plan→build, verifier/closed-loop/distill/model-routing в SERPlux.
+- **В планах:** убрано внедрённое в SERPlux (closed-loop, verifier, команды),
+  добавлена мультипровайдерность SERPlux как текущий приоритет.
+- **Вектор роста:** обновлён — фокус сместился на dv-hub (verifier, closed-loop)
+  и мультипровайдерность SERPlux.
 
 ### v0.2.3 (2026-06-30)
 - **distill-pipeline**: команда `/distill-pipeline` — фиксация состояния пайплайнов
