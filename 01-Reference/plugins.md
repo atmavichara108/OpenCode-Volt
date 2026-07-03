@@ -109,7 +109,7 @@ export const CustomToolsPlugin: Plugin = async (ctx) => {
 | Плагин | Где | Назначение |
 |--------|-----|-----------|
 | env-guard | SERPlux (.js), dv-hub (.ts) | блокирует доступ агента к .env / секретам (`tool.execute.before`) |
-| commit-guard | SERPlux (.js) | перехватывает `git commit` через `tool.execute.before`, запускает pytest, блокирует если FAIL |
+| commit-guard | SERPlux (.js) | перехватывает `git commit` через `tool.execute.before`, запускает pytest (вывод захвачен через `.quiet()`), блокирует если FAIL. В TUI — только итог: "✅ N tests passed" или "❌ FAILED" |
 | notify | SERPlux (.js), dv-hub (.ts) | уведомления (звук/сообщение) о событиях (`session.*`) |
 | compaction | dv-hub (.ts) | управление сжатием длинного контекста (`experimental.session.compacting`) |
 | session-flush | глобальный (.ts) | копит `file.edited`, при `session.idle` дописывает в `04-Memory/session-log/YYYY-MM-DD.md`. Детерминированный, агентов не вызывает |
