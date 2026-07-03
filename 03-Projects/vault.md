@@ -43,7 +43,7 @@ stack: markdown + OpenCode
 | [[verifier-pattern]] | ❌ | не применимо к справочнику |
 | [[context-as-docs]] | ✅ | AGENTS.md + Architecture.md + вся OKF-структура = документация как инфраструктура |
 | [[distill-pattern]] | ✅ | 6 команд в .opencode/command/ |
-| [[memory-management]] | 🟡 | 04-Memory/ (active-context + facts + session-log), flush-протокол не формализован |
+| [[memory-management]] | ✅ | 04-Memory/ (active-context + facts + session-log) + flush-протокол в librarian.md + session-flush плагин (глобальный) |
 | [[model-routing]] | ➖ | один агент, роутинг не нужен |
 
 > Волт — единственный проект, где vault-методы (context-as-docs, distill-pattern) реализованы **по назначению**: волт документирует сам себя.
@@ -75,3 +75,4 @@ stack: markdown + OpenCode
 - 2026-06-27: полный аудит, переименован 99-Inbox, убрано claude-mem, создана 04-Memory, DEVELOPMENT-ROADMAP, обновлён librarian (права + память)
 - 2026-06-29: librarian переписан под командный центр; выполнены T-001 — T-018; Reference дополнен; 05-Templates/; pre-commit hook; /audit; таблица статусов
 - 2026-06-30: создан VibeOS; модель → deepseek-v4-flash-free; ревью — добавлены собственные статусы методов (context-as-docs ✅, distill ✅, memory-mgmt 🟡), модель в карточке
+- 2026-07-04: T-061 — memory-management 🟡→✅ (flush-протокол в librarian.md + session-flush плагин уже был)

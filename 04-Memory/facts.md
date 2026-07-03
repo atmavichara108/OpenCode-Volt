@@ -3,7 +3,7 @@ type: Fact Registry
 title: Реестр фактов
 description: Подтверждённые факты об OpenCode и проектах. Факты попадают сюда после разрешения [проверить].
 tags: [memory]
-timestamp: 2026-07-03
+timestamp: 2026-07-04
 ---
 # Реестр фактов
 
@@ -85,13 +85,13 @@ timestamp: 2026-07-03
 - Репо: `/home/rudra/dotfiles`
 - GitHub remote: `atmavichara108/dotfiles`
 - Стек: shell / GNU Stow / 23 пакета конфигов / OpenCode multi-agent
-- OpenCode: полная мульти-агентная архитектура (2026-06-30 v2)
+- OpenCode: мульти-агент v3 + verifier + closed-loop + flush-протокол (T-059, T-060, T-061, 2026-07-04)
 - 3 primary агента: sysop (инспектор), planner (архитектор), builder (строитель)
-- 4 subagent: reviewer, qtile-dev, bash-dev, util-dev
-- 8 команд-пайплайнов: /sysaudit, /script, /qtile, /util, /prompt, /notify, /macro, /plugin
-- Память: .opencode/memory/ (user-profile.md + decisions.md)
+- 5 subagent: reviewer, verifier, qtile-dev, bash-dev, util-dev
+- 10 команд-пайплайнов: /sysaudit, /script, /qtile, /util, /prompt, /notify, /macro, /plugin, /loop, /flush
+- Память: .opencode/memory/ (user-profile.md + decisions.md) + формализованный /flush-протокол
 - Все агенты на deepseek-v4-flash-free (тестовый период)
-- Статус методов: context-as-docs ✅, distill-pattern ✅, closed-loop 🟡, verifier-pattern 🟡, memory-management 🟡
+- Статус методов: context-as-docs ✅, distill-pattern ✅, closed-loop ✅, verifier-pattern ✅, memory-management ✅
 
 ### vault (OpenCode-Vault)
 - Репо: `/home/rudra/Projects/OpenCode-Vault`
@@ -100,4 +100,4 @@ timestamp: 2026-07-03
 - 7 команд: /ask · /capture · /project · /commit · /project-add · /audit · /done (глобальная)
 - Pre-commit hook: проверка пустых файлов + валидация викилинков
 - 6 методов заполнены в 02-Methods/
-- Статус методов (собственные): context-as-docs ✅, distill-pattern ✅, memory-management 🟡, model-routing ➖, closed-loop ✅, verifier-pattern ✅
+- Статус методов (собственные): context-as-docs ✅, distill-pattern ✅, memory-management ✅, model-routing ➖, closed-loop ✅, verifier-pattern ✅

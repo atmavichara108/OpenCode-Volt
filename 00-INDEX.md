@@ -25,7 +25,7 @@ timestamp: 2026-06-29
 |--------|-----|------|----------------------|----------|--------|
 | SERPlux | коммерция | Python / FastAPI | **6 агентов**: build, plan, collector-dev, reviewer, ui-dev, infra-dev · 5 команд | [[SERPlux]] | ✅ active |
 | dv-hub | волонтёрский | TS / Hono | plan, build, reviewer, researcher, infra | [[dv-hub]] | ✅ active |
-| dotfiles | система | shell/configs | **multi-agent** (7 агентов, 8 пайплайнов) | [[dotfiles]] | ✅ active |
+| dotfiles | система | shell/configs | **multi-agent** (8 агентов, 10 команд) | [[dotfiles]] | ✅ active |
 | vault | справочник | markdown | librarian | [[vault]] | ✅ active |
 | rudra-phone | инфраструктура | Kotlin/Flutter/Telegram API | — | [[rudra-phone]] | 🟢 planning |
 | prod-monitor | инфраструктура | Prometheus/Python/Bash | — | [[prod-monitor]] | 🟢 planning |

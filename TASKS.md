@@ -17,7 +17,9 @@ timestamp: 2026-06-27
 
 | ID | Задача | Приоритет | Связано |
 |----|--------|-----------|---------|
-| T-045 | SERPlux: мультиклиентность + мультипровайдерность (Web UI ⏸ приостановлено) | P1 | [[03-Projects/SERPlux]] |
+| T-059 | dotfiles: verifier-pattern (🟡→✅) — создать verifier.md агента по образцу SERPlux | P1 | [[03-Projects/dotfiles]], [[02-Methods/verifier-pattern]] |
+| T-060 | dotfiles: closed-loop (🟡→✅) — создать /loop команду + verifier | P1 | [[03-Projects/dotfiles]], [[02-Methods/closed-loop]] |
+| T-061 | memory-management flush-протокол (🟡→✅) — формализация pre-compaction flush в dotfiles + vault | P1 | [[02-Methods/memory-management]], [[03-Projects/dotfiles]], [[03-Projects/vault]] |
 
 ## 🔵 Planned — следующие задачи
 
@@ -60,6 +62,10 @@ timestamp: 2026-06-27
 
 | ID | Задача | Приоритет | Когда | Связано |
 |----|--------|-----------|-------|---------|
+| T-059 | dotfiles: verifier-pattern (🟡→✅) — создать verifier.md агента по образцу SERPlux | P1 | 2026-07-03 | [[03-Projects/dotfiles]], [[02-Methods/verifier-pattern]] |
+| T-060 | dotfiles: closed-loop (🟡→✅) — создать /loop команду + verifier | P1 | 2026-07-03 | [[03-Projects/dotfiles]], [[02-Methods/closed-loop]] |
+| T-061 | memory-management flush-протокол (🟡→✅) — формализация pre-compaction flush в dotfiles + vault | P1 | 2026-07-03 | [[02-Methods/memory-management]], [[03-Projects/dotfiles]], [[03-Projects/vault]] |
+| T-045 | SERPlux: мультиклиентность + мультипровайдерность (Web UI ⏸ приостановлено) | P1 | 2026-07-03 | [[03-Projects/SERPlux]] |
 | T-051 | Git pre-commit hook + commit-guard плагин (tool.execute.before) — неотвратимый гейт: pytest перед коммитом | P1 | 2026-07-03 | [[03-Projects/SERPlux]], [[01-Reference/plugins]] |
 | T-058 | plan-агент SERPlux: делегирование build через task-tool. plan.md (был inline в opencode.json), права task.build: allow, edit/bash deny | P2 | 2026-07-03 | [[03-Projects/SERPlux]] |
 | T-057 | commit-guard: pytest-вывод захвачен через `.quiet()`, не засоряет TUI | P1 | 2026-07-03 | [[03-Projects/SERPlux]], [[01-Reference/plugins]] |
