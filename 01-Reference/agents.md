@@ -3,7 +3,7 @@ type: Reference
 title: OpenCode — Агенты
 description: Типы агентов (primary/subagent), фронтматтер, параллельность, создание.
 tags: [opencode, agents]
-timestamp: 2026-07-02
+timestamp: 2026-07-03
 ---
 # OpenCode: Агенты
 
@@ -22,6 +22,12 @@ timestamp: 2026-07-02
 | explore | subagent | быстрый read-only поиск по кодовой базе |
 | scout | subagent | внешние доки и зависимости (клонирует репо в кэш) |
 | compaction/title/summary | primary (скрытые) | системные, работают автоматически |
+
+## Экосистемные агенты (глобальные)
+| Агент | Тип | Модель | Назначение |
+|-------|-----|--------|-----------|
+| verifier | subagent | opencode-go/glm-5.2 | PASS/FAIL верификация, edit:deny, bash whitelist |
+| meta | subagent | opencode-go/glm-5.2 | Мета-агент инфраструктуры: правит .opencode/**, ~/.config/opencode/**, vault. НЕ трогает код приложений |
 
 ## Где определять
 - Глобально: `~/.config/opencode/agent/*.md`

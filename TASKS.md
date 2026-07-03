@@ -47,6 +47,7 @@ timestamp: 2026-06-27
 | T-049 | Профили моделей под провайдера (Zen/Go): переключение одной правкой. Абстракция model-routing — чтобы следующий переезд Zen↔Go не был ручной перестановкой всех агентов | P2 | [[02-Methods/model-routing]] |
 | T-050 | Дистиллировать verify-gate в метод (02-Methods/) после обкатки в SERPlux /commit | P3 | [[02-Methods/verifier-pattern]] |
 | T-051 | Git pre-commit hook с verifier (жёсткий дубль /commit гейта). **Подтверждено:** `opencode run --agent verifier --format json` — headless-запуск verifier из хука. Без него /commit гейт дырявый (можно коммитить напрямую через git). Реализация: `.git/hooks/pre-commit` → `opencode run --agent verifier "Проверь staged" → парсить VERDICT → exit 1 если FAIL | P1 | [[03-Projects/SERPlux]], [[02-Methods/verifier-pattern]] |
+| T-053 | Машинная граница инфра/код для meta через плагин (env-guard-подобный, tool.execute.before) — сейчас граница текстовая | P3 | [[01-Reference/agents]], [[02-Methods/verifier-pattern]] |
 
 ## 🟤 Backlog — идеи на потом
 
@@ -58,6 +59,7 @@ timestamp: 2026-06-27
 
 | ID | Задача | Приоритет | Когда | Связано |
 |----|--------|-----------|-------|---------|
+| T-052 | Глобальный мета-агент infra (@meta) — создан ~/.config/opencode/agent/meta.md, виден из всех проектов | P1 | 2026-07-02 | [[01-Reference/agents]] |
 | T-044 | SERPlux: создать ui-dev + infra-dev агентов, команды /interface /container /deploy, актуализировать карточку | P1 | 2026-07-02 | [[03-Projects/SERPlux]] |
 | T-020 | Создать VibeOS — концептуальный дашборд системы вайбкодинга | P2 | 2026-06-30 | [[VibeOS]] |
 | T-021 | Смена модели librarian Claude Sonnet 4.6 → DeepSeek v4-flash-free | P2 | 2026-06-30 | [[04-Memory/facts.md]] |
