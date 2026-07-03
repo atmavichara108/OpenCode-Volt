@@ -1,7 +1,7 @@
 ---
 type: Active Context
 title: Активный контекст
-description: SERPlux — Core ✅, Docker ✅, Deploy ✅. plan-агент: делегирование build ✅. Приоритет: мультиклиентность.
+description: SERPlux — Core ✅, Docker ✅, Deploy ✅, мультиклиентность ✅. plan-агент: делегирование build ✅. Приоритет: мультипровайдерность + техдолг.
 tags: [memory]
 timestamp: 2026-07-03
 ---
@@ -12,11 +12,10 @@ timestamp: 2026-07-03
 
 ## Текущий фокус
 - **Проект:** SERPlux / SERP Factory
-- **Задача:** Веб-интерфейс SERPlux — дашборд, запуск прогона, история, статус. Агенты ui-dev + infra-dev созданы, команды /interface /container /deploy готовы.
+- **Задача:** Мультипровайдерность (фолбек-цепочка LLM, API /providers) и закрытие техдолга. Мультиклиентность и domains mode — сделаны (T-001..T-004, 111 тестов). Web UI ⏸ приостановлен (ADR: только Google Sheets).
 
 ## Активная задача
-Реализация веб-интерфейса SERPlux через команду `/interface` (агент ui-dev) в репо SERPlux (`/home/rudra/Projects/serp`).
-Волт: мониторинг, документация, поддержка архитектуры.
+SERPlux: следующая итерация — мультипровайдерность (API /providers, фолбек-цепочка LLM) и закрытие техдолга (docs/techdebt.md). Волт: мониторинг, документация, поддержка архитектуры.
 
 ## Завершённые изменения (все сессии)
 - [x] README.md — визитка репозитория как VibeOS (для GitHub, основа для лендинга)
@@ -36,6 +35,10 @@ timestamp: 2026-07-03
 - [x] Создан `01-Reference/global-config.md` — документация глобальной инфраструктуры (~/.config/opencode/)
 - [x] Фикс commit-guard (T-057): pytest-вывод захвачен через `.quiet()`, TUI чист
 - [x] (T-058) SERPlux plan-агент: создан `.opencode/agents/plan.md` с `task.build: allow`. plan делегирует исполнение build через task-tool, сам не редактирует (edit/bash deny). Inline-определение убрано из opencode.json.
+- [x] SERPlux T-001: новая схема БД (clients/positions/labels) + migrate.py + тесты
+- [x] SERPlux T-002: режим `domains` разметки + справочник `domain_labels` + `confidence` (без LLM)
+- [x] SERPlux T-003: идемпотентность migrate.py (любое состояние БД)
+- [x] SERPlux T-004: расширение POST /run (client_id, label_mode=domains default, force_relabel) + валидация. 111/111 тестов.
 
 ## Отложено (P5 будущее)
 - T-015: Telegram-бот для классификации фич
@@ -48,4 +51,4 @@ timestamp: 2026-07-03
 - (нет открытых вопросов на данный момент)
 
 ## Последнее обновление
-2026-07-03 — Фикс commit-guard (pytest-вывод), plan-агент SERPlux: делегирование build (T-058).
+2026-07-03 — SERPlux: мультиклиентность + domains mode (T-001..T-004, 111 тестов). Актуализация волта по реальному состоянию репо. Приоритет сместился на мультипровайдерность.

@@ -23,7 +23,7 @@ timestamp: 2026-06-29
 ## Проекты
 | Проект | Тип | Стек | OpenCode-агент особый | Карточка | Статус |
 |--------|-----|------|----------------------|----------|--------|
-| SERPlux | коммерция | Python / FastAPI | **6 агентов**: build, plan, collector-dev, reviewer, ui-dev, infra-dev · 3 команды | [[SERPlux]] | ✅ active |
+| SERPlux | коммерция | Python / FastAPI | **6 агентов**: build, plan, collector-dev, reviewer, ui-dev, infra-dev · 5 команд | [[SERPlux]] | ✅ active |
 | dv-hub | волонтёрский | TS / Hono | plan, build, reviewer, researcher, infra | [[dv-hub]] | ✅ active |
 | dotfiles | система | shell/configs | **multi-agent** (7 агентов, 8 пайплайнов) | [[dotfiles]] | ✅ active |
 | vault | справочник | markdown | librarian | [[vault]] | ✅ active |

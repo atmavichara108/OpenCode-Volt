@@ -56,7 +56,7 @@ timestamp: 2026-07-03
 ### Границы /loop (closed-loop)
 - **Применим:** задачи с быстрой автоматической проверкой (тесты секунды-минуты) и чётким DoD
 - **Не применим:** UI-задачи без автопроверки (Apps Script/Sheets), дорогая/долгая проверка, размытые критерии
-- **SERPlux:** 64 pytest-теста → /loop идеален для core-модулей; для Apps Script UI — не сработает, нужен другой механизм
+- **SERPlux:** 111 pytest-тестов → /loop идеален для core-модулей; для Apps Script UI — не сработает, нужен другой механизм
 
 ## Проекты
 
@@ -64,11 +64,11 @@ timestamp: 2026-07-03
 - Репо: `/home/rudra/Projects/serp`
 - GitHub remote: `atmavichara108/SERPlux`
 - Стек: Python 3.11+ / requests / gspread / FastAPI / DeepSeek (labeler) / SQLite / Docker
-- OpenCode-агенты (Go-подписка, 2026-07-02): 6 агентов — build (kimi-k2.7-code, primary), plan (glm-5.2, primary), collector-dev (kimi-k2.7-code, subagent), reviewer (glm-5.2, subagent), ui-dev (kimi-k2.7-code, subagent, PAUSED), infra-dev (qwen3.7-plus, subagent)
-- Команды OpenCode: `/interface` (ui-dev, ⏸), `/container` (infra-dev), `/deploy` (infra-dev), `/loop` (build, глобальный)
-- Плагины: env-guard.js, notify.js, commit-guard.js
-- Статус: Core ✅, Docker ✅, Deploy ✅, Web UI ⏸ (ADR: только Sheets)
-- Статус методов: context-as-docs ✅, model-routing ✅, multi-agent-pipeline ✅, distill-pattern ✅, verifier-pattern ✅, closed-loop ✅, memory-management ❌
+- OpenCode-агенты (Go-подписка, 2026-07-02): 6 агентов — build (kimi-k2.7-code, primary, в opencode.json), plan (glm-5.2, primary), collector-dev (kimi-k2.7-code, subagent), reviewer (glm-5.2, subagent), ui-dev (kimi-k2.7-code, subagent, активен), infra-dev (qwen3.7-plus, subagent)
+- Команды OpenCode (5): `/commit` (build, deepseek-v4-flash, subtask), `/interface` (ui-dev), `/container` (infra-dev), `/deploy` (infra-dev), `/dream` (build, memory-flush). Глобально: `/loop` (build)
+- Плагины (4): env-guard.js, notify.js, commit-guard.js, compaction.js
+- Статус: Core ✅, Docker ✅, Deploy ✅, Web UI ⏸ (ADR: только Sheets). Мультиклиентность ✅ (clients/positions/labels, client_id, domains mode). 111/111 тестов.
+- Статус методов: context-as-docs ✅, model-routing ✅, multi-agent-pipeline ✅, distill-pattern ✅, verifier-pattern ✅, closed-loop ✅, memory-management 🟡
 
 ### dv-hub
 - Репо: `/home/rudra/Projects/dv-hub`

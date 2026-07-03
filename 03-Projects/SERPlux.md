@@ -39,13 +39,18 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Docker
 - ✅ Техдолг: зафиксирован в docs/techdebt.md
 - ✅ UI-спецификация: docs/ui-spec.md (609 строк, подробная)
 - ✅ Модульная архитектура с контрактами (docs/contracts.md)
+- ✅ Новая схема БД: clients / positions / labels (версионирование меток, migrate.py)
+- ✅ Режим `domains` разметки: справочник `domain_labels` (без LLM), поле `confidence`, параметр `client_id`
+- ✅ POST /run расширен: `client_id`, `label_mode` (default `domains`), `force_relabel` + валидация
+- ✅ migrate.py идемпотентен (любое состояние БД → корректная схема)
+- ✅ Тесты: 111/111 зелёных (pytest, :memory:)
 
 ## Что делаем сейчас
 
-### 🎯 Приоритет: Мультиклиентность и мультипровайдерность
-- Профили клиентов в SQLite, API /clients
+### 🎯 Приоритет: Мультипровайдерность и закрытие техдолга
 - Фолбек-цепочка LLM, API /providers
-- Закрытие техдолга (docs/techdebt.md)
+- API /clients (профили клиентов — схема готова, эндпоинт в планах)
+- Закрытие техдолга (docs/techdebt.md — httpx/starlette deprecation и пр.)
 
 ### ⏸ Приостановлено
 - **Web UI** — ADR от 2026-07-02: единственный UI = Google Sheets. Веб-фронт не строим без явного запроса заказчика.
@@ -109,7 +114,7 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Docker
 ---
 
 ## Плагины
-env-guard.js · notify.js · compaction.js
+env-guard.js · notify.js · compaction.js · commit-guard.js
 
 ---
 
@@ -130,3 +135,4 @@ env-guard.js · notify.js · compaction.js
 - 2026-07-03: Шаг 4 memory-management — плагин `compaction.js` (flush в docs/decisions.md + persistent-context в summary), команда `/dream`, правило flush-протокола в AGENTS.md. Статус метода: ❌ → 🟡.
 - 2026-07-03: plan-агент → `.opencode/agents/plan.md` (был inline в opencode.json). Добавлено `task: { build: allow }` — plan делегирует исполнение build через task-tool. edit/bash deny сохранены.
 - 2026-07-03: **Актуализация карточки по реальному состоянию репо.** Агенты: ui-dev — активен (Google Sheets UI, kimi-k2.7-code), не PAUSED; infra-dev — qwen3.7-plus (не deepseek-v4-flash). Команды: добавлены `/commit` и `/dream`, убран несуществующий `/review`. Убран мусор (stray `}`). Таблицы агентов/команд приведены в соответствие с `.opencode/`.
+- 2026-07-03: **Мультиклиентность + domains mode.** T-001 (новая схема БД clients/positions/labels + migrate.py + тесты), T-002 (режим `domains` разметки + справочник `domain_labels` + `confidence`), T-003 (идемпотентность migrate.py), T-004 (расширение POST /run: client_id, label_mode, force_relabel). 111/111 тестов. Default `label_mode=domains` (без LLM). Плагин commit-guard.js добавлен в список. Приоритет сместился на мультипровайдерность.
