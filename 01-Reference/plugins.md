@@ -3,7 +3,7 @@ type: Reference
 title: OpenCode — Плагины
 description: Plugin SDK (@opencode-ai/plugin), lifecycle-хуки, реестр плагинов проектов.
 tags: [opencode, plugins]
-timestamp: 2026-06-29
+timestamp: 2026-07-03
 ---
 # OpenCode: Плагины
 
@@ -109,6 +109,7 @@ export const CustomToolsPlugin: Plugin = async (ctx) => {
 | Плагин | Где | Назначение |
 |--------|-----|-----------|
 | env-guard | SERPlux (.js), dv-hub (.ts) | блокирует доступ агента к .env / секретам (`tool.execute.before`) |
+| commit-guard | SERPlux (.js) | перехватывает `git commit` через `tool.execute.before`, запускает pytest, блокирует если FAIL |
 | notify | SERPlux (.js), dv-hub (.ts) | уведомления (звук/сообщение) о событиях (`session.*`) |
 | compaction | dv-hub (.ts) | управление сжатием длинного контекста (`experimental.session.compacting`) |
 

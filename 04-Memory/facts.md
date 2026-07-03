@@ -35,6 +35,7 @@ timestamp: 2026-07-02
 - **Skills** — плагины-помощники (SKILL.md), подгружаемые при совпадении задачи; есть белый список путей.
 - **Doom loop** — механизм обнаружения зацикливания: агент повторяет одни и те же действия → recovery-промпт.
 - **Plugin SDK** (`@opencode-ai/plugin`) — Node.js SDK для создания плагинов с событиями и кастомными инструментами.
+- **tool.execute.before** — штатный механизм OpenCode для перехвата инструментов ДО выполнения. Плагин может блокировать вызов (пример: commit-guard блокирует git commit если тесты падают). Это неотвратимый гейт на уровне рантайма.
 
 ### Методы (02-Methods/)
 Документированы 6 приёмов вайбкодинга:
@@ -60,7 +61,7 @@ timestamp: 2026-07-02
 - Стек: Python 3.11+ / requests / gspread / FastAPI / DeepSeek (labeler) / SQLite / Docker
 - OpenCode-агенты (Go-подписка, 2026-07-02): 6 агентов — build (kimi-k2.7-code, primary), plan (glm-5.2, primary), collector-dev (kimi-k2.7-code, subagent), reviewer (glm-5.2, subagent), ui-dev (kimi-k2.7-code, subagent, PAUSED), infra-dev (qwen3.7-plus, subagent)
 - Команды OpenCode: `/interface` (ui-dev, ⏸), `/container` (infra-dev), `/deploy` (infra-dev), `/loop` (build, глобальный)
-- Плагины: env-guard.js, notify.js
+- Плагины: env-guard.js, notify.js, commit-guard.js
 - Статус: Core ✅, Docker ✅, Deploy ✅, Web UI ⏸ (ADR: только Sheets)
 - Статус методов: context-as-docs ✅, model-routing ✅, multi-agent-pipeline ✅, distill-pattern ✅, verifier-pattern ✅, closed-loop ✅, memory-management ❌
 
