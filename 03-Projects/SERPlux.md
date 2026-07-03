@@ -56,7 +56,7 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Docker
 | Агент | Mode | Модель | Назначение | edit |
 |-------|------|--------|-----------|------|
 | **build** | primary | opencode-go/kimi-k2.7-code | Основная разработка | allow |
-| **plan** | primary | opencode-go/glm-5.2 | Планирование, анализ | deny |
+| **plan** | primary | opencode-go/glm-5.2 | Планирование, анализ, делегирование build | deny |
 | **collector-dev** | subagent | opencode-go/kimi-k2.7-code | Topvisor + сбор данных | allow |
 | **reviewer** | subagent | opencode-go/glm-5.2 | PASS/FAIL верификация | deny |
 | **ui-dev** | subagent **(PAUSED)** | opencode-go/kimi-k2.7-code | Web UI (приостановлено — требуется ADR) | allow |
@@ -129,3 +129,4 @@ env-guard.js · notify.js · compaction.js
 - 2026-06-30: ревью — модели, stack, labeler; SERP Factory — SERPlux как продукт
 - 2026-07-02: **Core ✅, Docker ✅, Deploy ✅**. Созданы агенты ui-dev + infra-dev. Команды /interface, /container, /deploy. **ADR: интерфейс = только Google Sheets**, Web UI не строим.
 - 2026-07-03: Шаг 4 memory-management — плагин `compaction.js` (flush в docs/decisions.md + persistent-context в summary), команда `/dream`, правило flush-протокола в AGENTS.md. Статус метода: ❌ → 🟡.
+- 2026-07-03: plan-агент → `.opencode/agents/plan.md` (был inline в opencode.json). Добавлено `task: { build: allow }` — plan делегирует исполнение build через task-tool. edit/bash deny сохранены.

@@ -1,7 +1,7 @@
 ---
 type: Active Context
 title: Активный контекст
-description: SERPlux — Core ✅, Docker ✅, Deploy ✅. Приоритет: веб-интерфейс. Агенты ui-dev + infra-dev созданы.
+description: SERPlux — Core ✅, Docker ✅, Deploy ✅. plan-агент: делегирование build ✅. Приоритет: мультиклиентность.
 tags: [memory]
 timestamp: 2026-07-03
 ---
@@ -35,6 +35,7 @@ timestamp: 2026-07-03
 - [x] Убрана привязка `agent: librarian` из /done — команда работает во всех проектах
 - [x] Создан `01-Reference/global-config.md` — документация глобальной инфраструктуры (~/.config/opencode/)
 - [x] Фикс commit-guard (T-057): pytest-вывод захвачен через `.quiet()`, TUI чист
+- [x] (T-058) SERPlux plan-агент: создан `.opencode/agents/plan.md` с `task.build: allow`. plan делегирует исполнение build через task-tool, сам не редактирует (edit/bash deny). Inline-определение убрано из opencode.json.
 
 ## Отложено (P5 будущее)
 - T-015: Telegram-бот для классификации фич
@@ -47,4 +48,4 @@ timestamp: 2026-07-03
 - (нет открытых вопросов на данный момент)
 
 ## Последнее обновление
-2026-07-03 — Фикс commit-guard (pytest-вывод), документация глобальной конфигурации.
+2026-07-03 — Фикс commit-guard (pytest-вывод), plan-агент SERPlux: делегирование build (T-058).

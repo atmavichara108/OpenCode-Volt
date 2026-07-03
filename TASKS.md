@@ -61,6 +61,7 @@ timestamp: 2026-06-27
 | ID | Задача | Приоритет | Когда | Связано |
 |----|--------|-----------|-------|---------|
 | T-051 | Git pre-commit hook + commit-guard плагин (tool.execute.before) — неотвратимый гейт: pytest перед коммитом | P1 | 2026-07-03 | [[03-Projects/SERPlux]], [[01-Reference/plugins]] |
+| T-058 | plan-агент SERPlux: делегирование build через task-tool. plan.md (был inline в opencode.json), права task.build: allow, edit/bash deny | P2 | 2026-07-03 | [[03-Projects/SERPlux]] |
 | T-057 | commit-guard: pytest-вывод захвачен через `.quiet()`, не засоряет TUI | P1 | 2026-07-03 | [[03-Projects/SERPlux]], [[01-Reference/plugins]] |
 | T-056 | Инфраструктурный техдолг Уровня 0: модель librarian, verifier, факты, /done, session-flush | P1 | 2026-07-03 | [[01-Reference/agents]], [[01-Reference/commands]], [[01-Reference/plugins]], [[04-Memory/facts]] |
 | T-052 | Глобальный мета-агент infra (@meta) — создан ~/.config/opencode/agent/meta.md, виден из всех проектов | P1 | 2026-07-02 | [[01-Reference/agents]] |
@@ -121,4 +122,4 @@ timestamp: 2026-06-27
 - **Связано** — `wikilink` на файл/карточку/метод
 
 Номера ID в Done — T-000 для задач первой волны (без сквозной нумерации), T-001+ для нумерованных задач.
-T-044 — последняя закрытая задача. T-045 — активная (мультиклиентность SERPlux). T-047 — последняя добавленная (prompt-engineer агент).
+T-058 — последняя закрытая задача (plan-агент: делегирование build). T-045 — активная (мультиклиентность SERPlux). T-047 — последняя добавленная (prompt-engineer агент).
