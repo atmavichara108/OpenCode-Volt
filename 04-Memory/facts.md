@@ -3,7 +3,7 @@ type: Fact Registry
 title: Реестр фактов
 description: Подтверждённые факты об OpenCode и проектах. Факты попадают сюда после разрешения [проверить].
 tags: [memory]
-timestamp: 2026-07-04
+timestamp: 2026-07-08
 ---
 # Реестр фактов
 
@@ -61,12 +61,17 @@ timestamp: 2026-07-04
 - **SERPlux:** 111 pytest-тестов → /loop идеален для core-модулей; для Apps Script UI — не сработает, нужен другой механизм
 
 ### Внешние инструменты (tools/)
-- **Telethon** — единственный живой MTProto-клиент для Python. Pyrogram архивирован (Dec 2024), не поддерживается. Telethon переехал на Codeberg (Feb 2026), 12k stars, MIT license. Выбор для tools/telegram-capture/.
+- **Telethon 1.44.0** — единственный живой MTProto-клиент для Python. Pyrogram архивирован (Dec 2024), не поддерживается. Telethon переехал на Codeberg (Feb 2026), 12k stars, MIT license. Выбор для tools/telegram-capture/.
 - **Группа @inbox_tools** — открытая Telegram-группа Rudra для сбора постов с интересным софтом. Темы (topics): Приложения, Софт, Вайб, #General, Смарт, Графика, красота, сайтостроение (старое), Обучалки (старое), ИИ, Питонизм (очень старое).
 - **Схема маркировки реакциями** (двухуровневая): 👍 ingested (обработан), 🤔 ошибка. Категории: 👨‍💻 dotfiles/Linux UX, 🔥 SERPlux, 🤝 dv-hub, 🏆 VibeOS/метод, 🎉 новый проект. Default для без категории: 👍.
-- **tool-integration-pattern** — седьмой метод VibeOS (с 2026-07-07). «LLM думает, API делает». Реализация: tools/ директория, первый инструмент telegram-capture (T-062).
+- **EMOJI_MAP (ограничения Telegram)** — Telegram ограничивает доступные реакции (73 шт.). Старые эмодзи (📥⚠️🐧🤖🌐🧠🎯) НЕ доступны → заменены на 👍🤔👨‍💻🔥🤝🏆🎉. Перед использованием нового эмодзи проверять через `client.get_available_reactions()`.
+- **tool-integration-pattern** — седьмой метод VibeOS (с 2026-07-07). «LLM думает, API делает». Реализация: tools/ директория, первый инструмент telegram-capture (T-062, внедрён ✅ 2026-07-08).
 - **Имя Telegram-приложения** — DesktopWorkspaceManager (short name: manager). Имена «VibeOS Capture»/«vibeos» не прошли валидацию при создании: Telegram требует определённого формата имени приложения.
 - **Telethon сам определяет серверы подключения**. Test config (149.154.167.40:443) и Production config (149.154.167.50:443) — дефолтные, явно указывать ip/hash не нужно.
+- **Tor SOCKS5 proxy** (127.0.0.1:9050) — обход блокировки Telegram в регионе. Без proxy все DC timeout. Настроен в `.env` (`PROXY_HOST`/`PROXY_PORT`), передаётся в Telethon через python-socks. Критическая инфраструктура для capture.
+- **Raw API Telethon** — высокоуровневый метод `send_reaction` НЕ существует в Telethon 1.44.0. Используется raw API: `SendReactionRequest` (из `telethon.tl.functions.messages`) + `ReactionEmoji(emoticon=...)` (из `telethon.tl.types`). Паттерн для будущих интеграций.
+- **GetForumTopicsRequest** — импорт из `telethon.tl.functions.messages` (НЕ `channels`). Список тем форума форума получаемый через `client(GetForumTopicsRequest(...))`.
+- **peer через get_input_entity** — для запросов raw API нужен `InputPeer`, не entity. Получение: `await client.get_input_entity(peer)` → `InputPeerChannel`/`InputPeerUser`. Передача entity напрямую вызывает ошибки.
 
 ### Окружение (direnv + venv)
 - **direnv** (v2.37.1) — shell extension для автоматической активации окружения при входе в каталог проекта. Установлен системно (`/usr/bin/direnv`).
@@ -118,4 +123,4 @@ timestamp: 2026-07-04
 - 9 команд: /ask · /capture · /inbox · /project · /commit · /project-add · /audit · /done (глобальная) · /distill-pipeline
 - Pre-commit hook: проверка пустых файлов + валидация викилинков
 - 7 методов заполнены в 02-Methods/ (+tool-integration-pattern с 2026-07-07)
-- Статус методов (собственные): context-as-docs ✅, distill-pattern ✅, memory-management ✅, model-routing ➖, closed-loop ✅, verifier-pattern ✅, tool-integration-pattern 🟡
+- Статус методов (собственные): context-as-docs ✅, distill-pattern ✅, memory-management ✅, model-routing ➖, closed-loop ✅, verifier-pattern ✅, tool-integration-pattern ✅ (T-062 внедрён 2026-07-08)
