@@ -18,6 +18,7 @@ stack: markdown + OpenCode
 - `02-Methods/` — приёмы (type: Method)
 - `03-Projects/` — карточки (type: Project Card)
 - `04-Memory/` — OKF-подбандл памяти
+- `tools/` — скрипты-инструменты VibeOS (внешние API как детерминированные инструменты; telegram-capture в разработке, T-062)
 - `TASKS.md` — трекер задач (type: Task Tracker)
 - `99-Inbox.md` — буфер (type: Inbox)
 - `AGENTS.md` — правила (type: Agent Instructions)
@@ -31,10 +32,10 @@ stack: markdown + OpenCode
 
 > Модель сменена с claude-sonnet-4-6 на deepseek-v4-flash-free 2026-06-30.
 
-## Команды (.opencode/command/) — 6
-/ask · /capture · /project · /commit · /project-add · /audit
+## Команды (.opencode/command/) — 9
+/ask · /capture · /inbox · /project · /commit · /project-add · /audit · /done · /distill-pipeline
 
-> 6 дистиллированных команд — реализация [[distill-pattern]].
+> 9 дистиллированных команд — реализация [[distill-pattern]].
 
 ## Состояние внедрения методов
 | Метод | Статус | Основание |
@@ -42,9 +43,10 @@ stack: markdown + OpenCode
 | [[closed-loop]] | ❌ | не применимо к справочнику, но метод описан |
 | [[verifier-pattern]] | ❌ | не применимо к справочнику |
 | [[context-as-docs]] | ✅ | AGENTS.md + Architecture.md + вся OKF-структура = документация как инфраструктура |
-| [[distill-pattern]] | ✅ | 6 команд в .opencode/command/ |
+| [[distill-pattern]] | ✅ | 9 команд (8 локальных + /done глобальная) |
 | [[memory-management]] | ✅ | 04-Memory/ (active-context + facts + session-log) + flush-протокол в librarian.md + session-flush плагин (глобальный) |
 | [[model-routing]] | ➖ | один агент, роутинг не нужен |
+| [[tool-integration-pattern]] | 🟡 | директория tools/ создана, первый инструмент `tools/telegram-capture/` (T-062) в разработке; /capture — извлечение постов → librarian классифицирует |
 
 > Волт — единственный проект, где vault-методы (context-as-docs, distill-pattern) реализованы **по назначению**: волт документирует сам себя.
 
@@ -68,7 +70,14 @@ stack: markdown + OpenCode
 - [x] Команды: `/commit`, `/project-add`, `/audit`
 - [x] VibeOS.md — концептуальный дашборд системы вайбкодинга
 - [x] dotfiles — репо создан, путь зафиксирован в карточке
+- [x] tools/ — директория скриптов-инструментов VibeOS заведена (telegram-capture в разработке, T-062)
+- [x] tool-integration-pattern — 7-й метод VibeOS, описан в 02-Methods/
 - [ ] дорожная карта P5: Telegram-бот, классификация фич, /project-upgrade
+
+## Окружение
+- **direnv + .venv** — Python venv, активируется автоматически при входе в корень волта (`.envrc` → `source .venv/bin/activate`). `direnv allow` выполнен 2026-07-08.
+- **Зависимости (в venv):** telethon 1.44.0, python-dotenv 1.2.2, pytest 9.1.1. Python 3.14.5.
+- **.envrc** — в git (конфигурация проекта). **.venv/** — в .gitignore (не коммитить).
 
 ## Лог изменений
 - 2026-06-26: волт заведён и наполнен готовыми данными
@@ -76,3 +85,5 @@ stack: markdown + OpenCode
 - 2026-06-29: librarian переписан под командный центр; выполнены T-001 — T-018; Reference дополнен; 05-Templates/; pre-commit hook; /audit; таблица статусов
 - 2026-06-30: создан VibeOS; модель → deepseek-v4-flash-free; ревью — добавлены собственные статусы методов (context-as-docs ✅, distill ✅, memory-mgmt 🟡), модель в карточке
 - 2026-07-04: T-061 — memory-management 🟡→✅ (flush-протокол в librarian.md + session-flush плагин уже был)
+- 2026-07-07: VibeOS v0.3.0 — новый метод tool-integration-pattern (7-й), директория tools/ + tools/telegram-capture (T-062, в разработке), новое направление R-006 Linux UX Lab, /capture как первый шаг к Telegram-интеграции
+- 2026-07-08: внедрено direnv + .venv (Python окружение, авт активация). Зависимости: telethon, python-dotenv, pytest. 39/39 тестов PASS в venv.

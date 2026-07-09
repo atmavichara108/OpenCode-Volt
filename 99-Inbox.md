@@ -256,6 +256,51 @@ R-003 ←→ R-004: AI анализирует метрики прода
 
 ---
 
+## 🐧 R-006: Linux UX Lab — систематический апгрейд UX Linux (Manjaro)
+
+> Зафиксировано 2026-07-07. Сессия фиксации нового направления.
+
+**Цель:** Систематический апгрейд пользовательского опыта Linux (Manjaro).
+Превратить хаотичные посты из Telegram-группы в структурированные улучшения —
+вайбкодинг для десктопа.
+
+**Контекст:** Rudra кидает посты про Linux UX в открытую группу @inbox_tools
+(темы: Софт, Графика, красота, Смарт, Приложения). Сейчас это просто куча
+ссылок без обработки. Нужно: `/capture` извлекает → librarian классифицирует →
+предложения для dotfiles.
+
+### Связь с dotfiles
+`dotfiles` = конфиги (23 пакета Stow, агенты sysop + qtile-dev + bash-dev).
+**Linux UX Lab = методология поверх dotfiles:** что улучшить, зачем, как.
+dotfiles — исполнитель, Linux UX Lab — исследователь/планировщик.
+
+### Связь с VibeAndroid (R-002)
+Параллель. VibeAndroid — вайбкодинг для Android. Linux UX Lab — вайбкодинг для
+десктопа. Оба — расширение VibeOS на новую платформу/домен.
+
+### Архитектурные блоки
+```
+[Telegram @inbox_tools, темы: Софт/Графика/красота/Смарт/Приложения]
+       ↓ (/capture)
+[tools/telegram-capture/ → JSON]
+       ↓
+[librarian: классификация → 99-Inbox или карточка dotfiles]
+       ↓
+[dotfiles: sysop + qtile-dev + bash-dev → реализация]
+```
+
+### Метод-водитель
+[[02-Methods/tool-integration-pattern|tool-integration-pattern]] — «LLM думает,
+API делает». `tools/telegram-capture/` (T-062) — первый инструмент под Linux
+UX Lab.
+
+### Вопросы к решению
+- Какой первый UX-апгрейд?
+- Нужно ли отдельный агент для Linux UX? (пока — librarian + dotfiles-агенты)
+- Где хранить предложения — отдельный подбандл `06-Linux-UX/` или внутри 99-Inbox?
+
+---
+
 ## 🏗️ Предварительный план работ
 
 ### Спринт 1 (ближайшие 1-2 недели)
@@ -274,5 +319,41 @@ R-003 ←→ R-004: AI анализирует метрики прода
 - [ ] R-004 Фаза 3: Proactive Assistant
 - [ ] R-002: Первый Android-проект через вайбкодинг
 - [ ] R-003 Фаза 2: алерты с уровнями
+
+---
+
+## 📥 Captures из Telegram
+
+> Посты, извлечённые через `/capture` из группы @inbox_tools. Классифицированы librarian.
+> Реакции в группе проставляются через `mark.py` (👍 ingested + категорийный эмодзи).
+
+### Сессия 2026-07-08 (тема «Софт», limit=3)
+
+#### C-001: MinerU — PDF→Markdown конвертер
+- **Источник:** [t.me/inbox_tools/633](https://t.me/inbox_tools/633) (тема «Софт»)
+- **Репо:** [opendatalab/mineru](https://github.com/opendatalab/mineru) (70k★)
+- **Что:** PDF/Word/Excel/изображения → чистый Markdown. Таблицы в HTML, формулы в LaTeX, OCR, 109 языков. CLI/Python/веб. Локально, приватно.
+- **Категория:** 🏆 VibeOS/метод
+- **Применение в VibeOS:** усиление [[02-Methods/distill-pattern|distill-pattern]] и [[02-Methods/context-as-docs|context-as-docs]]. PDF-спецификации → markdown для контекста агентов. Кандидат на `tools/doc-converter/` (второй инструмент VibeOS после telegram-capture).
+- **Приоритет:** P2
+- **Реакция:** 🏆 (vibeos)
+
+#### C-002: torlink — терминальный торрент-клиент
+- **Источник:** [t.me/inbox_tools/621](https://t.me/inbox_tools/621) (тема «Софт»)
+- **Репо:** [baairon/torlink](https://github.com/baairon/torlink)
+- **Что:** CLI-утилита для поиска и загрузки торрентов. TypeScript.
+- **Категория:** 👨‍💻 dotfiles / Linux UX
+- **Применение:** пакет для dotfiles, кандидат на настройку через bash-dev/util-dev
+- **Приоритет:** P4
+- **Реакция:** 👨‍💻 (dotfiles)
+
+#### C-003: polaris — стриминг музыки
+- **Источник:** [t.me/inbox_tools/619](https://t.me/inbox_tools/619) (тема «Софт»)
+- **Репо:** [agersant/polaris](https://github.com/agersant/polaris)
+- **Что:** Медиа-сервер, веб-интерфейс, Subsonic, автоиндексация библиотеки. Rust.
+- **Категория:** 👨‍💻 dotfiles / Linux UX
+- **Применение:** медиа-пакет в dotfiles, системный сервис на Manjaro
+- **Приоритет:** P4
+- **Реакция:** 👨‍💻 (dotfiles)
 
 ---

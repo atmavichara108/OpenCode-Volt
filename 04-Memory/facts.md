@@ -43,7 +43,7 @@ timestamp: 2026-07-04
 - **tool.execute.before** — штатный механизм OpenCode для перехвата инструментов ДО выполнения. Плагин может блокировать вызов (пример: commit-guard блокирует git commit если тесты падают). Это неотвратимый гейт на уровне рантайма.
 
 ### Методы (02-Methods/)
-Документированы 6 приёмов вайбкодинга:
+Документированы 7 приёмов вайбкодинга:
 | Метод | Суть |
 |-------|------|
 | [[closed-loop]] | Итеративный цикл: план → действие → проверка |
@@ -52,11 +52,29 @@ timestamp: 2026-07-04
 | [[distill-pattern]] | Сжатие/структурирование знаний в заметки |
 | [[memory-management]] | Управление памятью сессии + файловая память |
 | [[model-routing]] | Разные модели для разных шагов (дешёвая/fast → дорогая/точная) |
+| [[multi-agent-pipeline]] | Специализированные агенты в цепочках с проверкой |
+| [[tool-integration-pattern]] | Внешние API как детерминированные инструменты; «LLM думает, API делает» |
 
 ### Границы /loop (closed-loop)
 - **Применим:** задачи с быстрой автоматической проверкой (тесты секунды-минуты) и чётким DoD
 - **Не применим:** UI-задачи без автопроверки (Apps Script/Sheets), дорогая/долгая проверка, размытые критерии
 - **SERPlux:** 111 pytest-тестов → /loop идеален для core-модулей; для Apps Script UI — не сработает, нужен другой механизм
+
+### Внешние инструменты (tools/)
+- **Telethon** — единственный живой MTProto-клиент для Python. Pyrogram архивирован (Dec 2024), не поддерживается. Telethon переехал на Codeberg (Feb 2026), 12k stars, MIT license. Выбор для tools/telegram-capture/.
+- **Группа @inbox_tools** — открытая Telegram-группа Rudra для сбора постов с интересным софтом. Темы (topics): Приложения, Софт, Вайб, #General, Смарт, Графика, красота, сайтостроение (старое), Обучалки (старое), ИИ, Питонизм (очень старое).
+- **Схема маркировки реакциями** (двухуровневая): 👍 ingested (обработан), 🤔 ошибка. Категории: 👨‍💻 dotfiles/Linux UX, 🔥 SERPlux, 🤝 dv-hub, 🏆 VibeOS/метод, 🎉 новый проект. Default для без категории: 👍.
+- **tool-integration-pattern** — седьмой метод VibeOS (с 2026-07-07). «LLM думает, API делает». Реализация: tools/ директория, первый инструмент telegram-capture (T-062).
+- **Имя Telegram-приложения** — DesktopWorkspaceManager (short name: manager). Имена «VibeOS Capture»/«vibeos» не прошли валидацию при создании: Telegram требует определённого формата имени приложения.
+- **Telethon сам определяет серверы подключения**. Test config (149.154.167.40:443) и Production config (149.154.167.50:443) — дефолтные, явно указывать ip/hash не нужно.
+
+### Окружение (direnv + venv)
+- **direnv** (v2.37.1) — shell extension для автоматической активации окружения при входе в каталог проекта. Установлен системно (`/usr/bin/direnv`).
+- **Паттерн:** в корне каждого Python-проекта — `.envrc` с `source .venv/bin/activate` (или `venv/bin/activate`). После создания/изменения .envrc — один раз `direnv allow`.
+- **venv** — Python виртуальное окружение (`.venv/` в корне проекта). Изолирует зависимости. В .gitignore.
+- **SERPlux** — эталон: `.envrc` + `venv/`, работает.
+- **vault** — внедрено 2026-07-08: `.envrc` + `.venv/` в корне. Зависимости: telethon, python-dotenv, pytest.
+- **Конвенция:** каждый новый Python-проект создаёт `.envrc` + `.venv/`, `direnv allow`, зависимости в venv. НЕ глобально.
 
 ## Проекты
 
@@ -97,7 +115,7 @@ timestamp: 2026-07-04
 - Репо: `/home/rudra/Projects/OpenCode-Vault`
 - Это командный центр знаний, не код проекта
 - 1 агент: librarian (opencode-go/qwen3.7-plus, primary)
-- 7 команд: /ask · /capture · /project · /commit · /project-add · /audit · /done (глобальная)
+- 9 команд: /ask · /capture · /inbox · /project · /commit · /project-add · /audit · /done (глобальная) · /distill-pipeline
 - Pre-commit hook: проверка пустых файлов + валидация викилинков
-- 6 методов заполнены в 02-Methods/
-- Статус методов (собственные): context-as-docs ✅, distill-pattern ✅, memory-management ✅, model-routing ➖, closed-loop ✅, verifier-pattern ✅
+- 7 методов заполнены в 02-Methods/ (+tool-integration-pattern с 2026-07-07)
+- Статус методов (собственные): context-as-docs ✅, distill-pattern ✅, memory-management ✅, model-routing ➖, closed-loop ✅, verifier-pattern ✅, tool-integration-pattern 🟡

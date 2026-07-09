@@ -13,7 +13,8 @@ timestamp: 2026-06-29
 - **Визитка репозитория** → [[README]] (для внешних, GitHub)
 - **Вся система в одном документе** → [[VibeOS]] (философия, методы, проекты, рост)
 - Спросить базу → `/ask "..."`
-- Разгрести инбокс → `/capture`
+- Разгрести инбокс → `/inbox`
+- Извлечь посты из Telegram → `/capture <тема>`
 - Сводка по проекту → `/project <имя>`
 - Дистилляция пайплайнов → `/distill-pipeline`
 - Посмотреть дорожную карту → [[DEVELOPMENT-ROADMAP]]
@@ -37,7 +38,7 @@ timestamp: 2026-06-29
 [[agents]] · [[commands]] · [[config]] · [[global-config]] · [[memory]] · [[permissions]] · [[plugins]]
 
 ## Methods (мои приёмы)
-[[closed-loop]] · [[verifier-pattern]] · [[context-as-docs]] · [[memory-management]] · [[model-routing]] · [[distill-pattern]] · [[multi-agent-pipeline]]
+[[closed-loop]] · [[verifier-pattern]] · [[context-as-docs]] · [[memory-management]] · [[model-routing]] · [[distill-pattern]] · [[multi-agent-pipeline]] · [[tool-integration-pattern]]
 
 ### Статус внедрения методов по проектам
 
@@ -52,11 +53,15 @@ timestamp: 2026-06-29
 | [[memory-management]] | 🟡 | 🟡 | 🟡 | 🟡 |
 | [[model-routing]] | ✅ | ✅ | ➖ | ➖ |
 | [[multi-agent-pipeline]] | ✅ | ❌ | ✅ | ❌ |
+| [[tool-integration-pattern]] | ➖ | ➖ | ➖ | 🟡 |
 
 > ❌ не внедрён · 🟡 частично · ✅ внедрён · ➖ не применимо
 
 ## Шаблоны (05-Templates/)
 [[05-Templates/README]] · [[05-Templates/project-card]] · [[05-Templates/method]]
+
+## Инструменты (tools/)
+`tools/telegram-capture/` — извлечение постов из Telegram (в разработке, T-062)
 
 ## Память (04-Memory/ — OKF sub-bundle)
 [[active-context]] · [[facts]] · [[session-log/2026-06-27]] · [[session-log/2026-06-29]] · [[session-log/2026-06-30]] · [[04-Memory/index]] · [[04-Memory/log]]
@@ -64,7 +69,7 @@ timestamp: 2026-06-29
 ## Конвенции
 - Метод описывается ОДИН раз в `02-Methods/`. Карточки только ссылаются `wikilink`.
 - Карточка = реальное состояние репо (агенты/команды/скрипты/окружение), не копия кода.
-- Новое знание → `99-Inbox.md` → оформляется через `/capture`.
+- Новое знание → `99-Inbox.md` → оформляется через `/inbox`.
 - Память сессии → `04-Memory/` → читается при старте, пишется по ходу и в конце.
 - Статусы внедрения: ❌ нет · 🟡 частично · ✅ внедрено
 - Неподтверждённые факты по OpenCode помечать `[проверить]`.

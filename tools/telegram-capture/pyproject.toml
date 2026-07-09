@@ -1,0 +1,18 @@
+[project]
+name = "vibeos-telegram-capture"
+version = "0.1.0"
+description = "Извлечение постов из Telegram-группы @inbox_tools — реализация tool-integration-pattern"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "telethon>=1.36",
+    "python-dotenv>=1.0",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["capture", "mark", "config"]

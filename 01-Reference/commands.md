@@ -39,12 +39,14 @@ subtask: true           # форсить вызов как subagent (не зас
 | Команда | Агент | Назначение |
 |---------|-------|-----------|
 | `/ask` | librarian | Ответить на вопрос по волту |
-| `/capture` | librarian | Оформить инбокс в методы/карточки |
+| [`/capture`](/.opencode/command/capture.md) | librarian | Извлечь посты из Telegram @inbox_tools по теме, классифицировать |
+| [`/inbox`](/.opencode/command/inbox.md) | librarian | Оформить инбокс в методы/карточки/факты |
 | `/project` | librarian | Сводка по проекту |
 | [`/commit`](/.opencode/command/commit.md) | librarian | Закоммитить изменения в волте (subtask) |
 | [`/project-add`](/.opencode/command/project-add.md) | librarian | Создать карточку нового проекта: имя путь описание [тип] [стек] |
 | [`/audit`](/.opencode/command/audit.md) | librarian | Аудит проектов: pull, сверка карточки с репо. Без аргумента — все проекты |
-| [`/done`](~/.config/opencode/command/done.md) | librarian | Протокол завершения задачи: TASKS.md → Done, описание созданного, VibeOS, active-context, коммит |
+| [`/distill-pipeline`](/.opencode/command/distill-pipeline.md) | librarian | Дистилляция состояния пайплайнов: из .opencode/command/ и агентов → в карточку и VibeOS |
+| [`/done`](~/.config/opencode/command/done.md) | librarian (глобальная) | Протокол завершения задачи: TASKS.md → Done, описание созданного, VibeOS, active-context, коммит |
 
 ## Кастомные команды проектов
 

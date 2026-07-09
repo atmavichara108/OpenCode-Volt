@@ -24,7 +24,7 @@ tags: [method]
 
 Реальные примеры:
 - dv-hub: 7 команд (/morning, /spec, /review, /hygiene, /sync-context, /sync-context-self, /sync-task) — образец дистилляции задач.
-- vault: 7 команд (/ask, /capture, /project, /commit, /project-add, /audit, /distill-pipeline) — дистилляция управления знаниями.
+- vault: 9 команд (/ask, /capture, /inbox, /project, /commit, /project-add, /audit, /done, /distill-pipeline) — дистилляция управления знаниями.
 - dotfiles v3: 10 команд (/sysaudit, /script, /qtile, /util, /prompt, /notify, /macro, /plugin, /loop, /flush) — эталонная реализация [[multi-agent-pipeline]].
 - SERPlux: команд НЕТ. Кандидаты: /pipeline-check, /review.
 
@@ -36,4 +36,4 @@ tags: [method]
 ## Связанные
 - Reference: [[commands]], [[agents]]
 - Питает: [[multi-agent-pipeline]] (пайплайны = дистиллированные цепочки)
-- Внедрён в: [[dv-hub]] ✅ (7 команд), [[vault]] ✅ (7 команд), [[dotfiles]] ✅ (10 команд), [[SERPlux]] ❌ (0 команд)
+- Внедрён в: [[dv-hub]] ✅ (7 команд), [[vault]] ✅ (9 команд), [[dotfiles]] ✅ (10 команд), [[SERPlux]] ❌ (0 команд)

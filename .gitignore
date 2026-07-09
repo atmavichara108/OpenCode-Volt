@@ -8,3 +8,26 @@ Thumbs.db
 # OpenCode runtime
 .opencode/node_modules/
 .opencode/package-lock.json
+
+# Python venv (direnv)
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Python build artifacts
+*.egg-info/
+*.egg-link
+build/
+dist/
+
+# Telegram capture tool (runtime, не коммитить)
+tools/telegram-capture/.env
+tools/telegram-capture/__pycache__/
+
+# Telegram session (авторизация, не коммитить!)
+*.session
+*.session-journal
+
+# Credentials (корень волта)
+.env

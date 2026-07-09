@@ -1,13 +1,13 @@
 ---
 type: VibeOS
 title: VibeOS — Персональная система вайбкодинга
-version: 0.2.5
+version: 0.3.0
 description: Концептуальный дашборд-путеводитель по стилю, методам, проектам и философии Max Rudra как вайбкодера.
-timestamp: 2026-07-04
+timestamp: 2026-07-07
 tags: [meta, system, vibe-coding]
 ---
 
-# VibeOS v0.2.5 — Персональная система вайбкодинга
+# VibeOS v0.3.0 — Персональная система вайбкодинга
 
 > Это не журнал. Это концептуальный слепок того, как я кодирую и какие экосистемы и пайплайны создаю с ИИ. Своеобразный дашборд, показывает какие подходы и 
 > приёмы использую, какие проекты веду и куда расту. Версионируется вместе со
@@ -21,6 +21,7 @@ tags: [meta, system, vibe-coding]
 | ------------------------------------------------------------------- | ------------------------------------------------------- |
 | [[#Философия\|Философия]]                                           | Как я мыслю вайбкодинг, принципы, нетривиальные решения |
 | [[#Система\|Система]]                                               | Как устроена моя экосистема: волт, OpenCode, проекты    |
+| [[#Инструменты\|Инструменты]]                                       | Внешние API как детерминированные инструменты (tools/)  |
 | [[#Методы\|Методы]]                                                 | Все приёмы с реальным статусом внедрения                |
 | [[#Проекты\|Проекты]]                                               | Все проекты с их стадией и стеком                       |
 | [[#Инвентарь\|Инвентарь]]                                           | Агенты, команды, плагины, шаблоны, скрипты              |
@@ -114,6 +115,23 @@ tags: [meta, system, vibe-coding]
 
 ---
 
+## Инструменты
+
+### tools/ — внешние API как инструменты агентов
+
+Директория `tools/` содержит скрипты-инструменты VibeOS. Каждый инструмент —
+детерминированный мост к внешнему API: получает данные, возвращает результат
+для анализа агентом. Реализация метода [[02-Methods/tool-integration-pattern|tool-integration-pattern]].
+
+| Инструмент | Назначение | Статус |
+|------------|-----------|--------|
+| `tools/telegram-capture/` | Извлечение постов из группы @inbox_tools по теме, маркировка реакциями | 🔵 в разработке (T-062) |
+
+Принцип: **LLM думает, API делает.** Инструмент получает данные (через API),
+librarian анализирует и раскладывает. Снижение токенов, повышение надёжности.
+
+---
+
 ## Методы
 
 > **Важно:** статусы здесь — **реконсилированные** на основе фактического
@@ -129,6 +147,7 @@ tags: [meta, system, vibe-coding]
 | [[02-Methods/closed-loop\|closed-loop]] | ✅ | ❌ | ✅ | ❌ |
 | [[02-Methods/verifier-pattern\|verifier-pattern]] | ✅ | ❌ | ✅ | ❌ |
 | [[02-Methods/multi-agent-pipeline\|multi-agent-pipeline]] | ✅ | ❌ | ✅ | ❌ |
+| [[02-Methods/tool-integration-pattern\|tool-integration-pattern]] | ➖ | ➖ | ➖ | 🟡 |
 
 ### Легенда
 
@@ -141,8 +160,9 @@ tags: [meta, system, vibe-coding]
 
 #### ✅ distill-pattern (dv-hub + vault)
 dv-hub — 7 команд (`/morning`, `/spec`, `/review`, `/hygiene`, `/sync-context`,
-`/sync-context-self`, `/sync-task`). vault — 6 команд (`/ask`, `/capture`,
-`/project`, `/commit`, `/project-add`, `/audit`). Образец для SERPlux.
+`/sync-context-self`, `/sync-task`). vault — 9 команд (`/ask`, `/capture`,
+`/inbox`, `/project`, `/commit`, `/project-add`, `/audit`, `/done`,
+`/distill-pipeline`). Образец для SERPlux.
 
 #### ✅ context-as-docs (vault) + 🟡 (SERPlux, dv-hub)
 - **vault**: AGENTS.md + Architecture.md + OKF-структура = документация как
@@ -196,6 +216,12 @@ dv-hub — 7 команд (`/morning`, `/spec`, `/review`, `/hygiene`, `/sync-co
   (collector-dev, reviewer, ui-dev, infra-dev), 5 команд-пайплайнов.
   plan делегирует исполнение build через task-tool (`task: { build: allow }`).
 
+#### 🟡 tool-integration-pattern (vault)
+vault — пилотная реализация. Директория `tools/` создана, первый инструмент
+`tools/telegram-capture/` (T-062) в разработке. Команда `/capture` будет
+извлекать посты из Telegram-группы @inbox_tools, librarian классифицировать.
+Связь с R-006 (Linux UX Lab) — основной потребитель captures.
+
 ---
 
 ## Проекты
@@ -205,7 +231,7 @@ dv-hub — 7 команд (`/morning`, `/spec`, `/review`, `/hygiene`, `/sync-co
 | [[03-Projects/SERPlux\|SERPlux]] | Продукт SERP Factory | Python/FastAPI/SQLite/Docker | Core ✅, Docker ✅, Deploy ✅, мультиклиентность ✅ | ✅ (6 агентов) |
 | [[03-Projects/dv-hub\|dv-hub]] | Волонтёрский | TS/Hono/better-sqlite3 | Активная разработка | ✅ (6 агентов) |
 | [[03-Projects/dotfiles\|dotfiles]] | Система | shell/конфиги Manjaro | Мульти-агент v3 + verifier + closed-loop + flush | ✅ (8 агентов) |
-| [[03-Projects/vault\|vault]] | Справочник | markdown/OpenCode | ✅ Рабочий командный центр | ✅ (librarian) |
+| [[03-Projects/vault\|vault]] | Справочник | markdown/OpenCode/Python tools | ✅ Рабочий командный центр + tools/ | ✅ (librarian) |
 
 ### SERPlux — первый продукт SERP Factory
 **Сбор позиций Google** через Topvisor Snapshots API → классификация URL
@@ -241,8 +267,9 @@ dv-hub — 7 команд (`/morning`, `/spec`, `/review`, `/hygiene`, `/sync-co
 **Командный центр знаний.** librarian управляет проектами отсюда.
 - Методы: ➖ все (волт — надстройка, а не объект внедрения)
 - Агенты: librarian
-- Команды: 6 — /ask, /capture, /project, /commit, /project-add, /audit
+- Команды: 9 — /ask, /capture, /inbox, /project, /commit, /project-add, /audit, /done, /distill-pipeline
 - Память: OKF-подбандл (active-context + facts + session-log)
+- Инструменты: tools/ (telegram-capture в разработке, T-062)
 
 ---
 
@@ -275,8 +302,8 @@ dv-hub — 7 команд (`/morning`, `/spec`, `/review`, `/hygiene`, `/sync-co
 
 ### Команды (все проекты)
 
-**vault (6 команд):**
-`/ask` · `/capture` · `/project` · `/commit` · `/project-add` · `/audit`
+**vault (9 команд):**
+`/ask` · `/capture` · `/inbox` · `/project` · `/commit` · `/project-add` · `/audit` · `/done` · `/distill-pipeline`
 
 **dv-hub (7 команд):**
 `/morning` · `/spec` · `/review` · `/hygiene` · `/sync-context` ·
@@ -315,7 +342,7 @@ dv-hub — 7 команд (`/morning`, `/spec`, `/review`, `/hygiene`, `/sync-co
 
 - **OKF v0.1** — полная архитектура волта (Reference → Methods → Projects → Memory → Templates)
 - **librarian** — командный центр с правами, памятью, автодокументированием
-- **Команды vault** — /ask, /capture, /project, /commit, /project-add, /audit
+- **Команды vault** — /ask, /capture, /inbox, /project, /commit, /project-add, /audit, /done, /distill-pipeline
 - **6 методов в 02-Methods/** — все описаны, статусы проставлены
 - **Distill-pattern в dv-hub** — 7 команд, работает в production
 - **Distill-pattern в dotfiles** — 10 пайплайнов-команд (+/loop, /flush)
@@ -328,6 +355,7 @@ dv-hub — 7 команд (`/morning`, `/spec`, `/review`, `/hygiene`, `/sync-co
 - **Closed-loop в dotfiles** — /loop (builder → @verifier), автономная итерация build → verify → fix
 - **Memory-management в dotfiles** — /flush + формализованный flush-протокол pre-compaction
 - **Memory-management в vault** — flush-протокол в librarian.md + session-flush плагин (глобальный)
+- **tool-integration-pattern** — метод описан (02-Methods/), директория tools/ создана, первый инструмент в разработке
 - **Model-routing в SERPlux** — 6 агентов на 3 моделях (kimi-k2.7-code / glm-5.2 / qwen3.7-plus)
 - **Делегирование plan→build в SERPlux** — plan (edit deny) делегирует исполнение build через task-tool
 - **FLAT layout в SERPlux** — все модули в корне репо, каталога src/ нет и не будет
@@ -363,6 +391,7 @@ dv-hub — 7 команд (`/morning`, `/spec`, `/review`, `/hygiene`, `/sync-co
 | **Verifier-pattern** в dv-hub | След. приоритет | [[02-Methods/verifier-pattern\|verifier-pattern]] |
 | **VibeOS Telegram-интеграция** | P5+ | T-015 + T-016 |
 | **Мультипровайдерность SERPlux** | Текущий приоритет | фолбек-цепочка LLM, API /providers |
+| **tools/telegram-capture/** — скрипт извлечения постов | Текущий приоритет | T-062 |
 
 ---
 
@@ -429,6 +458,11 @@ plan-агент с `edit: deny` и `task: { build: allow }` — думает, н
 `client_id`. migrate.py идемпотентен: любое состояние БД → корректная схема.
 111/111 тестов.
 
+### 10. tools/ — внешние API как инструменты (vault)
+Директория скриптов-инструментов в волте. Не плагины OpenCode, не MCP-серверы —
+просто Python-скрипты, которые агент вызывает через bash. Прозрачно,
+детерминированно, без лишних слоёв абстракции. LLM анализирует, API делает.
+
 ---
 
 ## Вектор роста
@@ -437,6 +471,7 @@ plan-агент с `edit: deny` и `task: { build: allow }` — думает, н
 - **OKF v0.1** — доведение до production-качества
 - **librarian протокол** — авто-документирование и мониторинг
 - **Аудит проектов** — `/audit`, сверка карточек с репо
+- **tool-integration-pattern** — первый инструмент (telegram-capture), интеграция внешних API
 
 ### Что буду осваивать (ближайшие сессии)
 - **Verifier-pattern в dv-hub** — создание subagent-верификатора по образцу SERPlux
@@ -460,6 +495,20 @@ plan-агент с `edit: deny` и `task: { build: allow }` — думает, н
 ---
 
 ## Чейнджлог
+
+### v0.3.0 (2026-07-07)
+- **Новый метод: tool-integration-pattern** — «LLM думает, API делает». Внешние
+  API как детерминированные инструменты агентов. Седьмой метод в 02-Methods/.
+- **Новая директория: tools/** — скрипты-инструменты VibeOS. Первый модуль
+  `tools/telegram-capture/` (T-062, в разработке) — извлечение постов из
+  Telegram-группы @inbox_tools, маркировка реакциями.
+- **Новое направление: Linux UX Lab (R-006)** — систематический апгрейд UX
+  Linux (Manjaro). Источник идей — Telegram группа. Связь с dotfiles.
+- **Команда /capture** — извлечение постов по теме → JSON → librarian
+  классифицирует. Заменяет идею Telegram-бота на старте (бот — эволюция).
+- **Таблица методов:** добавлен tool-integration-pattern (vault 🟡).
+- **Инвентарь:** добавлен раздел «Инструменты (tools/)».
+- **T-015/T-030 обновлены:** реализуются через /capture (команда вместо бота).
 
 ### v0.2.5 (2026-07-04)
 - **dotfiles апгрейд (T-059, T-060, T-061):**

@@ -12,7 +12,7 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Docker
 Сбор позиций Google через Topvisor Snapshots API, классификация URL (DeepSeek), выгрузка в Google Sheets.
 **Статус:** Core ✅, Docker ✅, Deploy ✅. Интерфейс = Google Sheets. Web UI — приостановлено (не запрошено заказчиком, требуется ADR). Безопасность: тесты пройдены, техдолг зафиксирован.
 
-**Окружение:** Python venv / Docker. Секреты в `.env` (см. `.env.example`).
+**Окружение:** Python venv / Docker. Секреты в `.env` (см. `.env.example`). direnv + venv (Python, автоактивация через `.envrc` в корне репо) — эталон паттерна для волта.
 **Структура:** FLAT layout — все модули (.py) в корне репозитория. Каталога `src/` нет и не будет.
 **Запуск (dev):** `python main.py`
 **Запуск (prod):** `docker compose up -d`

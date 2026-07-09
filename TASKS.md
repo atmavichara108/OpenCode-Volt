@@ -3,7 +3,7 @@ type: Task Tracker
 title: TASKS — трекер задач по волту
 description: Оперативные задачи по доведению волта до рабочего состояния и дальнейшему развитию.
 tags: [meta, tasks]
-timestamp: 2026-06-27
+timestamp: 2026-07-07
 ---
 # TASKS — Трекер задач OpenCode Vault
 
@@ -27,8 +27,8 @@ timestamp: 2026-06-27
 |----|--------|-----------|---------|
 | T-028 | Планирование новой архитектуры: 4 направления (Phone Remote, VibeAndroid, ProdWatch, Rudra AI) — **пауза, активен SERPlux** | P2 | [[99-Inbox]] |
 | T-046 | R-005: Project Orchestrator — оркестрация из волта всеми проектами + Android-управление | P2 | [[99-Inbox]] (R-005) |
-| T-015 | Telegram-бот для приёма фич и подходов | P5 | [[DEVELOPMENT-ROADMAP]] |
-| T-016 | Классификация фич по проектам (автомат) | P5 | [[DEVELOPMENT-ROADMAP]] |
+| T-015 | Telegram-бот для приёма фич и подходов — **эволюция T-062** (сначала команда /capture, бот как real-time слой позже) | P5 | [[DEVELOPMENT-ROADMAP]], [[02-Methods/tool-integration-pattern]] |
+| T-016 | Классификация фич по проектам (автомат) — **реализуется в /capture** (librarian классифицирует) | P5 | [[DEVELOPMENT-ROADMAP]] |
 | T-017 | Команда `/project-upgrade` — авто-внедрение методов | P5 | [[DEVELOPMENT-ROADMAP]] |
 | T-029 | VibeAndroid — расширение архитектуры вайбкодинга для Android-разработки (методы, команды, интеграция) | P2 | [[99-Inbox]] (R-002), [[VibeOS]] |
 | T-030 | Telegram Bot MVP — статусы проектов + базовые команды (расширение T-015) | P2 | [[rudra-phone]], T-015 |
@@ -62,6 +62,10 @@ timestamp: 2026-06-27
 
 | ID | Задача | Приоритет | Когда | Связано |
 |----|--------|-----------|-------|---------|
+| T-062 | `/capture` команда + `tools/telegram-capture/` — Telethon-скрипт: извлечение постов из группы @inbox_tools по теме, маркировка реакциями, JSON-вывод для librarian. Восстановлена `/inbox` (обработка 99-Inbox). **Ждёт первый запуск (установка зависимостей + авторизация)** | P2 | 2026-07-08 | [[02-Methods/tool-integration-pattern]], [[03-Projects/vault]] |
+| T-065 | VibeOS.md v0.3.0 — раздел «Инструменты (tools/)», новый метод в таблице, Linux UX Lab в направлениях, чейнджлог | P3 | 2026-07-07 | [[VibeOS]] |
+| T-064 | Linux UX Lab — направление R-006 в 99-Inbox: систематический апгрейд UX Linux (Manjaro), источник идей — Telegram группа, связь с dotfiles | P3 | 2026-07-07 | [[99-Inbox]], [[03-Projects/dotfiles]], [[VibeOS]] |
+| T-063 | `tool-integration-pattern` — седьмой метод VibeOS (02-Methods/): «LLM думает, API делает» — внешние API как детерминированные инструменты агентов | P2 | 2026-07-07 | [[02-Methods/tool-integration-pattern]], [[VibeOS]] |
 | T-059 | dotfiles: verifier-pattern (🟡→✅) — создать verifier.md агента по образцу SERPlux | P1 | 2026-07-03 | [[03-Projects/dotfiles]], [[02-Methods/verifier-pattern]] |
 | T-060 | dotfiles: closed-loop (🟡→✅) — создать /loop команду + verifier | P1 | 2026-07-03 | [[03-Projects/dotfiles]], [[02-Methods/closed-loop]] |
 | T-061 | memory-management flush-протокол (🟡→✅) — формализация pre-compaction flush в dotfiles + vault | P1 | 2026-07-03 | [[02-Methods/memory-management]], [[03-Projects/dotfiles]], [[03-Projects/vault]] |
@@ -128,4 +132,4 @@ timestamp: 2026-06-27
 - **Связано** — `wikilink` на файл/карточку/метод
 
 Номера ID в Done — T-000 для задач первой волны (без сквозной нумерации), T-001+ для нумерованных задач.
-T-058 — последняя закрытая задача (plan-агент: делегирование build). T-045 — активная (мультиклиентность SERPlux). T-047 — последняя добавленная (prompt-engineer агент).
+T-062 — последняя выполненная (tools/telegram-capture/ + /capture + /inbox восстановлена). Ждёт первый запуск.
