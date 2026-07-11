@@ -356,4 +356,150 @@ UX Lab.
 - **Приоритет:** P4
 - **Реакция:** 👨‍💻 (dotfiles)
 
+### Сессия 2026-07-09 (массовый capture, 6 тем × 10 постов = 60)
+
+> 60 постов из 6 тем (Софт, Приложения, Вайб, ИИ, Графика, Смарт).
+> Классифицировано librarian. Реакции проставлены через mark.py.
+
+#### Сводка по категориям
+
+| Категория | Эмодзи | Кол-во | Описание |
+|-----------|--------|--------|----------|
+| dotfiles/Linux UX | 👨‍💻 | 22 | Утилиты, терминалы, файл-менеджеры, заметки |
+| VibeOS/метод | 🏆 | 22 | AI-агенты, MCP, роутинг, контекст, PDF→MD |
+| Новый проект | 🎉 | 10 | VibeAndroid (8!), AI-видео (2) |
+| SERPlux | 🔥 | 1 | Docker security |
+| error | 🤔 | 4 | Пустые посты, нерелевантные |
+
+#### Тема: Софт (10 постов)
+
+| ID | Название | Язык | Категория | Описание |
+|----|---------|------|-----------|----------|
+| 617 | Telegram-Media-Downloader | JS | 👨‍💻 | Скачивание медиа из TG-веб |
+| 578 | mgrep | TS | 🏆 | Семантический поиск по коду/изображениям/PDF |
+| 577 | CloudPaste | JS | 👨‍💻 | Обмен текстом/файлами, Cloudflare, WebDAV |
+| 563 | elio | Rust | 👨‍💻 | Терминальный файловый менеджер, 3 панели |
+| 562 | horizon | Rust | 👨‍💻 | Управление сессиями терминала, GPU |
+| 560 | netwatch | Rust | 👨‍💻 | Диагностика сети в терминале |
+| 551 | blackcandy | Ruby | 👨‍💻 | Самохостинг музыки |
+| 543 | deskreen | TS | 👨‍💻 | Второй экран через WebRTC |
+| 523 | tiptop | Python | 👨‍💻 | Мониторинг системы (top-аналог), Textual |
+| 519 | tldr-pages | — | 👨‍💻 | Упрощённые мануалы команд |
+
+#### Тема: Приложения (10 постов)
+
+| ID | Название | Язык | Категория | Описание |
+|----|---------|------|-----------|----------|
+| 623 | wlctl | — | 👨‍💻 | Управление Wi-Fi/Ethernet/VPN |
+| 622 | ImageGlass | C# | 👨‍💻 | Просмотрщик изображений, 90+ форматов |
+| 618 | revpdf | — | 🏆 | PDF-редактор офлайн |
+| 616 | note-desktop | Python | 🏆 | Заметки в стиле Telegram, P2P, шифрование |
+| 596 | PdfDing | Python | 🏆 | Менеджер PDF |
+| 592 | poznote | JS | 👨‍💻 | Заметки, самохостинг, Excalidraw |
+| 590 | lap | Vue | 👨‍💻 | Менеджер фотографий офлайн |
+| 576 | clin-rs | Rust | 🏆 | TUI-заметки, .md/.canvas (Obsidian-like) |
+| 573 | clin-rs (дубль) | Rust | 🏆 | Дубликат 576 |
+| 568 | alt-sendme | TS | 👨‍💻 | Передача файлов P2P, QUIC, TLS 1.3 |
+
+#### Тема: Вайб (10 постов, 3 пустых)
+
+| ID | Название | Категория | Описание |
+|----|---------|-----------|----------|
+| 666 | dockerscan | 🔥 | Docker security (Go) |
+| 665 | rlm | 🏆 | RLM — Recursive Language Model, диаграммы |
+| 664 | (пустой) | 🤔 | Документ без текста |
+| 663 | (пустой) | 🤔 | Документ без текста |
+| 662 | (пустой) | 🤔 | Документ без текста |
+| 661 | RLM видео | 🏆 | Claude 1M токенов, Context Rot, RLM, agent tools |
+| 660 | Claude for OSS | 🏆 | 6 месяцев Claude Max 20x для open source |
+| 658 | awesome-agent-orchestrators | 🏆 | Список AI-агентов для оркестрации |
+| 656 | tinyrouter | 🏆 | LLM-маршрутизатор 10k параметров |
+| 655 | free-llm-api-resources | 🏆 | 100% бесплатные LLM API (25k★) |
+
+#### Тема: ИИ (10 постов)
+
+| ID | Название | Язык | Категория | Описание |
+|----|---------|------|-----------|----------|
+| 635 | OpenHuman | — | 🏆 | AI-ассистент, Super Context, 118 приложений |
+| 629 | Clips | — | 🎉 | Замена Loom, agent-native видео |
+| 558 | autoskills | Ruby | 🏆 | Авто-навыки для AI-агентов, 46 технологий |
+| 549 | claude-blog | Python | 👨‍💻 | Блог-контент с Claude Code |
+| 525 | codeburn | TS | 🏆 | Мониторинг токенов ИИ, TUI |
+| 520 | llmfit | — | 🏆 | Подбор локальных LLM под железо |
+| 508 | mercury-agent | TS | 🏆 | Автономный AI-агент, 40+ инструментов, TG |
+| 504 | girl-agent | TS | 🤔 | Виртуальный персонаж (нерелевантно) |
+| 503 | pocketpaw | Python | 🏆 | Персональный AI-агент, Command Center |
+| 501 | Sourcerer MCP | — | 🏆 | Семантический поиск по коду (MCP) |
+
+#### Тема: Графика (10 постов)
+
+| ID | Название | Язык | Категория | Описание |
+|----|---------|------|-----------|----------|
+| 589 | upscayl | TS | 👨‍💻 | AI увеличение изображений |
+| 565 | claude-code-video-toolkit | Python | 🏆 | Видео с Claude Code, Remotion |
+| 449 | FireRed-OpenStoryline | Python | 🎉 | Агентная система видео |
+| 437 | freecut | TS | 👨‍💻 | Видеоредактор в браузере |
+| 436 | pointless | JS/Rust | 👨‍💻 | Рисование, бесконечный холст |
+| 435 | videoeditor | TS | 🎉 | AI видеоредактор, Vibe-стиль |
+| 431 | frame | — | 🏆 | AI видеоредактор, Cursor-like UI |
+| 397 | DaVinci Resolve MCP | — | 🏆 | MCP для видеомонтажа |
+| 396 | Background Remover | React | 👨‍💻 | Удаление фона, локально, WebGPU |
+| 394 | Chandra | — | 🏆 | OCR, изображения/PDF → HTML/MD/JSON |
+
+#### Тема: Смарт (10 постов — VibeAndroid!)
+
+| ID | Название | Язык | Категория | Описание |
+|----|---------|------|-----------|----------|
+| 609 | awesome-android-root | Python | 🎉 | 400+ инструментов для root Android |
+| 594 | linux-android | Shell | 🎉 | Linux на Android через Termux |
+| 585 | web-to-app | Kotlin | 🎉 | URL → Android приложение |
+| 556 | DeadReckoning | Java | 🎉 | Навигация без GPS (инерциальные датчики) |
+| 547 | plain-app | Kotlin | 🎉 | Управление телефоном через веб (Phone Remote!) |
+| 545 | mobai-mcp | TS | 🏆 | MCP для мобильных устройств |
+| 524 | localsend | Dart | 👨‍💻 | Обмен файлами P2P, кроссплатформа |
+| 511 | DroidDesk | Shell | 🎉 | Android → Linux десктоп |
+| 471 | web-to-app (дубль) | Kotlin | 🎉 | Дубликат 585 |
+| 463 | Flow | Kotlin | 🎉 | YouTube клиент для Android |
+
+### Анализ паттернов и перспективы
+
+#### 1. VibeAndroid (R-002) — ПОДТВЕРЖДЕНО
+8 из 10 постов темы «Смарт» — Android-инструменты. Termux+Linux, web-to-app,
+plain-app (прямой кандидат на R-001 Phone Remote), mobai-mcp. Направление
+VibeAndroid [[99-Inbox#R-002]] получает сильное эмпирическое подтверждение.
+
+#### 2. MCP (Model Context Protocol) — растущий тренд
+3 поста: Sourcerer MCP (семантический поиск по коду), DaVinci Resolve MCP
+(видеомонтаж), mobai-mcp (мобильные устройства). MCP как стандарт подключения
+внешних инструментов к LLM — прямой кандидат на изучение в VibeOS. Релевантно
+[[02-Methods/tool-integration-pattern]].
+
+#### 3. PDF→Markdown — кластер инструментов
+MinerU (C-001), Chandra (394), revpdf (618). Три инструмента для преобразования
+документов в Markdown. Кандидат на `tools/doc-converter/` — второй инструмент
+VibeOS после telegram-capture.
+
+#### 4. model-routing — эмпирические данные
+tinyrouter (656) — LLM-маршрутизатор на 10k параметров. llmfit (520) — подбор
+моделей под железо. Релевантно T-049 (профили моделей под провайдера) и
+[[02-Methods/model-routing]].
+
+#### 5. RLM и контекст-менеджмент
+RLM (Recursive Language Model) — 665, 661. Решает проблему Context Rot
+(деградация контекста в длинных чатах). Прямо релевантно
+[[02-Methods/memory-management]] и flush-протоколу.
+
+#### 6. Бесплатные LLM API
+free-llm-api-resources (655, 25k★) — Google AI Studio, Groq, Cerebras,
+OpenRouter, NVIDIA NIM, Mistral. Для дешёвых агентов и тестирования.
+
+#### 7. AI-видео — новое направление?
+5 инструментов (Clips, FireRed, videoeditor, frame, claude-code-video-toolkit).
+Agent-native видеопроизводство. Возможно отдельное направление или часть
+[[99-Inbox#R-002]] (VibeAndroid — медиа-приложения).
+
+#### 8. Оркестрация агентов
+awesome-agent-orchestrators (658) + pocketpaw Command Center (503). Релевантно
+R-005 Project Orchestrator — оркестрация из волта всеми проектами.
+
 ---

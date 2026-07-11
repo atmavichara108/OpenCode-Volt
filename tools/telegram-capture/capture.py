@@ -261,7 +261,7 @@ async def main() -> None:
                     await client(SendReactionRequest(
                         peer=peer,
                         msg_id=m.id,
-                        reaction=[ReactionEmoji(emoticon="📥")],
+                        reaction=[ReactionEmoji(emoticon=config.EMOJI_MAP["ingested"])],
                     ))
                     marked += 1
                 except FloodWaitError as fw:
