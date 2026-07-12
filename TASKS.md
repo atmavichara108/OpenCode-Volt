@@ -30,6 +30,7 @@ timestamp: 2026-07-07
 | T-015 | Telegram-бот для приёма фич и подходов — **эволюция T-062** (сначала команда /capture, бот как real-time слой позже) | P5 | [[DEVELOPMENT-ROADMAP]], [[02-Methods/tool-integration-pattern]] |
 | T-016 | Классификация фич по проектам (автомат) — **реализуется в /capture** (librarian классифицирует) | P5 | [[DEVELOPMENT-ROADMAP]] |
 | T-017 | Команда `/project-upgrade` — авто-внедрение методов | P5 | [[DEVELOPMENT-ROADMAP]] |
+| T-068 | `tools/doc-converter/` — второй инструмент VibeOS (PDF→Markdown). Референсы: MinerU (C-001), Chandra (C-054), revpdf (C-048). Связь с distill-pattern и context-as-docs | P3 | [[02-Methods/tool-integration-pattern]], [[99-Inbox]] (C-001) |
 | T-029 | VibeAndroid — расширение архитектуры вайбкодинга для Android-разработки (методы, команды, интеграция) | P2 | [[99-Inbox]] (R-002), [[VibeOS]] |
 | T-030 | Telegram Bot MVP — статусы проектов + базовые команды (расширение T-015) | P2 | [[rudra-phone]], T-015 |
 | T-031 | ProdWatch Фаза 0 — health-check скрипты + Telegram алерты | P2 | [[prod-monitor]] |
@@ -62,6 +63,8 @@ timestamp: 2026-07-07
 
 | ID | Задача | Приоритет | Когда | Связано |
 |----|--------|-----------|-------|---------|
+| T-066 | mark.py: `break`→`continue` на FloodWaitError + `time.sleep(fw.seconds+1)` — не прерывать остальные message_ids | P2 | 2026-07-09 | [[03-Projects/vault]], [[02-Methods/verifier-pattern]] |
+| T-067 | Smoke-тест: проверка эмодзи из EMOJI_MAP против Telegram API (GetAvailableReactions). `test_smoke.py`, маркер `--smoke`, 1 PASS (74 доступных, все 7 валидны) | P3 | 2026-07-09 | [[02-Methods/tool-integration-pattern]], [[02-Methods/verifier-pattern]] |
 | T-062 | `/capture` команда + `tools/telegram-capture/` — Telethon-скрипт: извлечение постов из группы @inbox_tools по теме, маркировка реакциями, JSON-вывод для librarian. Восстановлена `/inbox` (обработка 99-Inbox). **Ждёт первый запуск (установка зависимостей + авторизация)** | P2 | 2026-07-08 | [[02-Methods/tool-integration-pattern]], [[03-Projects/vault]] |
 | T-065 | VibeOS.md v0.3.0 — раздел «Инструменты (tools/)», новый метод в таблице, Linux UX Lab в направлениях, чейнджлог | P3 | 2026-07-07 | [[VibeOS]] |
 | T-064 | Linux UX Lab — направление R-006 в 99-Inbox: систематический апгрейд UX Linux (Manjaro), источник идей — Telegram группа, связь с dotfiles | P3 | 2026-07-07 | [[99-Inbox]], [[03-Projects/dotfiles]], [[VibeOS]] |
@@ -132,4 +135,4 @@ timestamp: 2026-07-07
 - **Связано** — `wikilink` на файл/карточку/метод
 
 Номера ID в Done — T-000 для задач первой волны (без сквозной нумерации), T-001+ для нумерованных задач.
-T-062 — последняя выполненная (tools/telegram-capture/ + /capture + /inbox восстановлена). Ждёт первый запуск.
+T-066/067 — последние выполненные (mark.py FloodWait, smoke-тест эмодзи). T-068 — последняя запланированная (doc-converter концепция).

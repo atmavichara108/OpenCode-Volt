@@ -12,6 +12,7 @@ import argparse
 import asyncio
 import logging
 import sys
+import time
 
 from telethon import TelegramClient
 from telethon.errors import FloodWaitError
@@ -123,11 +124,13 @@ async def main() -> None:
                 marked += 1
             except FloodWaitError as fw:
                 print(
-                    f"mark: FloodWait {fw.seconds}s — остановка.",
+                    f"mark: FloodWait {fw.seconds}s на msg {mid} — "
+                    f"жду и продолжаю со следующим.",
                     file=sys.stderr,
                 )
+                time.sleep(fw.seconds + 1)
                 failed.append(mid)
-                break
+                continue
             except Exception as exc:  # noqa: BLE001
                 print(
                     f"mark: не удалось поставить {emoji} на msg {mid}: {exc}",
