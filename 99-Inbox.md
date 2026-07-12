@@ -502,4 +502,65 @@ Agent-native видеопроизводство. Возможно отдельн
 awesome-agent-orchestrators (658) + pocketpaw Command Center (503). Релевантно
 R-005 Project Orchestrator — оркестрация из волта всеми проектами.
 
+### Сессия 2026-07-12 (полный capture, 11 тем, 584 поста)
+
+> Полный сбор всех постов из группы @inbox_tools (11 тем, dry-run).
+> Классифицировано librarian. Реакции проставлены через mark.py (в фоне).
+> Файлы: captures_all.json (647K), captures_classified.json (149K).
+
+#### Сводка по категориям
+
+| Категория | Эмодзи | Кол-во | % | Описание |
+|-----------|--------|--------|---|----------|
+| dotfiles/Linux UX | 👨‍💻 | 216 | 37% | CLI-утилиты, терминалы, файл-менеджеры, медиа |
+| VibeOS/метод | 🏆 | 204 | 35% | AI-агенты, MCP, skills, LLM, контекст |
+| Новый проект | 🎉 | 37 | 6% | VibeAndroid (21!), AI-видео |
+| SERPlux | 🔥 | 11 | 2% | Docker, скрапинг, SSL, хостинг |
+| error | 🤔 | 116 | 20% | Пустые, дубликаты, курсы, Питонизм |
+
+#### Сводка по темам
+
+| Тема | Постов | Доминирующая категория |
+|------|--------|------------------------|
+| Приложения | 89 | dotfiles + vibeos (AI-сервисы) |
+| Софт | 107 | dotfiles (CLI) + vibeos (CLI AI) |
+| Вайб | 70 | vibeos (skills, agents, Claude) |
+| #General | 109 | vibeos (каталоги, AI-сервисы) |
+| Смарт | 21 | new (VibeAndroid!) |
+| Графика | 23 | new (AI-видео) + dotfiles |
+| красота | 14 | dotfiles (эстетика) |
+| сайтостроение | 51 | serplux (хостинг) + dotfiles |
+| Обучалки | 51 | vibeos (учебники по AI) |
+| ИИ | 23 | vibeos (LLM, агенты) |
+| Питонизм | 26 | error (учебные посты, старое) |
+
+#### Топ-10 паттернов (полная картина)
+
+1. **MCP — доминирующий тренд.** 7+ MCP-серверов: Sourcerer (код), DaVinci (видео), mobai (мобайл), telegram-mcp, mcp-ssh-manager, mcp-searxng, Reversecore_MCP. MCP как стандарт подключения инструментов к LLM — подтверждён эмпирически. VibeOS должна изучить MCP как следующий шаг после tool-integration-pattern.
+
+2. **Skills — растущий паттерн.** mattpocock/skills, reverse-skill, taste-skill, NVIDIA SkillSpector, Microsoft SkillOpt, Firecrawl Skill. Скиллы как переиспользуемые промпты-инструменты — то, что OpenCode уже поддерживает. VibeOS может дистиллировать свои скиллы (capture уже скилл!).
+
+3. **AI-агенты и оркестрация.** SeeAct, OpenHuman, mercury-agent (40+ инструментов, TG!), pocketpaw (Command Center), AutoAgent, ai-agents-from-scratch, agent-governance-toolkit (Microsoft). Релевантно R-005 Project Orchestrator.
+
+4. **Локальные LLM.** Ollama Web UI, AnythingLLM, Khoj, airllm, BitNet (Microsoft), nanochat (Karpathy), MiniCPM-V. Локальный инференс — альтернатива облачным. Релевантно model-routing.
+
+5. **Memory/Context management.** mem0.ai, agentmemory, RLM, OpenHuman Super Context. Контекст-менеджмент — ключевая проблема. Релевантно memory-management и flush-протоколу.
+
+6. **CLI AI-агенты.** Shell GPT, AIChat, tlm, Lexido, Rawdog, Yapyap, reTermAI. CLI-агенты — мост между dotfiles и vibeos. VibeOS может использовать как референсы.
+
+7. **VibeAndroid — подтверждён.** 21 пост в теме Смарт: termux-desktop, docker-android, escrcpy, PCLink, WebDeck, DroidRun, PairDrop, ImageToolbox, HTTP Shortcuts. R-002 получает сильное подтверждение.
+
+8. **Web scraping + клонирование.** Scraperr, Website Downloader, ai-website-cloner-template, MiroShark, PixelRAG. Релевантно serplux (SEO) и tool-integration.
+
+9. **PDF/Doc→Markdown кластер.** Chandra, MinerU (C-001), md2html, MD-This-Page, Youtube-to-Doc. tools/doc-converter/ (T-068) — реальный кандидат. Связь с distill-pattern.
+
+10. **Claude ecosystem.** free-claude-code, claude-usage, claude-desktop-bin, ccpocket, Claude for OSS, Claude Code skills. Claude-специфичные инструменты — отдельная экосистема.
+
+#### Структура хранения
+
+- `tools/telegram-capture/captures_all.json` — полный JSON 584 постов (647K)
+- `tools/telegram-capture/captures_classified.json` — классифицированные (149K, message_id + category + title + repo)
+- `99-Inbox.md` — этот раздел (сводка + анализ)
+- Группа @inbox_tools — реакции проставлены на все 584 поста (👨‍💻🏆🎉🔥🤔)
+
 ---

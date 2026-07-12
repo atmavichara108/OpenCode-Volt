@@ -1,0 +1,5282 @@
+{
+  "classified_date": "2026-07-12",
+  "total": 584,
+  "summary": {
+    "dotfiles": 216,
+    "vibeos": 204,
+    "new": 37,
+    "serplux": 11,
+    "error": 116
+  },
+  "topics": {
+    "Приложения": 89,
+    "Софт": 107,
+    "Вайб": 70,
+    "#General": 109,
+    "Смарт": 21,
+    "Графика": 23,
+    "красота": 14,
+    "сайтостроение": 51,
+    "Обучалки": 51,
+    "ИИ": 23,
+    "Питонизм": 26
+  },
+  "posts": [
+    {
+      "message_id": 506,
+      "topic": "Приложения",
+      "title": "CloakBrowser",
+      "lang": "Python",
+      "category": "dotfiles",
+      "repo": "https://github.com/CloakHQ/CloakBrowser",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 465,
+      "topic": "Приложения",
+      "title": "gridland",
+      "lang": "TypeScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/thoughtfulllc/gridland",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 456,
+      "topic": "Приложения",
+      "title": "Mailspring",
+      "lang": "JavaScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/Foundry376/Mailspring",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 387,
+      "topic": "Приложения",
+      "title": "Fooyin",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/fooyin/fooyin",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 386,
+      "topic": "Приложения",
+      "title": "Superseedr",
+      "lang": "Rust",
+      "category": "dotfiles",
+      "repo": "https://github.com/Jagalite/superseedr",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 385,
+      "topic": "Приложения",
+      "title": "Call Me",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/miroslavpejic85/call-me",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 374,
+      "topic": "Приложения",
+      "title": "systemctl-tui",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/rgwood/systemctl-tui",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 356,
+      "topic": "Приложения",
+      "title": "Raijin",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/MasonStooksbury/Raijin",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 355,
+      "topic": "Приложения",
+      "title": "SunnyCapturer",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/XMuli/SunnyCapturer",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 354,
+      "topic": "Приложения",
+      "title": "Nuclear",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/nukeop/nuclear",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 351,
+      "topic": "Приложения",
+      "title": "Chrome OLED Mode",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/FreelanceProgrammingServices/Chrome-OLED-Mode",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 349,
+      "topic": "Приложения",
+      "title": "Mouse is Lava",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/gruns/the-mouse-is-lava",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 348,
+      "topic": "Приложения",
+      "title": "Prompt2Flutter",
+      "lang": "",
+      "category": "new",
+      "repo": "https://github.com/filippofinke/Prompt2Flutter",
+      "reason": "Android-приложение (VibeAndroid)"
+    },
+    {
+      "message_id": 339,
+      "topic": "Приложения",
+      "title": "Linkwarden",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/linkwarden/linkwarden",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 335,
+      "topic": "Приложения",
+      "title": "buku",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/jarun/buku",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 333,
+      "topic": "Приложения",
+      "title": "DownFall",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/torculus/DownFall",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 332,
+      "topic": "Приложения",
+      "title": "SeeAct",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/OSU-NLP-Group/SeeAct",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 323,
+      "topic": "Приложения",
+      "title": "IPTVnator",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/4gray/iptvnator",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 319,
+      "topic": "Приложения",
+      "title": "Yami",
+      "lang": "Python",
+      "category": "dotfiles",
+      "repo": "https://github.com/DevER-M/yami",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 318,
+      "topic": "Приложения",
+      "title": "LangCommand",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/guoriyue/LangCommand",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 286,
+      "topic": "Приложения",
+      "title": "qrframe",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/zhengkyl/qrframe",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 284,
+      "topic": "Приложения",
+      "title": "Cal Buddy",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/ChiragAgg5k/cal-buddy",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 280,
+      "topic": "Приложения",
+      "title": "maestro-cli",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/PrajwalVandana/maestro-cli",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 277,
+      "topic": "Приложения",
+      "title": "nnn",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/jarun/nnn",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 256,
+      "topic": "Приложения",
+      "title": "Whisper WebGPU",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/xenova/transformers.js/tree/v3/examples/webgpu-whisper",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 238,
+      "topic": "Приложения",
+      "title": "Google выпустила в открытый доступ",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 237,
+      "topic": "Приложения",
+      "title": "Graphite",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/GraphiteEditor/Graphite",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 235,
+      "topic": "Приложения",
+      "title": "Заводим временную почту Gmail",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 233,
+      "topic": "Приложения",
+      "title": "shrink.media",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 228,
+      "topic": "Приложения",
+      "title": "Superfile",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/MHNightCat/superfile",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 227,
+      "topic": "Приложения",
+      "title": "Upscayl",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/upscayl/upscayl",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 226,
+      "topic": "Приложения",
+      "title": "TempMail",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/mehmetkahya0/temp-mail",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 225,
+      "topic": "Приложения",
+      "title": "TextSnatcher",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/RajSolai/TextSnatcher",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 221,
+      "topic": "Приложения",
+      "title": "Jitter",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 216,
+      "topic": "Приложения",
+      "title": "WhisperClip",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/gustavostz/whisper-clip",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 215,
+      "topic": "Приложения",
+      "title": "CorsixTH",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/CorsixTH/CorsixTH",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 214,
+      "topic": "Приложения",
+      "title": "Reor",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/reorproject/reor",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 212,
+      "topic": "Приложения",
+      "title": "Stable Cascade",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/Stability-AI/StableCascade",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 205,
+      "topic": "Приложения",
+      "title": "Navidrome Music Server",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/navidrome/navidrome",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 202,
+      "topic": "Приложения",
+      "title": "Сервисы для удаления водяных знаков",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 201,
+      "topic": "Приложения",
+      "title": "Desygner",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 199,
+      "topic": "Приложения",
+      "title": "Make",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 198,
+      "topic": "Приложения",
+      "title": "ИИ-сервис поможет проводить любые исследования.",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 197,
+      "topic": "Приложения",
+      "title": "+1 сервис для повышения детализации",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 196,
+      "topic": "Приложения",
+      "title": "Лучшая бесплатная нейросеть для улучшения",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 195,
+      "topic": "Приложения",
+      "title": "Нейросеть ответит на любой вопрос",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 194,
+      "topic": "Приложения",
+      "title": "AssemblyAI",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 193,
+      "topic": "Приложения",
+      "title": "Удаляем водяные знаки в пару",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 184,
+      "topic": "Приложения",
+      "title": "PyMacroRecord",
+      "lang": "Python",
+      "category": "dotfiles",
+      "repo": "https://github.com/LOUDO56/PyMacroRecord",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 183,
+      "topic": "Приложения",
+      "title": "MiroTalk SFU",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/miroslavpejic85/mirotalksfu",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 182,
+      "topic": "Приложения",
+      "title": "Story Generator",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/Dene33/world-gpt",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 181,
+      "topic": "Приложения",
+      "title": "Motionity",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/alyssaxuu/motionity",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 175,
+      "topic": "Приложения",
+      "title": "Make Real",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/tldraw/make-real",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 174,
+      "topic": "Приложения",
+      "title": "Flying Carpet",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/spieglt/FlyingCarpet",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 173,
+      "topic": "Приложения",
+      "title": "Flameshot",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/flameshot-org/flameshot",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 158,
+      "topic": "Приложения",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 157,
+      "topic": "Приложения",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 156,
+      "topic": "Приложения",
+      "title": "Прокачиваем качество изображений в несколько",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 155,
+      "topic": "Приложения",
+      "title": "Расширение быстро найдет бесплатный аналог",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 154,
+      "topic": "Приложения",
+      "title": "Конструктор чат-ботов нового поколения",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 153,
+      "topic": "Приложения",
+      "title": "Видеоредактор с искусственным интеллектом",
+      "lang": "",
+      "category": "new",
+      "repo": "",
+      "reason": "AI-видео инструмент"
+    },
+    {
+      "message_id": 151,
+      "topic": "Приложения",
+      "title": "Простая рабочая платформа для управления",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 149,
+      "topic": "Приложения",
+      "title": "П**опулярный сервис отложенного чтения",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 142,
+      "topic": "Приложения",
+      "title": "https",
+      "lang": "",
+      "category": "new",
+      "repo": "https://github.com/Lucchetto/SuperImage",
+      "reason": "Android-приложение (VibeAndroid)"
+    },
+    {
+      "message_id": 133,
+      "topic": "Приложения",
+      "title": "Передача файлов между любыми устройствами",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 132,
+      "topic": "Приложения",
+      "title": "Бесплатный способ удалить вотермарки с",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 131,
+      "topic": "Приложения",
+      "title": "Make",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 130,
+      "topic": "Приложения",
+      "title": "Softr",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 128,
+      "topic": "Приложения",
+      "title": "Нейросеть для улучшения фотографий **Magnific",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 126,
+      "topic": "Приложения",
+      "title": "Unreal Speech",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 114,
+      "topic": "Приложения",
+      "title": "Designify",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 112,
+      "topic": "Приложения",
+      "title": "Как безопасно отправить тяжелый файл.",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 110,
+      "topic": "Приложения",
+      "title": "ИИ-сервис поможет быстро разобраться с",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 109,
+      "topic": "Приложения",
+      "title": "ИИ-сервис станет вашим наставником и",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 84,
+      "topic": "Приложения",
+      "title": "Ещё одно полезное приложение",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 83,
+      "topic": "Приложения",
+      "title": "ИИ-сервис проанализирует документ или видео",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 82,
+      "topic": "Приложения",
+      "title": "+1 сервис для превращения наброска",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 80,
+      "topic": "Приложения",
+      "title": "qBittorrent",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/qbittorrent/qBittorrent",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 78,
+      "topic": "Приложения",
+      "title": "kew",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/ravachol/kew",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 63,
+      "topic": "Приложения",
+      "title": "Audiobookshelf",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/advplyr/audiobookshelf-app",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 44,
+      "topic": "Приложения",
+      "title": "Planify",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/alainm23/planify",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 41,
+      "topic": "Приложения",
+      "title": "AnyDoor",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/damo-vilab/AnyDoor",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 40,
+      "topic": "Приложения",
+      "title": "turbo",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/modal-labs/turbo-art",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 24,
+      "topic": "Приложения",
+      "title": "Начинающие программисты, налетайте",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 22,
+      "topic": "Приложения",
+      "title": "Новый ИИ-сервис бесплатно заменит вам",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 18,
+      "topic": "Приложения",
+      "title": "ИИ-сервис для генерации векторных изображений",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 16,
+      "topic": "Приложения",
+      "title": "Как сделать красивый и качественный",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 10,
+      "topic": "Приложения",
+      "title": "Е",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 9,
+      "topic": "Приложения",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 505,
+      "topic": "Софт",
+      "title": "lay-public",
+      "lang": "Rust",
+      "category": "dotfiles",
+      "repo": "https://github.com/radislabus-star/lay-public",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 498,
+      "topic": "Софт",
+      "title": "TUI_bluetooth",
+      "lang": "Python",
+      "category": "dotfiles",
+      "repo": "https://github.com/HelpFreedom/TUI_bluetooth",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 485,
+      "topic": "Софт",
+      "title": "Если хотите создавать красивые и",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/charmbracelet",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 484,
+      "topic": "Софт",
+      "title": "Торренты теперь тоже скачиваем через",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/rakshasa/rtorrent",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 483,
+      "topic": "Софт",
+      "title": "Gum",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/charmbracelet/gum",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 466,
+      "topic": "Софт",
+      "title": "dv hub",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 450,
+      "topic": "Софт",
+      "title": "aether",
+      "lang": "JavaScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/bjarneo/aether",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 447,
+      "topic": "Софт",
+      "title": "navi",
+      "lang": "Rust",
+      "category": "dotfiles",
+      "repo": "https://github.com/denisidoro/navi",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 440,
+      "topic": "Софт",
+      "title": "gogcli",
+      "lang": "Go",
+      "category": "dotfiles",
+      "repo": "https://github.com/steipete/gogcli",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 434,
+      "topic": "Софт",
+      "title": "weathr",
+      "lang": "Rust",
+      "category": "dotfiles",
+      "repo": "https://github.com/veirt/weathr",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 432,
+      "topic": "Софт",
+      "title": "cull",
+      "lang": "Go",
+      "category": "dotfiles",
+      "repo": "https://github.com/legostin/cull",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 419,
+      "topic": "Софт",
+      "title": "favbox",
+      "lang": "Vue",
+      "category": "dotfiles",
+      "repo": "https://github.com/dd3v/favbox",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 417,
+      "topic": "Софт",
+      "title": "openscreen",
+      "lang": "TypeScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/siddharthvaddem/openscreen",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 401,
+      "topic": "Софт",
+      "title": "keymapper",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/houmain/keymapper",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 377,
+      "topic": "Софт",
+      "title": "VERT",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/VERT-sh/VERT",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 370,
+      "topic": "Софт",
+      "title": "Crustacean Powered Clipboard",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/saltnpepper97/claw",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 365,
+      "topic": "Софт",
+      "title": "JAMS",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/nevimmu/JAMS",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 364,
+      "topic": "Софт",
+      "title": "VokoscreenNG",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/vkohaupt/vokoscreenNG",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 362,
+      "topic": "Софт",
+      "title": "Cheatshh",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/AnirudhG07/cheatshh",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 361,
+      "topic": "Софт",
+      "title": "Thaimeleon",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 359,
+      "topic": "Софт",
+      "title": "GACUA",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/openmule/gacua",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 358,
+      "topic": "Софт",
+      "title": "Yapyap",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/lxe/yapyap",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 353,
+      "topic": "Софт",
+      "title": "Flow-Like",
+      "lang": "Rust",
+      "category": "dotfiles",
+      "repo": "https://github.com/TM9657/flow-like",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 347,
+      "topic": "Софт",
+      "title": "Napkins",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/nutlope/napkins",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 346,
+      "topic": "Софт",
+      "title": "reTermAI-LLM CLI",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/pie0902/reTermAI",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 344,
+      "topic": "Софт",
+      "title": "Dear ImGui",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/ocornut/imgui",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 343,
+      "topic": "Софт",
+      "title": "Dotbins",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/basnijholt/dotbins",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 342,
+      "topic": "Софт",
+      "title": "Ttyd",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/tsl0922/ttyd",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 340,
+      "topic": "Софт",
+      "title": "Rawdog",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/AbanteAI/rawdog",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 336,
+      "topic": "Софт",
+      "title": "Genshin Sddm Theme",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 334,
+      "topic": "Софт",
+      "title": "Clipcat",
+      "lang": "Rust",
+      "category": "dotfiles",
+      "repo": "https://github.com/xrelkd/clipcat",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 330,
+      "topic": "Софт",
+      "title": "AIWP",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/minosvasilias/AIWP",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 326,
+      "topic": "Софт",
+      "title": "fzf-make",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/kyu08/fzf-make",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 320,
+      "topic": "Софт",
+      "title": "Perspectra",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/ad-si/Perspectra",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 317,
+      "topic": "Софт",
+      "title": "Khoj",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/khoj-ai/khoj",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 316,
+      "topic": "Софт",
+      "title": "AnythingLLM",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/Mintplex-Labs/anything-llm",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 290,
+      "topic": "Софт",
+      "title": "You-get",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/soimort/you-get",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 288,
+      "topic": "Софт",
+      "title": "phidata",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/phidatahq/phidata",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 287,
+      "topic": "Софт",
+      "title": "Louvre",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/jerryliuoft/louvre",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 283,
+      "topic": "Софт",
+      "title": "Connor",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/ycatsh/connor",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 281,
+      "topic": "Софт",
+      "title": "CogStudio",
+      "lang": "",
+      "category": "new",
+      "repo": "https://github.com/pinokiofactory/cogstudio",
+      "reason": "AI-видео инструмент"
+    },
+    {
+      "message_id": 270,
+      "topic": "Софт",
+      "title": "Babelfish",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/supabase-community/babelfish.ai",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 267,
+      "topic": "Софт",
+      "title": "CompressO",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/codeforreal1/compressO",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 258,
+      "topic": "Софт",
+      "title": "Kando",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/kando-menu/kando",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 257,
+      "topic": "Софт",
+      "title": "DevToys",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/DevToys-app/DevToys",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 254,
+      "topic": "Софт",
+      "title": "CinEx",
+      "lang": "",
+      "category": "new",
+      "repo": "https://github.com/acalejos/CinEx",
+      "reason": "AI-видео инструмент"
+    },
+    {
+      "message_id": 244,
+      "topic": "Софт",
+      "title": "yt-chat",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/Fonction-Labs/yt-chat",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 231,
+      "topic": "Софт",
+      "title": "Бесплатный аналог ChatGPT для работы",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 224,
+      "topic": "Софт",
+      "title": "basht",
+      "lang": "Bash",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 223,
+      "topic": "Софт",
+      "title": "Lexido",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/micr0-dev/lexido",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 222,
+      "topic": "Софт",
+      "title": "LaVague",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/dhuynh95/LaVague",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 218,
+      "topic": "Софт",
+      "title": "Ente",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/ente-io/ente",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 217,
+      "topic": "Софт",
+      "title": "tlm",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/yusufcanb/tlm",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 207,
+      "topic": "Софт",
+      "title": "NormCap",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/dynobo/normcap",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 206,
+      "topic": "Софт",
+      "title": "Clight",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/FedeDP/Clight",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 179,
+      "topic": "Софт",
+      "title": "Genshin Sddm Theme",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 178,
+      "topic": "Софт",
+      "title": "RubyWM",
+      "lang": "Ruby",
+      "category": "dotfiles",
+      "repo": "https://github.com/vidarh/rubywm",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 176,
+      "topic": "Софт",
+      "title": "Clipcat",
+      "lang": "Rust",
+      "category": "error",
+      "repo": "https://github.com/xrelkd/clipcat",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 166,
+      "topic": "Софт",
+      "title": "Photomash Studio",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 148,
+      "topic": "Софт",
+      "title": "Fonoster",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/fonoster/fonoster",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 147,
+      "topic": "Софт",
+      "title": "text2wallpaper",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 146,
+      "topic": "Софт",
+      "title": "Shell GPT",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/TheR1D/shell_gpt",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 144,
+      "topic": "Софт",
+      "title": "Visual ChatGPT",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/microsoft/visual-chatgpt",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 143,
+      "topic": "Софт",
+      "title": "https",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/awesome-selfhosted/awesome-selfhosted",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 141,
+      "topic": "Софт",
+      "title": "Lwp",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/jszczerbinsky/lwp",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 139,
+      "topic": "Софт",
+      "title": "AIdea",
+      "lang": "",
+      "category": "new",
+      "repo": "https://github.com/mylxsw/aidea",
+      "reason": "Android-приложение (VibeAndroid)"
+    },
+    {
+      "message_id": 138,
+      "topic": "Софт",
+      "title": "vim-gpt",
+      "lang": "Python",
+      "category": "vibeos",
+      "repo": "https://github.com/kamou/gpt-vim",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 137,
+      "topic": "Софт",
+      "title": "atuin",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/atuinsh/atuin",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 136,
+      "topic": "Софт",
+      "title": "https",
+      "lang": "",
+      "category": "new",
+      "repo": "https://github.com/Akshayaap/MouseRemoteServer",
+      "reason": "Android-приложение (VibeAndroid)"
+    },
+    {
+      "message_id": 134,
+      "topic": "Софт",
+      "title": "Spacedrive",
+      "lang": "Rust",
+      "category": "dotfiles",
+      "repo": "https://github.com/spacedriveapp/spacedrive",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 129,
+      "topic": "Софт",
+      "title": "Softr",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 127,
+      "topic": "Софт",
+      "title": "ИИ-сервис напишет код всего по",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 81,
+      "topic": "Софт",
+      "title": "talk-llama",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/ggerganov/whisper.cpp/tree/master/examples/talk-llama",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 79,
+      "topic": "Софт",
+      "title": "Clipea",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/dave1010/clipea",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 77,
+      "topic": "Софт",
+      "title": "vimGPT",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/ishan0102/vimGPT",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 76,
+      "topic": "Софт",
+      "title": "Ollama Web UI",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/ollama-webui/ollama-webui",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 75,
+      "topic": "Софт",
+      "title": "Vet",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/safedep/vet",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 73,
+      "topic": "Софт",
+      "title": "🔥",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/Jiayi-Pan/GPT-V-on-Web.git",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 64,
+      "topic": "Софт",
+      "title": "Planify",
+      "lang": "",
+      "category": "error",
+      "repo": "https://github.com/alainm23/planify",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 62,
+      "topic": "Софт",
+      "title": "QRGen",
+      "lang": "TypeScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/error-try-again/QRGen",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 59,
+      "topic": "Софт",
+      "title": "Unexpected Keyboard",
+      "lang": "",
+      "category": "new",
+      "repo": "https://github.com/Julow/Unexpected-Keyboard",
+      "reason": "Android-приложение (VibeAndroid)"
+    },
+    {
+      "message_id": 58,
+      "topic": "Софт",
+      "title": "github-readme-terminal",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/x0rzavi/github-readme-terminal",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 56,
+      "topic": "Софт",
+      "title": "LibreChat",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/danny-avila/LibreChat",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 55,
+      "topic": "Софт",
+      "title": "LibreChat",
+      "lang": "",
+      "category": "error",
+      "repo": "https://github.com/danny-avila/LibreChat",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 50,
+      "topic": "Софт",
+      "title": "Enclave",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/symbolicsoft/enclave",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 49,
+      "topic": "Софт",
+      "title": "Enatega",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/Ninjas-Code-official/Enatega-Multi-Vendor-Food-Delivery-System",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 48,
+      "topic": "Софт",
+      "title": "Device Connect",
+      "lang": "",
+      "category": "new",
+      "repo": "https://github.com/cyanomiko/dcnnt-android",
+      "reason": "Android-приложение (VibeAndroid)"
+    },
+    {
+      "message_id": 47,
+      "topic": "Софт",
+      "title": "AIChat",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/sigoden/aichat",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 45,
+      "topic": "Софт",
+      "title": "Pentaract",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/Dominux/Pentaract",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 43,
+      "topic": "Софт",
+      "title": "Openlib",
+      "lang": "",
+      "category": "new",
+      "repo": "https://github.com/dstark5/Openlib",
+      "reason": "Android-приложение (VibeAndroid)"
+    },
+    {
+      "message_id": 39,
+      "topic": "Софт",
+      "title": "Lobe Chat",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/lobehub/lobe-chat",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 38,
+      "topic": "Софт",
+      "title": "Cliptopia",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/omegaui/cliptopia",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 37,
+      "topic": "Софт",
+      "title": "Feishin",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/jeffvli/feishin",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 36,
+      "topic": "Софт",
+      "title": "Oatmeal",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/dustinblackman/oatmeal",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 35,
+      "topic": "Софт",
+      "title": "sets88_telegram_bot",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/Sets88/sets88_telegram_bot",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 34,
+      "topic": "Софт",
+      "title": "Driver",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/rogeriochaves/driver",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 32,
+      "topic": "Софт",
+      "title": "Goosle",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/adegans/Goosle",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 26,
+      "topic": "Софт",
+      "title": "Ловите нейронку",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 23,
+      "topic": "Софт",
+      "title": "Новый мощный ИИ-редактор фотографий.",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/open-mmlab/mmagic/tree/main/projects/powerpaint",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 21,
+      "topic": "Софт",
+      "title": "Переводчик с искусственным интеллектом",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 17,
+      "topic": "Софт",
+      "title": "Бесплатная замена ChatGPT.",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 14,
+      "topic": "Софт",
+      "title": "Нейросеть KREA для генерации и",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 13,
+      "topic": "Софт",
+      "title": "ИИ-сервис отредактирует видео всего по",
+      "lang": "",
+      "category": "new",
+      "repo": "",
+      "reason": "AI-видео инструмент"
+    },
+    {
+      "message_id": 12,
+      "topic": "Софт",
+      "title": "Kite",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 11,
+      "topic": "Софт",
+      "title": "Переводим видео с любого языка",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/facebookresearch/seamless_communication",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 5,
+      "topic": "Софт",
+      "title": "Срфт",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 4,
+      "topic": "Софт",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 665,
+      "topic": "Вайб",
+      "title": "Диаграммы из видео",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/alexzhang13/rlm",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 664,
+      "topic": "Вайб",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 663,
+      "topic": "Вайб",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 653,
+      "topic": "Вайб",
+      "title": "5 опенсорс no-code платформ для",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/HKUDS/AutoAgent",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 652,
+      "topic": "Вайб",
+      "title": "Совет для пользователей Claude Code",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/mattpocock/skills/blob/main/skills/in-progress/claude-handoff/SKILL.md",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 650,
+      "topic": "Вайб",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 649,
+      "topic": "Вайб",
+      "title": "Это абсурдно умно",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/teamchong/pxpipe",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 648,
+      "topic": "Вайб",
+      "title": "Копировать веб-страницы в LLM не",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/Ademking/MD-This-Page",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 647,
+      "topic": "Вайб",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 646,
+      "topic": "Вайб",
+      "title": "Мой текущий любимый репозиторий скиллов",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/mattpocock/skills",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 645,
+      "topic": "Вайб",
+      "title": "Anthropic [выпустили](https",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 644,
+      "topic": "Вайб",
+      "title": "Fable вернулся, а значит время",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 643,
+      "topic": "Вайб",
+      "title": "Держите",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/nexu-io/harness-engineering-guide",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 642,
+      "topic": "Вайб",
+      "title": "Разработчик из Китая",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/hugohe3/ppt-master",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 641,
+      "topic": "Вайб",
+      "title": "Промпт-инжиниринг и loop engineering. Простое",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 640,
+      "topic": "Вайб",
+      "title": "Бывший инженер Google объяснил",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 634,
+      "topic": "Вайб",
+      "title": "С появлением вайбкодинга всё больше",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 632,
+      "topic": "Вайб",
+      "title": "Как создать агента, который со",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 631,
+      "topic": "Вайб",
+      "title": "Как улучшить свой",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/ksimback/looper",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 630,
+      "topic": "Вайб",
+      "title": "На GitHub завирусился проект reverse-skill",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/zhaoxuya520/reverse-skill",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 625,
+      "topic": "Вайб",
+      "title": "Веб-скрейпинг уже не будет прежним.",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/StarTrail-org/PixelRAG/blob/main/assets/pixelrag-paper.pdf",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 624,
+      "topic": "Вайб",
+      "title": "Разраб научился «прятать» промпты в",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 620,
+      "topic": "Вайб",
+      "title": "L0p4Map",
+      "lang": "Python",
+      "category": "dotfiles",
+      "repo": "https://github.com/HaxL0p4/L0p4Map",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 613,
+      "topic": "Вайб",
+      "title": "bytechef",
+      "lang": "Java",
+      "category": "vibeos",
+      "repo": "https://github.com/bytechefhq/bytechef",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 607,
+      "topic": "Вайб",
+      "title": "Datalab [открыла](https",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/datalab-to/lift",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 606,
+      "topic": "Вайб",
+      "title": "Находка",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/alibaba/zvec",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 605,
+      "topic": "Вайб",
+      "title": "https",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 604,
+      "topic": "Вайб",
+      "title": "Обещанная шпаргалка со всеми Best",
+      "lang": "",
+      "category": "serplux",
+      "repo": "",
+      "reason": "Docker/SEO/скрапинг/API-клиент"
+    },
+    {
+      "message_id": 603,
+      "topic": "Вайб",
+      "title": "Феномен GLM-5.2",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 602,
+      "topic": "Вайб",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 601,
+      "topic": "Вайб",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 600,
+      "topic": "Вайб",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 599,
+      "topic": "Вайб",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 598,
+      "topic": "Вайб",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 597,
+      "topic": "Вайб",
+      "title": "Мы запускаем собственный API-сервис",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 591,
+      "topic": "Вайб",
+      "title": "claude-desktop-bin",
+      "lang": "Nim",
+      "category": "vibeos",
+      "repo": "https://github.com/patrickjaja/claude-desktop-bin",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 582,
+      "topic": "Вайб",
+      "title": "abtop",
+      "lang": "Rust",
+      "category": "vibeos",
+      "repo": "https://github.com/graykode/abtop",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 581,
+      "topic": "Вайб",
+      "title": "docker-android",
+      "lang": "Shell",
+      "category": "new",
+      "repo": "https://github.com/HQarroum/docker-android",
+      "reason": "Android-приложение (VibeAndroid)"
+    },
+    {
+      "message_id": 580,
+      "topic": "Вайб",
+      "title": "MiroShark",
+      "lang": "Python",
+      "category": "vibeos",
+      "repo": "https://github.com/aaronjmars/MiroShark",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 579,
+      "topic": "Вайб",
+      "title": "ccpocket",
+      "lang": "Dart",
+      "category": "vibeos",
+      "repo": "https://github.com/K9i-0/ccpocket",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 575,
+      "topic": "Вайб",
+      "title": "Добавляем в копилку своих скиллов",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/diffusionstudio/lottie",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 574,
+      "topic": "Вайб",
+      "title": "Часто агенты оверинжинирят простые вещи.",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/DietrichGebert/ponytail",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 572,
+      "topic": "Вайб",
+      "title": "NVIDIA выпустила SkillSpector",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "http://github.com/nvidia/skillspector",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 571,
+      "topic": "Вайб",
+      "title": "На GitHub сейчас активно обсуждают",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/Leonxlnx/taste-skill",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 570,
+      "topic": "Вайб",
+      "title": "claude-usage",
+      "lang": "Python",
+      "category": "vibeos",
+      "repo": "https://github.com/phuryn/claude-usage",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 566,
+      "topic": "Вайб",
+      "title": "free-claude-code",
+      "lang": "Python",
+      "category": "vibeos",
+      "repo": "https://github.com/Alishahryar1/free-claude-code",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 553,
+      "topic": "Вайб",
+      "title": "termora",
+      "lang": "Kotlin",
+      "category": "dotfiles",
+      "repo": "https://github.com/TermoraDev/termora",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 548,
+      "topic": "Вайб",
+      "title": "Грег Айзенберг выпустил подробный гайд",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 546,
+      "topic": "Вайб",
+      "title": "md2html",
+      "lang": "HTML",
+      "category": "vibeos",
+      "repo": "https://github.com/haidang1810/md2html",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 542,
+      "topic": "Вайб",
+      "title": "openpets",
+      "lang": "TypeScript",
+      "category": "vibeos",
+      "repo": "https://github.com/alvinunreal/openpets",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 539,
+      "topic": "Вайб",
+      "title": "Если хочешь понять принципы работы",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/pguso/ai-agents-from-scratch",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 538,
+      "topic": "Вайб",
+      "title": "Находка для тех",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/anomalyco/models.dev",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 537,
+      "topic": "Вайб",
+      "title": "Мастер-класс по Hermes Agent.",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 536,
+      "topic": "Вайб",
+      "title": "Ещё один опенсорс от Microsoft",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/microsoft/agent-governance-toolkit",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 535,
+      "topic": "Вайб",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 534,
+      "topic": "Вайб",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 533,
+      "topic": "Вайб",
+      "title": "Microsoft опенсорснули проект SkillOpt для",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 532,
+      "topic": "Вайб",
+      "title": "В Google AI Studio теперь",
+      "lang": "Kotlin",
+      "category": "new",
+      "repo": "",
+      "reason": "Android-приложение (VibeAndroid)"
+    },
+    {
+      "message_id": 530,
+      "topic": "Вайб",
+      "title": "Анатомия идеального файла",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 529,
+      "topic": "Вайб",
+      "title": "Вице-президент Wix, запустил платформу для",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 528,
+      "topic": "Вайб",
+      "title": "Microsoft",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/microsoft/AI-Engineering-Coach",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 527,
+      "topic": "Вайб",
+      "title": "Bumblebee",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/perplexityai/bumblebee",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 526,
+      "topic": "Вайб",
+      "title": "Google",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 522,
+      "topic": "Вайб",
+      "title": "ssh-ai-chat",
+      "lang": "TypeScript",
+      "category": "vibeos",
+      "repo": "https://github.com/miantiao-me/ssh-ai-chat",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 517,
+      "topic": "Вайб",
+      "title": "viewermetrics",
+      "lang": "JavaScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/viewermetrics/viewermetrics",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 516,
+      "topic": "Вайб",
+      "title": "1. mem0.ai",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/rohitg00/agentmemory",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 515,
+      "topic": "Вайб",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 514,
+      "topic": "Вайб",
+      "title": "Встречай Firecrawl Skill + CLI",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 513,
+      "topic": "Вайб",
+      "title": "CEO YCombinator Гэрри Тэн",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 512,
+      "topic": "Вайб",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 615,
+      "topic": "#General",
+      "title": "GhostHub",
+      "lang": "JavaScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/BleedingXiko/GhostHub",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 614,
+      "topic": "#General",
+      "title": "GTweak",
+      "lang": "C#",
+      "category": "dotfiles",
+      "repo": "https://github.com/Greedeks/GTweak",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 612,
+      "topic": "#General",
+      "title": "PokieTicker",
+      "lang": "Python",
+      "category": "dotfiles",
+      "repo": "https://github.com/owengetinfo-design/PokieTicker",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 611,
+      "topic": "#General",
+      "title": "stonks-dashboard",
+      "lang": "JavaScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/pierridotite/stonks-dashboard",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 610,
+      "topic": "#General",
+      "title": "CasaOS",
+      "lang": "Go",
+      "category": "dotfiles",
+      "repo": "https://github.com/IceWhaleTech/CasaOS",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 608,
+      "topic": "#General",
+      "title": "Reversecore_MCP",
+      "lang": "Python",
+      "category": "vibeos",
+      "repo": "https://github.com/sjkim1127/Reversecore_MCP",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 595,
+      "topic": "#General",
+      "title": "awesome-open-hardware",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/delftopenhardware/awesome-open-hardware",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 593,
+      "topic": "#General",
+      "title": "Look4Sat",
+      "lang": "Kotlin",
+      "category": "new",
+      "repo": "https://github.com/rt-bishop/Look4Sat",
+      "reason": "Android-приложение (VibeAndroid)"
+    },
+    {
+      "message_id": 583,
+      "topic": "#General",
+      "title": "FreeDomain",
+      "lang": "HTML",
+      "category": "dotfiles",
+      "repo": "https://github.com/DigitalPlatDev/FreeDomain",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 567,
+      "topic": "#General",
+      "title": "ODM",
+      "lang": "Python",
+      "category": "dotfiles",
+      "repo": "https://github.com/OpenDroneMap/ODM",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 557,
+      "topic": "#General",
+      "title": "runtipi",
+      "lang": "TypeScript",
+      "category": "serplux",
+      "repo": "https://github.com/runtipi/runtipi",
+      "reason": "Docker/SEO/скрапинг/API-клиент"
+    },
+    {
+      "message_id": 555,
+      "topic": "#General",
+      "title": "netviz",
+      "lang": "TypeScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/ShadowArcanist/netviz",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 552,
+      "topic": "#General",
+      "title": "terminal",
+      "lang": "TypeScript",
+      "category": "serplux",
+      "repo": "https://github.com/humanplane/terminal",
+      "reason": "Docker/SEO/скрапинг/API-клиент"
+    },
+    {
+      "message_id": 544,
+      "topic": "#General",
+      "title": "Crucix",
+      "lang": "JavaScript",
+      "category": "vibeos",
+      "repo": "https://github.com/calesthio/Crucix",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 540,
+      "topic": "#General",
+      "title": "Мне кажется",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/hakimel/reveal.js",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 518,
+      "topic": "#General",
+      "title": "browserytools",
+      "lang": "TypeScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/aghyad97/browserytools",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 510,
+      "topic": "#General",
+      "title": "tickrs",
+      "lang": "Rust",
+      "category": "dotfiles",
+      "repo": "https://github.com/tarkah/tickrs",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 509,
+      "topic": "#General",
+      "title": "network-management-client",
+      "lang": "TypeScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/meshtastic/network-management-client",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 507,
+      "topic": "#General",
+      "title": "witr",
+      "lang": "Go",
+      "category": "dotfiles",
+      "repo": "https://github.com/pranshuparmar/witr",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 502,
+      "topic": "#General",
+      "title": "crosspaste-desktop",
+      "lang": "Kotlin",
+      "category": "dotfiles",
+      "repo": "https://github.com/CrossPaste/crosspaste-desktop",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 500,
+      "topic": "#General",
+      "title": "Vaultenv",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/atasoya/vaultenv",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 497,
+      "topic": "#General",
+      "title": "Telegram-Drive",
+      "lang": "TypeScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/caamer20/Telegram-Drive",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 496,
+      "topic": "#General",
+      "title": "glances",
+      "lang": "Python",
+      "category": "dotfiles",
+      "repo": "https://github.com/nicolargo/glances",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 491,
+      "topic": "#General",
+      "title": "AI-Trader",
+      "lang": "Python",
+      "category": "vibeos",
+      "repo": "https://github.com/HKUDS/AI-Trader",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 486,
+      "topic": "#General",
+      "title": "gopher-code",
+      "lang": "Go",
+      "category": "vibeos",
+      "repo": "https://github.com/ProjectBarks/gopher-code",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 468,
+      "topic": "#General",
+      "title": "тоже",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 457,
+      "topic": "#General",
+      "title": "polyterm",
+      "lang": "Python",
+      "category": "vibeos",
+      "repo": "https://github.com/NYTEMODEONLY/polyterm",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 452,
+      "topic": "#General",
+      "title": "textual-web",
+      "lang": "Python",
+      "category": "dotfiles",
+      "repo": "https://github.com/Textualize/textual-web",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 448,
+      "topic": "#General",
+      "title": "Memex",
+      "lang": "TypeScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/WorldBrain/Memex",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 446,
+      "topic": "#General",
+      "title": "Cosmos-Server",
+      "lang": "JavaScript",
+      "category": "serplux",
+      "repo": "https://github.com/azukaar/Cosmos-Server",
+      "reason": "Docker/SEO/скрапинг/API-клиент"
+    },
+    {
+      "message_id": 445,
+      "topic": "#General",
+      "title": "hfs",
+      "lang": "TypeScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/rejetto/hfs",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 443,
+      "topic": "#General",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 442,
+      "topic": "#General",
+      "title": "homehub",
+      "lang": "HTML",
+      "category": "dotfiles",
+      "repo": "https://github.com/surajverma/homehub",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 426,
+      "topic": "#General",
+      "title": "liam",
+      "lang": "TypeScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/liam-hq/liam",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 425,
+      "topic": "#General",
+      "title": "WhisperLiveKit",
+      "lang": "Python",
+      "category": "vibeos",
+      "repo": "https://github.com/QuentinFuxa/WhisperLiveKit",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 420,
+      "topic": "#General",
+      "title": "DriveLite",
+      "lang": "TypeScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/DriveLite/DriveLite",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 416,
+      "topic": "#General",
+      "title": "Pentaract",
+      "lang": "Rust",
+      "category": "error",
+      "repo": "https://github.com/Dominux/Pentaract",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 415,
+      "topic": "#General",
+      "title": "REAL-Video-Enhancer",
+      "lang": "Python",
+      "category": "dotfiles",
+      "repo": "https://github.com/TNTwise/REAL-Video-Enhancer",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 414,
+      "topic": "#General",
+      "title": "aesthetic-wallpapers",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/D3Ext/aesthetic-wallpapers",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 411,
+      "topic": "#General",
+      "title": "prism",
+      "lang": "Vue",
+      "category": "vibeos",
+      "repo": "https://github.com/qyzhg/prism",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 407,
+      "topic": "#General",
+      "title": "VIM Master",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/renzorlive/vimmaster",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 406,
+      "topic": "#General",
+      "title": "noted.md",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/tejas-raskar/noted.md",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 404,
+      "topic": "#General",
+      "title": "Scraperr",
+      "lang": "",
+      "category": "serplux",
+      "repo": "https://github.com/jaypyles/Scraperr",
+      "reason": "Docker/SEO/скрапинг/API-клиент"
+    },
+    {
+      "message_id": 403,
+      "topic": "#General",
+      "title": "Calcure",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/anufrievroman/calcure",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 400,
+      "topic": "#General",
+      "title": "Reddix",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/ck-zhang/reddix",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 392,
+      "topic": "#General",
+      "title": "ARWES",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/arwes/arwes",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 384,
+      "topic": "#General",
+      "title": "GitDiagram",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/ahmedkhaleel2004/gitdiagram",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 383,
+      "topic": "#General",
+      "title": "Postiz",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/gitroomhq/postiz-app",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 378,
+      "topic": "#General",
+      "title": "VDO.Ninja",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/steveseguin/vdo.ninja",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 375,
+      "topic": "#General",
+      "title": "Telegram Media Downloader",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/tangyoha/telegram_media_downloader",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 373,
+      "topic": "#General",
+      "title": "Seedit",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/plebbit/seedit",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 372,
+      "topic": "#General",
+      "title": "Paru",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/Morganamilo/paru",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 368,
+      "topic": "#General",
+      "title": "YouTube to Blog Converter",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/TheOrcDev/youtube-to-blog",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 357,
+      "topic": "#General",
+      "title": "Visual Story-Writing",
+      "lang": "TypeScript",
+      "category": "vibeos",
+      "repo": "https://github.com/m-damien/VisualStoryWriting",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 345,
+      "topic": "#General",
+      "title": "Calibre",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "http://github.com/kovidgoyal/calibre",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 331,
+      "topic": "#General",
+      "title": "vim shortcut wallpaper",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/LevelbossMike/vim_shortcut_wallpaper",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 329,
+      "topic": "#General",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 328,
+      "topic": "#General",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 327,
+      "topic": "#General",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 325,
+      "topic": "#General",
+      "title": "restreamer",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/datarhei/restreamer",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 301,
+      "topic": "#General",
+      "title": "ИИ-сервис моментально превратит аудио и",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/openai/whisper",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 289,
+      "topic": "#General",
+      "title": "Penrose",
+      "lang": "Rust",
+      "category": "dotfiles",
+      "repo": "https://github.com/sminez/penrose",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 278,
+      "topic": "#General",
+      "title": "TikTokAutoUploader",
+      "lang": "Python",
+      "category": "dotfiles",
+      "repo": "https://github.com/haziq-exe/TikTokAutoUploader",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 274,
+      "topic": "#General",
+      "title": "Gowall",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/Achno/gowall",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 272,
+      "topic": "#General",
+      "title": "PaletteSnap",
+      "lang": "Python",
+      "category": "dotfiles",
+      "repo": "https://github.com/EmperorEntropy/PaletteSnap",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 271,
+      "topic": "#General",
+      "title": "SurfSense",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/MODSetter/SurfSense",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 248,
+      "topic": "#General",
+      "title": "Relm",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/relm-us/relm",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 242,
+      "topic": "#General",
+      "title": "Полезный сервис для удобного ведения",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 236,
+      "topic": "#General",
+      "title": "Появился сайт",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 234,
+      "topic": "#General",
+      "title": "Лучшая нейросеть для генерации изображений",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 230,
+      "topic": "#General",
+      "title": "Palettemaker",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 213,
+      "topic": "#General",
+      "title": "Odin Runes",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/leonid20000/OdinRunes",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 211,
+      "topic": "#General",
+      "title": "База AI инструментов на все",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 209,
+      "topic": "#General",
+      "title": "https",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 208,
+      "topic": "#General",
+      "title": "Это гугл",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 200,
+      "topic": "#General",
+      "title": "Нейросеть объяснит любой код и",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 191,
+      "topic": "#General",
+      "title": "Более 1000 самых актуальных нейросетей",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 190,
+      "topic": "#General",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 189,
+      "topic": "#General",
+      "title": "вроде я на все согласилась",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 188,
+      "topic": "#General",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 187,
+      "topic": "#General",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 186,
+      "topic": "#General",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 177,
+      "topic": "#General",
+      "title": "Top GPTs",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/Anil-matcha/Top-GPTs",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 171,
+      "topic": "#General",
+      "title": "Collection of AI Side Business",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/bleedline/aimoneyhunter/blob/main/README_en.md",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 162,
+      "topic": "#General",
+      "title": "Забирайте инфографику с лучшими нейронками",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 161,
+      "topic": "#General",
+      "title": "Табличка с кучей новых ИИ-инструментов",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 159,
+      "topic": "#General",
+      "title": "Favro",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 150,
+      "topic": "#General",
+      "title": "Сервис для создания и запуска",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 145,
+      "topic": "#General",
+      "title": "https",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/nichtdax/awesome-totally-open-chatgpt",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 140,
+      "topic": "#General",
+      "title": "Chatbot Injections & Exploits",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/Cranot/chatbot-injections-exploits",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 135,
+      "topic": "#General",
+      "title": "Wolvic",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/Igalia/wolvic",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 113,
+      "topic": "#General",
+      "title": "Как научиться составлять правильные текстовые",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 111,
+      "topic": "#General",
+      "title": "Google выпустила бесплатный курс по",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 108,
+      "topic": "#General",
+      "title": "Шпаргалка Agile",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 96,
+      "topic": "#General",
+      "title": "Файловые менеджеры для Linux",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 95,
+      "topic": "#General",
+      "title": "⚙️",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 94,
+      "topic": "#General",
+      "title": "100 команд Linux для ежедневной",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 93,
+      "topic": "#General",
+      "title": "Управление Linux-сервером",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 92,
+      "topic": "#General",
+      "title": "Полезные команды Linux",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 91,
+      "topic": "#General",
+      "title": "⚙️",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 90,
+      "topic": "#General",
+      "title": "☁️",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 57,
+      "topic": "#General",
+      "title": "Public APIs",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/toddmotto/public-apis",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 42,
+      "topic": "#General",
+      "title": "github-readme-terminal",
+      "lang": "",
+      "category": "error",
+      "repo": "https://github.com/x0rzavi/github-readme-terminal",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 33,
+      "topic": "#General",
+      "title": "Huge AI-Catalog",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/mehmetkahya0/AI-Catalog",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 25,
+      "topic": "#General",
+      "title": "Начинающие программисты, налетайте",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 20,
+      "topic": "#General",
+      "title": "Сервис, который позволит давать ChatGPT",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/successfulstudy/promptoftheyear/blob/main/README.md",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 19,
+      "topic": "#General",
+      "title": "💻",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 8,
+      "topic": "#General",
+      "title": "Нарезаем длинное видео на короткие",
+      "lang": "",
+      "category": "new",
+      "repo": "",
+      "reason": "AI-видео инструмент"
+    },
+    {
+      "message_id": 1,
+      "topic": "#General",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 545,
+      "topic": "Смарт",
+      "title": "mobai-mcp",
+      "lang": "TypeScript",
+      "category": "vibeos",
+      "repo": "https://github.com/MobAI-App/mobai-mcp",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 462,
+      "topic": "Смарт",
+      "title": "episteme",
+      "lang": "Kotlin",
+      "category": "new",
+      "repo": "https://github.com/Aryan-Raj3112/episteme",
+      "reason": "Android-приложение (VibeAndroid)"
+    },
+    {
+      "message_id": 454,
+      "topic": "Смарт",
+      "title": "escrcpy",
+      "lang": "JavaScript",
+      "category": "new",
+      "repo": "https://github.com/viarotel-org/escrcpy",
+      "reason": "Android-приложение (VibeAndroid)"
+    },
+    {
+      "message_id": 429,
+      "topic": "Смарт",
+      "title": "ImageToolbox",
+      "lang": "Kotlin",
+      "category": "new",
+      "repo": "https://github.com/T8RIN/ImageToolbox",
+      "reason": "AI-видео инструмент"
+    },
+    {
+      "message_id": 423,
+      "topic": "Смарт",
+      "title": "pennywiseai-tracker",
+      "lang": "Kotlin",
+      "category": "new",
+      "repo": "https://github.com/sarim2000/pennywiseai-tracker",
+      "reason": "Android-приложение (VibeAndroid)"
+    },
+    {
+      "message_id": 413,
+      "topic": "Смарт",
+      "title": "PCLink",
+      "lang": "Python",
+      "category": "new",
+      "repo": "https://github.com/BYTEDz/PCLink",
+      "reason": "AI-видео инструмент"
+    },
+    {
+      "message_id": 412,
+      "topic": "Смарт",
+      "title": "WebDeck",
+      "lang": "Jinja",
+      "category": "new",
+      "repo": "https://github.com/Lenochxd/WebDeck",
+      "reason": "AI-видео инструмент"
+    },
+    {
+      "message_id": 410,
+      "topic": "Смарт",
+      "title": "cybermon",
+      "lang": "Svelte",
+      "category": "new",
+      "repo": "https://github.com/ZachJW34/cybermon",
+      "reason": "AI-видео инструмент"
+    },
+    {
+      "message_id": 408,
+      "topic": "Смарт",
+      "title": "termux-desktop",
+      "lang": "Shell",
+      "category": "new",
+      "repo": "https://github.com/sabamdarif/termux-desktop",
+      "reason": "Android-приложение (VibeAndroid)"
+    },
+    {
+      "message_id": 402,
+      "topic": "Смарт",
+      "title": "easy-sharing",
+      "lang": "",
+      "category": "new",
+      "repo": "https://github.com/parvardegr/sharing",
+      "reason": "AI-видео инструмент"
+    },
+    {
+      "message_id": 399,
+      "topic": "Смарт",
+      "title": "Local Dream",
+      "lang": "",
+      "category": "new",
+      "repo": "https://github.com/xororz/local-dream",
+      "reason": "Android-приложение (VibeAndroid)"
+    },
+    {
+      "message_id": 391,
+      "topic": "Смарт",
+      "title": "PairDrop for Android",
+      "lang": "",
+      "category": "new",
+      "repo": "https://github.com/fm-sys/snapdrop-android",
+      "reason": "Android-приложение (VibeAndroid)"
+    },
+    {
+      "message_id": 390,
+      "topic": "Смарт",
+      "title": "HTTP Shortcuts",
+      "lang": "",
+      "category": "new",
+      "repo": "https://github.com/Waboodoo/HTTP-Shortcuts",
+      "reason": "Android-приложение (VibeAndroid)"
+    },
+    {
+      "message_id": 382,
+      "topic": "Смарт",
+      "title": "Telegram SSH Bot",
+      "lang": "",
+      "category": "new",
+      "repo": "https://github.com/Lifailon/ssh-bot",
+      "reason": "AI-видео инструмент"
+    },
+    {
+      "message_id": 380,
+      "topic": "Смарт",
+      "title": "SummaryYou",
+      "lang": "Python",
+      "category": "new",
+      "repo": "https://github.com/talosross/SummaryYou",
+      "reason": "Android-приложение (VibeAndroid)"
+    },
+    {
+      "message_id": 363,
+      "topic": "Смарт",
+      "title": "Translator",
+      "lang": "",
+      "category": "new",
+      "repo": "https://github.com/DavidVentura/firefox-translator",
+      "reason": "Android-приложение (VibeAndroid)"
+    },
+    {
+      "message_id": 360,
+      "topic": "Смарт",
+      "title": "Dicio",
+      "lang": "",
+      "category": "new",
+      "repo": "https://github.com/Stypox/dicio-android",
+      "reason": "Android-приложение (VibeAndroid)"
+    },
+    {
+      "message_id": 352,
+      "topic": "Смарт",
+      "title": "MiniCPM-V",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/OpenBMB/MiniCPM-V",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 350,
+      "topic": "Смарт",
+      "title": "DroidRun",
+      "lang": "Python",
+      "category": "vibeos",
+      "repo": "https://github.com/droidrun/droidrun",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 341,
+      "topic": "Смарт",
+      "title": "Wify",
+      "lang": "",
+      "category": "new",
+      "repo": "https://github.com/yilinjuang/wify",
+      "reason": "Android-приложение (VibeAndroid)"
+    },
+    {
+      "message_id": 337,
+      "topic": "Смарт",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 389,
+      "topic": "Графика",
+      "title": "VideoSOS",
+      "lang": "",
+      "category": "new",
+      "repo": "https://github.com/timoncool/videosos",
+      "reason": "AI-видео инструмент"
+    },
+    {
+      "message_id": 338,
+      "topic": "Графика",
+      "title": "TikTok Uploader",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/wkaisertexas/tiktok-uploader",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 324,
+      "topic": "Графика",
+      "title": "hellwal",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/danihek/hellwal",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 322,
+      "topic": "Графика",
+      "title": "EasyFeh",
+      "lang": "Python",
+      "category": "dotfiles",
+      "repo": "https://github.com/ShibamRoy9826/easyfeh",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 321,
+      "topic": "Графика",
+      "title": "Gorgeous-GRUB",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/Jacksaur/Gorgeous-GRUB",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 311,
+      "topic": "Графика",
+      "title": "DreamCut",
+      "lang": "",
+      "category": "new",
+      "repo": "",
+      "reason": "AI-видео инструмент"
+    },
+    {
+      "message_id": 310,
+      "topic": "Графика",
+      "title": "ИИ-сервис для генерации мегакачественных изображений.",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 309,
+      "topic": "Графика",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 308,
+      "topic": "Графика",
+      "title": "Идеальный инструмент для удаления фона",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 307,
+      "topic": "Графика",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 306,
+      "topic": "Графика",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 305,
+      "topic": "Графика",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 304,
+      "topic": "Графика",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 303,
+      "topic": "Графика",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 302,
+      "topic": "Графика",
+      "title": "Мощнейший генератор видео от Meta*.",
+      "lang": "",
+      "category": "new",
+      "repo": "",
+      "reason": "AI-видео инструмент"
+    },
+    {
+      "message_id": 300,
+      "topic": "Графика",
+      "title": "Нейросеть делает качественные видео буквально",
+      "lang": "",
+      "category": "new",
+      "repo": "",
+      "reason": "AI-видео инструмент"
+    },
+    {
+      "message_id": 299,
+      "topic": "Графика",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 298,
+      "topic": "Графика",
+      "title": "Делаем качественный липсинк в только",
+      "lang": "",
+      "category": "new",
+      "repo": "",
+      "reason": "AI-видео инструмент"
+    },
+    {
+      "message_id": 297,
+      "topic": "Графика",
+      "title": "Идеальный апскейлер для ваших фотографий.",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 296,
+      "topic": "Графика",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 295,
+      "topic": "Графика",
+      "title": "Идеальная нейросеть, которая удалит или",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 294,
+      "topic": "Графика",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 293,
+      "topic": "Графика",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 588,
+      "topic": "красота",
+      "title": "upscayl",
+      "lang": "TypeScript",
+      "category": "error",
+      "repo": "https://github.com/upscayl/upscayl",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 586,
+      "topic": "красота",
+      "title": "CozyPixels",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/SleepyCatHey/CozyPixels",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 569,
+      "topic": "красота",
+      "title": "Кастомизируемый дашборд для терминала",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/ntrospect0/glint",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 489,
+      "topic": "красота",
+      "title": "Maple",
+      "lang": "JavaScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/tw93/Maple",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 482,
+      "topic": "красота",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 481,
+      "topic": "красота",
+      "title": "В одном из постов я",
+      "lang": "",
+      "category": "error",
+      "repo": "https://github.com/Achno/gowall",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 480,
+      "topic": "красота",
+      "title": "cwal",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/nitinbhat972/cwal",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 478,
+      "topic": "красота",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 477,
+      "topic": "красота",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 476,
+      "topic": "красота",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 475,
+      "topic": "красота",
+      "title": "Кастомизация системы не заканчивается внутри",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/Harshil-Anuwadia/wintux-dualboot-grub-theme-updated",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 474,
+      "topic": "красота",
+      "title": "Когда обои - это уже",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/liixini/skwd-wall",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 473,
+      "topic": "красота",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 472,
+      "topic": "красота",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 654,
+      "topic": "сайтостроение",
+      "title": "Website Downloader стал полностью",
+      "lang": "",
+      "category": "serplux",
+      "repo": "https://github.com/AhmadIbrahiim/Website-downloader",
+      "reason": "Docker/SEO/скрапинг/API-клиент"
+    },
+    {
+      "message_id": 628,
+      "topic": "сайтостроение",
+      "title": "Скилл make-interfaces-feel-better от разработчика Jakub",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 587,
+      "topic": "сайтостроение",
+      "title": "react-bits",
+      "lang": "JavaScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/DavidHDev/react-bits",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 584,
+      "topic": "сайтостроение",
+      "title": "mcp-ssh-manager",
+      "lang": "JavaScript",
+      "category": "vibeos",
+      "repo": "https://github.com/bvisible/mcp-ssh-manager",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 564,
+      "topic": "сайтостроение",
+      "title": "Checkmate",
+      "lang": "TypeScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/bluewave-labs/Checkmate",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 559,
+      "topic": "сайтостроение",
+      "title": "ai-website-cloner-template",
+      "lang": "TypeScript",
+      "category": "vibeos",
+      "repo": "https://github.com/JCodesMore/ai-website-cloner-template",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 554,
+      "topic": "сайтостроение",
+      "title": "deptry",
+      "lang": "Python",
+      "category": "dotfiles",
+      "repo": "https://github.com/osprey-oss/deptry",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 550,
+      "topic": "сайтостроение",
+      "title": "DnsServer",
+      "lang": "C#",
+      "category": "dotfiles",
+      "repo": "https://github.com/TechnitiumSoftware/DnsServer",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 521,
+      "topic": "сайтостроение",
+      "title": "portracker",
+      "lang": "JavaScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/mostafa-wahied/portracker",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 493,
+      "topic": "сайтостроение",
+      "title": "useSend",
+      "lang": "TypeScript",
+      "category": "serplux",
+      "repo": "https://github.com/usesend/useSend",
+      "reason": "Docker/SEO/скрапинг/API-клиент"
+    },
+    {
+      "message_id": 492,
+      "topic": "сайтостроение",
+      "title": "twake-drive",
+      "lang": "JavaScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/linagora/twake-drive",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 490,
+      "topic": "сайтостроение",
+      "title": "mcp-searxng",
+      "lang": "TypeScript",
+      "category": "vibeos",
+      "repo": "https://github.com/ihor-sokoliuk/mcp-searxng",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 488,
+      "topic": "сайтостроение",
+      "title": "maxun",
+      "lang": "TypeScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/getmaxun/maxun",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 479,
+      "topic": "сайтостроение",
+      "title": "syntux",
+      "lang": "TypeScript",
+      "category": "vibeos",
+      "repo": "https://github.com/puffinsoft/syntux",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 470,
+      "topic": "сайтостроение",
+      "title": "GSAP",
+      "lang": "JavaScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/greensock/GSAP",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 469,
+      "topic": "сайтостроение",
+      "title": "MiroTalk SFU",
+      "lang": "",
+      "category": "error",
+      "repo": "https://github.com/miroslavpejic85/mirotalksfu",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 453,
+      "topic": "сайтостроение",
+      "title": "shadify",
+      "lang": "TypeScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/CopilotKit/shadify",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 451,
+      "topic": "сайтостроение",
+      "title": "certimate",
+      "lang": "Go",
+      "category": "dotfiles",
+      "repo": "https://github.com/certimate-go/certimate",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 444,
+      "topic": "сайтостроение",
+      "title": "Framely",
+      "lang": "TypeScript",
+      "category": "dotfiles",
+      "repo": "https://github.com/belastrittmatter/Framely",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 422,
+      "topic": "сайтостроение",
+      "title": "TempFastMail",
+      "lang": "PHP",
+      "category": "dotfiles",
+      "repo": "https://github.com/kasteckis/TempFastMail",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 409,
+      "topic": "сайтостроение",
+      "title": "BlogBowl",
+      "lang": "Ruby",
+      "category": "dotfiles",
+      "repo": "https://github.com/BlogBowl/BlogBowl",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 393,
+      "topic": "сайтостроение",
+      "title": "MiroTalk C2C",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/miroslavpejic85/mirotalkc2c",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 315,
+      "topic": "сайтостроение",
+      "title": "Vectorizer",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 314,
+      "topic": "сайтостроение",
+      "title": "Generative Fill",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 313,
+      "topic": "сайтостроение",
+      "title": "Narkin",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 312,
+      "topic": "сайтостроение",
+      "title": "Silex",
+      "lang": "",
+      "category": "serplux",
+      "repo": "https://github.com/silexlabs/Silex",
+      "reason": "Docker/SEO/скрапинг/API-клиент"
+    },
+    {
+      "message_id": 292,
+      "topic": "сайтостроение",
+      "title": "+1 инструмент для клонирования любого",
+      "lang": "",
+      "category": "serplux",
+      "repo": "",
+      "reason": "Docker/SEO/скрапинг/API-клиент"
+    },
+    {
+      "message_id": 291,
+      "topic": "сайтостроение",
+      "title": "Энтузиаст поделился скриптом",
+      "lang": "",
+      "category": "serplux",
+      "repo": "",
+      "reason": "Docker/SEO/скрапинг/API-клиент"
+    },
+    {
+      "message_id": 282,
+      "topic": "сайтостроение",
+      "title": "ReplicateUI",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 269,
+      "topic": "сайтостроение",
+      "title": "Cables",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/cables-gl",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 268,
+      "topic": "сайтостроение",
+      "title": "Cypress",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/cypress-io/cypress",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 266,
+      "topic": "сайтостроение",
+      "title": "Дизайн сайтов. Figma - 2023",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 265,
+      "topic": "сайтостроение",
+      "title": "Дизайнеры",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 264,
+      "topic": "сайтостроение",
+      "title": "Дизайнеры",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 263,
+      "topic": "сайтостроение",
+      "title": "Jitter",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 252,
+      "topic": "сайтостроение",
+      "title": "https",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 241,
+      "topic": "сайтостроение",
+      "title": "Полезный ИИ-сервис для создания любого",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 240,
+      "topic": "сайтостроение",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 239,
+      "topic": "сайтостроение",
+      "title": "Нейросеть сгенерирует сайт с уникальным",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 229,
+      "topic": "сайтостроение",
+      "title": "Popsy",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 203,
+      "topic": "сайтостроение",
+      "title": "Огромная библиотека с профессиональными анимациями",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 165,
+      "topic": "сайтостроение",
+      "title": "ИИ-сервис моментально создаст из текста",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 152,
+      "topic": "сайтостроение",
+      "title": "Бесплатный безлимитный веб-хостинг",
+      "lang": "",
+      "category": "serplux",
+      "repo": "",
+      "reason": "Docker/SEO/скрапинг/API-клиент"
+    },
+    {
+      "message_id": 124,
+      "topic": "сайтостроение",
+      "title": "Draftium",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 123,
+      "topic": "сайтостроение",
+      "title": "ИИ-сервис создаст для вас сайт",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 122,
+      "topic": "сайтостроение",
+      "title": "Дизайнеры, снова для вас",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 121,
+      "topic": "сайтостроение",
+      "title": "Сохраняем полезное",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 120,
+      "topic": "сайтостроение",
+      "title": "Designify",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 119,
+      "topic": "сайтостроение",
+      "title": "Абсолютно бесплатно создаём полноценные сайты",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 118,
+      "topic": "сайтостроение",
+      "title": "с",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 117,
+      "topic": "сайтостроение",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 657,
+      "topic": "Обучалки",
+      "title": "Время собрать своего ИИ-агента",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/jamwithai/production-agentic-rag-course",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 651,
+      "topic": "Обучалки",
+      "title": "Несколько ресурсов по harness engineering",
+      "lang": "Python",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 639,
+      "topic": "Обучалки",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 638,
+      "topic": "Обучалки",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 637,
+      "topic": "Обучалки",
+      "title": "Нашёл отличную книгу",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 561,
+      "topic": "Обучалки",
+      "title": "Understand-Anything",
+      "lang": "TypeScript",
+      "category": "vibeos",
+      "repo": "https://github.com/Lum1104/Understand-Anything",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 541,
+      "topic": "Обучалки",
+      "title": "Бесплатный учебник по Agentic AI",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 531,
+      "topic": "Обучалки",
+      "title": "Обучаемся чему угодно, с вашим",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/dair-ai/dair-academy-plugins/tree/main/plugins/image-generator",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 279,
+      "topic": "Обучалки",
+      "title": "Нейросеть Leonardo&Дизайн",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 275,
+      "topic": "Обучалки",
+      "title": "Нейробуст - 2023",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 262,
+      "topic": "Обучалки",
+      "title": "Энтузиаст собрал бесплатный и понятный",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 261,
+      "topic": "Обучалки",
+      "title": "Ландшафтный дизайн в SketchUp -",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 260,
+      "topic": "Обучалки",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 259,
+      "topic": "Обучалки",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 255,
+      "topic": "Обучалки",
+      "title": "YouTube AI Extension",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/PaoloJN/youtube-ai-extension",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 253,
+      "topic": "Обучалки",
+      "title": "https",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 251,
+      "topic": "Обучалки",
+      "title": "https",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 250,
+      "topic": "Обучалки",
+      "title": "https",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 249,
+      "topic": "Обучалки",
+      "title": "ngrrram",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/wintermute-cell/ngrrram",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 247,
+      "topic": "Обучалки",
+      "title": "https",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 246,
+      "topic": "Обучалки",
+      "title": "https",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 245,
+      "topic": "Обучалки",
+      "title": "https",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 243,
+      "topic": "Обучалки",
+      "title": "Сервис, в котором собраны более",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 232,
+      "topic": "Обучалки",
+      "title": "Microsoft улучшили свой курс по",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "http://github.com/microsoft/generative-ai-for-beginners",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 220,
+      "topic": "Обучалки",
+      "title": "Айтишники",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/Developer-Y/cs-video-courses",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 219,
+      "topic": "Обучалки",
+      "title": "GPT-4. Руководство по использованию API",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 210,
+      "topic": "Обучалки",
+      "title": "https",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 204,
+      "topic": "Обучалки",
+      "title": "Codeium Editor",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/Exafunction/codeium-react-code-editor",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 192,
+      "topic": "Обучалки",
+      "title": "Ученые из Лондонского Имперского колледжа",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 170,
+      "topic": "Обучалки",
+      "title": "Python",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 169,
+      "topic": "Обучалки",
+      "title": "Linux Crash Course for Beginners",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 168,
+      "topic": "Обучалки",
+      "title": "Алексей Голобурдин",
+      "lang": "Python",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 167,
+      "topic": "Обучалки",
+      "title": "Сети с нуля. Просто -",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 164,
+      "topic": "Обучалки",
+      "title": "Нейросеть позволяет быстро получить знания",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 163,
+      "topic": "Обучалки",
+      "title": "ИИ-сервис поможет быстро прокачать разговорный",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 160,
+      "topic": "Обучалки",
+      "title": "Amazon выложил в открытый доступ",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 125,
+      "topic": "Обучалки",
+      "title": "Telegram bot интернет-магазин. Веб-приложения в",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 116,
+      "topic": "Обучалки",
+      "title": "💻",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 99,
+      "topic": "Обучалки",
+      "title": "Основы архитектуры микросервисов",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 97,
+      "topic": "Обучалки",
+      "title": "Интерфейсы на практике",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 72,
+      "topic": "Обучалки",
+      "title": "Electron разработка настольных приложений",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 52,
+      "topic": "Обучалки",
+      "title": "Linux с нуля до Сертификата",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 51,
+      "topic": "Обучалки",
+      "title": "Программирование на C",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 31,
+      "topic": "Обучалки",
+      "title": "Супер Blender (2022",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 30,
+      "topic": "Обучалки",
+      "title": "🧩Тронкон Пол, Олбинг Карл",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 29,
+      "topic": "Обучалки",
+      "title": "Изучение C++ с нуля (2020",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 28,
+      "topic": "Обучалки",
+      "title": "C++ Основы многопоточного программирования",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 27,
+      "topic": "Обучалки",
+      "title": "Docker + Ansible - с",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 15,
+      "topic": "Обучалки",
+      "title": "💻",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 7,
+      "topic": "Обучалки",
+      "title": "Обучалки",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 6,
+      "topic": "Обучалки",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 499,
+      "topic": "ИИ",
+      "title": "MiniCPM-V",
+      "lang": "",
+      "category": "error",
+      "repo": "https://github.com/OpenBMB/MiniCPM-V",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 487,
+      "topic": "ИИ",
+      "title": "telegram-mcp",
+      "lang": "Python",
+      "category": "vibeos",
+      "repo": "https://github.com/chigwell/telegram-mcp",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 467,
+      "topic": "ИИ",
+      "title": "Huge AI-Catalog",
+      "lang": "",
+      "category": "error",
+      "repo": "https://github.com/mehmetkahya0/AI-Catalog",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 464,
+      "topic": "ИИ",
+      "title": "terminal-use",
+      "lang": "Rust",
+      "category": "vibeos",
+      "repo": "https://github.com/flipbit03/terminal-use",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 455,
+      "topic": "ИИ",
+      "title": "OpenSpace",
+      "lang": "Python",
+      "category": "vibeos",
+      "repo": "https://github.com/HKUDS/OpenSpace",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 441,
+      "topic": "ИИ",
+      "title": "llmfit",
+      "lang": "Rust",
+      "category": "vibeos",
+      "repo": "https://github.com/AlexsJones/llmfit",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 439,
+      "topic": "ИИ",
+      "title": "geoai",
+      "lang": "Python",
+      "category": "vibeos",
+      "repo": "https://github.com/opengeos/geoai",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 438,
+      "topic": "ИИ",
+      "title": "nixtla",
+      "lang": "Jupyter Notebook",
+      "category": "vibeos",
+      "repo": "https://github.com/Nixtla/nixtla",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 430,
+      "topic": "ИИ",
+      "title": "openclaw",
+      "lang": "TypeScript",
+      "category": "vibeos",
+      "repo": "https://github.com/openclaw/openclaw",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 428,
+      "topic": "ИИ",
+      "title": "airllm",
+      "lang": "Jupyter Notebook",
+      "category": "vibeos",
+      "repo": "https://github.com/0xSojalSec/airllm",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 427,
+      "topic": "ИИ",
+      "title": "Youtube-to-Doc",
+      "lang": "Python",
+      "category": "vibeos",
+      "repo": "https://github.com/Solomonkassa/Youtube-to-Doc",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 424,
+      "topic": "ИИ",
+      "title": "poznote",
+      "lang": "JavaScript",
+      "category": "vibeos",
+      "repo": "https://github.com/timothepoznanski/poznote",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 418,
+      "topic": "ИИ",
+      "title": "magnitude",
+      "lang": "TypeScript",
+      "category": "vibeos",
+      "repo": "https://github.com/sagekit/magnitude",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 405,
+      "topic": "ИИ",
+      "title": "XandAI",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/Aletech-Solutions/XandAI-Extension",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 398,
+      "topic": "ИИ",
+      "title": "Eclaire",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/eclaire-labs/eclaire",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 395,
+      "topic": "ИИ",
+      "title": "AIS",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/kangvcar/ais",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 388,
+      "topic": "ИИ",
+      "title": "Perplexideez",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/brunostjohn/perplexideez",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 381,
+      "topic": "ИИ",
+      "title": "Nanochat",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/karpathy/nanochat",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 379,
+      "topic": "ИИ",
+      "title": "MassGen",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/Leezekun/MassGen",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 371,
+      "topic": "ИИ",
+      "title": "Flowise",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/FlowiseAI/Flowise",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 369,
+      "topic": "ИИ",
+      "title": "BitNet.cpp",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/microsoft/BitNet",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 367,
+      "topic": "ИИ",
+      "title": "Generative Computer",
+      "lang": "",
+      "category": "vibeos",
+      "repo": "https://github.com/joshbickett/generative-computer",
+      "reason": "AI/агенты/MCP/LLM-стек"
+    },
+    {
+      "message_id": 366,
+      "topic": "ИИ",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 107,
+      "topic": "Питонизм",
+      "title": "Разработка Telegram Ботов на Python",
+      "lang": "Python",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 106,
+      "topic": "Питонизм",
+      "title": "3 ПРОЕКТА АВТОМАТИЗАЦИИ НА PYTHON",
+      "lang": "Python",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 105,
+      "topic": "Питонизм",
+      "title": "Красивый графический интерфейс на Python",
+      "lang": "Python",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 104,
+      "topic": "Питонизм",
+      "title": "ПРИЛОЖЕНИЕ С GUI НА PYTHON",
+      "lang": "Python",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 103,
+      "topic": "Питонизм",
+      "title": "Используем ChatGPT API бесплатно с",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 102,
+      "topic": "Питонизм",
+      "title": "Изучение Python Django в одном",
+      "lang": "Python",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 101,
+      "topic": "Питонизм",
+      "title": "Шпаргалка Python",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 100,
+      "topic": "Питонизм",
+      "title": "Читаем исходники open source Python",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 98,
+      "topic": "Питонизм",
+      "title": "Разработка на Django",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 89,
+      "topic": "Питонизм",
+      "title": "https",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 88,
+      "topic": "Питонизм",
+      "title": "https",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 87,
+      "topic": "Питонизм",
+      "title": "https",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 86,
+      "topic": "Питонизм",
+      "title": "https",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 85,
+      "topic": "Питонизм",
+      "title": "Вот зачем нужен Match Case",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 74,
+      "topic": "Питонизм",
+      "title": "Шпаргалка по Python с примерами",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 71,
+      "topic": "Питонизм",
+      "title": "Изучение Python UI (GUI Apps)",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 70,
+      "topic": "Питонизм",
+      "title": "Python ТОП 10 крутейших библиотек!",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 69,
+      "topic": "Питонизм",
+      "title": "Читаем исходники open source Python",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 68,
+      "topic": "Питонизм",
+      "title": "flask #python",
+      "lang": "Python",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 67,
+      "topic": "Питонизм",
+      "title": "Python в веб с нуля",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 66,
+      "topic": "Питонизм",
+      "title": "15 Фишек с СЛОВАРЯМИ Python,",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 65,
+      "topic": "Питонизм",
+      "title": "Почему ваш Python код неправильно",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 54,
+      "topic": "Питонизм",
+      "title": "DataStack",
+      "lang": "",
+      "category": "dotfiles",
+      "repo": "https://github.com/data-stack-hub/DataStack",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 53,
+      "topic": "Питонизм",
+      "title": "PySimpleGUI",
+      "lang": "Python",
+      "category": "dotfiles",
+      "repo": "https://github.com/PySimpleGUI/PySimpleGUI",
+      "reason": "CLI/софт/системная утилита"
+    },
+    {
+      "message_id": 3,
+      "topic": "Питонизм",
+      "title": "Питон",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    },
+    {
+      "message_id": 2,
+      "topic": "Питонизм",
+      "title": "",
+      "lang": "",
+      "category": "error",
+      "repo": "",
+      "reason": "пусто/дубликат/нерелевантно"
+    }
+  ]
+}
