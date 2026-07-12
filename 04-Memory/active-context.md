@@ -12,11 +12,11 @@ timestamp: 2026-07-08
 
 ## Текущий фокус
 - **Проекты:** vault — tools/telegram-capture/ рабочий MVP. SERPlux — мультипровайдерность (следующий приоритет после новых идей). dotfiles — прокачка завершена.
-- **Задача:** (нет активной — ждём Rudra с новыми идеями для прокачки вайбкодинга из другого чата)
+- **Задача:** Полный capture 584 постов завершён. Классификация: 216 dotfiles, 204 vibeos, 37 new, 11 serplux, 116 error. Реакции: 117 помечено, остальные добьются постепенно через /capture. Урок: масс-маркировка → FloodWaitpenalty.
 - **Новое:** VibeOS v0.3.0 зафиксирована и запушена. tools/telegram-capture/ — рабочий MVP (39 pytest-тестов, Tor SOCKS5 proxy, 3 captures записаны). Скилл capture готов. direnv + .venv внедрены в волт.
 
 ## Активная задача
-(нет активной — ждём Rudra с новыми идеями для прокачки вайбкодинга из другого чата)
+(нет активной — ждём Rudra с новыми идеями из другого чата)
 T-045 (SERPlux мультипровайдерность) — отложено до новых вводных.
 
 ## Завершённые изменения (все сессии)
@@ -45,6 +45,7 @@ T-045 (SERPlux мультипровайдерность) — отложено д
 - [x] T-060: closed-loop в dotfiles — `.opencode/command/loop.md` (build → verify → fix, HARD STOP 5)
 - [x] T-061: flush-протокол (dotfiles + vault) — pre-compaction flush, /flush команда, planner scoped edit, librarian flush перед compact
 - [x] T-062: tools/telegram-capture/ — рабочий MVP. capture.py + mark.py + config.py, 39 pytest-тестов, Tor SOCKS5 proxy (обход блокировки Telegram), первый capture (тема «Софт», 3 поста). 3 captures в 99-Inbox (C-001..C-003). Скилл capture + команда /capture. /inbox восстановлена. direnv + .venv внедрены в волт. Коммит 768b786 запушен.
+- [x] Полный capture 584 постов (11 тем), классификация, 10 паттернов зафиксировано (коммит 13ec706)
 
 ## Отложено (P5 будущее)
 - T-015: Telegram-бот — эволюция T-062 (команда /capture первый шаг)
@@ -57,4 +58,4 @@ T-045 (SERPlux мультипровайдерность) — отложено д
 - (нет открытых вопросов на данный момент)
 
 ## Последнее обновление
-2026-07-08 — T-062 выполнен полностью: tools/telegram-capture/ рабочий MVP (39 тестов, Tor proxy, 3 captures, скилл capture). direnv + .venv внедрены в волт. /inbox восстановлена. Коммит 768b786 запушен на origin/main. T-063/064/065 → Done. VibeOS v0.3.0 зафиксирована. Ждём Rudra с новыми идеями.
+2026-07-12 — полный capture 584 постов завершён. mark.py убит (FloodWaitpenalty). Стратегия: /capture только новые посты.

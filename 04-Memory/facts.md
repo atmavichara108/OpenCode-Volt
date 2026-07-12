@@ -72,6 +72,7 @@ timestamp: 2026-07-08
 - **Raw API Telethon** — высокоуровневый метод `send_reaction` НЕ существует в Telethon 1.44.0. Используется raw API: `SendReactionRequest` (из `telethon.tl.functions.messages`) + `ReactionEmoji(emoticon=...)` (из `telethon.tl.types`). Паттерн для будущих интеграций.
 - **GetForumTopicsRequest** — импорт из `telethon.tl.functions.messages` (НЕ `channels`). Список тем форума форума получаемый через `client(GetForumTopicsRequest(...))`.
 - **peer через get_input_entity** — для запросов raw API нужен `InputPeer`, не entity. Получение: `await client.get_input_entity(peer)` → `InputPeerChannel`/`InputPeerUser`. Передача entity напрямую вызывает ошибки.
+- **Массовая маркировка → FloodWaitpenalty:** попытка поставить 584 реакции за один запуск привела к FloodWaitpenalty на ~4 часа от Telegram. 117/120 помечено в первых 4 батчах, далее процесс застопорился. Урок: НЕ маркировать больше ~30-50 постов за запуск. В будущем /capture берёт только новые посты (10-20), mark.py маркирует порциями. Старые посты добиваются постепенно.
 
 ### Окружение (direnv + venv)
 - **direnv** (v2.37.1) — shell extension для автоматической активации окружения при входе в каталог проекта. Установлен системно (`/usr/bin/direnv`).
