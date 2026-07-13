@@ -37,6 +37,9 @@ timestamp: 2026-06-29
 ## Reference (возможности OpenCode)
 [[agents]] · [[commands]] · [[config]] · [[global-config]] · [[memory]] · [[permissions]] · [[plugins]]
 
+## Сторонний софт (01-Reference/tools/)
+[[tools/GTweak]] — Windows-твикер (редко, для чужой машины)
+
 ## Methods (мои приёмы)
 [[closed-loop]] · [[verifier-pattern]] · [[context-as-docs]] · [[memory-management]] · [[model-routing]] · [[distill-pattern]] · [[multi-agent-pipeline]] · [[tool-integration-pattern]]
 
