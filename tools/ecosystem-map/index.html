@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VAULT-OS :: Ecosystem Map</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+  :root{
+    --bg:#0a0a0a;
+    --green:#00ff41;
+    --amber:#ffb000;
+    --gold:#FFD700;
+    --grey:#666;
+    --panel:#0d1410;
+    --border:#1a3a1a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden}
+  body{
+    background:var(--bg);
+    color:var(--green);
+    font-family:"Courier New",Consolas,monospace;
+    font-size:14px;
+    line-height:1.4;
+    text-shadow:0 0 2px rgba(0,255,65,.5);
+  }
+  /* CRT scanlines + vignette */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
+    background:repeating-linear-gradient(0deg,rgba(0,0,0,.12) 0,rgba(0,0,0,.12) 1px,transparent 1px,transparent 3px);
+    mix-blend-mode:multiply;
+  }
+  body::after{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:9998;
+    background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.65) 100%);
+  }
+  #app{display:grid;grid-template-rows:auto 1fr;height:100vh}
+
+  /* HEADER */
+  header{
+    border-bottom:2px solid var(--border);
+    padding:8px 14px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+    background:linear-gradient(180deg,#0c1a0c 0%,#0a0a0a 100%);
+  }
+  header h1{
+    font-size:18px;letter-spacing:3px;color:var(--amber);
+    text-shadow:0 0 6px rgba(255,176,0,.7);
+  }
+  header h1 .sub{color:var(--green);font-size:12px;letter-spacing:1px;text-shadow:0 0 4px rgba(0,255,65,.6)}
+  .stats{display:flex;gap:14px;font-size:12px;color:var(--green);opacity:.85}
+  .stats b{color:var(--amber);font-weight:normal}
+  .spacer{flex:1}
+
+  /* FILTERS */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:11px}
+  .fgroup{display:flex;flex-direction:column;gap:2px;border:1px solid var(--border);padding:4px 6px;border-radius:2px}
+  .fgroup label{color:var(--amber);font-size:9px;letter-spacing:1px}
+  .fgroup select,.fgroup .btns{background:#031603;border:1px solid var(--border);color:var(--green);font-family:inherit;font-size:11px;padding:2px 4px;border-radius:2px}
+  .fgroup select:focus{outline:1px solid var(--green)}
+  .pills{display:flex;flex-wrap:wrap;gap:3px}
+  .pill{
+    border:1px solid var(--border);color:var(--green);background:#031603;
+    font-family:inherit;font-size:10px;padding:2px 6px;cursor:pointer;border-radius:2px;
+    text-shadow:0 0 3px rgba(0,255,65,.4);
+  }
+  .pill:hover{border-color:var(--green);background:#0a2a0a}
+  .pill.active{border-color:var(--amber);color:var(--amber);background:#2a1f00;text-shadow:0 0 4px rgba(255,176,0,.7)}
+  .pill[disabled]{opacity:.3;cursor:not-allowed}
+
+  /* MAIN */
+  main{display:grid;grid-template-columns:1fr 360px;min-height:0;overflow:hidden}
+  #graph-wrap{position:relative;overflow:hidden;background:#060b06}
+  #graph-wrap svg{width:100%;height:100%;display:block;cursor:grab}
+  #graph-wrap svg:active{cursor:grabbing}
+
+  .graph-hint{
+    position:absolute;left:10px;bottom:10px;font-size:10px;color:var(--green);opacity:.45;
+    pointer-events:none;
+  }
+  .center-btn{
+    position:absolute;right:10px;bottom:10px;
+    background:#031603;border:1px solid var(--amber);color:var(--amber);
+    font-family:inherit;font-size:11px;padding:5px 10px;cursor:pointer;border-radius:2px;
+    text-shadow:0 0 4px rgba(255,176,0,.6);
+  }
+  .center-btn:hover{background:#2a1f00;box-shadow:0 0 8px rgba(255,176,0,.4)}
+
+  /* TOOLTIP */
+  .tooltip{
+    position:absolute;pointer-events:none;background:#021005;border:1px solid var(--green);
+    color:var(--green);padding:8px 10px;font-size:11px;min-width:180px;max-width:280px;
+    box-shadow:0 0 12px rgba(0,255,65,.35);z-index:50;border-radius:2px;
+    opacity:0;transition:opacity .12s;
+  }
+  .tooltip .tt-title{color:var(--amber);font-weight:bold;margin-bottom:3px;font-size:12px}
+  .tooltip .tt-state{font-size:10px;letter-spacing:1px}
+  .tooltip .tt-whatif{margin-top:6px;border-top:1px dashed var(--border);padding-top:5px;color:var(--amber)}
+  .tooltip .tt-whatif b{color:var(--amber);font-weight:normal}
+
+  /* PANEL */
+  aside{
+    border-left:2px solid var(--border);background:var(--panel);
+    overflow-y:auto;padding:0;min-height:0;
+  }
+  aside .panel-head{
+    position:sticky;top:0;background:#0a1a0a;border-bottom:2px solid var(--amber);
+    padding:10px 14px;z-index:5;
+  }
+  aside .panel-head h2{font-size:13px;color:var(--amber);letter-spacing:2px;text-shadow:0 0 6px rgba(255,176,0,.7)}
+  aside .panel-head .icon{font-size:26px;vertical-align:middle;margin-right:8px}
+  .panel-body{padding:12px 14px}
+
+  .empty{color:var(--grey);font-style:italic;text-align:center;margin-top:60px;padding:0 20px}
+  .sect{margin-bottom:14px}
+  .sect h3{
+    font-size:11px;color:var(--amber);letter-spacing:2px;
+    border-bottom:1px solid var(--border);padding-bottom:3px;margin-bottom:7px;
+    text-shadow:0 0 5px rgba(255,176,0,.5);
+  }
+  .row{display:flex;justify-content:space-between;padding:3px 0;font-size:12px}
+  .row .k{color:var(--green);opacity:.8}
+  .row .v{color:var(--green)}
+
+  .state-badge{display:inline-block;padding:2px 8px;border:1px solid;border-radius:2px;font-size:10px;letter-spacing:2px;font-weight:bold}
+  .s-LOCKED{color:var(--grey);border-color:var(--grey)}
+  .s-AVAILABLE{color:var(--green);border-color:var(--green);text-shadow:0 0 6px rgba(0,255,65,.7)}
+  .s-LEARNED{color:var(--amber);border-color:var(--amber);text-shadow:0 0 6px rgba(255,176,0,.7)}
+  .s-MASTERED{color:var(--gold);border-color:var(--gold);text-shadow:0 0 8px rgba(255,215,0,.8);animation:goldpulse 1.6s infinite}
+  @keyframes goldpulse{0%,100%{box-shadow:0 0 0 rgba(255,215,0,0)}50%{box-shadow:0 0 10px rgba(255,215,0,.5)}}
+
+  /* QUESTS */
+  .quest{
+    display:flex;gap:8px;align-items:flex-start;padding:6px 8px;margin-bottom:4px;
+    border:1px solid var(--border);border-radius:2px;cursor:pointer;
+    background:#041204;transition:background .15s,border-color .15s;
+  }
+  .quest:hover{background:#0a2a0a;border-color:var(--green)}
+  .quest .qcheck{font-size:14px;width:18px;flex-shrink:0;text-align:center}
+  .quest.done .qcheck{color:var(--amber);text-shadow:0 0 6px rgba(255,176,0,.7)}
+  .quest.todo .qcheck{color:var(--grey)}
+  .quest .qbody{flex:1}
+  .quest .qtitle{font-size:12px;color:var(--green)}
+  .quest.done .qtitle{color:var(--amber)}
+  .quest .qdesc{font-size:10px;opacity:.7;margin-top:2px}
+  .quest .qreward{font-size:10px;color:var(--amber);margin-top:3px;letter-spacing:1px}
+
+  /* IMPACT */
+  .impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+  .impact-cell{
+    display:flex;justify-content:space-between;align-items:center;
+    border:1px solid var(--border);padding:5px 8px;font-size:11px;border-radius:2px;
+    background:#041204;
+  }
+  .impact-cell .pname{color:var(--green);opacity:.85}
+  .impact-cell .pval{font-size:13px}
+
+  /* TOOLS list */
+  .tools-list{font-size:11px}
+  .tools-list .tool{padding:4px 0;border-bottom:1px dashed var(--border);display:flex;justify-content:space-between}
+  .tools-list .tool .tlang{color:var(--amber);font-size:10px}
+
+  /* LEARN button */
+  .btn-learn{
+    display:block;width:100%;margin-top:12px;padding:10px;
+    background:#082a08;border:2px solid var(--green);color:var(--green);
+    font-family:inherit;font-size:13px;letter-spacing:3px;cursor:pointer;border-radius:2px;
+    text-shadow:0 0 8px rgba(0,255,65,.8);
+  }
+  .btn-learn:hover{background:#0a4a0a;box-shadow:0 0 14px rgba(0,255,65,.4)}
+  .btn-learn:disabled{opacity:.3;cursor:not-allowed;border-color:var(--grey);color:var(--grey);text-shadow:none;box-shadow:none}
+  .btn-master{
+    display:block;width:100%;margin-top:6px;padding:8px;
+    background:#3a2f00;border:2px solid var(--gold);color:var(--gold);
+    font-family:inherit;font-size:12px;letter-spacing:3px;cursor:pointer;border-radius:2px;
+    text-shadow:0 0 8px rgba(255,215,0,.8);
+  }
+  .btn-master:hover{background:#5a4a00;box-shadow:0 0 14px rgba(255,215,0,.5)}
+  .btn-reset{
+    display:block;width:100%;margin-top:6px;padding:6px;
+    background:transparent;border:1px solid var(--grey);color:var(--grey);
+    font-family:inherit;font-size:10px;letter-spacing:2px;cursor:pointer;border-radius:2px;
+  }
+  .btn-reset:hover{border-color:var(--amber);color:var(--amber)}
+
+  .meta-line{font-size:10px;opacity:.55;margin-top:8px;border-top:1px solid var(--border);padding-top:6px}
+
+  /* SVG NODES */
+  .node{cursor:pointer}
+  .node circle{stroke-width:2;transition:opacity .2s,filter .2s}
+  .node text{font-size:14px;text-anchor:middle;dominant-baseline:central;pointer-events:none;filter:drop-shadow(0 0 2px rgba(0,0,0,.8))}
+  .node.dim{opacity:.12}
+  .node-highlight circle{filter:drop-shadow(0 0 8px currentColor)}
+  .link{fill:none;stroke-width:1.5}
+  .link.dim{opacity:.05}
+  .link-hi{stroke-width:3;filter:drop-shadow(0 0 4px currentColor)}
+  .label-text{font-size:9px;fill:var(--green);text-anchor:middle;pointer-events:none;opacity:.7;text-shadow:0 0 2px rgba(0,0,0,1)}
+
+  ::-webkit-scrollbar{width:8px;height:8px}
+  ::-webkit-scrollbar-track{background:#021005}
+  ::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+  ::-webkit-scrollbar-thumb:hover{background:#38622f}
+
+  @media (max-width:900px){
+    main{grid-template-columns:1fr;grid-template-rows:1fr 280px}
+    aside{border-left:none;border-top:2px solid var(--border)}
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>VAULT-OS<span class="sub"> :: ECOSYSTEM MAP v2.0</span></h1>
+    <div class="stats" id="stats"></div>
+    <div class="spacer"></div>
+    <div class="filters">
+      <div class="fgroup">
+        <label>BRANCH</label>
+        <div class="pills" id="branch-pills"></div>
+      </div>
+      <div class="fgroup">
+        <label>PROJECT</label>
+        <div class="pills" id="project-pills"></div>
+      </div>
+      <div class="fgroup">
+        <label>STATE</label>
+        <div class="pills" id="state-pills"></div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div id="graph-wrap">
+      <svg id="graph"></svg>
+      <div class="graph-hint">SCROLL=zoom · DRAG=pan · CLICK=details · HOVER=what-if</div>
+      <button class="center-btn" id="center">⊕ CENTER</button>
+      <div class="tooltip" id="tooltip"></div>
+    </div>
+    <aside id="panel">
+      <div class="panel-body empty" id="panel-empty">
+        Выберите навык на графе<br>
+        чтобы увидеть квесты, влияние<br>
+        и инструменты.
+      </div>
+      <div id="panel-content" style="display:none"></div>
+    </aside>
+  </main>
+</div>
+
+<script>
+/* =========================================================
+   STATE
+   ========================================================= */
+const PROJECTS_ORDER = ["vault","SERPlux","dotfiles","dv-hub"];
+const BRANCH_COLORS = {
+  VIBEOS:"#ffb000", AI:"#00ff41", CLI:"#00b4ff",
+  MOBILE:"#ff00aa", WEB:"#ff7733", LANG:"#aa66ff"
+};
+const STATE_COLOR = {
+  LOCKED:"#666", AVAILABLE:"#00ff41", LEARNED:"#ffb000", MASTERED:"#FFD700"
+};
+const STORE_KEY = "vaultos-ecosystem-v2";
+
+let DATA = null;
+let userState = {};   // skillId -> { questsDone: {qid:bool}, masteredOverride:bool }
+
+async function loadData(){
+  const res = await fetch("data.json", {cache:"no-store"});
+  if(!res.ok){ document.getElementById("panel-empty").innerHTML = "❌ data.json не найден. Запусти через локальный HTTP-сервер."; return null; }
+  return await res.json();
+}
+
+function loadUserState(){
+  try{ return JSON.parse(localStorage.getItem(STORE_KEY) || "{}"); }catch{ return {}; }
+}
+function saveUserState(){ localStorage.setItem(STORE_KEY, JSON.stringify(userState)); }
+
+/* =========================================================
+   QUEST-DONE RESOLUTION
+   merge data.done with user overrides (clickable checklist)
+   ========================================================= */
+function questDone(skillId, q){
+  const u = userState[skillId];
+  if(u && u.questsDone && u.questsDone[q.id] !== undefined) return u.questsDone[q.id];
+  return !!q.done;
+}
+function setQuestDone(skillId, qid, val){
+  if(!userState[skillId]) userState[skillId] = {questsDone:{}, masteredOverride:false};
+  userState[skillId].questsDone = userState[skillId].questsDone || {};
+  userState[skillId].questsDone[qid] = val;
+  saveUserState();
+}
+
+/* =========================================================
+   STATE COMPUTATION
+   LOCKED  : хотя бы один prereq не (LEARNED|MASTERED)
+   else if все квесты done -> LEARNED
+        if LEARNED && все unlocks тоже LEARNED/MASTERED (или нет unlocks) -> MASTERED
+        (override: user может вручную отметить MASTERED)
+   else AVAILABLE
+   ========================================================= */
+function computeStates(){
+  const skills = DATA.skills;
+  const memo = {};
+  // iteratively resolve (graph could have cycles? assume DAG, but iterate to stability)
+  let changed = true, iter = 0;
+  while(changed && iter < 50){
+    changed = false; iter++;
+    for(const id in skills){
+      const s = skills[id];
+      const prereqsDone = s.prereqs.every(p => {
+        const st = memo[p];
+        return st === "LEARNED" || st === "MASTERED";
+      });
+      let st;
+      if(!prereqsDone) st = "LOCKED";
+      else{
+        const allQ = s.quests.every(q => questDone(id, q));
+        if(allQ){
+          const u = userState[id];
+          const unlocksDone = s.unlocks.length === 0 || s.unlocks.every(u2 => {
+            const ust = memo[u2]; return ust === "LEARNED" || ust === "MASTERED";
+          });
+          if(u && u.masteredOverride) st = "MASTERED";
+          else st = unlocksDone ? "MASTERED" : "LEARNED";
+        } else st = "AVAILABLE";
+      }
+      if(memo[id] !== st){ memo[id] = st; changed = true; }
+    }
+  }
+  return memo;
+}
+
+/* =========================================================
+   GRAPH BUILD
+   ========================================================= */
+let svg, g, linkg, nodeg, labelg, sim, zoom, tooltip;
+let currentStates = {};
+let filters = { branches:new Set(), projects:new Set(), states:new Set() };
+
+function initSvg(){
+  const wrap = document.getElementById("graph-wrap");
+  svg = d3.select("#graph");
+  // zoom/pan
+  zoom = d3.zoom().scaleExtent([0.2,4]).on("zoom", e => g.attr("transform", e.transform));
+  svg.append("defs");
+  g = svg.append("g").attr("class","layer");
+  svg.call(zoom);
+  // marker arrows
+  const defs = svg.select("defs");
+  Object.entries(STATE_COLOR).forEach(([st,col])=>{
+    defs.append("marker")
+      .attr("id","arrow-"+st).attr("viewBox","0 -5 10 10")
+      .attr("refX",22).attr("refY",0).attr("markerWidth",7).attr("markerHeight",7)
+      .attr("orient","auto")
+      .append("path").attr("d","M0,-4 L9,0 L0,4 L2,0").attr("fill",col);
+  });
+  linkg = g.append("g").attr("class","links");
+  labelg = g.append("g").attr("class","labels");
+  nodeg = g.append("g").attr("class","nodes");
+  tooltip = d3.select("#tooltip");
+}
+
+function buildGraph(){
+  const skills = DATA.skills;
+  const nodes = Object.keys(skills).map(id => ({id, ...skills[id], state: currentStates[id]}));
+  const nodeById = {};
+  nodes.forEach(n => nodeById[n.id] = n);
+  const links = [];
+  Object.keys(skills).forEach(id => {
+    const s = skills[id];
+    (s.unlocks||[]).forEach(t => {
+      if(skills[t]) links.push({source:id, target:t, type:"unlock"});
+    });
+  });
+
+  // node radius by quest count
+  nodes.forEach(n => { n.r = 14 + Math.min(n.quests.length,5)*2.2; });
+
+  sim = d3.forceSimulation(nodes)
+    .force("link", d3.forceLink(links).id(d=>d.id).distance(95).strength(0.5))
+    .force("charge", d3.forceManyBody().strength(-280))
+    .force("center", d3.forceCenter(centerX(), centerY()))
+    .force("x", d3.forceX(centerX()).strength(0.03))
+    .force("y", d3.forceY(centerY()).strength(0.04))
+    .force("collide", d3.forceCollide().radius(d=>d.r+8));
+
+  const link = linkg.selectAll("line").data(links).join("line")
+    .attr("class","link")
+    .attr("stroke", d => STATE_COLOR[currentStates[d.source.id] || currentStates[d.source] || "LOCKED"])
+    .attr("marker-end", d => "url(#arrow-"+(currentStates[d.target.id || d.target]||"LOCKED")+")")
+    .attr("opacity", .5);
+
+  const label = labelg.selectAll("text").data(nodes).join("text")
+    .attr("class","label-text")
+    .attr("y", d => d.r + 11)
+    .text(d => d.name);
+
+  const node = nodeg.selectAll("g.node").data(nodes).join("g")
+    .attr("class","node")
+    .style("color", d => STATE_COLOR[d.state])
+    .call(dragHandler());
+
+  node.append("circle")
+    .attr("r", d=>d.r)
+    .attr("fill", "#031603")
+    .attr("stroke", d=>STATE_COLOR[d.state])
+    .attr("opacity", d => d.state==="LOCKED" ? 0.35 : 1)
+    .style("filter", d => d.state==="LOCKED" ? "none" :
+       (d.state==="MASTERED" ? "drop-shadow(0 0 8px #FFD700)" :
+        d.state==="LEARNED" ? "drop-shadow(0 0 6px #ffb000)" :
+        "drop-shadow(0 0 5px #00ff41)"));
+
+  // mastered pulse: append a pulsing ring
+  node.filter(d=>d.state==="MASTERED").each(function(d){
+    d3.select(this).insert("circle",":first-child")
+      .attr("r", d.r).attr("fill","none").attr("stroke","#FFD700")
+      .attr("opacity",.6).attr("stroke-width",2)
+      .style("animation","none"); // SVG SMIL would be needed; use class
+  });
+  // mastered pulse via JS rAF later (see animatePulse)
+  node.filter(d=>d.state==="MASTERED").select("circle:first-child").classed("pulse", true);
+
+  node.append("text").text(d=>d.icon).attr("y",0);
+
+  node
+    .on("mouseenter", (e,d)=> onHover(e,d))
+    .on("mouseleave", ()=> tooltip.style("opacity",0))
+    .on("click", (e,d)=>{ e.stopPropagation(); selectNode(d); });
+
+  sim.on("tick", ()=>{
+    link.attr("x1",d=>d.source.x).attr("y1",d=>d.source.y)
+        .attr("x2",d=>d.target.x).attr("y2",d=>d.target.y);
+    node.attr("transform", d=>`translate(${d.x},${d.y})`);
+    label.attr("x", d=>d.x);
+    label.attr("y", d=>d.y + d.r + 11);
+  });
+
+  // store refs
+  sim._nodes = nodes; sim._links = links; sim._linkSel = link; sim._nodeSel = node; sim._labelSel = label;
+}
+
+function dragHandler(){
+  return d3.drag()
+    .subject(e=>e.subject)
+    .on("start",(e,d)=>{ if(!e.active) sim.alphaTarget(0.3).restart(); d.fx=d.x; d.fy=d.y; })
+    .on("drag",(e,d)=>{ d.fx=e.x; d.fy=e.y; })
+    .on("end",(e,d)=>{ if(!e.active) sim.alphaTarget(0); d.fx=null; d.fy=null; });
+}
+
+function centerX(){ return document.getElementById("graph-wrap").clientWidth/2; }
+function centerY(){ return document.getElementById("graph-wrap").clientHeight/2; }
+
+// mastered pulse animation
+let t0 = 0;
+function animatePulse(ts){
+  t0 = ts;
+  if(sim && sim._nodeSel){
+    const pulseR = 14 + Math.sin(ts/300)*8;
+    nodeg.selectAll(".node").selectAll("circle.pulse").attr("r",(d,i,n)=>{
+      const baseR = d3.select(n[i].parentNode).datum().r;
+      return baseR + 4 + Math.sin(ts/400+ (d && d.x||0)*0.01)*4;
+    });
+  }
+  requestAnimationFrame(animatePulse);
+}
+requestAnimationFrame(animatePulse);
+
+/* =========================================================
+   HOVER + WHAT-IF
+   ========================================================= */
+function onHover(e, d){
+  // highlight node + neighbors + links
+  const neighbors = new Set([d.id]);
+  (d.prereqs||[]).forEach(p=>neighbors.add(p));
+  (d.unlocks||[]).forEach(u=>neighbors.add(u));
+
+  sim._nodeSel.classed("dim", n=>!neighbors.has(n.id))
+              .classed("node-highlight", n=>n.id===d.id);
+  sim._labelSel.style("opacity", n=> neighbors.has(n.id) ? 1 : 0.12);
+  sim._linkSel.classed("dim", l => !(l.source.id===d.id || l.target.id===d.id))
+              .classed("link-hi", l => (l.source.id===d.id || l.target.id===d.id));
+
+  // tooltip
+  const tt = document.getElementById("tooltip");
+  const unlocked = (d.unlocks||[]).map(u=>{
+    const us = DATA.skills[u]; 
+    return us ? us.name : u;
+  });
+  let whatif = "";
+  if(d.state === "LOCKED"){
+    const blocked = (d.prereqs||[]).filter(p=> currentStates[p]!=="LEARNED" && currentStates[p]!=="MASTERED")
+      .map(p=> DATA.skills[p].name);
+    whatif = blocked.length ? `🔒 Заблокировано: ${blocked.join(", ")}` : "";
+  } else if(d.state === "AVAILABLE"){
+    whatif = unlocked.length ? `⚡ Изучив это, откроется: ${unlocked.join(", ")}` : "Изучив это — закрепишь навык";
+  } else {
+    whatif = unlocked.length ? `→ Открывает: ${unlocked.join(", ")}` : "Терминальный навык";
+  }
+  const ndone = d.quests.filter(q=>questDone(d.id,q)).length;
+  tt.innerHTML = `
+    <div class="tt-title">${d.icon} ${d.name}</div>
+    <div class="tt-state">${d.branch} · <span class="s-${d.state}">${d.state}</span> · ${ndone}/${d.quests.length} квестов</div>
+    <div style="margin-top:4px;opacity:.85;font-size:10px">${d.desc||""}</div>
+    ${whatif ? `<div class="tt-whatif">${whatif}</div>` : ""}
+  `;
+  const wrap = document.getElementById("graph-wrap");
+  let x = e.offsetX + 14, y = e.offsetY + 14;
+  tt.style.left = Math.min(x, wrap.clientWidth-280) + "px";
+  tt.style.top = y + "px";
+  tt.style.opacity = 1;
+}
+
+function clearHighlight(){
+  if(!sim) return;
+  sim._nodeSel.classed("dim", false).classed("node-highlight", false);
+  sim._labelSel.style("opacity", 0.7);
+  sim._linkSel.classed("dim", false).classed("link-hi", false);
+}
+
+/* =========================================================
+   SELECT + PANEL
+   ========================================================= */
+let selectedId = null;
+
+function selectNode(d){
+  clearHighlight();
+  selectedId = d.id;
+  sim._nodeSel.classed("node-highlight", n=>n.id===d.id);
+  renderPanel(d.id);
+}
+
+function renderPanel(id){
+  const s = DATA.skills[id];
+  if(!s) return;
+  document.getElementById("panel-empty").style.display = "none";
+  const pc = document.getElementById("panel-content");
+  pc.style.display = "block";
+
+  const st = currentStates[id];
+  const ndone = s.quests.filter(q=>questDone(id,q)).length;
+  const allDone = ndone === s.quests.length;
+
+  // tools linked
+  const linkedTools = (DATA.tools||[]).filter(t => (t.skills||[]).includes(id)).slice(0, 40);
+
+  // panel head
+  pc.innerHTML = `
+    <div class="panel-head">
+      <h2><span class="icon">${s.icon}</span>${s.name}</h2>
+      <div style="margin-top:6px"><span class="state-badge s-${st}">${st}</span>
+        <span style="margin-left:8px;font-size:10px;opacity:.7;color:var(--amber)">${s.branch}</span>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="sect">
+        <h3>Описание</h3>
+        <div style="font-size:12px;opacity:.9">${s.desc || "—"}</div>
+      </div>
+
+      <div class="sect">
+        <h3>Прогресс</h3>
+        <div class="row"><span class="k">Квестов</span><span class="v">${ndone} / ${s.quests.length}</span></div>
+        <div class="row"><span class="k">Пререквизиты</span><span class="v">${s.prereqs.length ? s.prereqs.map(p=>DATA.skills[p]?.name||p).join(", ") : "—"}</span></div>
+        <div class="row"><span class="k">Открывает</span><span class="v">${s.unlocks.length ? s.unlocks.map(u=>DATA.skills[u]?.name||u).join(", ") : "—"}</span></div>
+      </div>
+
+      <div class="sect">
+        <h3>Квесты (${ndone}/${s.quests.length})</h3>
+        ${s.quests.length === 0 ? '<div class="empty" style="margin-top:8px">Нет квестов</div>' :
+          s.quests.map(q=>{
+            const done = questDone(id,q);
+            return `<div class="quest ${done?"done":"todo"}" data-q="${q.id}">
+              <div class="qcheck">${done?"✓":"☐"}</div>
+              <div class="qbody">
+                <div class="qtitle">${q.title}</div>
+                ${q.desc?`<div class="qdesc">${q.desc}</div>`:""}
+                <div class="qreward">${q.reward||""}</div>
+              </div>
+            </div>`;
+          }).join("")}
+      </div>
+
+      <div class="sect">
+        <h3>Влияние на проекты</h3>
+        <div class="impact-grid">
+          ${PROJECTS_ORDER.map(pid=>{
+            const v = s.impact?.[pid] || "—";
+            const proj = (DATA.projects||[]).find(p=>p.id===pid);
+            return `<div class="impact-cell"><span class="pname">${proj?proj.name:pid}</span><span class="pval">${v}</span></div>`;
+          }).join("")}
+        </div>
+      </div>
+
+      ${linkedTools.length ? `
+      <div class="sect">
+        <h3>Инструменты (${linkedTools.length})</h3>
+        <div class="tools-list">
+          ${linkedTools.map(t=>`<div class="tool"><span>${t.name}</span><span class="tlang">${t.lang||""}</span></div>`).join("")}
+        </div>
+      </div>` : ""}
+
+      ${renderActions(id, st, allDone)}
+
+      <div class="meta-line">SKILL_ID: ${id}</div>
+    </div>
+  `;
+
+  // wire quest click toggles
+  pc.querySelectorAll(".quest").forEach(el=>{
+    el.addEventListener("click", ()=>{
+      const qid = el.getAttribute("data-q");
+      const q = s.quests.find(x=>x.id===qid);
+      const cur = questDone(id,q);
+      setQuestDone(id, qid, !cur);
+      recomputeAndRedraw();
+      renderPanel(id);
+    });
+  });
+
+  // action buttons
+  pc.querySelectorAll("[data-act]").forEach(b=>{
+    b.addEventListener("click", ()=> handleAction(b.getAttribute("data-act"), id));
+  });
+}
+
+function renderActions(id, st, allDone){
+  const s = DATA.skills[id];
+  let html = `<div class="sect"><h3>Действия</h3>`;
+  if(st === "LOCKED"){
+    html += `<button class="btn-learn" disabled>🔒 ЗАБЛОКИРОВАНО (пререквизиты)</button>`;
+  } else if(st === "AVAILABLE"){
+    html += `<button class="btn-learn" data-act="learn">⚡ ИЗУЧИТЬ (выполнить все квесты)</button>`;
+  } else if(st === "LEARNED"){
+    const unlocksDone = s.unlocks.length===0 || s.unlocks.every(u=>currentStates[u]==="LEARNED"||currentStates[u]==="MASTERED");
+    html += `<button class="btn-master" data-act="master">★ ПОВЫСИТЬ ДО MASTERED</button>`;
+    if(!unlocksDone) html += `<div style="font-size:10px;margin-top:5px;opacity:.7;color:var(--amber)">Подсказка: сначала доведите до LEARNED все открываемые навыки.</div>`;
+  } else { // MASTERED
+    html += `<button class="btn-master" disabled style="opacity:.5">★ MASTERED ✓</button>`;
+  }
+  html += `<button class="btn-reset" data-act="reset">↺ СБРОСИТЬ ПРОГРЕСС НАВЫКА</button></div>`;
+  return html;
+}
+
+function handleAction(act, id){
+  if(act === "learn"){
+    if(!userState[id]) userState[id] = {questsDone:{}, masteredOverride:false};
+    userState[id].questsDone = userState[id].questsDone || {};
+    DATA.skills[id].quests.forEach(q => userState[id].questsDone[q.id] = true);
+    saveUserState();
+    recomputeAndRedraw();
+    renderPanel(id);
+  } else if(act === "master"){
+    if(!userState[id]) userState[id] = {questsDone:{}, masteredOverride:false};
+    userState[id].masteredOverride = true;
+    // also force-learn unlocks to satisfy mastery chain
+    DATA.skills[id].unlocks.forEach(u=>{
+      if(!userState[u]) userState[u] = {questsDone:{}, masteredOverride:false};
+      userState[u].questsDone = userState[u].questsDone || {};
+      DATA.skills[u].quests.forEach(q=> userState[u].questsDone[q.id] = true);
+    });
+    saveUserState();
+    recomputeAndRedraw();
+    renderPanel(id);
+  } else if(act === "reset"){
+    delete userState[id];
+    saveUserState();
+    recomputeAndRedraw();
+    renderPanel(id);
+  }
+}
+
+/* =========================================================
+   FILTERS
+   ========================================================= */
+function visibleNode(n){
+  if(filters.branches.size && !filters.branches.has(n.branch)) return false;
+  if(filters.projects.size){
+    // node impact for at least one selected project != "—"/undefined
+    const ok = [...filters.projects].some(p => {
+      const v = n.impact?.[p];
+      return v && v !== "—";
+    });
+    if(!ok) return false;
+  }
+  if(filters.states.size && !filters.states.has(currentStates[n.id])) return false;
+  return true;
+}
+function applyFilters(){
+  if(!sim || !sim._nodeSel) return;
+  const visId = new Set();
+  sim._nodes.forEach(n => { if(visibleNode(n)) visId.add(n.id); });
+  sim._nodeSel.style("display", n => visId.has(n.id) ? null : "none");
+  sim._labelSel.style("display", n => visId.has(n.id) ? null : "none");
+  sim._linkSel.style("display", l => (visId.has(l.source.id||l.source) && visId.has(l.target.id||l.target)) ? null : "none");
+  sim.alpha(0.5).restart();
+}
+
+function buildPills(){
+  const branches = [...new Set(Object.values(DATA.skills).map(s=>s.branch))];
+  const bp = document.getElementById("branch-pills");
+  bp.innerHTML = branches.map(b=>`<button class="pill" data-kind="branch" data-val="${b}">${b}</button>`).join("");
+
+  const pp = document.getElementById("project-pills");
+  pp.innerHTML = PROJECTS_ORDER.map(p=>{
+    const proj = (DATA.projects||[]).find(x=>x.id===p);
+    return `<button class="pill" data-kind="project" data-val="${p}">${proj?proj.name:p}</button>`;
+  }).join("");
+
+  const sp = document.getElementById("state-pills");
+  sp.innerHTML = ["LOCKED","AVAILABLE","LEARNED","MASTERED"].map(s=>
+    `<button class="pill" data-kind="state" data-val="${s}">${s}</button>`).join("");
+
+  document.querySelectorAll(".pill").forEach(p=>{
+    p.addEventListener("click", ()=>{
+      const kind = p.getAttribute("data-kind");
+      const val = p.getAttribute("data-val");
+      const set = kind==="branch"?filters.branches : kind==="project"?filters.projects : filters.states;
+      if(set.has(val)){ set.delete(val); p.classList.remove("active"); }
+      else{ set.add(val); p.classList.add("active"); }
+      applyFilters();
+      updateStats();
+    });
+  });
+}
+
+/* =========================================================
+   STATS
+   ========================================================= */
+function updateStats(){
+  const ids = Object.keys(DATA.skills);
+  const counts = {LOCKED:0,AVAILABLE:0,LEARNED:0,MASTERED:0};
+  let totalQ=0, doneQ=0;
+  ids.forEach(id=>{
+    counts[currentStates[id]]++;
+    const s = DATA.skills[id];
+    s.quests.forEach(q=>{ totalQ++; if(questDone(id,q)) doneQ++; });
+  });
+  document.getElementById("stats").innerHTML = `
+    <span>SKILLS: <b>${ids.length}</b></span>
+    <span>LOCKED: <b>${counts.LOCKED}</b></span>
+    <span>AVAILABLE: <b>${counts.AVAILABLE}</b></span>
+    <span>LEARNED: <b>${counts.LEARNED}</b></span>
+    <span style="color:var(--gold)">MASTERED: <b>${counts.MASTERED}</b></span>
+    <span>QUESTS: <b>${doneQ}/${totalQ}</b></span>
+    <span>TOOLS: <b>${(DATA.tools||[]).length}</b></span>
+  `;
+}
+
+/* =========================================================
+   RECOMPUTE + REDRAW
+   ========================================================= */
+function recomputeAndRedraw(){
+  currentStates = computeStates();
+  // update node states + visuals without rebuilding force sim
+  if(sim && sim._nodeSel){
+    sim._nodes.forEach(n => n.state = currentStates[n.id]);
+    const sel = sim._nodeSel;
+    sel.style("color", d=>STATE_COLOR[d.state]);
+    sel.select("circle:not(.pulse)").attr("stroke", d=>STATE_COLOR[d.state])
+       .attr("opacity", d=>d.state==="LOCKED"?0.35:1)
+       .style("filter", d => d.state==="LOCKED" ? "none" :
+         (d.state==="MASTERED" ? "drop-shadow(0 0 8px #FFD700)" :
+          d.state==="LEARNED" ? "drop-shadow(0 0 6px #ffb000)" :
+          "drop-shadow(0 0 5px #00ff41)"));
+    // manage pulse rings
+    sel.selectAll("circle.pulse").remove();
+    sel.filter(d=>d.state==="MASTERED").insert("circle",":first-child")
+       .attr("class","pulse").attr("fill","none").attr("stroke","#FFD700")
+       .attr("stroke-width",2).attr("opacity",.6);
+    // links
+    sim._linkSel
+      .attr("stroke", d => STATE_COLOR[currentStates[d.source.id||d.source]||"LOCKED"])
+      .attr("marker-end", d => "url(#arrow-"+(currentStates[d.target.id||d.target]||"LOCKED")+")");
+    sim.alpha(0.4).restart();
+  }
+  updateStats();
+  applyFilters();
+}
+
+/* =========================================================
+   INIT
+   ========================================================= */
+async function init(){
+  DATA = await loadData();
+  if(!DATA) return;
+  userState = loadUserState();
+  currentStates = computeStates();
+  initSvg();
+  buildGraph();
+  buildPills();
+  updateStats();
+  document.getElementById("center").addEventListener("click", ()=>{
+    svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity);
+    sim.force("center", d3.forceCenter(centerX(), centerY()));
+    sim.alpha(0.7).restart();
+  });
+  document.getElementById("graph-wrap").addEventListener("click", e=>{
+    if(e.target.tagName === "svg" || e.target === document.getElementById("graph-wrap")){
+      clearHighlight();
+      selectedId = null;
+      document.getElementById("panel-empty").style.display = "block";
+      document.getElementById("panel-content").style.display = "none";
+    }
+  });
+  window.addEventListener("resize", ()=>{
+    sim.force("center", d3.forceCenter(centerX(), centerY()));
+    sim.alpha(0.3).restart();
+  });
+  // initial gentle layout warmup
+  sim.alpha(1).restart();
+}
+
+init();
+</script>
+</body>
+</html>

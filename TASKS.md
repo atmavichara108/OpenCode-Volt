@@ -17,9 +17,7 @@ timestamp: 2026-07-07
 
 | ID | Задача | Приоритет | Связано |
 |----|--------|-----------|---------|
-| T-059 | dotfiles: verifier-pattern (🟡→✅) — создать verifier.md агента по образцу SERPlux | P1 | [[03-Projects/dotfiles]], [[02-Methods/verifier-pattern]] |
-| T-060 | dotfiles: closed-loop (🟡→✅) — создать /loop команду + verifier | P1 | [[03-Projects/dotfiles]], [[02-Methods/closed-loop]] |
-| T-061 | memory-management flush-протокол (🟡→✅) — формализация pre-compaction flush в dotfiles + vault | P1 | [[02-Methods/memory-management]], [[03-Projects/dotfiles]], [[03-Projects/vault]] |
+| (нет активной — ждём Rudra с новыми идеями) |
 
 ## 🔵 Planned — следующие задачи
 
@@ -72,6 +70,7 @@ timestamp: 2026-07-07
 | T-059 | dotfiles: verifier-pattern (🟡→✅) — создать verifier.md агента по образцу SERPlux | P1 | 2026-07-03 | [[03-Projects/dotfiles]], [[02-Methods/verifier-pattern]] |
 | T-060 | dotfiles: closed-loop (🟡→✅) — создать /loop команду + verifier | P1 | 2026-07-03 | [[03-Projects/dotfiles]], [[02-Methods/closed-loop]] |
 | T-061 | memory-management flush-протокол (🟡→✅) — формализация pre-compaction flush в dotfiles + vault | P1 | 2026-07-03 | [[02-Methods/memory-management]], [[03-Projects/dotfiles]], [[03-Projects/vault]] |
+| T-069 | `tools/ecosystem-map/` — интерактивная карта развития экосистемы в стиле Pip-Boy (468 постов → 36 навыков → 326 инструментов). Вкладки: НАВЫКИ/СПОСОБНОСТИ/ИНСТРУМЕНТЫ/ПРОЕКТЫ. CRT-эффекты, фильтры, привязка к проектам | P2 | 2026-07-13 | [[02-Methods/tool-integration-pattern]], [[99-Inbox]] |
 | T-045 | SERPlux: мультиклиентность + мультипровайдерность (Web UI ⏸ приостановлено) | P1 | 2026-07-03 | [[03-Projects/SERPlux]] |
 | T-051 | Git pre-commit hook + commit-guard плагин (tool.execute.before) — неотвратимый гейт: pytest перед коммитом | P1 | 2026-07-03 | [[03-Projects/SERPlux]], [[01-Reference/plugins]] |
 | T-058 | plan-агент SERPlux: делегирование build через task-tool. plan.md (был inline в opencode.json), права task.build: allow, edit/bash deny | P2 | 2026-07-03 | [[03-Projects/SERPlux]] |

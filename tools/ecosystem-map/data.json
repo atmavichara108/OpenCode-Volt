@@ -1,0 +1,2556 @@
+{
+  "meta": {
+    "total_posts": 468,
+    "total_tools": 326,
+    "total_skills": 30,
+    "generated": "2026-07-13"
+  },
+  "skills": {
+    "context-as-docs": {
+      "name": "Context-as-Docs",
+      "branch": "VIBEOS",
+      "icon": "📄",
+      "desc": "Контекстные файлы как документация для ИИ",
+      "prereqs": [],
+      "unlocks": [
+        "model-routing",
+        "multi-agent-pipeline"
+      ],
+      "quests": [
+        {
+          "id": "q1",
+          "title": "Создать AGENTS.md",
+          "desc": "Описать роль агента в AGENTS.md",
+          "reward": "+10 XP",
+          "done": true
+        },
+        {
+          "id": "q2",
+          "title": "Создать карточки проектов",
+          "desc": "03-Projects/*.md с описанием",
+          "reward": "+15 XP",
+          "done": true
+        }
+      ],
+      "impact": {
+        "vault": "✅",
+        "SERPlux": "✅",
+        "dotfiles": "✅",
+        "dv-hub": "🟡"
+      },
+      "tools": []
+    },
+    "model-routing": {
+      "name": "Model Routing",
+      "branch": "VIBEOS",
+      "icon": "🔀",
+      "desc": "Разные модели для разных задач",
+      "prereqs": [
+        "context-as-docs"
+      ],
+      "unlocks": [
+        "multi-agent-pipeline"
+      ],
+      "quests": [
+        {
+          "id": "q3",
+          "title": "Настроить профили моделей",
+          "desc": "opencode.json с разными моделями для агентов",
+          "reward": "+20 XP",
+          "done": true
+        },
+        {
+          "id": "q4",
+          "title": "Документировать модели",
+          "desc": "01-Reference/models.md",
+          "reward": "+10 XP",
+          "done": true
+        }
+      ],
+      "impact": {
+        "vault": "✅",
+        "SERPlux": "✅",
+        "dotfiles": "🟡",
+        "dv-hub": "✅"
+      },
+      "tools": []
+    },
+    "multi-agent-pipeline": {
+      "name": "Multi-Agent Pipeline",
+      "branch": "VIBEOS",
+      "icon": "🔄",
+      "desc": "Специализированные агенты в цепочках",
+      "prereqs": [
+        "context-as-docs",
+        "model-routing"
+      ],
+      "unlocks": [
+        "agent-orchestration",
+        "closed-loop"
+      ],
+      "quests": [
+        {
+          "id": "q5",
+          "title": "Создать plan-агент",
+          "desc": ".opencode/agents/plan.md",
+          "reward": "+25 XP",
+          "done": true
+        },
+        {
+          "id": "q6",
+          "title": "Создать build-агент",
+          "desc": ".opencode/agents/build.md",
+          "reward": "+25 XP",
+          "done": true
+        },
+        {
+          "id": "q7",
+          "title": "Настроить делегирование",
+          "desc": "plan → build через task-tool",
+          "reward": "+30 XP",
+          "done": true
+        }
+      ],
+      "impact": {
+        "vault": "✅",
+        "SERPlux": "✅",
+        "dotfiles": "✅",
+        "dv-hub": "🟡"
+      },
+      "tools": []
+    },
+    "verifier-pattern": {
+      "name": "Verifier Pattern",
+      "branch": "VIBEOS",
+      "icon": "✓",
+      "desc": "Проверка через отдельный скрипт/агент",
+      "prereqs": [
+        "context-as-docs"
+      ],
+      "unlocks": [
+        "closed-loop"
+      ],
+      "quests": [
+        {
+          "id": "q8",
+          "title": "Создать verifier-агент",
+          "desc": ".opencode/subagent/verifier.md",
+          "reward": "+20 XP",
+          "done": true
+        },
+        {
+          "id": "q9",
+          "title": "Настроить whitelist",
+          "desc": "builder может вызывать только verifier",
+          "reward": "+15 XP",
+          "done": true
+        }
+      ],
+      "impact": {
+        "vault": "✅",
+        "SERPlux": "✅",
+        "dotfiles": "✅",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "closed-loop": {
+      "name": "Closed-Loop",
+      "branch": "VIBEOS",
+      "icon": "🔁",
+      "desc": "Итеративный цикл: plan → build → verify → fix",
+      "prereqs": [
+        "multi-agent-pipeline",
+        "verifier-pattern"
+      ],
+      "unlocks": [
+        "agent-orchestration"
+      ],
+      "quests": [
+        {
+          "id": "q10",
+          "title": "Создать /loop команду",
+          "desc": ".opencode/command/loop.md",
+          "reward": "+30 XP",
+          "done": true
+        },
+        {
+          "id": "q11",
+          "title": "Настроить HARD STOP",
+          "desc": "5 итераций максимум",
+          "reward": "+20 XP",
+          "done": true
+        }
+      ],
+      "impact": {
+        "vault": "✅",
+        "SERPlux": "✅",
+        "dotfiles": "✅",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "memory-management": {
+      "name": "Memory Management",
+      "branch": "VIBEOS",
+      "icon": "🧠",
+      "desc": "Управление памятью сессии + файловая память",
+      "prereqs": [
+        "context-as-docs"
+      ],
+      "unlocks": [
+        "flush-protocol"
+      ],
+      "quests": [
+        {
+          "id": "q12",
+          "title": "Создать 04-Memory/",
+          "desc": "active-context.md, facts.md, session-log/",
+          "reward": "+20 XP",
+          "done": true
+        },
+        {
+          "id": "q13",
+          "title": "Настроить session-flush",
+          "desc": "Плагин session-flush.js",
+          "reward": "+25 XP",
+          "done": true
+        }
+      ],
+      "impact": {
+        "vault": "✅",
+        "SERPlux": "🟡",
+        "dotfiles": "✅",
+        "dv-hub": "🟡"
+      },
+      "tools": []
+    },
+    "flush-protocol": {
+      "name": "Flush Protocol",
+      "branch": "VIBEOS",
+      "icon": "💾",
+      "desc": "Pre-compaction flush памяти",
+      "prereqs": [
+        "memory-management"
+      ],
+      "unlocks": [],
+      "quests": [
+        {
+          "id": "q14",
+          "title": "Создать /flush команду",
+          "desc": ".opencode/command/flush.md",
+          "reward": "+20 XP",
+          "done": true
+        },
+        {
+          "id": "q15",
+          "title": "Настроить auto-flush",
+          "desc": "librarian flush перед compact",
+          "reward": "+25 XP",
+          "done": true
+        }
+      ],
+      "impact": {
+        "vault": "✅",
+        "SERPlux": "🟡",
+        "dotfiles": "✅",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "tool-integration": {
+      "name": "Tool Integration",
+      "branch": "VIBEOS",
+      "icon": "🔧",
+      "desc": "Внешние API как детерминированные инструменты",
+      "prereqs": [
+        "context-as-docs"
+      ],
+      "unlocks": [
+        "telegram-capture",
+        "ecosystem-map"
+      ],
+      "quests": [
+        {
+          "id": "q16",
+          "title": "Создать tools/",
+          "desc": "Директория для инструментов",
+          "reward": "+15 XP",
+          "done": true
+        },
+        {
+          "id": "q17",
+          "title": "Документировать паттерн",
+          "desc": "02-Methods/tool-integration-pattern.md",
+          "reward": "+20 XP",
+          "done": true
+        }
+      ],
+      "impact": {
+        "vault": "✅",
+        "SERPlux": "🟡",
+        "dotfiles": "❌",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "telegram-capture": {
+      "name": "Telegram Capture",
+      "branch": "VIBEOS",
+      "icon": "📥",
+      "desc": "Capture постов из Telegram группы",
+      "prereqs": [
+        "tool-integration"
+      ],
+      "unlocks": [
+        "ecosystem-map"
+      ],
+      "quests": [
+        {
+          "id": "q18",
+          "title": "Создать capture.py",
+          "desc": "Telethon-скрипт для capture",
+          "reward": "+30 XP",
+          "done": true
+        },
+        {
+          "id": "q19",
+          "title": "Настроить Tor proxy",
+          "desc": "Обход блокировки Telegram",
+          "reward": "+20 XP",
+          "done": true
+        },
+        {
+          "id": "q20",
+          "title": "Создать /capture команду",
+          "desc": ".opencode/command/capture.md",
+          "reward": "+15 XP",
+          "done": true
+        }
+      ],
+      "impact": {
+        "vault": "✅",
+        "SERPlux": "❌",
+        "dotfiles": "❌",
+        "dv-hub": "❌"
+      },
+      "tools": [
+        "tools/telegram-capture/"
+      ]
+    },
+    "ecosystem-map": {
+      "name": "Ecosystem Map",
+      "branch": "VIBEOS",
+      "icon": "🗺️",
+      "desc": "Интерактивная карта развития экосистемы",
+      "prereqs": [
+        "tool-integration",
+        "telegram-capture"
+      ],
+      "unlocks": [],
+      "quests": [
+        {
+          "id": "q21",
+          "title": "Анализ 468 постов",
+          "desc": "Классификация по 36 навыкам",
+          "reward": "+25 XP",
+          "done": true
+        },
+        {
+          "id": "q22",
+          "title": "Создать Pip-Boy UI",
+          "desc": "index.html с CRT-эффектами",
+          "reward": "+30 XP",
+          "done": true
+        }
+      ],
+      "impact": {
+        "vault": "✅",
+        "SERPlux": "❌",
+        "dotfiles": "❌",
+        "dv-hub": "❌"
+      },
+      "tools": [
+        "tools/ecosystem-map/"
+      ]
+    },
+    "mcp-servers": {
+      "name": "MCP Servers",
+      "branch": "AI",
+      "icon": "🔌",
+      "desc": "Model Context Protocol серверы",
+      "prereqs": [
+        "context-as-docs"
+      ],
+      "unlocks": [],
+      "quests": [
+        {
+          "id": "q23",
+          "title": "Изучить MCP",
+          "desc": "10 постов с MCP серверами",
+          "reward": "+20 XP",
+          "done": false
+        }
+      ],
+      "impact": {
+        "vault": "❌",
+        "SERPlux": "❌",
+        "dotfiles": "❌",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "local-llm": {
+      "name": "Local LLM",
+      "branch": "AI",
+      "icon": "🏠",
+      "desc": "Локальные LLM (Ollama, llama.cpp)",
+      "prereqs": [],
+      "unlocks": [],
+      "quests": [
+        {
+          "id": "q24",
+          "title": "Установить Ollama",
+          "desc": "Настроить локальный LLM",
+          "reward": "+25 XP",
+          "done": false
+        }
+      ],
+      "impact": {
+        "vault": "❌",
+        "SERPlux": "❌",
+        "dotfiles": "❌",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "rag-retrieval": {
+      "name": "RAG & Retrieval",
+      "branch": "AI",
+      "icon": "🔍",
+      "desc": "Retrieval-Augmented Generation",
+      "prereqs": [
+        "local-llm"
+      ],
+      "unlocks": [],
+      "quests": [
+        {
+          "id": "q25",
+          "title": "Изучить RAG",
+          "desc": "3 поста с RAG",
+          "reward": "+20 XP",
+          "done": false
+        }
+      ],
+      "impact": {
+        "vault": "❌",
+        "SERPlux": "❌",
+        "dotfiles": "❌",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "ai-images": {
+      "name": "AI Images",
+      "branch": "AI",
+      "icon": "🎨",
+      "desc": "Генерация изображений (Stable Diffusion, DALL-E)",
+      "prereqs": [],
+      "unlocks": [],
+      "quests": [
+        {
+          "id": "q26",
+          "title": "Изучить AI-арт",
+          "desc": "9 постов с генерацией изображений",
+          "reward": "+15 XP",
+          "done": false
+        }
+      ],
+      "impact": {
+        "vault": "❌",
+        "SERPlux": "❌",
+        "dotfiles": "❌",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "ai-audio": {
+      "name": "AI Audio",
+      "branch": "AI",
+      "icon": "🎙️",
+      "desc": "Обработка аудио (Whisper, TTS)",
+      "prereqs": [],
+      "unlocks": [],
+      "quests": [
+        {
+          "id": "q27",
+          "title": "Изучить Whisper",
+          "desc": "7 постов с аудио-инструментами",
+          "reward": "+15 XP",
+          "done": false
+        }
+      ],
+      "impact": {
+        "vault": "❌",
+        "SERPlux": "❌",
+        "dotfiles": "❌",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "pdf-docs": {
+      "name": "PDF & Docs",
+      "branch": "AI",
+      "icon": "📚",
+      "desc": "Обработка документов (PDF→MD)",
+      "prereqs": [],
+      "unlocks": [],
+      "quests": [
+        {
+          "id": "q28",
+          "title": "Изучить конвертеры",
+          "desc": "12 постов с PDF инструментами",
+          "reward": "+15 XP",
+          "done": false
+        }
+      ],
+      "impact": {
+        "vault": "❌",
+        "SERPlux": "❌",
+        "dotfiles": "❌",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "cli-tools": {
+      "name": "CLI Tools",
+      "branch": "CLI",
+      "icon": "💻",
+      "desc": "CLI/TUI инструменты",
+      "prereqs": [],
+      "unlocks": [
+        "file-managers",
+        "system-monitor"
+      ],
+      "quests": [
+        {
+          "id": "q29",
+          "title": "Изучить CLI",
+          "desc": "28 постов с CLI инструментами",
+          "reward": "+20 XP",
+          "done": false
+        }
+      ],
+      "impact": {
+        "vault": "❌",
+        "SERPlux": "❌",
+        "dotfiles": "✅",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "file-managers": {
+      "name": "File Managers",
+      "branch": "CLI",
+      "icon": "📁",
+      "desc": "Файловые менеджеры (nnn, lf, ranger, yazi)",
+      "prereqs": [
+        "cli-tools"
+      ],
+      "unlocks": [],
+      "quests": [
+        {
+          "id": "q30",
+          "title": "Выбрать файловый менеджер",
+          "desc": "10 постов с файловыми менеджерами",
+          "reward": "+15 XP",
+          "done": false
+        }
+      ],
+      "impact": {
+        "vault": "❌",
+        "SERPlux": "❌",
+        "dotfiles": "✅",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "system-monitor": {
+      "name": "System Monitor",
+      "branch": "CLI",
+      "icon": "📊",
+      "desc": "Мониторинг системы (htop, btop, glances)",
+      "prereqs": [
+        "cli-tools"
+      ],
+      "unlocks": [],
+      "quests": [
+        {
+          "id": "q31",
+          "title": "Настроить мониторинг",
+          "desc": "2 поста с мониторингом",
+          "reward": "+10 XP",
+          "done": false
+        }
+      ],
+      "impact": {
+        "vault": "❌",
+        "SERPlux": "❌",
+        "dotfiles": "✅",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "notes-tasks": {
+      "name": "Notes & Tasks",
+      "branch": "CLI",
+      "icon": "📝",
+      "desc": "Заметки и задачи (Obsidian, Logseq)",
+      "prereqs": [],
+      "unlocks": [],
+      "quests": [
+        {
+          "id": "q32",
+          "title": "Выбрать notes app",
+          "desc": "7 постов с заметками",
+          "reward": "+15 XP",
+          "done": false
+        }
+      ],
+      "impact": {
+        "vault": "✅",
+        "SERPlux": "❌",
+        "dotfiles": "❌",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "vpn-tor": {
+      "name": "VPN & Tor",
+      "branch": "CLI",
+      "icon": "🔒",
+      "desc": "VPN, Tor, прокси",
+      "prereqs": [],
+      "unlocks": [
+        "telegram-capture"
+      ],
+      "quests": [
+        {
+          "id": "q33",
+          "title": "Настроить Tor",
+          "desc": "32 поста с VPN/Tor",
+          "reward": "+20 XP",
+          "done": true
+        }
+      ],
+      "impact": {
+        "vault": "✅",
+        "SERPlux": "❌",
+        "dotfiles": "✅",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "android": {
+      "name": "Android Dev",
+      "branch": "MOBILE",
+      "icon": "📱",
+      "desc": "Android разработка (Kotlin, Jetpack Compose)",
+      "prereqs": [],
+      "unlocks": [
+        "flutter",
+        "termux"
+      ],
+      "quests": [
+        {
+          "id": "q34",
+          "title": "Изучить Android",
+          "desc": "34 поста с Android",
+          "reward": "+25 XP",
+          "done": false
+        }
+      ],
+      "impact": {
+        "vault": "❌",
+        "SERPlux": "❌",
+        "dotfiles": "❌",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "flutter": {
+      "name": "Flutter",
+      "branch": "MOBILE",
+      "icon": "🎯",
+      "desc": "Flutter/Dart мобильная разработка",
+      "prereqs": [
+        "android"
+      ],
+      "unlocks": [],
+      "quests": [
+        {
+          "id": "q35",
+          "title": "Изучить Flutter",
+          "desc": "2 поста с Flutter",
+          "reward": "+15 XP",
+          "done": false
+        }
+      ],
+      "impact": {
+        "vault": "❌",
+        "SERPlux": "❌",
+        "dotfiles": "❌",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "termux": {
+      "name": "Termux",
+      "branch": "MOBILE",
+      "icon": "📟",
+      "desc": "Termux терминал на Android",
+      "prereqs": [
+        "android"
+      ],
+      "unlocks": [],
+      "quests": [
+        {
+          "id": "q36",
+          "title": "Настроить Termux",
+          "desc": "2 поста с Termux",
+          "reward": "+15 XP",
+          "done": false
+        }
+      ],
+      "impact": {
+        "vault": "❌",
+        "SERPlux": "❌",
+        "dotfiles": "✅",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "docker": {
+      "name": "Docker",
+      "branch": "WEB",
+      "icon": "🐳",
+      "desc": "Docker контейнеры",
+      "prereqs": [],
+      "unlocks": [
+        "self-hosted"
+      ],
+      "quests": [
+        {
+          "id": "q37",
+          "title": "Изучить Docker",
+          "desc": "14 постов с Docker",
+          "reward": "+20 XP",
+          "done": true
+        }
+      ],
+      "impact": {
+        "vault": "❌",
+        "SERPlux": "✅",
+        "dotfiles": "❌",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "self-hosted": {
+      "name": "Self-Hosted",
+      "branch": "WEB",
+      "icon": "🏠",
+      "desc": "Self-hosted сервисы (runtipi, cosmos)",
+      "prereqs": [
+        "docker"
+      ],
+      "unlocks": [],
+      "quests": [
+        {
+          "id": "q38",
+          "title": "Настроить self-hosted",
+          "desc": "3 поста с self-hosted",
+          "reward": "+20 XP",
+          "done": false
+        }
+      ],
+      "impact": {
+        "vault": "❌",
+        "SERPlux": "❌",
+        "dotfiles": "❌",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "web-scraping": {
+      "name": "Web Scraping",
+      "branch": "WEB",
+      "icon": "🕷️",
+      "desc": "Парсинг и скрапинг веб-сайтов",
+      "prereqs": [],
+      "unlocks": [],
+      "quests": [
+        {
+          "id": "q39",
+          "title": "Изучить scraping",
+          "desc": "3 поста с парсингом",
+          "reward": "+15 XP",
+          "done": false
+        }
+      ],
+      "impact": {
+        "vault": "❌",
+        "SERPlux": "✅",
+        "dotfiles": "❌",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "python": {
+      "name": "Python",
+      "branch": "LANG",
+      "icon": "🐍",
+      "desc": "Python программирование",
+      "prereqs": [],
+      "unlocks": [
+        "telegram-capture"
+      ],
+      "quests": [
+        {
+          "id": "q40",
+          "title": "Изучить Python",
+          "desc": "44 поста с Python",
+          "reward": "+30 XP",
+          "done": true
+        }
+      ],
+      "impact": {
+        "vault": "✅",
+        "SERPlux": "✅",
+        "dotfiles": "❌",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    },
+    "typescript": {
+      "name": "TypeScript",
+      "branch": "LANG",
+      "icon": "📘",
+      "desc": "TypeScript программирование",
+      "prereqs": [],
+      "unlocks": [],
+      "quests": [
+        {
+          "id": "q41",
+          "title": "Изучить TypeScript",
+          "desc": "31 пост с TypeScript",
+          "reward": "+25 XP",
+          "done": true
+        }
+      ],
+      "impact": {
+        "vault": "❌",
+        "SERPlux": "❌",
+        "dotfiles": "❌",
+        "dv-hub": "✅"
+      },
+      "tools": []
+    },
+    "rust": {
+      "name": "Rust",
+      "branch": "LANG",
+      "icon": "🦀",
+      "desc": "Rust программирование",
+      "prereqs": [],
+      "unlocks": [],
+      "quests": [
+        {
+          "id": "q42",
+          "title": "Изучить Rust",
+          "desc": "14 постов с Rust",
+          "reward": "+25 XP",
+          "done": false
+        }
+      ],
+      "impact": {
+        "vault": "❌",
+        "SERPlux": "❌",
+        "dotfiles": "✅",
+        "dv-hub": "❌"
+      },
+      "tools": []
+    }
+  },
+  "tools": [
+    {
+      "id": 506,
+      "name": "CloakBrowser",
+      "repo": "https://github.com/CloakHQ/CloakBrowser",
+      "lang": "Python",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": [
+        "python"
+      ]
+    },
+    {
+      "id": 465,
+      "name": "gridland",
+      "repo": "https://github.com/thoughtfulllc/gridland",
+      "lang": "TypeScript",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": [
+        "typescript"
+      ]
+    },
+    {
+      "id": 456,
+      "name": "Mailspring",
+      "repo": "https://github.com/Foundry376/Mailspring",
+      "lang": "JavaScript",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 387,
+      "name": "Fooyin",
+      "repo": "https://github.com/fooyin/fooyin",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 386,
+      "name": "Superseedr",
+      "repo": "https://github.com/Jagalite/superseedr",
+      "lang": "Rust",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": [
+        "rust"
+      ]
+    },
+    {
+      "id": 385,
+      "name": "Call Me",
+      "repo": "https://github.com/miroslavpejic85/call-me",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 374,
+      "name": "systemctl-tui",
+      "repo": "https://github.com/rgwood/systemctl-tui",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 356,
+      "name": "Raijin",
+      "repo": "https://github.com/MasonStooksbury/Raijin",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 355,
+      "name": "SunnyCapturer",
+      "repo": "https://github.com/XMuli/SunnyCapturer",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 354,
+      "name": "Nuclear",
+      "repo": "https://github.com/nukeop/nuclear",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 351,
+      "name": "Chrome OLED Mode",
+      "repo": "https://github.com/FreelanceProgrammingServices/Chrome-OLED-Mode",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 349,
+      "name": "Mouse is Lava",
+      "repo": "https://github.com/gruns/the-mouse-is-lava",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 348,
+      "name": "Prompt2Flutter",
+      "repo": "https://github.com/filippofinke/Prompt2Flutter",
+      "lang": "Unknown",
+      "category": "new",
+      "topic": "Приложения",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 339,
+      "name": "Linkwarden",
+      "repo": "https://github.com/linkwarden/linkwarden",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 335,
+      "name": "buku",
+      "repo": "https://github.com/jarun/buku",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 333,
+      "name": "DownFall",
+      "repo": "https://github.com/torculus/DownFall",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 332,
+      "name": "SeeAct",
+      "repo": "https://github.com/OSU-NLP-Group/SeeAct",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 323,
+      "name": "IPTVnator",
+      "repo": "https://github.com/4gray/iptvnator",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 319,
+      "name": "Yami",
+      "repo": "https://github.com/DevER-M/yami",
+      "lang": "Python",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": [
+        "python"
+      ]
+    },
+    {
+      "id": 318,
+      "name": "LangCommand",
+      "repo": "https://github.com/guoriyue/LangCommand",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 286,
+      "name": "qrframe",
+      "repo": "https://github.com/zhengkyl/qrframe",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 284,
+      "name": "Cal Buddy",
+      "repo": "https://github.com/ChiragAgg5k/cal-buddy",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 280,
+      "name": "maestro-cli",
+      "repo": "https://github.com/PrajwalVandana/maestro-cli",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": [
+        "cli-tools",
+        "file-managers",
+        "system-monitor"
+      ]
+    },
+    {
+      "id": 277,
+      "name": "nnn",
+      "repo": "https://github.com/jarun/nnn",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 256,
+      "name": "Whisper WebGPU",
+      "repo": "https://github.com/xenova/transformers.js/tree/v3/examples/webgpu-whisper",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 237,
+      "name": "Graphite",
+      "repo": "https://github.com/GraphiteEditor/Graphite",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 228,
+      "name": "Superfile",
+      "repo": "https://github.com/MHNightCat/superfile",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 227,
+      "name": "Upscayl",
+      "repo": "https://github.com/upscayl/upscayl",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 226,
+      "name": "TempMail",
+      "repo": "https://github.com/mehmetkahya0/temp-mail",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 225,
+      "name": "TextSnatcher",
+      "repo": "https://github.com/RajSolai/TextSnatcher",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 216,
+      "name": "WhisperClip",
+      "repo": "https://github.com/gustavostz/whisper-clip",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Приложения",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 215,
+      "name": "CorsixTH",
+      "repo": "https://github.com/CorsixTH/CorsixTH",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 214,
+      "name": "Reor",
+      "repo": "https://github.com/reorproject/reor",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Приложения",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 212,
+      "name": "Stable Cascade",
+      "repo": "https://github.com/Stability-AI/StableCascade",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Приложения",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 205,
+      "name": "Navidrome Music Server",
+      "repo": "https://github.com/navidrome/navidrome",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 184,
+      "name": "PyMacroRecord",
+      "repo": "https://github.com/LOUDO56/PyMacroRecord",
+      "lang": "Python",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": [
+        "python"
+      ]
+    },
+    {
+      "id": 183,
+      "name": "MiroTalk SFU",
+      "repo": "https://github.com/miroslavpejic85/mirotalksfu",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 182,
+      "name": "Story Generator",
+      "repo": "https://github.com/Dene33/world-gpt",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Приложения",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 181,
+      "name": "Motionity",
+      "repo": "https://github.com/alyssaxuu/motionity",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 175,
+      "name": "Make Real",
+      "repo": "https://github.com/tldraw/make-real",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Приложения",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 174,
+      "name": "Flying Carpet",
+      "repo": "https://github.com/spieglt/FlyingCarpet",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": [
+        "android",
+        "flutter",
+        "termux"
+      ]
+    },
+    {
+      "id": 173,
+      "name": "Flameshot",
+      "repo": "https://github.com/flameshot-org/flameshot",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 142,
+      "name": "https",
+      "repo": "https://github.com/Lucchetto/SuperImage",
+      "lang": "Unknown",
+      "category": "new",
+      "topic": "Приложения",
+      "skills": [
+        "android",
+        "flutter",
+        "termux"
+      ]
+    },
+    {
+      "id": 80,
+      "name": "qBittorrent",
+      "repo": "https://github.com/qbittorrent/qBittorrent",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 78,
+      "name": "kew",
+      "repo": "https://github.com/ravachol/kew",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": [
+        "cli-tools",
+        "file-managers",
+        "system-monitor"
+      ]
+    },
+    {
+      "id": 63,
+      "name": "Audiobookshelf",
+      "repo": "https://github.com/advplyr/audiobookshelf-app",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": [
+        "android",
+        "flutter",
+        "termux"
+      ]
+    },
+    {
+      "id": 44,
+      "name": "Planify",
+      "repo": "https://github.com/alainm23/planify",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Приложения",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 41,
+      "name": "AnyDoor",
+      "repo": "https://github.com/damo-vilab/AnyDoor",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 40,
+      "name": "turbo",
+      "repo": "https://github.com/modal-labs/turbo-art",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Приложения",
+      "skills": []
+    },
+    {
+      "id": 505,
+      "name": "lay-public",
+      "repo": "https://github.com/radislabus-star/lay-public",
+      "lang": "Rust",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": [
+        "rust"
+      ]
+    },
+    {
+      "id": 498,
+      "name": "TUI_bluetooth",
+      "repo": "https://github.com/HelpFreedom/TUI_bluetooth",
+      "lang": "Python",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": [
+        "python"
+      ]
+    },
+    {
+      "id": 485,
+      "name": "Если хотите создавать красивые и",
+      "repo": "https://github.com/charmbracelet",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 484,
+      "name": "Торренты теперь тоже скачиваем через",
+      "repo": "https://github.com/rakshasa/rtorrent",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 483,
+      "name": "Gum",
+      "repo": "https://github.com/charmbracelet/gum",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 450,
+      "name": "aether",
+      "repo": "https://github.com/bjarneo/aether",
+      "lang": "JavaScript",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 447,
+      "name": "navi",
+      "repo": "https://github.com/denisidoro/navi",
+      "lang": "Rust",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": [
+        "rust"
+      ]
+    },
+    {
+      "id": 440,
+      "name": "gogcli",
+      "repo": "https://github.com/steipete/gogcli",
+      "lang": "Go",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 434,
+      "name": "weathr",
+      "repo": "https://github.com/veirt/weathr",
+      "lang": "Rust",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": [
+        "rust"
+      ]
+    },
+    {
+      "id": 432,
+      "name": "cull",
+      "repo": "https://github.com/legostin/cull",
+      "lang": "Go",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 419,
+      "name": "favbox",
+      "repo": "https://github.com/dd3v/favbox",
+      "lang": "Vue",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 417,
+      "name": "openscreen",
+      "repo": "https://github.com/siddharthvaddem/openscreen",
+      "lang": "TypeScript",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": [
+        "typescript"
+      ]
+    },
+    {
+      "id": 401,
+      "name": "keymapper",
+      "repo": "https://github.com/houmain/keymapper",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 377,
+      "name": "VERT",
+      "repo": "https://github.com/VERT-sh/VERT",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 370,
+      "name": "Crustacean Powered Clipboard",
+      "repo": "https://github.com/saltnpepper97/claw",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": [
+        "cli-tools",
+        "file-managers",
+        "system-monitor"
+      ]
+    },
+    {
+      "id": 365,
+      "name": "JAMS",
+      "repo": "https://github.com/nevimmu/JAMS",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 364,
+      "name": "VokoscreenNG",
+      "repo": "https://github.com/vkohaupt/vokoscreenNG",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 362,
+      "name": "Cheatshh",
+      "repo": "https://github.com/AnirudhG07/cheatshh",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 359,
+      "name": "GACUA",
+      "repo": "https://github.com/openmule/gacua",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": [
+        "cli-tools",
+        "file-managers",
+        "system-monitor"
+      ]
+    },
+    {
+      "id": 358,
+      "name": "Yapyap",
+      "repo": "https://github.com/lxe/yapyap",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 353,
+      "name": "Flow-Like",
+      "repo": "https://github.com/TM9657/flow-like",
+      "lang": "Rust",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": [
+        "rust"
+      ]
+    },
+    {
+      "id": 347,
+      "name": "Napkins",
+      "repo": "https://github.com/nutlope/napkins",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 346,
+      "name": "reTermAI-LLM CLI",
+      "repo": "https://github.com/pie0902/reTermAI",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 344,
+      "name": "Dear ImGui",
+      "repo": "https://github.com/ocornut/imgui",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 343,
+      "name": "Dotbins",
+      "repo": "https://github.com/basnijholt/dotbins",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 342,
+      "name": "Ttyd",
+      "repo": "https://github.com/tsl0922/ttyd",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 340,
+      "name": "Rawdog",
+      "repo": "https://github.com/AbanteAI/rawdog",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 334,
+      "name": "Clipcat",
+      "repo": "https://github.com/xrelkd/clipcat",
+      "lang": "Rust",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": [
+        "cli-tools",
+        "file-managers",
+        "system-monitor"
+      ]
+    },
+    {
+      "id": 330,
+      "name": "AIWP",
+      "repo": "https://github.com/minosvasilias/AIWP",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 326,
+      "name": "fzf-make",
+      "repo": "https://github.com/kyu08/fzf-make",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 320,
+      "name": "Perspectra",
+      "repo": "https://github.com/ad-si/Perspectra",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": [
+        "cli-tools",
+        "file-managers",
+        "system-monitor"
+      ]
+    },
+    {
+      "id": 317,
+      "name": "Khoj",
+      "repo": "https://github.com/khoj-ai/khoj",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 316,
+      "name": "AnythingLLM",
+      "repo": "https://github.com/Mintplex-Labs/anything-llm",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 290,
+      "name": "You-get",
+      "repo": "https://github.com/soimort/you-get",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 288,
+      "name": "phidata",
+      "repo": "https://github.com/phidatahq/phidata",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 287,
+      "name": "Louvre",
+      "repo": "https://github.com/jerryliuoft/louvre",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 283,
+      "name": "Connor",
+      "repo": "https://github.com/ycatsh/connor",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 281,
+      "name": "CogStudio",
+      "repo": "https://github.com/pinokiofactory/cogstudio",
+      "lang": "Unknown",
+      "category": "new",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 270,
+      "name": "Babelfish",
+      "repo": "https://github.com/supabase-community/babelfish.ai",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 267,
+      "name": "CompressO",
+      "repo": "https://github.com/codeforreal1/compressO",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 258,
+      "name": "Kando",
+      "repo": "https://github.com/kando-menu/kando",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 257,
+      "name": "DevToys",
+      "repo": "https://github.com/DevToys-app/DevToys",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 254,
+      "name": "CinEx",
+      "repo": "https://github.com/acalejos/CinEx",
+      "lang": "Unknown",
+      "category": "new",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 244,
+      "name": "yt-chat",
+      "repo": "https://github.com/Fonction-Labs/yt-chat",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 223,
+      "name": "Lexido",
+      "repo": "https://github.com/micr0-dev/lexido",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 222,
+      "name": "LaVague",
+      "repo": "https://github.com/dhuynh95/LaVague",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 218,
+      "name": "Ente",
+      "repo": "https://github.com/ente-io/ente",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 217,
+      "name": "tlm",
+      "repo": "https://github.com/yusufcanb/tlm",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": [
+        "cli-tools",
+        "file-managers",
+        "system-monitor"
+      ]
+    },
+    {
+      "id": 207,
+      "name": "NormCap",
+      "repo": "https://github.com/dynobo/normcap",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 206,
+      "name": "Clight",
+      "repo": "https://github.com/FedeDP/Clight",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": [
+        "cli-tools",
+        "file-managers",
+        "system-monitor"
+      ]
+    },
+    {
+      "id": 178,
+      "name": "RubyWM",
+      "repo": "https://github.com/vidarh/rubywm",
+      "lang": "Ruby",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 148,
+      "name": "Fonoster",
+      "repo": "https://github.com/fonoster/fonoster",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 146,
+      "name": "Shell GPT",
+      "repo": "https://github.com/TheR1D/shell_gpt",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 144,
+      "name": "Visual ChatGPT",
+      "repo": "https://github.com/microsoft/visual-chatgpt",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 143,
+      "name": "https",
+      "repo": "https://github.com/awesome-selfhosted/awesome-selfhosted",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 141,
+      "name": "Lwp",
+      "repo": "https://github.com/jszczerbinsky/lwp",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 139,
+      "name": "AIdea",
+      "repo": "https://github.com/mylxsw/aidea",
+      "lang": "Unknown",
+      "category": "new",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 138,
+      "name": "vim-gpt",
+      "repo": "https://github.com/kamou/gpt-vim",
+      "lang": "Python",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": [
+        "python"
+      ]
+    },
+    {
+      "id": 137,
+      "name": "atuin",
+      "repo": "https://github.com/atuinsh/atuin",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 136,
+      "name": "https",
+      "repo": "https://github.com/Akshayaap/MouseRemoteServer",
+      "lang": "Unknown",
+      "category": "new",
+      "topic": "Софт",
+      "skills": [
+        "android",
+        "flutter",
+        "termux"
+      ]
+    },
+    {
+      "id": 134,
+      "name": "Spacedrive",
+      "repo": "https://github.com/spacedriveapp/spacedrive",
+      "lang": "Rust",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": [
+        "android",
+        "flutter",
+        "termux"
+      ]
+    },
+    {
+      "id": 81,
+      "name": "talk-llama",
+      "repo": "https://github.com/ggerganov/whisper.cpp/tree/master/examples/talk-llama",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 79,
+      "name": "Clipea",
+      "repo": "https://github.com/dave1010/clipea",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": [
+        "cli-tools",
+        "file-managers",
+        "system-monitor"
+      ]
+    },
+    {
+      "id": 77,
+      "name": "vimGPT",
+      "repo": "https://github.com/ishan0102/vimGPT",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 76,
+      "name": "Ollama Web UI",
+      "repo": "https://github.com/ollama-webui/ollama-webui",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 75,
+      "name": "Vet",
+      "repo": "https://github.com/safedep/vet",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 73,
+      "name": "🔥",
+      "repo": "https://github.com/Jiayi-Pan/GPT-V-on-Web.git",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 62,
+      "name": "QRGen",
+      "repo": "https://github.com/error-try-again/QRGen",
+      "lang": "TypeScript",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 59,
+      "name": "Unexpected Keyboard",
+      "repo": "https://github.com/Julow/Unexpected-Keyboard",
+      "lang": "Unknown",
+      "category": "new",
+      "topic": "Софт",
+      "skills": [
+        "android",
+        "flutter",
+        "termux"
+      ]
+    },
+    {
+      "id": 58,
+      "name": "github-readme-terminal",
+      "repo": "https://github.com/x0rzavi/github-readme-terminal",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": [
+        "cli-tools",
+        "file-managers",
+        "system-monitor"
+      ]
+    },
+    {
+      "id": 56,
+      "name": "LibreChat",
+      "repo": "https://github.com/danny-avila/LibreChat",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 50,
+      "name": "Enclave",
+      "repo": "https://github.com/symbolicsoft/enclave",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": [
+        "cli-tools",
+        "file-managers",
+        "system-monitor"
+      ]
+    },
+    {
+      "id": 49,
+      "name": "Enatega",
+      "repo": "https://github.com/Ninjas-Code-official/Enatega-Multi-Vendor-Food-Delivery-System",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 48,
+      "name": "Device Connect",
+      "repo": "https://github.com/cyanomiko/dcnnt-android",
+      "lang": "Unknown",
+      "category": "new",
+      "topic": "Софт",
+      "skills": [
+        "android",
+        "flutter",
+        "termux"
+      ]
+    },
+    {
+      "id": 47,
+      "name": "AIChat",
+      "repo": "https://github.com/sigoden/aichat",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 45,
+      "name": "Pentaract",
+      "repo": "https://github.com/Dominux/Pentaract",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 43,
+      "name": "Openlib",
+      "repo": "https://github.com/dstark5/Openlib",
+      "lang": "Unknown",
+      "category": "new",
+      "topic": "Софт",
+      "skills": [
+        "android",
+        "flutter",
+        "termux"
+      ]
+    },
+    {
+      "id": 39,
+      "name": "Lobe Chat",
+      "repo": "https://github.com/lobehub/lobe-chat",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 38,
+      "name": "Cliptopia",
+      "repo": "https://github.com/omegaui/cliptopia",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": [
+        "cli-tools",
+        "file-managers",
+        "system-monitor"
+      ]
+    },
+    {
+      "id": 37,
+      "name": "Feishin",
+      "repo": "https://github.com/jeffvli/feishin",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 36,
+      "name": "Oatmeal",
+      "repo": "https://github.com/dustinblackman/oatmeal",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 35,
+      "name": "sets88_telegram_bot",
+      "repo": "https://github.com/Sets88/sets88_telegram_bot",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 34,
+      "name": "Driver",
+      "repo": "https://github.com/rogeriochaves/driver",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 32,
+      "name": "Goosle",
+      "repo": "https://github.com/adegans/Goosle",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 23,
+      "name": "Новый мощный ИИ-редактор фотографий.",
+      "repo": "https://github.com/open-mmlab/mmagic/tree/main/projects/powerpaint",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Софт",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Переводим видео с любого языка",
+      "repo": "https://github.com/facebookresearch/seamless_communication",
+      "lang": "Unknown",
+      "category": "dotfiles",
+      "topic": "Софт",
+      "skills": []
+    },
+    {
+      "id": 665,
+      "name": "Диаграммы из видео",
+      "repo": "https://github.com/alexzhang13/rlm",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Вайб",
+      "skills": []
+    },
+    {
+      "id": 653,
+      "name": "5 опенсорс no-code платформ для",
+      "repo": "https://github.com/HKUDS/AutoAgent",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Вайб",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 652,
+      "name": "Совет для пользователей Claude Code",
+      "repo": "https://github.com/mattpocock/skills/blob/main/skills/in-progress/claude-handoff/SKILL.md",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Вайб",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 649,
+      "name": "Это абсурдно умно",
+      "repo": "https://github.com/teamchong/pxpipe",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Вайб",
+      "skills": []
+    },
+    {
+      "id": 648,
+      "name": "Копировать веб-страницы в LLM не",
+      "repo": "https://github.com/Ademking/MD-This-Page",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Вайб",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 646,
+      "name": "Мой текущий любимый репозиторий скиллов",
+      "repo": "https://github.com/mattpocock/skills",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Вайб",
+      "skills": []
+    },
+    {
+      "id": 643,
+      "name": "Держите",
+      "repo": "https://github.com/nexu-io/harness-engineering-guide",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Вайб",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 642,
+      "name": "Разработчик из Китая",
+      "repo": "https://github.com/hugohe3/ppt-master",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Вайб",
+      "skills": [
+        "cli-tools",
+        "file-managers",
+        "system-monitor"
+      ]
+    },
+    {
+      "id": 631,
+      "name": "Как улучшить свой",
+      "repo": "https://github.com/ksimback/looper",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Вайб",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 630,
+      "name": "На GitHub завирусился проект reverse-skill",
+      "repo": "https://github.com/zhaoxuya520/reverse-skill",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Вайб",
+      "skills": []
+    },
+    {
+      "id": 625,
+      "name": "Веб-скрейпинг уже не будет прежним.",
+      "repo": "https://github.com/StarTrail-org/PixelRAG/blob/main/assets/pixelrag-paper.pdf",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Вайб",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 620,
+      "name": "L0p4Map",
+      "repo": "https://github.com/HaxL0p4/L0p4Map",
+      "lang": "Python",
+      "category": "dotfiles",
+      "topic": "Вайб",
+      "skills": [
+        "python"
+      ]
+    },
+    {
+      "id": 613,
+      "name": "bytechef",
+      "repo": "https://github.com/bytechefhq/bytechef",
+      "lang": "Java",
+      "category": "vibeos",
+      "topic": "Вайб",
+      "skills": [
+        "mcp-servers",
+        "local-llm",
+        "rag-retrieval"
+      ]
+    },
+    {
+      "id": 607,
+      "name": "Datalab [открыла](https",
+      "repo": "https://github.com/datalab-to/lift",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Вайб",
+      "skills": []
+    },
+    {
+      "id": 606,
+      "name": "Находка",
+      "repo": "https://github.com/alibaba/zvec",
+      "lang": "Unknown",
+      "category": "vibeos",
+      "topic": "Вайб",
+      "skills": []
+    }
+  ],
+  "projects": [
+    {
+      "id": "SERPlux",
+      "name": "SERPlux",
+      "desc": "SEO-платформа",
+      "stack": "Python/FastAPI/SQLite/Docker",
+      "status": "Core ✅",
+      "methods": 6,
+      "agents": 6,
+      "commands": 5
+    },
+    {
+      "id": "vault",
+      "name": "OpenCode-Vault",
+      "desc": "Командный центр",
+      "stack": "Markdown/Python tools",
+      "status": "VibeOS v0.3.0 ✅",
+      "methods": 8,
+      "agents": 1,
+      "commands": 9
+    },
+    {
+      "id": "dotfiles",
+      "name": "dotfiles",
+      "desc": "Linux конфиги",
+      "stack": "Shell/GNU Stow",
+      "status": "Multi-agent v3 ✅",
+      "methods": 5,
+      "agents": 8,
+      "commands": 10
+    },
+    {
+      "id": "dv-hub",
+      "name": "dv-hub",
+      "desc": "TypeScript-хаб",
+      "stack": "TypeScript/Hono/SQLite",
+      "status": "Active",
+      "methods": 2,
+      "agents": 5,
+      "commands": 7
+    }
+  ]
+}

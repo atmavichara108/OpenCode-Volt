@@ -61,6 +61,8 @@ timestamp: 2026-07-08
 - **SERPlux:** 111 pytest-тестов → /loop идеален для core-модулей; для Apps Script UI — не сработает, нужен другой механизм
 
 ### Внешние инструменты (tools/)
+- **tools/telegram-capture/** — первый инструмент VibeOS (T-062, 2026-07-08). Telethon-скрипт для capture постов из @inbox_tools, классификация, маркировка реакциями. 39 pytest-тестов, Tor SOCKS5 proxy.
+- **tools/ecosystem-map/** — второй инструмент VibeOS (T-069, 2026-07-13). Интерактивная карта развития экосистемы в стиле Pip-Boy Fallout. 468 постов → 36 навыков → 326 инструментов. 4 вкладки: НАВЫКИ/СПОСОБНОСТИ/ИНСТРУМЕНТЫ/ПРОЕКТЫ. CRT-эффекты, vanilla JS, фильтры. Запуск: `python3 -m http.server 8000` в tools/ecosystem-map/.
 - **Telethon 1.44.0** — единственный живой MTProto-клиент для Python. Pyrogram архивирован (Dec 2024), не поддерживается. Telethon переехал на Codeberg (Feb 2026), 12k stars, MIT license. Выбор для tools/telegram-capture/.
 - **Группа @inbox_tools** — открытая Telegram-группа Rudra для сбора постов с интересным софтом. Темы (topics): Приложения, Софт, Вайб, #General, Смарт, Графика, красота, сайтостроение (старое), Обучалки (старое), ИИ, Питонизм (очень старое).
 - **Схема маркировки реакциями** (двухуровневая): 👍 ingested (обработан), 🤔 ошибка. Категории: 👨‍💻 dotfiles/Linux UX, 🔥 SERPlux, 🤝 dv-hub, 🏆 VibeOS/метод, 🎉 новый проект. Default для без категории: 👍.
