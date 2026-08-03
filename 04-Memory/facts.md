@@ -170,3 +170,45 @@ timestamp: 2026-08-03
 - Pre-commit hook: проверка пустых файлов + валидация викилинков
 - 7 методов заполнены в 02-Methods/ (+tool-integration-pattern с 2026-07-07)
 - Статус методов (собственные): context-as-docs ✅, distill-pattern ✅, memory-management ✅, model-routing ➖, closed-loop ✅, verifier-pattern ✅, tool-integration-pattern ✅ (T-062 внедрён 2026-07-08)
+
+### Documentation status (2026-08-03)
+
+> Только стабильные факты/статус документации (не планы как текущая
+> реализация). Источник:
+> [[06-Audits/2026-08-03-dv-hub-phase-d-audit]],
+> [[06-Audits/2026-08-03-dv-hub-phase-d-addendum]],
+> [[06-Audits/2026-08-03-ecosystem-upgrade-plan-v1]].
+
+- dv-hub классифицирован в аудите как **recovery-case**, не showcase-case
+  (acceptance-поверхность деградирована: `tests/` пуст, `npm test` exit 1,
+  CI без тестов; runtime-инциденты открыты: Telegram auth 404, D1 migration
+  incomplete).
+- **Операционная интеграция с global nerve не подтверждена** для dv-hub
+  (zero evidence-type references на `/loop`, `/done`, `@verifier`,
+  `@meta`, `session-flush` в проектных артефактах). Это наблюдаемый факт,
+  не bug и не утвердительное «не используется».
+- **Ecosystem prerequisites не являются project defects.**
+  `engineering-style-contract`, `capability-routing`,
+  `reviewer/verifier split`, plugin loader contract, runtime enforcement
+  contract, memory model compatibility contract, test metrics
+  normalization contract — ecosystem-level / future kernel artifacts;
+  их отсутствие в конкретном проекте — состояние экосистемного сцепления,
+  не дефект проекта.
+- **Security findings требуют точной доказательной спецификации** до
+  stable fact: exact package, version range, advisory ID (GHSA/CVE),
+  impact, exploitability assessment for project codepath, source/date,
+  fix availability. Текущая формулировка «high-severity Hono vulnerability»
+  для dv-hub — **candidate/unverified security finding**, не stable fact.
+- **Ecosystem upgrade plan v1 создан**
+  (`06-Audits/2026-08-03-ecosystem-upgrade-plan-v1.md`, status: draft):
+  roles of nodes, 5 kernel contracts to implement first, global
+  architecture decisions (target roles, not current implementation),
+  methodological principles, project-specific constraints, implementation
+  order (candidate/planned sequence, без Done/дат), engineering-style-
+  contract as planned artifact, decision gates.
+- **Engineering-style-contract развёрнут как planned core artifact**
+  (explicitly **не** implemented method; **не** в `02-Methods/`):
+  общие правила + language profiles (TS/JS, Python, Shell, Config/docs) +
+  anti-shitcode patterns + routing table + reviewer/verifier integration.
+  Существование — в рамках ecosystem upgrade plan v1, не как внедрённый
+  канон.

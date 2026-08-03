@@ -1,7 +1,7 @@
 ---
 type: Active Context
 title: Активный контекст
-description: Аудиты Фаз A/B структурированы в 06-Audits/; следующий этап — SERPlux Фаза C; параллельно открыт контур планирования апгрейдов вайбкодинг-слоя.
+description: Локальные аудиты A/B/C/D + dv-hub addendum зафиксированы; ecosystem upgrade plan v1 (draft) создан; следующий major workstream — grounding плана перед любым project-level upgrade execution.
 tags: [memory]
 timestamp: 2026-08-03
 ---
@@ -11,13 +11,30 @@ timestamp: 2026-08-03
 > Автоматически обновляется librarian. Читается при старте каждой сессии.
 
 ## Текущий фокус
-- **Проекты:** vault — Phase C read-only аудит SERPlux завершён (`06-Audits/2026-08-03-serplux-phase-c-audit.md`). SERPlux — следующее: Addendum C + обновление ecosystem upgrade seed. dotfiles — прокачка завершена.
-- **Задача:** Phase C аудит структурирован и зафиксирован (read-only, без правок репо SERPlux). Ближайший шаг — Addendum C (классификация findings, контрактные implications) и обновление planning seed (`06-Audits/2026-08-02-upgrade-planning-seed.md`) явными контрактами (plugin loader, reviewer vs verifier, runtime enforcement, memory model compatibility, test metrics normalization).
-- **Новое:** параллельно открыт контур планирования апгрейдов вайбкодинг-слоя — seed в `06-Audits/2026-08-02-upgrade-planning-seed.md`. dv-hub отложен до прояснения kernel contracts (plugin loader / verifier / runtime enforcement / memory model).
+- **Проекты:** vault — локальные аудиты вайбкодинг-слоя финализированы
+  (Phase A/B vibecoding-layer audit + Phase C SERPlux audit/addendum +
+  Phase D dv-hub audit + dv-hub addendum). SERPlux — следующее после
+  grounding плана (live proving ground, kernel contracts first). dv-hub —
+  recovery-case, не первая цель kernel-апгрейда; recovery gate предшествует
+  любому overlay. dotfiles/global contour — evolves in parallel.
+- **Задача:** локальные аудиты A/B/C/D + dv-hub addendum зафиксированы.
+  Ecosystem upgrade plan v1 создан (draft) с 5 kernel contracts, global
+  architecture decisions, engineering-style-contract как planned artifact,
+  implementation order (Phase 1–4 candidate/planned) и decision gates.
+  **Следующий major workstream = grounding ecosystem plan перед любым
+  project-level upgrade execution:** (a) стабилизация 5 kernel contracts
+  как design contracts с acceptance criteria/rollback, (b) project-specific
+  constraints enforcement (SERPlux first, dv-hub recovery gate no-go до
+  recovery), (c) reconciliation declarations vs reality как permanent
+  meta-mechanic. Реализация kernel contracts ещё не начата — только план.
+- **Новое:** dv-hub recovery gate удерживается; не утверждать, что
+  implementation плана началась. Engineering-style-contract — planned
+  artifact внутри ecosystem plan v1, не метод в `02-Methods/` и не внедрён.
 
 ## Активная задача
 (нет активной — ждём Rudra с новыми идеями)
 T-045 (SERPlux мультипровайдерность) — отложено до новых вводных.
+T-090..T-095 (planning group, экосистемный план) — Planned.
 
 ## Завершённые изменения (все сессии)
 - [x] README.md — визитка репозитория как VibeOS (для GitHub, основа для лендинга)
@@ -60,4 +77,18 @@ T-045 (SERPlux мультипровайдерность) — отложено д
 - (нет открытых вопросов на данный момент)
 
 ## Последнее обновление
-2026-08-03 — Phase C read-only аудит SERPlux завершён и зафиксирован в `06-Audits/2026-08-03-serplux-phase-c-audit.md`; ближайший шаг — Addendum C (`06-Audits/2026-08-03-serplux-phase-c-addendum.md`) + обновление ecosystem upgrade seed контрактами из Phase C. dv-hub отложен до прояснения kernel contracts (plugin loader / verifier / runtime enforcement / memory model).
+2026-08-03 — локальные аудиты вайбкодинг-слоя финализированы (Phase A/B
+vibecoding-layer audit + Phase C SERPlux audit/addendum + Phase D dv-hub
+audit + dv-hub addendum в `06-Audits/`). Ecosystem upgrade plan v1 создан
+(draft, `06-Audits/2026-08-03-ecosystem-upgrade-plan-v1.md`): roles of
+nodes, 5 kernel contracts, global architecture decisions (target roles),
+methodological principles, project-specific constraints (SERPlux first /
+dv-hub recovery gate / dotfiles global contour), implementation order
+(Phase 1–4 candidate/planned), engineering-style-contract как planned
+artifact, decision gates. Engineering-style-contract развёрнут как
+planned core artifact, не метод в `02-Methods/` и не внедрён. Следующий
+major workstream = **grounding ecosystem plan** перед любым project-level
+upgrade execution: стабилизация kernel contracts как design contracts с
+acceptance criteria/rollback, project constraints enforcement,
+declarations-vs-reality reconciliation как permanent meta-mechanic.
+Реализация kernel contracts ещё не начата.
