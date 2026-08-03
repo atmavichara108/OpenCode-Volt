@@ -11,9 +11,9 @@ timestamp: 2026-08-03
 > Автоматически обновляется librarian. Читается при старте каждой сессии.
 
 ## Текущий фокус
-- **Проекты:** vault — 06-Audits/ (аудиты Фаз A/B вайбкодинг-слоя структурированы и зафиксированы). SERPlux — следующий этап Фаза C. dotfiles — прокачка завершена.
-- **Задача:** аудит Фаз A/B структурирован и зафиксирован в `06-Audits/` (см. `06-Audits/2026-08-02-vibecoding-layer-audit.md`). Следующий этап — SERPlux, Фаза C.
-- **Новое:** параллельно открыт контур планирования апгрейдов вайбкодинг-слоя — seed в `06-Audits/2026-08-02-upgrade-planning-seed.md`.
+- **Проекты:** vault — Phase C read-only аудит SERPlux завершён (`06-Audits/2026-08-03-serplux-phase-c-audit.md`). SERPlux — следующее: Addendum C + обновление ecosystem upgrade seed. dotfiles — прокачка завершена.
+- **Задача:** Phase C аудит структурирован и зафиксирован (read-only, без правок репо SERPlux). Ближайший шаг — Addendum C (классификация findings, контрактные implications) и обновление planning seed (`06-Audits/2026-08-02-upgrade-planning-seed.md`) явными контрактами (plugin loader, reviewer vs verifier, runtime enforcement, memory model compatibility, test metrics normalization).
+- **Новое:** параллельно открыт контур планирования апгрейдов вайбкодинг-слоя — seed в `06-Audits/2026-08-02-upgrade-planning-seed.md`. dv-hub отложен до прояснения kernel contracts (plugin loader / verifier / runtime enforcement / memory model).
 
 ## Активная задача
 (нет активной — ждём Rudra с новыми идеями)
@@ -60,4 +60,4 @@ T-045 (SERPlux мультипровайдерность) — отложено д
 - (нет открытых вопросов на данный момент)
 
 ## Последнее обновление
-2026-08-03 — аудиты Фаз A/B вайбкодинг-слоя структурированы и зафиксированы в `06-Audits/`; открыт seed планирования апгрейдов (`06-Audits/2026-08-02-upgrade-planning-seed.md`). Следующий этап — SERPlux, Фаза C.
+2026-08-03 — Phase C read-only аудит SERPlux завершён и зафиксирован в `06-Audits/2026-08-03-serplux-phase-c-audit.md`; ближайший шаг — Addendum C (`06-Audits/2026-08-03-serplux-phase-c-addendum.md`) + обновление ecosystem upgrade seed контрактами из Phase C. dv-hub отложен до прояснения kernel contracts (plugin loader / verifier / runtime enforcement / memory model).

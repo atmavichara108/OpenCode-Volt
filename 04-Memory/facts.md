@@ -3,7 +3,7 @@ type: Fact Registry
 title: Реестр фактов
 description: Подтверждённые факты об OpenCode и проектах. Факты попадают сюда после разрешения [проверить].
 tags: [memory]
-timestamp: 2026-07-08
+timestamp: 2026-08-03
 ---
 # Реестр фактов
 
@@ -85,6 +85,42 @@ timestamp: 2026-07-08
 - **Конвенция:** каждый новый Python-проект создаёт `.envrc` + `.venv/`, `direnv allow`, зависимости в venv. НЕ глобально.
 
 ## Проекты
+
+### SERPlux — Phase C confirmed facts (2026-08-03)
+
+> Подтверждённые факты по итогам read-only аудита
+> ([[06-Audits/2026-08-03-serplux-phase-c-audit]],
+> [[06-Audits/2026-08-03-serplux-phase-c-addendum]]). Только факты о
+> состоянии проверки/инфры, без предложений и кандидатов.
+
+- SERPlux использует docs-based memory (`docs/decisions.md`, `progress.md`,
+  `techdebt.md` и др.), не `04-Memory/`; каталога `.opencode/memory/` и
+  `04-Memory/` в репо нет.
+- `build` определён inline в `opencode.json` (mode primary, model
+  kimi-k2.7-code, `permission.task: { "*": "allow" }`); файла
+  `.opencode/agents/build.md` нет. Остальные 5 агентов — auto-discovery
+  `.md` файлы.
+- Локальный `reviewer` (`.opencode/agents/reviewer.md`, quality-роль,
+  edit deny, bash allowlist `git diff/grep/cat`) ≠ глобальный `verifier`
+  (`~/.config/opencode/agent/verifier.md`, acceptance, VERDICT PASS/FAIL);
+  `/loop` на шаге 2 вызывает глобального `@verifier`.
+- `commit-guard.js` имеет подтверждённую ESM SyntaxError: `const output = ...`
+  переобъявляет параметр `output` функции-обработчика `tool.execute.before`
+  (`async (input, output) =>`); ESM-загрузка бросает
+  `SyntaxError: Identifier 'output' has already been declared`. `node --check`
+  в CommonJS-режиме ошибку не показывает.
+- `notify.js` catch-all обработчик `event: async (input) => ...` —
+  валидность ключа `event` как catch-all в Plugin API **остаётся
+  непроверенной** (это стабильный факт о состоянии проверки, не утверждение
+  runtime bug).
+- `/commit` и `/dream` физически существуют в `.opencode/command/` и в
+  карточке, но отсутствуют в таблице команд `serp/AGENTS.md:90-97`
+  (перечислены только `/interface`, `/container`, `/deploy`).
+- Число тестов расходится между артефактами и требует нормализации: test
+  definitions (`grep def test_` по `tests/*.py`) = 94; documented suite
+  claims: карточка 111, `serp/AGENTS.md` 224, `docs/verification.md` CI 172,
+  `serp/TASKS.md` (T-001) 95; pytest total без прогона не подтверждается
+  (parametrize, skip). Источники и назначение метрик различаются.
 
 ### SERPlux
 - Репо: `/home/rudra/Projects/serp`

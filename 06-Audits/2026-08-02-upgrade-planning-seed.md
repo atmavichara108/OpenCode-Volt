@@ -12,7 +12,103 @@ status: seed
 > измерений. Конкретные задачи идут в [[TASKS]] / [[DEVELOPMENT-ROADMAP]]
 > только после замеров и решений по дизайну. Источник находок —
 > [[06-Audits/2026-08-02-vibecoding-layer-audit]] (разделы `confirmed tensions`,
-> `what changes planning`).
+> `what changes planning`); уточнения и контрактные implications из
+> [[06-Audits/2026-08-03-serplux-phase-c-audit]] и
+> [[06-Audits/2026-08-03-serplux-phase-c-addendum]].
+
+## design contracts from Phase C
+
+> Зафиксированы только **design contracts/constraints** (не готовая реализация,
+> не поручения). Снимают неоднозначности, выявленные Phase C audit/addendum
+> (см. `source` выше). Внедрение — через candidate implementation order ниже.
+
+### plugin loader contract
+
+> Источник: [[06-Audits/2026-08-03-serplux-phase-c-addendum]] finding #1, #2;
+> audit G3.
+
+- **Контракт:** loader OpenCode для `.opencode/plugins/*.{js,ts}` обязан
+  зафиксировать, какие export-формы принимает (default-only / named / both) и
+  обязан ли `export default`.
+- **Constraint:** до прояснения loader-контракта стабилизация любого плагина
+  (`commit-guard.js`, `env-guard.js`) и harness, опирающийся на guard-plugins
+  (verifier runtime gate), не имеют устойчивого fix-пути — fixed плагин всё
+  равно садится на недокументированное поведение.
+- **Различать:** `node --check` (CommonJS-режим) ≠ загружаемость плагина как
+  ESM; SyntaxError при ESM-оценке модуля (например, переобъявление
+  идентификатора в обработчике) не детектируется `node --check`.
+- **Design question (не решение):** описать контракт в `01-Reference/plugins`
+  и/или как часть plugin-policy; проверка loader-поведения — экспериментально,
+  до любых правок проектных плагинов.
+
+### reviewer vs verifier contract
+
+> Источник: addendum finding #4; audit G1; principle 6 выше.
+
+- **Контракт:** `reviewer` и `verifier` — два разных global role kernel +
+  local extensions. `reviewer` = quality (стиль, безопасность, контракты,
+  разрешения); `verifier` = acceptance (DoD, тесты, PASS/FAIL, never edits,
+  narrow bash allowlist).
+- **Constraint:** карточки/INDEX не должны приписывать `verifier-pattern ✅`
+  локальному `reviewer`, если closed-loop (`/loop`) на шаге 2 вызывает
+  глобального `@verifier`. Должно быть явно указано, какой verifier закрывает
+  closed-loop (глобальный через `/loop` или локальный).
+- **Design question (не решение):** весь ли закрытый loop намеренно опирается
+  на глобального verifier (cross-project contract), или проект держит
+  локальный `verifier.md` (acceptance) рядом с локальным `reviewer` (quality).
+  Или: раздельный карточный статус `reviewer-pattern` и `verifier-pattern`.
+
+### runtime enforcement contract
+
+> Источник: addendum finding #5; audit G2/G5.
+
+- **Контракт:** «`verify=PASS → finalize`» — должно быть зафиксировано, что
+  оно значит на runtime-уровне: gated command протокол / плагин hook
+  (`tool.execute.before`) / harness loop-артефакт. Без этого closed-loop —
+  командная конвенция, не неотвратимый runtime-gate.
+- **Constraint:** harness loop/done проектировать только после loader
+  contract (plugin loader contract) — иначе harness садится на плагин,
+  который может не загружаться.
+- **Design question (не решение):** какой runtime-mechanism обеспечивает
+  неотвратимость (plugin hook vs command-gate vs harness wrapper); как
+  отличается для `/commit` pre-commit hook vs `/loop`→`/done` finalize.
+
+### memory model compatibility contract
+
+> Источник: addendum finding #6, #11; audit G5; principle 8, 10.
+
+- **Контракт:** допускается сосуществование двух memory-моделей —
+  **vault-based** (`04-Memory/`, `facts.md`, `active-context.md`,
+  `session-log/`) и **docs-based** (`docs/decisions.md`, `docs/progress.md`,
+  предметные docs/). Глобальный plugin (`session-flush`) обязан учитывать
+  memory-модель проекта, иначе он создаёт stray-каталоги и конкурирующий flush.
+- **Constraint:** `/done` (vault-scoped чеклист: `02-Methods/`,
+  `04-Memory/active-context.md`) не пригоден к docs-based проекту без
+  адаптации. Либо общая абстракция (`/done` + `/dream` для docs-based), либо
+  явное разделение «волтовский `/done`» vs «проектный flush».
+- **Design question (не решение):** policy global vs local plugins (T-081) —
+  отключать глобальный flush для docs-based проектов / локальный override /
+  унификация в event-log + sinks.
+
+### test metrics normalization contract
+
+> Источник: addendum finding #7; audit G7.
+
+- **Контракт:** различать источники и назначение метрик — НЕ называть числа из
+  разных артефактов «реальным числом тестов»:
+  - **test definitions** — `grep def test_` по `tests/*.py` (94 в SERP):
+    подсчёт определений, не assertion-уровень;
+  - **documented suite claims per artifact** — карточка/`AGENTS.md`/
+    `docs/verification.md`/`TASKS.md` — человекочитаемые claims про suite
+    (в SERP: 111 / 224 / 172 / 95);
+  - **pytest total** — не подтверждается без прогона (parametrize, skip
+    могут расходиться с count of definitions).
+- **Constraint:** единый source-of-truth по тестовому покрытию — обязан быть
+  в карточке/AGENTS/docs как согласованный; иначе решения по upgrade
+  принимаются на разошедшихся метриках.
+- **Design question (не решение):** где живёт единая метрика покрытия и кто
+  её поддерживает (агент/скрипт/CI), чтобы claims в разных артефактах не
+  расходились автоматически.
 
 ## principles
 
@@ -329,33 +425,63 @@ SERPlux — только **как условная гипотеза после a
   меряем (token/cycle count, pass rate, replay set, A/B); baseline сейчас
   отсутствует. Зафиксировать `local-tooling-as-limbs` как candidate-метод
   (не canon). Без этого всё ниже не имеет критериев готовности.
-- **1) candidate — role contracts + routing spec.** Контракты ролей
-  (meta/sysop/guardian/reviewer/researcher/prompt-engineer/verifier — global
-  kernel + local extensions) + routing spec (`capability-routing` 3 слоя).
-  Ничего не запускается, только описание границ; унификация `build`↔`builder`
-  и подъём/декларация `/commit` для `/done` как предусловия harness'а.
-- **2) candidate — memory/event-log и событийная notify-инфра.** Event-ledger
+- **1) candidate — plugin-policy / plugin loader contract.** Зафиксировать
+  loader-контракт OpenCode (default vs named exports, обязанности `export
+  default`) — блокирует стабилизацию любых guard-плагинов и harness, на них
+  опирающийся (verifier runtime gate). Design contract см. выше
+  `plugin loader contract`. Зависит от (0) по терминам плагин/экспорт.
+  **Первый приоритет после стабилизации терминов**, т.к. без loader-контракта
+  все guard/runtime-gate кандидаты ниже садятся на недокументированное
+  поведение.
+- **2) candidate — verifier/reviewer split.** Разделить контракты `verifier`
+  (acceptance) и `reviewer` (quality) как global role kernel + local
+  extensions; явная декларация в карточках, какой verifier закрывает closed-
+  loop (глобальный через `/loop` или локальный). Design contract см. выше
+  `reviewer vs verifier contract`. Зависит от (0) по терминам role, не от (1).
+  Подъём/декларация `/commit` для `/done` — частичный предусловие harness'а.
+- **3) candidate — `/done` adaptation by project memory model.** Адаптация
+  `/done` под docs-based vs vault-based memory-модели; общая абстракция
+  `/done` + `/dream` либо разделение «волтовский vs проектный flush». Design
+  contract см. выше `memory model compatibility contract`. Зависит от (2)
+  по части verifier/finalize контура.
+- **4) candidate — engineering-style-contract.** Короткий общий контракт
+  инженерного качества кода + language profiles + каноническое определение
+  primary-агента (inline vs `.md`) как part of contract. Design candidate
+  из future global artifacts выше; зависит от (0) по терминам контракт/
+  профиль, от (2) по integration с reviewer/verifier.
+- **5) candidate — capability-routing.** Routing spec (`capability-routing`
+  3 слоя: инженерные конвенции → language/runtime → routing policy по
+  модели/роли/языку/риску/типу операции). Опирается на (2) reviewer/verifier
+  split (слой C «когда reviewer / verifier») и (4) engineering-style-contract
+  (слой A). pouze design contracts, не запуск runtime.
+- **6) candidate — role contracts + routing spec (general).** Контракты
+  ролей (meta/sysop/guardian/reviewer/researcher/prompt-engineer/verifier —
+  global kernel + local extensions) + routing spec как целое; унификация
+  `build`↔`builder` и подъём/декларация `/commit` для `/done` как предусловия
+  harness'а. Расширяет (2) и (5). Ничего не запускается, только описание
+  границ.
+- **7) candidate — memory/event-log и событийная notify-инфра.** Event-ledger
   schema (SQLite/JSONL candidate) + постоянные опоры (`session-flush`-like)
   + distilled projection (rg/jq/awk/python), watchers, git metadata,
   cron/systemd timers; notify как событие поверх event-log. Зависит от (0)
-  по части терминов и от (1) по contracts; помнит, что global notify сейчас
-  отсутствует → вводится как candidate/open.
-- **3) candidate — global role candidates + local overrides.** Кандидатные
+  по части терминов и от (3) по memory-model compatibility; помнит, что
+  global notify сейчас отсутствует → вводится как candidate/open.
+- **8) candidate — global role candidates + local overrides.** Кандидатные
   минимальные реализации ролей (meta/sysop/guardian/reviewer/researcher/
   prompt-engineer) + механизм local overrides для `dotfiles`/`SERPlux`/
-  `dv-hub`/`vault`. Зависит от (1) контрактов; `meta`-проактивность здесь
+  `dv-hub`/`vault`. Зависит от (6) контрактов; `meta`-проактивность здесь
   только как алгоритмический контур (hooks/периодические инспекции/diff/
   capture-signals), не самовольное творчество.
-- **4) candidate — capture ↔ ecosystem-map planning loop.** Связка intake
+- **9) candidate — capture ↔ ecosystem-map planning loop.** Связка intake
   (capture) → classify map node → relevance → project mapping → upgrade path
   → execution/backlog; capture-сигналы привязаны к узлам карты. Зависит от
-  (1) контрактов и глобальной map-инфраструктуры; runtime-роль map отдельно
+  (6) контрактов и глобальной map-инфраструктуры; runtime-роль map отдельно
   решается (unresolved).
-- **5) candidate — voice notify и project-specific software-upgrade loop.**
+- **10) candidate — voice notify и project-specific software-upgrade loop.**
   Опц. голосовой notify; локальные software-upgrade циклы (dotfiles / Linux
   UX Lab / software-Manjaro upgrade loop). Самый «продуктовый» слой,
-  ставится когда инфра (2,3) стабилизирована.
-- **6) candidate — оценка и решение о следующем цикле.** Замеры против
+  ставится когда инфра (7,8) стабилизирована.
+- **11) candidate — оценка и решение о следующем цикле.** Замеры против
   критериев (0); пересмотр порядка; решение, какие кандидаты становятся
   задачами в [[TASKS]] / [[DEVELOPMENT-ROADMAP]]. Переход к **Phase C /
   SERPlux** — только как условная гипотеза после addendum (целевая проверка
