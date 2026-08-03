@@ -51,6 +51,24 @@ timestamp: 2026-07-07
 | T-054 | Дистиллировать команды в skills [проверить надёжность автозагрузки] | P4 | [[01-Reference/commands]] |
 | T-055 | Изучить packagemain.tech agentic pre-commit via Go SDK как референс для умного гейта | P3 | [[01-Reference/plugins]] |
 
+### Контур планирования апгрейдов вайбкодинг-слоя (seed: `06-Audits/2026-08-02-upgrade-planning-seed`)
+| ID | Задача | Приоритет | Связано |
+|----|--------|-----------|---------|
+| T-070 | `guardian` — агент-страж: холит конвенции/границы/неотвратимость verify перед коммитом; общий гейт экосистемы, дополняет per-project verifier и commit-guard | P3 | [[06-Audits/2026-08-02-upgrade-planning-seed]], [[02-Methods/verifier-pattern]] |
+| T-071 | `sysop` (global) — инспектор уровня экосистемы: аудит инфры всех проектов, единый сводный отчёт; поднимает dotfiles /sysaudit до глобального слоя | P3 | [[06-Audits/2026-08-02-upgrade-planning-seed]], [[03-Projects/dotfiles]] |
+| T-072 | Глобальные `researcher`/`reviewer` — пара для исследования и ревью до/во время build-пайплайнов; сейчас researcher/view в dv-hub локально — вынести в глобаль | P3 | [[06-Audits/2026-08-02-upgrade-planning-seed]], [[03-Projects/dv-hub]] |
+| T-073 | Фикс global `/loop` `build`→`builder` — зафиксировать каноническое имя агента-строителя (`builder`) и совместимость/алиас `build` в глобальной команде `/loop` | P2 | [[04-Memory/facts.md]], [[06-Audits/2026-08-02-upgrade-planning-seed]] |
+| T-074 | Redesign `/done` scope — vault-спецфичные сущности (зависимость от `/commit`, scope general vs vault-only) в глобальной команде `/done` | P3 | [[06-Audits/2026-08-02-upgrade-planning-seed]], [[01-Reference/commands]] |
+| T-075 | Rework memory/event-log — редизайн `04-Memory/` + event-log: событийный лог вместо/вместе с session-log, чёткие слои факт/контекст/лог | P3 | [[04-Memory/facts.md]], [[04-Memory/active-context.md]], [[06-Audits/2026-08-02-upgrade-planning-seed]] |
+| T-076 | Глобальный `notify` + voice — единый слой уведомлений (Telegram/desktop) и голосовой обратной связи для агентов | P4 | [[06-Audits/2026-08-02-upgrade-planning-seed]], [[01-Reference/plugins]] |
+| T-077 | Routing spec / capability-routing — формальная спецификация маршрутизации задач к агентам по capability (kill ad-hoc dispatch) | P3 | [[06-Audits/2026-08-02-upgrade-planning-seed]], [[02-Methods/multi-agent-pipeline]] |
+| T-078 | Code quality conventions / anti-shitcode layer — общий слой конвенций качества и гейт против шиткода в пайплайнах (с `guardian`/`verifier`) | P3 | [[06-Audits/2026-08-02-upgrade-planning-seed]], [[02-Methods/verifier-pattern]], T-070 |
+| T-079 | `capture` → dotfiles/software-upgrade agent — продвижение capture из intake-заметок в полноценного агента апгрейдов софта/dotfiles | P3 | [[02-Methods/tool-integration-pattern]], [[06-Audits/2026-08-02-upgrade-planning-seed]], [[03-Projects/dotfiles]] |
+| T-080 | `ecosystem-map` как upgrade planning interface — превратить tools/ecosystem-map/ из визуализатора в интерфейс планирования апгрейдов (выбор навыка→роадмап для агентов) | P3 | T-069, [[06-Audits/2026-08-02-upgrade-planning-seed]] |
+| T-081 | Policy global vs local plugins — правило принадлежности плагинов (что живёт в `~/.config/opencode/plugins/`, что в проекте), политика мёржа/переопределения | P3 | [[01-Reference/plugins]], [[04-Memory/facts.md]], [[06-Audits/2026-08-02-upgrade-planning-seed]] |
+| T-082 | Спроектировать `engineering-style-contract` — контракт инженерного качества кода: **короткий общий контракт + language profiles** (Bash/Python/TS-Node/Kotlin-Android/HTML-CSS-JS-config) + decision rules (когда ООП/функциональный стиль/класс/модуль/plain script; деление файлов; оформление конфиг/ shell/утилит) + anti-shitcode антипаттерны + интеграция routing (выбор subagent по языку/задаче) и reviewer/verifier (минимальный расход токенов, детерминированные checks). **Спроектировать, не написать метод и не внедрить.** | P3 | [[06-Audits/2026-08-02-upgrade-planning-seed]], [[02-Methods/verifier-pattern]], [[02-Methods/multi-agent-pipeline]], [[03-Projects/dotfiles]] |
+| T-083 | Эволюция `ecosystem-map` (T-069 / Pip-Boy) из визуального артефакта в рабочий planning UI: карта показывает **узлы проектов** + **глобальный слой** + **capture sources** + **planned upgrades** + **tensions/tech debt** + **status of methods and agents**; связи capture→узел→planned upgrade→зависимость, tension→узел. Planning-роль карты; runtime-контракт — отдельный open question, не утверждать. **Спроектировать planning-интерфейс, не внедрять runtime.** | P3 | [[06-Audits/2026-08-02-upgrade-planning-seed]], T-069 |
+
 ## 🟤 Backlog — идеи на потом
 
 | ID | Задача | Приоритет | Связано |

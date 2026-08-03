@@ -107,6 +107,13 @@ timestamp: 2026-07-08
 - Git submodule: context/ → dv-project
 - Docs: 8 файлов (architecture, product-vision, roadmap, glossary, infra-runbook, backend-conventions, mirotalk-setup, known-issues)
 
+### Глобальный слой OpenCode (2026-08-03)
+- Глобальный слой OpenCode versioned через `~/dotfiles/opencode-global/.config/opencode/` и GNU Stow синхронизируется в `~/.config/opencode/`.
+- В глобальном слое существуют: `meta` (субагент), `verifier` (субагент), команды `/done`, `/loop`, `session-flush` (плагин).
+- Глобальная команда `/loop` использует `agent: build`; каноническое имя dotfiles-агента строителя — `builder` (имя `build` в `/loop` — legacy/алиас, требует фиксации совместимости).
+- T-069 / `tools/ecosystem-map/` стал отдельным артефактом планирования апгрейдов вайбкодинг-слоя (не только инструмент-визуализатор).
+- `capture` (tools/telegram-capture/ + скилл /capture) — intake-слой апгрейдов вайбкодинг-слоя, не просто сбор заметок.
+
 ### dotfiles
 - Репо: `/home/rudra/dotfiles`
 - GitHub remote: `atmavichara108/dotfiles`
