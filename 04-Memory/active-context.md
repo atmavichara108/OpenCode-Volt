@@ -1,7 +1,7 @@
 ---
 type: Active Context
 title: Активный контекст
-description: Локальные аудиты A/B/C/D + dv-hub addendum зафиксированы; ecosystem upgrade plan v1 (draft) создан; следующий major workstream — grounding плана перед любым project-level upgrade execution.
+description: Локальные аудиты A/B/C/D + dv-hub addendum зафиксированы; ecosystem upgrade plan v1 (draft) + execution sequence note (draft) созданы; следующий major workstream — grounding плана перед любым project-level upgrade execution.
 tags: [memory]
 timestamp: 2026-08-03
 ---
@@ -30,11 +30,16 @@ timestamp: 2026-08-03
 - **Новое:** dv-hub recovery gate удерживается; не утверждать, что
   implementation плана началась. Engineering-style-contract — planned
   artifact внутри ecosystem plan v1, не метод в `02-Methods/` и не внедрён.
+  Execution sequence note создан (draft,
+  `06-Audits/2026-08-03-execution-sequence-note.md`): зафиксирован порядок
+  исполнения — SERPlux (first live adoption) → dotfiles/global hardening
+  (second-stage substrate) → dv-hub recovery (final); global layer на
+  полшага впереди SERPlux, не big-design-upfront. Реализация кода не начата.
 
 ## Активная задача
 (нет активной — ждём Rudra с новыми идеями)
 T-045 (SERPlux мультипровайдерность) — отложено до новых вводных.
-T-090..T-095 (planning group, экосистемный план) — Planned.
+T-090..T-096 (planning group, экосистемный план + execution sequence) — Planned.
 
 ## Завершённые изменения (все сессии)
 - [x] README.md — визитка репозитория как VibeOS (для GitHub, основа для лендинга)
@@ -92,3 +97,11 @@ upgrade execution: стабилизация kernel contracts как design contr
 acceptance criteria/rollback, project constraints enforcement,
 declarations-vs-reality reconciliation как permanent meta-mechanic.
 Реализация kernel contracts ещё не начата.
+
+Execution sequence note (draft, `06-Audits/2026-08-03-execution-sequence-note.md`)
+зафиксировал gate-order: Phase 1 minimal kernel stabilization for live use
+→ Phase 2 SERPlux first adoption → Phase 3 dotfiles/global hardening →
+Phase 4 dv-hub recovery adoption. Порядок adoption: SERPlux → dotfiles/
+global hardening → dv-hub recovery. Global layer на полшага впереди
+SERPlux, не big-design-up-front; dv-hub не первый kernel target.
+Реализация кода не начата — sequencing это planning artifact.
