@@ -43,7 +43,7 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Docker
 - ✅ Режим `domains` разметки: справочник `domain_labels` (без LLM), поле `confidence`, параметр `client_id`
 - ✅ POST /run расширен: `client_id`, `label_mode` (default `domains`), `force_relabel` + валидация
 - ✅ migrate.py идемпотентен (любое состояние БД → корректная схема)
-- ✅ Тесты: 111/111 зелёных (pytest, :memory:)
+- ✅ Тесты: **256/256 зелёных** (pytest, executed на HEAD f7ccd3e, 2026-08-04; канон `docs/test-metrics.md`)
 
 ## Что делаем сейчас
 
@@ -51,22 +51,32 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Docker
 - Фолбек-цепочка LLM, API /providers
 - API /clients (профили клиентов — схема готова, эндпоинт в планах)
 - Закрытие техдолга (docs/techdebt.md — httpx/starlette deprecation и пр.)
+- ⚠️ **Sync test-metrics claims** (techdebt.md 2026-08-04): README/AGENTS/
+  CANON/verification/user-guide/TASKS → канон 256/256 executed, definitions
+  212 (реализация за пользователем при проектной работе, не librarian)
 
 ### ⏸ Приостановлено
 - **Web UI** — ADR от 2026-07-02: единственный UI = Google Sheets. Веб-фронт не строим без явного запроса заказчика.
 
 ---
 
-## Агенты (актуально на 2026-07-03)
+## Агенты (актуально на 2026-08-04)
 
 | Агент | Mode | Модель | Назначение | edit |
 |-------|------|--------|-----------|------|
 | **build** | primary | opencode-go/kimi-k2.7-code | Основная разработка, коммит через `/commit` | allow |
 | **plan** | primary | opencode-go/glm-5.2 | Планирование, анализ, делегирование build (task: build allow) | deny |
 | **collector-dev** | subagent | opencode-go/kimi-k2.7-code | Topvisor + сбор данных (topvisor.py, collector.py) | allow |
-| **reviewer** | subagent | opencode-go/glm-5.2 | PASS/FAIL верификация контрактов | deny |
+| **reviewer** | subagent | opencode-go/glm-5.2 | Quality/style/domain review по docs/contracts.md | deny |
+| **verifier** | subagent | opencode-go/glm-5.2 | Acceptance-only: `python -m pytest -v`, VERDICT PASS/FAIL, edit deny | deny |
 | **ui-dev** | subagent | opencode-go/kimi-k2.7-code | Google Sheets UI (Apps Script меню, лист «Настройки») | allow |
 | **infra-dev** | subagent | opencode-go/qwen3.7-plus | Docker, deploy, серверная инфраструктура | allow |
+
+> Phase 1 (2026-08-04): project-local `.opencode/agents/verifier.md` —
+> acceptance-only verifier (edit/webfetch deny, read-only allowlist,
+> `python -m pytest -v`, VERDICT PASS/FAIL). Глобальный `/loop` `@verifier`
+> резолвится проектным verifier. Merge behavior permissions allowlist —
+> наблюдение `[проверить]`, strict isolation не объявлена.
 
 ### ui-dev
 - **Режим:** subagent (вызывается из build или через `/interface`)
@@ -116,6 +126,14 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Docker
 ## Плагины
 env-guard.js · notify.js · compaction.js · commit-guard.js
 
+> Phase 1 (2026-08-04): commit-guard — ESM SyntaxError исправлен
+> (`const output` → `const testOutput`); env-guard — webfetch check
+> перенесён внутрь каноничного `tool.execute.before` (неканоничный
+> `tool.execute.before.webfetch` удалён); compaction — исправлен на
+> документированный `experimental.session.compacting` `(input, output)` /
+> `output.context`. Проверка: `scripts/check-plugins.mjs` (все 4 OK).
+> Commit-guard на реальном `git commit` — `[проверить]` (T-097 residual).
+
 ---
 
 ## После мультиклиентности (что модернизируем)
@@ -136,3 +154,4 @@ env-guard.js · notify.js · compaction.js · commit-guard.js
 - 2026-07-03: plan-агент → `.opencode/agents/plan.md` (был inline в opencode.json). Добавлено `task: { build: allow }` — plan делегирует исполнение build через task-tool. edit/bash deny сохранены.
 - 2026-07-03: **Актуализация карточки по реальному состоянию репо.** Агенты: ui-dev — активен (Google Sheets UI, kimi-k2.7-code), не PAUSED; infra-dev — qwen3.7-plus (не deepseek-v4-flash). Команды: добавлены `/commit` и `/dream`, убран несуществующий `/review`. Убран мусор (stray `}`). Таблицы агентов/команд приведены в соответствие с `.opencode/`.
 - 2026-07-03: **Мультиклиентность + domains mode.** T-001 (новая схема БД clients/positions/labels + migrate.py + тесты), T-002 (режим `domains` разметки + справочник `domain_labels` + `confidence`), T-003 (идемпотентность migrate.py), T-004 (расширение POST /run: client_id, label_mode, force_relabel). 111/111 тестов. Default `label_mode=domains` (без LLM). Плагин commit-guard.js добавлен в список. Приоритет сместился на мультипровайдерность.
+- 2026-08-03/04: **Phase 1 (kernel stabilization, ecosystem upgrade plan v1).** Плагины стабилизированы (loader-контракт T-084: named exports, `event` catch-all, `experimental.session.compacting`), создан project-local verifier.md (T-085), executed тесты = **256/256** на HEAD `f7ccd3e` (T-087/T-098), канон `docs/test-metrics.md`, sync claims → техдолг (за пользователем). Коммит агентского слоя 2026-08-04.

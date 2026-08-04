@@ -1,9 +1,9 @@
 ---
 type: Active Context
 title: Активный контекст
-description: Локальные аудиты A/B/C/D + dv-hub addendum зафиксированы; ecosystem upgrade plan v1 (draft) + execution sequence note (draft) созданы; следующий major workstream — grounding плана перед любым project-level upgrade execution.
+description: Phase 1 (kernel stabilization) ЗАВЕРШЕНА 2026-08-04 — T-084..T-089, T-096..T-098 Done. Субагенты временно на бесплатных Zen-моделях. Следующий gate: Phase 2 (SERPlux first adoption) + dotfiles/global hardening.
 tags: [memory]
-timestamp: 2026-08-03
+timestamp: 2026-08-04
 ---
 
 # Активный контекст
@@ -11,37 +11,57 @@ timestamp: 2026-08-03
 > Автоматически обновляется librarian. Читается при старте каждой сессии.
 
 ## Текущий фокус
-- **Проекты:** vault — локальные аудиты вайбкодинг-слоя финализированы
-  (Phase A/B vibecoding-layer audit + Phase C SERPlux audit/addendum +
-  Phase D dv-hub audit + dv-hub addendum). SERPlux — следующее после
-  grounding плана (live proving ground, kernel contracts first). dv-hub —
-  recovery-case, не первая цель kernel-апгрейда; recovery gate предшествует
-  любому overlay. dotfiles/global contour — evolves in parallel.
-- **Задача:** локальные аудиты A/B/C/D + dv-hub addendum зафиксированы.
-  Ecosystem upgrade plan v1 создан (draft) с 5 kernel contracts, global
-  architecture decisions, engineering-style-contract как planned artifact,
-  implementation order (Phase 1–4 candidate/planned) и decision gates.
-  **Следующий major workstream = grounding ecosystem plan перед любым
-  project-level upgrade execution:** (a) стабилизация 5 kernel contracts
-  как design contracts с acceptance criteria/rollback, (b) project-specific
-  constraints enforcement (SERPlux first, dv-hub recovery gate no-go до
-  recovery), (c) reconciliation declarations vs reality как permanent
-  meta-mechanic. Реализация kernel contracts ещё не начата — только план.
-- **Новое:** dv-hub recovery gate удерживается; не утверждать, что
-  implementation плана началась. Engineering-style-contract — planned
-  artifact внутри ecosystem plan v1, не метод в `02-Methods/` и не внедрён.
-  Execution sequence note создан (draft,
-  `06-Audits/2026-08-03-execution-sequence-note.md`): зафиксирован порядок
-  исполнения — SERPlux (first live adoption) → dotfiles/global hardening
-  (second-stage substrate) → dv-hub recovery (final); global layer на
-  полшага впереди SERPlux, не big-design-upfront. Реализация кода не начата.
+- **Phase 1 (kernel stabilization) ЗАВЕРШЕНА 2026-08-04.** Все задачи
+  T-084..T-089 + T-096..T-098 перенесены в Done с датой. Коммиты:
+  vault (память), SERPlux (агентский слой), dotfiles (`done.md`).
+- **Модели субагентов — ВРЕМЕННО на бесплатных Zen (opencode/):**
+  meta → `ling-3.0-flash-free`, verifier → `deepseek-v4-flash-free`,
+  general (vault opencode.json) → `nemotron-3-ultra-free`. Причина:
+  экономия Go-кредитов. Возврат на Go-модели — по решению пользователя
+  (связь: T-048/T-049).
+- **Следующий gate:** Phase 2 (SERPlux first adoption по ecosystem upgrade
+  plan v1) + dotfiles/global hardening (Phase 3). dv-hub — recovery case,
+  не первая цель.
+- **Residuals `[проверить]` (честно открыты, не закрыты):**
+  - T-089/T-097: commit-guard на реальном `git commit` (real commit smoke)
+    и реальный compaction event session-dispatch — безопасно
+    непротестированы (нужна живая сессия в serp, не vault).
+  - T-085: merge behavior permissions allowlist (local override global) —
+    наблюдение, strict isolation не объявлена.
+  - T-089: payload capture для subagent/task в `tool.execute.after`
+    (полный `verifier PASS` marker gate) — не подтверждён.
+  - T-084: реальный compaction session-dispatch.
+- **Открытый техдолг (по решению пользователя, реализуется ИМ при
+  проектной работе):** sync test-metrics claims в SERPlux
+  (`serp/docs/techdebt.md`, запись 2026-08-04 «Test-metrics claims не
+  синхронизированы с каноном»): README/AGENTS/CANON/verification/
+  user-guide/TASKS содержат 224/172/95/111, канон = 256/256 executed на
+  HEAD `f7ccd3e`, definitions 212. Записано идемпотентно и централизованно.
 
 ## Активная задача
-(нет активной — ждём Rudra с новыми идеями)
-T-045 (SERPlux мультипровайдерность) — отложено до новых вводных.
-T-090..T-096 (planning group, экосистемный план + execution sequence) — Planned.
+- **Нет активной задачи.** TASKS Active пуст. Следующее: Phase 2/3
+  планирование (SERPlux adoption + global layer hardening) — по
+  ecosystem upgrade plan v1 (`06-Audits/2026-08-03-ecosystem-upgrade-plan-v1.md`),
+  либо закрытие residuals Phase 1 через живую сессию в serp.
 
 ## Завершённые изменения (все сессии)
+- [x] **Phase 1 kernel stabilization (2026-08-04, T-084..T-089, T-096..T-098):**
+  plugin loader/compaction contract (named exports, `event` catch-all,
+  `experimental.session.compacting`), SERPlux plugin stabilization
+  (commit-guard ESM fix, env-guard webfetch gap), project-local
+  `.opencode/agents/verifier.md` (acceptance-only, VERDICT PASS/FAIL),
+  global `/done` memory-model branches (vault-based / docs-based / fallback),
+  test-metrics канон `serp/docs/test-metrics.md` (executed 256/256 на
+  HEAD f7ccd3e, definitions 212), техдолг-запись sync claims, execution
+  sequence note (Phase 1→4). Коммиты во все 3 репо.
+- [x] (T-098) WIP SERPlux смёржен в HEAD f7ccd3e; executed run = 256/256
+  pass, exit 0; `docs/test-metrics.md` обновлён до канона; sync claims →
+  техдолг (за пользователем).
+- [x] (T-097) Live Bun import/registration всех 4 SERPlux плагинов +
+  function-level hook fire подтверждены; residuals (real commit smoke,
+  real compaction dispatch) открыты `[проверить]`.
+- [x] (T-096) Execution sequence note: SERPlux first → dotfiles/global
+  hardening → dv-hub recovery; global layer на полшага впереди.
 - [x] README.md — визитка репозитория как VibeOS (для GitHub, основа для лендинга)
 - [x] LICENSE — GPL-3.0 (copyleft + коммерция разрешена) + секция в README + упоминание фонда инженера
 - [x] SERP Factory — SERPlux как продукт фабрики. Архитектура: ux-dev, infra-dev, команды /interface /container /deploy. multi-agent-pipeline: Factory variant.
@@ -79,29 +99,14 @@ T-090..T-096 (planning group, экосистемный план + execution sequ
 - **Напряжения:** память (flush-протокол), теория vs практика
 
 ## Открытые вопросы
-- (нет открытых вопросов на данный момент)
+- Когда возвращать Go-модели субагентам (T-048/T-049)?
+- Как закрывать residuals Phase 1 (real commit smoke / compaction dispatch) — нужна живая сессия в serp?
 
 ## Последнее обновление
-2026-08-03 — локальные аудиты вайбкодинг-слоя финализированы (Phase A/B
-vibecoding-layer audit + Phase C SERPlux audit/addendum + Phase D dv-hub
-audit + dv-hub addendum в `06-Audits/`). Ecosystem upgrade plan v1 создан
-(draft, `06-Audits/2026-08-03-ecosystem-upgrade-plan-v1.md`): roles of
-nodes, 5 kernel contracts, global architecture decisions (target roles),
-methodological principles, project-specific constraints (SERPlux first /
-dv-hub recovery gate / dotfiles global contour), implementation order
-(Phase 1–4 candidate/planned), engineering-style-contract как planned
-artifact, decision gates. Engineering-style-contract развёрнут как
-planned core artifact, не метод в `02-Methods/` и не внедрён. Следующий
-major workstream = **grounding ecosystem plan** перед любым project-level
-upgrade execution: стабилизация kernel contracts как design contracts с
-acceptance criteria/rollback, project constraints enforcement,
-declarations-vs-reality reconciliation как permanent meta-mechanic.
-Реализация kernel contracts ещё не начата.
-
-Execution sequence note (draft, `06-Audits/2026-08-03-execution-sequence-note.md`)
-зафиксировал gate-order: Phase 1 minimal kernel stabilization for live use
-→ Phase 2 SERPlux first adoption → Phase 3 dotfiles/global hardening →
-Phase 4 dv-hub recovery adoption. Порядок adoption: SERPlux → dotfiles/
-global hardening → dv-hub recovery. Global layer на полшага впереди
-SERPlux, не big-design-up-front; dv-hub не первый kernel target.
-Реализация кода не начата — sequencing это planning artifact.
+2026-08-04 — **Phase 1 ЗАВЕРШЕНА**: T-084..T-089, T-096..T-098 Done.
+Субагенты (meta/verifier/general) временно на бесплатных Zen-моделях.
+SERPlux: executed 256/256 на HEAD f7ccd3e, канон test-metrics обновлён,
+техдолг sync claims записан (за пользователем). Коммиты: vault (память),
+SERPlux (агентский слой), dotfiles (done.md). Residuals `[проверить]`
+открыты в facts.md. Следующий gate: Phase 2 (SERPlux adoption) / Phase 3
+(dotfiles hardening) / residuals через живую сессию.

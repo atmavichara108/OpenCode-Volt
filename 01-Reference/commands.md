@@ -46,7 +46,7 @@ subtask: true           # форсить вызов как subagent (не зас
 | [`/project-add`](/.opencode/command/project-add.md) | librarian | Создать карточку нового проекта: имя путь описание [тип] [стек] |
 | [`/audit`](/.opencode/command/audit.md) | librarian | Аудит проектов: pull, сверка карточки с репо. Без аргумента — все проекты |
 | [`/distill-pipeline`](/.opencode/command/distill-pipeline.md) | librarian | Дистилляция состояния пайплайнов: из .opencode/command/ и агентов → в карточку и VibeOS |
-| [`/done`](~/.config/opencode/command/done.md) | librarian (глобальная) | Протокол завершения задачи: TASKS.md → Done, описание созданного, VibeOS, active-context, коммит |
+| [`/done`](~/.config/opencode/command/done.md) | librarian (глобальная) | Протокол завершения задачи по memory-model: **vault-based** (`04-Memory/` или vault-репо) → TASKS.md + волт-сущности + VibeOS + active-context; **docs-based** (`docs/` без `04-Memory/`, напр. SERPlux) → локальный TASKS.md/CHANGELOG + progress/decisions/techdebt; **fallback** (ни того, ни другого) → локальный TASKS/README/CHANGELOG. Финальный коммит делегирует проектному `/commit` (`.opencode/command/commit.md`, project-resolved — проверяет доступность в текущем проекте, иначе стоп). ⚠️ T-089: gate `verify=PASS → finalize` — отдельный unresolved контракт, `/done` runtime-гарантию verify НЕ даёт |
 
 ## Кастомные команды проектов
 

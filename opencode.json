@@ -5,7 +5,7 @@
   "model": "opencode/deepseek-v4-flash-free",
   "agent": {
     "general": {
-      "model": "opencode-go/glm-5.2"
+      "model": "opencode/nemotron-3-ultra-free"
     },
     "build": {
       "model": "opencode/deepseek-v4-flash-free"

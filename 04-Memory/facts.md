@@ -3,7 +3,7 @@ type: Fact Registry
 title: Реестр фактов
 description: Подтверждённые факты об OpenCode и проектах. Факты попадают сюда после разрешения [проверить].
 tags: [memory]
-timestamp: 2026-08-03
+timestamp: 2026-08-04
 ---
 # Реестр фактов
 
@@ -122,6 +122,188 @@ timestamp: 2026-08-03
   `serp/TASKS.md` (T-001) 95; pytest total без прогона не подтверждается
   (parametrize, skip). Источники и назначение метрик различаются.
 
+### Phase 1 / T-084 — plugin loader / compaction contract (2026-08-03)
+
+> Стабильные факты по итогам gate Phase 1 (T-084). Только
+> подтверждённое состояние, без предложений.
+
+- Loader contract подтверждён по официальным docs/Plugin SDK: local plugin
+  module (`plugins/*.{js,ts}`) допускает **named exports**; `export default`
+  **не обязателен**; named plugin function как доля набора экспортов
+  валидна.
+- `event` catch-all — **канонический** hook key в Plugin API (catch-all
+  обработчик событий); подтверждено по официальным docs/SDK.
+- `session.compact` — **невалидный** hook key (не документирован в Plugin
+  API). Документированный injection hook для compaction —
+  `experimental.session.compacting` с сигнатурой `(input, output)` и
+  доступом к `output.context`. `compaction.js` в SERPlux исправлен на
+  документированный hook.
+- В SERPlux исправлена ESM `SyntaxError` в `commit-guard.js`: локальная
+  переменная `const output = ...` переобъявляла параметр `output`
+  обработчика `tool.execute.before`. Статическая проверка загрузки
+  проходит.
+- Добавлен `scripts/check-plugins.mjs` в SERPlux: динамически импортирует
+  JS/TS plugins, проверяет наличие named/default plugin function.
+  Static (discovery) и runtime discovery checks проходят для актуального
+  набора плагинов.
+- `opencode debug config` проходит без plugin loading errors; headless
+  `opencode serve` поднимается без plugin loading errors.
+- **Live Bun import + hook fire в реальной agent session НЕ подтверждён**
+  `[проверить]` — поэтому Phase 1/T-084 не считается полностью завершённой.
+
+### Phase 1 / T-084 — live Bun smoke residuals (2026-08-03)
+
+> Подтверждённые факты после live Bun import/registration smoke. Только
+> подтверждённое состояние + explicit `[проверить]`.
+
+- T-084 loader contract подтверждён docs/Plugin SDK + live Bun
+  import/registration всех 4 SERPlux plugins (`env-guard`,
+  `notify`, `commit-guard`, `compaction`).
+- `experimental.session.compacting` зарегистрирован; function-level
+  fire подтверждён (hook вызывается). Реальный compaction event
+  session-dispatch остаётся `[проверить]`.
+- `tool.execute.before` registration/fire подтверждены. env-guard
+  исторически срабатывал в session-dispatch.
+- Бывший gap `tool.execute.before.webfetch` был **неканоничен**
+  (несуществующий hook key); исправлен в SERPlux: webfetch check
+  перенесён внутрь catch-all `tool.execute.before`. Smoke
+  allow/block прошёл.
+- Commit-guard на реальном `git commit` и compaction на реальной
+  compaction-сессии остаются **безопасно непротестированными**
+  `[проверить]`.
+- SERPlux changes в working tree, **uncommitted**.
+
+### Модели субагентов — временно на бесплатных Zen (2026-08-04)
+
+> Подтверждённые факты после смены моделей. Временно: экономим Go-кредиты.
+> Возврат — по решению пользователя (связь T-048/T-049).
+
+- По запросу пользователя все субагенты временно переведены с платных
+  Go-моделей (`opencode-go/*`) на бесплатные модели OpenCode Zen
+  (`opencode/*-free`).
+- `~/.config/opencode/agent/meta.md`: `opencode-go/glm-5.2` →
+  `opencode/ling-3.0-flash-free` (средняя free, инфра-правки).
+- `~/.config/opencode/agent/verifier.md`: `opencode-go/glm-5.2` →
+  `opencode/deepseek-v4-flash-free` (дешёвая быстрая, детерминированные
+  проверки).
+- vault `opencode.json` → `agent.general`: `opencode-go/glm-5.2` →
+  `opencode/nemotron-3-ultra-free` (самая сильная из free, сложные задачи).
+- explore/build уже были на `opencode/deepseek-v4-flash-free` — не тронуты.
+- Доступные бесплатные Zen-модели (проверено `opencode models` 2026-08-04):
+  `deepseek-v4-flash-free`, `ling-3.0-flash-free`, `nemotron-3-ultra-free`,
+  `laguna-s-2.1-free`, `mimo-v2.5-free`, `north-mini-code-free`.
+
+### Phase 1 / T-087 — test-metrics normalization progress (2026-08-04)
+
+> Стабильные факты по T-087 progress (test-metrics normalization
+> contract). Только подтверждённое состояние, explicit WIP vs HEAD и
+> open items, без предложений.
+
+- **Clean canonical HEAD SERPlux `ee28637`** (verified measurement
+  this gate, isolated worktree): `pytest` executed = **248 collected,
+  248 passed, 0 failed, 0 skipped, 0 errors, exit 0**.
+  `rg 'def test_'` по `tests/` definitions = **204** (separate metric,
+  не executed suite size).
+- **Working tree WIP (uncommitted):** collected = **254**;
+  254/254 remains **unverified/not canonical** (executed run на WIP не
+  проводился this gate). WIP **not canonical** (uncommitted).
+- **`docs/test-metrics.md` exists** as canonical contract artifact,
+  но its executed section is **stale** (не отражает 248/248 executed
+  measurement this gate). Live docs claims — 224 (`serp/AGENTS.md`),
+  172 (`docs/verification.md` CI), 95 (`serp/TASKS.md` T-001), 111
+  (карточка SERPlux) — **намеренно не переписаны**, остаются
+  stale/untyped; separate docs-sync required after WIP merge.
+- **Test definitions — отдельный metric** от executed suite; old
+  grep=94 source (запись Phase C выше) **остаётся untraceable** (не
+  воспроизведён this gate, не подтверждён против текущего HEAD).
+- **T-087 contract evidence достаточен для executed metric**
+  (248/248 на canonical HEAD). Task остаётся **Active** до
+  docs-sync / source-of-truth update (sync `docs/test-metrics.md` ↔
+  artifact claims после WIP merge). **T-087 НЕ Done.**
+
+### Phase 1 / T-085 — reviewer/verifier split contract (2026-08-03)
+
+> Стабильные факты по выполнению Phase 1/T-085 (reviewer/verifier split)
+> в SERPlux. Только подтверждённое состояние, без предложений; merge
+> behavior permissions allowlist — наблюдение `[проверить]`, не strict
+> isolation.
+
+- В SERPlux создан project-local `.opencode/agents/verifier.md` как
+  local extension/override глобального `verifier`
+  (`~/.config/opencode/agent/verifier.md`).
+- Роли разделены: `reviewer` (project-local
+  `.opencode/agents/reviewer.md`, mode subagent) остаётся
+  quality/style/domain reviewer; `verifier` — acceptance-only
+  VERDICT `PASS`/`FAIL`, edit deny, webfetch deny, read-only allowlist и
+  `python -m pytest -v`.
+- Глобальная команда `/loop` `@verifier` теперь в SERPlux резолвится
+  проектным verifier; `opencode debug config` видит reviewer+verifier;
+  routing конфликтов не обнаружено.
+- **Merge behavior permissions allowlist** (local override global
+  для permissions/tools) остаётся наблюдением `[проверить]` — strict
+  isolation НЕ объявляется.
+- SERPlux changes uncommitted; **Phase 1 НЕ завершена** (T-084/T-085
+  residuals совместно с T-097).
+
+### Phase 1 / T-089 — runtime gate enforcement (2026-08-03)
+
+> Стабильные факты по итогам design decision T-089. Только
+> подтверждённое состояние, без проектных предложений; explicit
+> `[проверить]`.
+
+- `commit-guard` через `tool.execute.before` повторно запускает
+  acceptance command (pytest) и **блокирует** `git commit` при FAIL —
+  подтверждённый runtime gate для testable DoD в working tree.
+- Полный gate на отдельный `verifier PASS` marker/state **не
+  реализован**: payload capture для subagent/task в
+  `tool.execute.after` не подтверждён `[проверить]`; `verifier` остаётся
+  read-only (edit/webfetch deny, read-only allowlist).
+- `/done` docs-based adaptation (T-086) нужна раньше полного
+  finalize-chain для SERPlux.
+- Real `git commit` smoke для `commit-guard` остаётся `[проверить]`.
+- T-089 **не** объявляется done.
+
+### Phase 1 / T-086 — `/done` memory-model adaptation progress (2026-08-03)
+
+> Стабильные факты по T-086 progress (адаптация глобальной `/done` под
+> docs-based vs vault-based memory-модели). Только подтверждённое
+> состояние working tree, без предложений; explicit uncommitted status.
+
+- Глобальная команда `/done` (source
+  `~/dotfiles/opencode-global/.config/opencode/command/done.md`) получила
+  generic memory-model branches: **vault-based** (признак — `04-Memory/`
+  в корне или сам vault-репо с `00-INDEX.md`/`02-Methods/`/`03-Projects/`;
+  чеклист: TASKS → 01-Reference/02-Methods/03-Projects → VibeOS →
+  active-context → /commit), **docs-based** (признак — `docs/` с
+  `decisions.md`/`progress.md`/`techdebt.md` + локальный
+  `TASKS.md`/`AGENTS.md`, без `04-Memory/`; чеклист: TASKS/CHANGELOG →
+  docs/progress → docs/decisions (ADR) → docs/techdebt → /commit), и
+  **fallback** (нет ни того, ни другого — локальный TASKS/README/CHANGELOG,
+  vault/docs-спец шаги пропускаются).
+- Неоднозначная модель — явный вопрос пользователю, не угадывание.
+- `/commit` dependency зафиксирована explicit: `/done` делегирует
+  финальный коммит проектной команде `/commit` (`.opencode/command/commit.md`
+  project-level) или глобальной; перед вызовом проверяется доступность
+  `/commit` в текущем проекте; если нет — остановка с сообщением о
+  ручном коммите. **Global `/commit` НЕ assumed.**
+- **`/done` НЕ гарантирует T-089 verifier PASS/runtime gate:** текст
+  команды явно фиксирует, что gate `verify=PASS → finalize` — отдельный
+  unresolved контракт (T-089); `commit-guard`/verifier не предполагается
+  уже отработавшим.
+- **Source и resolved stow path идентичны:**
+  `~/.config/opencode/command/done.md` (resolved) → symlink →
+  `~/dotfiles/opencode-global/.config/opencode/command/done.md` (source);
+  содержимое совпадает, stow-расхождения нет.
+- **Implementation uncommitted:** `done.md` modified в working tree
+  dotfiles (`git status`: modified, не staged). В той же working tree
+  modified ещё ряд dotfiles-файлов (qtile keys, screenlayout, scripts,
+  docs/decisions, docs/deferred, `.opencode/memory/todo.json`) — не
+  относятся к T-086.
+- **Vault refs update (04-Memory/facts.md, active-context.md, TASKS.md,
+  session-log) — отдельный follow-up, не часть T-086 implementation.**
+  T-086 **не** объявляется Done: dotfiles working tree uncommitted + vault
+  refs follow-up + T-089 verifier/runtime gate не закрыт.
+
 ### SERPlux
 - Репо: `/home/rudra/Projects/serp`
 - GitHub remote: `atmavichara108/SERPlux`
@@ -212,3 +394,57 @@ timestamp: 2026-08-03
   anti-shitcode patterns + routing table + reviewer/verifier integration.
   Существование — в рамках ecosystem upgrade plan v1, не как внедрённый
   канон.
+
+### Phase 1 / T-098 — test-metrics executed на новом HEAD (2026-08-04)
+
+> Подтверждённые факты после merge WIP и повторного прогона. Только
+> подтверждённое состояние + explicit техдолг.
+
+- WIP SERPlux смёржен: HEAD теперь `f7ccd3e`
+  (`fix(storage): simplify geo normalization to strip+lowercase, remove GEO_DISPLAY mapping`),
+  ветка `fix/labeling-cache-and-quality`.
+- **Executed run на новом HEAD `f7ccd3e`:** `./venv/bin/python -m pytest -q --tb=short`
+  → **256 collected, 256 passed, 0 failed, 0 skipped, 0 errors, exit 0** (3.52s).
+  Test definitions (rg `def test_`) = **212**.
+- `docs/test-metrics.md` актуализирован до канона: executed 256/256 на
+  HEAD `f7ccd3e`, definitions 212; реестр stale claims (224/172/95/111)
+  перечислен, grep=94 признан UNTRACEABLE и исключён.
+- **Sync claims → техдолг** (решение пользователя, НЕ правка claims
+  librarian'ом): в `serp/docs/techdebt.md` добавлена запись
+  «2026-08-04 — Test-metrics claims не синхронизированы с каноном
+  (T-087/T-098)» — идемпотентная (заголовок-маркер), централизованная,
+  реализация за пользователем при проектной работе в serp.
+- Ранее WIP-запись «254/254 passed» была UNVERIFIED; после merge
+  superseded фактическим executed 256/256.
+
+### Phase 1 / closure — residuals (2026-08-04)
+
+> Честно открытые residuals Phase 1. Не закрыты — требуют живой сессии
+> в serp или наблюдения. Не объявляются закрытыми.
+
+- **Commit-guard на реальном `git commit`** `[проверить]` — real commit
+  smoke безопасно не проводился (нужна живая agent-сессия с cwd=serp,
+  где загружается плагин; из vault-сессии плагины serp не грузятся).
+- **Реальный compaction event session-dispatch** `[проверить]` —
+  подтверждён только function-level fire хука
+  `experimental.session.compacting`, не полный event-цикл сессии.
+- **Payload capture для subagent/task в `tool.execute.after`** `[проверить]`
+  — полный gate `verifier PASS` marker/state не реализован, verifier
+  остаётся read-only (T-089 unresolved часть).
+- **Merge behavior permissions allowlist** (local override global для
+  permissions/tools) — наблюдение `[проверить]`, strict isolation не
+  объявляется (T-085).
+
+### Phase 1 / T-086 — `/done` memory-model adaptation done (2026-08-04)
+
+> Подтверждённые факты после коммита done.md в dotfiles. Ранее (2026-08-03)
+> branches были в working tree uncommitted; теперь закоммичено.
+
+- Глобальная `/done` (`~/dotfiles/opencode-global/.config/opencode/command/done.md`,
+  stow-resolved `~/.config/opencode/command/done.md`) имеет generic
+  memory-model branches: vault-based / docs-based / fallback; неоднозначная
+  модель → явный вопрос пользователю; `/commit` dependency explicit
+  (project-resolved, global `/commit` НЕ assumed); `/done` НЕ гарантирует
+  T-089 verifier PASS/runtime gate.
+- `done.md` закоммичен в dotfiles 2026-08-04 (вместе с T-086 vault refs:
+  `01-Reference/commands.md` обновлён).
