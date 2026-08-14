@@ -26,6 +26,7 @@ timestamp: 2026-06-29
 |--------|-----|------|----------------------|----------|--------|
 | SERPlux | коммерция | Python / FastAPI | **6 агентов**: build, plan, collector-dev, reviewer, ui-dev, infra-dev · 5 команд | [[SERPlux]] | ✅ active |
 | dv-hub | волонтёрский | TS / Hono | plan, build, reviewer, researcher, infra | [[dv-hub]] | ✅ active |
+| ChaT | knowledge-operations | Markdown / Obsidian / OpenCode | curator | [[ChaT]] | 🟢 planning |
 | dotfiles | система | shell/configs | **multi-agent** (8 агентов, 10 команд) | [[dotfiles]] | ✅ active |
 | vault | справочник | markdown | librarian | [[vault]] | ✅ active |
 | rudra-phone | инфраструктура | Kotlin/Flutter/Telegram API | — | [[rudra-phone]] | 🟢 planning |
@@ -77,7 +78,7 @@ timestamp: 2026-06-29
 `tools/telegram-capture/` — извлечение постов из Telegram (в разработке, T-062)
 
 ## Память (04-Memory/ — OKF sub-bundle)
-[[active-context]] · [[facts]] · [[session-log/2026-06-27]] · [[session-log/2026-06-29]] · [[session-log/2026-06-30]] · [[04-Memory/index]] · [[04-Memory/log]]
+[[active-context]] · [[facts]] · [[session-log/2026-06-27]] · [[session-log/2026-06-29]] · [[session-log/2026-06-30]] · [[session-log/2026-08-14]] · [[04-Memory/index]] · [[04-Memory/log]]
 
 ## Конвенции
 - Метод описывается ОДИН раз в `02-Methods/`. Карточки только ссылаются `wikilink`.

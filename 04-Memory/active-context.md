@@ -1,9 +1,9 @@
 ---
 type: Active Context
 title: Активный контекст
-description: Phase 1 (kernel stabilization) ЗАВЕРШЕНА 2026-08-04 — T-084..T-089, T-096..T-098 Done. Субагенты временно на бесплатных Zen-моделях. Следующий gate: Phase 2 (SERPlux first adoption) + dotfiles/global hardening.
+description: Phase 1 (kernel stabilization) ЗАВЕРШЕНА 2026-08-04. Bootstrap ChaT завершён 2026-08-14; следующий шаг — интервью Макса.
 tags: [memory]
-timestamp: 2026-08-04
+timestamp: 2026-08-14
 ---
 
 # Активный контекст
@@ -11,14 +11,13 @@ timestamp: 2026-08-04
 > Автоматически обновляется librarian. Читается при старте каждой сессии.
 
 ## Текущий фокус
+- **ChaT:** bootstrap завершён 2026-08-14. Следующий шаг — интервью Макса.
 - **Phase 1 (kernel stabilization) ЗАВЕРШЕНА 2026-08-04.** Все задачи
   T-084..T-089 + T-096..T-098 перенесены в Done с датой. Коммиты:
   vault (память), SERPlux (агентский слой), dotfiles (`done.md`).
-- **Модели субагентов — ВРЕМЕННО на бесплатных Zen (opencode/):**
-  meta → `ling-3.0-flash-free`, verifier → `deepseek-v4-flash-free`,
-  general (vault opencode.json) → `nemotron-3-ultra-free`. Причина:
-  экономия Go-кредитов. Возврат на Go-модели — по решению пользователя
-  (связь: T-048/T-049).
+- **Модель general (vault `opencode.json`):** `opencode-go/gpt-5.6-luna`.
+  Историческая запись о временном переводе субагентов на бесплатные Zen
+  сохранена в `facts.md`.
 - **Следующий gate:** Phase 2 (SERPlux first adoption по ecosystem upgrade
   plan v1) + dotfiles/global hardening (Phase 3). dv-hub — recovery case,
   не первая цель.
@@ -103,8 +102,12 @@ timestamp: 2026-08-04
 - Как закрывать residuals Phase 1 (real commit smoke / compaction dispatch) — нужна живая сессия в serp?
 
 ## Последнее обновление
-2026-08-04 — **Phase 1 ЗАВЕРШЕНА**: T-084..T-089, T-096..T-098 Done.
-Субагенты (meta/verifier/general) временно на бесплатных Zen-моделях.
+2026-08-14 — **Bootstrap ChaT завершён; модель general обновлена**:
+синхронизированы проектная карточка
+и память волта. `general` использует `opencode-go/gpt-5.6-luna`.
+Следующий шаг — интервью Макса. Phase 1 ранее завершена
+2026-08-04: T-084..T-089, T-096..T-098 Done.
+Исторический перевод meta/verifier на бесплатные Zen-модели отмечен в facts.md.
 SERPlux: executed 256/256 на HEAD f7ccd3e, канон test-metrics обновлён,
 техдолг sync claims записан (за пользователем). Коммиты: vault (память),
 SERPlux (агентский слой), dotfiles (done.md). Residuals `[проверить]`

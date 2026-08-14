@@ -353,6 +353,14 @@ timestamp: 2026-08-04
 - 7 методов заполнены в 02-Methods/ (+tool-integration-pattern с 2026-07-07)
 - Статус методов (собственные): context-as-docs ✅, distill-pattern ✅, memory-management ✅, model-routing ➖, closed-loop ✅, verifier-pattern ✅, tool-integration-pattern ✅ (T-062 внедрён 2026-07-08)
 
+### ChaT
+- Репо: `/home/rudra/Projects/ChaT`
+- Добавлен bootstrap проекта.
+- Тип: knowledge-operations
+- Стек: Markdown / Obsidian / OpenCode
+- Статус: planning
+- Краткая ссылка: [[ChaT]]
+
 ### Documentation status (2026-08-03)
 
 > Только стабильные факты/статус документации (не планы как текущая
