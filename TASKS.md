@@ -50,6 +50,7 @@ timestamp: 2026-07-07
 | T-053 | Машинная граница инфра/код для meta через плагин (env-guard-подобный, tool.execute.before) — сейчас граница текстовая | P3 | [[01-Reference/agents]], [[02-Methods/verifier-pattern]] |
 | T-054 | Дистиллировать команды в skills [проверить надёжность автозагрузки] | P4 | [[01-Reference/commands]] |
 | T-055 | Изучить packagemain.tech agentic pre-commit via Go SDK как референс для умного гейта | P3 | [[01-Reference/plugins]] |
+| T-099 | Runbook freshness: при подтверждённом изменении operational practice обновлять handbook и append-only changelog; не дублировать Methods/Audits/AGENTS.md | P3 | [[07-Runbooks/README]], [[07-Runbooks/vibecoding-operator-handbook]], [[07-Runbooks/vibecoding-changelog]] |
 
 ### Контур планирования апгрейдов вайбкодинг-слоя (seed: `06-Audits/2026-08-02-upgrade-planning-seed`)
 | ID | Задача | Приоритет | Связано |

@@ -3,7 +3,7 @@ type: Fact Registry
 title: Реестр фактов
 description: Подтверждённые факты об OpenCode и проектах. Факты попадают сюда после разрешения [проверить].
 tags: [memory]
-timestamp: 2026-08-04
+timestamp: 2026-08-17
 ---
 # Реестр фактов
 
@@ -456,3 +456,28 @@ timestamp: 2026-08-04
   T-089 verifier PASS/runtime gate.
 - `done.md` закоммичен в dotfiles 2026-08-04 (вместе с T-086 vault refs:
   `01-Reference/commands.md` обновлён).
+
+### Временная модельная политика (2026-08-17)
+
+> Подтверждённая временная политика для активных агентов Vault, ChaT,
+> dotfiles и SERPlux. Политика действует до capability-routing.
+
+- Для primary и сложных ролей используется `opencode-go/gpt-5.6-luna`.
+- Для дешёвых read-only/research/reviewer/verifier ролей используется
+  `opencode-go/deepseek-v4-flash`.
+- Доступность обеих моделей подтверждена командой `opencode models`.
+- Merged config debug проходит без ошибок разрешения конфигурации.
+- Изменения требуют перезапуска OpenCode, чтобы новая модельная политика
+  применялась в активных сессиях.
+- Политика временная и будет заменена capability-routing после его rollout.
+
+### Runbook operational layer (2026-08-17)
+
+- В vault создан отдельный слой `07-Runbooks/` для live usage, usage patterns
+  и operator workflows.
+- Граница слоя подтверждена: `02-Methods/` хранит abstract reusable techniques,
+  `06-Audits/` — dated findings, `AGENTS.md` — agent rules; runbooks не
+  дублируют эти источники.
+- [[07-Runbooks/vibecoding-operator-handbook]] — текущее рабочее состояние;
+  [[07-Runbooks/vibecoding-changelog]] — append-only история подтверждённых
+  practice shifts.

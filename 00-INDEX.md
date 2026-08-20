@@ -71,6 +71,12 @@ timestamp: 2026-06-29
 > Отличается от Methods / Projects / Memory: датированный снимок, не
 > приём/карточка/контекст сессии. Новый аудит — новый файл, не правка старого.
 
+## Runbooks (07-Runbooks/)
+[[07-Runbooks/README]] · [[07-Runbooks/vibecoding-operator-handbook]] · [[07-Runbooks/vibecoding-changelog]]
+
+> **Methods** = abstract reusable techniques. **Audits** = dated findings.
+> **Runbooks** = live usage and operator workflows.
+
 ## Temporary (98-Temporary/)
 [[98-Temporary/README]] — сырые файлы от пользователя на экстракцию; обрабатываются и удаляются (не источник правды, не смешивать с `99-Inbox/`)
 

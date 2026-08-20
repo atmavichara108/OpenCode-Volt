@@ -1,7 +1,7 @@
 ---
 type: Architecture
 title: Принцип и структура волта
-description: Четырёхслойная архитектура Reference → Methods → Projects → Templates. Теперь также OKF-бандл.
+description: Архитектура OKF-бандла Reference → Methods → Projects → Templates с памятью, аудитами и operational runbooks.
 timestamp: 2026-06-29
 ---
 ## **Принцип, на котором строим**
@@ -13,6 +13,8 @@ timestamp: 2026-06-29
 >Память — OKF-подбандл `04-Memory/`. Три уровня: active-context (фокус сессии), facts (реестр фактов), session-log (хроника). При старте librarian читает их — и не перечитывает весь волт целиком.
 >
 >Аудиты — OKF-каталог `06-Audits/`. Это не метод, не карточка и не контекст сессии, а датированный снимок: подтверждённые находки + открытые вопросы + влияние на план апгрейдов. Новый аудит — новым файлом, не правкой старого; seed — каркас, не финальный план.
+>
+>Runbooks — operational use layer `07-Runbooks/`. Он описывает живое применение, usage patterns и operator workflows. Это не Methods (абстрактные reusable techniques), не Audits (датированные findings) и не `AGENTS.md` (правила поведения).
 
 **Структура волта (OKF v0.1 Knowledge Bundle)**
 
@@ -57,6 +59,10 @@ OpenCode-Vault/                    ← OKF-бандл + OpenCode-проект
 │   ├── README.md                  → type: Audit Index
 │   ├── 2026-08-02-vibecoding-layer-audit.md  → type: Audit
 │   └── 2026-08-02-upgrade-planning-seed.md   → type: Upgrade Seed
+├── 07-Runbooks/                   ← operational use layer: живые workflows
+│   ├── README.md                  → type: Runbook Index
+│   ├── vibecoding-operator-handbook.md → type: Runbook
+│   └── vibecoding-changelog.md    → type: Runbook Changelog
 ├── 98-Temporary/                  ← сервисная зона intake: сырые файлы на экстракцию (не OKF, эфемерны)
 ├── 99-Inbox.md                    ← type: Inbox — буфер сырых заметок
 ├── Architecture.md                ← этот файл, type: Architecture

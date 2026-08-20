@@ -28,9 +28,9 @@ stack: markdown + OpenCode
 ## Агент (.opencode/agent/)
 | Агент | Mode | Модель | Назначение |
 |-------|------|--------|-----------|
-| librarian | primary | opencode/deepseek-v4-flash-free | командный центр: мониторинг проектов, апдейты, управление знаниями |
+| librarian | primary | opencode-go/gpt-5.6-luna | командный центр: мониторинг проектов, апдейты, управление знаниями |
 
-> Модель сменена с claude-sonnet-4-6 на deepseek-v4-flash-free 2026-06-30.
+> Временная модельная политика до capability-routing: GPT-5.6 Luna как fallback и для librarian, DeepSeek Go для дешёвых вспомогательных ролей.
 
 ## Команды (.opencode/command/) — 9
 /ask · /capture · /inbox · /project · /commit · /project-add · /audit · /done · /distill-pipeline
@@ -61,7 +61,7 @@ stack: markdown + OpenCode
 - [x] DEVELOPMENT-ROADMAP — полный план с приоритетами (включая P5 будущее)
 - [x] rules-AGENTS.md — наполнен
 - [x] TASKS.md — трекер задач создан
-- [x] opencode.json в корне волта (default_agent: librarian, model: deepseek-v4-flash-free)
+- [x] opencode.json в корне волта (default_agent: librarian, fallback: opencode-go/gpt-5.6-luna)
 - [x] T-002: верификация `wikilink` по всему волту
 - [x] методы 02-Methods/ — 6 файлов непусты
 - [x] 05-Templates/ — project-card, method, README, pre-commit hook, archive script
@@ -83,7 +83,7 @@ stack: markdown + OpenCode
 - 2026-06-26: волт заведён и наполнен готовыми данными
 - 2026-06-27: полный аудит, переименован 99-Inbox, убрано claude-mem, создана 04-Memory, DEVELOPMENT-ROADMAP, обновлён librarian (права + память)
 - 2026-06-29: librarian переписан под командный центр; выполнены T-001 — T-018; Reference дополнен; 05-Templates/; pre-commit hook; /audit; таблица статусов
-- 2026-06-30: создан VibeOS; модель → deepseek-v4-flash-free; ревью — добавлены собственные статусы методов (context-as-docs ✅, distill ✅, memory-mgmt 🟡), модель в карточке
+- 2026-08-17: временная модельная политика до capability-routing: fallback и librarian → `opencode-go/gpt-5.6-luna`, дешёвые роли → `opencode-go/deepseek-v4-flash`.
 - 2026-07-04: T-061 — memory-management 🟡→✅ (flush-протокол в librarian.md + session-flush плагин уже был)
 - 2026-07-07: VibeOS v0.3.0 — новый метод tool-integration-pattern (7-й), директория tools/ + tools/telegram-capture (T-062, в разработке), новое направление R-006 Linux UX Lab, /capture как первый шаг к Telegram-интеграции
 - 2026-07-08: внедрено direnv + .venv (Python окружение, авт активация). Зависимости: telethon, python-dotenv, pytest. 39/39 тестов PASS в venv.

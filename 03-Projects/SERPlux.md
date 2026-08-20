@@ -2,7 +2,7 @@
 type: project
 repo: /home/rudra/Projects/serp
 kind: коммерция / продукт SERP Factory
-stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Docker
+stack: Python 3.11+ / requests / gspread / FastAPI / OpenCode Go / SQLite / Docker
 ---
 # SERPlux — продукт SERP Factory
 
@@ -16,7 +16,7 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Docker
 **Структура:** FLAT layout — все модули (.py) в корне репозитория. Каталога `src/` нет и не будет.
 **Запуск (dev):** `python main.py`
 **Запуск (prod):** `docker compose up -d`
-**Провайдер:** OpenCode Zen (primary) + DeepSeek (labeler)
+**Провайдер:** OpenCode Go; DeepSeek Go используется для дешёвых review/verifier ролей
 **Сервер:** задеплоено, собственный домен
 
 ---
@@ -60,17 +60,17 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Docker
 
 ---
 
-## Агенты (актуально на 2026-08-04)
+## Агенты (актуально на 2026-08-17)
 
 | Агент | Mode | Модель | Назначение | edit |
 |-------|------|--------|-----------|------|
-| **build** | primary | opencode-go/kimi-k2.7-code | Основная разработка, коммит через `/commit` | allow |
-| **plan** | primary | opencode-go/glm-5.2 | Планирование, анализ, делегирование build (task: build allow) | deny |
-| **collector-dev** | subagent | opencode-go/kimi-k2.7-code | Topvisor + сбор данных (topvisor.py, collector.py) | allow |
-| **reviewer** | subagent | opencode-go/glm-5.2 | Quality/style/domain review по docs/contracts.md | deny |
-| **verifier** | subagent | opencode-go/glm-5.2 | Acceptance-only: `python -m pytest -v`, VERDICT PASS/FAIL, edit deny | deny |
-| **ui-dev** | subagent | opencode-go/kimi-k2.7-code | Google Sheets UI (Apps Script меню, лист «Настройки») | allow |
-| **infra-dev** | subagent | opencode-go/qwen3.7-plus | Docker, deploy, серверная инфраструктура | allow |
+| **build** | primary | opencode-go/gpt-5.6-luna | Основная разработка, коммит через `/commit` | allow |
+| **plan** | primary | opencode-go/gpt-5.6-luna | Планирование, анализ, делегирование build (task: build allow) | deny |
+| **collector-dev** | subagent | opencode-go/gpt-5.6-luna | Topvisor + сбор данных (topvisor.py, collector.py) | allow |
+| **reviewer** | subagent | opencode-go/deepseek-v4-flash | Quality/style/domain review по docs/contracts.md | deny |
+| **verifier** | subagent | opencode-go/deepseek-v4-flash | Acceptance-only: `python -m pytest -v`, VERDICT PASS/FAIL, edit deny | deny |
+| **ui-dev** | subagent | opencode-go/gpt-5.6-luna | Google Sheets UI (Apps Script меню, лист «Настройки») | allow |
+| **infra-dev** | subagent | opencode-go/gpt-5.6-luna | Docker, deploy, серверная инфраструктура | allow |
 
 > Phase 1 (2026-08-04): project-local `.opencode/agents/verifier.md` —
 > acceptance-only verifier (edit/webfetch deny, read-only allowlist,
@@ -81,7 +81,7 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Docker
 ### ui-dev
 - **Режим:** subagent (вызывается из build или через `/interface`)
 - **Статус:** ✅ активен — Google Sheets UI (Apps Script). Web UI ⏸ приостановлен (требуется ADR)
-- **Модель:** opencode-go/kimi-k2.7-code
+- **Модель:** opencode-go/gpt-5.6-luna
 - **Назначение:** Apps Script меню (apps_script.gs), лист «Настройки», связь Sheets ↔ webhook
 - **Права:** edit: allow, bash (python*, curl*, cat*, ls*; прочее — ask)
 - **Контекст:** Google Sheets — основной UI. Web UI не строим (опция под будущий ADR)
@@ -89,7 +89,7 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Docker
 
 ### infra-dev
 - **Режим:** subagent (вызывается из build или через `/container`, `/deploy`)
-- **Модель:** opencode-go/qwen3.7-plus
+- **Модель:** opencode-go/gpt-5.6-luna
 - **Назначение:** Docker, docker-compose, deploy, CI/CD, сервер, reverse proxy, SSL
 - **Права:** edit: allow, bash (docker*, python*, nginx*, certbot*, systemctl*, cat*, ls*, curl*; прочее — ask)
 - **Контекст:** multi-stage Dockerfile (python:3.11-slim, non-root), docker-compose, volume, healthcheck
@@ -114,11 +114,11 @@ stack: Python 3.11+ / requests / gspread / FastAPI / DeepSeek / SQLite / Docker
 | Метод | Статус | Основание |
 |-------|--------|-----------|
 | [[closed-loop]] | ✅ | /loop создан (глобальный), зависит от @verifier |
-| [[verifier-pattern]] | ✅ | verifier.md создан (GLM-5.2), PASS/FAIL верификация активна |
+| [[verifier-pattern]] | ✅ | verifier.md создан, PASS/FAIL верификация активна |
 | [[context-as-docs]] | ✅ | docs/contracts.md, decisions.md, ui-spec.md, techdebt.md, progress.md |
 | [[distill-pattern]] | ✅ | `/interface`, `/container`, `/deploy` — команды-пайплайны |
 | [[memory-management]] | 🟡 | compaction.js: flush summary в docs/decisions.md + persistent-context в summary; команда /dream |
-| [[model-routing]] | ✅ | build на Kimi K2.7 Code, plan на GLM-5.2, ui-dev на Kimi K2.7 Code, infra-dev на Qwen 3.7 Plus, reviewer на GLM-5.2 |
+| [[model-routing]] | 🟡 | временная политика: Luna для primary/dev, DeepSeek Go для reviewer/verifier; capability-routing позже |
 | [[multi-agent-pipeline]] | ✅ | 2 primary + 4 subagent, команды через .opencode/command/ |
 
 ---

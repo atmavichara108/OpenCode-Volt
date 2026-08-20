@@ -25,11 +25,19 @@ description: Новая территория, документируемая ч�
 - [[/home/rudra/Projects/ChaT/legacy/notion-reference|Legacy: Notion-референс]]
 
 ## Агенты (.opencode/agents/)
-| Агент | Назначение |
-|-------|-----------|
-| curator (primary) | Интервью, фиксация фактов, карта проекта |
+| Агент | Mode | Модель | Назначение |
+|-------|------|--------|-----------|
+| chat-librarian | primary | opencode-go/gpt-5.6-luna | Координация знаний, интервью, решения и memory flush |
+| development-manager | subagent | opencode-go/gpt-5.6-luna | Приоритеты, зависимости и delivery |
+| tea-master | subagent | opencode-go/gpt-5.6-luna | Технология чая и качество партий |
+| chat-reviewer | subagent | opencode-go/deepseek-v4-flash | Read-only проверка согласованности |
+| community-architect | subagent | opencode-go/deepseek-v4-flash | Сообщество, обучение и гостеприимство |
+| product-market | subagent | opencode-go/deepseek-v4-flash | Продуктовые и рыночные гипотезы |
+| tea-scientist | subagent | opencode-go/deepseek-v4-flash | Проверяемые чайные эксперименты |
+| velisov-steward | subagent | opencode-go/deepseek-v4-flash | Операции и вопросы Велисова Ковчега |
+| regeneration-designer | subagent | opencode-go/deepseek-v4-flash | Регенеративные инициативы и устойчивость |
 
-Агентский слой минимален: один агент. Дополнительные агенты ещё не оценивались.
+`chat-librarian` заменил `curator` в рамках текущей bootstrap-структуры; существующие новые agent-файлы сохраняются.
 
 ## Команды
 Команды проекта не добавлены; потребность в них ещё не оценивалась.
@@ -37,11 +45,15 @@ description: Новая территория, документируемая ч�
 ## Плагины (.opencode/plugins/)
 —
 
-## Конфиг (opencode.json)
-—
+## Конфиг
+Собственного `opencode.json` нет. Используется глобальный stow-конфиг с fallback `opencode-go/gpt-5.6-luna`; role-specific overrides заданы в agent frontmatter.
+
+## Временная модельная политика
+До capability-routing: primary/сложные роли используют `opencode-go/gpt-5.6-luna`, а дешёвые read-only/review/research роли — `opencode-go/deepseek-v4-flash`.
 
 ## Состояние методов
 Методы проекта минимальны и ещё не оценивались отдельно.
 
 ## Лог изменений
 - 2026-08-14: bootstrap ChaT и синхронизация карточки проекта в vault.
+- 2026-08-17: roster синхронизирован с bootstrap-структурой; зафиксирована временная модельная политика до capability-routing.

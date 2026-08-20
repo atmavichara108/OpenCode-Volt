@@ -10,7 +10,7 @@ stack: shell / GNU Stow / конфиги Manjaro (23 пакета) / OpenCode mu
 
 **Окружение:** Manjaro (Arch-based). Менеджер — **GNU Stow** (23 пакета).
 **CI / проверка:** нет (конфиги, не приложение).
-**Провайдер:** OpenCode Zen, все агенты на `opencode/deepseek-v4-flash-free` (тесты)
+**Провайдер:** OpenCode Go; GPT-5.6 Luna для планирования/сборки, DeepSeek Go для аудита и проверок.
 
 ## Структура (пакеты Stow)
 
@@ -23,18 +23,21 @@ stack: shell / GNU Stow / конфиги Manjaro (23 пакета) / OpenCode mu
 ### Primary (3)
 | Агент | Модель | Назначение |
 |-------|--------|-----------|
-| sysop | deepseek-v4-flash-free | Инспектор системы (read-only аудит) |
-| planner | deepseek-v4-flash-free | Архитектор (ADR, планы, дизайн) |
-| builder | deepseek-v4-flash-free | Строитель (конфиги, скрипты, модули) |
+| sysop | opencode-go/deepseek-v4-flash | Инспектор системы (read-only аудит) |
+| planner | opencode-go/gpt-5.6-luna | Архитектор (ADR, планы, дизайн) |
+| builder | opencode-go/gpt-5.6-luna | Строитель (конфиги, скрипты, модули) |
 
-### Subagent (5)
+### Subagent (8)
 | Агент | Модель | Назначение |
 |-------|--------|-----------|
-| reviewer | deepseek-v4-flash-free | Ревьюер (PASS/FAIL, безопасность) |
-| verifier | deepseek-v4-flash-free | Верификатор (глобальная проверка контрактов, /loop) |
-| qtile-dev | deepseek-v4-flash-free | Qtile-специалист (WM, виджеты, Python) |
-| bash-dev | deepseek-v4-flash-free | Bash-специалист (скрипты, автоматизация) |
-| util-dev | deepseek-v4-flash-free | Утилиты (макросы, нотификации, rofi) |
+| reviewer | opencode-go/deepseek-v4-flash | Ревьюер (PASS/FAIL, безопасность) |
+| verifier | opencode-go/deepseek-v4-flash | Верификатор (глобальная проверка контрактов, /loop) |
+| think | opencode-go/gpt-5.6-luna | Сложные рассуждения и анализ |
+| researcher | opencode-go/deepseek-v4-flash | Read-only исследование кода, истории и документации |
+| stow-ops | opencode-go/deepseek-v4-flash | Операции GNU Stow и миграции |
+| qtile-dev | opencode-go/gpt-5.6-luna | Qtile-специалист (WM, виджеты, Python) |
+| bash-dev | opencode-go/gpt-5.6-luna | Bash-специалист (скрипты, автоматизация) |
+| util-dev | opencode-go/gpt-5.6-luna | Утилиты (макросы, нотификации, rofi) |
 
 ## Пайплайны (команды)
 
@@ -59,7 +62,7 @@ stack: shell / GNU Stow / конфиги Manjaro (23 пакета) / OpenCode mu
 
 ## Конфиг (opencode.json)
 - `default_agent`: planner
-- `model`: opencode/deepseek-v4-flash-free (все агенты)
+- `model`: opencode-go/gpt-5.6-luna (fallback; роли переопределены в agent-конфигах)
 - `lsp`: false
 - `edit`: ask, `external_directory`: allow
 
@@ -71,7 +74,7 @@ stack: shell / GNU Stow / конфиги Manjaro (23 пакета) / OpenCode mu
 | [[context-as-docs]] | ✅ | AGENTS.md + user-profile.md + decisions.md + docs/ |
 | [[distill-pattern]] | ✅ | 10 команд-пайплайнов — образец дистилляции (+/loop, /flush) |
 | [[memory-management]] | ✅ | .opencode/memory/ + формализованный flush-протокол (`/flush` команда) |
-| [[model-routing]] | ➖ | все на DeepSeek (тесты), роутинг позже |
+| [[model-routing]] | 🟡 | временная статическая политика Luna для primary/dev и DeepSeek Go для дешёвых audit/review/research ролей; capability-routing позже |
 
 ## Состояние
 - [x] репо dotfiles создан (GitHub + локально)

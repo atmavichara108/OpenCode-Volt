@@ -1,9 +1,9 @@
 ---
 type: Active Context
 title: Активный контекст
-description: Phase 1 (kernel stabilization) ЗАВЕРШЕНА 2026-08-04. Bootstrap ChaT завершён 2026-08-14; следующий шаг — интервью Макса.
+description: Phase 1 (kernel stabilization) ЗАВЕРШЕНА 2026-08-04. Текущая модельная настройка завершается 2026-08-17; следующий фокус — capability-routing rollout.
 tags: [memory]
-timestamp: 2026-08-14
+timestamp: 2026-08-17
 ---
 
 # Активный контекст
@@ -11,7 +11,15 @@ timestamp: 2026-08-14
 > Автоматически обновляется librarian. Читается при старте каждой сессии.
 
 ## Текущий фокус
-- **ChaT:** bootstrap завершён 2026-08-14. Следующий шаг — интервью Макса.
+- **Runbook layer (2026-08-17):** создан `07-Runbooks/` как отдельный operational
+  use layer; handbook фиксирует текущее применение, changelog — подтверждённые
+  shifts. Следить за freshness только по реальным изменениям практики.
+- **Модельная настройка (2026-08-17):** текущая конфигурация Luna/DeepSeek Go
+  завершается; после перезапуска OpenCode считать её активной.
+- **Следующий фокус:** capability-routing rollout для замены временной статической
+  политики.
+- **ChaT:** bootstrap завершён 2026-08-14. Интервью Макса остаётся следующим
+  проектным шагом после capability-routing rollout.
 - **Phase 1 (kernel stabilization) ЗАВЕРШЕНА 2026-08-04.** Все задачи
   T-084..T-089 + T-096..T-098 перенесены в Done с датой. Коммиты:
   vault (память), SERPlux (агентский слой), dotfiles (`done.md`).
@@ -36,10 +44,16 @@ timestamp: 2026-08-14
   синхронизированы с каноном»): README/AGENTS/CANON/verification/
   user-guide/TASKS содержат 224/172/95/111, канон = 256/256 executed на
   HEAD `f7ccd3e`, definitions 212. Записано идемпотентно и централизованно.
+- **Working tree:** изменения документации и модельной конфигурации Vault
+  незакоммичены. Отдельно сохраняются pre-existing bootstrap/WIP-изменения в
+  ChaT, dotfiles и SERPlux; они не откатываются и не объявляются частью этой
+  сессии.
 
 ## Активная задача
-- **Нет активной задачи.** TASKS Active пуст. Следующее: Phase 2/3
-  планирование (SERPlux adoption + global layer hardening) — по
+- **Завершение текущей настройки моделей:** политика подтверждена через
+  `opencode models` и merged config debug; требуется перезапуск OpenCode.
+- Следующее: capability-routing rollout, затем Phase 2/3 планирование
+  (SERPlux adoption + global layer hardening) — по
   ecosystem upgrade plan v1 (`06-Audits/2026-08-03-ecosystem-upgrade-plan-v1.md`),
   либо закрытие residuals Phase 1 через живую сессию в serp.
 
@@ -102,6 +116,18 @@ timestamp: 2026-08-14
 - Как закрывать residuals Phase 1 (real commit smoke / compaction dispatch) — нужна живая сессия в serp?
 
 ## Последнее обновление
+2026-08-17 — **Временная модельная политика подтверждена**:
+primary/сложные роли используют `opencode-go/gpt-5.6-luna`, дешёвые
+read-only/research/reviewer/verifier — `opencode-go/deepseek-v4-flash`.
+Доступность подтверждена `opencode models`, merged config debug проходит;
+для применения нужен перезапуск OpenCode. Изменения незакоммичены; pre-existing
+bootstrap/WIP в ChaT, dotfiles и SERPlux сохранены. Следующий фокус —
+capability-routing rollout.
+
+2026-08-17 — **Создан runbook operational layer**: `07-Runbooks/` отделён от
+Methods, Audits и `AGENTS.md`; следующий фокус сохраняется за capability-routing
+rollout, затем Phase 2/3 adoption и hardening. Residuals не изменены.
+
 2026-08-14 — **Bootstrap ChaT завершён; модель general обновлена**:
 синхронизированы проектная карточка
 и память волта. `general` использует `opencode-go/gpt-5.6-luna`.
