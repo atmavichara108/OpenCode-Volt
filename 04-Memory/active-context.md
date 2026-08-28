@@ -1,9 +1,9 @@
 ---
 type: Active Context
 title: Активный контекст
-description: Phase 1 (kernel stabilization) ЗАВЕРШЕНА 2026-08-04. Текущая модельная настройка завершается 2026-08-17; следующий фокус — capability-routing rollout.
+description: Phase 1 (kernel stabilization) ЗАВЕРШЕНА 2026-08-04. Текущая модельная политика Luna + DeepSeek Go сохранена; capability-routing design gate пройден, runtime extraction paused.
 tags: [memory]
-timestamp: 2026-08-17
+timestamp: 2026-08-28
 ---
 
 # Активный контекст
@@ -14,10 +14,31 @@ timestamp: 2026-08-17
 - **Runbook layer (2026-08-17):** создан `07-Runbooks/` как отдельный operational
   use layer; handbook фиксирует текущее применение, changelog — подтверждённые
   shifts. Следить за freshness только по реальным изменениям практики.
-- **Модельная настройка (2026-08-17):** текущая конфигурация Luna/DeepSeek Go
-  завершается; после перезапуска OpenCode считать её активной.
-- **Следующий фокус:** capability-routing rollout для замены временной статической
-  политики.
+- **Модельная политика (2026-08-25):** Luna + DeepSeek Go сохранена без
+  изменений; capability-routing не меняет model-routing.
+- **Текущий фокус:** завершена подготовка AndroidOS agent layer; создан AndroidOS
+  project layer, roadmap, ADR и OSS research. Создан sysop task для подготовки
+  Android toolchain; toolchain не объявлять ready до sysop report.
+- Телефон подтверждён через ADB: Redmi 2510ERA8BG/flourite, Android 16/API 36,
+  SM7635, arm64-v8a, около 11.1 GiB RAM, 464G storage, ADB authorized.
+- Подтверждён ноутбук sysop: Lenovo ThinkPad P51, Manjaro, i7-7820HQ, около
+  15.3 GiB RAM, NVMe 500GB, Intel+NVIDIA.
+- Capability-routing сознательно отложен в отдельную сессию; предыдущие
+  temporary general fallbacks отмечены как процессуальная ошибка.
+- **Предыдущий контекст:** design gate — `PASS`; researcher runtime extraction
+  paused на T-107 controlled probe. Создан dotfiles-local `system-ops` skeleton,
+  но runtime/root execution не подтверждены.
+- **Incident symptom (2026-08-25):** при acceptance verification global
+  `researcher` verifier task был отменён пользователем после зависания модели
+  в бесконечном цикле. Это symptom/incident observation, root cause unknown;
+  не считать доказательством дефекта `researcher`, `verifier`, модели, task
+  runtime или routing. Повторный запуск тем же маршрутом отложен до
+  investigation; researcher runtime extraction paused pending a controlled
+  probe.
+- **SERP Factory productization discovery (2026-08-21):** read-only аудит выявил
+  мультиклиентный продукт-прототип, но не фабрику продуктов. Recommended next
+  step — decision gate по модели поставки и tenancy/product/deployment boundaries;
+  до подтверждения решения код не писать.
 - **ChaT:** bootstrap завершён 2026-08-14. Интервью Макса остаётся следующим
   проектным шагом после capability-routing rollout.
 - **Phase 1 (kernel stabilization) ЗАВЕРШЕНА 2026-08-04.** Все задачи
@@ -26,9 +47,26 @@ timestamp: 2026-08-17
 - **Модель general (vault `opencode.json`):** `opencode-go/gpt-5.6-luna`.
   Историческая запись о временном переводе субагентов на бесплатные Zen
   сохранена в `facts.md`.
+- **Следующий фокус после environment prep:** войти в AndroidOS и выполнить
+  `/android-plan`.
 - **Следующий gate:** Phase 2 (SERPlux first adoption по ecosystem upgrade
   plan v1) + dotfiles/global hardening (Phase 3). dv-hub — recovery case,
   не первая цель.
+- **T-107:** исследовать symptom бесконечного цикла verifier task до root cause
+  и исправления; forensic уточнение и безопасный probe protocol записаны в
+  [[06-Audits/2026-08-25-capability-routing-design-note]] и
+  [[04-Memory/session-log/2026-08-25]]. Feasibility check показал, что CLI
+  `opencode run --agent researcher` не гарантирует запуск subagent, per-run
+  запрет `task` не предоставляется, а shell `timeout` не гарантирует abort
+  серверной сессии; controlled probe пока не выполнен, задача открыта.
+- **Dotfiles-local `system-ops` (2026-08-25):** agent skeleton создан, но
+  runtime/root execution не подтверждены. `sysop` остаётся read-only; маршрут
+  high-risk apply: `sysop` audit → `planner` plan → `system-ops` apply →
+  `verifier`/post-check. Root apply только через explicit approval; edit/task
+  deny, dangerous operations deny-safe. T-108 открыт до live evidence.
+- **Следующий порядок:** T-107 controlled probe → T-108 permission/root
+  smoke-test → reviewer/sysop extraction. Не объявлять задачи Done без
+  acceptance.
 - **Residuals `[проверить]` (честно открыты, не закрыты):**
   - T-089/T-097: commit-guard на реальном `git commit` (real commit smoke)
     и реальный compaction event session-dispatch — безопасно
@@ -50,12 +88,24 @@ timestamp: 2026-08-17
   сессии.
 
 ## Активная задача
-- **Завершение текущей настройки моделей:** политика подтверждена через
-  `opencode models` и merged config debug; требуется перезапуск OpenCode.
-- Следующее: capability-routing rollout, затем Phase 2/3 планирование
-  (SERPlux adoption + global layer hardening) — по
-  ecosystem upgrade plan v1 (`06-Audits/2026-08-03-ecosystem-upgrade-plan-v1.md`),
-  либо закрытие residuals Phase 1 через живую сессию в serp.
+- **Текущий следующий шаг:** после environment prep войти в AndroidOS и
+  выполнить `/android-plan`. Runtime/root execution для `system-ops` не
+  подтверждены, Android toolchain не ready до sysop report.
+- SERP Factory: сначала обсудить decision gate по модели поставки и границам,
+  implementation не начинать до подтверждения.
+
+### Capability-routing rollout (design-only, 2026-08-25)
+- Созданы [[02-Methods/capability-routing]] и [[06-Audits/2026-08-25-capability-routing-design-note]].
+- Design gate пройден: verifier после фикса ложного partial status в `00-INDEX` — `PASS`.
+- Решён sequence: `researcher → reviewer → sysop → orchestration integration`;
+  guardian и prompt-engineer/task-compiler идут после базового routing.
+- Зафиксированы global kernel + local extensions, named dispatch, registry,
+  fallback `UNROUTABLE`, mutability/risk gates и reviewer != verifier.
+- T-092 описан как будущий prompt-normalizer/task-compiler interface без
+  runtime; T-094 остаётся на approval gate и не стал Method.
+- T-077/T-092/T-093/T-094 остаются active design/approval substeps; T-094 не
+  закрыт до explicit approval.
+- AndroidOS T-101 возвращён в Planned с пометкой paused by routing rollout.
 
 ## Завершённые изменения (все сессии)
 - [x] **Phase 1 kernel stabilization (2026-08-04, T-084..T-089, T-096..T-098):**
@@ -116,6 +166,14 @@ timestamp: 2026-08-17
 - Как закрывать residuals Phase 1 (real commit smoke / compaction dispatch) — нужна живая сессия в serp?
 
 ## Последнее обновление
+2026-08-28 — **AndroidOS environment-prep flush:** завершена подготовка
+agent layer; подтверждены AndroidOS project layer, roadmap, ADR, OSS research,
+ADB device baseline и sysop laptop baseline. Создан sysop task для Android
+toolchain; toolchain не объявляется ready до sysop report. Capability-routing
+отложен в отдельную сессию; temporary general fallbacks отмечены как
+процессуальная ошибка. Следующий фокус после environment prep — AndroidOS
+`/android-plan`. Pre-existing WIP не трогался.
+
 2026-08-17 — **Временная модельная политика подтверждена**:
 primary/сложные роли используют `opencode-go/gpt-5.6-luna`, дешёвые
 read-only/research/reviewer/verifier — `opencode-go/deepseek-v4-flash`.

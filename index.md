@@ -16,6 +16,7 @@
 * [distill-pattern](/02-Methods/distill-pattern.md) — Сжатие/структурирование знаний в заметки
 * [memory-management](/02-Methods/memory-management.md) — Управление памятью сессии + файловая память
 * [model-routing](/02-Methods/model-routing.md) — Разные модели для разных шагов
+* [capability-routing](/02-Methods/capability-routing.md) — Маршрутизация задач по capability и named role
 * [verifier-pattern](/02-Methods/verifier-pattern.md) — Проверка через отдельный скрипт/воркфлоу
 
 ## Projects (карточки проектов)
@@ -23,6 +24,7 @@
 * [SERPlux](/03-Projects/SERPlux.md) — Коммерческий SEO-пайплайн, Python/FastAPI
 * [dotfiles](/03-Projects/dotfiles.md) — Системные конфиги Manjaro (план)
 * [vault](/03-Projects/vault.md) — Этот волт, справочник по OpenCode
+* [AndroidOS](/03-Projects/AndroidOS.md) — Модульная персональная AndroidOS umbrella (planning)
 
 ## Memory (контекст сессий и факты)
 * [active-context](/04-Memory/active-context.md) — Текущий фокус сессии
@@ -37,3 +39,5 @@
 * [roadmap](/DEVELOPMENT-ROADMAP.md) — Стратегический план P0–P4
 * [tasks](/TASKS.md) — Оперативный трекер задач
 * [inbox](/99-Inbox.md) — Буфер для сырых заметок
+* [user-profile-contract](/01-Reference/user-profile-contract.md) — Канонический профиль и scoped access
+* [AndroidOS-open-source-first](/06-Audits/2026-08-22-androidos-open-source-first.md) — Decision/research backlog

@@ -10,7 +10,9 @@ timestamp: 2026-06-30
 # rudra-phone — Управление проектами с телефона
 
 > **Статус:** 🟢 Planning — концепция, выбор архитектуры
-> **Связано:** [[99-Inbox]] (R-001), [[SERPlux]], [[dv-hub]], [[dotfiles]], [[vault]], T-015, T-016
+> **Связано:** legacy surface для [[AndroidOS]], [[99-Inbox]] (R-001), [[SERPlux]], [[dv-hub]], [[dotfiles]], [[vault]], T-015, T-016
+
+> **Каноническая связь:** AndroidOS umbrella supersedes this card's scope. Existing options below are historical proposals; implementation is not claimed.
 
 **Цель:** Полноценное управление любым проектом (SERPlux, dv-hub, dotfiles, vault) с Android-телефона (Redmi Note 15 Pro).
 

@@ -8,8 +8,18 @@ description: Новая территория, документируемая ч�
 # ChaT
 
 > Новая территория и её контекст собираются через интервью. Старый ChaT/Notion — legacy-референс, не модель текущего проекта.
+> Профиль пользователя: [[user-profile-contract]]. ChaT — first-class consumer: читает минимальный scoped context для интервью, решений и операций, а durable user-level изменения предлагает через global `profile-governor`. Каноническая запись только после явного approval; факты и provenance остаются в регистрах ChaT, без второй копии профиля и без auto-sync.
 
 **Статус:** planning
+
+## Profile integration
+
+- **Read:** scoped profile context для интервью, контекста стартапа, приоритетов, рабочих предпочтений и operational constraints текущей задачи.
+- **Write:** ChaT может сформировать proposal с полем, значением, reason, source/register, timestamp и confidence; canonical write выполняет только `profile-governor` после явного подтверждения пользователя.
+- **Provenance:** проектные facts/hypotheses/decisions/participants остаются в регистрах ChaT; в профиль попадает только явно promoted user-level fact с ссылкой на источник.
+- **Boundaries:** minimum necessary scope, no secrets, no silent sync, no duplicate canonical profile.
+
+Полноценная интеграция ChaT является текущим приоритетом profile-governor; hooks/events и конкретный adapter остаются planned, а не заявляются внедрёнными.
 
 ## Источники
 - [[/home/rudra/Projects/ChaT/README|README]]

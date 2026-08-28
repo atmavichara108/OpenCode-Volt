@@ -32,6 +32,7 @@ timestamp: 2026-06-29
 | rudra-phone | инфраструктура | Kotlin/Flutter/Telegram API | — | [[rudra-phone]] | 🟢 planning |
 | prod-monitor | инфраструктура | Prometheus/Python/Bash | — | [[prod-monitor]] | 🟢 planning |
 | rudra-ai | mobile/ai | Kotlin/Jetpack Compose | — | [[rudra-ai]] | 🟢 planning |
+| AndroidOS | umbrella mobile/ecosystem | Android / OpenCode / offline-first | planned | [[AndroidOS]] | 🟢 planning |
 
 > 📊 **Сводка:** `/audit` — проверить все проекты · Таблица статусов методов ниже · Новые проекты в planning
 
@@ -42,7 +43,10 @@ timestamp: 2026-06-29
 [[tools/GTweak]] — Windows-твикер (редко, для чужой машины)
 
 ## Methods (мои приёмы)
-[[closed-loop]] · [[verifier-pattern]] · [[context-as-docs]] · [[memory-management]] · [[model-routing]] · [[distill-pattern]] · [[multi-agent-pipeline]] · [[tool-integration-pattern]]
+[[closed-loop]] · [[verifier-pattern]] · [[context-as-docs]] · [[memory-management]] · [[model-routing]] · [[capability-routing]] · [[distill-pattern]] · [[multi-agent-pipeline]] · [[tool-integration-pattern]]
+
+### Cross-project contracts
+[[user-profile-contract]] · [[06-Audits/2026-08-22-androidos-open-source-first]] · [[TASKS]] T-103–T-105
 
 ### Статус внедрения методов по проектам
 
@@ -56,6 +60,7 @@ timestamp: 2026-06-29
 | [[distill-pattern]] | ✅ | ✅ | ✅ | ✅ |
 | [[memory-management]] | 🟡 | 🟡 | 🟡 | 🟡 |
 | [[model-routing]] | ✅ | ✅ | ➖ | ➖ |
+| [[capability-routing]] | ❌ | ❌ | ❌ | ❌ |
 | [[multi-agent-pipeline]] | ✅ | ❌ | ✅ | ❌ |
 | [[tool-integration-pattern]] | ➖ | ➖ | ➖ | 🟡 |
 

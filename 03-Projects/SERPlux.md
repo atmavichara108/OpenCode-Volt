@@ -55,6 +55,32 @@ stack: Python 3.11+ / requests / gspread / FastAPI / OpenCode Go / SQLite / Dock
   CANON/verification/user-guide/TASKS → канон 256/256 executed, definitions
   212 (реализация за пользователем при проектной работе, не librarian)
 
+## SERP Factory: productization audit (2026-08-21)
+
+**Verdict:** мультиклиентный продукт-прототип, не фабрика продуктов.
+
+**Рекомендуемый промежуточный target:** modular monolith + one image + separate
+deployment instance/customer DB + immutable tags. Сначала зафиксировать tenancy,
+product и deployment boundaries внутри одного репозитория; не делать
+преждевременный repo split.
+
+**Target на 12 месяцев:** явные границы `core` / `product` / `deployment`; затем
+оценка `core + product repos` или shared hosted модели после доказательства
+контрактов.
+
+**P0 blockers:** decision по модели поставки и isolation contract; глобальные
+`run_status`/run lock, daemon jobs и Topvisor credentials; mutable deploy через
+`git pull origin main/latest`.
+
+**P1 blockers:** scattered config; customer-specific `migrate.py`; глобальный
+`domain_labels` без `client_id`; расхождения тестовых и документальных claims.
+
+**Критерии перехода:** core contracts и product extension points проверены на
+нескольких продуктах; миграции не содержат customer-specific assumptions;
+релизы собираются из immutable tags/artifacts. Shared hosted допускается только
+после tenant-scoped data/status/locks/jobs/credentials, durable execution,
+observability и recovery. Подробности: [[06-Audits/2026-08-21-serp-factory-productization-audit]].
+
 ### ⏸ Приостановлено
 - **Web UI** — ADR от 2026-07-02: единственный UI = Google Sheets. Веб-фронт не строим без явного запроса заказчика.
 

@@ -8,6 +8,8 @@ stack: shell / GNU Stow / конфиги Manjaro (23 пакета) / OpenCode mu
 
 Операционная система для управления конфигами Manjaro через OpenCode. Мульти-агент v2 + verifier + closed-loop + flush-протокол: пайплайны, субагенты (включая verifier), память и UX-осознанность.
 
+Канонический профиль Max Rudra: `.opencode/memory/user-profile.md`. Глобальный `profile-governor` выдаёт scoped context и проактивно сверяет профиль с Vault/dotfiles/ChaT/AndroidOS только через explicit invocation, hooks, events или scheduled checks; он предлагает diff, но не пишет тихо и не дублирует профиль. Контракт: [[user-profile-contract]].
+
 **Окружение:** Manjaro (Arch-based). Менеджер — **GNU Stow** (23 пакета).
 **CI / проверка:** нет (конфиги, не приложение).
 **Провайдер:** OpenCode Go; GPT-5.6 Luna для планирования/сборки, DeepSeek Go для аудита и проверок.
@@ -24,6 +26,7 @@ stack: shell / GNU Stow / конфиги Manjaro (23 пакета) / OpenCode mu
 | Агент | Модель | Назначение |
 |-------|--------|-----------|
 | sysop | opencode-go/deepseek-v4-flash | Инспектор системы (read-only аудит) |
+| profile-governor | opencode-go/gpt-5.6-luna | Проактивное глобальное управление профилем, scoped context, drift review и approval-gated proposals |
 | planner | opencode-go/gpt-5.6-luna | Архитектор (ADR, планы, дизайн) |
 | builder | opencode-go/gpt-5.6-luna | Строитель (конфиги, скрипты, модули) |
 
@@ -38,6 +41,14 @@ stack: shell / GNU Stow / конфиги Manjaro (23 пакета) / OpenCode mu
 | qtile-dev | opencode-go/gpt-5.6-luna | Qtile-специалист (WM, виджеты, Python) |
 | bash-dev | opencode-go/gpt-5.6-luna | Bash-специалист (скрипты, автоматизация) |
 | util-dev | opencode-go/gpt-5.6-luna | Утилиты (макросы, нотификации, rofi) |
+
+### Local extension: dotfiles-local
+| Агент | Статус | Границы |
+|-------|--------|---------|
+| system-ops | skeleton создан; runtime/root execution не подтверждены | High-risk host root apply только через explicit approval; `edit`/`task` deny; dangerous operations deny-safe |
+
+`sysop` остаётся read-only инспектором системы. `system-ops` — отдельное локальное
+расширение для dotfiles-local, а не замена `sysop` и не global role.
 
 ## Пайплайны (команды)
 
@@ -89,6 +100,7 @@ stack: shell / GNU Stow / конфиги Manjaro (23 пакета) / OpenCode mu
 - [x] memory-management: /flush + формализованный flush-протокол
 - [ ] первый /sysaudit
 - [ ] model-routing (после тестов)
+- [ ] system-ops: permission/root smoke-test до live evidence (T-108)
 
 ## Лог изменений
 - 2026-06-26: карточка-план заведена
@@ -96,3 +108,4 @@ stack: shell / GNU Stow / конфиги Manjaro (23 пакета) / OpenCode mu
 - 2026-06-30 (v1): OpenCode инициализирован — sysop, /sysaudit
 - 2026-06-30 (v2): полная архитектура — 7 агентов, 8 пайплайнов, память, UX-профиль
 - 2026-07-04 (v3): verifier subagent + /loop + /flush — closed-loop ✅, verifier-pattern ✅, memory-management ✅
+- 2026-08-25: зафиксирован dotfiles-local `system-ops`; skeleton создан, runtime/root execution не подтверждены; root apply требует explicit approval, edit/task deny, dangerous operations deny-safe.

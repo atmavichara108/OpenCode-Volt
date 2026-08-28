@@ -10,7 +10,9 @@ timestamp: 2026-06-30
 # rudra-ai — AI-ассистент на Android
 
 > **Статус:** 🟢 Planning — концепция, дорожная карта
-> **Связано:** [[99-Inbox]] (R-004), [[rudra-phone]], [[prod-monitor]], [[00-INDEX#Methods]]
+> **Связано:** legacy assistant concept under [[AndroidOS]], [[99-Inbox]] (R-004), [[rudra-phone]], [[prod-monitor]], [[00-INDEX#Methods]]
+
+> **Каноническая связь:** AndroidOS is the current umbrella for Personal Assistant. This card remains a historical planning reference; listed stack and phases are not selected or implemented.
 
 **Цель:** ИИ-ассистент на Android, эволюционирующий от простого планера до полноценного ассистента.
 
