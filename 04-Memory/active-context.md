@@ -16,9 +16,13 @@ timestamp: 2026-08-28
   shifts. Следить за freshness только по реальным изменениям практики.
 - **Модельная политика (2026-08-25):** Luna + DeepSeek Go сохранена без
   изменений; capability-routing не меняет model-routing.
-- **Текущий фокус:** завершена подготовка AndroidOS agent layer; создан AndroidOS
-  project layer, roadmap, ADR и OSS research. Создан sysop task для подготовки
-  Android toolchain; toolchain не объявлять ready до sysop report.
+- **Текущий фокус:** текущая сессия завершена. Следующий фокус — отдельная
+  реализация Coordination Bridge по spec T-109; capability-routing остаётся
+  отдельной отложенной задачей. AndroidOS environment prep/sysop report и
+  `/android-plan` — последующие шаги после bridge bootstrap.
+- **Coordination Bridge:** spec готова; MCP facade принята только как optional
+  thin local facade, без реализации и без зависимости телефона. Реализация
+  T-109 и optional MCP T-110 остаются `Planned`.
 - Телефон подтверждён через ADB: Redmi 2510ERA8BG/flourite, Android 16/API 36,
   SM7635, arm64-v8a, около 11.1 GiB RAM, 464G storage, ADB authorized.
 - Подтверждён ноутбук sysop: Lenovo ThinkPad P51, Manjaro, i7-7820HQ, около
@@ -47,8 +51,9 @@ timestamp: 2026-08-28
 - **Модель general (vault `opencode.json`):** `opencode-go/gpt-5.6-luna`.
   Историческая запись о временном переводе субагентов на бесплатные Zen
   сохранена в `facts.md`.
-- **Следующий фокус после environment prep:** войти в AndroidOS и выполнить
-  `/android-plan`.
+- **Следующий фокус после bridge bootstrap:** выполнить read-only bootstrap и
+  smoke test Coordination Bridge по spec T-109; затем перейти к AndroidOS
+  environment prep/sysop report и `/android-plan`.
 - **Следующий gate:** Phase 2 (SERPlux first adoption по ecosystem upgrade
   plan v1) + dotfiles/global hardening (Phase 3). dv-hub — recovery case,
   не первая цель.
@@ -88,9 +93,14 @@ timestamp: 2026-08-28
   сессии.
 
 ## Активная задача
-- **Текущий следующий шаг:** после environment prep войти в AndroidOS и
-  выполнить `/android-plan`. Runtime/root execution для `system-ops` не
-  подтверждены, Android toolchain не ready до sysop report.
+- **Текущий следующий шаг:** отдельная реализация Coordination Bridge по spec
+  T-109, начиная с read-only bootstrap и smoke test. При отсутствии named role
+  фиксировать `UNROUTABLE`, без silent general fallback. Runtime/root execution
+  для `system-ops` не подтверждены.
+- После отдельной сессии T-109 — sysop environment prep и `/android-plan`;
+  T-110 не начинать до завершения bridge и отдельного decision gate.
+- Capability-routing остаётся отдельной отложенной задачей. После bridge
+  bootstrap — AndroidOS environment prep/sysop report и `/android-plan`.
 - SERP Factory: сначала обсудить decision gate по модели поставки и границам,
   implementation не начинать до подтверждения.
 
@@ -166,13 +176,14 @@ timestamp: 2026-08-28
 - Как закрывать residuals Phase 1 (real commit smoke / compaction dispatch) — нужна живая сессия в serp?
 
 ## Последнее обновление
-2026-08-28 — **AndroidOS environment-prep flush:** завершена подготовка
-agent layer; подтверждены AndroidOS project layer, roadmap, ADR, OSS research,
-ADB device baseline и sysop laptop baseline. Создан sysop task для Android
-toolchain; toolchain не объявляется ready до sysop report. Capability-routing
-отложен в отдельную сессию; temporary general fallbacks отмечены как
-процессуальная ошибка. Следующий фокус после environment prep — AndroidOS
-`/android-plan`. Pre-existing WIP не трогался.
+2026-08-28 — **End-session flush: Coordination Bridge:** текущая сессия
+завершена; создана спецификация
+`06-Audits/2026-08-28-androidos-coordination-bridge-spec.md` и добавлена planned
+T-109. Следующий фокус — отдельная реализация Coordination Bridge после
+read-only bootstrap и smoke test. Capability-routing остаётся отдельной
+отложенной задачей; AndroidOS environment prep/sysop report и `/android-plan`
+следуют после bridge bootstrap. Незакоммиченные изменения ожидают отдельного
+commit/push.
 
 2026-08-17 — **Временная модельная политика подтверждена**:
 primary/сложные роли используют `opencode-go/gpt-5.6-luna`, дешёвые

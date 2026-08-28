@@ -10,7 +10,11 @@ timestamp: 2026-08-22
 # AndroidOS — модульная персональная ОС
 
 > **Статус:** planning. Это umbrella-проект и архитектурная граница, а не утверждение, что модули уже реализованы.
-> **Связано:** [[rudra-phone]], [[rudra-ai]], [[dotfiles]], [[ChaT]], [[06-Audits/2026-08-22-androidos-open-source-first]], [[06-Audits/2026-08-22-androidos-pa-mvp-architecture-adr]], [[user-profile-contract]], [[TASKS]]
+> **Связано:** [[rudra-phone]], [[rudra-ai]], [[dotfiles]], [[ChaT]], [[06-Audits/2026-08-22-androidos-open-source-first]], [[06-Audits/2026-08-22-androidos-pa-mvp-architecture-adr]], [[06-Audits/2026-08-28-androidos-coordination-bridge-spec]], [[user-profile-contract]], [[TASKS]]
+
+> **Coordination bridge:** принят Git-backed bridge как canonical source of truth;
+> optional local MCP facade запланирован только после файлового bridge и smoke test.
+> MCP пока не реализован и не является зависимостью телефона.
 
 > Профиль: Personal Assistant будет тесно связан с каноническим профилем через scoped adapter и approval-gated proposals. Практическая глубокая интеграция AndroidOS откладывается до завершения Personal Assistant MVP; до этого фиксируются только контракты, threat model и research.
 

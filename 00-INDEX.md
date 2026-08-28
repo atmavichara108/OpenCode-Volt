@@ -70,7 +70,7 @@ timestamp: 2026-06-29
 [[05-Templates/README]] · [[05-Templates/project-card]] · [[05-Templates/method]]
 
 ## Аудиты (06-Audits/)
-[[06-Audits/README]] · [[06-Audits/2026-08-02-vibecoding-layer-audit]] · [[06-Audits/2026-08-02-upgrade-planning-seed]]
+[[06-Audits/README]] · [[06-Audits/2026-08-02-vibecoding-layer-audit]] · [[06-Audits/2026-08-02-upgrade-planning-seed]] · [[06-Audits/2026-08-28-androidos-coordination-bridge-spec]]
 
 > Аудит = подтверждённые находки + открытые вопросы + влияние на план апгрейдов.
 > Отличается от Methods / Projects / Memory: датированный снимок, не
