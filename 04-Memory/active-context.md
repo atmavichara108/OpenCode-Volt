@@ -16,9 +16,12 @@ timestamp: 2026-08-29
   shifts. Следить за freshness только по реальным изменениям практики.
 - **Модельная политика (2026-08-25):** Luna + DeepSeek Go сохранена без
   изменений; capability-routing не меняет model-routing.
-- **Текущий фокус:** sysop primary smoke PASS подтверждён independent verifier
-  только в exact global primary scope. Параллельно выполняется T-109,
-  docs-only bootstrap Coordination Bridge;
+- **Текущий фокус:** capability-routing paused after v0.1 checkpoint. Exact
+  smokes для researcher, reviewer, sysop и orchestration подтверждены;
+  следующий шаг после возобновления — negative permission smoke и
+  local-extension merge, затем дальнейшая adoption. Automatic router,
+  prompt-normalizer и task-compiler не реализованы. Параллельно выполняется
+  T-109, docs-only bootstrap Coordination Bridge;
   bridge создан в AndroidOS и остаётся uncommitted/untracked, structural smoke записан, independent
   reviewer/verifier gates для T-109 pending. Baseline SHA не является provenance bridge.
   Capability-routing имеет частичный rollout: named researcher и reviewer smoke
@@ -121,9 +124,10 @@ timestamp: 2026-08-29
   для `system-ops` не подтверждены.
 - После отдельной сессии T-109 — sysop environment prep и `/android-plan`;
   T-110 не начинать до завершения bridge и отдельного decision gate.
-- Capability-routing частично раскатан в пределах подтверждённых researcher,
-  reviewer, exact global primary sysop smoke и exact orchestration smoke;
-  runtime automation не внедрена.
+- Capability-routing paused after v0.1 checkpoint; подтверждены exact smokes
+  researcher, reviewer, sysop и orchestration. После возобновления: negative
+  permission smoke → local-extension merge → дальнейшая adoption. Automatic
+  router, prompt-normalizer и task-compiler не реализованы.
 - SERP Factory: сначала обсудить decision gate по модели поставки и границам,
   implementation не начинать до подтверждения.
 
@@ -273,3 +277,9 @@ Sysop primary smoke подтверждён отдельно и scoped; T-109 о�
   automation/router не внедрён. Evidence: [[04-Memory/route-log/2026-08-29-orchestration-smoke]],
   [[06-Specs/Vault/control-plane-smoke]]. R1/F1/F2/F3 закрыты документально;
   uncommitted/negative deny/local merge/literal output gaps остаются.
+
+2026-08-29 — **Routing checkpoint pause:** capability-routing приостановлен
+после v0.1 checkpoint; exact smokes researcher, reviewer, sysop и orchestration
+подтверждены. Следующий шаг после возобновления — negative permission smoke и
+local-extension merge, затем дальнейшая adoption. Automatic router,
+prompt-normalizer и task-compiler не реализованы.
