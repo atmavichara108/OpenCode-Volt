@@ -32,6 +32,7 @@
 * [session-log](/04-Memory/session-log/) — Хроника сессий (по дням)
 
 ## System
+* [execution specs](/06-Specs/README.md) — canonical protocol and layout
 * [dashboard](/00-INDEX.md) — Полный дашборд с таблицей проектов и конвенциями
 * [vibeos](/VibeOS.md) — Концептуальный дашборд системы вайбкодинга (философия, методы, проекты, рост)
 * [architecture](/Architecture.md) — Принципы и структура волта

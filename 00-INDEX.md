@@ -17,7 +17,10 @@ timestamp: 2026-06-29
 - Извлечь посты из Telegram → `/capture <тема>`
 - Сводка по проекту → `/project <имя>`
 - Дистилляция пайплайнов → `/distill-pipeline`
+- Coordination Bridge → `/bridge <свободный intent>`
+- Capability route → `/route <свободный intent>`
 - Посмотреть дорожную карту → [[DEVELOPMENT-ROADMAP]]
+- Execution specs → [[06-Specs/README]] / `/spec <selector>`
 - Навигация по OKF → [[index]]
 - Трекер задач → [[TASKS]]
 
@@ -77,10 +80,16 @@ timestamp: 2026-06-29
 > приём/карточка/контекст сессии. Новый аудит — новый файл, не правка старого.
 
 ## Runbooks (07-Runbooks/)
-[[07-Runbooks/README]] · [[07-Runbooks/vibecoding-operator-handbook]] · [[07-Runbooks/vibecoding-changelog]]
+[[07-Runbooks/README]] · [[07-Runbooks/vibecoding-operator-handbook]] · [[07-Runbooks/coordination-bridge-operator-guide]] · [[07-Runbooks/vibecoding-changelog]]
 
 > **Methods** = abstract reusable techniques. **Audits** = dated findings.
 > **Runbooks** = live usage and operator workflows.
+
+## Execution specs (06-Specs/)
+[[06-Specs/README]] · [[06-Specs/SERPlux/spec-close-serplux-v1.0]]
+
+> Центральный Vault — единственный источник execution specs. Specs не являются
+> evidence выполнения; локальные project pointers только помогают найти canonical file.
 
 ## Temporary (98-Temporary/)
 [[98-Temporary/README]] — сырые файлы от пользователя на экстракцию; обрабатываются и удаляются (не источник правды, не смешивать с `99-Inbox/`)
@@ -89,7 +98,7 @@ timestamp: 2026-06-29
 `tools/telegram-capture/` — извлечение постов из Telegram (в разработке, T-062)
 
 ## Память (04-Memory/ — OKF sub-bundle)
-[[active-context]] · [[facts]] · [[session-log/2026-06-27]] · [[session-log/2026-06-29]] · [[session-log/2026-06-30]] · [[session-log/2026-08-14]] · [[04-Memory/index]] · [[04-Memory/log]]
+[[active-context]] · [[facts]] · [[session-log/2026-06-27]] · [[session-log/2026-06-29]] · [[session-log/2026-06-30]] · [[session-log/2026-08-14]] · [[session-log/2026-08-29]] · [[04-Memory/index]] · [[04-Memory/log]]
 
 ## Конвенции
 - Метод описывается ОДИН раз в `02-Methods/`. Карточки только ссылаются `wikilink`.

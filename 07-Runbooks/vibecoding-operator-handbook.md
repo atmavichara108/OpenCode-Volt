@@ -22,7 +22,6 @@ VibeOS: кто что делает, как проходит типовая ра�
   patterns, но не является автоматическим редактором handbook.
 - **sysop** — инспектирует ecosystem/global infrastructure и поднимает
   operational facts.
-- **guardian** — проверяет границы, contracts и обязательные gates.
 - **researcher** — собирает внешние и локальные evidence до решения.
 - **reviewer** — проверяет качество, полноту и соответствие intent.
 - **verifier** — acceptance-only проверка DoD; выдаёт явный verdict.
@@ -39,11 +38,67 @@ VibeOS: кто что делает, как проходит типовая ра�
 
 ## Standard workflows
 
+### Orchestrated route
+
+1. `intent -> scope/node -> capability route` по canonical schema.
+2. Global named role или project primary/local named pipeline выполняет
+   разрешённый slice; route selection/recording не является execution.
+3. `reviewer` выдаёт quality verdict, затем `verifier` проверяет acceptance;
+   project work требует project-local DoD/verifier.
+4. Librarian добавляет decision, handoff и evidence в append-only route-log.
+5. Для `sysop` primary пользователь переключается через `Tab`/`switch_agent`;
+   missing role/capability/acceptance означает `UNROUTABLE`, без silent fallback.
+
+Librarian остаётся только cross-project coordinator. Project primary owns the
+local pipeline. `sysop` primary requires user handoff; subagents use explicit
+`task`/`@mention`. Self-declared markers are not evidence. Automatic runtime
+router is not implemented.
+
+Orchestrated smoke is now confirmed for the exact Vault slice: librarian route
+selection -> named researcher -> reviewer -> verifier. The chain is sequential,
+read-only, and evidence-gated; this confirmation does not enable an automatic
+runtime router. `sysop` primary handoff remains separate.
+
+### Coordination Bridge
+
+ Пользовательский порядок работы с единым Git-backed bridge protocol и командой
+ `/bridge` описан в [[07-Runbooks/coordination-bridge-operator-guide]]. Bridge — это canonical
+file contract, а не отдельный agent; фасад-команда или MCP могут появиться
+  позже, но не становятся source of truth. Bridge records named-role
+  claim/handoff/evidence and stops at `UNROUTABLE`, `BLOCKED`, stale or
+  conflict; automatic runtime routing is not implemented. Пользователь задаёт
+  intent/scope/owner/DoD и одобряет commit/push; review и verify остаются
+  отдельными gates.
+
 ### Read-only audit
 
 1. Librarian фиксирует scope и не меняет target repository.
 2. Researcher/sysop собирает evidence; reviewer проверяет трактовку.
 3. Librarian оформляет dated findings в [[06-Audits/README]] и residuals в memory.
+
+Для `system-audit` пользователь выбирает global primary `sysop` через `Tab`/
+`switch_agent` и задаёт natural intent. `sysop` read-only; `system-ops` apply —
+отдельный route. Acceptance выполняется independent verifier по runtime evidence.
+
+### Named route smoke
+
+После изменения agent/config требуется restart. Named route сначала проверяется
+controlled smoke: reviewer даёт quality verdict, verifier — acceptance. При
+отсутствии named route результат — `UNROUTABLE`.
+
+### Agent dispatch and evidence
+
+- Primary role переключается через `Tab` или настроенный keybind
+  `switch_agent`.
+- Subagent вызывается через `@mention` или `task`.
+- Пользователь задаёт intent естественным языком; технический prompt и
+  acceptance marker от пользователя не требуются.
+- Evidence и verdict проверяются независимым verifier по session/runtime
+  artifacts, а не по самодекларации агента или строке вроде
+  `SYSOP SMOKE: PASS`.
+- `/agents` может быть пользовательской командой выбора модели и не является
+  универсальным способом переключения agent role; конкретную реализацию не
+  предполагать без подтверждения.
 
 ### Addendum
 
@@ -92,8 +147,7 @@ VibeOS: кто что делает, как проходит типовая ра�
   reviewer оценивает, verifier подтверждает DoD; vault получает только итог и
   residuals.
 - **Parallel dotfiles tuning:** sysop/build работают по независимым slices,
-  guardian сохраняет global/local boundary, librarian сводит подтверждённые
-  изменения.
+  librarian сохраняет global/local boundary и сводит подтверждённые изменения.
 - **dv-hub recovery later:** сначала recovery gate и acceptance surface, затем
   adoption; dv-hub не становится первым kernel target.
 - **Recurring method:** повторяющийся подтверждённый pattern сначала проходит

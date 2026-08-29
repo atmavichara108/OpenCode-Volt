@@ -20,7 +20,20 @@ timestamp: 2026-08-17
 
 ### Агенты
 - **librarian** — агент командного центра. Режим: primary (default в opencode.json). Запускается без `/agent`. Области: мониторинг проектов, аудит, управление знаниями.
-- Дочерние агенты не поддерживаются в агентской архитектуре OpenCode (только subagent в командах/скриптах).
+- Primary agents переключаются через `Tab` или настроенный keybind
+  `switch_agent`; subagents вызываются через `@mention` или `task`.
+- Самодекларированный acceptance marker агента не является evidence; verdict
+  подтверждается независимым verifier по session/runtime artifacts.
+- 2026-08-29 independent verifier подтвердил PASS для exact global primary
+  sysop smoke: `system-audit -> sysop`, `mode=primary`,
+  `opencode-go/deepseek-v4-flash`; только read-only audit commands, без
+  `edit`/`task`/mutating `bash`, с `stow -n` simulation и без general fallback.
+  Route scoped; это не orchestration/general rollout. `system-ops` apply
+  отдельно.
+- Официальная документация: https://opencode.ai/docs/agents/
+- Предыдущая инструкция использовать `/agent` для переключения роли была
+  ошибочной. Новый sysop PASS подтверждён только independent verifier и
+  runtime artifacts, не self-declared marker.
 
 ### Конфигурация
 - `opencode.json` — корневой конфиг: `default_agent: librarian`, `lsp: true`, `$schema`, модель `opencode-go/deepseek-v4-flash-free` (дефолт для субагентов).
@@ -481,3 +494,17 @@ timestamp: 2026-08-17
 - [[07-Runbooks/vibecoding-operator-handbook]] — текущее рабочее состояние;
   [[07-Runbooks/vibecoding-changelog]] — append-only история подтверждённых
   practice shifts.
+
+### Orchestration smoke (2026-08-29)
+
+- Exact Vault orchestration smoke получил `PASS` по независимому verifier:
+  `librarian` route selection → named `researcher` → `reviewer` → `verifier`,
+  строго последовательно, без `general` fallback и без self-marker evidence.
+- Scope ограничен `vault`, risk/mutability — `read-only`; researcher и reviewer
+  не выполняли edits/task. Runtime dispatch подтверждён только для exact smoke;
+  automatic runtime orchestration/router не внедрён.
+- Evidence: [[04-Memory/route-log/2026-08-29-orchestration-smoke]],
+  [[06-Specs/Vault/control-plane-smoke]].
+- Capability-routing gaps R1/F1/F2/F3 закрыты документально/evidence-gated;
+  остаются uncommitted artifacts, negative deny, local extension merge,
+  literal tool output limits. T-109 и остальные проектные задачи не изменены.

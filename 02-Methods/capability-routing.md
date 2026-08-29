@@ -43,7 +43,7 @@ tags: [method, routing, capabilities]
 
 ```yaml
 task: "краткое действие"
-scope: vault | project:<name>
+scope: vault | global | project:<name>
 capability: <registered-capability>
 role: <named-role>
 agent: <explicit-agent-name>
@@ -76,13 +76,16 @@ override: null | {reason: <text>, approver: <role>}
 | `read-research` | `researcher` | global + local extension | sourced research/evidence |
 | `quality-review` | `reviewer` | global + local extension | findings and review verdict |
 | `system-audit` | `sysop` | global + local extension | infrastructure audit |
+| `meta-infrastructure` | `meta` | global | infrastructure changes/audit |
 | `acceptance-verification` | `verifier` | project-local or explicitly named global | PASS/FAIL against project DoD |
 | `prompt-normalization` | `prompt-engineer` | future global | normalized task spec |
 | `task-compilation` | `task-compiler` | future global | compiled route/pipeline |
 
 Registry entries require a named role, scope, input/output contract and known
 acceptance boundary before runtime registration. A project may add a local
-capability, but must state its relationship to the canonical one.
+capability, but must state its relationship to the canonical one. Runtime
+availability still requires live dispatch evidence, project acceptance evidence
+and a separate verification gate; registry presence alone is not evidence.
 
 ## Dispatch и fallback
 

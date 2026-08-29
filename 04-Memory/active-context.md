@@ -1,9 +1,9 @@
 ---
 type: Active Context
 title: Активный контекст
-description: Phase 1 (kernel stabilization) ЗАВЕРШЕНА 2026-08-04. Текущая модельная политика Luna + DeepSeek Go сохранена; capability-routing design gate пройден, runtime extraction paused.
+description: Phase 1 (kernel stabilization) ЗАВЕРШЕНА 2026-08-04. Текущая модельная политика Luna + DeepSeek Go сохранена; capability-routing design gate пройден, runtime extraction partial и evidence-gated.
 tags: [memory]
-timestamp: 2026-08-28
+timestamp: 2026-08-29
 ---
 
 # Активный контекст
@@ -16,22 +16,42 @@ timestamp: 2026-08-28
   shifts. Следить за freshness только по реальным изменениям практики.
 - **Модельная политика (2026-08-25):** Luna + DeepSeek Go сохранена без
   изменений; capability-routing не меняет model-routing.
-- **Текущий фокус:** текущая сессия завершена. Следующий фокус — отдельная
-  реализация Coordination Bridge по spec T-109; capability-routing остаётся
-  отдельной отложенной задачей. AndroidOS environment prep/sysop report и
-  `/android-plan` — последующие шаги после bridge bootstrap.
-- **Coordination Bridge:** spec готова; MCP facade принята только как optional
-  thin local facade, без реализации и без зависимости телефона. Реализация
-  T-109 и optional MCP T-110 остаются `Planned`.
+- **Текущий фокус:** sysop primary smoke PASS подтверждён independent verifier
+  только в exact global primary scope. Параллельно выполняется T-109,
+  docs-only bootstrap Coordination Bridge;
+  bridge создан в AndroidOS и остаётся uncommitted/untracked, structural smoke записан, independent
+  reviewer/verifier gates для T-109 pending. Baseline SHA не является provenance bridge.
+  Capability-routing имеет частичный rollout: named researcher и reviewer smoke
+  подтверждены только scoped evidence, sysop — только exact global primary
+  smoke. AndroidOS environment prep/sysop report и `/android-plan`
+  следуют после bridge acceptance.
+- **Coordination Bridge:** выбран единый canonical Git-backed file
+  protocol/contract, не отдельный bridge-agent. Будущие agent facade/command и
+  MCP facade только optional, без реализации и без зависимости телефона.
+  Пользовательский operator guide добавлен в
+  [[07-Runbooks/coordination-bridge-operator-guide]]. Реализация
+  T-109 находится в `Blocked` и удерживается там до named
+   reviewer/verifier verdict; optional MCP T-110 остаётся `Planned`.
+- Глобальная `/bridge` добавлена в dotfiles source
+  `opencode-global/.config/opencode/command/bridge.md`; после Stow требует
+  restart OpenCode. Команда не фиксирует agent, не создаёт копию bridge и
+  останавливается с `UNROUTABLE` при недоказуемом named route.
+- **Текущий blocker T-109:** reviewer smoke подтверждён только для exact global
+  smoke; это не acceptance Coordination Bridge. Поэтому T-109 remains
+  `BLOCKED`; не симулировать `PASS` и не менять статус на Done.
 - Телефон подтверждён через ADB: Redmi 2510ERA8BG/flourite, Android 16/API 36,
   SM7635, arm64-v8a, около 11.1 GiB RAM, 464G storage, ADB authorized.
 - Подтверждён ноутбук sysop: Lenovo ThinkPad P51, Manjaro, i7-7820HQ, около
   15.3 GiB RAM, NVMe 500GB, Intel+NVIDIA.
-- Capability-routing сознательно отложен в отдельную сессию; предыдущие
-  temporary general fallbacks отмечены как процессуальная ошибка.
+- Capability-routing rollout продолжается отдельными evidence-gated шагами;
+  предыдущие temporary general fallbacks отмечены как процессуальная ошибка.
+- **Orchestration smoke PASS (2026-08-29):** independent verifier подтвердил
+  exact `vault` read-only chain `librarian route selection -> researcher ->
+  reviewer -> verifier`, sequential, без `general` fallback и self-marker.
+  Runtime automation/router не внедрён; это не общий automatic router claim.
 - **Предыдущий контекст:** design gate — `PASS`; researcher runtime extraction
-  paused на T-107 controlled probe. Создан dotfiles-local `system-ops` skeleton,
-  но runtime/root execution не подтверждены.
+  подтверждён только в scope named smoke evidence. Создан dotfiles-local
+  `system-ops` skeleton, но runtime/root execution не подтверждены.
 - **Incident symptom (2026-08-25):** при acceptance verification global
   `researcher` verifier task был отменён пользователем после зависания модели
   в бесконечном цикле. Это symptom/incident observation, root cause unknown;
@@ -51,8 +71,8 @@ timestamp: 2026-08-28
 - **Модель general (vault `opencode.json`):** `opencode-go/gpt-5.6-luna`.
   Историческая запись о временном переводе субагентов на бесплатные Zen
   сохранена в `facts.md`.
-- **Следующий фокус после bridge bootstrap:** выполнить read-only bootstrap и
-  smoke test Coordination Bridge по spec T-109; затем перейти к AndroidOS
+- **Следующий фокус после bridge bootstrap:** закрыть named reviewer/verifier
+  gates Coordination Bridge по spec T-109; затем перейти к AndroidOS
   environment prep/sysop report и `/android-plan`.
 - **Следующий gate:** Phase 2 (SERPlux first adoption по ecosystem upgrade
   plan v1) + dotfiles/global hardening (Phase 3). dv-hub — recovery case,
@@ -93,18 +113,37 @@ timestamp: 2026-08-28
   сессии.
 
 ## Активная задача
-- **Текущий следующий шаг:** отдельная реализация Coordination Bridge по spec
-  T-109, начиная с read-only bootstrap и smoke test. При отсутствии named role
+- **Текущий шаг:** sysop primary smoke PASS зафиксирован независимым verifier
+  только в exact global primary scope. T-109 bridge bootstrap создан в
+  `AndroidOS/coordination/bridge/`; read-only structural smoke записан.
+  Текущий статус — `BLOCKED`; следующий шаг — named reviewer и verifier. При отсутствии named role
   фиксировать `UNROUTABLE`, без silent general fallback. Runtime/root execution
   для `system-ops` не подтверждены.
 - После отдельной сессии T-109 — sysop environment prep и `/android-plan`;
   T-110 не начинать до завершения bridge и отдельного decision gate.
-- Capability-routing остаётся отдельной отложенной задачей. После bridge
-  bootstrap — AndroidOS environment prep/sysop report и `/android-plan`.
+- Capability-routing частично раскатан в пределах подтверждённых researcher,
+  reviewer, exact global primary sysop smoke и exact orchestration smoke;
+  runtime automation не внедрена.
 - SERP Factory: сначала обсудить decision gate по модели поставки и границам,
   implementation не начинать до подтверждения.
 
-### Capability-routing rollout (design-only, 2026-08-25)
+### Capability-routing rollout (2026-08-29; partial, evidence-gated)
+- Named `read-research -> researcher` smoke завершён с `PASS`; результат
+  подтверждён verifier в route log.
+- Runtime smoke подтверждён только в scope этого evidence; общий researcher
+  rollout не заявлен.
+- Named `quality-review -> reviewer` live smoke PASS подтверждён только в
+  scope `global` этого evidence; reviewer quality verdict и verifier acceptance
+  разделены. Max steps — minor, не failure.
+- Exact global primary sysop smoke PASS подтверждён independent verifier;
+  `system-audit -> sysop` имеет статус `runtime-smoke-confirmed` только в этом
+  scope. Это не orchestration/general rollout; `system-ops` apply отдельно.
+- Orchestration exact smoke PASS подтверждён independent verifier; общий
+  automatic runtime router не внедрён.
+- Gaps закрыты для R1/F1/F2/F3; остаются negative deny smoke, local extension
+  merge, uncommitted artifacts и literal tool output limits.
+
+### Capability-routing rollout design (2026-08-25)
 - Созданы [[02-Methods/capability-routing]] и [[06-Audits/2026-08-25-capability-routing-design-note]].
 - Design gate пройден: verifier после фикса ложного partial status в `00-INDEX` — `PASS`.
 - Решён sequence: `researcher → reviewer → sysop → orchestration integration`;
@@ -180,8 +219,8 @@ timestamp: 2026-08-28
 завершена; создана спецификация
 `06-Audits/2026-08-28-androidos-coordination-bridge-spec.md` и добавлена planned
 T-109. Следующий фокус — отдельная реализация Coordination Bridge после
-read-only bootstrap и smoke test. Capability-routing остаётся отдельной
-отложенной задачей; AndroidOS environment prep/sysop report и `/android-plan`
+read-only bootstrap и smoke test. Capability-routing продолжается частичным
+evidence-gated rollout; AndroidOS environment prep/sysop report и `/android-plan`
 следуют после bridge bootstrap. Незакоммиченные изменения ожидают отдельного
 commit/push.
 
@@ -208,3 +247,29 @@ SERPlux: executed 256/256 на HEAD f7ccd3e, канон test-metrics обнов�
 SERPlux (агентский слой), dotfiles (done.md). Residuals `[проверить]`
 открыты в facts.md. Следующий gate: Phase 2 (SERPlux adoption) / Phase 3
 (dotfiles hardening) / residuals через живую сессию.
+
+2026-08-29 — **Researcher smoke PASS:** named `read-research -> researcher`
+завершён с normal completion, без general fallback; PASS подтверждён verifier.
+Runtime dispatch подтверждён только для конкретного smoke в
+`04-Memory/route-log/`; общий rollout не заявлен. Reviewer smoke подтверждён
+отдельно и scoped; exact global primary sysop smoke PASS подтверждён
+independent verifier. `system-audit -> sysop` имеет scoped
+`runtime-smoke-confirmed`; orchestration не внедрена.
+
+2026-08-29 — **Sysop primary smoke PASS:** exact global primary
+`system-audit -> sysop` подтверждён независимым verifier; route scoped, без
+general fallback. Gaps: negative deny smoke, local extension merge,
+uncommitted artifacts, orchestration и literal tool output limits. T-109
+остаётся `BLOCKED`.
+
+2026-08-29 — **Reviewer smoke PASS:** named `quality-review -> reviewer`
+подтверждён только для exact global smoke; reviewer дал quality verdict
+`REVIEWER VERDICT: clear`, verifier отдельно подтвердил acceptance PASS.
+Sysop primary smoke подтверждён отдельно и scoped; T-109 остаётся `BLOCKED`.
+
+2026-08-29 — **Orchestration smoke PASS:** independent verifier подтвердил
+  exact `vault` read-only chain `librarian -> researcher -> reviewer ->
+  verifier`, sequential, без `general` fallback и self-marker. Runtime
+  automation/router не внедрён. Evidence: [[04-Memory/route-log/2026-08-29-orchestration-smoke]],
+  [[06-Specs/Vault/control-plane-smoke]]. R1/F1/F2/F3 закрыты документально;
+  uncommitted/negative deny/local merge/literal output gaps остаются.
