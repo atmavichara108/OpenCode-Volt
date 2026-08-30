@@ -11,6 +11,17 @@ timestamp: 2026-08-30
 > Автоматически обновляется librarian. Читается при старте каждой сессии.
 
 ## Текущий фокус
+- **SERPlux local-first release workflow (2026-08-30):** authoritative specs и
+  workflow находятся в `/home/rudra/Projects/serp/docs/specs/`; Vault SERPlux
+  specs archived/non-authoritative как approved exception. Единая точка входа
+  — `/release v1.0.2: <описание>`: intake/normalization → local spec/plan →
+  approval → build/tests/reviewer/verifier → до 5 fix loops. `/spec` только
+  read-only для existing specs, `/prompt` optional diagnostic. После verifier
+  PASS — `READY_FOR_USER_INTEGRATION`/`AWAITING_USER_REVIEW`; `/dream`/flush,
+  commit, tag, push и deploy не запускаются автоматически.
+- **Следующий actionable focus:** после подготовки и проверки clean state
+  включить paid feature v1.0.2 через `/release`; release не считать Done до
+  прохождения согласованных gates и пользовательского handoff.
 - **Decision (2026-08-30):** Coordination Bridge заморожен пользователем. T-109,
   T-108/system-ops и T-110 не активировать; не выполнять permission experiments,
   root, MCP или bridge integration. AndroidOS возвращён к local-first работе:
