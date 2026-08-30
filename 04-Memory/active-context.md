@@ -11,6 +11,16 @@ timestamp: 2026-08-30
 > Автоматически обновляется librarian. Читается при старте каждой сессии.
 
 ## Текущий фокус
+- **Global HITL + `/flush` + `/dream` (2026-08-30):** созданы/приняты global
+  human-in-the-loop контракт (`~/.config/opencode/AGENTS.md`, ADR-009,
+  runtime-гейты `task: ask`/`edit: ask`) и команды `/flush`/`/dream`.
+  Acceptance HITL/`/flush` — verifier PASS (после reviewer evidence); live
+  smoke выполняется в соседней сессии, его результат здесь не зафиксирован.
+  Создан spec `06-Specs/Vault/risk-based-orchestration.md` (status:
+  proposed); реализация отложена до отдельной сессии.
+- **Следующий actionable focus (2026-08-30):** запустить отдельную сессию по
+  `06-Specs/Vault/risk-based-orchestration.md` (review/decision по spec);
+  реализацию spec не выполнять в текущей сессии.
 - **SERPlux local-first release workflow (2026-08-30):** authoritative specs и
   workflow находятся в `/home/rudra/Projects/serp/docs/specs/`; Vault SERPlux
   specs archived/non-authoritative как approved exception. Единая точка входа
