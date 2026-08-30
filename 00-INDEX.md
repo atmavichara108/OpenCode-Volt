@@ -17,7 +17,7 @@ timestamp: 2026-06-29
 - Извлечь посты из Telegram → `/capture <тема>`
 - Сводка по проекту → `/project <имя>`
 - Дистилляция пайплайнов → `/distill-pipeline`
-- Coordination Bridge → `/bridge <свободный intent>`
+- Coordination Bridge → FROZEN BY USER 2026-08-30 (historical, не вызывать); local-first → `/android-plan`
 - Capability route → `/route <свободный intent>`
 - Посмотреть дорожную карту → [[DEVELOPMENT-ROADMAP]]
 - Execution specs → [[06-Specs/README]] / `/spec <selector>`
@@ -85,11 +85,15 @@ timestamp: 2026-06-29
 > **Methods** = abstract reusable techniques. **Audits** = dated findings.
 > **Runbooks** = live usage and operator workflows.
 
-## Execution specs (06-Specs/)
-[[06-Specs/README]] · [[06-Specs/SERPlux/spec-close-serplux-v1.0]]
+## Execution specs
+[[06-Specs/README]] · SERPlux local specs:
+`file:///home/rudra/Projects/serp/docs/specs/`
 
-> Центральный Vault — единственный источник execution specs. Specs не являются
-> evidence выполнения; локальные project pointers только помогают найти canonical file.
+> Для всех проектов, кроме SERPlux, canonical execution specs находятся в Vault.
+> Approved exception SERPlux: authoritative specs находятся только в
+> `/home/rudra/Projects/serp/docs/specs/` и читаются project-local `/spec`.
+> Vault SERPlux files выше сохранены как archived legacy artifacts. Specs не
+> являются evidence выполнения.
 
 ## Temporary (98-Temporary/)
 [[98-Temporary/README]] — сырые файлы от пользователя на экстракцию; обрабатываются и удаляются (не источник правды, не смешивать с `99-Inbox/`)

@@ -3,7 +3,7 @@ type: Active Context
 title: Активный контекст
 description: Phase 1 (kernel stabilization) ЗАВЕРШЕНА 2026-08-04. Текущая модельная политика Luna + DeepSeek Go сохранена; capability-routing design gate пройден, runtime extraction partial и evidence-gated.
 tags: [memory]
-timestamp: 2026-08-29
+timestamp: 2026-08-30
 ---
 
 # Активный контекст
@@ -11,6 +11,12 @@ timestamp: 2026-08-29
 > Автоматически обновляется librarian. Читается при старте каждой сессии.
 
 ## Текущий фокус
+- **Decision (2026-08-30):** Coordination Bridge заморожен пользователем. T-109,
+  T-108/system-ops и T-110 не активировать; не выполнять permission experiments,
+  root, MCP или bridge integration. AndroidOS возвращён к local-first работе:
+  `AGENTS.md` → `/android-plan`/свободный запрос, status → plan → approval →
+  implementation. Dotfiles открывать отдельно только для `/sysaudit`; Vault
+  `/ask` даёт контекст без обязательного копипаста отчётов.
 - **Runbook layer (2026-08-17):** создан `07-Runbooks/` как отдельный operational
   use layer; handbook фиксирует текущее применение, changelog — подтверждённые
   shifts. Следить за freshness только по реальным изменениям практики.
@@ -18,30 +24,28 @@ timestamp: 2026-08-29
   изменений; capability-routing не меняет model-routing.
 - **Текущий фокус:** capability-routing paused after v0.1 checkpoint. Exact
   smokes для researcher, reviewer, sysop и orchestration подтверждены;
-  следующий шаг после возобновления — negative permission smoke и
-  local-extension merge, затем дальнейшая adoption. Automatic router,
-  prompt-normalizer и task-compiler не реализованы. Параллельно выполняется
-  T-109, docs-only bootstrap Coordination Bridge;
+  дальнейшие permission/runtime experiments не продолжаются в текущем
+  рабочем контексте. Automatic router,
+  prompt-normalizer и task-compiler не реализованы. T-109 — historical
+  docs-only bootstrap Coordination Bridge;
   bridge создан в AndroidOS и остаётся uncommitted/untracked, structural smoke записан, independent
   reviewer/verifier gates для T-109 pending. Baseline SHA не является provenance bridge.
   Capability-routing имеет частичный rollout: named researcher и reviewer smoke
   подтверждены только scoped evidence, sysop — только exact global primary
-  smoke. AndroidOS environment prep/sysop report и `/android-plan`
-  следуют после bridge acceptance.
+  smoke. AndroidOS environment prep/sysop report больше не являются
+  предварительным шагом; следующий шаг — независимый `/android-plan`.
 - **Coordination Bridge:** выбран единый canonical Git-backed file
   protocol/contract, не отдельный bridge-agent. Будущие agent facade/command и
   MCP facade только optional, без реализации и без зависимости телефона.
   Пользовательский operator guide добавлен в
   [[07-Runbooks/coordination-bridge-operator-guide]]. Реализация
-  T-109 находится в `Blocked` и удерживается там до named
-   reviewer/verifier verdict; optional MCP T-110 остаётся `Planned`.
-- Глобальная `/bridge` добавлена в dotfiles source
-  `opencode-global/.config/opencode/command/bridge.md`; после Stow требует
-  restart OpenCode. Команда не фиксирует agent, не создаёт копию bridge и
-  останавливается с `UNROUTABLE` при недоказуемом named route.
+  T-109 frozen by user и не активируется; optional MCP T-110 frozen/deferred.
+- Глобальная `/bridge` остаётся historical frozen artifact в dotfiles source
+  `opencode-global/.config/opencode/command/bridge.md`; не вызывать и не
+  активировать после freeze.
 - **Текущий blocker T-109:** reviewer smoke подтверждён только для exact global
-  smoke; это не acceptance Coordination Bridge. Поэтому T-109 remains
-  `BLOCKED`; не симулировать `PASS` и не менять статус на Done.
+  smoke; это не acceptance Coordination Bridge. T-109 frozen by user; не
+  активировать, не симулировать `PASS` и не менять статус на Done.
 - Телефон подтверждён через ADB: Redmi 2510ERA8BG/flourite, Android 16/API 36,
   SM7635, arm64-v8a, около 11.1 GiB RAM, 464G storage, ADB authorized.
 - Подтверждён ноутбук sysop: Lenovo ThinkPad P51, Manjaro, i7-7820HQ, около
@@ -74,9 +78,8 @@ timestamp: 2026-08-29
 - **Модель general (vault `opencode.json`):** `opencode-go/gpt-5.6-luna`.
   Историческая запись о временном переводе субагентов на бесплатные Zen
   сохранена в `facts.md`.
-- **Следующий фокус после bridge bootstrap:** закрыть named reviewer/verifier
-  gates Coordination Bridge по spec T-109; затем перейти к AndroidOS
-  environment prep/sysop report и `/android-plan`.
+- **Следующий фокус:** T-101, AndroidOS PA MVP planning через
+  `/android-plan <PA MVP intent>`; bridge acceptance не требуется.
 - **Следующий gate:** Phase 2 (SERPlux first adoption по ecosystem upgrade
   plan v1) + dotfiles/global hardening (Phase 3). dv-hub — recovery case,
   не первая цель.
@@ -87,14 +90,34 @@ timestamp: 2026-08-29
   `opencode run --agent researcher` не гарантирует запуск subagent, per-run
   запрет `task` не предоставляется, а shell `timeout` не гарантирует abort
   серверной сессии; controlled probe пока не выполнен, задача открыта.
-- **Dotfiles-local `system-ops` (2026-08-25):** agent skeleton создан, но
+- **Historical dotfiles-local `system-ops` (2026-08-25):** agent skeleton создан, но
   runtime/root execution не подтверждены. `sysop` остаётся read-only; маршрут
   high-risk apply: `sysop` audit → `planner` plan → `system-ops` apply →
   `verifier`/post-check. Root apply только через explicit approval; edit/task
-  deny, dangerous operations deny-safe. T-108 открыт до live evidence.
-- **Следующий порядок:** T-107 controlled probe → T-108 permission/root
-  smoke-test → reviewer/sysop extraction. Не объявлять задачи Done без
-  acceptance.
+  deny, dangerous operations deny-safe. T-108 frozen by user; live evidence не
+  требуется для возобновления AndroidOS.
+- **Frozen order:** T-107/T-108/T-109/T-110 не активировать в рамках bridge
+  freeze. Не объявлять задачи Done без acceptance; T-101 остаётся следующим
+  planning step и не считается Done.
+- **T-108 intake (2026-08-29):** protocol report сохранён в canonical
+  AndroidOS bridge как `AOS-T108-001`, `H-108-001`, `E-108-001`. Named `sysop`
+  подтверждён только как read-only; system-ops route недоступен. Статус
+  `BLOCKED/UNROUTABLE` до librarian decision о границе sysop vs system-ops;
+   `general` не назначался. Bridge-файлы uncommitted/untracked и
+   `unverified/planned`.
+- **T-108 evidence persistence fix (2026-08-29):** в dotfiles `system-ops`
+  получил только scoped edit/external-directory access к canonical
+  `bridge/evidence/**`; global prompt требует новый append-only evidence с
+  report, commands/results/exit codes/gaps/full SHA refs и `BLOCKED` при
+  невозможности записи. Runtime write/live evidence ещё не подтверждены.
+- **T-108 root cause (2026-08-30):** вероятная реальная причина runtime blocker
+  установлена: canonical `system-ops.md` содержал более приоритетный scalar
+  `edit: deny`, перекрывавший project scoped object. Policy приведена к
+  object deny-default: edit allow только для нового evidence и external read
+  allow только для `tasks/**`, `handoffs/**`, `evidence/**`; task deny и
+  dangerous bash deny сохранены. Task owner передан `system-ops`, новый
+  `H-108-002` ожидает `E-108-003`; fresh-session verification ещё pending,
+  T-108 остаётся BLOCKED.
 - **Residuals `[проверить]` (честно открыты, не закрыты):**
   - T-089/T-097: commit-guard на реальном `git commit` (real commit smoke)
     и реальный compaction event session-dispatch — безопасно
@@ -116,18 +139,13 @@ timestamp: 2026-08-29
   сессии.
 
 ## Активная задача
-- **Текущий шаг:** sysop primary smoke PASS зафиксирован независимым verifier
-  только в exact global primary scope. T-109 bridge bootstrap создан в
-  `AndroidOS/coordination/bridge/`; read-only structural smoke записан.
-  Текущий статус — `BLOCKED`; следующий шаг — named reviewer и verifier. При отсутствии named role
-  фиксировать `UNROUTABLE`, без silent general fallback. Runtime/root execution
-  для `system-ops` не подтверждены.
-- После отдельной сессии T-109 — sysop environment prep и `/android-plan`;
-  T-110 не начинать до завершения bridge и отдельного decision gate.
-- Capability-routing paused after v0.1 checkpoint; подтверждены exact smokes
-  researcher, reviewer, sysop и orchestration. После возобновления: negative
-  permission smoke → local-extension merge → дальнейшая adoption. Automatic
-  router, prompt-normalizer и task-compiler не реализованы.
+ - **Текущий шаг:** AndroidOS PA MVP planning через `/android-plan`; bridge и
+   T-108/T-109/T-110 frozen by user, bridge не вызывается. Permission/runtime
+   experiments не продолжаются. Historical bridge WIP и evidence не удаляются и
+   не объявляются PASS.
+ - Capability-routing paused after v0.1 checkpoint; дальнейшие permission/runtime
+   experiments не являются текущим рабочим шагом. Automatic router,
+   prompt-normalizer и task-compiler не реализованы.
 - SERP Factory: сначала обсудить decision gate по модели поставки и границам,
   implementation не начинать до подтверждения.
 
@@ -158,7 +176,8 @@ timestamp: 2026-08-29
   runtime; T-094 остаётся на approval gate и не стал Method.
 - T-077/T-092/T-093/T-094 остаются active design/approval substeps; T-094 не
   закрыт до explicit approval.
-- AndroidOS T-101 возвращён в Planned с пометкой paused by routing rollout.
+- AndroidOS T-101 возвращён в Planned как следующий PA MVP planning step после
+  freeze bridge; реализация не начата и Done не заявлен.
 
 ## Завершённые изменения (все сессии)
 - [x] **Phase 1 kernel stabilization (2026-08-04, T-084..T-089, T-096..T-098):**
@@ -282,4 +301,12 @@ Sysop primary smoke подтверждён отдельно и scoped; T-109 о�
 после v0.1 checkpoint; exact smokes researcher, reviewer, sysop и orchestration
 подтверждены. Следующий шаг после возобновления — negative permission smoke и
 local-extension merge, затем дальнейшая adoption. Automatic router,
-prompt-normalizer и task-compiler не реализованы.
+ prompt-normalizer и task-compiler не реализованы.
+
+2026-08-29 — **T-108 protocol report:** named `system-ops` session
+`ses_fb0ee381fffeHfjxggBF0CXpm3/` не использовала fallback, но получила отказ
+edit evidence path и отказ `external_directory` для task/handoff; host и WIP не
+изменялись. E-108-002 записан librarian, не самим system-ops. Статический
+merged config содержит scoped rules, но runtime application edit не доказан;
+T-108 остаётся BLOCKED. Safe next step — fresh-session controlled smoke, без
+broad allow.

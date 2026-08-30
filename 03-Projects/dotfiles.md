@@ -6,6 +6,11 @@ stack: shell / GNU Stow / конфиги Manjaro (23 пакета) / OpenCode mu
 ---
 # dotfiles
 
+> **Coordination Bridge FROZEN BY USER (2026-08-30):** T-108/system-ops,
+> permission experiments и bridge integration не активировать. Не выполнять root,
+> MCP или runtime permission changes. Для отдельной потребности остаётся
+> read-only `/sysaudit`; canonical spec: [[06-Specs/dotfiles/coordination-bridge-freeze]].
+
 Операционная система для управления конфигами Manjaro через OpenCode. Мульти-агент v2 + verifier + closed-loop + flush-протокол: пайплайны, субагенты (включая verifier), память и UX-осознанность.
 
 Канонический профиль Max Rudra: `.opencode/memory/user-profile.md`. Глобальный `profile-governor` выдаёт scoped context и проактивно сверяет профиль с Vault/dotfiles/ChaT/AndroidOS только через explicit invocation, hooks, events или scheduled checks; он предлагает diff, но не пишет тихо и не дублирует профиль. Контракт: [[user-profile-contract]].
@@ -30,7 +35,7 @@ stack: shell / GNU Stow / конфиги Manjaro (23 пакета) / OpenCode mu
 | planner | opencode-go/gpt-5.6-luna | Архитектор (ADR, планы, дизайн) |
 | builder | opencode-go/gpt-5.6-luna | Строитель (конфиги, скрипты, модули) |
 
-### Subagent (8)
+### Subagent (9)
 | Агент | Модель | Назначение |
 |-------|--------|-----------|
 | reviewer | opencode-go/deepseek-v4-flash | Ревьюер (PASS/FAIL, безопасность) |
@@ -41,20 +46,26 @@ stack: shell / GNU Stow / конфиги Manjaro (23 пакета) / OpenCode mu
 | qtile-dev | opencode-go/gpt-5.6-luna | Qtile-специалист (WM, виджеты, Python) |
 | bash-dev | opencode-go/gpt-5.6-luna | Bash-специалист (скрипты, автоматизация) |
 | util-dev | opencode-go/gpt-5.6-luna | Утилиты (макросы, нотификации, rofi) |
+| system-ops | opencode-go/gpt-5.6-luna | High-risk host apply planner; explicit approval, dry-run/preflight, post-check и rollback |
 
-### Local extension: dotfiles-local
-| Агент | Статус | Границы |
-|-------|--------|---------|
-| system-ops | skeleton создан; runtime/root execution не подтверждены | High-risk host root apply только через explicit approval; `edit`/`task` deny; dangerous operations deny-safe |
+`system-ops` зарегистрирован как global subagent в dotfiles canonical global layer.
+Runtime dispatch, permission merge и root/apply smoke-test не подтверждены.
+Вероятная реальная причина T-108 runtime blocker найдена: canonical prompt
+содержал более приоритетный scalar `edit: deny`, перекрывавший project scoped
+object. Prompt теперь использует object deny-default с allow только для
+canonical `AndroidOS/coordination/bridge/evidence/**`; explicit external read
+также имеет deny-default и allow только для `tasks/**`, `handoffs/**` и
+`evidence/**`. Runtime fresh-session write ещё не подтверждён.
 
-`sysop` остаётся read-only инспектором системы. `system-ops` — отдельное локальное
-расширение для dotfiles-local, а не замена `sysop` и не global role.
+`sysop` остаётся read-only инспектором системы. `system-ops` — отдельная global
+роль для approval-gated high-risk apply planning, а не замена `sysop`.
 
 ## Пайплайны (команды)
 
 | Команда | Пайплайн | Назначение |
 |---------|----------|-----------|
 | `/sysaudit` | sysop | Аудит: пакеты, конфиги, дрейф, сервисы |
+| `system-ops` (named task) | sysop audit → planner → system-ops → verifier/post-check | Только high-risk host apply после explicit user approval; отдельной slash-команды нет |
 | `/script` | planner → bash-dev → reviewer | Bash-скрипты |
 | `/qtile` | planner → qtile-dev → reviewer | Qtile: конфиги, виджеты, хуки |
 | `/util` | planner → util-dev → reviewer | Утилиты: btop, wal, neofetch |
@@ -100,7 +111,7 @@ stack: shell / GNU Stow / конфиги Manjaro (23 пакета) / OpenCode mu
 - [x] memory-management: /flush + формализованный flush-протокол
 - [ ] первый /sysaudit
 - [ ] model-routing (после тестов)
-- [ ] system-ops: permission/root smoke-test до live evidence (T-108)
+- [ ] system-ops: permission/root smoke-test (T-108) — **FROZEN BY USER; не активировать.** Existing evidence сохраняется; root, MCP и permission experiments не выполнять.
 
 ## Лог изменений
 - 2026-06-26: карточка-план заведена
@@ -108,4 +119,7 @@ stack: shell / GNU Stow / конфиги Manjaro (23 пакета) / OpenCode mu
 - 2026-06-30 (v1): OpenCode инициализирован — sysop, /sysaudit
 - 2026-06-30 (v2): полная архитектура — 7 агентов, 8 пайплайнов, память, UX-профиль
 - 2026-07-04 (v3): verifier subagent + /loop + /flush — closed-loop ✅, verifier-pattern ✅, memory-management ✅
-- 2026-08-25: зафиксирован dotfiles-local `system-ops`; skeleton создан, runtime/root execution не подтверждены; root apply требует explicit approval, edit/task deny, dangerous operations deny-safe.
+- 2026-08-29: `system-ops` зарегистрирован как global subagent; добавлен scoped evidence-write protocol без broad edit allow; runtime dispatch/effective permissions/root apply не подтверждены, T-108 остаётся BLOCKED.
+- 2026-08-29: protocol report T-108 зафиксировал в named session `ses_fb0ee381fffeHfjxggBF0CXpm3/` отказ edit для evidence и отказ external_directory для task/handoff; fallback не использовался. Статический merged config правила содержит, но runtime application не доказан; T-108 остаётся BLOCKED.
+- 2026-08-30: probable root cause identified: canonical scalar `edit: deny` overrode project scoped object; prompt policy is now object deny-default with evidence-only edit and scoped task/handoff/evidence external reads. Fresh-session runtime merge/live evidence pending; T-108 remains BLOCKED.
+- 2026-08-30: Coordination Bridge и T-108/system-ops frozen by user; bridge integration не продолжается, root/MCP/permission experiments не выполнять. `/sysaudit` остаётся отдельным read-only workflow.

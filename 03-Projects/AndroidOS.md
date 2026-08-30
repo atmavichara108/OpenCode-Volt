@@ -1,6 +1,6 @@
 ---
 type: project
-repo: [planned; repository not created]
+repo: /home/rudra/Projects/AndroidOS
 kind: umbrella / mobile / ecosystem
 status: planning
 stack: Android / Kotlin (to validate) / OpenCode / offline-first data
@@ -12,9 +12,23 @@ timestamp: 2026-08-22
 > **Статус:** planning. Это umbrella-проект и архитектурная граница, а не утверждение, что модули уже реализованы.
 > **Связано:** [[rudra-phone]], [[rudra-ai]], [[dotfiles]], [[ChaT]], [[06-Audits/2026-08-22-androidos-open-source-first]], [[06-Audits/2026-08-22-androidos-pa-mvp-architecture-adr]], [[06-Audits/2026-08-28-androidos-coordination-bridge-spec]], [[user-profile-contract]], [[TASKS]]
 
-> **Coordination bridge:** принят Git-backed bridge как canonical source of truth;
-> optional local MCP facade запланирован только после файлового bridge и smoke test.
-> MCP пока не реализован и не является зависимостью телефона.
+> **Coordination Bridge FROZEN BY USER (2026-08-30):** bridge не является
+> обязательным шагом AndroidOS и не вызывается. Historical artifacts сохраняются;
+> canonical execution spec: [[06-Specs/AndroidOS/androidos-return-to-implementation]].
+
+> **Historical T-109 bootstrap (2026-08-28):** в AndroidOS создан canonical docs-only
+> surface `coordination/bridge/`. Bridge artifacts uncommitted/untracked; the
+> pre-bridge AndroidOS baseline does not contain them and is not their
+> provenance. Task/handoff/evidence/decision artifacts связаны между собой.
+> Structural smoke partial; local named runtime dispatch не доказан: попытка
+> dispatch для `reviewer` откатилась на default. Поэтому reviewer/verifier
+> acceptance не подтверждена, bridge remains `BLOCKED`; не симулировать `PASS`
+> и не переводить задачу в Done.
+
+> **Current operator path:** открыть AndroidOS, прочитать `AGENTS.md`, выполнить
+> `/android-plan` или свободный запрос; порядок read-only status → plan → user
+> approval → implementation. Не копировать отчёты в Vault. Historical guide:
+> [[07-Runbooks/coordination-bridge-operator-guide]].
 
 > Профиль: Personal Assistant будет тесно связан с каноническим профилем через scoped adapter и approval-gated proposals. Практическая глубокая интеграция AndroidOS откладывается до завершения Personal Assistant MVP; до этого фиксируются только контракты, threat model и research.
 

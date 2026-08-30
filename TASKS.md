@@ -26,16 +26,16 @@ timestamp: 2026-07-07
 
 | ID | Задача | Приоритет | Связано |
 |----|--------|-----------|---------|
-| T-109 | AndroidOS Coordination Bridge: docs-only bootstrap; bridge uncommitted/untracked, structural smoke partial. **BLOCKED:** named `reviewer` и named `verifier` acceptance verdict ещё не выполнены. | P1 | [[AndroidOS]], [[06-Audits/2026-08-28-androidos-coordination-bridge-spec]], `AndroidOS/coordination/bridge/` |
+| T-109 | AndroidOS Coordination Bridge: docs-only bootstrap; **FROZEN BY USER — не активировать.** Исторические bridge artifacts uncommitted/untracked; PASS не создавать. | P1 | [[AndroidOS]], [[06-Audits/2026-08-28-androidos-coordination-bridge-spec]], [[06-Specs/dotfiles/coordination-bridge-freeze]], `AndroidOS/coordination/bridge/` |
 
 ## 🔵 Planned — следующие задачи
 
 | ID | Задача | Приоритет | Связано |
 |----|--------|-----------|---------|
-| T-108 | Dotfiles-local `system-ops`: permission/root smoke-test — проверить effective merged permissions, explicit sudo approval, отсутствие silent root allow, preflight/post-check/rollback, без реальных опасных изменений. Не закрывать до live evidence. | P1 | [[03-Projects/dotfiles]], [[06-Audits/2026-08-25-capability-routing-design-note]] |
+| T-108 | Dotfiles-local `system-ops`: permission/root smoke-test. **FROZEN BY USER — не активировать и не продолжать permission experiments; root/MCP не выполнять.** Existing evidence сохраняется. | P1 | [[03-Projects/dotfiles]], [[06-Specs/dotfiles/coordination-bridge-freeze]], [[06-Audits/2026-08-25-capability-routing-design-note]], `AndroidOS/coordination/bridge/tasks/AOS-T108-001.md` |
 | T-117 | Capability-routing follow-up: выполнить negative permission smoke и local-extension merge smoke после v0.1 checkpoint; не закрывать design tasks и не заявлять automatic router adoption до evidence. | P1 | [[02-Methods/capability-routing]], [[06-Audits/2026-08-25-capability-routing-design-note]], T-077, T-093 |
-| T-110 | AndroidOS Coordination Bridge: после файлового bridge и smoke test спроектировать и при доказанной необходимости реализовать optional thin local MCP facade; только `get context/task`, `claim task`, `update status`, `write handoff`, `append evidence`, со строгими scope/owner, append-only evidence и запретом silent overwrite; MCP не source of truth и не phone runtime dependency. | P2 | [[AndroidOS]], [[06-Audits/2026-08-28-androidos-coordination-bridge-spec]], T-109 |
-| T-101 | AndroidOS: research и контракты Personal Assistant MVP; ADR с provisional architecture, STT/DB/sync/LLM сравнениями и acceptance gates. Реализация не начата. **Paused by routing rollout.** | P1 | [[AndroidOS]], [[06-Audits/2026-08-22-androidos-pa-mvp-architecture-adr]], [[06-Audits/2026-08-22-androidos-open-source-first]] |
+| T-110 | AndroidOS Coordination Bridge optional MCP facade. **FROZEN/DEFERRED BY USER — не проектировать и не реализовывать.** | P2 | [[AndroidOS]], [[06-Specs/dotfiles/coordination-bridge-freeze]], [[06-Audits/2026-08-28-androidos-coordination-bridge-spec]], T-109 |
+| T-101 | AndroidOS: следующий planning step — research и контракты Personal Assistant MVP; ADR с provisional architecture, STT/DB/sync/LLM сравнениями и acceptance gates. Реализация не начата; **не Done**. Exact next action: `/android-plan <PA MVP intent>`. | P1 | [[AndroidOS]], [[06-Specs/AndroidOS/androidos-return-to-implementation]], [[06-Audits/2026-08-22-androidos-pa-mvp-architecture-adr]], [[06-Audits/2026-08-22-androidos-open-source-first]] |
 | T-028 | Планирование новой архитектуры: 4 направления (Phone Remote, VibeAndroid, ProdWatch, Rudra AI) — **пауза, активен SERPlux** | P2 | [[99-Inbox]] |
 | T-046 | R-005: Project Orchestrator — оркестрация из волта всеми проектами + Android-управление | P2 | [[99-Inbox]] (R-005) |
 | T-015 | Telegram-бот для приёма фич и подходов — **эволюция T-062** (сначала команда /capture, бот как real-time слой позже) | P5 | [[DEVELOPMENT-ROADMAP]], [[02-Methods/tool-integration-pattern]] |

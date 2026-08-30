@@ -59,16 +59,15 @@ selection -> named researcher -> reviewer -> verifier. The chain is sequential,
 read-only, and evidence-gated; this confirmation does not enable an automatic
 runtime router. `sysop` primary handoff remains separate.
 
-### Coordination Bridge
+### Local-first project work
 
- Пользовательский порядок работы с единым Git-backed bridge protocol и командой
- `/bridge` описан в [[07-Runbooks/coordination-bridge-operator-guide]]. Bridge — это canonical
-file contract, а не отдельный agent; фасад-команда или MCP могут появиться
-  позже, но не становятся source of truth. Bridge records named-role
-  claim/handoff/evidence and stops at `UNROUTABLE`, `BLOCKED`, stale or
-  conflict; automatic runtime routing is not implemented. Пользователь задаёт
-  intent/scope/owner/DoD и одобряет commit/push; review и verify остаются
-  отдельными gates.
+  Для AndroidOS пользователь открывает репозиторий, читает `AGENTS.md` и
+  выполняет `/android-plan` или обычный свободный запрос. Порядок: read-only
+  status → plan → явное user approval → implementation. Coordination Bridge
+  заморожен и не вызывается; reports/handoff не копируются в Vault. Dotfiles
+  используется отдельно через `/sysaudit` только для самостоятельной audit
+  потребности. Historical reference сохранён в
+  [[07-Runbooks/coordination-bridge-operator-guide]].
 
 ### Read-only audit
 

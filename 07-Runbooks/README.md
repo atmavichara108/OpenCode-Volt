@@ -17,6 +17,12 @@ operator workflows и правила обновления практики.
 - **Runbooks** — как оператор реально пользуется системой сейчас.
 
 [[07-Runbooks/vibecoding-operator-handbook]] — текущее рабочее состояние.
+[[07-Runbooks/coordination-bridge-operator-guide]] — historical reference,
+Coordination Bridge FROZEN BY USER (2026-08-30); он не является обязательным
+workflow.
+Для AndroidOS использовать local-first `/android-plan` или свободный запрос; для
+отдельного host audit в dotfiles — `/sysaudit`. Vault `/ask` даёт контекст без
+обязательного копипаста отчётов.
 [[07-Runbooks/vibecoding-changelog]] — краткая история изменения практики.
 
 Обновлять слой можно только по подтверждённым изменениям практики. Предложения,

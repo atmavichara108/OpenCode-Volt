@@ -30,3 +30,15 @@ timestamp: 2026-07-02
 - Память сессии → 04-Memory/.
 - Источник правды по API OpenCode — официальные доки; 01-Reference это выжимка с датой проверки.
 - **Python-окружение:** каждый Python-проект использует direnv + .venv. В корне `.envrc` с `source .venv/bin/activate`. После создания — `direnv allow` (один раз). Зависимости ставятся в venv, НЕ глобально.
+
+## Execution specs
+- Каждый новый execution spec для обычных проектов размещается только в
+  `06-Specs/<project>/` этого Vault. Approved exception SERPlux: specs создаются
+  только в `/home/rudra/Projects/serp/docs/specs/`.
+- Не создавать конкурирующие specs в случайных `docs/`; для SERPlux локальный
+  `docs/specs/` authoritative, а старые Vault-файлы SERPlux archived.
+- Проектные агенты перед изменением читают canonical spec через `/spec <selector>`;
+  approval, commit/tag и verifier gates из spec обязательны.
+- Для обычных проектов при недоступности canonical Vault остановиться с
+  `BLOCKED`, без fallback. Для SERPlux `/spec` читает только local
+  `AGENTS.md`/`README.md` и `docs/specs/`, без обращения к Vault.

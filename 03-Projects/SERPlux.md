@@ -125,6 +125,10 @@ observability и recovery. Подробности: [[06-Audits/2026-08-21-serp-f
 
 ## Команды (пайплайны)
 
+> **Approved execution-spec exception:** canonical specs находятся только в
+> `/home/rudra/Projects/serp/docs/specs/`; `/spec <selector>` и весь release
+> workflow работают локально, без Vault dependency.
+
 | Команда | Агент | Что делает |
 |---------|-------|-----------|
 | `/commit` | build (deepseek-v4-flash, subtask) | Коммит с conventional-сообщением; тесты — через commit-guard |

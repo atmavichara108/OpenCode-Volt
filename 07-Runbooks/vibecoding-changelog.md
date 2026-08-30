@@ -18,6 +18,17 @@ Append-only: одна запись на подтверждённый shift, да
 
 ## Entries
 
+### 2026-08-30 — User decision: Coordination Bridge frozen
+
+- Пользователь подтвердил freeze Coordination Bridge, T-108/system-ops и
+  cross-repo integration; permission experiments, root и MCP не продолжать.
+- AndroidOS возвращён к local-first реализации через `AGENTS.md`,
+  `/android-plan` или свободный запрос. Dotfiles используется отдельно для
+  `/sysaudit`, Vault `/ask` даёт контекст; bridge не является обязательным и
+  reports не копируются.
+- Basis: [[06-Specs/AndroidOS/androidos-return-to-implementation]],
+  [[06-Specs/dotfiles/coordination-bridge-freeze]].
+
 ### 2026-08-29 — Global Coordination Bridge command
 
 - Добавлена глобальная `/bridge` как protocol entrypoint в текущем репозитории;
