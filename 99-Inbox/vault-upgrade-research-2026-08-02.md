@@ -1396,3 +1396,182 @@ replay. Это переформулирует онтологию волта от
 - **Не обещать**: что harness снизит token spend на конкретную величину до
   A/B прогона на replay set. Любые проценты в разделах выше — намеренно
   отсутствуют; критерии успеха требуют измерения, не цитаты.
+
+---
+
+## Addendum 2026-08-31 — OpenCode UI/UX/Workspace research
+
+> **Append-only addendum.** Исходные разделы и выводы 2026-08-02 не
+> переписываются и не отменяются; этот раздел добавляет результаты
+> read-only исследования UI/UX/Workspace-поверхности OpenCode по официальным
+> докам (источник правды по конвенции волта). Всё ниже проверено по
+> opencode.ai/docs **2026-08-31** (страницы датированы «Last updated: Aug 30,
+> 2026»), кроме пунктов, явно помеченных `[проверить]`. Свежий researcher
+> brief на момент сессии недоступен — исследование выполнено напрямую по
+> докам, что не заменяет independent researcher evidence.
+
+### 1. Подтверждённые TUI capabilities (docs/tui/, docs/keybinds/, docs/intro/)
+
+- Slash-команды TUI: `/connect`, `/compact` (alias `/summarize`), `/details`,
+  `/editor`, `/exit`, `/export`, `/help`, `/init`, `/models`, `/new`,
+  `/redo`, `/sessions`, `/share`, `/themes`, `/thinking`, `/undo`, `/unshare`.
+- `@` — fuzzy file references (контент файла добавляется в разговор);
+  настроенные references тоже появляются в `@`-autocomplete.
+- `!` в начале сообщения — запуск shell-команды, вывод попадает в разговор.
+- Plan/Build режимы переключаются `Tab`; режим виден в правом нижнем углу.
+- Leader-ключ `ctrl+x` (дефолт) + keybinds; command palette `ctrl+p`.
+- `/undo`/`/redo` откатывают сообщения **и file changes** через Git — проект
+  обязан быть git-репозиторием.
+- `/editor`/`/export` используют `$EDITOR` (GUI-редакторам нужен `--wait`).
+- Drag&drop изображений в терминал — картинки попадают в промпт.
+- `tui.json`/`tui.jsonc` (отдельно от `opencode.json`): `theme`,
+  `keybinds` (merge с дефолтами), `leader_timeout`, `scroll_speed`,
+  `scroll_acceleration`, `diff_style` (`auto`/`stacked`), `cursor`
+  (style/blinking), `mouse` (default `true`), `attention` (desktop
+  notifications + sounds: `enabled`, `notifications`, `sound`, `volume`,
+  `sound_pack`, `sounds`), `OPENCODE_TUI_CONFIG` для кастомного пути.
+- Attention: уведомления для questions/permissions/session errors/completed
+  sessions; desktop notifications только когда терминал blurred.
+
+### 2. TUI SDK/API — что подтверждено, что нет
+
+- **Подтверждено (server-side TUI control):** `opencode serve` экспонирует
+  TUI-эндпоинты: `POST /tui/append-prompt`, `/tui/open-help`,
+  `/tui/open-sessions`, `/tui/open-themes`, `/tui/open-models`,
+  `/tui/submit-prompt`, `/tui/clear-prompt`, `/tui/execute-command`,
+  `/tui/show-toast`, `GET /tui/control/next`, `POST /tui/control/response`.
+  Архитектура: TUI = клиент к server; это используется IDE-плагинами.
+- **Подтверждено (plugin TUI events):** `tui.prompt.append`,
+  `tui.command.execute`, `tui.toast.show` — плагины могут влиять на TUI
+  через события (docs/plugins/).
+- **НЕ подтверждено `[проверить]`:** публичный TUI SDK для встраивания
+  кастомных виджетов/панелей внутрь TUI (аналог widget API). Доки
+  описывают только themes/keybinds/tui.json-опции. Кастомные дашборды
+  внутри TUI не документированы — не проектировать Pip-Boy как TUI-виджет.
+- **НЕ подтверждено `[проверить]`:** OSC8 clickable hyperlinks в выводе
+  tools/TUI. Доки не описывают кликабельные ссылки; `/export` (markdown в
+  `$EDITOR`) — задокументированный обходной путь. Wikilinks волта в TUI
+  не кликабельны (не заявлять).
+
+### 3. Custom Tools — подтверждено с уточнениями (docs/custom-tools/)
+
+- `tool()` helper из `@opencode-ai/plugin`; Zod-схемы аргументов; имя
+  инструмента = имя файла; несколько tools в файле → `<filename>_<export>`;
+  custom tool может override built-in (по имени); `context` = `{agent,
+  sessionID, messageID, directory, worktree}`; вызов Python через `Bun.$`
+  (пример в docs). Локация: `.opencode/tools/` или `~/.config/opencode/tools/`.
+- Для экосистемы: read-only local endpoint (snapshot-инструмент) реализуем
+  как custom tool без новых зависимостей — предпочтительный путь vs MCP.
+
+### 4. Plugin/TUI hooks — полный подтверждённый event list (docs/plugins/)
+
+- `command.executed`; `file.edited`, `file.watcher.updated`;
+  `installation.updated`; `lsp.client.diagnostics`, `lsp.updated`;
+  `message.part.removed/updated`, `message.removed/updated`;
+  `permission.asked/replied`; `server.connected`; `session.created/compacted/
+  deleted/diff/error/idle/status/updated`; `todo.updated`; `shell.env`;
+  `tool.execute.after/before`; `tui.prompt.append`, `tui.command.execute`,
+  `tui.toast.show`; `experimental.session.compacting` (включая полный
+  `output.prompt` override).
+- Plugins: local dirs (`.opencode/plugins/`, `~/.config/opencode/plugins/`)
+  + npm-пакеты в config; load order global config → project config →
+  global dir → project dir; deps через `package.json` в config-директории
+  (bun install при старте).
+- `file.watcher.updated` — подтверждённый файловый watcher-event (для
+  будущего observer/event ingestion; runtime-поведение в vault-окружении
+  `[проверить]`).
+
+### 5. MCP — подтверждено (docs/mcp-servers/)
+
+- Local (`command: [...]`, `environment`, `cwd`, `timeout` default 5000ms)
+  и remote (`url`, `headers`, OAuth). OAuth: automatic Dynamic Client
+  Registration (RFC 7591) + pre-registered credentials; CLI `opencode mcp
+  auth/list/logout/debug`; токены в `~/.local/share/opencode/mcp-auth.json`.
+- Управление: `enabled`, per-agent `tools` enable/disable, glob-паттерны
+  (`my-mcp*`), tools регистрируются с префиксом имени сервера.
+- **Caveat из docs:** MCP-серверы добавляют контекст; большое число tools
+  легко превышает context limit — «being careful with which MCP servers
+  you use». Это подтверждает осторожность vault-политики: read-only MCP
+  только с минимальным числом tools, prefer custom tools.
+
+### 6. References — новое подтверждённое capability (docs/references/)
+
+- `references` в `opencode.json`: локальная директория (`path`) или git-репо
+  (`repository` + `branch`, materialize в локальный cache); `description`
+  попадает в agent system context; `hidden` скрывает из autocomplete;
+  `@alias`/`@alias/` в TUI; reference-директории автоматически разрешаются
+  через external-directory permission boundary (edit-права не наследуются).
+- Для Agent Workspace: references — нативный механизм «внешнего контекста
+  без копирования» (например, карточки волта как reference для проектных
+  сессий). Runtime-поведение в экосистеме `[проверить]` smoke'ом.
+
+### 7. Server / attach / web — подтверждено (docs/server/, docs/web/)
+
+- `opencode serve [--port 4096] [--hostname] [--cors] [--mdns]`;
+  `OPENCODE_SERVER_PASSWORD` (basic auth); OpenAPI 3.1 spec на `/doc`;
+  SSE: `GET /event` (первое событие `server.connected`, затем bus events) и
+  `GET /global/event`.
+- REST: `/project`, `/path`, `/vcs`, `/config` (GET/PATCH),
+  `/config/providers`, `/provider`, `/session` (+`/status`, `/:id`,
+  `/:id/children`, `/:id/todo`, `/:id/diff`, `/:id/abort`, `/:id/fork`,
+  `/:id/revert`, `/:id/summarize`, `/:id/permissions/:pid`), `/session/:id/
+  message`, `/session/:id/prompt_async`, `/session/:id/command`,
+  `/session/:id/shell`, `/command`, `/find`, `/find/file`, `/find/symbol`,
+  `/file`, `/file/content`, `/file/status`, `/experimental/tool`,
+  `/lsp`, `/formatter`, `/mcp` (GET status + POST add), `/agent`, `/log`,
+  `/tui/*`, `/auth/:id`.
+- `opencode web` — браузерный клиент (sessions, server status);
+  `opencode attach http://localhost:4096` — подключить TUI к работающему
+  web-серверу: web + TUI одновременно, shared sessions/state.
+- Для Pip-Boy «live»-режима: SSE `/event` — задокументированный путь
+  event ingestion; до внедрения observer+ingestion не заявлять real-time.
+
+### 8. tmux / Docker limitations
+
+- **tmux:** docs не описывают tmux-специфику. Подтверждённые смежные факты:
+  `mouse: true` (default) захватывает мышь в TUI — в tmux это может
+  конфликтовать с tmux mouse-режимом `[проверить]`; attention
+  notifications завязаны на terminal blurred — поведение внутри tmux
+  `[проверить]`; `/editor` через `$EDITOR` работает в tmux-панели как
+  обычный процесс. Клавиатурные keybinds (`ctrl+x` leader) в tmux
+  проходят как обычные escape-последовательности `[проверить]` на
+  практике (префикс tmux может перехватывать).
+- **Docker:** `docker run -it --rm ghcr.io/anomalyco/opencode` —
+  подтверждённый официальный способ (docs/intro). Интерактивная сессия
+  требует `-it`; монтирование проекта/проброс API-ключей/глубокая
+  интеграция с host-git в docs не детализированы `[проверить]`. Для
+  vault-окружения Docker не требуется (нативный Manjaro).
+
+### 9. MVP vs later (для Pip-Boy / observer / workspace)
+
+- **MVP (текущая сессия, static/generated):** canonical registry
+  (`registry.json`) + multi-view Pip-Boy (Matrix/Kanban/Projects/Agents/
+  Blockers/Workspace поверх registry + data.json) + детерминированный
+  read-only snapshot CLI (observer). Всё — static/generated данные,
+  real-time не заявляется.
+- **Later (после MVP acceptance):** live event ingestion через SSE `/event`
+  (server), `file.watcher.updated` plugin-события, OSC8/clickable links
+  `[проверить]`, tmux-панель Pip-Boy `[проверить]`, references-based
+  workspace smoke. Каждый шаг — отдельный acceptance gate.
+
+### Sources (проверено 2026-08-31)
+
+- TUI: https://opencode.ai/docs/tui/ — slash-команды, tui.json, attention.
+- Keybinds: https://opencode.ai/docs/keybinds/ — leader/palette (через tui).
+- Custom Tools: https://opencode.ai/docs/custom-tools/ — tool(), context,
+  Bun.$, override, `<filename>_<export>`.
+- Plugins: https://opencode.ai/docs/plugins/ — полный event list, load
+  order, npm, compaction hooks.
+- MCP: https://opencode.ai/docs/mcp-servers/ — local/remote, OAuth RFC 7591,
+  per-agent, context caveat.
+- References: https://opencode.ai/docs/references/ — path/repository,
+  description→agent context, hidden.
+- Server: https://opencode.ai/docs/server/ — OpenAPI 3.1, SSE, /tui/*.
+- Web/attach: https://opencode.ai/docs/web/ — opencode web, attach.
+- Intro/Docker: https://opencode.ai/docs/ — docker run -it, Tab, @, !.
+
+> Граница уверенности: всё в разделах 1–7 — «подтверждено docs 2026-08-31»;
+> раздел 8 и пункты `[проверить]` — runtime-неопределённость, закрываемая
+> только живым smoke'ом в целевом окружении. Этот addendum не меняет
+> приоритеты основного research'а (P0/P1/Watch) и harness-раздела; он
+> уточняет интеграционную поверхность для ecosystem upgrade plan v2.

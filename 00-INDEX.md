@@ -73,11 +73,14 @@ timestamp: 2026-06-29
 [[05-Templates/README]] · [[05-Templates/project-card]] · [[05-Templates/method]]
 
 ## Аудиты (06-Audits/)
-[[06-Audits/README]] · [[06-Audits/2026-08-02-vibecoding-layer-audit]] · [[06-Audits/2026-08-02-upgrade-planning-seed]] · [[06-Audits/2026-08-28-androidos-coordination-bridge-spec]]
+[[06-Audits/README]] · [[06-Audits/2026-08-02-vibecoding-layer-audit]] · [[06-Audits/2026-08-02-upgrade-planning-seed]] · [[06-Audits/2026-08-28-androidos-coordination-bridge-spec]] · [[06-Audits/2026-08-31-ecosystem-upgrade-plan-v2]]
 
 > Аудит = подтверждённые находки + открытые вопросы + влияние на план апгрейдов.
 > Отличается от Methods / Projects / Memory: датированный снимок, не
 > приём/карточка/контекст сессии. Новый аудит — новый файл, не правка старого.
+> **Ecosystem upgrade plan v2 (2026-08-31):** Layers × Facets matrix, OSS-first
+> gate, Agent Workspace, observer, read-only MCP policy, Pip-Boy planning UI;
+> Aider retired из roadmap; v1 остаётся историческим canonical.
 
 ## Runbooks (07-Runbooks/)
 [[07-Runbooks/README]] · [[07-Runbooks/vibecoding-operator-handbook]] · [[07-Runbooks/coordination-bridge-operator-guide]] · [[07-Runbooks/vibecoding-changelog]]
@@ -86,7 +89,7 @@ timestamp: 2026-06-29
 > **Runbooks** = live usage and operator workflows.
 
 ## Execution specs
-[[06-Specs/README]] · SERPlux local specs:
+[[06-Specs/README]] · [[06-Specs/Vault/ecosystem-registry]] · [[06-Specs/Vault/mcp-readonly]] · SERPlux local specs:
 `file:///home/rudra/Projects/serp/docs/specs/`
 
 > Для всех проектов, кроме SERPlux, canonical execution specs находятся в Vault.
@@ -94,12 +97,18 @@ timestamp: 2026-06-29
 > `/home/rudra/Projects/serp/docs/specs/` и читаются project-local `/spec`.
 > Vault SERPlux files выше сохранены как archived legacy artifacts. Specs не
 > являются evidence выполнения.
+> **Ecosystem registry spec (2026-08-31):** canonical schema Layers × Facets,
+> lifecycle IDEA→RETIRED, card schema, one-source/multiple-projections;
+> canonical данные — `tools/ecosystem-map/registry.json`.
+> **MCP read-only spec (2026-08-31):** контракт ecosystem-state MCP;
+> implementation BLOCKED; preferred path — custom tool `ecosystem-snapshot`.
 
 ## Temporary (98-Temporary/)
 [[98-Temporary/README]] — сырые файлы от пользователя на экстракцию; обрабатываются и удаляются (не источник правды, не смешивать с `99-Inbox/`)
 
 ## Инструменты (tools/)
 `tools/telegram-capture/` — извлечение постов из Telegram (в разработке, T-062)
+`tools/ecosystem-map/` — Pip-Boy карта экосистемы (T-069 → v3 multi-view T-121): SKILLS-граф + MATRIX/KANBAN/PROJECTS/AGENTS/BLOCKERS/WORKSPACE поверх canonical `registry.json` + generated snapshot; static/generated, real-time не заявляется. Observer: `python3 tools/ecosystem-map/observer.py` — read-only детерминированный snapshot (T-120).
 
 ## Память (04-Memory/ — OKF sub-bundle)
 [[active-context]] · [[facts]] · [[session-log/2026-06-27]] · [[session-log/2026-06-29]] · [[session-log/2026-06-30]] · [[session-log/2026-08-14]] · [[session-log/2026-08-29]] · [[04-Memory/index]] · [[04-Memory/log]]

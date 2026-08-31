@@ -3,7 +3,7 @@ type: Task Tracker
 title: TASKS — трекер задач по волту
 description: Оперативные задачи по доведению волта до рабочего состояния и дальнейшему развитию.
 tags: [meta, tasks]
-timestamp: 2026-07-07
+timestamp: 2026-08-31
 ---
 # TASKS — Трекер задач OpenCode Vault
 
@@ -96,6 +96,17 @@ timestamp: 2026-07-07
 | T-091 | Security finding normalization format — зафиксировать формат доказательной спецификации security-находок до stable fact: exact package, version range, advisory ID (GHSA/CVE), impact, exploitability assessment for project codepath, source/date, fix availability. **Design format, не правка карточек; применяется к dv-hub Hono candidate/unverified finding и рамочно к экосистеме.** | P2 | [[06-Audits/2026-08-03-dv-hub-phase-d-addendum]], [[06-Audits/2026-08-03-ecosystem-upgrade-plan-v1]], [[04-Memory/facts]] |
 | T-095 | Declaration-vs-reality reconciliation mechanic — спроектировать permanent meta-mechanic сверки декларации (карточка/INDEX/VibeOS) ↔ факта (репо/инфра) как diff-based drift audit (auto `card ↔ repo ↔ AGENTS ↔ VibeOS`); применимо к dv-hub (G-D-DOC-1..4) и рамочно к экосистеме. **Design mechanic, не разовый аудит; кандидат-meta proactive loop.** | P3 | [[06-Audits/2026-08-03-dv-hub-phase-d-addendum]], [[06-Audits/2026-08-03-ecosystem-upgrade-plan-v1]], [[06-Audits/2026-08-02-upgrade-planning-seed]] |
 
+### Контур ecosystem upgrade plan v2 (seed: `06-Audits/2026-08-31-ecosystem-upgrade-plan-v2`)
+> Registry-карточки ECO-NNN — canonical (`tools/ecosystem-map/registry.json`); этот блок — оперативный трекер. Aider **retired** из roadmap (plan v2 §10); tree-sitter/ast-grep — independent tools.
+| ID | Задача | Приоритет | Связано |
+|----|--------|-----------|---------|
+| T-123 | Verifier acceptance для v2-артефактов (T-118..T-122): независимая проверка plan/spec/registry/observer/Pip-Boy против acceptance-критериев; без PASS не переводить карточки ECO-006/007 в VERIFY→LIVE. | P1 | T-118, T-119, T-120, T-121, T-122, [[02-Methods/verifier-pattern]] |
+| T-124 | Telemetry P0 (ECO-002): custom tools `token-budget` + `audit-log` (метаданные only, не content промптов); 2 недели → честный weekly report. | P1 | [[99-Inbox/vault-upgrade-research-2026-08-02]], [[06-Audits/2026-08-31-ecosystem-upgrade-plan-v2]] |
+| T-125 | Agent Workspace manifest pilot (ECO-003): schema зафиксирована; одна пилотная задача через manifest после T-124; `[проверить]` LLM-call interceptor и lazy tool definitions. | P2 | [[06-Audits/2026-08-31-ecosystem-upgrade-plan-v2]], [[06-Specs/Vault/ecosystem-registry]] |
+| T-126 | Registry schema validation в pre-commit (later gate из spec §8): JSON-schema проверка registry.json + observer warnings → fail gate. | P3 | [[06-Specs/Vault/ecosystem-registry]], [[05-Templates/pre-commit-check.sh]] |
+| T-127 | Custom tool `ecosystem-snapshot` runtime smoke `[проверить]`: live-сессия подтверждает видимость tool агенту и успешный вызов; без smoke не заявлять работоспособность. | P2 | [[06-Specs/Vault/mcp-readonly]], `.opencode/tools/ecosystem-snapshot.ts` |
+| T-128 | Pip-Boy live-режим (later gate): SSE `/event` ingestion + `file.watcher.updated`; до этого real-time не заявляется; OSC8/tmux `[проверить]`. | P3 | [[99-Inbox/vault-upgrade-research-2026-08-02]], T-121 |
+
 ## 🟤 Backlog — идеи на потом
 
 | ID | Задача | Приоритет | Связано |
@@ -106,6 +117,11 @@ timestamp: 2026-07-07
 
 | ID | Задача | Приоритет | Когда | Связано |
 |----|--------|-----------|-------|---------|
+| T-118 | Ecosystem Upgrade Plan v2: Layers × Facets matrix, OSS-first gate, workspace/observer/MCP-политика, Pip-Boy planning UI, exclusions (Aider retired; tree-sitter/ast-grep independent). Артефакт подтверждён независимым verifier acceptance — **PASS 2026-08-31**. | P1 | 2026-08-31 | [[06-Audits/2026-08-31-ecosystem-upgrade-plan-v2]], [[04-Memory/session-log/2026-08-31]], [[06-Audits/2026-08-03-ecosystem-upgrade-plan-v1]], [[99-Inbox/vault-upgrade-research-2026-08-02]] |
+| T-119 | Ecosystem registry: canonical spec (schema/lifecycle/projections) + `tools/ecosystem-map/registry.json` с 8 MVP-карточками (ECO-001..008). Подтверждён независимым verifier acceptance — **PASS 2026-08-31**. | P1 | 2026-08-31 | [[06-Specs/Vault/ecosystem-registry]], [[04-Memory/session-log/2026-08-31]], T-118 |
+| T-120 | Read-only observer MVP: детерминированный snapshot CLI (`tools/ecosystem-map/observer.py`), no network/no mutation, `generated/snapshot.json` (gitignored). Детерминизм и read-only гарантии подтверждены независимым verifier acceptance — **PASS 2026-08-31** (ECO-007 → VERIFY); live watcher/cross-repo — later, LIVE не заявляется. | P1 | 2026-08-31 | [[06-Specs/Vault/ecosystem-registry]], [[04-Memory/session-log/2026-08-31]], T-118, ECO-007 |
+| T-121 | Pip-Boy multi-view MVP: MATRIX/KANBAN/PROJECTS/AGENTS/BLOCKERS/WORKSPACE поверх registry+data+snapshot; явные метки static/generated, real-time не заявляется. MVP acceptance подтверждён независимым verifier acceptance — **PASS 2026-08-31** (ECO-006 → VERIFY); live-режим/OSC8/tmux — later gate (T-128). | P2 | 2026-08-31 | [[06-Audits/2026-08-31-ecosystem-upgrade-plan-v2]], [[04-Memory/session-log/2026-08-31]], T-069, T-119, T-120, ECO-006 |
+| T-122 | Read-only MCP: полный контракт spec (implementation **BLOCKED**) + preferred path custom tool `.opencode/tools/ecosystem-snapshot.ts`. Spec подтверждён независимым verifier acceptance — **PASS 2026-08-31**; MCP runtime остаётся BLOCKED, custom tool runtime loading `[проверить]` (T-127) — готовность не заявляется. | P2 | 2026-08-31 | [[06-Specs/Vault/mcp-readonly]], [[04-Memory/session-log/2026-08-31]], T-118, ECO-008 |
 | T-115 | Primary sysop smoke + verifier acceptance: exact global `system-audit -> sysop` route подтверждён runtime trace, read-only boundary и отсутствие general fallback. | P1 | 2026-08-29 | [[01-Reference/capability-routing]], [[04-Memory/route-log/2026-08-29-sysop-smoke]], [[04-Memory/facts]], [[04-Memory/active-context]] |
 | T-116 | Ecosystem-wide orchestration smoke: exact Vault/librarian route selection → named researcher → reviewer → verifier, sequential evidence chain, scoped read-only control-plane; automatic runtime router не внедрён. | P1/P2 | 2026-08-29 | [[06-Specs/Vault/control-plane-smoke]], [[04-Memory/route-log/2026-08-29-orchestration-smoke]], [[02-Methods/capability-routing]], [[01-Reference/capability-routing]], [[07-Runbooks/vibecoding-operator-handbook]] |
 | T-114 | Исправить primary/subagent smoke protocol и runbook: естественный intent пользователя, корректный dispatch через Tab/keybind и @mention/task, независимая проверка evidence/verdict. | P1 | 2026-08-29 | [[07-Runbooks/vibecoding-operator-handbook]], [[07-Runbooks/vibecoding-changelog]], [[04-Memory/facts]], [[04-Memory/active-context]] |

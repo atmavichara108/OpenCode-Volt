@@ -201,6 +201,65 @@
   ::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
   ::-webkit-scrollbar-thumb:hover{background:#38622f}
 
+  /* ===== MULTI-VIEW (plan v2: Matrix/Kanban/Projects/Agents/Blockers/Workspace) ===== */
+  .view-pills{display:flex;gap:4px;flex-wrap:wrap}
+  .view-pill{
+    border:1px solid var(--border);color:var(--green);background:#031603;
+    font-family:inherit;font-size:10px;letter-spacing:1px;padding:3px 8px;cursor:pointer;border-radius:2px;
+  }
+  .view-pill:hover{border-color:var(--green);background:#0a2a0a}
+  .view-pill.active{border-color:var(--amber);color:var(--amber);background:#2a1f00}
+  .data-badge{
+    font-size:9px;letter-spacing:1px;padding:2px 7px;border:1px solid var(--border);border-radius:2px;
+    color:var(--grey);
+  }
+  .data-badge.gen{color:var(--amber);border-color:var(--amber)}
+  #view-wrap{overflow:auto;background:#060b06;padding:14px;min-height:0}
+  #view-wrap h2.vtitle{font-size:14px;color:var(--amber);letter-spacing:2px;margin-bottom:4px;text-shadow:0 0 6px rgba(255,176,0,.7)}
+  #view-wrap .vsub{font-size:10px;color:var(--green);opacity:.6;margin-bottom:12px}
+  .no-snapshot{color:var(--grey);font-style:italic;font-size:11px;margin:20px 0}
+
+  /* MATRIX */
+  table.matrix{border-collapse:collapse;width:100%;font-size:11px}
+  table.matrix th,table.matrix td{border:1px solid var(--border);padding:5px 7px;vertical-align:top}
+  table.matrix th{color:var(--amber);letter-spacing:1px;font-size:10px;background:#0a1a0a;text-align:left}
+  table.matrix td.layer-cell{color:var(--amber);font-size:10px;white-space:nowrap;background:#0a1a0a}
+  .mcard{
+    display:block;margin:2px 0;padding:2px 6px;border:1px solid var(--border);border-radius:2px;
+    background:#041204;cursor:pointer;font-size:10px;color:var(--green);
+  }
+  .mcard:hover{border-color:var(--green);background:#0a2a0a}
+  .mcard .mid{color:var(--amber);margin-right:4px}
+  .lifecycle-tag{font-size:8px;letter-spacing:1px;opacity:.75;margin-left:4px}
+
+  /* KANBAN */
+  .kanban{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;min-height:300px}
+  .kcol{min-width:150px;max-width:210px;flex:1 0 150px;border:1px solid var(--border);border-radius:2px;background:#041204;display:flex;flex-direction:column}
+  .kcol.empty{opacity:.4}
+  .kcol h4{font-size:10px;color:var(--amber);letter-spacing:2px;padding:6px 8px;border-bottom:1px solid var(--border);background:#0a1a0a}
+  .kcol h4 .cnt{float:right;color:var(--green);opacity:.8}
+  .kcol .kbody{padding:6px;display:flex;flex-direction:column;gap:5px;overflow-y:auto}
+  .kcard{border:1px solid var(--border);border-radius:2px;background:#031603;padding:5px 7px;cursor:pointer;font-size:10px}
+  .kcard:hover{border-color:var(--green);background:#0a2a0a}
+  .kcard .kid{color:var(--amber)}
+  .kcard .kl{font-size:8px;opacity:.6;letter-spacing:1px;margin-top:2px}
+
+  /* PROJECTS / AGENTS / BLOCKERS lists */
+  .vtable{width:100%;border-collapse:collapse;font-size:11px}
+  .vtable th,.vtable td{border:1px solid var(--border);padding:5px 8px;text-align:left}
+  .vtable th{color:var(--amber);font-size:10px;letter-spacing:1px;background:#0a1a0a}
+  .vtable td{color:var(--green)}
+  .vtable td .dim{opacity:.55}
+  .status-chip{display:inline-block;padding:1px 6px;border:1px solid;border-radius:2px;font-size:9px;letter-spacing:1px}
+  .st-confirmed{color:var(--green);border-color:var(--green)}
+  .st-candidate{color:var(--amber);border-color:var(--amber)}
+  .st-frozen{color:var(--grey);border-color:var(--grey)}
+  .drift-item{border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:2px;background:#041204;padding:6px 10px;margin-bottom:6px;font-size:11px}
+  .drift-item .dtype{color:var(--amber);font-size:9px;letter-spacing:1px}
+  .ws-field{display:inline-block;margin:2px 3px;padding:2px 7px;border:1px dashed var(--border);border-radius:2px;font-size:10px;color:var(--green)}
+  .ws-note{font-size:10px;opacity:.7;margin-top:8px}
+  .oq{font-size:10px;color:var(--amber);opacity:.85;margin-top:3px}
+
   @media (max-width:900px){
     main{grid-template-columns:1fr;grid-template-rows:1fr 280px}
     aside{border-left:none;border-top:2px solid var(--border)}
@@ -210,10 +269,22 @@
 <body>
 <div id="app">
   <header>
-    <h1>VAULT-OS<span class="sub"> :: ECOSYSTEM MAP v2.0</span></h1>
+    <h1>VAULT-OS<span class="sub"> :: ECOSYSTEM MAP v3.0</span></h1>
     <div class="stats" id="stats"></div>
     <div class="spacer"></div>
     <div class="filters">
+      <div class="fgroup">
+        <label>VIEW</label>
+        <div class="view-pills" id="view-pills">
+          <button class="view-pill active" data-view="skills">SKILLS</button>
+          <button class="view-pill" data-view="matrix">MATRIX</button>
+          <button class="view-pill" data-view="kanban">KANBAN</button>
+          <button class="view-pill" data-view="projects">PROJECTS</button>
+          <button class="view-pill" data-view="agents">AGENTS</button>
+          <button class="view-pill" data-view="blockers">BLOCKERS</button>
+          <button class="view-pill" data-view="workspace">WORKSPACE</button>
+        </div>
+      </div>
       <div class="fgroup">
         <label>BRANCH</label>
         <div class="pills" id="branch-pills"></div>
@@ -226,6 +297,10 @@
         <label>STATE</label>
         <div class="pills" id="state-pills"></div>
       </div>
+      <div class="fgroup">
+        <label>DATA</label>
+        <div class="data-badge" id="data-badge">STATIC REGISTRY · LIVE: НЕТ</div>
+      </div>
     </div>
   </header>
   <main>
@@ -235,6 +310,7 @@
       <button class="center-btn" id="center">⊕ CENTER</button>
       <div class="tooltip" id="tooltip"></div>
     </div>
+    <div id="view-wrap" style="display:none"></div>
     <aside id="panel">
       <div class="panel-body empty" id="panel-empty">
         Выберите навык на графе<br>
@@ -258,10 +334,237 @@ const BRANCH_COLORS = {
 const STATE_COLOR = {
   LOCKED:"#666", AVAILABLE:"#00ff41", LEARNED:"#ffb000", MASTERED:"#FFD700"
 };
-const STORE_KEY = "vaultos-ecosystem-v2";
+  const STORE_KEY = "vaultos-ecosystem-v2";
 
-let DATA = null;
-let userState = {};   // skillId -> { questsDone: {qid:bool}, masteredOverride:bool }
+  let DATA = null;
+  let userState = {};   // skillId -> { questsDone: {qid:bool}, masteredOverride:bool }
+
+  /* ===== plan v2: registry + snapshot + multi-view ===== */
+  let REGISTRY = null;   // canonical registry.json (committed, static)
+  let SNAPSHOT = null;   // generated/snapshot.json (observer output, gitignored; may be absent)
+  let CURRENT_VIEW = "skills";
+  const LIFECYCLE_ORDER = ["IDEA","RESEARCH","DESIGN","APPROVED","BUILD","REVIEW","VERIFY","LIVE","OBSERVE","IMPROVE","RETIRED"];
+  const LIFECYCLE_COLOR = {
+    IDEA:"#666", RESEARCH:"#00b4ff", DESIGN:"#aa66ff", APPROVED:"#ff7733",
+    BUILD:"#ffb000", REVIEW:"#ff00aa", VERIFY:"#00ff41", LIVE:"#FFD700",
+    OBSERVE:"#FFD700", IMPROVE:"#ffb000", RETIRED:"#666"
+  };
+
+  async function loadRegistry(){
+    try{
+      const res = await fetch("registry.json", {cache:"no-store"});
+      if(!res.ok) return null;
+      return await res.json();
+    }catch{ return null; }
+  }
+  async function loadSnapshot(){
+    try{
+      const res = await fetch("generated/snapshot.json", {cache:"no-store"});
+      if(!res.ok) return null;
+      return await res.json();
+    }catch{ return null; }
+  }
+
+  function esc(s){
+    return String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  }
+
+  function setView(view){
+    CURRENT_VIEW = view;
+    document.querySelectorAll(".view-pill").forEach(p=>{
+      p.classList.toggle("active", p.getAttribute("data-view") === view);
+    });
+    const gw = document.getElementById("graph-wrap");
+    const vw = document.getElementById("view-wrap");
+    const isSkills = (view === "skills");
+    gw.style.display = isSkills ? "block" : "none";
+    vw.style.display = isSkills ? "none" : "block";
+    // filters relevant only for skills graph
+    ["branch-pills","project-pills","state-pills"].forEach(id=>{
+      document.getElementById(id).parentElement.style.opacity = isSkills ? "1" : ".35";
+    });
+    if(!isSkills) renderView(view);
+    updateStats();
+    // clear panel selection when leaving skills
+    if(!isSkills){
+      selectedId = null;
+      document.getElementById("panel-empty").style.display = "block";
+      document.getElementById("panel-content").style.display = "none";
+    }
+  }
+
+  function renderView(view){
+    const vw = document.getElementById("view-wrap");
+    if(!REGISTRY){
+      vw.innerHTML = `<h2 class="vtitle">❌ REGISTRY</h2><div class="no-snapshot">registry.json не найден — запусти через локальный HTTP-сервер из tools/ecosystem-map/.</div>`;
+      return;
+    }
+    if(view === "matrix") vw.innerHTML = renderMatrix();
+    else if(view === "kanban") vw.innerHTML = renderKanban();
+    else if(view === "projects") vw.innerHTML = renderProjects();
+    else if(view === "agents") vw.innerHTML = renderAgents();
+    else if(view === "blockers") vw.innerHTML = renderBlockers();
+    else if(view === "workspace") vw.innerHTML = renderWorkspace();
+    // wire card clicks -> panel
+    vw.querySelectorAll("[data-card]").forEach(el=>{
+      el.addEventListener("click", ()=> renderCardPanel(el.getAttribute("data-card")));
+    });
+  }
+
+  function cardChip(cid){
+    const c = REGISTRY.cards[cid];
+    if(!c) return "";
+    const col = LIFECYCLE_COLOR[c.lifecycle] || "#666";
+    return `<span class="mcard" data-card="${esc(cid)}"><span class="mid">${esc(cid)}</span>${esc(c.title)}<span class="lifecycle-tag" style="color:${col}">${esc(c.lifecycle)}</span></span>`;
+  }
+
+  function renderMatrix(){
+    const layers = Object.entries(REGISTRY.layers);
+    const facets = Object.keys(REGISTRY.facets);
+    let html = `<h2 class="vtitle">MATRIX :: LAYERS × FACETS</h2>
+      <div class="vsub">canonical registry · одна карточка = одна ячейка layer × primary facet (план v2; spec: 06-Specs/Vault/ecosystem-registry)</div>
+      <table class="matrix"><tr><th>LAYER</th>${facets.map(f=>`<th>${esc(f.toUpperCase())}</th>`).join("")}</tr>`;
+    for(const [lid, l] of layers){
+      html += `<tr><td class="layer-cell">${esc(lid)} ${esc(l.name)}<br><span style="opacity:.5;font-size:8px">${esc(l.description)}</span></td>`;
+      for(const f of facets){
+        const cellCards = Object.entries(REGISTRY.cards)
+          .filter(([cid,c]) => c.layer === lid && c.facets && c.facets[0] === f);
+        html += `<td>${cellCards.map(([cid]) => cardChip(cid)).join("") || '<span style="opacity:.3">—</span>'}</td>`;
+      }
+      html += `</tr>`;
+    }
+    html += `</table>`;
+    return html;
+  }
+
+  function renderKanban(){
+    let html = `<h2 class="vtitle">KANBAN :: LIFECYCLE</h2>
+      <div class="vsub">IDEA → RESEARCH → DESIGN → APPROVED → BUILD → REVIEW → VERIFY → LIVE → OBSERVE → IMPROVE → RETIRED · VERIFY→LIVE только с runtime evidence (план v2 gates)</div>
+      <div class="kanban">`;
+    for(const stage of LIFECYCLE_ORDER){
+      const cards = Object.entries(REGISTRY.cards).filter(([cid,c]) => c.lifecycle === stage && !c.retired);
+      html += `<div class="kcol ${cards.length ? "" : "empty"}">
+        <h4>${esc(stage)}<span class="cnt">${cards.length}</span></h4>
+        <div class="kbody">`;
+      for(const [cid, c] of cards){
+        const col = LIFECYCLE_COLOR[stage] || "#666";
+        html += `<div class="kcard" data-card="${esc(cid)}" style="border-left:3px solid ${col}">
+          <span class="kid">${esc(cid)}</span> ${esc(c.title)}
+          <div class="kl">${esc(c.layer)} · ${esc(c.facets ? c.facets.join(", ") : "")} · owner: ${esc(c.owner)}</div>
+        </div>`;
+      }
+      html += `</div></div>`;
+    }
+    html += `</div>`;
+    return html;
+  }
+
+  function renderProjects(){
+    let html = `<h2 class="vtitle">PROJECTS</h2>
+      <div class="vsub">источник: ${SNAPSHOT ? "generated snapshot (observer, детерминированный; НЕ источник правды)" : "snapshot не сгенерирован — запусти python3 tools/ecosystem-map/observer.py"}</div>`;
+    if(!SNAPSHOT){
+      html += `<div class="no-snapshot">ⓘ generated/snapshot.json отсутствует. Проекции PROJECTS/BLOCKERS работают поверх observer-снимка. Данные карточек — в 03-Projects/ (canonical).</div>`;
+      return html;
+    }
+    html += `<table class="vtable"><tr><th>PROJECT</th><th>REPO</th><th>KIND</th><th>STATUS</th><th>REPO EXISTS</th></tr>`;
+    for(const p of SNAPSHOT.projects){
+      const missing = (SNAPSHOT.drift_signals || []).some(s => s.type === "repo_missing" && s.subject === p.id);
+      html += `<tr><td>${esc(p.id)}</td><td class="dim">${esc(p.repo)}</td><td class="dim">${esc(p.kind)}</td><td>${esc(p.status || "—")}</td>
+        <td>${missing ? '<span style="color:var(--amber)">⚠ missing</span>' : '<span style="color:var(--green)">✓</span>'}</td></tr>`;
+    }
+    html += `</table>
+      <div class="vsub" style="margin-top:10px">vault git: HEAD ${esc(SNAPSHOT.git.head.slice(0,10))} · dirty: ${SNAPSHOT.git.dirty_files.length} · digest ${esc(SNAPSHOT.meta.input_digest.slice(0,12))}</div>`;
+    return html;
+  }
+
+  function renderAgents(){
+    let html = `<h2 class="vtitle">AGENTS</h2>
+      <div class="vsub">canonical registry.agents · статусы только с evidence (confirmed = smoke/verifier или файловая реальность; candidate = planned; frozen = user-freeze)</div>
+      <table class="vtable"><tr><th>AGENT</th><th>SCOPE</th><th>ROLE</th><th>STATUS</th><th>NOTE</th></tr>`;
+    for(const [aid, a] of Object.entries(REGISTRY.agents || {})){
+      html += `<tr><td>${esc(aid)}</td><td class="dim">${esc(a.scope)}</td><td>${esc(a.role)}</td>
+        <td><span class="status-chip st-${esc(a.status)}">${esc(a.status).toUpperCase()}</span></td>
+        <td class="dim">${esc(a.note)}</td></tr>`;
+    }
+    html += `</table>`;
+    return html;
+  }
+
+  function renderBlockers(){
+    let html = `<h2 class="vtitle">BLOCKERS / DRIFT</h2>
+      <div class="vsub">источники: TASKS.md (⛔/frozen) + observer drift signals (детерминированные read-only проверки) · registry не дублирует блокеры</div>`;
+    if(!SNAPSHOT){
+      html += `<div class="no-snapshot">ⓘ generated/snapshot.json отсутствует — drift signals недоступны. Запусти python3 tools/ecosystem-map/observer.py.</div>`;
+      return html;
+    }
+    const signals = SNAPSHOT.drift_signals || [];
+    if(!signals.length){
+      html += `<div class="no-snapshot">✓ drift signals не обнаружены (на момент снимка)</div>`;
+    } else {
+      for(const s of signals){
+        html += `<div class="drift-item"><span class="dtype">${esc(s.type.toUpperCase())}</span> · <b>${esc(s.subject)}</b><br>${esc(s.detail)}</div>`;
+      }
+    }
+    const blocked = (SNAPSHOT.tasks && SNAPSHOT.tasks.Blocked) || [];
+    html += `<div class="vsub" style="margin-top:10px">TASKS blocked/frozen: ${blocked.length ? blocked.map(esc).join(", ") : "—"}</div>`;
+    return html;
+  }
+
+  function renderWorkspace(){
+    const ws = REGISTRY.workspace || {};
+    let html = `<h2 class="vtitle">AGENT WORKSPACE</h2>
+      <div class="vsub">design-контур (план v2 §5) · lifecycle: ${esc(ws.lifecycle || "—")} · не реализация; OpenCode agent loop не патчится</div>
+      <div><b style="color:var(--amber)">MANIFEST FIELDS:</b><br>`;
+    for(const f of (ws.manifest_fields || [])) html += `<span class="ws-field">${esc(f)}</span>`;
+    html += `</div>`;
+    if(ws.open_questions && ws.open_questions.length){
+      html += `<div style="margin-top:10px"><b style="color:var(--amber)">OPEN QUESTIONS:</b>`;
+      for(const q of ws.open_questions) html += `<div class="oq">◇ ${esc(q)}</div>`;
+      html += `</div>`;
+    }
+    if(ws.note) html += `<div class="ws-note">${esc(ws.note)}</div>`;
+    return html;
+  }
+
+  function renderCardPanel(cid){
+    const c = REGISTRY.cards[cid];
+    if(!c) return;
+    document.getElementById("panel-empty").style.display = "none";
+    const pc = document.getElementById("panel-content");
+    pc.style.display = "block";
+    const col = LIFECYCLE_COLOR[c.lifecycle] || "#666";
+    const dep = (c.depends_on || []).map(d => `<span class="ws-field" data-card="${esc(d)}" style="cursor:pointer">${esc(d)}</span>`).join("") || "—";
+    const artifacts = (c.artifacts || []).map(a => `<div class="row"><span class="k">${esc(a)}</span></div>`).join("") || "—";
+    const tasks = (c.tasks || []).map(esc).join(", ") || "—";
+    pc.innerHTML = `
+      <div class="panel-head">
+        <h2><span class="icon">🗂</span>${esc(cid)}</h2>
+        <div style="margin-top:6px"><span class="state-badge" style="color:${col};border-color:${col}">${esc(c.lifecycle)}</span>
+          <span style="margin-left:8px;font-size:10px;opacity:.7;color:var(--amber)">${esc(c.layer)} · ${esc((c.facets||[]).join(", "))}</span>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="sect"><h3>Карточка</h3>
+          <div style="font-size:12px;opacity:.9">${esc(c.title)}</div>
+        </div>
+        <div class="sect"><h3>Контур</h3>
+          <div class="row"><span class="k">Owner</span><span class="v">${esc(c.owner)}</span></div>
+          <div class="row"><span class="k">Depends on</span><span class="v">${dep}</span></div>
+          <div class="row"><span class="k">OSS-first</span><span class="v">${c.oss_first && c.oss_first.approved ? "✓ approved" : "✗"}</span></div>
+          <div class="row"><span class="k">Tasks</span><span class="v">${tasks}</span></div>
+        </div>
+        <div class="sect"><h3>Acceptance</h3><div style="font-size:11px;opacity:.85">${esc(c.acceptance)}</div></div>
+        <div class="sect"><h3>Review</h3><div style="font-size:11px;opacity:.85">${esc(c.review)}</div></div>
+        <div class="sect"><h3>Risk</h3><div style="font-size:11px;opacity:.85">${esc(c.risk)}</div></div>
+        <div class="sect"><h3>Rollback</h3><div style="font-size:11px;opacity:.85">${esc(c.rollback)}</div></div>
+        <div class="sect"><h3>Artifacts</h3>${artifacts}</div>
+        <div class="sect"><h3>Status note</h3><div style="font-size:11px;opacity:.85">${esc(c.status_note)}</div></div>
+        <div class="meta-line">REGISTRY: ecosystem-registry/1.0 · canonical</div>
+      </div>`;
+    pc.querySelectorAll("[data-card]").forEach(el=>{
+      el.addEventListener("click", ()=> renderCardPanel(el.getAttribute("data-card")));
+    });
+  }
 
 async function loadData(){
   const res = await fetch("data.json", {cache:"no-store"});
@@ -727,6 +1030,21 @@ function buildPills(){
    STATS
    ========================================================= */
 function updateStats(){
+  const statsEl = document.getElementById("stats");
+  if(CURRENT_VIEW !== "skills" && REGISTRY){
+    const cards = Object.values(REGISTRY.cards || {});
+    const byStage = {};
+    cards.forEach(c => { byStage[c.lifecycle] = (byStage[c.lifecycle] || 0) + 1; });
+    statsEl.innerHTML = `
+      <span>CARDS: <b>${cards.length}</b></span>
+      <span>DESIGN+: <b>${(byStage.DESIGN||0)+(byStage.APPROVED||0)+(byStage.BUILD||0)+(byStage.REVIEW||0)}</b></span>
+      <span style="color:var(--gold)">LIVE: <b>${(byStage.LIVE||0)+(byStage.OBSERVE||0)}</b></span>
+      <span>AGENTS: <b>${Object.keys(REGISTRY.agents||{}).length}</b></span>
+      ${SNAPSHOT ? `<span>DRIFT: <b>${(SNAPSHOT.drift_signals||[]).length}</b></span>` : ""}
+    `;
+    return;
+  }
+  if(!DATA){ statsEl.innerHTML = ""; return; }
   const ids = Object.keys(DATA.skills);
   const counts = {LOCKED:0,AVAILABLE:0,LEARNED:0,MASTERED:0};
   let totalQ=0, doneQ=0;
@@ -735,7 +1053,7 @@ function updateStats(){
     const s = DATA.skills[id];
     s.quests.forEach(q=>{ totalQ++; if(questDone(id,q)) doneQ++; });
   });
-  document.getElementById("stats").innerHTML = `
+  statsEl.innerHTML = `
     <span>SKILLS: <b>${ids.length}</b></span>
     <span>LOCKED: <b>${counts.LOCKED}</b></span>
     <span>AVAILABLE: <b>${counts.AVAILABLE}</b></span>
@@ -781,8 +1099,31 @@ function recomputeAndRedraw(){
    INIT
    ========================================================= */
 async function init(){
+  // plan v2: registry + snapshot first (views work without data.json)
+  REGISTRY = await loadRegistry();
+  SNAPSHOT = await loadSnapshot();
+  const badge = document.getElementById("data-badge");
+  if(SNAPSHOT){
+    badge.textContent = "STATIC REGISTRY + GENERATED SNAPSHOT · LIVE: НЕТ";
+    badge.classList.add("gen");
+    badge.title = "snapshot digest " + SNAPSHOT.meta.input_digest.slice(0,12) + " @ HEAD " + SNAPSHOT.git.head.slice(0,10) + " — детерминированный read-only снимок, не real-time";
+  } else {
+    badge.textContent = "STATIC REGISTRY · SNAPSHOT: НЕТ · LIVE: НЕТ";
+    badge.title = "generated/snapshot.json не найден — запусти python3 tools/ecosystem-map/observer.py";
+  }
+  // view switcher
+  document.querySelectorAll(".view-pill").forEach(p=>{
+    p.addEventListener("click", ()=> setView(p.getAttribute("data-view")));
+  });
+
   DATA = await loadData();
-  if(!DATA) return;
+  if(!DATA){
+    // skills view unavailable, but registry views still work
+    setView(REGISTRY ? "matrix" : "skills");
+    if(!REGISTRY) return;
+    document.querySelector('.view-pill[data-view="skills"]').disabled = true;
+    return;
+  }
   userState = loadUserState();
   currentStates = computeStates();
   initSvg();
@@ -803,6 +1144,7 @@ async function init(){
     }
   });
   window.addEventListener("resize", ()=>{
+    if(!sim) return;
     sim.force("center", d3.forceCenter(centerX(), centerY()));
     sim.alpha(0.3).restart();
   });

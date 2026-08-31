@@ -1,9 +1,9 @@
 ---
 type: Active Context
 title: Активный контекст
-description: Phase 1 (kernel stabilization) ЗАВЕРШЕНА 2026-08-04. Текущая модельная политика Luna + DeepSeek Go сохранена; capability-routing design gate пройден, runtime extraction partial и evidence-gated.
+description: Ecosystem Upgrade Plan v2 MVP реализован и подтверждён независимым verifier PASS 2026-08-31 (T-118..T-122 Done). Phase 1 завершена 2026-08-04. Модельная политика Luna + DeepSeek Go сохранена.
 tags: [memory]
-timestamp: 2026-08-30
+timestamp: 2026-08-31
 ---
 
 # Активный контекст
@@ -11,6 +11,33 @@ timestamp: 2026-08-30
 > Автоматически обновляется librarian. Читается при старте каждой сессии.
 
 ## Текущий фокус
+- **Ecosystem Upgrade Plan v2 — MVP реализован и верифицирован
+  2026-08-31 (независимый verifier acceptance — PASS; T-118..T-122 →
+  Done):** созданы plan v2
+  ([[06-Audits/2026-08-31-ecosystem-upgrade-plan-v2]]), registry spec
+  ([[06-Specs/Vault/ecosystem-registry]]) + canonical
+  `tools/ecosystem-map/registry.json` (8 карточек ECO-001..008, Layers ×
+  Facets, lifecycle IDEA→RETIRED), read-only детерминированный observer
+  (`tools/ecosystem-map/observer.py` → gitignored
+  `generated/snapshot.json`), Pip-Boy v3 multi-view (MATRIX/KANBAN/
+  PROJECTS/AGENTS/BLOCKERS/WORKSPACE; static/generated метки, real-time
+  не заявляется), MCP spec ([[06-Specs/Vault/mcp-readonly]],
+  implementation BLOCKED) + custom tool `.opencode/tools/
+  ecosystem-snapshot.ts` (runtime loading `[проверить]`). Research
+  artifact получил append-only Addendum 2026-08-31 (OpenCode
+  UI/UX/Workspace по докам; TUI widgets/OSC8/tmux `[проверить]`).
+  Aider retired из roadmap; tree-sitter/ast-grep — independent tools.
+  После verifier PASS 2026-08-31: ECO-006/007 → VERIFY (MVP
+  acceptance), ECO-001 policy-артефакт покрыт; ECO-008 остаётся DESIGN
+  (implementation BLOCKED). Residuals открыты: MCP runtime, custom tool
+  runtime loading (T-127), live real-time (T-128), OSC8/tmux,
+  telemetry/workspace (T-124/T-125). TASKS: T-118..T-122 Done
+  (2026-08-31), T-123..T-128 (gates). Без commit/push.
+- **Следующий actionable focus:** T-127 custom tool runtime smoke;
+  T-124 telemetry P0. ECO-006/007 в LIVE не переводить до runtime
+  evidence (live-режим — T-128 later gate); MCP runtime остаётся
+  BLOCKED. (T-123 verifier acceptance — PASS зафиксирован 2026-08-31 в
+  session-log; статус T-123 в TASKS не менялся — вне scope финализации.)
 - **Global HITL + `/flush` + `/dream` (2026-08-30):** созданы/приняты global
   human-in-the-loop контракт (`~/.config/opencode/AGENTS.md`, ADR-009,
   runtime-гейты `task: ask`/`edit: ask`) и команды `/flush`/`/dream`.
@@ -259,6 +286,25 @@ timestamp: 2026-08-30
 - Как закрывать residuals Phase 1 (real commit smoke / compaction dispatch) — нужна живая сессия в serp?
 
 ## Последнее обновление
+2026-08-31 — **Финализация Ecosystem Upgrade v2 (после независимого
+verifier PASS):** T-118..T-122 → Done (2026-08-31; verifier acceptance —
+PASS, evidence-раздел в [[04-Memory/session-log/2026-08-31]]).
+registry.json: ECO-006/007 → VERIFY (MVP acceptance подтверждён),
+ECO-001 policy-артефакт покрыт PASS, ECO-008 остаётся DESIGN
+(implementation BLOCKED; MCP/custom-tool runtime готовностью не
+объявляется). Plan v2 §6/§8 и registry-spec §9/§10 — краткие
+статус-правки. Residuals честно открыты: MCP runtime, custom tool
+runtime loading (T-127), live real-time (T-128), OSC8/tmux. facts.md не
+тронут. Без commit/push.
+
+2026-08-31 — **Ecosystem Upgrade Plan v2 MVP:** реализованы plan v2,
+registry (spec + canonical json), observer (детерминированный read-only
+snapshot), Pip-Boy v3 multi-view, MCP spec (BLOCKED) + custom tool
+ecosystem-snapshot; research addendum UI/UX/Workspace. Все
+implementation-статусы честные: verifier acceptance pending (T-123),
+runtime-claims `[проверить]` (custom tool loading, OSC8, tmux). Без
+commit/push. Детали: [[04-Memory/session-log/2026-08-31]].
+
 2026-08-28 — **End-session flush: Coordination Bridge:** текущая сессия
 завершена; создана спецификация
 `06-Audits/2026-08-28-androidos-coordination-bridge-spec.md` и добавлена planned

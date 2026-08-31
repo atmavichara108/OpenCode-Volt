@@ -25,6 +25,9 @@ dist/
 tools/telegram-capture/.env
 tools/telegram-capture/__pycache__/
 
+# Ecosystem observer (generated snapshots, не коммитить)
+tools/ecosystem-map/generated/
+
 # Telegram session (авторизация, не коммитить!)
 *.session
 *.session-journal

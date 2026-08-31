@@ -1,0 +1,193 @@
+{
+  "meta": {
+    "schema": "ecosystem-registry/1.0",
+    "canonical": true,
+    "updated": "2026-08-31",
+    "source_of_truth": "06-Specs/Vault/ecosystem-registry.md",
+    "projections": [
+      "tools/ecosystem-map/index.html",
+      "tools/ecosystem-map/generated/snapshot.json"
+    ],
+    "note": "Canonical registry экосистемы (plan v2). Единственный источник карточек ECO-NNN; все представления — проекции. Ничто не помечено LIVE без runtime evidence."
+  },
+  "layers": {
+    "L0": { "name": "Kernel", "description": "Инварианты и контракты, общие для всех слоёв" },
+    "L1": { "name": "Control Plane", "description": "Маршрутизация, наблюдение, память экосистемы" },
+    "L2": { "name": "Agent Workspace", "description": "Рабочее место агента: task contract, capsule, tool firewall, budget, verify gate" },
+    "L3": { "name": "Project Build", "description": "Проектные агенты, команды, тесты" },
+    "L4": { "name": "Interface", "description": "Человек-читаемые поверхности: Pip-Boy, TUI, web, runbooks" }
+  },
+  "facets": {
+    "memory": "Память: facts, session-log, event-sourced claims, retrieval",
+    "routing": "Маршрутизация: capability-routing, model-routing, dispatch",
+    "telemetry": "Измеримость: token/cost audit, replay, observability",
+    "verification": "Верификация: reviewer/verifier, gates, acceptance",
+    "knowledge": "Знания: registry, карточки, методы, distill, OSS-first",
+    "interface": "Интерфейсы: Pip-Boy, TUI/web поверхности, ссылки"
+  },
+  "lifecycle": ["IDEA", "RESEARCH", "DESIGN", "APPROVED", "BUILD", "REVIEW", "VERIFY", "LIVE", "OBSERVE", "IMPROVE", "RETIRED"],
+  "cards": {
+    "ECO-001": {
+      "title": "OSS-first gate (skill/artifact)",
+      "layer": "L0",
+      "facets": ["knowledge"],
+      "lifecycle": "APPROVED",
+      "owner": "librarian",
+      "depends_on": [],
+      "oss_first": { "approved": true, "note": "Сам gate — policy, не внешний компонент; внешние компоненты проходят через него" },
+      "review": "reviewer (policy-ревью) + пользователь (approval)",
+      "acceptance": "Policy зафиксирована в plan v2 §3; каждая новая карточка registry имеет поле oss_first",
+      "risk": "Gate обходится «исключением» без approval",
+      "rollback": "Удалить policy-строку из plan v2; карточки не затронуты",
+      "artifacts": ["06-Audits/2026-08-31-ecosystem-upgrade-plan-v2.md", "06-Audits/2026-08-22-androidos-open-source-first.md"],
+      "tasks": [],
+      "status_note": "Policy approved в plan v2 (2026-08-31); артефакт plan v2 покрыт независимым verifier PASS 2026-08-31 (T-118); enforcement — ревью карточек, автоматизации нет",
+      "retired": false
+    },
+    "ECO-002": {
+      "title": "audit-log / token-budget telemetry",
+      "layer": "L1",
+      "facets": ["telemetry"],
+      "lifecycle": "DESIGN",
+      "owner": "meta",
+      "depends_on": ["ECO-001"],
+      "oss_first": { "approved": true, "note": "Нативные custom tools OpenCode + tiktoken (MIT); без внешнего сервиса" },
+      "review": "reviewer (детерминированные checks) + verifier (acceptance)",
+      "acceptance": "2 недели аудита → честный weekly token/cost report по агент/модель/проект (research A1/A4)",
+      "risk": "Логирование content промптов (запрещено — только метаданные)",
+      "rollback": "Удалить два .ts файла; audit.jsonl в .cache (gitignored)",
+      "artifacts": ["99-Inbox/vault-upgrade-research-2026-08-02.md"],
+      "tasks": [],
+      "status_note": "Design из research 2026-08-02 (P0 #3); реализации нет; обязательный первый шаг перед capsule/cache claims",
+      "retired": false
+    },
+    "ECO-003": {
+      "title": "Agent Workspace manifest",
+      "layer": "L2",
+      "facets": ["verification", "memory"],
+      "lifecycle": "DESIGN",
+      "owner": "librarian",
+      "depends_on": ["ECO-002"],
+      "oss_first": { "approved": true, "note": "Собственный schema (YAML/JSON) + OpenCode-native точки; без внешних зависимостей" },
+      "review": "reviewer (schema/границы) + пользователь (approval пилота)",
+      "acceptance": "Пилотная задача через manifest: verify=PASS → finalize в manifest-контуре; diff строго в allowed_paths",
+      "risk": "Workspace превращается в big-design-upfront вместо scoped-пилота",
+      "rollback": "Manifest — файл; удалить без потери данных",
+      "artifacts": ["06-Audits/2026-08-31-ecosystem-upgrade-plan-v2.md", "99-Inbox/vault-upgrade-research-2026-08-02.md"],
+      "tasks": [],
+      "status_note": "Design (plan v2 §5); поля manifest зафиксированы; [проверить] interceptor перед LLM-call и lazy tool definitions",
+      "retired": false
+    },
+    "ECO-004": {
+      "title": "tmux / link resolver",
+      "layer": "L4",
+      "facets": ["interface"],
+      "lifecycle": "RESEARCH",
+      "owner": "librarian",
+      "depends_on": [],
+      "oss_first": { "approved": true, "note": "tmux (ISC-подобная лицензия) + собственный resolver; без внешних сервисов" },
+      "review": "reviewer (runtime-безопасность)",
+      "acceptance": "Кликабельный переход vault-wikilink → файл в $EDITOR из TUI-вывода; подтверждённый smoke в целевом терминале",
+      "risk": "OSC8 не поддерживается целевым терминалом/tmux — resolver бесполезен",
+      "rollback": "Удалить resolver-скрипт; wikilinks остаются текстом",
+      "artifacts": ["99-Inbox/vault-upgrade-research-2026-08-02.md"],
+      "tasks": [],
+      "status_note": "Research: OSC8/clickable links в TUI не документированы [проверить] (Addendum 2026-08-31 §2); tmux mouse/attention [проверить]",
+      "retired": false
+    },
+    "ECO-005": {
+      "title": "sqlite-vec / repo-map (tree-sitter, ast-grep как independent tools)",
+      "layer": "L2",
+      "facets": ["memory", "telemetry"],
+      "lifecycle": "RESEARCH",
+      "owner": "meta",
+      "depends_on": ["ECO-002"],
+      "oss_first": { "approved": true, "note": "sqlite-vec (MIT/Apache), tree-sitter (MIT), ast-grep (MIT) — independent OSS tools, не привязаны к Aider (retired)" },
+      "review": "reviewer (зависимости/лицензии) + verifier (replay A/B)",
+      "acceptance": "query-memory top-k < 50ms без перечитывания файлов; duplicate reads ↓ по audit-log (research A2)",
+      "risk": "Embedding-модель тянет external API (anti-goal risk); sqlite-vec pre-v1 breaking changes",
+      "rollback": "Удалить tools/index-engine + .cache/vault-vec.sqlite (gitignored)",
+      "artifacts": ["99-Inbox/vault-upgrade-research-2026-08-02.md"],
+      "tasks": [],
+      "status_note": "Research готов (2026-08-02 P0 #2 + синтез §4); [проверить] sqlite-lembed доступность; Aider как источник retired (plan v2 §10)",
+      "retired": false
+    },
+    "ECO-006": {
+      "title": "Pip-Boy projection (multi-view planning UI)",
+      "layer": "L4",
+      "facets": ["interface", "knowledge"],
+      "lifecycle": "VERIFY",
+      "owner": "librarian",
+      "depends_on": ["ECO-001"],
+      "oss_first": { "approved": true, "note": "Vanilla HTML/JS + d3 (уже в проекте); без новых зависимостей" },
+      "review": "reviewer (claims/метки static vs live) + verifier (acceptance)",
+      "acceptance": "Pip-Boy загружается и отображает Matrix/Layers/Facets/Kanban/Projects/Agents/Blockers/Workspace из registry+data; явные метки static/generated; real-time не заявляется",
+      "risk": "Превращение в unverified live-дашборд (claims без observer ingestion)",
+      "rollback": "index.html — git-файл; откат к версии T-069 (skills-граф only)",
+      "artifacts": ["tools/ecosystem-map/index.html", "tools/ecosystem-map/registry.json"],
+      "tasks": ["T-121"],
+      "status_note": "MVP acceptance подтверждён независимым verifier PASS 2026-08-31 (T-121); LIVE не заявляется: live-режим — later gate (T-128), OSC8/tmux [проверить]",
+      "retired": false
+    },
+    "ECO-007": {
+      "title": "Read-only observer (deterministic snapshot CLI)",
+      "layer": "L1",
+      "facets": ["telemetry", "knowledge"],
+      "lifecycle": "VERIFY",
+      "owner": "librarian",
+      "depends_on": ["ECO-001"],
+      "oss_first": { "approved": true, "note": "Python stdlib only; без зависимостей и сети" },
+      "review": "reviewer (read-only гарантии) + verifier (детерминизм/acceptance)",
+      "acceptance": "Повторный запуск на том же входе → идентичный snapshot.json (детерминизм); no mutation/no network подтверждены ревью кода; вывод читается Pip-Boy",
+      "risk": "Snapshot принят за источник правды (запрещено: canonical = registry/карточки)",
+      "rollback": "Удалить observer.py + generated/ (gitignored); проекции Pip-Boy возвращаются к registry-only",
+      "artifacts": ["tools/ecosystem-map/observer.py", "06-Specs/Vault/ecosystem-registry.md"],
+      "tasks": ["T-120"],
+      "status_note": "MVP acceptance подтверждён независимым verifier PASS 2026-08-31 (T-120): детерминизм + read-only гарантии; LIVE не заявляется: live watcher/cross-repo — later; snapshot не источник правды",
+      "retired": false
+    },
+    "ECO-008": {
+      "title": "Read-only MCP server (ecosystem state)",
+      "layer": "L1",
+      "facets": ["knowledge", "interface"],
+      "lifecycle": "DESIGN",
+      "owner": "librarian",
+      "depends_on": ["ECO-007"],
+      "oss_first": { "approved": true, "note": "MCP SDK OSS; но implementation BLOCKED — prefer custom tool путь" },
+      "review": "reviewer (context overhead) + пользователь (unblock approval)",
+      "acceptance": "Unblock: подтверждённая потребность внешнего MCP-клиента + оценка context overhead 3 tools + отдельный approval",
+      "risk": "MCP context overhead (docs caveat 2026-08-31); dependency explosion; прецедент user-freeze MCP (T-110)",
+      "rollback": "Spec-only: удалять нечего; runtime нет и не заявляется",
+      "artifacts": ["06-Specs/Vault/mcp-readonly.md", ".opencode/tools/ecosystem-snapshot.ts"],
+      "tasks": ["T-122"],
+      "status_note": "Spec верифицирован как артефакт (независимый verifier PASS 2026-08-31, T-122); implementation остаётся BLOCKED (plan v2 §7); custom tool ecosystem-snapshot runtime loading [проверить] (T-127) — runtime не заявляется",
+      "retired": false
+    }
+  },
+  "agents": {
+    "librarian": { "name": "Librarian", "scope": "vault", "role": "Командный центр: маршрутизация, знания, память экосистемы", "status": "confirmed", "note": "Primary agent волта; файл .opencode/agent/librarian.md" },
+    "meta": { "name": "Meta", "scope": "global", "role": "Мета-агент агентной инфраструктуры (~/.config/opencode, .opencode, vault)", "status": "confirmed", "note": "T-052; правит инфру через subagents" },
+    "researcher": { "name": "Researcher", "scope": "global", "role": "Read-only исследование repo/system artifacts", "status": "confirmed", "note": "Scoped smoke PASS 2026-08-29 (route-log); общий rollout не заявлен" },
+    "reviewer": { "name": "Reviewer", "scope": "global", "role": "Quality-ревью (стиль/безопасность/конвенции); ≠ verifier", "status": "confirmed", "note": "Scoped global smoke PASS 2026-08-29" },
+    "verifier": { "name": "Verifier", "scope": "global", "role": "Acceptance gate only: DoD, VERDICT PASS/FAIL, never edits", "status": "confirmed", "note": "Глобальный + project-local extensions (SERPlux)" },
+    "sysop": { "name": "Sysop", "scope": "global", "role": "Read-only системный инспектор (Manjaro)", "status": "confirmed", "note": "Exact global primary smoke PASS 2026-08-29; scoped" },
+    "system-ops": { "name": "System-ops", "scope": "dotfiles", "role": "High-risk apply planner (approval-gated)", "status": "frozen", "note": "T-108 BLOCKED; frozen by user вместе с bridge" },
+    "guardian": { "name": "Guardian", "scope": "global", "role": "Philosophy/policy keeper, non-editing audit", "status": "candidate", "note": "T-070; design-only" },
+    "prompt-engineer": { "name": "Prompt-engineer / task-compiler", "scope": "global", "role": "Компиляция свободных задач в строгие промпты/пайплайны", "status": "candidate", "note": "T-047/T-092; design-only, зависит от skills-поддержки [проверить]" },
+    "general": { "name": "General", "scope": "global", "role": "Встроенный исполнитель субагентских задач", "status": "confirmed", "note": "Используется librarian-контуром; не automatic router" }
+  },
+  "workspace": {
+    "lifecycle": "DESIGN",
+    "manifest_fields": ["task_id", "goal_dod", "scope_allowed_paths", "base_ref", "context_capsule_ref", "model_policy", "token_budget", "time_budget", "allowed_tools", "verification", "max_repair_cycles", "artifacts_dir"],
+    "open_questions": [
+      "[проверить] interceptor перед LLM-call для capsule injection",
+      "[проверить] lazy tool definitions per-agent/per-skill",
+      "Пилот после ECO-002 telemetry"
+    ],
+    "note": "Design-контур (plan v2 §5); не реализация; OpenCode agent loop не патчится"
+  },
+  "blockers_policy": {
+    "sources": ["TASKS.md (⛔ blocked / frozen)", "observer drift signals (generated/snapshot.json)"],
+    "note": "Registry не дублирует оперативные блокеры; проекция Blockers собирает их из источников при отображении"
+  }
+}
