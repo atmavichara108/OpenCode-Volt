@@ -1,0 +1,39 @@
+{
+  "id": "2026-09-05-meta-agent-creation",
+  "created": "2026-09-05T12:10:00Z",
+  "updated": "2026-09-05T12:10:00Z",
+  "status": "pending",
+  "risk": "medium",
+  "source": {
+    "agent": "meta",
+    "session": "permission-audit-2026-09-05",
+    "trigger": "manual"
+  },
+  "dilemma": {
+    "title": "Meta agent for infrastructure editing",
+    "context": "No explicit meta agent existed for agent infrastructure editing (.opencode/, vault)",
+    "options": [
+      {
+        "id": "A",
+        "label": "Create meta agent with scoped edit/bash",
+        "pros": ["Clear separation: meta for infra, builder for app code", "Explicit permissions"],
+        "cons": ["Another agent to maintain"]
+      },
+      {
+        "id": "B",
+        "label": "Use builder for meta tasks",
+        "pros": ["No new agent"],
+        "cons": ["Builder has broad permissions", "No separation of concerns"]
+      }
+    ],
+    "recommendation": "A",
+    "reason": "Clear separation: meta for infra, builder for app code"
+  },
+  "resolution": {
+    "choice": null,
+    "approved_by": null,
+    "approved_at": null,
+    "evidence": null
+  },
+  "stop_condition": "after user decision"
+}

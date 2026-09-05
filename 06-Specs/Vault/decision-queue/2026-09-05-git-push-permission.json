@@ -1,0 +1,45 @@
+{
+  "id": "2026-09-05-git-push-permission",
+  "created": "2026-09-05T12:00:00Z",
+  "updated": "2026-09-05T12:00:00Z",
+  "status": "pending",
+  "risk": "high",
+  "source": {
+    "agent": "meta",
+    "session": "permission-audit-2026-09-05",
+    "trigger": "manual"
+  },
+  "dilemma": {
+    "title": "Global git push permission",
+    "context": "Global config had git push* = allow, which is dangerous for destructive operation",
+    "options": [
+      {
+        "id": "A",
+        "label": "Change to ask",
+        "pros": ["Requires confirmation before push", "Prevents accidental pushes"],
+        "cons": ["Slightly slower workflow"]
+      },
+      {
+        "id": "B",
+        "label": "Keep allow",
+        "pros": ["Faster workflow"],
+        "cons": ["Risk of accidental push", "Destructive operation without confirmation"]
+      },
+      {
+        "id": "C",
+        "label": "Change to deny",
+        "pros": ["Maximum safety"],
+        "cons": ["Blocks all pushes", "Impractical for workflow"]
+      }
+    ],
+    "recommendation": "A",
+    "reason": "Push is destructive, should require explicit confirmation"
+  },
+  "resolution": {
+    "choice": null,
+    "approved_by": null,
+    "approved_at": null,
+    "evidence": null
+  },
+  "stop_condition": "after user decision"
+}

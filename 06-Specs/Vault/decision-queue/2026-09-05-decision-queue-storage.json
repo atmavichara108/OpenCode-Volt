@@ -1,0 +1,45 @@
+{
+  "id": "2026-09-05-decision-queue-storage",
+  "created": "2026-09-05T12:15:00Z",
+  "updated": "2026-09-05T12:15:00Z",
+  "status": "pending",
+  "risk": "low",
+  "source": {
+    "agent": "meta",
+    "session": "permission-audit-2026-09-05",
+    "trigger": "manual"
+  },
+  "dilemma": {
+    "title": "Decision queue storage location",
+    "context": "Where to store decision queue cards — Vault vs XDG user state path",
+    "options": [
+      {
+        "id": "A",
+        "label": "Use ~/.local/state/opencode/decision-queue/",
+        "pros": ["XDG-compliant user state path", "Separate from config/vault"],
+        "cons": ["Blocked by external_directory permissions", "Requires explicit allow"]
+      },
+      {
+        "id": "B",
+        "label": "Use OpenCode-Vault/06-Specs/Vault/decision-queue/",
+        "pros": ["Already in vault, no permission issues", "Version controlled with vault"],
+        "cons": ["Not XDG-compliant", "Mixed with other specs"]
+      },
+      {
+        "id": "C",
+        "label": "Use ~/.config/opencode/decision-queue/",
+        "pros": ["XDG-compliant config path"],
+        "cons": ["Config vs state confusion", "May need permission allow"]
+      }
+    ],
+    "recommendation": "B",
+    "reason": "Currently using Vault path (option B) as it works without permission changes; XDG path (option A) is future goal"
+  },
+  "resolution": {
+    "choice": null,
+    "approved_by": null,
+    "approved_at": null,
+    "evidence": null
+  },
+  "stop_condition": "after user decision"
+}

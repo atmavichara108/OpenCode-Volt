@@ -1,0 +1,39 @@
+{
+  "id": "2026-09-05-verifier-mutation",
+  "created": "2026-09-05T12:05:00Z",
+  "updated": "2026-09-05T12:05:00Z",
+  "status": "pending",
+  "risk": "critical",
+  "source": {
+    "agent": "meta",
+    "session": "permission-audit-2026-09-05",
+    "trigger": "manual"
+  },
+  "dilemma": {
+    "title": "Verifier mutation commands",
+    "context": "Verifier had systemctl --user restart/start/stop = allow, but verifier should be read-only",
+    "options": [
+      {
+        "id": "A",
+        "label": "Remove mutation commands",
+        "pros": ["Verifier becomes truly read-only", "Consistent with role design"],
+        "cons": ["Loses ability to check service status via restart"]
+      },
+      {
+        "id": "B",
+        "label": "Keep as-is",
+        "pros": ["Can restart services for validation"],
+        "cons": ["Mutation in read-only agent", "Violates role boundary"]
+      }
+    ],
+    "recommendation": "A",
+    "reason": "Verifier should be read-only validation, not mutation"
+  },
+  "resolution": {
+    "choice": null,
+    "approved_by": null,
+    "approved_at": null,
+    "evidence": null
+  },
+  "stop_condition": "after user decision"
+}
