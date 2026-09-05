@@ -204,7 +204,7 @@ timestamp: 2026-08-17
 - explore/build уже были на `opencode/deepseek-v4-flash-free` — не тронуты.
 - Доступные бесплатные Zen-модели (проверено `opencode models` 2026-08-04):
   `deepseek-v4-flash-free`, `ling-3.0-flash-free`, `nemotron-3-ultra-free`,
-  `laguna-s-2.1-free`, `mimo-v2.5-free`, `north-mini-code-free`.
+  ~~`laguna-s-2.1-free`~~ (RETIRED 2026-09-05: зацикливания, удалена), `mimo-v2.5-free`, `north-mini-code-free`.
 
 ### Phase 1 / T-087 — test-metrics normalization progress (2026-08-04)
 
@@ -483,6 +483,23 @@ timestamp: 2026-08-17
 - Изменения требуют перезапуска OpenCode, чтобы новая модельная политика
   применялась в активных сессиях.
 - Политика временная и будет заменена capability-routing после его rollout.
+
+### 3 Режима выбора моделей (2026-09-01) — **[проверить]**
+
+> Исследование провайдеров OpenCode с бесплатными лимитами. Созданы
+> [[01-Reference/providers]] и [[01-Reference/config-modes]].
+
+- **Всего 4 провайдера доступны в OpenCode:** `opencode` (Zen), `opencode-go` (Go), `openrouter`, `mistral`.
+- **Истинные бесплатные лимиты только у 2 провайдеров:**
+  - `opencode` (Zen): 7 бесплатных моделей (nemotron-3-ultra-free, deepseek-v4-flash-free, ling-3.0-flash-free, mimo-v2.5-free, nemotron-3.5-lightning-free, ling-3.0-flash-fin-free, muse-spark-1.2-contributor-free)
+  - `openrouter`: 47+ бесплатных моделей (glm-5.2:free, minimax-m3:free, nemotron-3-ultra:free, ~~poolside laguna-s-2.1:free RETIRED 2026-09-05~~ и др.)
+- **БЕЗ бесплатных лимитов:** `opencode-go` (только подписка), `mistral` (только платные).
+- **OpenCode Go** — платная подписка, модели: gpt-5.6-luna, glm-5.2/5.3, qwen3.7-plus, kimi-k2.7-code, mimo-v2.5-pro и др.
+- **Созданы 3 режима программного переключения:**
+  - **FREE** — 100% бесплатные (Zen + OpenRouter free), primary: nemotron-3-ultra-free
+  - **MEDIUM** — GPT-5.6 Luna (Go, сильная и дешёвая) + Zen free для рутины
+  - **PREMIUM** — Топовые (Claude Opus 5, Sonnet 4.6, GPT Codex) на будущее
+- Документация: [[providers]], [[config-modes]], [[model-routing]] обновлён
 
 ### Runbook operational layer (2026-08-17)
 
