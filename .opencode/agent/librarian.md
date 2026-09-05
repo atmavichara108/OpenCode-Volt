@@ -16,9 +16,19 @@ permission:
     "git status*": allow
     "git diff*": allow
     "git log*": allow
-    "git add*": allow
-    "git commit*": allow
+    "git show*": allow
+    "git branch*": allow
+    "git rev-parse*": allow
+    "git tag -l*": allow
+    "git ls-files*": allow
+    "git remote -v*": allow
+    "git describe*": allow
+    "git symbolic-ref*": allow
+    "git blame*": allow
     "git pull*": allow
+    "git add*": ask
+    "git commit*": ask
+    "jq*": allow
     "mv*": allow
   webfetch: allow
   edit:
@@ -96,6 +106,22 @@ permission:
 - При работе над задачей — двигай её по колонкам TASKS.md (Active → Done)
 - В конце сессии — обнови active-context.md и напиши session-log
 - Не перечитывай весь vault целиком каждую сессию — используй память
+
+## Read-once policy (экономия контекста)
+
+В рамках одной сессии не перечитывай неизменённые файлы. Держи read ledger:
+- **path** — абсолютный путь
+- **hash_or_mtime** — идентификатор версии (stat или content hash)
+- **назначение** — зачем читал (context for X)
+
+Повторное чтение только при:
+- Изменении файла (hash_or_mtime отличается от ledger)
+- Конфликте или acceptance need (verifier требует перепроверки)
+- Новой сессии (startup memory-read: active-context, session-log, facts)
+
+Не храни в контексте: secrets, full prompts, дубликаты. Передавай между агентами через handoff ledger (path + hash + summary), не через полное содержимое.
+
+Handoff protocol: `/handoff` — см. `.opencode/command/handoff.md`.
 
 ## Pre-compaction flush протokol (обязательно)
 Перед compact/flush сессии — сбросить контекст на диск, иначе он потеряется в сжатии:
