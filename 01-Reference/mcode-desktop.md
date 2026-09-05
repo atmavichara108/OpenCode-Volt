@@ -93,6 +93,97 @@ timestamp: 2026-09-05
   чтением файла + следованием протоколу [проверить: переключение агентов через UI].
 - `Tab`/`switch_agent` — механика TUI; в M Code переключение через UI приложения.
 
+## Секрет экономии токенов (verified в app.asar, 2026-09-05)
+
+Расход сессии — центы. Причина не одна фича, а стек контекстной гигиены на replay.
+В TUI 1.18.5 этих механизмов НЕТ (strings-проверка бинаря: 0 совпадений).
+
+### Replay budget — главное (портится в TUI)
+При отправке истории модели **старые tool-результаты пережимаются**:
+- `TOOL_OUTPUT_MAX_CHARS = 2000` — каждый старый tool-результат режется до
+  2000 символов (head 75% + tail 25%, длинные строки — middle-elision).
+  Тул не «врёт»: маркер `[mcode: replay budget — omitted ...]` честно
+  показывает, что срезано и как дочитать (resume offset).
+- `REPLAY_PROTECTED_CHARS = 40000` — бюджет защиты с конца: последние
+  tool-результаты суммарно до 40 KB едут целиком; всё старше 40 KB и >2000
+  символов — капится.
+- `PRUNED_INPUT_MIN_CHARS = 120` — длинные строки в старых **входах** тулов
+  (>120 симв., кроме keep-полей) заменяются на `[N characters cleared...]`.
+- Reasoning старых ходов не переигрывается (только подписанный Anthropic
+  или текущий turn).
+- `IMAGE_BUDGET = 5` — из старых сообщений держится ≤5 картинок.
+- `[Old tool result content cleared]` — уже компактированные пары чисто.
+- Красacted-входы: секреты вычищаются при replay (`redactWith`).
+
+### Остальные рычаги
+- Compaction: `buffer 20000 / keep 8000 tokens`, summary ≤4096 output tokens.
+- Потолки tool_output: read ≤50 KB, bash >2000 строк → полный вывод в файл
+  (искать grep'ом, не тащить в контекст).
+- Skills лениво: тело грузится только при match; skip — без загрузки.
+- verify-кэш по tree-hash — повторный typecheck не ест токены.
+- memory-стор — не перечитывать файлы ради фактов; recall вместо этого.
+- Doom-loop detector (THRESHOLD/BURST) — убивает зацикливание (главный
+  жрец токенов в агентных сессиях).
+- Модель: сессия на `opencode-go/glm-5.3-flash` (flash-класс) — цена за
+  токен на порядки ниже премиальных; дирижёру хватает.
+- peers: «polling is done by reading» — peer_read дешевле wake (wake =
+  платный turn).
+
+### Формула экономии
+`flash-модель × replay budget 2000/40KB × pruning входов × кэши × doom-loop guard`
+— каждый множитель мал, вместе дают центы.
+
+## Второй проход по app.asar — кандидаты на порт (2026-09-05)
+
+### Doom-loop guard (портировать обязательно)
+`THRESHOLD = 3, BURST = 9, CAPACITY = 512` (LRU по сессиям). Тот же вызов тула
+с **байт-идентичными аргументами** ≥3 раз подряд → turn останавливается
+`DoomLoopBurstError` с педагогическим текстом: «перечитай, что вернули ранние
+вызовы; повтор тех же аргументов не даст другого ответа». Главный убийца
+зацикливаний и жечь токенов.
+
+### No-op turn guard
+`NO_OP_OUTPUT_THRESHOLD = 200, NO_OP_RETRY_LIMIT = 3, NO_OP_NUDGE` — turn,
+закончившийся без ответа и без вызова тула (<200 output tokens), не считается
+работой: model получает нудж «сделай работу или скажи одной фразой, что
+блокирует». Ловит молчаливые сгоревшие ходы.
+
+### Auto-compaction с continuation summary
+`DEFAULT_TOKEN_THRESHOLD = 100000` — при переполнении контекст заменяется
+continuation-summary («structured, concise, actionable… resume work in a
+future context window»); `filterCompacted` реплеит только summary + хвост
+(`tail_start_id`), пре-компактные пары → `[Old tool result content cleared]`.
+Buffer 20000 / keep 8000 tokens, summary ≤4096 output tokens.
+
+### Secret redaction service
+`redactWith(part, PRUNED_INPUT_KEEP)` на **каждом** чтении частей из БД и на
+replay. `PRUNED_INPUT_KEEP = {filePath, path, command, pattern, description,
+subagent_type, name, url, offset, limit}` — что переживает pruning старых
+входов. Секреты не попадают в контекст → нет leak-инцидентов и ретраев.
+
+### Playwright-CLI — полный браузерный тул (обогащает T-134)
+Не просто «браузер»: embed CLI с сессиями — open/goto/click/fill/snapshot/eval,
+dialog handling, tabs, **storage state** (state-load/state-save = персистентная
+логин-сессия), network мок (`route`), console-логи, tracing, video-запись,
+PDF. Снапшот → element ref: модель кликает по ref'ам, не по скриншотам
+(дешевле, чем vision).
+
+### Санитизация ввода (security)
+- `SYSTEM_REMINDER_RE` — system-reminder блоки из вставленного текста
+  вычленяются и не подделываются как системные.
+- `TRANSPORT_MARKUP` — теги `<input>/<output>/<thinking>/<system-reminder>/…`
+  из пользовательского текста экранируются → prompt-injection через markup
+  затруднён.
+
+### Мелкое, но полезное
+- `subagent_depth` — глубина вложенности субагентов (default 1): рекурсивный
+  фан-аут ограничен по умолчанию.
+- `tokens_cache_read` — per-session учёт кэш-прочтений в БД → честная
+  статистика расхода (наш «проверил центы» стал возможен).
+- `LARGE_FILE_THRESHOLD = 10 MB` — гард больших файлов.
+- `replayElision` маркеры с `resume` — портируя budget, сохранить формат
+  маркера: линия резюма позволяет дочитать файл без перечитки.
+
 ## Что это меняет для workflows волта
 1. **[[.opencode/command/audit]] → параллельный fan-out:** `task(explore)` по проектам
    вместо последовательного git pull-обхода.

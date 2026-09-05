@@ -108,6 +108,12 @@ flowchart LR
 | # | Задача | Статус | Примечание |
 |---|--------|--------|-----------|
 | 30 | **Reference-карточка M Code Desktop** — инвентаризация органов + статус миграции | ✅ | 2026-09-05: [[01-Reference/mcode-desktop]] |
+| 42 | **Replay budget в TUI — ПЕРВЫЙ приоритет P6** — секрет экономии M Code (сессия за центы): старые tool-результаты при отправке истории режутся до 2000 симв. (head 75%/tail 25%), защита последних 40 KB, pruning старых tool-входов >120 симв., дроп неподписанного reasoning, image budget 5. В TUI 1.18.5 НЕТ (strings-проверка). Константы verified в app.asar: [[01-Reference/mcode-desktop]] § «Секрет экономии токенов» | ❌ | Патч TUI/prompt-пайплайна: truncateToolOutput + replayCapPlan по образцу M Code |
+| 43 | **Doom-loop + no-op guard в TUI** — byte-identical tool-call ≥3 подряд → стоп turn с педагогическим текстом (THRESHOLD=3/BURST=9); пустой turn (<200 output tokens, без тула/ответа) → нудж. Константы verified | ❌ | Второй по ценности порт: убивает главные утечки токенов |
+| 44 | **Auto-compaction + continuation summary** — threshold 100K tokens, summary ≤4096 output tokens, replay только summary+хвост (filterCompacted). Проверить, что в TUI 1.18.5 уже есть [проверить: у TUI compaction есть, сверить семантику] | ❌ | Возможно, частично уже есть в TUI |
+| 45 | **Secret redaction service** — redactWith на replay частей из БД + PRUNED_INPUT_KEEP whitelist {path, command, pattern, url, offset, limit…} | ❌ | Security: секреты не попадают в контекст, нет leak-ретраев |
+| 46 | **Санитизация ввода** — экранирование system-reminder/transport-markup из вставленного текста (SYSTEM_REMINDER_RE, TRANSPORT_MARKUP) | ❌ | Prompt-injection defense |
+| 47 | **Per-session учёт cache_read токенов** — tokens_cache_read в статистике сессии | ❌ | Прозрачность расхода (как «проверил центы») |
 | 40 | **Playwright-браузер в TUI** — браузерный тул (JS-рендеринг, скриншоты, DOM-извлечение); в M Code это `playwright-core`; усилит `/capture` и веб-аудиты | ❌ | TUI-webfetch без JS; проверено 2026-09-05 в app.asar.unpacked |
 | 31 | **Peers-семантика в TUI** — claim/letter/hop-limits между параллельными TUI-сессиями (файл-реестр + протокол в capability-routing) | ❌ | Референс: peers/peer_role/peer_message из M Code |
 | 32 | **Параллельный `/audit`** — fan-out task(explore) по проектам, сводка на дашборд | ❌ | Заменяет последовательный git pull-обход (T-014/T-25) |
