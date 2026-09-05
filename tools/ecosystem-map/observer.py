@@ -3,7 +3,9 @@
 
 Читает (только чтение, никаких мутаций входов):
   - 03-Projects/*.md        — карточки проектов (frontmatter: repo/kind/stack/status)
-  - TASKS.md                — оперативный трекер (статусы задач по секциям)
+  - TASKS.md                — оперативный трекер (статусы задач по секциям;
+                              парсится только ID-колонка таблиц, T-ID из
+                              Related-колонок в секции не попадают)
   - 04-Memory/route-log/*.md — route log entries (frontmatter)
   - tools/ecosystem-map/registry.json — canonical registry (cards/agents)
   - git (vault only): rev-parse HEAD, status --porcelain, log -1 (read-only plumbing)
@@ -17,6 +19,11 @@
   - детерминизм: одинаковый вход -> идентичный output (без wall-clock;
     input_digest = sha256 по отсортированным хешам входов)
   - snapshot НЕ источник правды: canonical = registry.json + карточки волта
+
+Drift signals: repo_missing, artifact_missing, task_blocked,
+task_ref_missing (card.tasks -> T-ID отсутствует в TASKS.md),
+registry_schema (unknown layer/facet/lifecycle/priority/owner,
+битые depends_on).
 
 Exit codes: 0 = ok; 1 = ошибка ввода; 2 = ошибка записи.
 """
@@ -40,6 +47,8 @@ ALLOWED_LIFECYCLE = [
 ]
 ALLOWED_LAYERS = ["L0", "L1", "L2", "L3", "L4"]
 ALLOWED_FACETS = ["memory", "routing", "telemetry", "verification", "knowledge", "interface"]
+ALLOWED_PRIORITIES = ["P0", "P1", "P2", "P3", "P4"]
+ALLOWED_OWNERS = ["librarian", "meta", "project-agent", "user"]
 
 
 def sha256_file(path: Path) -> str:
@@ -85,15 +94,19 @@ def read_projects() -> tuple[list[dict], dict[str, str]]:
     return projects, hashes
 
 
-def read_tasks() -> tuple[dict, dict[str, str]]:
-    """TASKS.md: {секция: [ID...]}, хеши входа.
+def read_tasks() -> tuple[dict, dict[str, str], set[str]]:
+    """TASKS.md: {секция: [ID...]}, хеши входа, множество всех известных ID.
 
     Секции Kanban: Active, Blocked, Planned, Backlog, Done.
+    Парсится только ID-колонка строк таблиц (`| T-NNN | ...`):
+    T-ID из Related-колонок («Связано») не попадают в секции —
+    косметика проекции (правка 2026-08-31); смысл TASKS.md не меняется.
     """
     path = VAULT_ROOT / "TASKS.md"
     text = path.read_text(encoding="utf-8")
     hashes = {"TASKS.md": sha256_file(path)}
     sections: dict[str, list[str]] = {"Active": [], "Blocked": [], "Planned": [], "Backlog": [], "Done": []}
+    all_ids: set[str] = set()
     current = None
     for line in text.splitlines():
         heading = re.match(r"^##\s+.*", line)
@@ -112,11 +125,14 @@ def read_tasks() -> tuple[dict, dict[str, str]]:
             else:
                 current = None
             continue
-        if current:
-            for tid in re.findall(r"\bT-\d{3}\b", line):
-                if tid not in sections[current]:
-                    sections[current].append(tid)
-    return sections, hashes
+        # только ID-колонка: строка таблицы, начинающаяся с | T-NNN |
+        m = re.match(r"^\|\s*(T-\d{3})\s*\|", line)
+        if m:
+            tid = m.group(1)
+            all_ids.add(tid)
+            if current and tid not in sections[current]:
+                sections[current].append(tid)
+    return sections, hashes, all_ids
 
 
 def read_route_log() -> tuple[list[dict], dict[str, str]]:
@@ -152,6 +168,12 @@ def read_registry() -> tuple[dict, dict[str, str], list[str]]:
         for facet in facets:
             if facet not in ALLOWED_FACETS:
                 warnings.append(f"{cid}: unknown facet {facet!r}")
+        priority = card.get("priority")
+        if priority is not None and priority not in ALLOWED_PRIORITIES:
+            warnings.append(f"{cid}: unknown priority {priority!r}")
+        owner = card.get("owner")
+        if owner is not None and owner not in ALLOWED_OWNERS:
+            warnings.append(f"{cid}: unknown owner {owner!r}")
         for dep in card.get("depends_on", []):
             if dep not in registry.get("cards", {}):
                 warnings.append(f"{cid}: unknown dependency {dep!r}")
@@ -186,6 +208,7 @@ def drift_signals(
     projects: list[dict],
     registry: dict,
     tasks: dict,
+    all_task_ids: set[str],
     git: dict,
     warnings: list[str],
 ) -> list[dict]:
@@ -208,6 +231,13 @@ def drift_signals(
                     "subject": cid,
                     "detail": f"artifact {artifact} не существует",
                 })
+        for tid in card.get("tasks", []):
+            if tid not in all_task_ids:
+                signals.append({
+                    "type": "task_ref_missing",
+                    "subject": cid,
+                    "detail": f"card.tasks ссылается на {tid}, ID не найден в TASKS.md",
+                })
     for tid in tasks.get("Blocked", []):
         signals.append({
             "type": "task_blocked",
@@ -221,7 +251,7 @@ def drift_signals(
 
 def build_snapshot() -> dict:
     projects, h1 = read_projects()
-    tasks, h2 = read_tasks()
+    tasks, h2, all_task_ids = read_tasks()
     routes, h3 = read_route_log()
     registry, h4, warnings = read_registry()
     git, h5 = git_state()
@@ -235,8 +265,12 @@ def build_snapshot() -> dict:
         cid: {
             "title": card.get("title", ""),
             "layer": card.get("layer", ""),
+            "facets": card.get("facets", []),
             "lifecycle": card.get("lifecycle", ""),
             "owner": card.get("owner", ""),
+            "priority": card.get("priority", ""),
+            "project": card.get("project", ""),
+            "retired": bool(card.get("retired", False)),
         }
         for cid, card in sorted(registry.get("cards", {}).items())
     }
@@ -260,7 +294,7 @@ def build_snapshot() -> dict:
             for aid, a in sorted(registry.get("agents", {}).items())
         },
         "git": git,
-        "drift_signals": drift_signals(projects, registry, tasks, git, warnings),
+        "drift_signals": drift_signals(projects, registry, tasks, all_task_ids, git, warnings),
         "registry_warnings": warnings,
     }
 

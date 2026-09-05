@@ -69,14 +69,16 @@ IDEA → RESEARCH → DESIGN → APPROVED → BUILD → REVIEW → VERIFY → LI
   "facets": ["primary", "...secondary"],
   "lifecycle": "IDEA|RESEARCH|DESIGN|APPROVED|BUILD|REVIEW|VERIFY|LIVE|OBSERVE|IMPROVE|RETIRED",
   "owner": "librarian|meta|project-agent|user",
+  "priority": "P0|P1|P2|P3|P4",
+  "project": "ID проекта из 03-Projects (или отсутствует = ecosystem-wide)",
   "depends_on": ["ECO-NNN"],
   "oss_first": {"approved": true|false, "note": "..."},
   "review": "кто/как ревьюит (reviewer-роль или пользователь)",
   "acceptance": "что считается доказательством перехода lifecycle",
   "risk": "главный риск",
   "rollback": "как откатить без потери canonical-данных",
-  "artifacts": ["пути к файлам-артефактам"],
-  "tasks": ["T-NNN"],
+  "artifacts": ["пути к файлам-артефактам (vault-relative, должны существовать)"],
+  "tasks": ["T-NNN (ID существует в TASKS.md)"],
   "status_note": "свободная заметка о текущем состоянии/блокерах",
   "retired": false
 }
@@ -85,11 +87,19 @@ IDEA → RESEARCH → DESIGN → APPROVED → BUILD → REVIEW → VERIFY → LI
 Обязательные поля для `APPROVED` и дальше: `acceptance`, `rollback`,
 `owner`, `review`. Карточка без них не может покинуть `DESIGN`.
 
+**Schema 1.1 (2026-08-31, minor):** добавлены optional поля `priority`
+(шкала P0..P4 из TASKS: P0 блокер · P1 структура · P2 наполнение · P3
+полировка · P4 автоматизация/история) и `project` (привязка карточки к
+проекту из `03-Projects/*.md`; отсутствие = ecosystem-wide). Оба поля
+проекционные (фильтры Kanban), не меняют lifecycle-правила. Валидация:
+unknown priority/owner → observer warning; `tasks` → T-ID должен
+существовать в TASKS.md (drift signal `task_ref_missing`).
+
 ## 5. Дополнительные секции registry.json
 
-- `meta`: `schema: "ecosystem-registry/1.0"`, `canonical: true`,
+- `meta`: `schema: "ecosystem-registry/1.1"`, `canonical: true`,
   `updated`, `source_of_truth` (этот spec), `projections` (список путей).
-- `layers`, `facets`, `lifecycle` — определения (см. §2–3).
+- `layers`, `facets`, `lifecycle`, `priorities` — определения (см. §2–4).
 - `agents` — реестр агентов экосистемы: `{id, name, scope
   (global|vault|project), role, status: confirmed|candidate|frozen,
   note}`. Статусы только с evidence (confirmed = smoke/verifier или
@@ -97,8 +107,8 @@ IDEA → RESEARCH → DESIGN → APPROVED → BUILD → REVIEW → VERIFY → LI
 - `workspace` — Agent Workspace manifest-контур (design-поля, см. plan
   v2 §5); помечен `lifecycle: DESIGN`.
 - `blockers_policy` — откуда берутся blockers в проекциях: TASKS.md
-  (⛔) + observer drift signals; registry не дублирует оперативные
-  блокеры.
+  (⛔) + observer drift signals + status_note карточек (BLOCKED,
+  `[проверить]`); registry не дублирует оперативные блокеры.
 
 ## 6. Observer contract (S3)
 
@@ -110,8 +120,16 @@ IDEA → RESEARCH → DESIGN → APPROVED → BUILD → REVIEW → VERIFY → LI
   commits; детерминизм (без wall-clock; `input_digest` = sha256 по
   отсортированным хешам входов); `--dry-run` — печать в stdout без
   записи.
+- **TASKS-парсинг (правка 2026-08-31):** секции Kanban
+  (Active/Blocked/Planned/Backlog/Done) собираются только из
+  **ID-колонки** строк таблиц (`| T-NNN | ...`); T-ID из
+  Related-колонок («Связано») не попадают в секции — раньше это
+  создавало ложные вхождения в проекции. Смысл TASKS.md не меняется.
 - Drift signals (минимальный набор): repo-путь карточки не существует;
-  artifact из registry не существует; TASKS-блокеры; dirty-файлы vault.
+  artifact из registry не существует; TASKS-блокеры;
+  `task_ref_missing` (card.tasks ссылается на T-ID, отсутствующий в
+  TASKS.md); registry schema warnings (unknown
+  layer/facet/lifecycle/priority/owner, битые depends_on).
 - Snapshot не источник правды: при расхождении canonical = S1/S2.
 
 ## 7. Kanban projection (правила)
@@ -119,7 +137,19 @@ IDEA → RESEARCH → DESIGN → APPROVED → BUILD → REVIEW → VERIFY → LI
 - Kanban-колонки = lifecycle stages; карточки раскладываются по
   `lifecycle`; порядок внутри колонки — по `depends_on` (топологический,
   без циклов).
-- Пустые стадии отображаются (серым) — видно «пробел» pipeline.
+- Пустые стадии отображаются (серым) — видно «пробел» pipeline
+  (REVIEW/LIVE/OBSERVE/IMPROVE пустые — честный статус, не ошибка).
+- **Master Kanban** — все карточки без фильтров. **Facet/project
+  Kanban** — тот же board с включённым фильтром FACET (primary или
+  secondary) или PROJECT. Поверх работают фильтры LAYER/OWNER/PRIORITY/
+  STAGE и search (по id/title/owner/status_note/project).
+- RETIRED-колонка показывает карточки с `retired: true` (история,
+  не бэклог); остальные колонки исключают retired.
+- **Проекция read-only:** Pip-Boy не содержит edit-действий над
+  canonical-данными (no silent mutation); любые изменения — только
+  через registry.json/TASKS.md в librarian-контуре с approval
+  пользователя. Единственный localStorage — прогресс skills-графа
+  T-069 (пользовательские отметки, не canonical-данные).
 - TASKS.md связывается через поле `tasks` карточки; TASKS — оперативный
   трекер, registry — структурное состояние; двойного учёта нет (TASKS
   ссылается на ECO-NNN, не наоборот дублирует описание).
@@ -146,6 +176,37 @@ BUILD/REVIEW с явным «verifier acceptance pending» в status_note.
 переведены в VERIFY — MVP acceptance подтверждён; ECO-008 остаётся
 DESIGN (implementation BLOCKED); ничего не LIVE.)*
 
+### Расширение 2026-08-31 — Kanban control plane (schema 1.1)
+
+Registry расширен с 8 MVP-карточек до **28 (ECO-001..028)** — полное
+покрытие текущих upgrade paths экосистемы, не только стартовые MVP:
+
+- **L0 Kernel:** OSS-first gate (ECO-001), kernel contracts v1
+  (ECO-009, VERIFY с открытыми residuals), engineering-style contract
+  (ECO-010), global HITL контракт (ECO-012).
+- **L1 Control Plane:** telemetry (ECO-002, P0), observer (ECO-007),
+  MCP BLOCKED (ECO-008), capability-routing (ECO-011), verifier-loop
+  investigation (ECO-013), custom tool ecosystem-snapshot (ECO-015),
+  pre-commit validation (ECO-016), memory redesign (ECO-017), LiteLLM
+  (ECO-025), risk-based orchestration (ECO-027), model-routing
+  profiles (ECO-028).
+- **L2 Agent Workspace:** manifest (ECO-003), repo-map/retrieval
+  (ECO-005), context capsule compiler (ECO-014), Aider RETIRED
+  (ECO-026).
+- **L3 Project Build:** SERPlux Phase 2 (ECO-020), dotfiles Phase 3
+  (ECO-021), dv-hub recovery Phase 4 (ECO-022), AndroidOS PA MVP
+  (ECO-023), ChaT/profile-governor (ECO-024).
+- **L4 Interface:** tmux/link resolver (ECO-004), Pip-Boy Kanban
+  control plane (ECO-006, decision-note VERIFY→BUILD при расширении
+  scope), live-режим later gate (ECO-018), operator interface
+  environment (ECO-019).
+
+Статусы честные: **ничего не LIVE/OBSERVE** (колонки пустые — видимый
+пробел pipeline); unresolved runtime остаётся `[проверить]`/BLOCKED в
+status_note; RETIRED — только Aider (ECO-026, история). Дублирования
+нет: registry — canonical карточки, TASKS.md — оперативный трекер
+(T-129), Pip-Boy/observer — проекции.
+
 ## 10. Definition of Done (для этого spec)
 
 - Spec описывает schema/lifecycle/projections без противоречий с plan
@@ -155,4 +216,11 @@ DESIGN (implementation BLOCKED); ничего не LIVE.)*
 - Pip-Boy отображает все проекции из registry — проверяется вручную
   (browser smoke), verifier acceptance — PASS 2026-08-31.
 - Изменения schema — только новой версией spec + bump
-  `meta.schema` (minor) в registry.
+  `meta.schema` (minor) в registry. *(Применено: 1.0 → 1.1,
+  2026-08-31 — optional priority/project.)*
+- Для расширения Kanban control plane (2026-08-31): все карточки имеют
+  валидные layer/facet/lifecycle/owner/dependencies/artifacts
+  (observer warnings = 0, drift только реальные блокеры); T-069
+  skills view сохранён; real-time не заявляется; отдельный verifier
+  acceptance — T-129 — **PASS 2026-08-31** (evidence:
+  [[04-Memory/session-log/2026-08-31]]; ECO-006 → VERIFY).

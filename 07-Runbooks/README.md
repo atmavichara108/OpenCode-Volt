@@ -17,6 +17,9 @@ operator workflows и правила обновления практики.
 - **Runbooks** — как оператор реально пользуется системой сейчас.
 
 [[07-Runbooks/vibecoding-operator-handbook]] — текущее рабочее состояние.
+[[07-Runbooks/ecosystem-kanban-runbook]] — как пользоваться Kanban control
+plane (registry/Pip-Boy/TASKS/observer): master/facet/project Kanban,
+выбор карточки, переходы через librarian/approval, static vs generated.
 [[07-Runbooks/coordination-bridge-operator-guide]] — historical reference,
 Coordination Bridge FROZEN BY USER (2026-08-30); он не является обязательным
 workflow.

@@ -18,6 +18,20 @@ Append-only: одна запись на подтверждённый shift, да
 
 ## Entries
 
+### 2026-08-31 — Ecosystem Kanban control plane
+
+- Планирование апгрейдов экосистемы переведено на Kanban control plane:
+  canonical registry расширен до полного покрытия (Layers × Facets, project
+  adoption SERPlux/dotfiles/dv-hub/AndroidOS/ChaT, kernel gates, retired
+  Aider; schema 1.1 — priority/project), Pip-Boy получил master/facet/
+  project Kanban с фильтрами (layer/facet/project/owner/priority/stage) и
+  search, dependency/blocker/acceptance/tasks views; добавлен пользовательский
+  runbook. Переходы lifecycle — через librarian/approval; проекция read-only
+  (no silent mutation); real-time не заявляется (static/generated only).
+- Basis: [[06-Audits/2026-08-31-ecosystem-upgrade-plan-v2]],
+  [[06-Specs/Vault/ecosystem-registry]],
+  [[07-Runbooks/ecosystem-kanban-runbook]].
+
 ### 2026-08-30 — User decision: Coordination Bridge frozen
 
 - Пользователь подтвердил freeze Coordination Bridge, T-108/system-ops и

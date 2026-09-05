@@ -35,7 +35,7 @@
     content:"";position:fixed;inset:0;pointer-events:none;z-index:9998;
     background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.65) 100%);
   }
-  #app{display:grid;grid-template-rows:auto 1fr;height:100vh}
+  #app{display:grid;grid-template-rows:auto auto 1fr;height:100vh}
 
   /* HEADER */
   header{
@@ -67,6 +67,20 @@
   .pill:hover{border-color:var(--green);background:#0a2a0a}
   .pill.active{border-color:var(--amber);color:var(--amber);background:#2a1f00;text-shadow:0 0 4px rgba(255,176,0,.7)}
   .pill[disabled]{opacity:.3;cursor:not-allowed}
+
+  /* REGISTRY FILTERS (Kanban control plane) */
+  .reg-filters{
+    display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;
+    padding:6px 14px;border-bottom:1px solid var(--border);background:#081208;
+  }
+  .rfgroup{display:flex;flex-direction:column;gap:2px;border:1px solid var(--border);padding:3px 6px;border-radius:2px}
+  .rfgroup label{color:var(--amber);font-size:8px;letter-spacing:1px}
+  #reg-search{
+    background:#031603;border:1px solid var(--border);color:var(--green);
+    font-family:inherit;font-size:11px;padding:2px 6px;border-radius:2px;width:180px;
+  }
+  #reg-search:focus{outline:1px solid var(--green)}
+  #reg-search::placeholder{color:var(--grey);opacity:.7}
 
   /* MAIN */
   main{display:grid;grid-template-columns:1fr 360px;min-height:0;overflow:hidden}
@@ -201,7 +215,7 @@
   ::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
   ::-webkit-scrollbar-thumb:hover{background:#38622f}
 
-  /* ===== MULTI-VIEW (plan v2: Matrix/Kanban/Projects/Agents/Blockers/Workspace) ===== */
+  /* ===== MULTI-VIEW (plan v2: Matrix/Kanban/Deps/Acceptance/Tasks/Projects/Agents/Blockers/Workspace) ===== */
   .view-pills{display:flex;gap:4px;flex-wrap:wrap}
   .view-pill{
     border:1px solid var(--border);color:var(--green);background:#031603;
@@ -234,7 +248,7 @@
 
   /* KANBAN */
   .kanban{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;min-height:300px}
-  .kcol{min-width:150px;max-width:210px;flex:1 0 150px;border:1px solid var(--border);border-radius:2px;background:#041204;display:flex;flex-direction:column}
+  .kcol{min-width:150px;max-width:230px;flex:1 0 150px;border:1px solid var(--border);border-radius:2px;background:#041204;display:flex;flex-direction:column}
   .kcol.empty{opacity:.4}
   .kcol h4{font-size:10px;color:var(--amber);letter-spacing:2px;padding:6px 8px;border-bottom:1px solid var(--border);background:#0a1a0a}
   .kcol h4 .cnt{float:right;color:var(--green);opacity:.8}
@@ -243,13 +257,30 @@
   .kcard:hover{border-color:var(--green);background:#0a2a0a}
   .kcard .kid{color:var(--amber)}
   .kcard .kl{font-size:8px;opacity:.6;letter-spacing:1px;margin-top:2px}
+  .chip{display:inline-block;padding:0 5px;border:1px solid;border-radius:2px;font-size:8px;letter-spacing:1px;margin-left:4px;vertical-align:middle}
 
-  /* PROJECTS / AGENTS / BLOCKERS lists */
+  /* DEPS / ACCEPTANCE / TASKS */
   .vtable{width:100%;border-collapse:collapse;font-size:11px}
   .vtable th,.vtable td{border:1px solid var(--border);padding:5px 8px;text-align:left}
   .vtable th{color:var(--amber);font-size:10px;letter-spacing:1px;background:#0a1a0a}
   .vtable td{color:var(--green)}
   .vtable td .dim{opacity:.55}
+  .depchip{
+    display:inline-block;margin:1px 2px;padding:1px 6px;border:1px solid var(--border);
+    border-radius:2px;font-size:10px;cursor:pointer;background:#031603;color:var(--green);
+  }
+  .depchip:hover{border-color:var(--green);background:#0a2a0a}
+  .acc-card{border:1px solid var(--border);border-radius:2px;background:#041204;padding:8px 10px;margin-bottom:8px}
+  .acc-head{cursor:pointer;font-size:12px;color:var(--green)}
+  .acc-head:hover{color:var(--amber)}
+  .acc-sec{font-size:9px;color:var(--amber);letter-spacing:2px;margin-top:7px}
+  .acc-body{font-size:11px;opacity:.85;margin-top:2px}
+  .task-sec{margin-bottom:12px}
+  .task-sec h4{font-size:11px;color:var(--amber);letter-spacing:2px;border-bottom:1px solid var(--border);padding-bottom:3px;margin-bottom:6px}
+  .tid{display:inline-block;margin:2px;padding:2px 6px;border:1px solid var(--border);border-radius:2px;font-size:10px;background:#031603}
+  .ro-note{font-size:9px;color:var(--grey);opacity:.85;margin-top:10px;border-top:1px dashed var(--border);padding-top:6px;letter-spacing:1px}
+
+  /* PROJECTS / AGENTS / BLOCKERS lists */
   .status-chip{display:inline-block;padding:1px 6px;border:1px solid;border-radius:2px;font-size:9px;letter-spacing:1px}
   .st-confirmed{color:var(--green);border-color:var(--green)}
   .st-candidate{color:var(--amber);border-color:var(--amber)}
@@ -269,7 +300,7 @@
 <body>
 <div id="app">
   <header>
-    <h1>VAULT-OS<span class="sub"> :: ECOSYSTEM MAP v3.0</span></h1>
+    <h1>VAULT-OS<span class="sub"> :: ECOSYSTEM MAP v4.0 · KANBAN CONTROL PLANE</span></h1>
     <div class="stats" id="stats"></div>
     <div class="spacer"></div>
     <div class="filters">
@@ -279,6 +310,9 @@
           <button class="view-pill active" data-view="skills">SKILLS</button>
           <button class="view-pill" data-view="matrix">MATRIX</button>
           <button class="view-pill" data-view="kanban">KANBAN</button>
+          <button class="view-pill" data-view="deps">DEPS</button>
+          <button class="view-pill" data-view="acceptance">ACCEPT</button>
+          <button class="view-pill" data-view="tasks">TASKS</button>
           <button class="view-pill" data-view="projects">PROJECTS</button>
           <button class="view-pill" data-view="agents">AGENTS</button>
           <button class="view-pill" data-view="blockers">BLOCKERS</button>
@@ -299,10 +333,44 @@
       </div>
       <div class="fgroup">
         <label>DATA</label>
-        <div class="data-badge" id="data-badge">STATIC REGISTRY · LIVE: НЕТ</div>
+        <div class="data-badge" id="data-badge">STATIC REGISTRY · READ-ONLY · LIVE: НЕТ</div>
       </div>
     </div>
   </header>
+  <div class="reg-filters" id="reg-filters" style="display:none">
+    <div class="rfgroup">
+      <label>SEARCH</label>
+      <input id="reg-search" type="text" placeholder="id / title / owner / note…">
+    </div>
+    <div class="rfgroup">
+      <label>LAYER</label>
+      <div class="pills" id="rf-layers"></div>
+    </div>
+    <div class="rfgroup">
+      <label>FACET</label>
+      <div class="pills" id="rf-facets"></div>
+    </div>
+    <div class="rfgroup">
+      <label>PROJECT</label>
+      <div class="pills" id="rf-projects"></div>
+    </div>
+    <div class="rfgroup">
+      <label>OWNER</label>
+      <div class="pills" id="rf-owners"></div>
+    </div>
+    <div class="rfgroup">
+      <label>PRIORITY</label>
+      <div class="pills" id="rf-priorities"></div>
+    </div>
+    <div class="rfgroup">
+      <label>STAGE</label>
+      <div class="pills" id="rf-stages"></div>
+    </div>
+    <div class="rfgroup">
+      <label>RESET</label>
+      <button class="pill" id="rf-clear">✕ CLEAR FILTERS</button>
+    </div>
+  </div>
   <main>
     <div id="graph-wrap">
       <svg id="graph"></svg>
@@ -339,7 +407,7 @@ const STATE_COLOR = {
   let DATA = null;
   let userState = {};   // skillId -> { questsDone: {qid:bool}, masteredOverride:bool }
 
-  /* ===== plan v2: registry + snapshot + multi-view ===== */
+  /* ===== plan v2: registry + snapshot + multi-view (Kanban control plane) ===== */
   let REGISTRY = null;   // canonical registry.json (committed, static)
   let SNAPSHOT = null;   // generated/snapshot.json (observer output, gitignored; may be absent)
   let CURRENT_VIEW = "skills";
@@ -349,6 +417,9 @@ const STATE_COLOR = {
     BUILD:"#ffb000", REVIEW:"#ff00aa", VERIFY:"#00ff41", LIVE:"#FFD700",
     OBSERVE:"#FFD700", IMPROVE:"#ffb000", RETIRED:"#666"
   };
+  const LAYER_ORDER = ["L0","L1","L2","L3","L4"];
+  /* registry filters (Kanban control plane; read-only projection) */
+  let regFilters = { layers:new Set(), facets:new Set(), projects:new Set(), owners:new Set(), priorities:new Set(), stages:new Set(), search:"" };
 
   async function loadRegistry(){
     try{
@@ -369,6 +440,50 @@ const STATE_COLOR = {
     return String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   }
 
+  /* ===== registry filter logic ===== */
+  function cardVisible(cid, c){
+    if(regFilters.layers.size && !regFilters.layers.has(c.layer)) return false;
+    if(regFilters.facets.size){
+      const fs = c.facets || [];
+      if(![...regFilters.facets].some(f => fs.includes(f))) return false;
+    }
+    if(regFilters.projects.size && !regFilters.projects.has(c.project || "—")) return false;
+    if(regFilters.owners.size && !regFilters.owners.has(c.owner)) return false;
+    if(regFilters.priorities.size && !regFilters.priorities.has(c.priority || "—")) return false;
+    if(regFilters.stages.size && !regFilters.stages.has(c.lifecycle)) return false;
+    if(regFilters.search){
+      const q = regFilters.search.toLowerCase();
+      const hay = [cid, c.title, c.owner, c.lifecycle, c.layer, c.project || "", (c.facets||[]).join(" "), c.priority || "", c.status_note || ""].join(" ").toLowerCase();
+      if(!hay.includes(q)) return false;
+    }
+    return true;
+  }
+  function visibleCards(){
+    return Object.entries(REGISTRY.cards || {}).filter(([cid,c]) => cardVisible(cid, c));
+  }
+  function anyRegFilter(){
+    return !!(regFilters.layers.size || regFilters.facets.size || regFilters.projects.size ||
+      regFilters.owners.size || regFilters.priorities.size || regFilters.stages.size || regFilters.search);
+  }
+  function sortedVisible(){
+    return visibleCards().sort((a,b) =>
+      (LAYER_ORDER.indexOf(a[1].layer) - LAYER_ORDER.indexOf(b[1].layer)) || (a[0] < b[0] ? -1 : 1));
+  }
+  function taskSection(tid){
+    if(!SNAPSHOT || !SNAPSHOT.tasks) return "";
+    for(const sec of ["Active","Blocked","Planned","Backlog","Done"]){
+      if((SNAPSHOT.tasks[sec] || []).includes(tid)) return sec;
+    }
+    return "";
+  }
+  function cardsByTask(){
+    const m = {};
+    for(const [cid, c] of Object.entries(REGISTRY.cards || {})){
+      for(const t of (c.tasks || [])) (m[t] = m[t] || []).push(cid);
+    }
+    return m;
+  }
+
   function setView(view){
     CURRENT_VIEW = view;
     document.querySelectorAll(".view-pill").forEach(p=>{
@@ -376,9 +491,11 @@ const STATE_COLOR = {
     });
     const gw = document.getElementById("graph-wrap");
     const vw = document.getElementById("view-wrap");
+    const rf = document.getElementById("reg-filters");
     const isSkills = (view === "skills");
     gw.style.display = isSkills ? "block" : "none";
     vw.style.display = isSkills ? "none" : "block";
+    rf.style.display = isSkills ? "none" : "flex";
     // filters relevant only for skills graph
     ["branch-pills","project-pills","state-pills"].forEach(id=>{
       document.getElementById(id).parentElement.style.opacity = isSkills ? "1" : ".35";
@@ -401,6 +518,9 @@ const STATE_COLOR = {
     }
     if(view === "matrix") vw.innerHTML = renderMatrix();
     else if(view === "kanban") vw.innerHTML = renderKanban();
+    else if(view === "deps") vw.innerHTML = renderDependencies();
+    else if(view === "acceptance") vw.innerHTML = renderAcceptance();
+    else if(view === "tasks") vw.innerHTML = renderTasks();
     else if(view === "projects") vw.innerHTML = renderProjects();
     else if(view === "agents") vw.innerHTML = renderAgents();
     else if(view === "blockers") vw.innerHTML = renderBlockers();
@@ -421,14 +541,15 @@ const STATE_COLOR = {
   function renderMatrix(){
     const layers = Object.entries(REGISTRY.layers);
     const facets = Object.keys(REGISTRY.facets);
-    let html = `<h2 class="vtitle">MATRIX :: LAYERS × FACETS</h2>
-      <div class="vsub">canonical registry · одна карточка = одна ячейка layer × primary facet (план v2; spec: 06-Specs/Vault/ecosystem-registry)</div>
+    const filtered = anyRegFilter();
+    let html = `<h2 class="vtitle">MATRIX :: LAYERS × FACETS${filtered ? " · FILTERED" : ""}</h2>
+      <div class="vsub">canonical registry · одна карточка = одна ячейка layer × primary facet (план v2; spec: 06-Specs/Vault/ecosystem-registry) · фильтры применяются · read-only</div>
       <table class="matrix"><tr><th>LAYER</th>${facets.map(f=>`<th>${esc(f.toUpperCase())}</th>`).join("")}</tr>`;
     for(const [lid, l] of layers){
       html += `<tr><td class="layer-cell">${esc(lid)} ${esc(l.name)}<br><span style="opacity:.5;font-size:8px">${esc(l.description)}</span></td>`;
       for(const f of facets){
         const cellCards = Object.entries(REGISTRY.cards)
-          .filter(([cid,c]) => c.layer === lid && c.facets && c.facets[0] === f);
+          .filter(([cid,c]) => c.layer === lid && c.facets && c.facets[0] === f && cardVisible(cid, c));
         html += `<td>${cellCards.map(([cid]) => cardChip(cid)).join("") || '<span style="opacity:.3">—</span>'}</td>`;
       }
       html += `</tr>`;
@@ -438,18 +559,24 @@ const STATE_COLOR = {
   }
 
   function renderKanban(){
-    let html = `<h2 class="vtitle">KANBAN :: LIFECYCLE</h2>
-      <div class="vsub">IDEA → RESEARCH → DESIGN → APPROVED → BUILD → REVIEW → VERIFY → LIVE → OBSERVE → IMPROVE → RETIRED · VERIFY→LIVE только с runtime evidence (план v2 gates)</div>
+    const all = Object.entries(REGISTRY.cards || {});
+    const vis = all.filter(([cid,c]) => cardVisible(cid, c));
+    const filtered = vis.length !== all.length;
+    let html = `<h2 class="vtitle">KANBAN :: LIFECYCLE · ${filtered ? `FILTERED ${vis.length}/${all.length}` : `MASTER ${all.length}`}</h2>
+      <div class="vsub">IDEA → RESEARCH → DESIGN → APPROVED → BUILD → REVIEW → VERIFY → LIVE → OBSERVE → IMPROVE → RETIRED · VERIFY→LIVE только с runtime evidence (план v2 gates) · facet/project Kanban = фильтры FACET/PROJECT · RETIRED = история · read-only · live: нет</div>
       <div class="kanban">`;
     for(const stage of LIFECYCLE_ORDER){
-      const cards = Object.entries(REGISTRY.cards).filter(([cid,c]) => c.lifecycle === stage && !c.retired);
+      const isRetiredStage = (stage === "RETIRED");
+      const cards = vis.filter(([cid,c]) => c.lifecycle === stage && (isRetiredStage ? true : !c.retired));
       html += `<div class="kcol ${cards.length ? "" : "empty"}">
         <h4>${esc(stage)}<span class="cnt">${cards.length}</span></h4>
         <div class="kbody">`;
       for(const [cid, c] of cards){
         const col = LIFECYCLE_COLOR[stage] || "#666";
+        const pr = c.priority ? `<span class="chip" style="color:${col};border-color:${col}">${esc(c.priority)}</span>` : "";
+        const pj = c.project ? `<span class="chip" style="color:var(--amber);border-color:var(--amber)">${esc(c.project)}</span>` : "";
         html += `<div class="kcard" data-card="${esc(cid)}" style="border-left:3px solid ${col}">
-          <span class="kid">${esc(cid)}</span> ${esc(c.title)}
+          <span class="kid">${esc(cid)}</span>${pr}${pj} ${esc(c.title)}
           <div class="kl">${esc(c.layer)} · ${esc(c.facets ? c.facets.join(", ") : "")} · owner: ${esc(c.owner)}</div>
         </div>`;
       }
@@ -459,18 +586,99 @@ const STATE_COLOR = {
     return html;
   }
 
-  function renderProjects(){
-    let html = `<h2 class="vtitle">PROJECTS</h2>
-      <div class="vsub">источник: ${SNAPSHOT ? "generated snapshot (observer, детерминированный; НЕ источник правды)" : "snapshot не сгенерирован — запусти python3 tools/ecosystem-map/observer.py"}</div>`;
-    if(!SNAPSHOT){
-      html += `<div class="no-snapshot">ⓘ generated/snapshot.json отсутствует. Проекции PROJECTS/BLOCKERS работают поверх observer-снимка. Данные карточек — в 03-Projects/ (canonical).</div>`;
+  function renderDependencies(){
+    const blocks = {};
+    for(const [cid, c] of Object.entries(REGISTRY.cards || {})){
+      for(const d of (c.depends_on || [])) (blocks[d] = blocks[d] || []).push(cid);
+    }
+    const vis = sortedVisible();
+    let html = `<h2 class="vtitle">DEPENDENCIES :: CARD GRAPH</h2>
+      <div class="vsub">depends_on = структурные предусловия · blocks = обратные зависимости (кто ждёт эту карточку) · зависимость в DESIGN не блокирует research, но блокирует BUILD · переходы — через librarian/approval · read-only</div>
+      <table class="vtable"><tr><th>CARD</th><th>STAGE</th><th>DEPENDS ON</th><th>BLOCKS</th></tr>`;
+    for(const [cid, c] of vis){
+      const deps = (c.depends_on || []).map(d => {
+        const dc = REGISTRY.cards[d];
+        const dcol = dc ? (LIFECYCLE_COLOR[dc.lifecycle] || "#666") : "#666";
+        return `<span class="depchip" data-card="${esc(d)}" style="color:${dcol};border-color:${dcol}">${esc(d)}${dc ? " " + esc(dc.lifecycle) : " ?"}</span>`;
+      }).join("") || '<span class="dim">—</span>';
+      const bl = (blocks[cid] || []).slice().sort()
+        .map(b => `<span class="depchip" data-card="${esc(b)}">${esc(b)}</span>`).join("") || '<span class="dim">—</span>';
+      const col = LIFECYCLE_COLOR[c.lifecycle] || "#666";
+      html += `<tr><td><span class="depchip" data-card="${esc(cid)}" style="color:${col};border-color:${col}">${esc(cid)}</span> ${esc(c.title)}</td>
+        <td style="color:${col}">${esc(c.lifecycle)}</td><td>${deps}</td><td>${bl}</td></tr>`;
+    }
+    html += `</table>`;
+    return html;
+  }
+
+  function renderAcceptance(){
+    const vis = sortedVisible();
+    let html = `<h2 class="vtitle">ACCEPTANCE :: EVIDENCE PER CARD</h2>
+      <div class="vsub">acceptance = доказательство перехода lifecycle · evidence = artifacts + tasks + verifier записи (self-declared маркеры — не evidence) · VERIFY→LIVE только с runtime evidence · read-only</div>`;
+    if(!vis.length){
+      html += `<div class="no-snapshot">— нет карточек под текущими фильтрами —</div>`;
       return html;
     }
-    html += `<table class="vtable"><tr><th>PROJECT</th><th>REPO</th><th>KIND</th><th>STATUS</th><th>REPO EXISTS</th></tr>`;
+    for(const [cid, c] of vis){
+      const col = LIFECYCLE_COLOR[c.lifecycle] || "#666";
+      const artifacts = (c.artifacts || []).map(a => `<div class="row"><span class="k">${esc(a)}</span></div>`).join("") || '<span class="dim">—</span>';
+      const tasks = (c.tasks || []).map(t => {
+        const sec = taskSection(t);
+        return `<span class="tid">${esc(t)}${sec ? ` <span style="color:var(--amber)">[${esc(sec)}]</span>` : ""}</span>`;
+      }).join(" ") || "—";
+      html += `<div class="acc-card">
+        <div class="acc-head" data-card="${esc(cid)}"><span style="color:${col};border:1px solid ${col};padding:0 6px;border-radius:2px;font-size:9px;letter-spacing:1px">${esc(c.lifecycle)}</span>
+          <b>${esc(cid)}</b> ${esc(c.title)}${c.priority ? `<span class="chip" style="color:${col};border-color:${col}">${esc(c.priority)}</span>` : ""}${c.project ? `<span class="chip" style="color:var(--amber);border-color:var(--amber)">${esc(c.project)}</span>` : ""}</div>
+        <div class="acc-sec">ACCEPTANCE</div><div class="acc-body">${esc(c.acceptance || "—")}</div>
+        <div class="acc-sec">EVIDENCE · ARTIFACTS</div><div class="acc-body">${artifacts}</div>
+        <div class="acc-sec">EVIDENCE · TASKS</div><div class="acc-body">${tasks}</div>
+        <div class="acc-sec">STATUS NOTE</div><div class="acc-body">${esc(c.status_note || "—")}</div>
+        <div class="acc-sec">ROLLBACK</div><div class="acc-body">${esc(c.rollback || "—")}</div>
+      </div>`;
+    }
+    return html;
+  }
+
+  function renderTasks(){
+    let html = `<h2 class="vtitle">TASKS :: OPERATIONAL QUEUE</h2>
+      <div class="vsub">источник: TASKS.md через generated snapshot (observer; ID-колонка таблиц) · canonical статусы задач — в TASKS.md · связка с карточками через card.tasks · snapshot не источник правды · read-only</div>`;
+    if(!SNAPSHOT){
+      html += `<div class="no-snapshot">ⓘ generated/snapshot.json отсутствует. Запусти python3 tools/ecosystem-map/observer.py.</div>`;
+      return html;
+    }
+    const byTask = cardsByTask();
+    const secMeta = [["Active","🟡"],["Blocked","⛔"],["Planned","🔵"],["Backlog","🟤"],["Done","✅"]];
+    for(const [sec, icon] of secMeta){
+      const ids = SNAPSHOT.tasks[sec] || [];
+      html += `<div class="task-sec"><h4>${icon} ${esc(sec.toUpperCase())} <span style="color:var(--green);opacity:.7">(${ids.length})</span></h4>`;
+      if(!ids.length){
+        html += `<div style="opacity:.4;font-size:10px">— пусто —</div>`;
+      } else {
+        html += ids.map(t => {
+          const cards = (byTask[t] || []).sort();
+          return `<span class="tid">${esc(t)}${cards.length ? " → " + cards.map(c => `<span class="depchip" data-card="${esc(c)}">${esc(c)}</span>`).join(" ") : ""}</span>`;
+        }).join(" ");
+      }
+      html += `</div>`;
+    }
+    html += `<div class="vsub" style="margin-top:8px">vault git: HEAD ${esc(SNAPSHOT.git.head.slice(0,10))} · dirty: ${SNAPSHOT.git.dirty_files.length} · digest ${esc(SNAPSHOT.meta.input_digest.slice(0,12))}</div>`;
+    return html;
+  }
+
+  function renderProjects(){
+    let html = `<h2 class="vtitle">PROJECTS</h2>
+      <div class="vsub">источник: ${SNAPSHOT ? "generated snapshot (observer, детерминированный; НЕ источник правды)" : "snapshot не сгенерирован — запусти python3 tools/ecosystem-map/observer.py"} · ECO CARDS = карточки registry с project=<id> · read-only</div>`;
+    if(!SNAPSHOT){
+      html += `<div class="no-snapshot">ⓘ generated/snapshot.json отсутствует. Проекции PROJECTS/BLOCKERS/TASKS работают поверх observer-снимка. Данные карточек — в 03-Projects/ (canonical).</div>`;
+      return html;
+    }
+    html += `<table class="vtable"><tr><th>PROJECT</th><th>REPO</th><th>KIND</th><th>STATUS</th><th>REPO EXISTS</th><th>ECO CARDS</th></tr>`;
     for(const p of SNAPSHOT.projects){
       const missing = (SNAPSHOT.drift_signals || []).some(s => s.type === "repo_missing" && s.subject === p.id);
+      const cardCount = Object.values(REGISTRY.cards || {}).filter(c => (c.project || "") === p.id).length;
       html += `<tr><td>${esc(p.id)}</td><td class="dim">${esc(p.repo)}</td><td class="dim">${esc(p.kind)}</td><td>${esc(p.status || "—")}</td>
-        <td>${missing ? '<span style="color:var(--amber)">⚠ missing</span>' : '<span style="color:var(--green)">✓</span>'}</td></tr>`;
+        <td>${missing ? '<span style="color:var(--amber)">⚠ missing</span>' : '<span style="color:var(--green)">✓</span>'}</td>
+        <td>${cardCount ? `<span style="color:var(--amber)">${cardCount}</span>` : '<span class="dim">—</span>'}</td></tr>`;
     }
     html += `</table>
       <div class="vsub" style="margin-top:10px">vault git: HEAD ${esc(SNAPSHOT.git.head.slice(0,10))} · dirty: ${SNAPSHOT.git.dirty_files.length} · digest ${esc(SNAPSHOT.meta.input_digest.slice(0,12))}</div>`;
@@ -479,7 +687,7 @@ const STATE_COLOR = {
 
   function renderAgents(){
     let html = `<h2 class="vtitle">AGENTS</h2>
-      <div class="vsub">canonical registry.agents · статусы только с evidence (confirmed = smoke/verifier или файловая реальность; candidate = planned; frozen = user-freeze)</div>
+      <div class="vsub">canonical registry.agents · статусы только с evidence (confirmed = smoke/verifier или файловая реальность; candidate = planned; frozen = user-freeze) · read-only</div>
       <table class="vtable"><tr><th>AGENT</th><th>SCOPE</th><th>ROLE</th><th>STATUS</th><th>NOTE</th></tr>`;
     for(const [aid, a] of Object.entries(REGISTRY.agents || {})){
       html += `<tr><td>${esc(aid)}</td><td class="dim">${esc(a.scope)}</td><td>${esc(a.role)}</td>
@@ -492,7 +700,7 @@ const STATE_COLOR = {
 
   function renderBlockers(){
     let html = `<h2 class="vtitle">BLOCKERS / DRIFT</h2>
-      <div class="vsub">источники: TASKS.md (⛔/frozen) + observer drift signals (детерминированные read-only проверки) · registry не дублирует блокеры</div>`;
+      <div class="vsub">источники: TASKS.md (⛔/frozen) + observer drift signals + status_note карточек (BLOCKED/[проверить]) · registry не дублирует блокеры · read-only</div>`;
     if(!SNAPSHOT){
       html += `<div class="no-snapshot">ⓘ generated/snapshot.json отсутствует — drift signals недоступны. Запусти python3 tools/ecosystem-map/observer.py.</div>`;
       return html;
@@ -502,18 +710,24 @@ const STATE_COLOR = {
       html += `<div class="no-snapshot">✓ drift signals не обнаружены (на момент снимка)</div>`;
     } else {
       for(const s of signals){
-        html += `<div class="drift-item"><span class="dtype">${esc(s.type.toUpperCase())}</span> · <b>${esc(s.subject)}</b><br>${esc(s.detail)}</div>`;
+        const isCard = /^ECO-\d+$/.test(s.subject || "");
+        const subj = isCard ? `<span class="depchip" data-card="${esc(s.subject)}">${esc(s.subject)}</span>` : `<b>${esc(s.subject)}</b>`;
+        html += `<div class="drift-item"><span class="dtype">${esc(s.type.toUpperCase())}</span> · ${subj}<br>${esc(s.detail)}</div>`;
       }
     }
     const blocked = (SNAPSHOT.tasks && SNAPSHOT.tasks.Blocked) || [];
     html += `<div class="vsub" style="margin-top:10px">TASKS blocked/frozen: ${blocked.length ? blocked.map(esc).join(", ") : "—"}</div>`;
+    const blockedCards = Object.entries(REGISTRY.cards || {}).filter(([cid,c]) => /BLOCKED/i.test(c.status_note || ""));
+    if(blockedCards.length){
+      html += `<div class="vsub" style="margin-top:6px">Карточки с implementation BLOCKED (status_note): ${blockedCards.map(([cid]) => `<span class="depchip" data-card="${esc(cid)}">${esc(cid)}</span>`).join(" ")}</div>`;
+    }
     return html;
   }
 
   function renderWorkspace(){
     const ws = REGISTRY.workspace || {};
     let html = `<h2 class="vtitle">AGENT WORKSPACE</h2>
-      <div class="vsub">design-контур (план v2 §5) · lifecycle: ${esc(ws.lifecycle || "—")} · не реализация; OpenCode agent loop не патчится</div>
+      <div class="vsub">design-контур (план v2 §5) · lifecycle: ${esc(ws.lifecycle || "—")} · не реализация; OpenCode agent loop не патчится · read-only</div>
       <div><b style="color:var(--amber)">MANIFEST FIELDS:</b><br>`;
     for(const f of (ws.manifest_fields || [])) html += `<span class="ws-field">${esc(f)}</span>`;
     html += `</div>`;
@@ -533,14 +747,30 @@ const STATE_COLOR = {
     const pc = document.getElementById("panel-content");
     pc.style.display = "block";
     const col = LIFECYCLE_COLOR[c.lifecycle] || "#666";
-    const dep = (c.depends_on || []).map(d => `<span class="ws-field" data-card="${esc(d)}" style="cursor:pointer">${esc(d)}</span>`).join("") || "—";
+    // reverse dependencies (blocks)
+    const blocksArr = [];
+    for(const [oc, ocCard] of Object.entries(REGISTRY.cards || {})){
+      if((ocCard.depends_on || []).includes(cid)) blocksArr.push(oc);
+    }
+    blocksArr.sort();
+    const dep = (c.depends_on || []).map(d => {
+      const dc = REGISTRY.cards[d];
+      const dcol = dc ? (LIFECYCLE_COLOR[dc.lifecycle] || "#666") : "#666";
+      return `<span class="depchip" data-card="${esc(d)}" style="color:${dcol};border-color:${dcol}">${esc(d)}${dc ? " " + esc(dc.lifecycle) : " ?"}</span>`;
+    }).join("") || "—";
+    const blocks = blocksArr.map(b => `<span class="depchip" data-card="${esc(b)}">${esc(b)}</span>`).join("") || "—";
     const artifacts = (c.artifacts || []).map(a => `<div class="row"><span class="k">${esc(a)}</span></div>`).join("") || "—";
-    const tasks = (c.tasks || []).map(esc).join(", ") || "—";
+    const tasks = (c.tasks || []).map(t => {
+      const sec = taskSection(t);
+      return `<span class="tid">${esc(t)}${sec ? ` <span style="color:var(--amber)">[${esc(sec)}]</span>` : ""}</span>`;
+    }).join(" ") || "—";
     pc.innerHTML = `
       <div class="panel-head">
         <h2><span class="icon">🗂</span>${esc(cid)}</h2>
         <div style="margin-top:6px"><span class="state-badge" style="color:${col};border-color:${col}">${esc(c.lifecycle)}</span>
           <span style="margin-left:8px;font-size:10px;opacity:.7;color:var(--amber)">${esc(c.layer)} · ${esc((c.facets||[]).join(", "))}</span>
+          ${c.priority ? `<span class="chip" style="color:${col};border-color:${col};margin-left:6px">${esc(c.priority)}</span>` : ""}
+          ${c.project ? `<span class="chip" style="color:var(--amber);border-color:var(--amber)">${esc(c.project)}</span>` : ""}
         </div>
       </div>
       <div class="panel-body">
@@ -549,33 +779,97 @@ const STATE_COLOR = {
         </div>
         <div class="sect"><h3>Контур</h3>
           <div class="row"><span class="k">Owner</span><span class="v">${esc(c.owner)}</span></div>
+          <div class="row"><span class="k">Priority</span><span class="v">${esc(c.priority || "—")}</span></div>
+          <div class="row"><span class="k">Project</span><span class="v">${esc(c.project || "ecosystem-wide")}</span></div>
           <div class="row"><span class="k">Depends on</span><span class="v">${dep}</span></div>
+          <div class="row"><span class="k">Blocks</span><span class="v">${blocks}</span></div>
           <div class="row"><span class="k">OSS-first</span><span class="v">${c.oss_first && c.oss_first.approved ? "✓ approved" : "✗"}</span></div>
           <div class="row"><span class="k">Tasks</span><span class="v">${tasks}</span></div>
         </div>
         <div class="sect"><h3>Acceptance</h3><div style="font-size:11px;opacity:.85">${esc(c.acceptance)}</div></div>
+        <div class="sect"><h3>Evidence</h3>
+          <div style="font-size:9px;color:var(--amber);letter-spacing:2px;margin-bottom:3px">ARTIFACTS</div>${artifacts}
+          <div style="font-size:9px;color:var(--amber);letter-spacing:2px;margin:7px 0 3px">TASKS</div><div>${tasks}</div>
+        </div>
         <div class="sect"><h3>Review</h3><div style="font-size:11px;opacity:.85">${esc(c.review)}</div></div>
         <div class="sect"><h3>Risk</h3><div style="font-size:11px;opacity:.85">${esc(c.risk)}</div></div>
         <div class="sect"><h3>Rollback</h3><div style="font-size:11px;opacity:.85">${esc(c.rollback)}</div></div>
-        <div class="sect"><h3>Artifacts</h3>${artifacts}</div>
         <div class="sect"><h3>Status note</h3><div style="font-size:11px;opacity:.85">${esc(c.status_note)}</div></div>
-        <div class="meta-line">REGISTRY: ecosystem-registry/1.0 · canonical</div>
+        <div class="ro-note">READ-ONLY PROJECTION · canonical: tools/ecosystem-map/registry.json · правки только через librarian-контур с approval пользователя · no silent mutation · live: нет</div>
+        <div class="meta-line">REGISTRY: ecosystem-registry/1.1 · canonical</div>
       </div>`;
     pc.querySelectorAll("[data-card]").forEach(el=>{
       el.addEventListener("click", ()=> renderCardPanel(el.getAttribute("data-card")));
     });
   }
 
-async function loadData(){
-  const res = await fetch("data.json", {cache:"no-store"});
-  if(!res.ok){ document.getElementById("panel-empty").innerHTML = "❌ data.json не найден. Запусти через локальный HTTP-сервер."; return null; }
-  return await res.json();
-}
+  /* ===== registry filter pills (Kanban control plane) ===== */
+  function buildRegFilters(){
+    if(!REGISTRY) return;
+    const layers = Object.keys(REGISTRY.layers || {});
+    const facets = Object.keys(REGISTRY.facets || {});
+    const projects = [...new Set(Object.values(REGISTRY.cards || {}).map(c => c.project).filter(Boolean))].sort();
+    const owners = [...new Set(Object.values(REGISTRY.cards || {}).map(c => c.owner).filter(Boolean))].sort();
+    const priorities = (REGISTRY.priorities && REGISTRY.priorities.length) ? REGISTRY.priorities : ["P0","P1","P2","P3","P4"];
+    const stages = LIFECYCLE_ORDER;
+    const mk = (id, vals, labelFn) => {
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.innerHTML = vals.map(v => `<button class="pill" data-rf="${esc(id)}" data-val="${esc(v)}">${esc(labelFn ? labelFn(v) : v)}</button>`).join("");
+    };
+    mk("rf-layers", layers);
+    mk("rf-facets", facets);
+    mk("rf-projects", ["—", ...projects], v => v === "—" ? "ECOSYSTEM" : v);
+    mk("rf-owners", owners);
+    mk("rf-priorities", priorities);
+    mk("rf-stages", stages);
+    document.querySelectorAll("[data-rf]").forEach(p => {
+      p.addEventListener("click", () => {
+        const kind = p.getAttribute("data-rf");
+        const val = p.getAttribute("data-val");
+        const set = kind === "rf-layers" ? regFilters.layers
+          : kind === "rf-facets" ? regFilters.facets
+          : kind === "rf-projects" ? regFilters.projects
+          : kind === "rf-owners" ? regFilters.owners
+          : kind === "rf-priorities" ? regFilters.priorities
+          : regFilters.stages;
+        if(set.has(val)){ set.delete(val); p.classList.remove("active"); }
+        else { set.add(val); p.classList.add("active"); }
+        applyRegFilters();
+      });
+    });
+    const search = document.getElementById("reg-search");
+    if(search){
+      search.addEventListener("input", () => {
+        regFilters.search = search.value.trim();
+        applyRegFilters();
+      });
+    }
+    const clear = document.getElementById("rf-clear");
+    if(clear){
+      clear.addEventListener("click", () => {
+        regFilters = { layers:new Set(), facets:new Set(), projects:new Set(), owners:new Set(), priorities:new Set(), stages:new Set(), search:"" };
+        document.querySelectorAll("[data-rf]").forEach(p => p.classList.remove("active"));
+        if(search) search.value = "";
+        applyRegFilters();
+      });
+    }
+  }
+  function applyRegFilters(){
+    if(CURRENT_VIEW !== "skills" && REGISTRY) renderView(CURRENT_VIEW);
+    updateStats();
+  }
 
-function loadUserState(){
-  try{ return JSON.parse(localStorage.getItem(STORE_KEY) || "{}"); }catch{ return {}; }
-}
-function saveUserState(){ localStorage.setItem(STORE_KEY, JSON.stringify(userState)); }
+  async function loadData(){
+    const res = await fetch("data.json", {cache:"no-store"});
+    if(!res.ok){ document.getElementById("panel-empty").innerHTML = "❌ data.json не найден. Запусти через локальный HTTP-сервер."; return null; }
+    return await res.json();
+  }
+
+  function loadUserState(){
+    try{ return JSON.parse(localStorage.getItem(STORE_KEY) || "{}"); }catch{ return {}; }
+  }
+  function saveUserState(){ localStorage.setItem(STORE_KEY, JSON.stringify(userState)); }
 
 /* =========================================================
    QUEST-DONE RESOLUTION
@@ -1032,13 +1326,16 @@ function buildPills(){
 function updateStats(){
   const statsEl = document.getElementById("stats");
   if(CURRENT_VIEW !== "skills" && REGISTRY){
-    const cards = Object.values(REGISTRY.cards || {});
+    const all = Object.entries(REGISTRY.cards || {});
+    const vis = visibleCards();
     const byStage = {};
-    cards.forEach(c => { byStage[c.lifecycle] = (byStage[c.lifecycle] || 0) + 1; });
+    vis.forEach(([cid,c]) => { byStage[c.lifecycle] = (byStage[c.lifecycle] || 0) + 1; });
     statsEl.innerHTML = `
-      <span>CARDS: <b>${cards.length}</b></span>
+      <span>CARDS: <b>${vis.length}${vis.length !== all.length ? "/" + all.length : ""}</b></span>
       <span>DESIGN+: <b>${(byStage.DESIGN||0)+(byStage.APPROVED||0)+(byStage.BUILD||0)+(byStage.REVIEW||0)}</b></span>
+      <span>VERIFY: <b>${byStage.VERIFY||0}</b></span>
       <span style="color:var(--gold)">LIVE: <b>${(byStage.LIVE||0)+(byStage.OBSERVE||0)}</b></span>
+      <span>RETIRED: <b>${byStage.RETIRED||0}</b></span>
       <span>AGENTS: <b>${Object.keys(REGISTRY.agents||{}).length}</b></span>
       ${SNAPSHOT ? `<span>DRIFT: <b>${(SNAPSHOT.drift_signals||[]).length}</b></span>` : ""}
     `;
@@ -1104,17 +1401,19 @@ async function init(){
   SNAPSHOT = await loadSnapshot();
   const badge = document.getElementById("data-badge");
   if(SNAPSHOT){
-    badge.textContent = "STATIC REGISTRY + GENERATED SNAPSHOT · LIVE: НЕТ";
+    badge.textContent = "STATIC REGISTRY + GENERATED SNAPSHOT · READ-ONLY · LIVE: НЕТ";
     badge.classList.add("gen");
     badge.title = "snapshot digest " + SNAPSHOT.meta.input_digest.slice(0,12) + " @ HEAD " + SNAPSHOT.git.head.slice(0,10) + " — детерминированный read-only снимок, не real-time";
   } else {
-    badge.textContent = "STATIC REGISTRY · SNAPSHOT: НЕТ · LIVE: НЕТ";
+    badge.textContent = "STATIC REGISTRY · READ-ONLY · SNAPSHOT: НЕТ · LIVE: НЕТ";
     badge.title = "generated/snapshot.json не найден — запусти python3 tools/ecosystem-map/observer.py";
   }
   // view switcher
   document.querySelectorAll(".view-pill").forEach(p=>{
     p.addEventListener("click", ()=> setView(p.getAttribute("data-view")));
   });
+  // registry filters (Kanban control plane)
+  buildRegFilters();
 
   DATA = await loadData();
   if(!DATA){
