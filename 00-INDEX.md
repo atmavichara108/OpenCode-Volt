@@ -2,7 +2,7 @@
 type: Dashboard
 title: OpenCode Vault — Dashboard
 description: Точка входа, таблица проектов, методы, конвенции волта.
-timestamp: 2026-06-29
+timestamp: 2026-09-01
 ---
 # OpenCode Vault — Dashboard
 
@@ -41,6 +41,7 @@ timestamp: 2026-06-29
 
 ## Reference (возможности OpenCode)
 [[agents]] · [[commands]] · [[config]] · [[global-config]] · [[memory]] · [[permissions]] · [[plugins]]
+[[providers]] · [[config-modes]] · [[mcode-desktop]]
 
 ## Сторонний софт (01-Reference/tools/)
 [[tools/GTweak]] — Windows-твикер (редко, для чужой машины)
@@ -83,7 +84,7 @@ timestamp: 2026-06-29
 > Aider retired из roadmap; v1 остаётся историческим canonical.
 
 ## Runbooks (07-Runbooks/)
-[[07-Runbooks/README]] · [[07-Runbooks/vibecoding-operator-handbook]] · [[07-Runbooks/coordination-bridge-operator-guide]] · [[07-Runbooks/vibecoding-changelog]]
+[[07-Runbooks/README]] · [[07-Runbooks/vibecoding-operator-handbook]] · [[07-Runbooks/ecosystem-kanban-runbook]] · [[07-Runbooks/coordination-bridge-operator-guide]] · [[07-Runbooks/vibecoding-changelog]]
 
 > **Methods** = abstract reusable techniques. **Audits** = dated findings.
 > **Runbooks** = live usage and operator workflows.
@@ -108,7 +109,7 @@ timestamp: 2026-06-29
 
 ## Инструменты (tools/)
 `tools/telegram-capture/` — извлечение постов из Telegram (в разработке, T-062)
-`tools/ecosystem-map/` — Pip-Boy карта экосистемы (T-069 → v3 multi-view T-121): SKILLS-граф + MATRIX/KANBAN/PROJECTS/AGENTS/BLOCKERS/WORKSPACE поверх canonical `registry.json` + generated snapshot; static/generated, real-time не заявляется. Observer: `python3 tools/ecosystem-map/observer.py` — read-only детерминированный snapshot (T-120).
+`tools/ecosystem-map/` — Pip-Boy карта экосистемы → **Kanban control plane** (T-069 → v3 multi-view T-121 → расширение 2026-08-31, T-129): SKILLS-граф + MATRIX/KANBAN/DEPS/ACCEPTANCE/TASKS/PROJECTS/AGENTS/BLOCKERS/WORKSPACE поверх canonical `registry.json` (28 карточек ECO-001..028, Layers × Facets) + generated snapshot; фильтры layer/facet/project/owner/priority/stage + search; read-only, real-time не заявляется. Observer: `python3 tools/ecosystem-map/observer.py` — read-only детерминированный snapshot. Runbook: [[07-Runbooks/ecosystem-kanban-runbook]].
 
 ## Память (04-Memory/ — OKF sub-bundle)
 [[active-context]] · [[facts]] · [[session-log/2026-06-27]] · [[session-log/2026-06-29]] · [[session-log/2026-06-30]] · [[session-log/2026-08-14]] · [[session-log/2026-08-29]] · [[04-Memory/index]] · [[04-Memory/log]]

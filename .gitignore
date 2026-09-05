@@ -1,6 +1,9 @@
 # Editor
 .obsidian/
 
+# M Code Desktop runtime (логи сессий)
+.mcode/
+
 # OS
 .DS_Store
 Thumbs.db

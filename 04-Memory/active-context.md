@@ -1,9 +1,9 @@
 ---
 type: Active Context
 title: Активный контекст
-description: Ecosystem Upgrade Plan v2 MVP реализован и подтверждён независимым verifier PASS 2026-08-31 (T-118..T-122 Done). Phase 1 завершена 2026-08-04. Модельная политика Luna + DeepSeek Go сохранена.
+description: Permission audit + role profiles (2026-09-05, T-131): verifier PASS, Done. Исправлены критические баги, внедрены role-based profiles, decision queue infrastructure. Residuals открыты.
 tags: [memory]
-timestamp: 2026-08-31
+timestamp: 2026-09-05
 ---
 
 # Активный контекст
@@ -11,6 +11,25 @@ timestamp: 2026-08-31
 > Автоматически обновляется librarian. Читается при старте каждой сессии.
 
 ## Текущий фокус
+- **M Code Desktop adoption (2026-09-05, T-133 — study complete):** изучены новые органы движка изнутри сессии (peers/peer_*/session_message, task-субагенты с worktree-изоляцией, verify-кэш, memory-стор, oracle, ask_image/download/send_file, background bash, question/todowrite/skill). Подтверждено: M Code — Electron-форк OpenCode (updater anomalyco/opencode), читает legacy `.opencode/` волта; глобальный kernel (meta/researcher/reviewer/sysop/verifier) и плагины (decision-queue, session-flush) уже в `~/.config/mcode/`. Создана [[01-Reference/mcode-desktop]], путь апгрейда дополнен P6. **Решение Rudra (2026-09-05): TUI — основное окружение; M Code Desktop — майнинг-станция фич.** P6 переформатирован в очередь порта органов в TUI-стек (#40 Playwright-браузер = T-134 — приоритет; peers-семантика, verify-кэш, oracle route, майнинг релизов; memory-стор ➖ не нужен — 04-Memory SSOT). Librarian-роль в M Code — семантическая (чтение файла + протокол), не рантаймная: модель сессии `opencode-go/glm-5.3-flash`, Manual mode оператора [проверить: переключение агентов через UI].
+- **Decision Queue runtime slice (2026-09-05, T-132 — implementation complete, verifier pending):** создан global plugin `decision-queue-hook.ts` (`/home/rudra/dotfiles/opencode-global/.config/opencode/plugins/`), metadata-only card creation на permission events. Plugin: append-only JSONL output, sanitization (no secrets/prompts/tool output), risk inference (critical/high/medium/low), graceful fallback если `permission.ask` signature uncertain `[проверить]`. Smoke test: 25/25 PASS (pure functions, no live runtime required). Existing 4 cards remain pending (no fabricated approvals). Spec/skill/command updates с runtime integration notes. Residuals `[проверить]`: exact `permission.ask` payload signature, external_directory permissions для Vault path, live runtime hook fire. facts.md не тронут.
+- **Permission audit + role profiles (2026-09-05, T-131 — verifier PASS, Done):** исправлены критические баги в global config (git push allow → ask, verifier mutation commands removed), внедрены role-based profiles (researcher/reviewer/verifier/meta) с явными command allowlists, создана decision queue infrastructure (schema + /decisions command + Vault projection). Spec: [[06-Specs/Vault/permission-audit-role-profiles]], log: [[06-Specs/Vault/decision-queue-log]], команда: [[.opencode/command/decisions]]. Acceptance: verifier PASS 2026-09-05, evidence в [[04-Memory/session-log/2026-09-05]]. Residuals [проверить]: runtime hook integration, ~/.local/state/opencode/ path permissions, TUI "allow forever" persistence, project-specific .opencode/ configs, decision queue skill permissions, smoke test executable bit. facts.md не тронут.
+- **Ecosystem Kanban control plane (2026-08-31, вторая сессия; T-129 —
+  verifier PASS 2026-08-31, Done):** canonical registry расширен 8→28 карточек
+  (ECO-001..028: полное покрытие L0..L4 × фасетов, project adoption
+  SERPlux/dotfiles/dv-hub/AndroidOS/ChaT, kernel contracts/HITL/routing,
+  interface environment, Aider RETIRED; schema 1.1 — optional
+  priority/project). Pip-Boy v4: master/facet/project Kanban + фильтры
+  (layer/facet/project/owner/priority/stage) + search + DEPS/ACCEPTANCE/
+  TASKS views + card detail (dependencies/blocks/acceptance/evidence/
+  rollback); T-069 skills view сохранён; read-only, real-time не
+  заявляется. Observer: фикс TASKS-парсинга (только ID-колонка; T-ID из
+  Related-колонок больше не попадают в секции) + drift-signal
+  task_ref_missing + summary (facets/priority/project); детерминизм
+  сохранён.   Runbook [[07-Runbooks/ecosystem-kanban-runbook]] + changelog
+  запись. ECO-006 → VERIFY (Kanban control plane acceptance — независимый
+  verifier PASS 2026-08-31, T-129 → Done); ничего не LIVE; live/MCP/
+  custom-tool runtime не заявляется. Без commit/push.
 - **Ecosystem Upgrade Plan v2 — MVP реализован и верифицирован
   2026-08-31 (независимый verifier acceptance — PASS; T-118..T-122 →
   Done):** созданы plan v2
@@ -286,6 +305,26 @@ timestamp: 2026-08-31
 - Как закрывать residuals Phase 1 (real commit smoke / compaction dispatch) — нужна живая сессия в serp?
 
 ## Последнее обновление
+2026-08-31 — **Финализация T-129 (после независимого verifier PASS):**
+T-129 → Done (2026-08-31; Kanban control plane acceptance — PASS,
+evidence-раздел в [[04-Memory/session-log/2026-08-31]]).
+registry.json: ECO-006 → VERIFY (расширенный scope подтверждён PASS
+T-129); registry-spec §10 — статус-правка. Residuals честно открыты:
+live real-time (T-128 later gate), OSC8/tmux `[проверить]`, MCP runtime
+BLOCKED, custom tool runtime loading (T-127). facts.md не тронут. Без
+commit/push.
+
+2026-08-31 — **Ecosystem Kanban control plane (T-129):** registry 8→28
+карточек (schema 1.1: priority/project; полное покрытие слоёв/фасетов,
+project adoption, kernel gates, Aider RETIRED), Pip-Boy v4 (master Kanban +
+фильтры + search + DEPS/ACCEPTANCE/TASKS views, card detail с
+dependencies/blocks/evidence; T-069 сохранён), observer фикс TASKS-парсинга
+(ID-колонка) + task_ref_missing, runbook ecosystem-kanban + changelog.
+ECO-006 → BUILD (decision-note, расширение scope); ничего не LIVE/OBSERVE;
+unresolved runtime остаётся [проверить]/BLOCKED. Verifier acceptance T-129
+pending — не Done. facts.md не тронут (новых stable facts нет). Без
+commit/push. Детали: [[04-Memory/session-log/2026-08-31]].
+
 2026-08-31 — **Финализация Ecosystem Upgrade v2 (после независимого
 verifier PASS):** T-118..T-122 → Done (2026-08-31; verifier acceptance —
 PASS, evidence-раздел в [[04-Memory/session-log/2026-08-31]]).
