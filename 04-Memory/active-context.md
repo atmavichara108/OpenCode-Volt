@@ -1,9 +1,9 @@
 ---
 type: Active Context
 title: Активный контекст
-description: Permission audit + role profiles (2026-09-05, T-131): verifier PASS, Done. Исправлены критические баги, внедрены role-based profiles, decision queue infrastructure. Residuals открыты.
+description: LinaliAPI provider подключён к OpenCode (2026-09-06): /connect-диагностика, auth.json fix, provider-блок (6 моделей) в глобальном opencode.jsonc. Осталось: рестарт #2 + верификация.
 tags: [memory]
-timestamp: 2026-09-05
+timestamp: 2026-09-06
 ---
 
 # Активный контекст
@@ -11,6 +11,7 @@ timestamp: 2026-09-05
 > Автоматически обновляется librarian. Читается при старте каждой сессии.
 
 ## Текущий фокус
+- **LinaliAPI → OpenCode (2026-09-06 — Vault-часть завершена):** подключён провайдер `linaliapi`, создан spec [[06-Specs/dotfiles/linaliapi-provider-canon]], обновлены reference/memory-файлы. Dotfiles-канон и stow-синхронизация переданы `sysop`/агентам проекта dotfiles — librarian их не выполняет. GUI M Code (`~/.config/mcode/opencode.jsonc`) содержит блок; видимость/auth после рестарта GUI остаётся `[проверить]`.
 - **Секрет экономии токенов M Code (2026-09-05, T-135 — secret extracted, implementation next):** расход сессии — центы. Причина — replay budget (добавка форка, в TUI 1.18.5 НЕТ — strings-проверка): старые tool-результаты при отправке истории режутся до 2000 симв. (head 75%/tail 25%), защита последних 40 KB (`REPLAY_PROTECTED_CHARS`), pruning старых tool-входов >120 симв., дроп неподписанного reasoning, image budget 5, doom-loop guard. Константы/алгоритм (truncateToolOutput, replayCapPlan) извлечены из app.asar — задокументированы в [[01-Reference/mcode-desktop]] § «Секрет экономии токенов». **T-135 (P0) — порт в TUI, первый приоритет P6 (#42).**
 - **M Code Desktop adoption (2026-09-05, T-133 — study complete):** изучены новые органы движка изнутри сессии (peers/peer_*/session_message, task-субагенты с worktree-изоляцией, verify-кэш, memory-стор, oracle, ask_image/download/send_file, background bash, question/todowrite/skill). Подтверждено: M Code — Electron-форк OpenCode (updater anomalyco/opencode), читает legacy `.opencode/` волта; глобальный kernel (meta/researcher/reviewer/sysop/verifier) и плагины (decision-queue, session-flush) уже в `~/.config/mcode/`. Создана [[01-Reference/mcode-desktop]], путь апгрейда дополнен P6. **Решение Rudra (2026-09-05): TUI — основное окружение; M Code Desktop — майнинг-станция фич.** P6 переформатирован в очередь порта органов в TUI-стек (#40 Playwright-браузер = T-134 — приоритет; peers-семантика, verify-кэш, oracle route, майнинг релизов; memory-стор ➖ не нужен — 04-Memory SSOT). Librarian-роль в M Code — семантическая (чтение файла + протокол), не рантаймная: модель сессии `opencode-go/glm-5.3-flash`, Manual mode оператора [проверить: переключение агентов через UI].
 - **Decision Queue runtime slice (2026-09-05, T-132 — implementation complete, verifier pending):** создан global plugin `decision-queue-hook.ts` (`/home/rudra/dotfiles/opencode-global/.config/opencode/plugins/`), metadata-only card creation на permission events. Plugin: append-only JSONL output, sanitization (no secrets/prompts/tool output), risk inference (critical/high/medium/low), graceful fallback если `permission.ask` signature uncertain `[проверить]`. Smoke test: 25/25 PASS (pure functions, no live runtime required). Existing 4 cards remain pending (no fabricated approvals). Spec/skill/command updates с runtime integration notes. Residuals `[проверить]`: exact `permission.ask` payload signature, external_directory permissions для Vault path, live runtime hook fire. facts.md не тронут.
@@ -306,6 +307,8 @@ timestamp: 2026-09-05
 - Как закрывать residuals Phase 1 (real commit smoke / compaction dispatch) — нужна живая сессия в serp?
 
 ## Последнее обновление
+2026-09-06 — **LinaliAPI provider подключён к OpenCode:** диагностика `/connect` (auth-only), опечатка auth ID исправлена пользователем, provider-блок (6 моделей) внесён субагентами в глобальный `opencode.jsonc`, дубль удалён из проектного конфига волта, external_directory allow для `~/.config/opencode/**` добавлен. Верификация `/models` после рестарта. Детали: [[04-Memory/session-log/2026-09-06]].
+
 2026-08-31 — **Финализация T-129 (после независимого verifier PASS):**
 T-129 → Done (2026-08-31; Kanban control plane acceptance — PASS,
 evidence-раздел в [[04-Memory/session-log/2026-08-31]]).

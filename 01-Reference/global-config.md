@@ -23,7 +23,7 @@ timestamp: 2026-07-03
 │   ├── session-flush.ts # Автодокументирование в session-log
 │   └── claude-mem.js.bak # Бэкап (удалён из экосистемы)
 ├── AGENTS.md           # Глобальные инструкции агентам (пустой)
-├── opencode.jsonc      # Глобальный конфиг (минимальный: $schema)
+├── opencode.jsonc      # Глобальный конфиг: $schema + provider.linaliapi (6 моделей, 2026-09-06)
 ├── package.json        # Зависимости для плагинов
 ├── bun.lock            # Bun lockfile
 └── node_modules/       # Установленные зависимости

@@ -1,9 +1,9 @@
 ---
 type: Reference
 title: OpenCode Providers — Провайдеры и бесплатные лимиты
-description: Полный обзор провайдеров OpenCode с бесплатными лимитами. Проверено: 2026-09-01
+description: Полный обзор провайдеров OpenCode с бесплатными лимитами. Проверено: 2026-09-06 (+LinaliAPI custom)
 tags: [opencode, providers, free-tier, models]
-timestamp: 2026-09-01
+timestamp: 2026-09-06
 ---
 
 # OpenCode Providers — Исследование бесплатных лимитов
@@ -19,6 +19,7 @@ timestamp: 2026-09-01
 | **OpenCode Go** | `opencode-go` | Subscription | Низкозатратная подписка на популярные open coding модели. |
 | **OpenRouter** | `openrouter` | Gateway | Доступ к 100+ провайдерам через единый API. Много бесплатных моделей. |
 | **Mistral AI** | `mistral` | Direct | Прямой доступ к моделям Mistral (Codestral, Magistral, Ministral). |
+| **LinaliAPI** | `linaliapi` | Gateway (custom) | OpenAI/Anthropic-совместимый шлюз (linaliapi.com). Кастомный провайдер: config-блок + ключ в auth.json. Подключён 2026-09-06. |
 
 ---
 
@@ -90,7 +91,20 @@ timestamp: 2026-09-01
 
 ---
 
-### 5. Дополнительные провайдеры с бесплатными лимитами (через OpenRouter)
+### 5. LinaliAPI (`linaliapi/`) — кастомный шлюз (2026-09-06)
+
+> Подключён вручную как custom provider (в каталоге models.dev отсутствует). Оплата: крипта/карта РФ, без подписки. Бесплатных моделей нет.
+
+- **Endpoint:** `https://api.linaliapi.com/v1` (OpenAI-совместимый; есть и Anthropic-совместимый для Claude Code — без `/v1`)
+- **Ключи:** вида `sk-ant-...`, хранятся в `~/.local/share/opencode/auth.json` (запись `linaliapi`)
+- **Конфиг:** глобальный `~/.config/opencode/opencode.jsonc` → `provider.linaliapi` (`@ai-sdk/openai-compatible` + `baseURL` + `models`); `apiKey` не хардкодится — подтягивается из auth.json по совпадению ID
+- **Важно:** `/connect` сохраняет только ключ в auth.json — без config-блока `provider` провайдер не появится в `/models`
+- **Подключено 6 моделей:** `anthropic/claude-opus-5`, `openai/gpt-5.6-sol`, `openai/gpt-5.6-luna`, `google/gemini-3.8-flash`, `z-ai/glm-5.3`, `deepseek/deepseek-v4-pro`
+- **Резерв моделей шлюза** (можно добавить в config): claude-sonnet-5/4.6, opus-4.6/4.7/4.8, gpt-5.6-terra/5.5/5.4/5.3-codex/5.1-codex-max, kimi-k3/k2.6, qwen3.8-max/qwen3.7-max/qwen3-coder, glm-5.2/5.1/5, gemini-3.1-pro-preview/3.5-flash/3.7-flash, deepseek-v4-flash
+
+---
+
+### 6. Дополнительные провайдеры с бесплатными лимитами (через OpenRouter)
 
 Эти провайдеры доступны **только через OpenRouter** (не напрямую в OpenCode):
 
@@ -115,6 +129,7 @@ timestamp: 2026-09-01
 | **OpenRouter** | Прямой (`openrouter/`) | 47+ моделей | `glm-5.2:free`, `minimax-m3:free`, `nemotron-3-ultra:free` — очень сильные |
 | **OpenCode Go** | Прямой (`opencode-go/`) | **НЕТ** | — |
 | **Mistral** | Прямой (`mistral/`) | **НЕТ** | — |
+| **LinaliAPI** | Custom config (`linaliapi/`) | **НЕТ** | claude-opus-5, gpt-5.6-sol — топовые платные |
 | **NVIDIA (build.nvidia.com)** | Через OpenRouter | 4 модели | Nemotron 3 Ultra — топ |
 | **Google (Vertex AI)** | Через OpenRouter | 2 модели | Gemma 4 — хорошая |
 

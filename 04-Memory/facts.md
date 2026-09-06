@@ -525,3 +525,38 @@ timestamp: 2026-08-17
 - Capability-routing gaps R1/F1/F2/F3 закрыты документально/evidence-gated;
   остаются uncommitted artifacts, negative deny, local extension merge,
   literal tool output limits. T-109 и остальные проектные задачи не изменены.
+
+### Кастомные провайдеры OpenCode / LinaliAPI (2026-09-06)
+
+- `/connect` сохраняет **только ключ** в `~/.local/share/opencode/auth.json`;
+  провайдера, отсутствующего в models.dev, нужно описывать в конфиге
+  (`provider`: npm `@ai-sdk/openai-compatible`, `options.baseURL`, `models`) —
+  подтверждено https://opencode.ai/docs/providers/. Без config-блока
+  провайдер не появляется в `/models`.
+- **ID провайдера в конфиге = ключу записи в auth.json** — тогда `apiKey`
+  подтягивается автоматически, хардкод в options не нужен.
+- Глобальный конфиг на этой машине — `~/.config/opencode/opencode.jsonc`
+  (JSONC); файла `opencode.json` в каталоге нет (подтверждено субагентом
+  2026-09-06; ранее в [[01-Reference/global-config]] уже был .jsonc).
+- `external_directory` правила: побеждает **последнее совпавшее** правило;
+  allow ставится после deny `*`, секретные deny (`**/.env*`, `*.key`...) —
+  последними.
+- Permission-границы сессии фиксируются при старте opencode (hot-reload
+  конфига нет): чтение `~/.local/share/opencode/*` из агентской сессии идёт
+  через ask-одобрение, **запись** туда заблокирована; правки
+  `~/.config/opencode/**` возможны только в сессии, запущенной после
+  рестарта с allow в проектном конфиге.
+- **LinaliAPI** (linaliapi.com) — OpenAI/Anthropic-совместимый шлюз,
+  `https://api.linaliapi.com/v1`, ключи `sk-ant-*`, ID моделей с вендорными
+  префиксами (`anthropic/...`, `openai/...`, `z-ai/...`). Подключён как
+  5-й провайдер (custom), 6 моделей: claude-opus-5, gpt-5.6-sol,
+  gpt-5.6-luna, gemini-3.8-flash, glm-5.3, deepseek-v4-pro. Конфиг в
+  глобальном `opencode.jsonc`; детали [[01-Reference/providers]].
+- **2026-09-06 (канонизация):** живой `~/.config/opencode/opencode.jsonc` —
+  обычный файл, НЕ stow-симлинк; блок провайдера добавлен субагентом в
+  dotfiles-канон `~/dotfiles/opencode-global/.config/opencode/opencode.jsonc`
+  (jq VALID). Live↔канон — два физических файла; конвергенция через
+  `stow --adopt opencode-global` (за пользователем). **GUI M Code Desktop:**
+  конфиг-рут подтверждён `~/.config/mcode/opencode.jsonc`, `provider.linaliapi`
+  уже присутствовал (внесён пользователем), jq VALID; auth-стор M Code для
+  linaliapi не проверен `[проверить]` (401 в GUI → ключ через /connect в GUI).

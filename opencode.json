@@ -12,6 +12,7 @@
       "/home/rudra/Projects/OpenCode-Vault/**": "allow",
       "/home/rudra/Projects/serp/**": "allow",
       "/home/rudra/dotfiles/**": "allow",
+      "/home/rudra/.config/opencode/**": "allow",
       "**/.env*": "deny",
       "**/credentials.json": "deny",
       "**/*.pem": "deny",
