@@ -1,13 +1,13 @@
 ---
 type: VibeOS
 title: VibeOS — Персональная система вайбкодинга
-version: 0.3.0
+version: 0.3.1
 description: Концептуальный дашборд-путеводитель по стилю, методам, проектам и философии Max Rudra как вайбкодера.
 timestamp: 2026-07-07
 tags: [meta, system, vibe-coding]
 ---
 
-# VibeOS v0.3.0 — Персональная система вайбкодинга
+# VibeOS v0.3.1 — Персональная система вайбкодинга
 
 > Это не журнал. Это концептуальный слепок того, как я кодирую и какие экосистемы и пайплайны создаю с ИИ. Своеобразный дашборд, показывает какие подходы и 
 > приёмы использую, какие проекты веду и куда расту. Версионируется вместе со
@@ -107,9 +107,9 @@ tags: [meta, system, vibe-coding]
 | Инструмент | Роль |
 |-----------|------|
 | OpenCode | Основной IDE-фреймворк с ИИ-агентами |
-| OpenCode Zen | Провайдер моделей (pay-as-you-go) |
-| DeepSeek v4-flash-free | **Основная модель librarian (с 2026-06-30)** |
-| Claude Sonnet 4.6 | Запасная для сложных задач |
+| LinaliAPI | Провайдер моделей (linaliapi/*) |
+| GLM 5.3 Luna | **Основная модель librarian** (`opencode-go/gpt-5.6-luna`) |
+| M Code Desktop | Майнинг-станция фич (форк OpenCode, ордены портируются в TUI) |
 | Obsidian | Редактор markdown для волта |
 | Git + GitHub | Версионирование всего (волт + проекты) |
 
@@ -125,7 +125,11 @@ tags: [meta, system, vibe-coding]
 
 | Инструмент | Назначение | Статус |
 |------------|-----------|--------|
-| `tools/telegram-capture/` | Извлечение постов из группы @inbox_tools по теме, маркировка реакциями | 🔵 в разработке (T-062) |
+| `tools/telegram-capture/` | Извлечение постов из группы @inbox_tools по теме, маркировка реакциями | ✅ (T-062) |
+| `tools/ecosystem-map/` | Pip-Boy карта экосистемы → Kanban control plane + action-механизм | ✅ (T-069/T-121/T-129/T-140) |
+| `tools/playwright-browser/` | Браузерный тул: JS-рендеринг, снапшот→element-ref, сессии | ✅ (T-134) |
+| `tools/verify-cache/` | Гейты волта с tree-hash кэшем (пустые .md + викилинки) | ✅ (P6 #33) |
+| `tools/peers/` | Файл-реестр ролей параллельных сессий (claim/holds/release) | ✅ (P6 #31) |
 
 Принцип: **LLM думает, API делает.** Инструмент получает данные (через API),
 librarian анализирует и раскладывает. Снижение токенов, повышение надёжности.
@@ -266,10 +270,11 @@ vault — пилотная реализация. Директория `tools/` �
 ### vault (текущий волт)
 **Командный центр знаний.** librarian управляет проектами отсюда.
 - Методы: ➖ все (волт — надстройка, а не объект внедрения)
-- Агенты: librarian
-- Команды: 9 — /ask, /capture, /inbox, /project, /commit, /project-add, /audit, /done, /distill-pipeline
+- Агенты: librarian (opencode-go/gpt-5.6-luna)
+- Команды: 12 — /ask, /capture, /inbox, /project, /commit, /project-add, /audit, /decisions, /distill-pipeline, /handoff, /route, /verify
 - Память: OKF-подбандл (active-context + facts + session-log)
-- Инструменты: tools/ (telegram-capture в разработке, T-062)
+- Инструменты: tools/ (telegram-capture, ecosystem-map, playwright-browser, verify-cache, peers)
+- **P6 порт M Code → TUI:** replay budget, doom-loop/no-op guard, санитизация/redaction, playwright, verify-кэш, parallel audit, peers — см. [[01-Reference/mcode-desktop]] и [[DEVELOPMENT-ROADMAP]]
 
 ---
 
@@ -279,7 +284,7 @@ vault — пилотная реализация. Директория `tools/` �
 
 | Агент | Проект | Mode | Модель | Назначение |
 |-------|--------|------|--------|-----------|
-| librarian | vault | primary | deepseek-v4-flash-free | Командный центр |
+| librarian | vault | primary | opencode-go/gpt-5.6-luna | Командный центр |
 | build | SERPlux | primary | kimi-k2.7-code | Основная разработка, коммит через /commit |
 | plan | SERPlux | primary | glm-5.2 | Планирование, анализ, делегирование build (task: build allow) |
 | collector-dev | SERPlux | subagent | kimi-k2.7-code | Topvisor + сбор данных |
@@ -302,8 +307,8 @@ vault — пилотная реализация. Директория `tools/` �
 
 ### Команды (все проекты)
 
-**vault (9 команд):**
-`/ask` · `/capture` · `/inbox` · `/project` · `/commit` · `/project-add` · `/audit` · `/done` · `/distill-pipeline`
+**vault (12 команд):**
+`/ask` · `/capture` · `/inbox` · `/project` · `/commit` · `/project-add` · `/audit` · `/decisions` · `/distill-pipeline` · `/handoff` · `/route` · `/verify`
 
 **dv-hub (7 команд):**
 `/morning` · `/spec` · `/review` · `/hygiene` · `/sync-context` ·
@@ -495,6 +500,27 @@ plan-агент с `edit: deny` и `task: { build: allow }` — думает, н
 ---
 
 ## Чейнджлог
+
+### v0.3.1 (2026-09-07)
+- **Порт «органов» M Code Desktop в TUI (P6)** — M Code Desktop назначен
+  майнинг-станцией фич, удачные решения переносятся в TUI без форка:
+  - **replay budget** — плагин `replay-budget.ts`: старые tool-результаты
+    капятся до 2000 симв. (head/tail), защита последних 40 KB, pruning входов.
+  - **doom-loop/no-op guard** — `doom_loop: deny` (нативный детектор) +
+    плагин `noop-guard.ts` (нудж молчаливых ходов, retry 3).
+  - **санитизация + redaction** — плагин `input-security.ts`: system-reminder/markup
+    экранирование, pattern-based вычищение секретов.
+  - **Playwright-браузер** — `tools/playwright-browser/browser.py`: JS-рендеринг,
+    ARIA-снапшот→element-ref, персистентные сессии.
+  - **verify-кэш** — `tools/verify-cache/verify.py`: tree-hash гейты волта + `/verify`.
+  - **peers** — `tools/peers/peer_role.py`: файл-реестр ролей параллельных сессий.
+  - **+doc-порты** — parallel `/audit`, verify-subagent acceptance, oracle route.
+  - Всё на plugin-хуках и stdlib-CLI, без форка. Реф: [[01-Reference/mcode-desktop]].
+- **Провайдер:** OpenCode Zen → **LinaliAPI** (`linaliapi/*`), модель librarian
+  → `opencode-go/gpt-5.6-luna`.
+- **Команды vault:** 9 → 12 (`+decisions, +handoff, +route, +verify`).
+- **Инструменты tools/:** 1 → 5 (telegram-capture, ecosystem-map,
+  playwright-browser, verify-cache, peers).
 
 ### v0.3.0 (2026-07-07)
 - **Новый метод: tool-integration-pattern** — «LLM думает, API делает». Внешние

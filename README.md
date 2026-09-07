@@ -38,7 +38,7 @@ Projects → Memory → Templates), YAML frontmatter, викилинки вме�
 
 ### 🎯 Методы — переиспользуемые протоколы
 Каждый повторяющийся паттерн дистиллируется в метод с чётким описанием,
-статусом внедрения и привязкой к проектам. Семь методов описано, каждый
+статусом внедрения и привязкой к проектам. Девять методов описано, каждый
 с реальным статусом (✅ внедрён / 🟡 частично / ❌ не внедрён).
 
 ### 🤖 Мульти-агентная архитектура
@@ -93,7 +93,7 @@ Projects → Memory → Templates), YAML frontmatter, викилинки вме�
 | [dotfiles](03-Projects/dotfiles.md) | Система | Shell / Manjaro | 8 | 5/7 ✅ |
 | [vault](03-Projects/vault.md) | Справочник | Markdown / OpenCode | 1 (librarian) | — |
 
-### 7 методов вайбкодинга
+### 9 методов вайбкодинга
 
 | Метод | Что даёт | Статус |
 |-------|----------|--------|
@@ -104,6 +104,8 @@ Projects → Memory → Templates), YAML frontmatter, викилинки вме�
 | [multi-agent-pipeline](02-Methods/multi-agent-pipeline.md) | Мульти-агент с ролями | ✅ в dotfiles · 🟡 SERPlux Factory |
 | [closed-loop](02-Methods/closed-loop.md) | Авто-итерация build→verify→fix | ❌ не внедрён |
 | [verifier-pattern](02-Methods/verifier-pattern.md) | Независимая проверка кода | 🟡 в SERPlux + dotfiles |
+| [capability-routing](02-Methods/capability-routing.md) | Маршрутизация по capability + named role | design-contract |
+| [tool-integration-pattern](02-Methods/tool-integration-pattern.md) | Внешние API как детерминированные инструменты | ✅ в vault |
 
 > Полная карта с раскладкой по каждому проекту → [VibeOS.md](VibeOS.md#Методы)
 
@@ -111,8 +113,8 @@ Projects → Memory → Templates), YAML frontmatter, викилинки вме�
 
 | Агент | Проект | Роль | Модель |
 |-------|--------|------|--------|
-| **librarian** | vault | Командный центр знаний | DeepSeek v4-flash-free |
-| **architect / builder + ux-dev / infra-dev / collector-dev / reviewer** | SERPlux | Фабрика продуктов: архитектура, разработка, UI, Docker, сбор, ревью | Sonnet 4.6 / DeepSeek-free / GPT-5.3-codex |
+| **librarian** | vault | Командный центр знаний | GLM 5.3 Luna (gpt-5.6-luna) |
+| **architect / builder + ux-dev / infra-dev / collector-dev / reviewer** | SERPlux | Фабрика продуктов: архитектура, разработка, UI, Docker, сбор, ревью | kimi-k2.7-code / glm-5.2 / qwen3.7-plus |
 | **plan / build / reviewer / researcher / infra** | dv-hub | Архитектор, разработчик, ревьюер, исследователь, DevOps | Qwen / DeepSeek |
 | **sysop / planner / builder + 5 subagent** | dotfiles | Полная мульти-агентная система | DeepSeek v4-flash-free |
 
@@ -120,10 +122,10 @@ Projects → Memory → Templates), YAML frontmatter, викилинки вме�
 
 | Проект | Команд |
 |--------|--------|
-| **vault** | `/ask` · `/capture` · `/inbox` · `/project` · `/commit` · `/project-add` · `/audit` |
+| **vault** | `/ask` · `/capture` · `/inbox` · `/project` · `/commit` · `/project-add` · `/audit` · `/decisions` · `/distill-pipeline` · `/handoff` · `/route` · `/verify` |
 | **dv-hub** | `/morning` · `/spec` · `/review` · `/hygiene` · `/sync-context` · `/sync-context-self` · `/sync-task` |
 | **dotfiles** | `/sysaudit` · `/script` · `/qtile` · `/util` · `/prompt` · `/notify` · `/macro` · `/plugin` · `/loop` · `/flush` |
-| **SERPlux** | `/interface` · `/container` · `/deploy` · `/review` |
+| **SERPlux** | `/commit` · `/container` · `/deploy` · `/dream` · `/interface` |
 
 ---
 
@@ -171,6 +173,7 @@ opencode .
 | P3: Проекты | ✅ Завершено | Карточки синхронизированы, статусы реконсилированы, VibeOS v0.2.3 |
 | P4: CI волта | ✅ Завершено | Pre-commit hook, валидация викилинков, авто-архивация логов |
 | P5: Будущее | 🟡 В планах | Telegram-бот · классификация фич · `/project-upgrade` · closed-loop |
+| P6: Порт M Code → TUI | ✅ Завершено (итерация 1) | replay budget · doom-loop/no-op guard · санитизация · Playwright · verify-кэш · peers |
 
 Подробнее → [DEVELOPMENT-ROADMAP.md](DEVELOPMENT-ROADMAP.md)
 
@@ -192,11 +195,12 @@ opencode-vault/
 │   ├── agents.md · commands.md · config.md · memory.md
 │   ├── permissions.md · plugins.md
 │
-├── 02-Methods/            # Методы вайбкодинга (7 файлов)
+├── 02-Methods/            # Методы вайбкодинга (9 файлов)
 │   ├── context-as-docs.md · distill-pattern.md
 │   ├── memory-management.md · model-routing.md
 │   ├── closed-loop.md · verifier-pattern.md
-│   ├── multi-agent-pipeline.md
+│   ├── multi-agent-pipeline.md · capability-routing.md
+│   ├── tool-integration-pattern.md
 │
 ├── 03-Projects/           # Карточки проектов
 │   ├── SERPlux.md · dv-hub.md · dotfiles.md · vault.md
@@ -262,4 +266,4 @@ VibeOS — свободный софт. Это значит:
 
 ---
 
-**VibeOS** — версия [v0.2.3](VibeOS.md#v023-2026-06-30) · Лицензия: [GPL-3.0](LICENSE)
+**VibeOS** — версия [v0.3.1](VibeOS.md#v032-2026-09-07) · Лицензия: [GPL-3.0](LICENSE)

@@ -108,8 +108,11 @@ timestamp: 2026-09-01
 [[98-Temporary/README]] — сырые файлы от пользователя на экстракцию; обрабатываются и удаляются (не источник правды, не смешивать с `99-Inbox/`)
 
 ## Инструменты (tools/)
-`tools/telegram-capture/` — извлечение постов из Telegram (в разработке, T-062)
-`tools/ecosystem-map/` — Pip-Boy карта экосистемы → **Kanban control plane** (T-069 → v3 multi-view T-121 → расширение 2026-08-31, T-129): SKILLS-граф + MATRIX/KANBAN/DEPS/ACCEPTANCE/TASKS/PROJECTS/AGENTS/BLOCKERS/WORKSPACE поверх canonical `registry.json` (28 карточек ECO-001..028, Layers × Facets) + generated snapshot; фильтры layer/facet/project/owner/priority/stage + search; read-only, real-time не заявляется. Observer: `python3 tools/ecosystem-map/observer.py` — read-only детерминированный snapshot. Runbook: [[07-Runbooks/ecosystem-kanban-runbook]].
+`tools/telegram-capture/` — извлечение постов из Telegram (T-062)
+`tools/ecosystem-map/` — Pip-Boy карта экосистемы → **Kanban control plane** (T-069 → v3 multi-view T-121 → расширение 2026-08-31, T-129; action-механизм v5 T-140): SKILLS-граф + MATRIX/KANBAN/DEPS/ACCEPTANCE/TASKS/PROJECTS/AGENTS/BLOCKERS/WORKSPACE поверх canonical `registry.json` + generated snapshot; Observer: `python3 tools/ecosystem-map/observer.py`. Runbook: [[07-Runbooks/ecosystem-kanban-runbook]].
+`tools/playwright-browser/` — браузерный тул (T-134): JS-рендеринг, ARIA-снапшот→element-ref, персистентные сессии. `PYTHONPATH=.venv/lib/python3.14/site-packages python3 tools/playwright-browser/browser.py ...`
+`tools/verify-cache/` — гейты волта с tree-hash кэшем (P6 #33): пустые .md + битые викилинки. `python3 tools/verify-cache/verify.py` (команда `/verify`)
+`tools/peers/` — файл-реестр ролей сессий (P6 #31): `python3 tools/peers/peer_role.py claim/list/holds/release`
 
 ## Память (04-Memory/ — OKF sub-bundle)
 [[active-context]] · [[facts]] · [[session-log/2026-06-27]] · [[session-log/2026-06-29]] · [[session-log/2026-06-30]] · [[session-log/2026-08-14]] · [[session-log/2026-08-29]] · [[04-Memory/index]] · [[04-Memory/log]]
