@@ -63,6 +63,11 @@ timestamp: 2026-09-05
 - Дополняет [[02-Methods/verifier-pattern]]: машиностроимые гейты (typecheck/lint/test)
   не гоняются заново; acceptance-вопросы остаются за verify-subagent.
 
+**Порт в TUI (2026-09-06):** `tools/verify-cache/verify.py` (stdlib) — tree-hash кэш
+детерминированных гейтов волта (пустые `.md` + битые викилинки), `--force`/`--json`,
+кэш в `generated/` (gitignored). Резолвер викилинков выровнен с pre-commit hook +
+игнор литер в code-span. Гейты зелёные, кэш-хит подтверждён. Команда `/verify`.
+
 ### Кросс-сессионная память — memory
 - `record`/`skip`/`recall`; факт ≤500 символов, верифицируемый, repository-stable.
 - Запись не разрушает старое — не влезшее в бюджет остаётся доступно через recall.
@@ -115,6 +120,13 @@ timestamp: 2026-09-05
 - `[Old tool result content cleared]` — уже компактированные пары чисто.
 - Красacted-входы: секреты вычищаются при replay (`redactWith`).
 
+**Порт в TUI (2026-09-06):** точка инъекции найдена в рантайм-бинаре 1.18.5 —
+хук плагина `experimental.chat.messages.transform` диспатчится в main-loop
+(`yield*d.trigger("experimental.chat.messages.transform",{},{messages:C})`) прямо
+перед `toModelMessagesEffect(C,Z)`, который в TUI шлёт полные выводы. Заслан
+плагин `replay-budget.ts` (helpers + smoke 14/14 в волте); live hook-fire после
+рестарта TUI `[проверить]`.
+
 ### Остальные рычаги
 - Compaction: `buffer 20000 / keep 8000 tokens`, summary ≤4096 output tokens.
 - Потолки tool_output: read ≤50 KB, bash >2000 строк → полный вывод в файл
@@ -142,11 +154,24 @@ timestamp: 2026-09-05
 вызовы; повтор тех же аргументов не даст другого ответа». Главный убийца
 зацикливаний и жечь токенов.
 
+**Порт в TUI (2026-09-06):** детектор уже нативен в бинаре 1.18.5 (`ya=3`,
+byte-identical `JSON.stringify(input)===JSON.stringify(H)`), разница только в
+реакции — TUI шлёт `r.ask(permission:"doom_loop")` (вопрос юзеру), не авто-стоп.
+Авто-стоп включается конфигом `"doom_loop":"deny"` (permission-ключ,
+`"ask"|"allow"|"deny"`). Внесение в canonical jsonc — за Rudra (red-line на правку
+`opencode.jsonc`).
+
 ### No-op turn guard
 `NO_OP_OUTPUT_THRESHOLD = 200, NO_OP_RETRY_LIMIT = 3, NO_OP_NUDGE` — turn,
 закончившийся без ответа и без вызова тула (<200 output tokens), не считается
 работой: model получает нудж «сделай работу или скажи одной фразой, что
 блокирует». Ловит молчаливые сгоревшие ходы.
+
+**Порт в TUI (2026-09-06):** в бинаре 1.18.5 отсутствовал полностью. Написан
+плагин `noop-guard.ts` + helpers `noop-guard-helpers.js` (event `session.idle` →
+`session.messages` прочитать последний assistant → `session.promptAsync` нудж,
+retry limit 3, debounce по messageID). Smoke 9/9. Live hook-fire `[проверить]`
+после рестарта TUI.
 
 ### Auto-compaction с continuation summary
 `DEFAULT_TOKEN_THRESHOLD = 100000` — при переполнении контекст заменяется
@@ -161,6 +186,11 @@ replay. `PRUNED_INPUT_KEEP = {filePath, path, command, pattern, description,
 subagent_type, name, url, offset, limit}` — что переживает pruning старых
 входов. Секреты не попадают в контекст → нет leak-инцидентов и ретраев.
 
+**Порт в TUI (2026-09-06):** replay-redaction отсутствовала полностью.
+Плагин `input-security.ts` (`experimental.chat.messages.transform` → `redactText`,
+pattern-based: sk-/ghp-/AKIA/AWS/PRIVATE KEY/bearer; `secrets.expose` в TUI не
+настроен). Smoke 14/14.
+
 ### Playwright-CLI — полный браузерный тул (обогащает T-134)
 Не просто «браузер»: embed CLI с сессиями — open/goto/click/fill/snapshot/eval,
 dialog handling, tabs, **storage state** (state-load/state-save = персистентная
@@ -168,12 +198,24 @@ dialog handling, tabs, **storage state** (state-load/state-save = персист
 PDF. Снапшот → element ref: модель кликает по ref'ам, не по скриншотам
 (дешевле, чем vision).
 
+**Порт в TUI (2026-09-06):** `tools/playwright-browser/browser.py` (Playwright 1.62
+python, chromium 1234 в ~/.cache/ms-playwright). goto/eval/click/fill/state-save/load,
+read-only default, JSON на stdout. Снапшот `aria_snapshot(mode=ai)` даёт `[ref=eN]`;
+click/fill по aria-ref (сеется после снапшота на том же page-instance). Живой smoke
+PASS (7 подкоманд). Venv-нюанс: под GUI M Code direnv не подхватывает `.venv`
+(`sys.executable`→AppImage), запуск через `PYTHONPATH=.venv/lib/python3.14/site-packages`.
+
 ### Санитизация ввода (security)
 - `SYSTEM_REMINDER_RE` — system-reminder блоки из вставленного текста
   вычленяются и не подделываются как системные.
 - `TRANSPORT_MARKUP` — теги `<input>/<output>/<thinking>/<system-reminder>/…`
   из пользовательского текста экранируются → prompt-injection через markup
   затруднён.
+
+**Порт в TUI (2026-09-06):** `SYSTEM_REMINDER_RE` в бинаре 1.18.5 есть, но только
+в `extractGoalFromPrompt` (не для санитизации ввода); `TRANSPORT_MARKUP` отсутствует.
+Плагин `input-security.ts` (`chat.message` → `sanitizeText`: strip system-reminder
++ escape markup). Smoke 14/14. Live hook-fire `[проверить]`.
 
 ### Мелкое, но полезное
 - `subagent_depth` — глубина вложенности субагентов (default 1): рекурсивный

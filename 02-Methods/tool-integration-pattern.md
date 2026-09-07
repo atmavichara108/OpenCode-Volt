@@ -77,9 +77,10 @@ API получает данные и возвращает результат. LL
 - Нужна семантика, которой API не несёт (LLM должна интерпретировать текст).
 
 ## Статус внедрения
-- **vault** 🟡 — директория `tools/` заведена, первый инструмент
-  `tools/telegram-capture/` (T-062) в разработке. Команда `/capture` будет
-  извлекать посты → librarian классифицирует.
+- **vault** 🟢 — директория `tools/` заведена; инструменты: `telegram-capture/` (T-062),
+  `playwright-browser/` (T-134, браузер-тул: goto/eval/click/fill/state-save/load,
+  read-only default, aria-ref клики), `verify-cache/` (#33, tree-hash гейты).
+  Команда `/capture` извлекает посты → librarian классифицирует.
 - **SERPlux** ➖ — коллектор уже детерминированный (Topvisor API), метод не
   формализован как часть `tools/`.
 - **dv-hub** ➖ — контекст не предполагает.
@@ -92,5 +93,5 @@ API получает данные и возвращает результат. LL
 - Дополняет: [[02-Methods/model-routing|model-routing]],
   [[02-Methods/distill-pattern|distill-pattern]],
   [[02-Methods/multi-agent-pipeline|multi-agent-pipeline]]
-- Внедрён в: [[vault]] 🟡 (tools/ + telegram-capture в разработке),
+- Внедрён в: [[vault]] 🟢 (tools/ + telegram-capture + playwright-browser + verify-cache),
   [[SERPlux]] ➖, [[dv-hub]] ➖, [[dotfiles]] ➖
