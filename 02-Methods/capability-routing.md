@@ -113,6 +113,23 @@ selected role**. They remain orthogonal: changing a model does not change the
 capability, authority, or acceptance contract. The current Luna + DeepSeek Go
 model policy remains unchanged by this design contract.
 
+## Peer-роли — координация параллельных сессий (P6 #31)
+
+Файл-реестр ролей как signal-механизм между TUI-сессиями (порт подмножества
+ring-of-peers M Code, инварианты сохранены 1:1):
+
+- **claim ничего не даёт и никого не блокирует.** Это «я беру X» — сосед,
+  читающий реестр, видит кто что держит и не дублирует. Не распределённый лок.
+- **Overlap разрешён и именован.** Claim роли, которую уже кто-то держит,
+  успешен и возвращает `held_also_by` — конфликт решается разговором, не отказом.
+- **release по claim_id, не по имени** (id недвусмыслен); release дважды — не ошибка.
+- **Работа живёт в дереве, не в реестре.** Реестр — только сигнализация; никакой
+  claim не переносит autority и не освобождает от acceptance-гейтов выше.
+
+Инструмент: `tools/peers/peer_role.py` (stdlib; claim/list/holds/release,
+append-only JSONL). Письма/wake (peer_message) остаются engine-native M Code —
+в TUI не перенести.
+
 ## Boundaries, risk и approval
 
 - `read-only` work may inspect and produce evidence, but cannot mutate project
