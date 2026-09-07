@@ -17,8 +17,9 @@
   python browser.py eval --url https://example.com --js "document.title"# прочитать DOM/JS-значение
   python browser.py click --url ... --ref e42                          # write: клик по element-ref из snapshot
   python browser.py fill --url ... --ref e7 --value "hello"             # write: ввод в поле
-  python browser.py state-save --path profile.json                      # персистент логин-сессии
-  python browser.py state-load --path profile.json --url https://...    # загрузить сохранённую сессию
+  python browser.py state-save --url https://... --path profile.json   # персистент логин-сессии
+  python browser.py state-load --path profile.json                      # сводка state (cookies/origins, без секретов)
+  python browser.py goto --url https://... --state-path profile.json    # открыть страницу с сохранённой сессией
 
 Окружение:
   PYTHONPATH=.venv/lib/python3.14/site-packages python3 browser.py ...  # venv не активируется под GUI M Code (sys.executable → AppImage)
@@ -45,20 +46,26 @@ def _preamble():
 
 
 def _launch(sync_playwright, state_path=None):
-    """Запуск Chromium (headless). При state_path — поднятие с сохранённым storage state."""
+    """Запуск Chromium (headless). state_path не используется здесь — storage_state
+    это аргумент new_context(), а не launch(); см. _goto."""
     p = sync_playwright().start()
-    kwargs = {"headless": True}
-    if state_path:
-        try:
-            kwargs["storage_state"] = state_path
-        except FileNotFoundError:
-            pass  # нет сохранённого state — стартуем чисто
-    browser = p.chromium.launch(**kwargs)
+    browser = p.chromium.launch(headless=True)
     return p, browser
 
 
+def _state_file_exists(state_path):
+    """storage_state требует существующий файл; отсутствующий → чистое поднятие."""
+    if not state_path:
+        return False
+    from pathlib import Path
+    return Path(state_path).is_file()
+
+
 def _goto(browser, url, state_path=None):
-    ctx = browser.new_context(storage_state=state_path) if state_path else browser.new_context()
+    if _state_file_exists(state_path):
+        ctx = browser.new_context(storage_state=state_path)
+    else:
+        ctx = browser.new_context()
     page = ctx.new_page()
     page.goto(url, wait_until="load", timeout=30000)
     return ctx, page
