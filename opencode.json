@@ -2,7 +2,7 @@
   "$schema": "https://opencode.ai/config.json",
   "default_agent": "librarian",
   "lsp": true,
-  "model": "opencode-go/gpt-5.6-luna",
+  "model": "opencode-go/glm-5.3-flash",
   "permission": {
     "read": "allow",
     "glob": "allow",
@@ -13,72 +13,45 @@
       "/home/rudra/Projects/serp/**": "allow",
       "/home/rudra/dotfiles/**": "allow",
       "/home/rudra/.config/opencode/**": "allow",
+      "/home/rudra/.local/share/m-code-data/**": "allow",
+      "/home/rudra/.local/share/opencode/auth.json": "allow",
       "**/.env*": "deny",
       "**/credentials.json": "deny",
       "**/*.pem": "deny",
       "**/*.key": "deny"
     },
     "bash": {
-      "*": "ask",
-      "ls*": "allow",
-      "cat*": "allow",
-      "grep*": "allow",
-      "find*": "allow",
-      "head*": "allow",
-      "tail*": "allow",
-      "wc*": "allow",
-      "file*": "allow",
-      "stat*": "allow",
-      "readlink*": "allow",
-      "realpath*": "allow",
-      "basename*": "allow",
-      "dirname*": "allow",
-      "which*": "allow",
-      "type*": "allow",
-      "du -sh*": "allow",
-      "git status*": "allow",
-      "git diff*": "allow",
-      "git log*": "allow",
-      "git show*": "allow",
-      "git branch*": "allow",
-      "git rev-parse*": "allow",
-      "git tag -l*": "allow",
-      "git ls-files*": "allow",
-      "git remote -v*": "allow",
-      "git describe*": "allow",
-      "git symbolic-ref*": "allow",
-      "git blame*": "allow",
-      "python -m pytest*": "allow",
-      "git reset*": "deny",
-      "git clean*": "deny",
-      "git checkout*": "deny",
-      "git restore*": "deny",
-      "git rebase*": "deny",
-      "git branch -D*": "deny",
-      "git tag -d*": "deny",
+      "*": "allow",
+      "sudo *": "deny",
+      "chown *": "deny",
+      "chmod *": "deny",
+      "mkfs*": "deny",
+      "shutdown*": "deny",
+      "reboot*": "deny",
+      "systemctl stop*": "deny",
+      "systemctl disable*": "deny",
+      "systemctl mask*": "deny",
       "git push --force*": "deny",
       "git push -f*": "deny",
-      "rm *": "deny",
+      "git branch -D*": "deny",
+      "git tag -d*": "deny",
+      "git reset --hard*": "ask",
+      "git clean*": "ask",
       "rm -rf*": "deny",
-      "chmod *": "deny",
-      "chown *": "deny",
-      "curl*": "deny",
-      "wget*": "deny",
-      "ssh*": "deny",
-      "docker*": "deny",
-      "systemctl*": "deny",
-      "sudo *": "deny"
+      "rm -fr*": "deny",
+      "rm*": "ask",
+      "ssh*": "ask"
     }
   },
   "agent": {
     "general": {
-      "model": "opencode-go/gpt-5.6-luna"
+      "model": "opencode-go/deepseek-v4-pro"
     },
     "build": {
       "model": "opencode-go/gpt-5.6-luna"
     },
     "explore": {
-      "model": "opencode-go/deepseek-v4-flash"
+      "model": "opencode-go/glm-5.3-flash"
     }
   }
 }
