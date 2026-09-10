@@ -1,0 +1,505 @@
+[] === старт конвейера (pid 3928011) ===
+[] pass=1 category=dotfiles старт
+mark: категория=dotfiles → эмодзи=👨‍💻, сообщений=70, topic_id=None
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: FloodWait 2266s на msg 692 — жду и продолжаю со следующим.
+[07.09 13:43:35] === старт конвейера (pid 3955997) ===
+[07.09 13:43:35] pass=1 category=dotfiles старт
+mark: категория=dotfiles → эмодзи=👨‍💻, сообщений=70, topic_id=None
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: FloodWait 1495s на msg 692 — жду и продолжаю со следующим.
+mark: Server closed the connection: 0 bytes read on a total of 8 expected bytes
+mark: Connection closed while receiving data: 0 bytes read on a total of 8 expected bytes
+mark: Closing current connection to begin reconnect...
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Security error while unpacking a received message: Server replied with a wrong session ID (see FAQ for details)
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: FloodWait 198s на msg 492 — жду и продолжаю со следующим.
+mark: Server closed the connection: 0 bytes read on a total of 8 expected bytes
+mark: Connection closed while receiving data: 0 bytes read on a total of 8 expected bytes
+mark: Closing current connection to begin reconnect...
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: итог: помечено 68, ошибок 2
+mark: Disconnecting from 149.154.167.51:443/TcpFull...
+mark: Disconnection from 149.154.167.51:443/TcpFull complete!
+помечено: 68/70 (категория=dotfiles, эмодзи=👨‍💻)
+не удалось: 692,492
+[07.09 14:14:05] pass=1 category=dotfiles финиш (exit=0)
+[07.09 14:14:15] pass=1 category=error старт
+mark: категория=error → эмодзи=🤔, сообщений=121, topic_id=None
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: не удалось поставить 🤔 на msg 1: The specified message ID is invalid or you can't do that operation on such message (caused by SendReactionRequest)
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: FloodWait 196s на msg 296 — жду и продолжаю со следующим.
+mark: Server closed the connection: 0 bytes read on a total of 8 expected bytes
+mark: Connection closed while receiving data: 0 bytes read on a total of 8 expected bytes
+mark: Closing current connection to begin reconnect...
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 4s (0:00:04) on SendReactionRequest flood wait
+mark: Telegram is having internal issues ServerError: RPCError 500: SEND_REACTION_RESULT1_INVALID (caused by SendReactionRequest)
+mark: Telegram is having internal issues ServerError: RPCError 500: SEND_REACTION_RESULT1_INVALID (caused by SendReactionRequest)
+mark: Got difference for channel 2025569909 updates
+mark: Telegram is having internal issues ServerError: RPCError 500: SEND_REACTION_RESULT1_INVALID (caused by SendReactionRequest)
+mark: Sleeping for 3s (0:00:03) on SendReactionRequest flood wait
+mark: Telegram is having internal issues ServerError: RPCError 500: SEND_REACTION_RESULT1_INVALID (caused by SendReactionRequest)
+mark: Telegram is having internal issues ServerError: RPCError 500: SEND_REACTION_RESULT1_INVALID (caused by SendReactionRequest)
+mark: Telegram is having internal issues ServerError: RPCError 500: SEND_REACTION_RESULT1_INVALID (caused by SendReactionRequest)
+mark: Telegram is having internal issues ServerError: RPCError 500: SEND_REACTION_RESULT1_INVALID (caused by SendReactionRequest)
+mark: не удалось поставить 🤔 на msg 245: Request was unsuccessful 6 time(s)
+mark: Sleeping for 3s (0:00:03) on SendReactionRequest flood wait
+mark: Got difference for channel 2025569909 updates
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 4s (0:00:04) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 4s (0:00:04) on SendReactionRequest flood wait
+mark: FloodWait 194s на msg 65 — жду и продолжаю со следующим.
+mark: Server closed the connection: 0 bytes read on a total of 8 expected bytes
+mark: Connection closed while receiving data: 0 bytes read on a total of 8 expected bytes
+mark: Closing current connection to begin reconnect...
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Closing current connection to begin reconnect...
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Server resent the older message 7683074246856015873, ignoring
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: итог: помечено 117, ошибок 4
+mark: Disconnecting from 149.154.167.51:443/TcpFull...
+mark: Disconnection from 149.154.167.51:443/TcpFull complete!
+помечено: 117/121 (категория=error, эмодзи=🤔)
+не удалось: 1,296,245,65
+[08.09 11:12:08] pass=1 category=error финиш (exit=0)
+[08.09 11:12:18] pass=1 category=vibeos старт
+mark: категория=vibeos → эмодзи=🏆, сообщений=269, topic_id=None
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: FloodWait 191s на msg 154 — жду и продолжаю со следующим.
+mark: Server closed the connection: 0 bytes read on a total of 8 expected bytes
+mark: Connection closed while receiving data: 0 bytes read on a total of 8 expected bytes
+mark: Closing current connection to begin reconnect...
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: FloodWait 202s на msg 651 — жду и продолжаю со следующим.
+mark: Server closed the connection: 0 bytes read on a total of 8 expected bytes
+mark: Connection closed while receiving data: 0 bytes read on a total of 8 expected bytes
+mark: Closing current connection to begin reconnect...
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 4s (0:00:04) on SendReactionRequest flood wait
+mark: Sleeping for 4s (0:00:04) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: FloodWait 202s на msg 23 — жду и продолжаю со следующим.
+mark: Server closed the connection: 0 bytes read on a total of 8 expected bytes
+mark: Connection closed while receiving data: 0 bytes read on a total of 8 expected bytes
+mark: Closing current connection to begin reconnect...
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: FloodWait 2593s на msg 675 — жду и продолжаю со следующим.
+mark: Server closed the connection: 0 bytes read on a total of 8 expected bytes
+mark: Connection closed while receiving data: 0 bytes read on a total of 8 expected bytes
+mark: Closing current connection to begin reconnect...
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Security error while unpacking a received message: Server replied with a wrong session ID (see FAQ for details)
+mark: Server resent the older message 7683089723946035201, ignoring
+mark: Got difference for channel 2025569909 updates
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: FloodWait 202s на msg 526 — жду и продолжаю со следующим.
+mark: Server closed the connection: 0 bytes read on a total of 8 expected bytes
+mark: Connection closed while receiving data: 0 bytes read on a total of 8 expected bytes
+mark: Closing current connection to begin reconnect...
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: итог: помечено 264, ошибок 5
+mark: Disconnecting from 149.154.167.51:443/TcpFull...
+mark: Disconnection from 149.154.167.51:443/TcpFull complete!
+помечено: 264/269 (категория=vibeos, эмодзи=🏆)
+не удалось: 154,651,23,675,526
+[08.09 12:17:38] pass=1 category=vibeos финиш (exit=0)
+[08.09 12:17:48] pass=2 category=dotfiles старт
+mark: категория=dotfiles → эмодзи=👨‍💻, сообщений=70, topic_id=None
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: FloodWait 197s на msg 54 — жду и продолжаю со следующим.
+mark: Server closed the connection: 0 bytes read on a total of 8 expected bytes
+mark: Connection closed while receiving data: 0 bytes read on a total of 8 expected bytes
+mark: Closing current connection to begin reconnect...
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: итог: помечено 69, ошибок 1
+mark: Disconnecting from 149.154.167.51:443/TcpFull...
+mark: Disconnection from 149.154.167.51:443/TcpFull complete!
+помечено: 69/70 (категория=dotfiles, эмодзи=👨‍💻)
+не удалось: 54
+[08.09 12:23:23] pass=2 category=dotfiles финиш (exit=0)
+[08.09 12:23:33] pass=2 category=error старт
+mark: категория=error → эмодзи=🤔, сообщений=121, topic_id=None
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: FloodWait 192s на msg 468 — жду и продолжаю со следующим.
+mark: Server closed the connection: 0 bytes read on a total of 8 expected bytes
+mark: Connection closed while receiving data: 0 bytes read on a total of 8 expected bytes
+mark: Closing current connection to begin reconnect...
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: не удалось поставить 🤔 на msg 1: The specified message ID is invalid or you can't do that operation on such message (caused by SendReactionRequest)
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: FloodWait 2597s на msg 101 — жду и продолжаю со следующим.
+mark: Server closed the connection: 0 bytes read on a total of 8 expected bytes
+mark: Connection closed while receiving data: 0 bytes read on a total of 8 expected bytes
+mark: Closing current connection to begin reconnect...
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Security error while unpacking a received message: Server replied with a wrong session ID (see FAQ for details)
+mark: Server resent the older message 7683105194686961665, ignoring
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: FloodWait 201s на msg 266 — жду и продолжаю со следующим.
+mark: Server closed the connection: 0 bytes read on a total of 8 expected bytes
+mark: Connection closed while receiving data: 0 bytes read on a total of 8 expected bytes
+mark: Closing current connection to begin reconnect...
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: итог: помечено 117, ошибок 4
+mark: Disconnecting from 149.154.167.51:443/TcpFull...
+mark: Disconnection from 149.154.167.51:443/TcpFull complete!
+помечено: 117/121 (категория=error, эмодзи=🤔)
+не удалось: 468,1,101,266
+[08.09 13:17:15] pass=2 category=error финиш (exit=0)
+[08.09 13:17:25] pass=2 category=vibeos старт
+mark: категория=vibeos → эмодзи=🏆, сообщений=269, topic_id=None
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: FloodWait 196s на msg 155 — жду и продолжаю со следующим.
+mark: Server closed the connection: 0 bytes read on a total of 8 expected bytes
+mark: Connection closed while receiving data: 0 bytes read on a total of 8 expected bytes
+mark: Closing current connection to begin reconnect...
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: FloodWait 203s на msg 657 — жду и продолжаю со следующим.
+mark: Server closed the connection: 0 bytes read on a total of 8 expected bytes
+mark: Connection closed while receiving data: 0 bytes read on a total of 8 expected bytes
+mark: Closing current connection to begin reconnect...
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Sleeping for 4s (0:00:04) on SendReactionRequest flood wait
+mark: Sleeping for 3s (0:00:03) on SendReactionRequest flood wait
+mark: Sleeping for 3s (0:00:03) on SendReactionRequest flood wait
+mark: Sleeping for 3s (0:00:03) on SendReactionRequest flood wait
+mark: Sleeping for 3s (0:00:03) on SendReactionRequest flood wait
+mark: Sleeping for 3s (0:00:03) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 4s (0:00:04) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 3s (0:00:03) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: FloodWait 2588s на msg 26 — жду и продолжаю со следующим.
+mark: Server closed the connection: 0 bytes read on a total of 8 expected bytes
+mark: Connection closed while receiving data: 0 bytes read on a total of 8 expected bytes
+mark: Closing current connection to begin reconnect...
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Security error while unpacking a received message: Server replied with a wrong session ID (see FAQ for details)
+mark: Server resent the older message 7683120669884176385, ignoring
+mark: Got difference for channel 2025569909 updates
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 4s (0:00:04) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 4s (0:00:04) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 4s (0:00:04) on SendReactionRequest flood wait
+mark: FloodWait 147s на msg 676 — жду и продолжаю со следующим.
+mark: Closing current connection to begin reconnect...
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 4s (0:00:04) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 4s (0:00:04) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 3s (0:00:03) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: FloodWait 202s на msg 527 — жду и продолжаю со следующим.
+mark: Server closed the connection: 0 bytes read on a total of 8 expected bytes
+mark: Connection closed while receiving data: 0 bytes read on a total of 8 expected bytes
+mark: Closing current connection to begin reconnect...
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Sleeping for 4s (0:00:04) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Closing current connection to begin reconnect...
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Attempt 1 at connecting failed: ConnectionError: Proxy connection timed out: 10
+mark: Attempt 2 at connecting failed: ConnectionError: Proxy connection timed out: 10
+mark: Attempt 3 at connecting failed: ConnectionError: Proxy connection timed out: 10
+mark: Attempt 4 at connecting failed: ConnectionError: Proxy connection timed out: 10
+mark: Attempt 5 at connecting failed: ConnectionError: Proxy connection timed out: 10
+mark: Attempt 6 at connecting failed: ConnectionError: Proxy connection timed out: 10
+mark: Failed reconnection attempt 1 with ConnectionError
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Attempt 1 at connecting failed: ConnectionError: Proxy connection timed out: 10
+mark: Attempt 2 at connecting failed: ConnectionError: Proxy connection timed out: 10
+mark: Attempt 3 at connecting failed: ConnectionError: Proxy connection timed out: 10
+mark: Attempt 4 at connecting failed: ConnectionError: Proxy connection timed out: 10
+mark: Attempt 5 at connecting failed: ConnectionError: Proxy connection timed out: 10
+mark: Attempt 6 at connecting failed: ConnectionError: Proxy connection timed out: 10
+mark: Failed reconnection attempt 2 with ConnectionError
+mark: Connecting to 149.154.167.51:443/TcpFull...
+mark: Attempt 1 at connecting failed: ConnectionErrorExtra: General SOCKS server failure
+mark: Connection to 149.154.167.51:443/TcpFull complete!
+mark: Sleeping for 5s (0:00:05) on SendReactionRequest flood wait
+mark: Sleeping for 6s (0:00:06) on SendReactionRequest flood wait
+mark: итог: помечено 264, ошибок 5
+mark: Disconnecting from 149.154.167.51:443/TcpFull...
+mark: Disconnection from 149.154.167.51:443/TcpFull complete!
+помечено: 264/269 (категория=vibeos, эмодзи=🏆)
+не удалось: 155,657,26,676,527
+[08.09 14:27:45] pass=2 category=vibeos финиш (exit=0)
+[08.09 14:27:55] === КОНВЕЙЕР ЗАВЕРШЁН ===

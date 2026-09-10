@@ -563,4 +563,51 @@ R-005 Project Orchestrator — оркестрация из волта всеми
 - `99-Inbox.md` — этот раздел (сводка + анализ)
 - Группа @inbox_tools — реакции проставлены на все 584 поста (👨‍💻🏆🎉🔥🤔)
 
+### Сессия 2026-09-07 (полный capture, 11 тем, 517 постов)
+
+> Полный сбор непомеченных постов (dry-run, limit 300/тема): 517 постов, из них 116 новых после сессии 2026-07-12. Диапазон дат 2023-12..2026-09-06 (старые непомеченные тоже добрались). Реакции проставлены mark.py сразу категорийными эмодзи.
+> Файлы: captures_all.json (517 постов), captures_classified.json, signals.json (396 сигналов). Бэкапы прежних: captures_all-2026-07-12.json, captures_classified-2026-07-12.json, signals-2026-07-12.json.
+
+#### Сводка по категориям
+
+| Категория | Эмодзи | Кол-во | % |
+|-----------|--------|--------|---|
+| VibeOS/метод | 🏆 | 269 | 52% |
+| error | 🤔 | 121 | 23% |
+| dotfiles/Linux UX | 👨‍💻 | 70 | 14% |
+| Новый проект | 🎉 | 46 | 9% |
+| SERPlux | 🔥 | 11 | 2% |
+
+#### Свежие посты (после 2026-07-12): 116
+
+vibeos 64 (55%), dotfiles 26, new 9. Почти все из темы «Вайб» (62). Новых serplux — 0.
+
+#### Кластеры свежих постов (главное)
+
+1. **Harness/loop engineering + skills-экосистема:** mattpocock/skills (+ его claude-handoff skill), nexu-io/harness-engineering-guide, cobusgreyling/loop-engineering, visa/visa-vulnerability-agentic-harness, ZeroPointRepo/awesome-hermes-skills, nvidia/skillspector, Leonxlnx/taste-skill, zhaoxuya520/reverse-skill, хабр-статья про фабрику конвейеров (msg 760). Прямо связано с method-engineering волта.
+2. **Context engineering (Anthropic/Claude):** правила контекст-инжиниринга Claude 5, −80% системного промпта (747), /checkup — чистка skills/MCP/контекста (674), codemap-карта репо (772), 41 сценарий отказа агентных систем «модель или обвязка» (771), постоянная память субагентов (720), уровни /code-review (714), совет «сначала GitHub, потом код» — экономия токенов (770).
+3. **Память агентов / самоулучшение:** курс по памяти в агентных системах (779), обзор самообучающихся агентов (717), видео Shen Sean Chen про soul.md и самоулучшающихся агентов (678), 4 типа циклов Anthropic / loop engineering (677), MemoHarness — оптимизация обвязки по прошлым запускам (751), Fugu-Ultra 1.1 оркестрация (732).
+4. **MCP:** MCP стал stateless — serverless/edge-деплой (755), Firecrawl MCP −50% контекста (766), telegram-mcp, mcp-searxng, mcp-ssh-manager.
+5. **Локальные LLM / экономика инференса:** Bonsai 27B 1-bit на смартфоне (680), DeepSeek DeepSpec/DSpark — открытый стек ускорения (694), Ship-роутер −50% стоимости Claude (723), веса Kimi K3 2.8T (744), HuggingBay — BitTorrent-раздача весов (673), BitNet.cpp, nanochat, airllm, llmfit.
+6. **Android (R-002/RudraPhone):** escrcpy (GUI поверх scrcpy), ImageToolbox, termux-desktop, OpenMinis, docker-android, awesome-android-root, AndroidMic, PCLink, WebDeck, Prompt2Flutter.
+7. **dotfiles/Linux UX (свежие):** cockpit (web-админ), timelinize (архив жизни), restreamer, headway (self-host карты), smolvm 1.7 — самодостаточные VM (757), tuistore (магазин TUI), vortex, inertia, lightpanda — браузер для агентов без Chrome (753).
+8. **Промптинг:** техника Стэнфорда +20 слов → креативность ×1.6–2 (668), диктовка потока мыслей вместо идеального промпта (Карпати, 721).
+
+error 121 — курсы (Stepik, Skilljar), новости без репо, реклама. serplux 11 — все старые (Cosmos-Server, useSend, runtipi, Scraperr и пр.).
+
+#### Связи с проектами
+
+- Кластеры 1–3 → 02-Methods (harness/loop engineering, context engineering) и текущий T-135 (replay budget — та же тема экономии контекста).
+- Кластер 6 → R-002 VibeAndroid / R-001 Rudra Phone Remote: escrcpy, PCLink, WebDeck — кандидаты в референсы.
+- Кластеры 4–5 → MCP-трек и выбор LLM-провайдеров (linaliapi подключён 2026-09-06).
+- telegram-mcp — кандидат в инструменты волта (замена/дополнение telegram-capture).
+
+#### Структура хранения
+
+- tools/telegram-capture/captures_all.json — 517 постов
+- tools/telegram-capture/captures_classified.json — категории
+- tools/telegram-capture/signals.json — 396 сигналов (schema capture-signals/1.0)
+- Бэкапы: *-2026-07-12.json (3 файла)
+- Группа @inbox_tools — реакции проставлены на 516/517 постов (👨‍💻🏆🎉🔥🤔); msg 1 — сервисное сообщение группы, реакцию поставить нельзя.
+
 ---

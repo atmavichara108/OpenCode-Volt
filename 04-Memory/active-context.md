@@ -1,9 +1,9 @@
 ---
 type: Active Context
 title: Активный контекст
-description: LinaliAPI provider подключён к OpenCode (2026-09-06): /connect-диагностика, auth.json fix, provider-блок (6 моделей) в глобальном opencode.jsonc. Осталось: рестарт #2 + верификация.
+description: Полный capture Telegram 2026-09-07 ЗАВЕРШЁН полностью: 517 постов, 516 помечено (msg 1 — сервисный, реакции нет). Следующий фокус — по TASKS.md Active (T-135 replay budget и далее). Новые факты: replay-budget режет не только task-промпты, но и payload edit-вызовов (элизия в session-log была).
 tags: [memory]
-timestamp: 2026-09-06
+timestamp: 2026-09-08
 ---
 
 # Активный контекст
