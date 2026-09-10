@@ -16,6 +16,11 @@ timestamp: 2026-08-17
 - **Язык:** русский (основной), терминал-нативный стек
 - **GitHub:** [max-ai](https://github.com/max-ai)
 
+## Replay budget (T-135, порт M Code)
+
+- **2026-09-08: live hook-fire подтверждён в TUI.** Плагин `replay-budget.ts` (хук `experimental.chat.messages.transform`) работает в живых сессиях: маркеры `[N characters cleared]` (pruneToolInput, старые tool-входы) и `[mcode: replay budget — omitted N chars …]` (truncateToolOutput, старые tool-результаты) наблюдаются в контексте живой сессии; контент на диске при этом полный — резHistory режется только на реплее к модели, исполнение не трогается. Smoke 14/14 PASS. Бывший residual `[проверить]` закрыт.
+- **2026-09-08 [проверить → T-143]:** побочный эффект — `applyReplayBudget` применяет `pruneToolInput` ко всем tool-частям без границы «текущего хода» + мутация in-place; при живых ссылках на store возможна мутация task-промптов субагентов (инцидент: 3 субагента получили `[N characters cleared]` вместо промпта 2026-09-07). Улика сильная, причинность не доказана — контролируемый эксперимент в T-143.
+
 ## OpenCode
 
 ### Агенты
