@@ -82,8 +82,10 @@
   #reg-search:focus{outline:1px solid var(--green)}
   #reg-search::placeholder{color:var(--grey);opacity:.7}
 
-  /* MAIN */
-  main{display:grid;grid-template-columns:1fr 360px;min-height:0;overflow:hidden}
+  /* MAIN — привязан к 3-й строке грида явно: при скрытом #reg-filters
+     (skills view, display:none) auto-placement иначе кладёт main во 2-ю
+     строку auto и оставляет 3-ю (1fr) пустой -> чёрная пустота снизу */
+  main{display:grid;grid-template-columns:1fr 360px;min-height:0;overflow:hidden;grid-row:3;grid-column:1}
   #graph-wrap{position:relative;overflow:hidden;background:#060b06}
   #graph-wrap svg{width:100%;height:100%;display:block;cursor:grab}
   #graph-wrap svg:active{cursor:grabbing}
@@ -291,6 +293,86 @@
   .ws-note{font-size:10px;opacity:.7;margin-top:8px}
   .oq{font-size:10px;color:var(--amber);opacity:.85;margin-top:3px}
 
+  /* NEXT ACTION (v3) */
+  .na-sec{font-size:10px;color:var(--amber);letter-spacing:2px;border-bottom:1px solid var(--border);padding-bottom:3px;margin:14px 0 7px;text-shadow:0 0 5px rgba(255,176,0,.5)}
+  .na-row{display:flex;align-items:flex-start;gap:8px;border:1px solid var(--border);border-left:3px solid var(--border);border-radius:2px;background:#041204;padding:6px 9px;margin-bottom:5px;font-size:11px}
+  .na-row:hover{border-color:var(--green);background:#0a2a0a}
+  .na-row .na-id{cursor:pointer;color:var(--amber);white-space:nowrap;min-width:62px}
+  .na-row .na-main{flex:1;min-width:0}
+  .na-row .na-reason{font-size:10px;opacity:.78;margin-top:2px}
+  .na-row .na-reason .bad{color:#ff6b6b}
+  .na-dot{flex:none;font-size:10px;line-height:1.5}
+  .na-export{flex:none;background:#031603;border:1px solid var(--border);color:var(--green);font-family:inherit;font-size:9px;letter-spacing:1px;padding:2px 6px;cursor:pointer;border-radius:2px}
+  .na-export:hover{border-color:var(--amber);color:var(--amber);background:#2a1f00}
+  .na-stat{display:inline-block;margin:2px 4px;padding:2px 8px;border:1px solid var(--border);border-radius:2px;font-size:10px;background:#031603}
+  .na-stat b{color:var(--amber);font-weight:normal}
+  .depstat-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+
+  /* PROPOSAL QUEUE (v3) */
+  .pq-item{border:1px solid var(--border);border-left:3px solid var(--border);border-radius:2px;background:#041204;padding:7px 10px;margin-bottom:6px}
+  .pq-head{display:flex;align-items:center;gap:8px;font-size:11px}
+  .pq-tag{flex:none;min-width:74px;text-align:center;padding:2px 6px;border:1px solid;border-radius:2px;font-size:9px;letter-spacing:1px;font-weight:bold}
+  .pq-tag.approve{color:#00ff41;border-color:#00ff41}
+  .pq-tag.review{color:#ffb000;border-color:#ffb000}
+  .pq-tag.blocked{color:#ff6b6b;border-color:#ff6b6b}
+  .pq-tag.run{color:#00b4ff;border-color:#00b4ff}
+  .pq-main{flex:1;min-width:0}
+  .pq-body{font-size:10px;opacity:.8;margin-top:3px;font-family:"Courier New",monospace;white-space:pre-wrap}
+  .pq-export{flex:none}
+  /* AGENT COCKPIT + ACCEPT verdicts */
+  .cock-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px}
+  .cock-card{border:1px solid var(--border);border-radius:2px;background:#041204;padding:8px 10px}
+  .cock-card h4{font-size:11px;color:var(--amber);letter-spacing:1px;margin-bottom:5px}
+  .verdict{display:inline-block;padding:1px 7px;border:1px solid;border-radius:2px;font-size:9px;letter-spacing:1px;font-weight:bold}
+  .verdict.pass{color:#00ff41;border-color:#00ff41}
+  .verdict.pending{color:var(--amber);border-color:var(--amber)}
+  .verdict.none{color:var(--grey);border-color:var(--grey)}
+  .verdict.blocked{color:#ff6b6b;border-color:#ff6b6b}
+  .live-gate{font-size:10px;color:#ff6b6b;margin-top:5px;border-top:1px dashed var(--border);padding-top:5px}
+
+  /* ACTIONS / WORKSPACE LAUNCHER (v5) */
+  .act-btn{display:inline-flex;align-items:center;gap:4px;background:#031603;border:1px solid var(--border);color:var(--green);font-family:inherit;font-size:10px;letter-spacing:1px;padding:3px 8px;cursor:pointer;border-radius:2px;margin:2px 3px 2px 0}
+  .act-btn:hover{border-color:var(--amber);color:var(--amber);background:#2a1f00}
+  .act-btn:disabled{opacity:.4;cursor:not-allowed}
+  .act-btn.primary{border-color:var(--amber);color:var(--amber)}
+  .ws-launch{display:flex;flex-wrap:wrap;gap:2px;margin-top:4px}
+  .svc-row{display:flex;justify-content:space-between;align-items:center;padding:4px 8px;border:1px solid var(--border);border-radius:2px;margin-bottom:4px;font-size:11px;background:#041204}
+  .svc-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:var(--grey)}
+  .svc-dot.ok{background:var(--green);box-shadow:0 0 6px rgba(0,255,65,.7)}
+  .svc-dot.bad{background:#ff6b6b;box-shadow:0 0 6px rgba(255,107,107,.6)}
+  .link-res{color:var(--amber);text-decoration:none;border-bottom:1px dotted var(--amber);cursor:pointer}
+  .link-res:hover{color:var(--gold);background:#2a1f00}
+
+  /* COMMAND PALETTE */
+  .palette{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:10000;display:none;align-items:flex-start;justify-content:center;padding-top:14vh}
+  .palette.open{display:flex}
+  .palette-box{width:640px;max-width:92vw;background:#031603;border:1px solid var(--amber);box-shadow:0 0 24px rgba(0,255,65,.25);border-radius:4px;overflow:hidden}
+  .palette-input{width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--green);font-family:inherit;font-size:16px;padding:12px 14px;outline:none}
+  .palette-list{max-height:60vh;overflow-y:auto}
+  .palette-item{padding:8px 14px;font-size:12px;cursor:pointer;display:flex;justify-content:space-between}
+  .palette-item.sel{background:#0a2a0a;color:var(--amber)}
+  .palette-item .ph{opacity:.55;font-size:10px;color:var(--grey)}
+
+  /* EXPORT */
+  .export-bar{display:flex;gap:6px;margin:8px 0}
+
+  /* FULL-SCREEN INSPECTOR */
+  .inspect-ov{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:10001;display:none;align-items:center;justify-content:center;padding:4vh 4vw}
+  .inspect-ov.open{display:flex}
+  .inspect-box{width:900px;max-width:96vw;max-height:92vh;overflow-y:auto;background:var(--panel);border:1px solid var(--amber);border-radius:4px;padding:18px 20px;box-shadow:0 0 30px rgba(0,255,65,.2)}
+
+  /* COMPACT MODE */
+  body.compact{font-size:11px}
+  body.compact header{padding:4px 10px}
+  body.compact header h1{font-size:13px}
+  body.compact .view-pill{font-size:9px;padding:2px 5px}
+  body.compact .na-row,.body.compact .pq-item,.body.compact .acc-card{padding:4px 7px}
+  body.compact main{grid-template-columns:1fr 300px}
+
+  /* TOAST */
+  .toast{position:fixed;bottom:16px;right:16px;background:#031603;border:1px solid var(--green);color:var(--green);padding:8px 14px;font-size:12px;z-index:10002;border-radius:3px;box-shadow:0 0 16px rgba(0,255,65,.3);opacity:0;transition:opacity .2s;pointer-events:none}
+  .toast.show{opacity:1}
+
   @media (max-width:900px){
     main{grid-template-columns:1fr;grid-template-rows:1fr 280px}
     aside{border-left:none;border-top:2px solid var(--border)}
@@ -308,6 +390,8 @@
         <label>VIEW</label>
         <div class="view-pills" id="view-pills">
           <button class="view-pill active" data-view="skills">SKILLS</button>
+          <button class="view-pill" data-view="next">NEXT</button>
+          <button class="view-pill" data-view="proposals">PROPOSALS</button>
           <button class="view-pill" data-view="matrix">MATRIX</button>
           <button class="view-pill" data-view="kanban">KANBAN</button>
           <button class="view-pill" data-view="deps">DEPS</button>
@@ -317,6 +401,7 @@
           <button class="view-pill" data-view="agents">AGENTS</button>
           <button class="view-pill" data-view="blockers">BLOCKERS</button>
           <button class="view-pill" data-view="workspace">WORKSPACE</button>
+          <button class="view-pill" data-view="capture">CAPTURE</button>
         </div>
       </div>
       <div class="fgroup">
@@ -334,6 +419,14 @@
       <div class="fgroup">
         <label>DATA</label>
         <div class="data-badge" id="data-badge">STATIC REGISTRY · READ-ONLY · LIVE: НЕТ</div>
+      </div>
+      <div class="fgroup">
+        <label>LIVE REFRESH</label>
+        <div class="pills">
+          <button class="view-pill" id="btn-refresh" title="Перечитать registry.json + generated/snapshot.json (клавиша R)">⟳ REFRESH</button>
+          <button class="view-pill" id="btn-poll" title="Автообновление каждые 60 с (клавиша P)">AUTO: OFF</button>
+        </div>
+        <div class="data-badge" id="refresh-info" title="время последнего чтения · snapshot HEAD · drift signals">BOOT…</div>
       </div>
     </div>
   </header>
@@ -436,6 +529,95 @@ const STATE_COLOR = {
     }catch{ return null; }
   }
 
+  /* ===== v3: live refresh — кнопка + polling (read-only re-fetch, no page reload) ===== */
+  const REFRESH = { last:null, timer:null, pollMs:60000, on:false };
+  function fmtClock(d){ return d.toTimeString().slice(0,8); }
+  function snapshotDigest(){
+    return (SNAPSHOT && SNAPSHOT.meta && SNAPSHOT.meta.input_digest) ? SNAPSHOT.meta.input_digest.slice(0,12) : "—";
+  }
+  function snapshotHead(){
+    return (SNAPSHOT && SNAPSHOT.git && SNAPSHOT.git.head) ? SNAPSHOT.git.head : "";
+  }
+  function updateDataBadge(){
+    const badge = document.getElementById("data-badge");
+    if(!badge) return;
+    if(SNAPSHOT){
+      badge.textContent = "STATIC REGISTRY + GENERATED SNAPSHOT · READ-ONLY · POLLING: " + (REFRESH.on ? "60s" : "НЕТ");
+      badge.classList.add("gen");
+      badge.title = "snapshot digest " + snapshotDigest() + " @ HEAD " + snapshotHead().slice(0,10) + " — детерминированный read-only снимок, не real-time";
+    } else {
+      badge.textContent = "STATIC REGISTRY · READ-ONLY · SNAPSHOT: НЕТ";
+      badge.title = "generated/snapshot.json не найден — запусти python3 tools/ecosystem-map/observer.py";
+    }
+  }
+  function updateRefreshInfo(){
+    const el = document.getElementById("refresh-info");
+    if(!el) return;
+    if(!REGISTRY){
+      el.textContent = "DOWN · pipboy.py up";
+      el.title = "registry.json недоступен — подними хост: python3 tools/ecosystem-map/pipboy.py up (или python3 -m http.server в tools/ecosystem-map/)";
+      return;
+    }
+    const head = snapshotHead().slice(0,7) || "—";
+    const drift = (SNAPSHOT && Array.isArray(SNAPSHOT.drift_signals)) ? SNAPSHOT.drift_signals.length : 0;
+    const t = REFRESH.last ? fmtClock(REFRESH.last) : "—";
+    el.textContent = "READ " + t + " · HEAD " + head + " · DRIFT " + drift;
+    el.title = "refresh = re-fetch registry.json + snapshot.json · кнопка ⟳ / клавиша R · AUTO / клавиша P";
+  }
+  async function refreshData(){
+    const [reg, snap] = await Promise.all([loadRegistry(), loadSnapshot()]);
+    if(reg) REGISTRY = reg;
+    if(snap) SNAPSHOT = snap;
+    REFRESH.last = new Date();
+    updateDataBadge();
+    updateRefreshInfo();
+    if(CURRENT_VIEW !== "skills") renderView(CURRENT_VIEW);
+    updateStats();
+  }
+  function setPolling(on){
+    REFRESH.on = !!on;
+    if(REFRESH.timer){ clearInterval(REFRESH.timer); REFRESH.timer = null; }
+    if(REFRESH.on) REFRESH.timer = setInterval(refreshData, REFRESH.pollMs);
+    const b = document.getElementById("btn-poll");
+    if(b){ b.textContent = REFRESH.on ? "AUTO: 60s" : "AUTO: OFF"; b.classList.toggle("active", REFRESH.on); }
+    updateDataBadge();
+  }
+  function badgeLivelink(){
+    // upgrade бейджа при live-соединении: POLLING → SSE LIVE
+    if(LIVE.on && typeof LIVE.reconnectCount === "number"){
+      const badge = document.getElementById("data-badge");
+      if(badge) badge.textContent = "STATIC REGISTRY + GENERATED SNAPSHOT · READ-ONLY · SSE LIVE · reconnects:" + LIVE.reconnectCount;
+    }
+  }
+  /* ===== v6: SSE live (T-128/ECO-018) — EventSource + polling fallback ===== */
+  const LIVE = { on:false, es:null, reconnectCount:0 };
+  function initLive(){
+    if(typeof EventSource === "undefined"){ return; } // не-браузерное окружение
+    try{
+      const es = new EventSource("/event");
+      LIVE.es = es;
+      es.addEventListener("file.watcher.updated", e => {
+        if(!LIVE.on){ LIVE.on = true; badgeLivelink(); }
+        try{
+          const d = JSON.parse(e.data);
+          toast("🔄 файлы изменились (digest " + (d.digest||"").slice(0,8) + ") — обновляю");
+          refreshData();
+        }catch(err){ refreshData(); }
+      });
+      es.onopen = () => { LIVE.on = true; badgeLivelink(); };
+      es.onerror = () => {
+        // EventSource автопереподключается; считаем попытки
+        LIVE.reconnectCount = (LIVE.reconnectCount || 0) + 1;
+        LIVE.on = false;
+        updateDataBadge();
+      };
+    }catch(e){ /* no-op: polling остаётся fallback */ }
+  }
+  function stopLive(){
+    if(LIVE.es){ LIVE.es.close(); LIVE.es = null; }
+    LIVE.on = false;
+  }
+
   function esc(s){
     return String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   }
@@ -484,6 +666,431 @@ const STATE_COLOR = {
     return m;
   }
 
+  /* ===== v3: next-action readiness engine (read-only; переходы — только через librarian/approval) ===== */
+  function stageRank(s){ return LIFECYCLE_ORDER.indexOf(s); }
+  function priRank(p){ return (REGISTRY.priorities && REGISTRY.priorities.indexOf(p) >= 0) ? REGISTRY.priorities.indexOf(p) : 9; }
+  function frozenTasks(c){
+    return (c.tasks || []).filter(t => taskSection(t) === "Blocked");
+  }
+  /* Зависимость в DESIGN не блокирует research (план v2), но блокирует BUILD:
+     IDEA/RESEARCH карточке достаточно не-RETIRED зависимости;
+     DESIGN — зависимость >= DESIGN; APPROVED+ — зависимость >= APPROVED. */
+  function depNeededStage(card){
+    const st = card.lifecycle;
+    if(st === "IDEA" || st === "RESEARCH") return 0;
+    if(st === "DESIGN") return stageRank("DESIGN");
+    return stageRank("APPROVED");
+  }
+  function depState(c){
+    const need = depNeededStage(c);
+    const bad = [];
+    for(const d of (c.depends_on || [])){
+      const dc = (REGISTRY.cards || {})[d];
+      if(!dc){ bad.push({id:d, why:"нет в registry"}); continue; }
+      if(dc.lifecycle === "RETIRED" || dc.retired){ bad.push({id:d, why:"RETIRED"}); continue; }
+      if(stageRank(dc.lifecycle) < need) bad.push({id:d, why:dc.lifecycle});
+    }
+    return { ok: bad.length === 0, bad };
+  }
+  function unreadyChain(cid){
+    const out = new Map();
+    const seen = new Set();
+    const stack = [...((REGISTRY.cards[cid] || {}).depends_on || [])];
+    while(stack.length){
+      const d = stack.pop();
+      if(seen.has(d)) continue;
+      seen.add(d);
+      const dc = (REGISTRY.cards || {})[d];
+      if(!dc){ out.set(d, "нет в registry"); continue; }
+      if(dc.lifecycle === "RETIRED" || dc.retired){ out.set(d, "RETIRED"); continue; }
+      if(stageRank(dc.lifecycle) < depNeededStage(REGISTRY.cards[cid])) out.set(d, dc.lifecycle);
+      (dc.depends_on || []).forEach(x => stack.push(x));
+    }
+    return [...out.entries()].map(([id, why]) => `${id} (${why})`);
+  }
+  function noteBlocked(c){ return /BLOCKED/i.test(c.status_note || ""); }
+  /* runtime evidence: для VERIFY→LIVE нужны выполненные задачи или артефакты
+     плюс независимый verifier PASS; self-PASS не считается */
+  function runtimeEvidence(c){
+    const doneTasks = (c.tasks || []).filter(t => taskSection(t) === "Done");
+    const hasArtifacts = (c.artifacts || []).length > 0;
+    const verifier = /verifier.*(PASS|PASSED)|PASS.*(verifier|acceptance)/i.test(c.status_note || "");
+    return verifier && (doneTasks.length > 0 || hasArtifacts);
+  }
+  /* мемоизация nextInfo: кэш по cid с отпечатком всех входов, что реально
+     читает вычисление (поля карточки + стадии её прямых зависимостей из
+     REGISTRY + секции задач из snapshot). Правка любого входа меняет отпечаток
+     -> пересчёт; иначе результат берётся из кэша. */
+  const _niCache = new Map();
+  function _niFingerprint(cid, c){
+    const deps = (c.depends_on || []).map(d => {
+      const dc = (REGISTRY.cards || {})[d];
+      return dc ? `${d}:${dc.lifecycle}${dc.retired ? "r" : ""}` : `${d}:?`;
+    }).join(",");
+    const parts = [
+      snapshotDigest(),
+      c.retired ? "1" : "0",
+      c.lifecycle,
+      deps,
+      (c.tasks || []).join(","),
+      noteBlocked(c) ? "b" : "",
+    ];
+    return parts.join("|");
+  }
+  function nextInfo(cid, c){
+    const fp = _niFingerprint(cid, c);
+    const hit = _niCache.get(cid);
+    if(hit && hit.fp === fp) return hit.val;
+    const res = nextInfoUncached(cid, c);
+    _niCache.set(cid, { fp, val: res });
+    return res;
+  }
+  function nextInfoUncached(cid, c){
+    if(c.retired || c.lifecycle === "RETIRED")
+      return { state:"done", reasons:[], next:"— (retired)", proposal:null };
+    const bad = depState(c);
+    const blockReasons = [];
+    if(!bad.ok) blockReasons.push("⛔ deps: " + bad.bad.map(b => `${b.id} (${b.why})`).join(", "));
+    frozenTasks(c).forEach(t => blockReasons.push(`⛔ frozen: ${t} (Blocked/Frozen в TASKS)`));
+    if(noteBlocked(c)) blockReasons.push("⛔ status_note: implementation BLOCKED");
+    const blocked = blockReasons.length > 0;
+    switch(c.lifecycle){
+      case "LIVE": case "OBSERVE": case "IMPROVE":
+        return { state:"done", reasons:[], next:"эксплуатация", proposal:null };
+      case "VERIFY":
+        if(blocked) return { state:"blocked", reasons:blockReasons, next:"устранить блокеры → verifier acceptance", proposal:null };
+        return { state:"verify",
+          reasons:blockReasons,
+          next:"verifier acceptance → LIVE (runtime evidence обязательны)",
+          proposal:`Verify ${cid}: VERIFY → LIVE\nReason: runtime evidence + независимый verifier acceptance required\nApproval required` };
+      case "REVIEW":
+        if(blocked) return { state:"blocked", reasons:blockReasons, next:"устранить блокеры → VERIFY", proposal:null };
+        return { state:"flight",
+          reasons:blockReasons,
+          next:"review → VERIFY",
+          proposal:`Move ${cid}: REVIEW → VERIFY\nReason: review complete${bad.ok ? ", dependencies satisfied" : ""}\nApproval required` };
+      case "BUILD":
+        if(blocked) return { state:"blocked", reasons:blockReasons, next:"устранить блокеры → REVIEW", proposal:null };
+        return { state:"flight", reasons:blockReasons, next:"build → REVIEW", proposal:null };
+      case "APPROVED":
+        if(blocked) return { state:"blocked", reasons:blockReasons, next:"устранить блокеры → BUILD", proposal:null };
+        return { state:"ready", reasons:["approved, dependencies satisfied"], next:"BUILD",
+          proposal:`Move ${cid}: APPROVED → BUILD\nReason: approved, dependencies satisfied\nApproval required` };
+      case "DESIGN":
+        if(blocked) return { state:"blocked", reasons:blockReasons, next:"устранить блокеры → APPROVED", proposal:null };
+        return { state:"ready", reasons:["design ready, dependencies satisfied"], next:"APPROVED",
+          proposal:`Move ${cid}: DESIGN → APPROVED\nReason: dependencies satisfied\nApproval required` };
+      default: /* IDEA, RESEARCH */
+        if(blocked) return { state:"blocked", reasons:blockReasons, next:"устранить блокеры", proposal:null };
+        return { state:"ready", reasons:["no blocking dependencies"],
+          next: c.lifecycle === "IDEA" ? "RESEARCH" : "DESIGN",
+          proposal:`Start ${cid}: ${c.lifecycle} → ${c.lifecycle === "IDEA" ? "RESEARCH" : "DESIGN"}\nReason: no blocking dependencies\nApproval required` };
+    }
+  }
+  function blocksTransitively(){
+    const dependentsOf = {};
+    for(const [cid, c] of Object.entries(REGISTRY.cards || {})){
+      for(const d of (c.depends_on || [])) (dependentsOf[d] = dependentsOf[d] || []).push(cid);
+    }
+    const visit = start => {
+      const seen = new Set();
+      const stack = [...(dependentsOf[start] || [])];
+      while(stack.length){
+        const x = stack.pop();
+        if(seen.has(x)) continue;
+        seen.add(x);
+        (dependentsOf[x] || []).forEach(y => stack.push(y));
+      }
+      return seen;
+    };
+    const res = {};
+    for(const [cid, c] of Object.entries(REGISTRY.cards || {})){
+      if(c.retired || c.lifecycle === "RETIRED") continue;
+      if(stageRank(c.lifecycle) > stageRank("DESIGN") && !noteBlocked(c)) continue;
+      res[cid] = visit(cid);
+    }
+    return res;
+  }
+  function copyText(text){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).catch(() => fallbackCopy(text));
+    } else fallbackCopy(text);
+  }
+  function fallbackCopy(text){
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    try{ document.execCommand("copy"); }catch(e){}
+    ta.remove();
+  }
+  function toast(msg, ms){
+    let t = document.getElementById("toast");
+    if(!t){
+      t = document.createElement("div");
+      t.id = "toast";
+      t.className = "toast";
+      document.body.appendChild(t);
+    }
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(t._h);
+    t._h = setTimeout(()=> t.classList.remove("show"), ms || 2600);
+  }
+
+  /* ===== v5: server actions (workspace-open / workspace-status / link-open) ===== */
+  async function callAction(op, params){
+    const q = new URLSearchParams({ op, ...params });
+    try{
+      const res = await fetch("/action?" + q.toString(), { cache:"no-store" });
+      const data = await res.json();
+      return data;
+    }catch(e){
+      return { ok:false, error: "actions недоступны (хост не поднимает /action?): " + e.message };
+    }
+  }
+  function actBtn(label, op, params, opts){
+    const cls = (opts && opts.primary) ? "act-btn primary" : "act-btn";
+    const title = (opts && opts.title) || "";
+    return `<button class="${cls}" data-act="${esc(op)}" data-params="${esc(JSON.stringify(params||{}))}" title="${esc(title)}">${label}</button>`;
+  }
+  async function handleAction(op, params, el){
+    if(el){ el.disabled = true; const o = el.textContent; el.textContent = "…"+o; }
+    const data = await callAction(op, params);
+    if(el){ el.disabled = false; }
+    if(!data || !data.ok){
+      toast((data && data.error) ? "✗ " + data.error : "✗ действие не выполнено");
+      return;
+    }
+    if(op === "workspace-open"){
+      toast(data.detached ? `▸ workspace ${data.session} (окна: ${(data.windows||[]).join(", ")})` : `▸ ${data.session}: ${(data.windows||[]).length} окон`);
+    } else if(op === "link-open"){
+      toast(`▸ открыл ${data.mode}: ${(data.opened||"").split("/").slice(-2).join("/")}`);
+    } else {
+      toast("✓ " + JSON.stringify(data).slice(0, 80));
+    }
+  }
+  function wireActions(root){
+    if(!root) root = document;
+    root.querySelectorAll("[data-act]").forEach(b=>{
+      b.addEventListener("click", e=>{
+        e.stopPropagation();
+        const op = b.getAttribute("data-act");
+        const params = JSON.parse(b.getAttribute("data-params") || "{}");
+        handleAction(op, params, b);
+      });
+    });
+    // link resolver: клик по .link-res
+    root.querySelectorAll(".link-res").forEach(a=>{
+      a.addEventListener("click", e=>{
+        e.stopPropagation();
+        const target = a.getAttribute("data-link") || a.textContent;
+        const mode = a.getAttribute("data-mode") || "browser";
+        handleAction("link-open", { target, mode }, a);
+      });
+    });
+  }
+
+  /* ===== v5: workspace launcher + localhost/docker panel helpers ===== */
+  const KNOWN_PORTS = {
+    "SERPlux": [{ port:8000, label:"API" }, { port:5173, label:"preview" }],
+    "vault": [{ port:8123, label:"pip-boy" }],
+  };
+  function projectButtons(projectId){
+    if(!projectId) return "";
+    return `<div class="ws-launch">
+      ${actBtn("⚡ WORKSPACE", "workspace-open", { project: projectId }, { primary:true, title:"Открыть tmux-сессию pb-"+projectId+" (main/files/tests/logs/local)" })}
+      ${actBtn("☑ STATUS", "workspace-status", { project: projectId }, { title:"Порты / docker / окна tmux" })}
+      ${actBtn("▤ DIR", "link-open", { target: "[[03-Projects/"+projectId+"]]", mode:"nvim" }, { title:"Карточка проекта в Neovim" })}
+    </div>`;
+  }
+  function syncWorkspaceStatus(){
+    // после отрисовки WORKSPACE: тянем статусы проектов и заполняем placeholder'ы
+    document.querySelectorAll("[data-ws-status]").forEach(async el=>{
+      const project = el.getAttribute("data-ws-status");
+      const data = await callAction("workspace-status", { project });
+      if(!data || !data.ok){ el.innerHTML = `<span class="dim">нет данных</span>`; return; }
+      const ports = (data.ports || []).map(p =>
+        `<div class="svc-row"><span><span class="svc-dot ${p.healthy ? "ok" : "bad"}"></span>${esc(p.label || p.port)} :${esc(p.port)}</span><span class="dim">${p.healthy ? "up" : "down"}</span></div>`
+      ).join("");
+      const dock = (data.docker && data.docker.length)
+        ? `<div class="svc-row"><span><span class="svc-dot ok"></span>docker</span><span class="dim">${data.docker.length} контейнер</span></div>` + data.docker.map(c=>`<div class="svc-row"><span class="dim">${esc(c)}</span></div>`).join("")
+        : `<div class="svc-row"><span><span class="svc-dot"></span>docker</span><span class="dim">${data.docker_enabled ? "нет контейнеров" : "off (PIPBOY_DOCKER=1 включает)"}</span></div>`;
+      el.innerHTML = `
+        <div style="margin-top:5px"><b style="color:var(--amber);font-size:10px">SESSION:</b> ${esc(data.session)} ${data.tmux_running ? '<span class="verdict pass">RUNNING</span>' : '<span class="verdict none">DOWN</span>'}${data.windows.length ? " · окна: "+esc(data.windows.join(", ")) : ""}</div>
+        <div style="margin-top:5px"><b style="color:var(--amber);font-size:10px">PORTS:</b>${ports || '<span class="dim"> не задано</span>'}</div>
+        <div style="margin-top:5px"><b style="color:var(--amber);font-size:10px">DOCKER:</b>${dock}</div>`;
+    });
+  }
+  function naDot(state){
+    const col = { ready:"#00ff41", flight:"#ffb000", verify:"#00b4ff", blocked:"#ff6b6b", done:"#555" }[state] || "#555";
+    return `<span class="na-dot" style="color:${col}">●</span>`;
+  }
+  /* v5: linkify [[wikilink]]/[[путь.md]] в кликабельные .link-res (link resolver) */
+  function linkify(text){
+    if(text == null) return "";
+    const s = String(text);
+    const re = /\[\[([^\]]+)\]\]/g;
+    let last = 0, m;
+    let out = "";
+    while((m = re.exec(s)) !== null){
+      out += esc(s.slice(last, m.index));
+      out += `<span class="link-res" data-link="[[${esc(m[1])}]]" title="link resolver: nvim/browser/tmux">[[${esc(m[1])}]]</span>`;
+      last = m.index + m[0].length;
+    }
+    out += esc(s.slice(last));
+    return out;
+  }
+  function naRow(cid, c, info){
+    const col = LIFECYCLE_COLOR[c.lifecycle] || "#666";
+    const reasonHtml = (info.reasons || []).map(r => `<span class="${r.indexOf("⛔") === 0 ? "bad" : ""}">${esc(r)}</span>`).join(" · ");
+    const chain = info.state === "blocked" ? unreadyChain(cid) : [];
+    return `<div class="na-row" style="border-left-color:${col}">
+      ${naDot(info.state)}
+      <span class="na-id" data-card="${esc(cid)}" title="${esc(c.title)}">${esc(cid)} <span style="opacity:.6;font-size:9px">${esc(c.lifecycle)}</span></span>
+      <div class="na-main">
+        <div>${esc(c.title)} ${c.priority ? `<span class="chip" style="color:${col};border-color:${col}">${esc(c.priority)}</span>` : ""}${c.project ? `<span class="chip" style="color:var(--amber);border-color:var(--amber)">${esc(c.project)}</span>` : ""}</div>
+        <div class="na-reason">next: ${esc(info.next)}${reasonHtml ? " · " + reasonHtml : ""}${chain.length ? `<br><span class="bad">по цепочке: ${esc(chain.join(" ← "))}</span>` : ""}</div>
+      </div>
+      ${info.proposal ? `<button class="na-export" data-proposal="${esc(info.proposal)}" title="Скопировать proposal в буфер (read-only; переход — только через librarian/approval)">⧉ PROPOSAL</button>` : ""}
+    </div>`;
+  }
+  function naSort(a, b){
+    return (priRank(a[1].priority) - priRank(b[1].priority)) || (a[0] < b[0] ? -1 : 1);
+  }
+  function renderNextAction(){
+    const all = Object.entries(REGISTRY.cards || {});
+    const vis = all.filter(([cid,c]) => cardVisible(cid, c));
+    const filtered = vis.length !== all.length;
+    const infos = vis.map(([cid, c]) => [cid, c, nextInfo(cid, c)]);
+    const cnt = s => infos.filter(([, , i]) => i.state === s).length;
+    const pick = s => infos.filter(([, , i]) => i.state === s).sort(naSort);
+    let html = `<h2 class="vtitle">NEXT ACTION :: ЧТО МОЖНО ДЕЛАТЬ СЕЙЧАС${filtered ? ` · FILTERED ${vis.length}/${all.length}` : ""}</h2>
+      <div class="vsub">readiness-движок поверх canonical registry + TASKS snapshot · порядок: priority → id · ⛔ = deps/frozen/BLOCKED · PROPOSAL = экспорт текста перехода в буфер (read-only; применение — только через librarian/approval, no silent mutation)</div>
+      <div class="depstat-row">
+        <span class="na-stat">READY <b>${cnt("ready")}</b></span>
+        <span class="na-stat">IN FLIGHT <b>${cnt("flight")}</b></span>
+        <span class="na-stat">AWAIT VERIFIER <b>${cnt("verify")}</b></span>
+        <span class="na-stat">BLOCKED <b>${cnt("blocked")}</b></span>
+        <span class="na-stat">DONE/LIVE <b>${cnt("done")}</b></span>
+      </div>`;
+    html += `<div class="na-sec">▶ READY — СТАРТ СЕЙЧАС (${cnt("ready")})</div>`;
+    html += pick("ready").map(([cid, c, i]) => naRow(cid, c, i)).join("") || '<div class="no-snapshot">— нет готовых к старту карточек —</div>';
+    html += `<div class="na-sec">◐ IN FLIGHT (${cnt("flight")})</div>`;
+    html += pick("flight").map(([cid, c, i]) => naRow(cid, c, i)).join("") || '<div class="no-snapshot">— пусто —</div>';
+    html += `<div class="na-sec">◔ AWAITING VERIFICATION (${cnt("verify")})</div>`;
+    html += pick("verify").map(([cid, c, i]) => naRow(cid, c, i)).join("") || '<div class="no-snapshot">— пусто —</div>';
+    html += `<div class="na-sec">⛔ BLOCKED — ЧТО БЛОКИРУЕТ ПРОГРЕСС (${cnt("blocked")})</div>`;
+    html += pick("blocked").map(([cid, c, i]) => naRow(cid, c, i)).join("") || '<div class="no-snapshot">— заблокированных нет —</div>';
+    /* критические блокеры: кто транзитивно держит больше всего карточек */
+    const trans = blocksTransitively();
+    const ranked = Object.entries(trans).map(([cid, set]) => ({cid, n: set.size})).filter(x => x.n > 0).sort((a,b) => (b.n - a.n) || (a.cid < b.cid ? -1 : 1)).slice(0, 8);
+    const frozenByTask = {};
+    for(const [cid, c] of vis){ for(const t of frozenTasks(c)) (frozenByTask[t] = frozenByTask[t] || []).push(cid); }
+    html += `<div class="na-sec">✸ CRITICAL BLOCKERS — RANKED ПО ЧИСЛУ ЗАВИСИМЫХ</div>`;
+    if(ranked.length || Object.keys(frozenByTask).length){
+      html += ranked.map(x => {
+        const c = REGISTRY.cards[x.cid];
+        const col = LIFECYCLE_COLOR[c.lifecycle] || "#666";
+        const targets = [...trans[x.cid]].sort();
+        return `<div class="na-row" style="border-left-color:${col}">
+          ${naDot("blocked")}
+          <span class="na-id" data-card="${esc(x.cid)}">${esc(x.cid)} <span style="opacity:.6;font-size:9px">${esc(c.lifecycle)}</span></span>
+          <div class="na-main">
+            <div>${esc(c.title)}</div>
+            <div class="na-reason"><span class="bad">держит транзитивно ${x.n}</span> · ${targets.map(t => `<span class="depchip" data-card="${esc(t)}">${esc(t)}</span>`).join(" ")}</div>
+          </div>
+        </div>`;
+      }).join("");
+      html += Object.entries(frozenByTask).map(([t, cards]) => `<div class="na-row" style="border-left-color:#ff6b6b">
+          ${naDot("blocked")}
+          <span class="na-id">${esc(t)}</span>
+          <div class="na-main">
+            <div>⛔ задача в Blocked/Frozen (TASKS.md)</div>
+            <div class="na-reason">держит карточки: ${cards.map(c2 => `<span class="depchip" data-card="${esc(c2)}">${esc(c2)}</span>`).join(" ")}</div>
+          </div>
+        </div>`).join("");
+    } else {
+      html += '<div class="no-snapshot">— критических блокеров нет —</div>';
+    }
+    html += `<div class="ro-note">READ-ONLY · no silent mutation · источник: registry.json + generated/snapshot.json · переходы — через librarian-контур с approval пользователя</div>`;
+    return html;
+  }
+
+  /* ===== v3: proposal queue — что система предлагает (без silent-применения) ===== */
+  function pqTag(kind){
+    const cls = { approve:"approve", review:"review", blocked:"blocked", run:"run" }[kind] || "review";
+    const label = { approve:"APPROVE", review:"REVIEW", blocked:"BLOCKED", run:"RUN" }[kind] || "REVIEW";
+    return `<span class="pq-tag ${cls}">${label}</span>`;
+  }
+  function buildProposals(){
+    const out = [];
+    const cards = Object.entries(REGISTRY.cards || {});
+    for(const [cid, c] of cards){
+      if(!cardVisible(cid, c)) continue;
+      const ni = nextInfo(cid, c);
+      if(ni.state === "blocked"){
+        // [BLOCKED] — ждёт внешнего решения
+        out.push({ kind:"blocked", cid, c, title:c.title, line:`${cid}: ${c.title}`,
+          body:`${cid} заблокирована${(ni.reasons||[]).map(r=>"\n  - "+r).join("")}\nДействие: librarian/approval + разблокировать путь` });
+      } else if(ni.state === "verify"){
+        out.push({ kind:"approve", cid, c, title:c.title, line:`Проверить ${cid}: VERIFY → LIVE`,
+          body:`${cid}: ${c.title}\nNeeds: runtime evidence + независимый verifier acceptance\nApproval required` });
+      } else if(ni.state === "ready"){
+        // READY — предложение к переходу
+        out.push({ kind:"approve", cid, c, title:c.title, line:`Перевести ${cid} в следующий stage`,
+          body:(ni.proposal || (`${cid} → следующий stage`)) + `\nReason: dependencies satisfied\nApproval required` });
+      }
+    }
+    // drift signals -> [REVIEW]
+    if(SNAPSHOT && Array.isArray(SNAPSHOT.drift_signals)){
+      for(const s of SNAPSHOT.drift_signals){
+        out.push({ kind:"review", cid:s.subject && /^ECO-\d+$/.test(s.subject) ? s.subject : null,
+          c:null, title:s.subject, line:`Проверить drift: ${s.subject} (${s.type})`,
+          body:`drift signal\nтип: ${s.type}\nsubject: ${s.subject}\n${s.detail}` });
+      }
+    }
+    // workspace launcher [RUN] — проекты с repo и статусом
+    if(SNAPSHOT && Array.isArray(SNAPSHOT.projects)){
+      for(const p of SNAPSHOT.projects){
+        if(p.repo && p.id !== "vault"){
+          out.push({ kind:"run", cid:null, c:null, title:p.id, line:`Открыть workspace: ${p.id}`,
+            body:`workspace ${p.id}\nrepo: ${p.repo}\nstack: ${p.stack || "—"}\n(action: workspace-open → tmux pb-${p.id})` });
+        }
+      }
+    }
+    return out;
+  }
+  function renderProposals(){
+    const props = buildProposals();
+    // порядок: approve > review > blocked > run
+    const order = { approve:0, review:1, blocked:2, run:3 };
+    props.sort((a,b) => (order[a.kind]-order[b.kind]) || (a.cid < (b.cid||"") ? -1 : 1));
+    const cnt = k => props.filter(p => p.kind === k).length;
+    let html = `<h2 class="vtitle">PROPOSAL QUEUE :: ЧТО СИСТЕМА ПРЕДЛАГАЕТ</h2>
+      <div class="vsub">очередь предложений — не применяются молча · [APPROVE] переход lifecycle · [REVIEW] проверить drift · [BLOCKED] ждёт внешнего решения · [RUN] открыть workspace · ⧉ = скопировать текст · подтверждение — только через librarian/approval</div>
+      <div class="depstat-row">
+        <span class="na-stat">APPROVE <b>${cnt("approve")}</b></span>
+        <span class="na-stat">REVIEW <b>${cnt("review")}</b></span>
+        <span class="na-stat">BLOCKED <b>${cnt("blocked")}</b></span>
+        <span class="na-stat">RUN <b>${cnt("run")}</b></span>
+      </div>`;
+    if(!props.length) html += '<div class="no-snapshot">— очередь пуста —</div>';
+    for(const p of props){
+      const col = p.c ? (LIFECYCLE_COLOR[p.c.lifecycle] || "#666") : "#666";
+      html += `<div class="pq-item" style="border-left-color:${col}">
+        <div class="pq-head">${pqTag(p.kind)}
+          ${p.cid ? `<span class="na-id" data-card="${esc(p.cid)}">${esc(p.cid)}</span>` : `<b>${esc(p.title || "")}</b>`}
+          <span class="pq-main">${esc(p.line)}</span>
+          <button class="na-export pq-export" data-proposal="${esc(p.body)}" title="Скопировать в буфер (read-only)">⧉</button>
+        </div>
+        <div class="pq-body">${esc(p.body)}</div>
+      </div>`;
+    }
+    html += `<div class="ro-note">READ-ONLY · no silent mutation · очередь пересчитывается из registry+snapshot; применение — только через librarian-контур (approval пользователя)</div>`;
+    return html;
+  }
+
   function setView(view){
     CURRENT_VIEW = view;
     document.querySelectorAll(".view-pill").forEach(p=>{
@@ -516,7 +1123,9 @@ const STATE_COLOR = {
       vw.innerHTML = `<h2 class="vtitle">❌ REGISTRY</h2><div class="no-snapshot">registry.json не найден — запусти через локальный HTTP-сервер из tools/ecosystem-map/.</div>`;
       return;
     }
-    if(view === "matrix") vw.innerHTML = renderMatrix();
+    if(view === "next") vw.innerHTML = renderNextAction();
+    else if(view === "proposals") vw.innerHTML = renderProposals();
+    else if(view === "matrix") vw.innerHTML = renderMatrix();
     else if(view === "kanban") vw.innerHTML = renderKanban();
     else if(view === "deps") vw.innerHTML = renderDependencies();
     else if(view === "acceptance") vw.innerHTML = renderAcceptance();
@@ -525,10 +1134,25 @@ const STATE_COLOR = {
     else if(view === "agents") vw.innerHTML = renderAgents();
     else if(view === "blockers") vw.innerHTML = renderBlockers();
     else if(view === "workspace") vw.innerHTML = renderWorkspace();
+    else if(view === "capture") vw.innerHTML = renderCapture();
     // wire card clicks -> panel
     vw.querySelectorAll("[data-card]").forEach(el=>{
       el.addEventListener("click", ()=> renderCardPanel(el.getAttribute("data-card")));
     });
+    // wire proposal export buttons (read-only clipboard copy)
+    vw.querySelectorAll("[data-proposal]").forEach(b=>{
+      b.addEventListener("click", e=>{
+        e.stopPropagation();
+        copyText(b.getAttribute("data-proposal"));
+        const old = b.textContent;
+        b.textContent = "✓ COPIED";
+        setTimeout(()=>{ b.textContent = old; }, 1400);
+      });
+    });
+    // v5: wire server actions + link resolver
+    wireActions(vw);
+    // v5: workspace status poll (localhost/docker panel)
+    if(view === "workspace") syncWorkspaceStatus();
   }
 
   function cardChip(cid){
@@ -567,7 +1191,7 @@ const STATE_COLOR = {
       <div class="kanban">`;
     for(const stage of LIFECYCLE_ORDER){
       const isRetiredStage = (stage === "RETIRED");
-      const cards = vis.filter(([cid,c]) => c.lifecycle === stage && (isRetiredStage ? true : !c.retired));
+      const cards = vis.filter(([cid,c]) => c.lifecycle === stage && (isRetiredStage ? true : !c.retired)).sort(naSort);
       html += `<div class="kcol ${cards.length ? "" : "empty"}">
         <h4>${esc(stage)}<span class="cnt">${cards.length}</span></h4>
         <div class="kbody">`;
@@ -575,8 +1199,9 @@ const STATE_COLOR = {
         const col = LIFECYCLE_COLOR[stage] || "#666";
         const pr = c.priority ? `<span class="chip" style="color:${col};border-color:${col}">${esc(c.priority)}</span>` : "";
         const pj = c.project ? `<span class="chip" style="color:var(--amber);border-color:var(--amber)">${esc(c.project)}</span>` : "";
+        const st = nextInfo(cid, c).state;
         html += `<div class="kcard" data-card="${esc(cid)}" style="border-left:3px solid ${col}">
-          <span class="kid">${esc(cid)}</span>${pr}${pj} ${esc(c.title)}
+          ${naDot(st)}<span class="kid">${esc(cid)}</span>${pr}${pj} ${esc(c.title)}
           <div class="kl">${esc(c.layer)} · ${esc(c.facets ? c.facets.join(", ") : "")} · owner: ${esc(c.owner)}</div>
         </div>`;
       }
@@ -586,25 +1211,95 @@ const STATE_COLOR = {
     return html;
   }
 
+  function findCycles(){
+    const color = {};
+    const parent = {};
+    const cycles = [];
+    const cards = REGISTRY.cards || {};
+    const dfs = u => {
+      color[u] = 1;
+      for(const v of (cards[u] ? (cards[u].depends_on || []) : [])){
+        if(color[v] === 1){
+          const path = [u];
+          let p = parent[u];
+          while(p !== undefined && p !== v){ path.push(p); p = parent[p]; }
+          path.push(v);
+          cycles.push(path.reverse());
+        } else if(!color[v]){ parent[v] = u; dfs(v); }
+      }
+      color[u] = 2;
+    };
+    for(const cid in cards){ if(!color[cid]) dfs(cid); }
+    return cycles;
+  }
+
   function renderDependencies(){
+    const cards = REGISTRY.cards || {};
     const blocks = {};
-    for(const [cid, c] of Object.entries(REGISTRY.cards || {})){
+    for(const [cid, c] of Object.entries(cards)){
       for(const d of (c.depends_on || [])) (blocks[d] = blocks[d] || []).push(cid);
     }
     const vis = sortedVisible();
-    let html = `<h2 class="vtitle">DEPENDENCIES :: CARD GRAPH</h2>
-      <div class="vsub">depends_on = структурные предусловия · blocks = обратные зависимости (кто ждёт эту карточку) · зависимость в DESIGN не блокирует research, но блокирует BUILD · переходы — через librarian/approval · read-only</div>
+    const cycles = findCycles();
+    const notRetired = ([cid,c]) => !(c.retired || c.lifecycle === "RETIRED");
+    const orphans = vis.filter(([cid,c]) => !(c.depends_on || []).length && !(blocks[cid] || []).length && notRetired([cid,c]));
+    const noOwner = vis.filter(([cid,c]) => !c.owner && notRetired([cid,c]));
+    const noAcc = vis.filter(([cid,c]) => !(c.acceptance || "").trim() && notRetired([cid,c]));
+    const frozenCards = vis.filter(([cid,c]) => frozenTasks(c).length);
+    let html = `<h2 class="vtitle">DEPENDENCIES :: CARD GRAPH + CRITICAL PATH</h2>
+      <div class="vsub">depends_on = структурные предусловия · blocks = обратные зависимости (кто ждёт эту карточку) · зависимость в DESIGN не блокирует research, но блокирует BUILD · критический путь = ранние карточки, транзитивно держащие максимум зависимых · read-only</div>`;
+    const stat = (label, arr, col) => `<span class="na-stat" style="${col ? "color:"+col+";border-color:"+col : ""}">${label} <b>${arr.length}</b></span>`;
+    html += `<div class="depstat-row">
+      ${stat("CYCLES", cycles, cycles.length ? "#ff6b6b" : "")}
+      ${stat("ORPHANS", orphans)}
+      ${stat("NO OWNER", noOwner)}
+      ${stat("NO ACCEPTANCE", noAcc)}
+      ${stat("FROZEN-BLOCKED", frozenCards, frozenCards.length ? "#ff6b6b" : "")}
+    </div>`;
+    if(cycles.length){
+      html += `<div class="na-sec">⚠ CYCLES — depends_on должен быть DAG</div>`;
+      html += cycles.map(cy => `<div class="na-row" style="border-left-color:#ff6b6b">
+          <div class="na-main"><div class="na-reason"><span class="bad">цикл:</span> ${cy.map(x => `<span class="depchip" data-card="${esc(x)}">${esc(x)}</span>`).join(" → ")}</div></div>
+        </div>`).join("");
+    }
+    const trans = blocksTransitively();
+    const ranked = Object.entries(trans).map(([cid, set]) => ({cid, n: set.size})).filter(x => x.n > 0).sort((a,b) => (b.n - a.n) || (a.cid < b.cid ? -1 : 1));
+    if(ranked.length){
+      html += `<div class="na-sec">✸ CRITICAL PATH — ЧТО ТРАНЗИТИВНО ДЕРЖИТ БОЛЬШЕ ВСЕГО</div>`;
+      html += ranked.slice(0, 6).map(x => {
+        const c = cards[x.cid];
+        const col = LIFECYCLE_COLOR[c.lifecycle] || "#666";
+        const targets = [...trans[x.cid]].sort().slice(0, 12);
+        const more = trans[x.cid].size - targets.length;
+        return `<div class="na-row" style="border-left-color:${col}">
+          <span class="na-id" data-card="${esc(x.cid)}">${esc(x.cid)} <span style="opacity:.6;font-size:9px">${esc(c.lifecycle)}</span></span>
+          <div class="na-main">
+            <div>${esc(c.title)}</div>
+            <div class="na-reason"><span class="bad">держит ${x.n}</span> · ${targets.map(t => `<span class="depchip" data-card="${esc(t)}">${esc(t)}</span>`).join(" ")}${more > 0 ? ` <span class="dim">+${more} ещё</span>` : ""}</div>
+          </div>
+        </div>`;
+      }).join("");
+    }
+    const listChips = arr => arr.map(([cid]) => `<span class="depchip" data-card="${esc(cid)}">${esc(cid)}</span>`).join(" ") || '<span class="dim">—</span>';
+    html += `<div class="na-sec">◇ ЦЕЛОСТНОСТЬ ГРАФА</div>
+      <div class="na-row"><div class="na-main"><div class="na-reason">ORPHANS (нет deps и blocks): ${listChips(orphans)}</div></div></div>
+      <div class="na-row"><div class="na-main"><div class="na-reason">NO OWNER: ${listChips(noOwner)}</div></div></div>
+      <div class="na-row"><div class="na-main"><div class="na-reason">NO ACCEPTANCE: ${listChips(noAcc)}</div></div></div>
+      <div class="na-row"><div class="na-main"><div class="na-reason">FROZEN (task в Blocked/Frozen): ${listChips(frozenCards)}</div></div></div>
+      <div class="na-sec">▤ ТАБЛИЦА ЗАВИСИМОСТЕЙ</div>
       <table class="vtable"><tr><th>CARD</th><th>STAGE</th><th>DEPENDS ON</th><th>BLOCKS</th></tr>`;
     for(const [cid, c] of vis){
       const deps = (c.depends_on || []).map(d => {
-        const dc = REGISTRY.cards[d];
-        const dcol = dc ? (LIFECYCLE_COLOR[dc.lifecycle] || "#666") : "#666";
-        return `<span class="depchip" data-card="${esc(d)}" style="color:${dcol};border-color:${dcol}">${esc(d)}${dc ? " " + esc(dc.lifecycle) : " ?"}</span>`;
+        const dc = cards[d];
+        const dcol = dc ? (LIFECYCLE_COLOR[dc.lifecycle] || "#666") : "#ff6b6b";
+        const mark = !dc ? " ⛔?" : (dc.lifecycle === "RETIRED" || dc.retired ? " ⛔retired" : "");
+        return `<span class="depchip" data-card="${esc(d)}" style="color:${dcol};border-color:${dcol}">${esc(d)}${dc ? " " + esc(dc.lifecycle) : " ?"}${mark}</span>`;
       }).join("") || '<span class="dim">—</span>';
       const bl = (blocks[cid] || []).slice().sort()
         .map(b => `<span class="depchip" data-card="${esc(b)}">${esc(b)}</span>`).join("") || '<span class="dim">—</span>';
       const col = LIFECYCLE_COLOR[c.lifecycle] || "#666";
-      html += `<tr><td><span class="depchip" data-card="${esc(cid)}" style="color:${col};border-color:${col}">${esc(cid)}</span> ${esc(c.title)}</td>
+      const fr = frozenTasks(c).length ? ` <span style="color:#ff6b6b">⛔</span>` : "";
+      html += `<tr><td><span class="depchip" data-card="${esc(cid)}" style="color:${col};border-color:${col}">${esc(cid)}</span> ${esc(c.title)}${fr}</td>
         <td style="color:${col}">${esc(c.lifecycle)}</td><td>${deps}</td><td>${bl}</td></tr>`;
     }
     html += `</table>`;
@@ -612,28 +1307,52 @@ const STATE_COLOR = {
   }
 
   function renderAcceptance(){
-    const vis = sortedVisible();
-    let html = `<h2 class="vtitle">ACCEPTANCE :: EVIDENCE PER CARD</h2>
-      <div class="vsub">acceptance = доказательство перехода lifecycle · evidence = artifacts + tasks + verifier записи (self-declared маркеры — не evidence) · VERIFY→LIVE только с runtime evidence · read-only</div>`;
+    const vis = sortedVisible().filter(([cid,c]) => c.lifecycle !== "RETIRED" && !c.retired);
+    /* stage-группировка для roadmap-шапки */
+    const track = ["RESEARCH","DESIGN","BUILD","REVIEW","VERIFY","LIVE"];
+    let html = `<h2 class="vtitle">ACCEPTANCE DASHBOARD :: EVIDENCE PER CARD</h2>
+      <div class="vsub">acceptance = доказательство перехода lifecycle · evidence = artifacts + tasks (self-declared маркеры — не evidence) · verdict = наличие verifier/acceptance записи · LIVE gate = что запрещает переход · VERIFY→LIVE только с runtime evidence · read-only</div>
+      <div class="depstat-row">${track.map(t => `<span class="na-stat" style="color:${LIFECYCLE_COLOR[t]||"#666"};border-color:${LIFECYCLE_COLOR[t]||"#666"}">${t} <b>${vis.filter(([ ,c]) => c.lifecycle === t).length}</b></span>`).join("")}</div>`;
     if(!vis.length){
       html += `<div class="no-snapshot">— нет карточек под текущими фильтрами —</div>`;
       return html;
     }
     for(const [cid, c] of vis){
       const col = LIFECYCLE_COLOR[c.lifecycle] || "#666";
-      const artifacts = (c.artifacts || []).map(a => `<div class="row"><span class="k">${esc(a)}</span></div>`).join("") || '<span class="dim">—</span>';
+      const artifacts = (c.artifacts || []).map((a, i) => `<span class="tid">${esc(a)}</span>`).join("") || '<span class="dim">—</span>';
       const tasks = (c.tasks || []).map(t => {
         const sec = taskSection(t);
         return `<span class="tid">${esc(t)}${sec ? ` <span style="color:var(--amber)">[${esc(sec)}]</span>` : ""}</span>`;
       }).join(" ") || "—";
-      html += `<div class="acc-card">
+      // verdict: принимаем evidence только если есть артефакты ИЛИ задачи ДНЕ; runtime-записи для VERIFY карточек
+      const hasArtifacts = (c.artifacts || []).length > 0;
+      const doneTasks = (c.tasks || []).filter(t => taskSection(t) === "Done");
+      const hasDone = doneTasks.length > 0;
+      const verifierMention = /verifier.*(PASS|PASSED)|PASS.*(verifier|acceptance)/i.test(c.status_note || "");
+      const selfPass = /PASS/i.test(c.status_note || "") && !verifierMention;
+      let verdict = "none", verdictLabel = "NO EVIDENCE";
+      if(verifierMention) { verdict = "pass"; verdictLabel = "VERIFIER PASS"; }
+      else if(selfPass) { verdict = "pending"; verdictLabel = "SELF-PASS (needs verifier)"; }
+      else if(hasArtifacts || hasDone) { verdict = "pending"; verdictLabel = "PARTIAL (artifacts/tasks)"; }
+      // LIVE gate: что запрещает переход в LIVE для VERIFY-карточек
+      let gate = [];
+      if(c.lifecycle === "VERIFY"){
+        if(!runtimeEvidence(c)) gate.push("нет runtime evidence / verifier acceptance");
+        if(c.tasks && c.tasks.some(t => taskSection(t) === "Blocked")) gate.push("frozen-задача в TASKS Blocked");
+        if(/BLOCKED/i.test(c.status_note || "")) gate.push("status_note: implementation BLOCKED");
+        if(!gate.length) gate.push("verifier acceptance pending → LIVE (runtime evidence обязательны)");
+      }
+      html += `<div class="acc-card" style="border-left:3px solid ${col}">
         <div class="acc-head" data-card="${esc(cid)}"><span style="color:${col};border:1px solid ${col};padding:0 6px;border-radius:2px;font-size:9px;letter-spacing:1px">${esc(c.lifecycle)}</span>
-          <b>${esc(cid)}</b> ${esc(c.title)}${c.priority ? `<span class="chip" style="color:${col};border-color:${col}">${esc(c.priority)}</span>` : ""}${c.project ? `<span class="chip" style="color:var(--amber);border-color:var(--amber)">${esc(c.project)}</span>` : ""}</div>
+          <b>${esc(cid)}</b> ${esc(c.title)}${c.priority ? `<span class="chip" style="color:${col};border-color:${col}">${esc(c.priority)}</span>` : ""}${c.project ? `<span class="chip" style="color:var(--amber);border-color:var(--amber)">${esc(c.project)}</span>` : ""}
+          <span class="verdict ${verdict}" style="float:right">${verdictLabel}</span></div>
         <div class="acc-sec">ACCEPTANCE</div><div class="acc-body">${esc(c.acceptance || "—")}</div>
-        <div class="acc-sec">EVIDENCE · ARTIFACTS</div><div class="acc-body">${artifacts}</div>
-        <div class="acc-sec">EVIDENCE · TASKS</div><div class="acc-body">${tasks}</div>
-        <div class="acc-sec">STATUS NOTE</div><div class="acc-body">${esc(c.status_note || "—")}</div>
+        <div class="acc-sec">EVIDENCE · ARTIFACTS (${(c.artifacts || []).length})</div><div class="acc-body">${artifacts}</div>
+        <div class="acc-sec">EVIDENCE · TASKS (done: ${doneTasks.length}/${(c.tasks || []).length})</div><div class="acc-body">${tasks}</div>
         <div class="acc-sec">ROLLBACK</div><div class="acc-body">${esc(c.rollback || "—")}</div>
+        ${c.lifecycle === "VERIFY" ? `<div class="live-gate">⛔ LIVE gate: ${esc(gate.join(" · "))}</div>` : ""}
+        ${c.lifecycle === "REVIEW" || c.lifecycle === "BUILD" ? `<div class="live-gate" style="color:var(--amber)">▸ review/verifier: ${esc(c.review || "—")}</div>` : ""}
+        <div class="acc-sec">STATUS NOTE</div><div class="acc-body">${esc(c.status_note || "—")}</div>
       </div>`;
     }
     return html;
@@ -648,8 +1367,9 @@ const STATE_COLOR = {
     }
     const byTask = cardsByTask();
     const secMeta = [["Active","🟡"],["Blocked","⛔"],["Planned","🔵"],["Backlog","🟤"],["Done","✅"]];
+    const tasks = (SNAPSHOT.tasks && typeof SNAPSHOT.tasks === "object") ? SNAPSHOT.tasks : {};
     for(const [sec, icon] of secMeta){
-      const ids = SNAPSHOT.tasks[sec] || [];
+      const ids = Array.isArray(tasks[sec]) ? tasks[sec] : [];
       html += `<div class="task-sec"><h4>${icon} ${esc(sec.toUpperCase())} <span style="color:var(--green);opacity:.7">(${ids.length})</span></h4>`;
       if(!ids.length){
         html += `<div style="opacity:.4;font-size:10px">— пусто —</div>`;
@@ -661,7 +1381,7 @@ const STATE_COLOR = {
       }
       html += `</div>`;
     }
-    html += `<div class="vsub" style="margin-top:8px">vault git: HEAD ${esc(SNAPSHOT.git.head.slice(0,10))} · dirty: ${SNAPSHOT.git.dirty_files.length} · digest ${esc(SNAPSHOT.meta.input_digest.slice(0,12))}</div>`;
+    html += `<div class="vsub" style="margin-top:8px">vault git: HEAD ${esc(snapshotHead().slice(0,10))} · dirty: ${(SNAPSHOT.git && SNAPSHOT.git.dirty_files) ? SNAPSHOT.git.dirty_files.length : 0} · digest ${esc(snapshotDigest())}</div>`;
     return html;
   }
 
@@ -673,7 +1393,7 @@ const STATE_COLOR = {
       return html;
     }
     html += `<table class="vtable"><tr><th>PROJECT</th><th>REPO</th><th>KIND</th><th>STATUS</th><th>REPO EXISTS</th><th>ECO CARDS</th></tr>`;
-    for(const p of SNAPSHOT.projects){
+    for(const p of (Array.isArray(SNAPSHOT.projects) ? SNAPSHOT.projects : [])){
       const missing = (SNAPSHOT.drift_signals || []).some(s => s.type === "repo_missing" && s.subject === p.id);
       const cardCount = Object.values(REGISTRY.cards || {}).filter(c => (c.project || "") === p.id).length;
       html += `<tr><td>${esc(p.id)}</td><td class="dim">${esc(p.repo)}</td><td class="dim">${esc(p.kind)}</td><td>${esc(p.status || "—")}</td>
@@ -681,20 +1401,44 @@ const STATE_COLOR = {
         <td>${cardCount ? `<span style="color:var(--amber)">${cardCount}</span>` : '<span class="dim">—</span>'}</td></tr>`;
     }
     html += `</table>
-      <div class="vsub" style="margin-top:10px">vault git: HEAD ${esc(SNAPSHOT.git.head.slice(0,10))} · dirty: ${SNAPSHOT.git.dirty_files.length} · digest ${esc(SNAPSHOT.meta.input_digest.slice(0,12))}</div>`;
+      <div class="vsub" style="margin-top:10px">vault git: HEAD ${esc(snapshotHead().slice(0,10))} · dirty: ${(SNAPSHOT.git && SNAPSHOT.git.dirty_files) ? SNAPSHOT.git.dirty_files.length : 0} · digest ${esc(snapshotDigest())}</div>`;
     return html;
   }
 
   function renderAgents(){
-    let html = `<h2 class="vtitle">AGENTS</h2>
-      <div class="vsub">canonical registry.agents · статусы только с evidence (confirmed = smoke/verifier или файловая реальность; candidate = planned; frozen = user-freeze) · read-only</div>
-      <table class="vtable"><tr><th>AGENT</th><th>SCOPE</th><th>ROLE</th><th>STATUS</th><th>NOTE</th></tr>`;
-    for(const [aid, a] of Object.entries(REGISTRY.agents || {})){
-      html += `<tr><td>${esc(aid)}</td><td class="dim">${esc(a.scope)}</td><td>${esc(a.role)}</td>
-        <td><span class="status-chip st-${esc(a.status)}">${esc(a.status).toUpperCase()}</span></td>
-        <td class="dim">${esc(a.note)}</td></tr>`;
+    const agents = REGISTRY.agents || {};
+    const cards = Object.entries(REGISTRY.cards || {});
+    // workload по owner
+    const byOwner = {};
+    for(const [cid, c] of cards){
+      if(c.owner && !c.retired && c.lifecycle !== "RETIRED"){
+        (byOwner[c.owner] = byOwner[c.owner] || []).push([cid, c]);
+      }
     }
-    html += `</table>`;
+    let html = `<h2 class="vtitle">AGENT COCKPIT</h2>
+      <div class="vsub">доступность = registry.agents.status (confirmed = smoke/verifier или файловая реальность; candidate = planned; frozen = user-freeze) · workload = карточки c owner=<агент> (не-retired) · blocked-routes = owner-карточки с ⛔ · read-only</div>
+      <div class="cock-grid">`;
+    for(const [aid, a] of Object.entries(agents)){
+      const statusCls = { "confirmed":"st-confirmed", "candidate":"st-candidate", "frozen":"st-frozen", "active":"st-confirmed" }[a.status] || "st-candidate";
+      const owned = byOwner[aid] || [];
+      const blocked = owned.filter(([cid, c]) => nextInfo(cid, c).state === "blocked");
+      const inflight = owned.filter(([cid, c]) => ["flight","verify"].includes(nextInfo(cid, c).state));
+      const ready = owned.filter(([cid, c]) => nextInfo(cid, c).state === "ready");
+      html += `<div class="cock-card">
+        <h4>${esc(a.name || aid)} <span style="opacity:.5;font-size:9px">(${esc(aid)})</span></h4>
+        <div class="row"><span class="k">Доступность</span><span class="v"><span class="status-chip ${statusCls}">${esc(a.status || "—").toUpperCase()}</span></span></div>
+        <div class="row"><span class="k">Роль</span><span class="v">${esc(a.role || "—")}</span></div>
+        <div class="row"><span class="k">Scope</span><span class="v dim">${esc(a.scope || "—")}</span></div>
+        <div class="row"><span class="k">Карточки (всего)</span><span class="v">${owned.length}</span></div>
+        <div class="row"><span class="k">in-flight</span><span class="v">${inflight.length}</span></div>
+        <div class="row"><span class="k">ready</span><span class="v">${ready.length}</span></div>
+        <div class="row"><span class="k">blocked</span><span class="v" style="${blocked.length ? "color:#ff6b6b" : ""}">${blocked.length}</span></div>
+        ${owned.length ? `<div style="margin-top:5px">${owned.map(([cid,c]) => { const col = LIFECYCLE_COLOR[c.lifecycle] || "#666"; const st = nextInfo(cid, c).state; return `<span class="depchip" data-card="${esc(cid)}" style="color:${col};border-color:${col}" title="${esc(c.title)}">${esc(cid)}${st === "blocked" ? " ⛔" : ""}</span>`; }).join(" ")}</div>` : '<div style="opacity:.4;font-size:10px;margin-top:5px">— нет карточек —</div>'}
+        ${a.note ? `<div style="margin-top:5px;font-size:10px;opacity:.6">${esc(a.note)}</div>` : ""}
+      </div>`;
+    }
+    html += `</div>
+      <div class="ro-note">READ-ONLY · workload — производная от owner в registry, не live-нагрузка агента · candidate/frozen агенты не выполняют шагов до подтверждения/разморозки</div>`;
     return html;
   }
 
@@ -705,7 +1449,7 @@ const STATE_COLOR = {
       html += `<div class="no-snapshot">ⓘ generated/snapshot.json отсутствует — drift signals недоступны. Запусти python3 tools/ecosystem-map/observer.py.</div>`;
       return html;
     }
-    const signals = SNAPSHOT.drift_signals || [];
+    const signals = Array.isArray(SNAPSHOT.drift_signals) ? SNAPSHOT.drift_signals : [];
     if(!signals.length){
       html += `<div class="no-snapshot">✓ drift signals не обнаружены (на момент снимка)</div>`;
     } else {
@@ -727,17 +1471,96 @@ const STATE_COLOR = {
   function renderWorkspace(){
     const ws = REGISTRY.workspace || {};
     let html = `<h2 class="vtitle">AGENT WORKSPACE</h2>
-      <div class="vsub">design-контур (план v2 §5) · lifecycle: ${esc(ws.lifecycle || "—")} · не реализация; OpenCode agent loop не патчится · read-only</div>
-      <div><b style="color:var(--amber)">MANIFEST FIELDS:</b><br>`;
-    for(const f of (ws.manifest_fields || [])) html += `<span class="ws-field">${esc(f)}</span>`;
-    html += `</div>`;
+      <div class="vsub">design-контур (план v2 §5) · lifecycle: ${esc(ws.lifecycle || "—")} · не реализация; OpenCode agent loop не патчится · read-only</div>`;
+    if(ws.manifest_fields && ws.manifest_fields.length){
+      html += `<div><b style="color:var(--amber)">MANIFEST FIELDS:</b><br>`;
+      for(const f of ws.manifest_fields) html += `<span class="ws-field">${esc(f)}</span>`;
+      html += `</div>`;
+    }
     if(ws.open_questions && ws.open_questions.length){
       html += `<div style="margin-top:10px"><b style="color:var(--amber)">OPEN QUESTIONS:</b>`;
       for(const q of ws.open_questions) html += `<div class="oq">◇ ${esc(q)}</div>`;
       html += `</div>`;
     }
     if(ws.note) html += `<div class="ws-note">${esc(ws.note)}</div>`;
+
+    // v5: project workspaces + localhost/docker panel
+    html += `<div class="na-sec" style="margin-top:18px">◉ PROJECT WORKSPACES · LAUNCH / LOCALHOST / DOCKER</div>`;
+    const projects = new Set(Object.values(REGISTRY.cards || {}).map(c=>c.project).filter(Boolean));
+    if(SNAPSHOT && Array.isArray(SNAPSHOT.projects)){
+      for(const p of SNAPSHOT.projects) projects.add(p.id);
+    }
+    const projList = [...projects].sort();
+    if(!projList.length){
+      html += `<div class="no-snapshot">— нет проектов с repo —</div>`;
+    }
+    for(const pid of projList){
+      // repo из snapshot
+      const sp = (SNAPSHOT && Array.isArray(SNAPSHOT.projects)) ? SNAPSHOT.projects.find(x => x.id === pid) : null;
+      const repo = sp && sp.repo ? sp.repo : "—";
+      const kind = sp && sp.kind ? sp.kind : "";
+      html += `<div class="pq-item" style="border-left-color:var(--amber)">
+        <div class="pq-head">
+          <b style="color:var(--amber)">${esc(pid)}</b>
+          <span class="pq-main dim">${esc(repo)}</span>
+          ${projectButtons(pid)}
+        </div>
+        ${kind ? `<div class="pq-body" style="margin-top:2px">${esc(kind)}</div>` : ""}
+        <div data-ws-status="${esc(pid)}" style="margin-top:2px"><span class="dim">загрузка статуса…</span></div>
+      </div>`;
+    }
+    html += `<div class="ro-note">workspace-open поднимает tmux-сессию pb-&lt;проект&gt; (main/files/tests/logs/local); STATUS тянет порты/docker через /action; read-only, запуск — внешний tmux (не форк OpenCode)</div>`;
     return html;
+  }
+
+  /* ===== CAPTURE :: intake-сигналы (telegram-capture pipeline → Pip-Boy) ===== */
+  const CAPTURE_PROJ_COLOR = {
+    dotfiles:"#00ff41", SERPlux:"#ffb000", "dv-hub":"#00b4ff", vault:"#aa66ff", "new":"#ff6b6b"
+  };
+  function renderCapture(){
+    let html = `<h2 class="vtitle">CAPTURE :: INTAKE-СИГНАЛЫ</h2>
+      <div class="vsub">tools/telegram-capture/pipeline.py · capture → classify → relevance → project → upgrade path · read-only (regen не трогает входы/реакции)</div>
+      <div class="ws-launch" style="margin:8px 0">
+        ${actBtn("⟳ REGEN", "capture-scan", { run: "1", limit: 60 }, { primary:true, title:"Прогнать pipeline (--dry-run) — без мутаций входов и реакций" })}
+        ${actBtn("☰ СКАНИРОВАТЬ", "capture-scan", { limit: 60 }, { title:"Читать существующий signals.json" })}
+      </div>
+      <div id="capture-body"><span class="dim">сканирование…</span></div>
+      <div class="ro-note">signals = captures_all.json (584 поста) → 468 кандидатов; error/дубли не порождают сигналов; digest sha256 гарантирует детерминизм</div>`;
+    renderCaptureBody();
+    return html;
+  }
+  async function renderCaptureBody(){
+    const el = document.getElementById("capture-body");
+    if(!el) return;
+    const data = await callAction("capture-scan", { limit: 60 });
+    if(!data || !data.ok){
+      el.innerHTML = `<div class="no-snapshot">✗ ${(data && data.error) ? esc(data.error) : "capture-scan недоступен"}</div>`;
+      return;
+    }
+    const projRows = Object.entries(data.projects || {}).map(([p, n]) =>
+      `<span class="chip" style="color:${CAPTURE_PROJ_COLOR[p]||"#666"};border-color:${CAPTURE_PROJ_COLOR[p]||"#666"}">${esc(p)}: ${n}</span>`
+    ).join(" ");
+    let rows = "";
+    for(const s of (data.signals || [])){
+      const pc = CAPTURE_PROJ_COLOR[s.project] || "#666";
+      const rel = s.relevance != null ? cbar(s.relevance) : "";
+      rows += `<div class="na-row" style="border-left-color:${pc}">
+        <span class="na-id" style="width:52px">#${esc(s.message_id)}</span>
+        <div class="na-main">
+          <div>${esc(s.title || "—")} <span class="chip" style="color:${pc};border-color:${pc}">${esc(s.project)}</span>${s.lang ? `<span class="chip style-n">${esc(s.lang)}</span>` : ""}</div>
+          <div class="na-reason">${esc(s.upgrade_path || "")}${s.repo ? ` · <span class="link-res" data-link="${esc(s.repo)}" data-mode="browser" title="открыть repo">${esc(s.repo.replace(/^https?:\/\//,""))}</span>` : ""}</div>
+          <div class="na-reason" style="margin-top:3px">${rel} <span class="dim">relevance ${esc(s.relevance)}</span></div>
+        </div>
+      </div>`;
+    }
+    el.innerHTML = `
+      <div style="margin-bottom:8px">${projRows} · <span class="dim">signals ${esc(data.total_signals)} / posts ${esc(data.total_posts)} · digest ${esc(data.digest)}</span>${data.truncated ? ' · <span class="bad">показаны первые '+esc((data.signals||[]).length)+'</span>' : ""}</div>
+      ${rows || '<div class="no-snapshot">— нет сигналов —</div>'}`;
+    wireActions(el);
+  }
+  function cbar(n){
+    const pct = Math.max(0, Math.min(10, n)) * 10;
+    return `<span style="display:inline-block;width:60px;height:6px;background:#123;vertical-align:middle"><span style="display:inline-block;width:${pct}%;height:6px;background:var(--amber)"></span></span>`;
   }
 
   function renderCardPanel(cid){
@@ -753,13 +1576,17 @@ const STATE_COLOR = {
       if((ocCard.depends_on || []).includes(cid)) blocksArr.push(oc);
     }
     blocksArr.sort();
+    const ni = nextInfo(cid, c);
+    const niLabel = {ready:"READY", flight:"IN FLIGHT", verify:"AWAIT VERIFIER", blocked:"BLOCKED", done:"DONE/LIVE"}[ni.state] || ni.state;
     const dep = (c.depends_on || []).map(d => {
       const dc = REGISTRY.cards[d];
       const dcol = dc ? (LIFECYCLE_COLOR[dc.lifecycle] || "#666") : "#666";
       return `<span class="depchip" data-card="${esc(d)}" style="color:${dcol};border-color:${dcol}">${esc(d)}${dc ? " " + esc(dc.lifecycle) : " ?"}</span>`;
     }).join("") || "—";
     const blocks = blocksArr.map(b => `<span class="depchip" data-card="${esc(b)}">${esc(b)}</span>`).join("") || "—";
-    const artifacts = (c.artifacts || []).map(a => `<div class="row"><span class="k">${esc(a)}</span></div>`).join("") || "—";
+    const artifacts = (c.artifacts || []).map(a =>
+      `<div class="link-res" data-link="${esc(a)}" data-mode="nvim" title="открыть в Neovim">${esc(a)}</div>`
+    ).join("") || "—";
     const tasks = (c.tasks || []).map(t => {
       const sec = taskSection(t);
       return `<span class="tid">${esc(t)}${sec ? ` <span style="color:var(--amber)">[${esc(sec)}]</span>` : ""}</span>`;
@@ -777,6 +1604,12 @@ const STATE_COLOR = {
         <div class="sect"><h3>Карточка</h3>
           <div style="font-size:12px;opacity:.9">${esc(c.title)}</div>
         </div>
+        <div class="sect"><h3>Next step</h3>
+          <div class="row"><span class="k">Readiness</span><span class="v">${naDot(ni.state)} ${esc(niLabel)}</span></div>
+          <div class="row"><span class="k">Следующий шаг</span><span class="v">${esc(ni.next)}</span></div>
+          ${(ni.reasons || []).length ? `<div style="font-size:10px;color:#ff6b6b;margin-top:3px">${esc(ni.reasons.join(" · "))}</div>` : ""}
+          ${ni.proposal ? `<button class="na-export" data-proposal="${esc(ni.proposal)}" style="margin-top:6px" title="Скопировать proposal в буфер (read-only)">⧉ EXPORT PROPOSAL</button>` : ""}
+        </div>
         <div class="sect"><h3>Контур</h3>
           <div class="row"><span class="k">Owner</span><span class="v">${esc(c.owner)}</span></div>
           <div class="row"><span class="k">Priority</span><span class="v">${esc(c.priority || "—")}</span></div>
@@ -786,21 +1619,35 @@ const STATE_COLOR = {
           <div class="row"><span class="k">OSS-first</span><span class="v">${c.oss_first && c.oss_first.approved ? "✓ approved" : "✗"}</span></div>
           <div class="row"><span class="k">Tasks</span><span class="v">${tasks}</span></div>
         </div>
-        <div class="sect"><h3>Acceptance</h3><div style="font-size:11px;opacity:.85">${esc(c.acceptance)}</div></div>
+        <div class="sect"><h3>Acceptance</h3><div style="font-size:11px;opacity:.85">${linkify(c.acceptance)}</div></div>
+        <div class="sect"><h3>Actions</h3>
+          ${c.project ? projectButtons(c.project) : '<span class="dim">проект не привязан</span>'}
+        </div>
         <div class="sect"><h3>Evidence</h3>
           <div style="font-size:9px;color:var(--amber);letter-spacing:2px;margin-bottom:3px">ARTIFACTS</div>${artifacts}
           <div style="font-size:9px;color:var(--amber);letter-spacing:2px;margin:7px 0 3px">TASKS</div><div>${tasks}</div>
         </div>
-        <div class="sect"><h3>Review</h3><div style="font-size:11px;opacity:.85">${esc(c.review)}</div></div>
-        <div class="sect"><h3>Risk</h3><div style="font-size:11px;opacity:.85">${esc(c.risk)}</div></div>
-        <div class="sect"><h3>Rollback</h3><div style="font-size:11px;opacity:.85">${esc(c.rollback)}</div></div>
-        <div class="sect"><h3>Status note</h3><div style="font-size:11px;opacity:.85">${esc(c.status_note)}</div></div>
+        <div class="sect"><h3>Review</h3><div style="font-size:11px;opacity:.85">${linkify(c.review)}</div></div>
+        <div class="sect"><h3>Risk</h3><div style="font-size:11px;opacity:.85">${linkify(c.risk)}</div></div>
+        <div class="sect"><h3>Rollback</h3><div style="font-size:11px;opacity:.85">${linkify(c.rollback)}</div></div>
+        <div class="sect"><h3>Status note</h3><div style="font-size:11px;opacity:.85">${linkify(c.status_note)}</div></div>
         <div class="ro-note">READ-ONLY PROJECTION · canonical: tools/ecosystem-map/registry.json · правки только через librarian-контур с approval пользователя · no silent mutation · live: нет</div>
         <div class="meta-line">REGISTRY: ecosystem-registry/1.1 · canonical</div>
       </div>`;
     pc.querySelectorAll("[data-card]").forEach(el=>{
       el.addEventListener("click", ()=> renderCardPanel(el.getAttribute("data-card")));
     });
+    pc.querySelectorAll("[data-proposal]").forEach(b=>{
+      b.addEventListener("click", e=>{
+        e.stopPropagation();
+        copyText(b.getAttribute("data-proposal"));
+        const old = b.textContent;
+        b.textContent = "✓ COPIED";
+        setTimeout(()=>{ b.textContent = old; }, 1400);
+      });
+    });
+    // v5: wire actions (workspace-open / link-open) в карточной панели
+    wireActions(pc);
   }
 
   /* ===== registry filter pills (Kanban control plane) ===== */
@@ -862,7 +1709,7 @@ const STATE_COLOR = {
 
   async function loadData(){
     const res = await fetch("data.json", {cache:"no-store"});
-    if(!res.ok){ document.getElementById("panel-empty").innerHTML = "❌ data.json не найден. Запусти через локальный HTTP-сервер."; return null; }
+    if(!res.ok){ document.getElementById("panel-empty").innerHTML = "❌ data.json не найден. Подними хост: python3 tools/ecosystem-map/pipboy.py up"; return null; }
     return await res.json();
   }
 
@@ -1337,7 +2184,7 @@ function updateStats(){
       <span style="color:var(--gold)">LIVE: <b>${(byStage.LIVE||0)+(byStage.OBSERVE||0)}</b></span>
       <span>RETIRED: <b>${byStage.RETIRED||0}</b></span>
       <span>AGENTS: <b>${Object.keys(REGISTRY.agents||{}).length}</b></span>
-      ${SNAPSHOT ? `<span>DRIFT: <b>${(SNAPSHOT.drift_signals||[]).length}</b></span>` : ""}
+      ${SNAPSHOT ? `<span>DRIFT: <b>${(Array.isArray(SNAPSHOT.drift_signals) ? SNAPSHOT.drift_signals : []).length}</b></span>` : ""}
     `;
     return;
   }
@@ -1393,27 +2240,202 @@ function recomputeAndRedraw(){
 }
 
 /* =========================================================
+   v5: COMMAND PALETTE / FULL-SCREEN INSPECTOR / COMPACT / EXPORT
+   ========================================================= */
+  const PALETTE_VIEWS = ["skills","next","proposals","matrix","kanban","deps","acceptance","tasks","projects","agents","blockers","workspace"];
+  let palSel = 0, palItems = [];
+  function openPalette(){
+    let pal = document.getElementById("palette");
+    if(!pal){
+      pal = document.createElement("div");
+      pal.id = "palette";
+      pal.className = "palette";
+      pal.innerHTML = `<div class="palette-box">
+        <input class="palette-input" id="palette-input" placeholder="> действие или карточка… (Esc — закрыть)">
+        <div class="palette-list" id="palette-list"></div>
+      </div>`;
+      document.body.appendChild(pal);
+      document.getElementById("palette-input").addEventListener("input", onPaletteInput);
+      document.getElementById("palette-input").addEventListener("keydown", onPaletteKey);
+      pal.addEventListener("click", e=>{ if(e.target === pal) closePalette(); });
+    }
+    const inp = document.getElementById("palette-input");
+    inp.value = "";
+    pal.classList.add("open");
+    renderPalette("");
+    setTimeout(()=> inp.focus(), 30);
+  }
+  function closePalette(){ const p = document.getElementById("palette"); if(p) p.classList.remove("open"); }
+  function palBase(){
+    const items = PALETTE_VIEWS.map(v => ({ type:"view", label:`View: ${v.toUpperCase()}`, view:v }));
+    const cards = Object.entries(REGISTRY.cards || {}).map(([cid,c]) =>
+      ({ type:"card", label:`${cid} — ${c.title}`, cid }));
+    const projects = (SNAPSHOT && Array.isArray(SNAPSHOT.projects)) ? SNAPSHOT.projects.filter(p=>p.repo).map(p =>
+      ({ type:"ws", label:`Workspace: ${p.id}`, project:p.id })) : [];
+    const actions = [
+      { type:"act", label:"Action: Refresh (re-fetch snapshot)", act:()=>refreshData() },
+      { type:"act", label:"Action: Toggle AUTO-polling", act:()=>setPolling(!REFRESH.on) },
+      { type:"act", label:"Action: Export view → Markdown", act:()=>exportView("markdown") },
+      { type:"act", label:"Action: Export view → JSON", act:()=>exportView("json") },
+      { type:"act", label:"Action: Toggle compact mode", act:toggleCompact },
+    ];
+    return [...items, ...cards, ...projects, ...actions];
+  }
+  function renderPalette(q){
+    const list = document.getElementById("palette-list");
+    const items = palBase();
+    const f = q.trim().toLowerCase();
+    palItems = f ? items.filter(i => i.label.toLowerCase().includes(f)) : items.slice(0, 40);
+    palSel = 0;
+    if(!palItems.length){ list.innerHTML = `<div class="palette-item"><span class="ph">нет совпадений</span></div>`; return; }
+    list.innerHTML = palItems.map((i, idx) =>
+      `<div class="palette-item ${idx===0?"sel":""}" data-pi="${idx}">
+        <span>${esc(i.label)}</span><span class="ph">${i.type==="view"?"view":i.type==="card"?"card":i.type==="ws"?"workspace":"action"}</span>
+      </div>`).join("");
+    list.querySelectorAll("[data-pi]").forEach(el=>{
+      el.addEventListener("click", ()=> { palSel = +el.getAttribute("data-pi"); palCommit(); });
+    });
+  }
+  function onPaletteInput(e){ renderPalette(e.target.value); }
+  function onPaletteKey(e){
+    if(e.key === "Escape"){ closePalette(); return; }
+    if(e.key === "ArrowDown"){ e.preventDefault(); palSel = Math.min(palSel+1, palItems.length-1); syncPalSel(); }
+    else if(e.key === "ArrowUp"){ e.preventDefault(); palSel = Math.max(palSel-1, 0); syncPalSel(); }
+    else if(e.key === "Enter"){ e.preventDefault(); palCommit(); }
+  }
+  function syncPalSel(){
+    const items = document.querySelectorAll("#palette-list [data-pi]");
+    items.forEach((el,i)=> el.classList.toggle("sel", i===palSel));
+    items[palSel] && items[palSel].scrollIntoView({ block:"nearest" });
+  }
+  function palCommit(){
+    const it = palItems[palSel];
+    if(!it) return closePalette();
+    closePalette();
+    if(it.type === "view") setView(it.view);
+    else if(it.type === "card"){ renderCardPanel(it.cid); setView("next"); }
+    else if(it.type === "ws") handleAction("workspace-open", { project: it.project });
+    else if(it.act) it.act();
+  }
+
+  /* full-screen inspector */
+  function openInspector(cid){
+    const c = REGISTRY.cards[cid];
+    if(!c) return;
+    let ov = document.getElementById("inspect-ov");
+    if(!ov){
+      ov = document.createElement("div");
+      ov.id = "inspect-ov";
+      ov.className = "inspect-ov";
+      ov.innerHTML = `<div class="inspect-box" id="inspect-box"></div>`;
+      document.body.appendChild(ov);
+      ov.addEventListener("click", e=>{ if(e.target === ov) ov.classList.remove("open"); });
+    }
+    const col = LIFECYCLE_COLOR[c.lifecycle] || "#666";
+    document.getElementById("inspect-box").innerHTML = `
+      <h2 style="color:var(--amber)">${esc(cid)} <span style="color:${col}">${esc(c.lifecycle)}</span></h2>
+      <div style="margin:6px 0 12px;opacity:.85">${esc(c.title)}</div>
+      ${cardBodyHtml(cid, c)}
+      <div style="margin-top:14px">${projectButtons(c.project || "")} <button class="act-btn" onclick="document.getElementById('inspect-ov').classList.remove('open')">✕ Закрыть</button></div>`;
+    ov.classList.add("open");
+  }
+  function cardBodyHtml(cid, c){
+    const blocksArr = Object.entries(REGISTRY.cards || {}).filter(([ ,oc]) => (oc.depends_on||[]).includes(cid)).map(([oc])=>oc).sort();
+    const ni = nextInfo(cid, c);
+    const dep = (c.depends_on||[]).map(d=>`<span class="depchip" data-card="${esc(d)}">${esc(d)}</span>`).join(" ") || "—";
+    const blk = blocksArr.map(b=>`<span class="depchip" data-card="${esc(b)}">${esc(b)}</span>`).join(" ") || "—";
+    const art = (c.artifacts||[]).map(a=>`<div class="link-res" data-link="${esc(a)}" data-mode="nvim">${esc(a)}</div>`).join("") || "—";
+    const col = LIFECYCLE_COLOR[c.lifecycle] || "#666";
+    return `
+      <div class="sect"><h3>Next step</h3><span class="na-dot" style="color:${col}">●</span> ${esc(ni.next)}${(ni.reasons||[]).map(r=>`<div class="bad" style="color:#ff6b6b">${esc(r)}</div>`).join("")}</div>
+      <div class="sect"><h3>Контур</h3>
+        <div class="row"><span class="k">Owner</span><span class="v">${esc(c.owner)}</span></div>
+        <div class="row"><span class="k">Priority</span><span class="v">${esc(c.priority||"—")}</span></div>
+        <div class="row"><span class="k">Project</span><span class="v">${esc(c.project||"ecosystem-wide")}</span></div>
+        <div class="row"><span class="k">Depends on</span><span class="v">${dep}</span></div>
+        <div class="row"><span class="k">Blocks</span><span class="v">${blk}</span></div>
+      </div>
+      <div class="sect"><h3>Acceptance</h3><div>${linkify(c.acceptance)}</div></div>
+      <div class="sect"><h3>Evidence</h3><div style="margin-bottom:4px">${art}</div>
+        ${(c.tasks||[]).map(t=>`<span class="tid">${esc(t)} ${taskSection(t)?`<span style="color:var(--amber)">[${esc(taskSection(t))}]</span>`:""}</span>`).join(" ")}</div>
+      <div class="sect"><h3>Review</h3><div>${linkify(c.review)}</div></div>
+      <div class="sect"><h3>Risk / Rollback</h3><div>${linkify(c.risk)}</div><div style="margin-top:4px">${linkify(c.rollback)}</div></div>
+      <div class="sect"><h3>Status note</h3><div>${linkify(c.status_note)}</div></div>`;
+  }
+
+  /* compact mode */
+  function toggleCompact(){
+    document.body.classList.toggle("compact");
+    toast(document.body.classList.contains("compact") ? "compact mode ON" : "compact mode OFF");
+  }
+
+  /* export current view */
+  function exportView(fmt){
+    const view = CURRENT_VIEW;
+    if(view === "skills"){ toast("skills — граф, экспорт только registry"); return; }
+    const raw = document.getElementById("view-wrap");
+    if(!raw){ toast("нечего экспортировать"); return; }
+    if(fmt === "json"){
+      // структура: текущая проекция в JSON (карточки + их readyness)
+      const cards = Object.fromEntries(Object.entries(REGISTRY.cards||{}).filter(([cid,c]) => cardVisible(cid,c)).map(([cid,c]) => [cid, { title:c.title, lifecycle:c.lifecycle, priority:c.priority, owner:c.owner, project:c.project, next:nextInfo(cid,c) }]));
+      copyText(JSON.stringify({ view, exported_at:new Date().toISOString(), cards }, null, 2));
+      toast("экспорт JSON → буфер");
+      return;
+    }
+    // markdown: текстовое извлечение из DOM
+    let md = `# Pip-Boy · ${view.toUpperCase()} · ${new Date().toISOString().slice(0,19)}\n\n`;
+    const el = raw.cloneNode(true);
+    el.querySelectorAll("button, .na-dot, .svc-dot").forEach(b=>b.remove());
+    const text = el.innerText.replace(/\n{3,}/g, "\n\n");
+    md += text.split("\n").map(l => l.trim() ? `> ${l}` : "").join("\n");
+    md += `\n\n*read-only projection · canonical registry.json*`;
+    copyText(md);
+    toast("экспорт Markdown → буфер");
+  }
+
+/* =========================================================
    INIT
    ========================================================= */
 async function init(){
   // plan v2: registry + snapshot first (views work without data.json)
   REGISTRY = await loadRegistry();
   SNAPSHOT = await loadSnapshot();
-  const badge = document.getElementById("data-badge");
-  if(SNAPSHOT){
-    badge.textContent = "STATIC REGISTRY + GENERATED SNAPSHOT · READ-ONLY · LIVE: НЕТ";
-    badge.classList.add("gen");
-    badge.title = "snapshot digest " + SNAPSHOT.meta.input_digest.slice(0,12) + " @ HEAD " + SNAPSHOT.git.head.slice(0,10) + " — детерминированный read-only снимок, не real-time";
-  } else {
-    badge.textContent = "STATIC REGISTRY · READ-ONLY · SNAPSHOT: НЕТ · LIVE: НЕТ";
-    badge.title = "generated/snapshot.json не найден — запусти python3 tools/ecosystem-map/observer.py";
-  }
+  REFRESH.last = new Date();
+  updateDataBadge();
+  updateRefreshInfo();
+  // v6: SSE live подключение (EventSource; polling остаётся fallback)
+  initLive();
+  // v3: live refresh wiring — кнопка ⟳, AUTO-polling, клавиши R/P
+  const bref = document.getElementById("btn-refresh");
+  if(bref) bref.addEventListener("click", refreshData);
+  const bpoll = document.getElementById("btn-poll");
+  if(bpoll) bpoll.addEventListener("click", () => setPolling(!REFRESH.on));
+  document.addEventListener("keydown", e => {
+    const t = e.target;
+    if(t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT")) return;
+    if((e.ctrlKey || e.metaKey) && e.key === "k"){ e.preventDefault(); openPalette(); }
+    else if(e.key === "r" || e.key === "R") refreshData();
+    else if(e.key === "p" || e.key === "P") setPolling(!REFRESH.on);
+    else if(e.key === "Escape") closePalette();
+  });
+  // v5: глобально — открывать inspector по Shift+клик на карточку
+  document.addEventListener("click", e => {
+    const cardEl = e.target.closest ? e.target.closest("[data-card]") : null;
+    if(cardEl && e.shiftKey){ e.preventDefault(); openInspector(cardEl.getAttribute("data-card")); }
+  });
   // view switcher
   document.querySelectorAll(".view-pill").forEach(p=>{
     p.addEventListener("click", ()=> setView(p.getAttribute("data-view")));
   });
   // registry filters (Kanban control plane)
   buildRegFilters();
+
+  // v3: deep-link на view через location.hash (#next / #deps / #kanban …)
+  const applyHashView = () => {
+    const hv = (location.hash || "").replace("#", "").trim();
+    if(hv && document.querySelector(`.view-pill[data-view="${hv}"]`)) setView(hv);
+  };
+  applyHashView();
 
   DATA = await loadData();
   if(!DATA){

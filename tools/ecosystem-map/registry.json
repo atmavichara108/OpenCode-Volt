@@ -133,8 +133,8 @@
       "risk": "Превращение в unverified live-дашборд (claims без observer ingestion)",
       "rollback": "index.html/registry.json — git-файлы; откат к checkpoint e32a51a (v3 multi-view MVP) или к версии T-069 (skills-граф only)",
       "artifacts": ["tools/ecosystem-map/index.html", "tools/ecosystem-map/registry.json", "07-Runbooks/ecosystem-kanban-runbook.md"],
-      "tasks": ["T-121", "T-129"],
-      "status_note": "MVP acceptance подтверждён независимым verifier PASS 2026-08-31 (T-121). Decision-note 2026-08-31: scope расширен до Kanban control plane (master/facet/project Kanban, фильтры, search, dependency/blocker/acceptance/tasks views, runbook) — lifecycle возвращён VERIFY→BUILD. Kanban control plane acceptance подтверждён независимым verifier PASS 2026-08-31 (T-129) — lifecycle → VERIFY. LIVE не заявляется: live-режим — later gate (T-128/ECO-018), OSC8/tmux [проверить]",
+      "tasks": ["T-121", "T-129", "T-136", "T-139", "T-140"],
+      "status_note": "MVP acceptance подтверждён независимым verifier PASS 2026-08-31 (T-121). Decision-note 2026-08-31: scope расширен до Kanban control plane (master/facet/project Kanban, фильтры, search, dependency/blocker/acceptance/tasks views, runbook) — lifecycle возвращён VERIFY→BUILD. Kanban control plane acceptance подтверждён независимым verifier PASS 2026-08-31 (T-129) — lifecycle → VERIFY. Decision-note 2026-09-06 (T-136, апгрейд v3): view NEXT, DEPS-граф, Refresh+polling, hash deep-link, KANBAN readiness-точки; smoke 19/19. Decision-note 2026-09-06 (T-139, v4): PROPOSALS queue, AGENT COCKPIT, ACCEPTANCE DASHBOARD (verdict + LIVE gate). Decision-note 2026-09-06 (T-140, v5): server /action (workspace launcher через внешний tmux, link resolver nvim/browser/tmux, localhost/docker status), command palette Ctrl+K, full-screen inspector Shift+click, compact mode, export view Markdown/JSON; smoke 20/20 node + playwright e2e. Независимый verifier acceptance — pending. LIVE не заявляется: live-режим — later gate (T-128/ECO-018), OSC8/tmux [проверить]",
       "retired": false
     },
     "ECO-007": {
@@ -296,9 +296,12 @@
       "acceptance": "Live-сессия подтверждает видимость tool агенту и успешный вызов (T-127 smoke); без smoke работоспособность не заявляется",
       "risk": "Runtime loading custom tools [проверить]; false claim готовности",
       "rollback": "Удалить .opencode/tools/ecosystem-snapshot.ts; observer CLI остаётся",
-      "artifacts": [".opencode/tools/ecosystem-snapshot.ts", "06-Specs/Vault/mcp-readonly.md"],
-      "tasks": ["T-127"],
-      "status_note": "Файл создан 2026-08-31 (preferred path vs BLOCKED MCP, ECO-008); runtime loading [проверить] — smoke не выполнен; готовность не заявляется",
+      "artifacts": [".opencode/tools/ecosystem-snapshot.ts", "06-Specs/Vault/mcp-readonly.md",
+                    ".opencode/tools/ecosystem-next.ts", ".opencode/tools/ecosystem-blockers.ts",
+                    ".opencode/tools/ecosystem-query.ts", ".opencode/tools/ecosystem-dependencies.ts",
+                    ".opencode/tools/ecosystem-summary.ts", ".opencode/tools/ecosystem-open-workspace.ts"],
+      "tasks": ["T-127", "T-142"],
+      "status_note": "Файл создан 2026-08-31 (preferred path vs BLOCKED MCP, ECO-008). Расширено 2026-09-06 (T-142, v7): +6 custom tools (next/blockers/query/dependencies/summary/open-workspace) поверх Python-бэкенда actions.py (do_next/do_blockers/do_query/do_dependencies, readiness-движок зеркален фронту). Валидация: py_compile + tsc --noEmit OK, Python-выводы корректны. Runtime loading в live-сессии [проверить] — smoke не выполнен, готовность НЕ заявляется.",
       "retired": false
     },
     "ECO-016": {
@@ -342,7 +345,7 @@
       "title": "Pip-Boy live-режим (SSE /event + file.watcher.updated ingestion)",
       "layer": "L4",
       "facets": ["interface"],
-      "lifecycle": "IDEA",
+      "lifecycle": "VERIFY",
       "owner": "librarian",
       "priority": "P3",
       "project": "vault",
@@ -352,9 +355,9 @@
       "acceptance": "SSE /event + file.watcher.updated ingestion подтверждён live smoke; только после этого real-time заявляется",
       "risk": "False real-time claim до ingestion; OSC8/tmux [проверить]",
       "rollback": "Live-режим — отдельная ветка index.html; static/generated остаётся default",
-      "artifacts": ["99-Inbox/vault-upgrade-research-2026-08-02.md", "06-Audits/2026-08-31-ecosystem-upgrade-plan-v2.md"],
-      "tasks": ["T-128"],
-      "status_note": "Later gate (T-128); до реализации real-time не заявляется нигде; SSE//event endpoints подтверждены доками 2026-08-31 (Addendum §7); runtime-поведение в vault-окружении [проверить]",
+      "artifacts": ["99-Inbox/vault-upgrade-research-2026-08-02.md", "06-Audits/2026-08-31-ecosystem-upgrade-plan-v2.md", "tools/ecosystem-map/pipboy.py", "tools/ecosystem-map/index.html"],
+      "tasks": ["T-128", "T-141"],
+      "status_note": "Реализовано 2026-09-06 (T-141, v6): pipboy.py watch_files() хеширует registry+snapshot (2s) → seq bump; GET /event SSE (event: file.watcher.updated + heartbeat :ping каждые 2s, держит idle); фронт initLive() EventSource с polling-fallback (бейдж SSE LIVE/reconnects). Smok: connect→observer→событие PASS (digest совпал с sha256 входов), независимый verifier acceptance — PASS 2026-09-06. НЕ real-time по данным — live-сигнал «файлы изменились»; детерминированный snapshot остаётся источником. OSC8/tmux [проверить].",
       "retired": false
     },
     "ECO-019": {
@@ -648,6 +651,24 @@
       "artifacts": ["01-Reference/mcode-desktop.md", "DEVELOPMENT-ROADMAP.md"],
       "tasks": [],
       "status_note": "2026-09-05: решение Rudra — TUI основное окружение, M Code Desktop — майнинг-станция (P6 #41). Два прохода сделаны (органы движка + токен-экономия); strings-метод проверен; ещё не извлечены: промпты встроенных агентов из app.asar",
+      "retired": false
+    },
+    "ECO-035": {
+      "title": "Capture → intake-сигналы (pipeline в Pip-Boy)",
+      "layer": "L3",
+      "facets": ["knowledge", "routing"],
+      "lifecycle": "BUILD",
+      "owner": "librarian",
+      "priority": "P3",
+      "depends_on": [],
+      "oss_first": { "approved": true, "note": "Детерминированный python-pipeline (stdlib + штатный classify); без внешних сервисов" },
+      "review": "reviewer (детерминизм) + verifier (acceptance: 468 сигналов, digest совпадает при повторе)",
+      "acceptance": "tools/telegram-capture/pipeline.py даёт signals.json: одинаковый captures_all.json → идентичный результат (input_digest); error-категория и дубли не порождают сигналов; карта экосистемы показывает intake-сигналы по проектам",
+      "risk": "Правила relevance/mapping — эвристики, дрейфуют с новыми темами; требуется периодическая калибровка",
+      "rollback": "pipeline.py добавляет только signals.json (read-only к входам); удаление файла возвращает прежний ручной контур",
+      "artifacts": ["tools/telegram-capture/pipeline.py", "tools/telegram-capture/classify.py", "02-Methods/tool-integration-pattern.md"],
+      "tasks": ["T-062", "T-079"],
+      "status_note": "2026-09-06: classify_batch выделен в чистую функцию; pipeline (flatten→classify→relevance→project mapping→upgrade path→signals) даёт 468 сигналов из captures_all.json (совпадает с числом активных постов 2026-07-13); 57 тестов PASS. Интеграция действия capture-run + панель CAPTURE в Pip-Boy — в работе (параллельная сессия правит index.html/actions.py)",
       "retired": false
     }
   },
