@@ -72,7 +72,62 @@ python capture.py --topic Софт --limit 10
 
 - `capture.py` — извлечение непомеченных постов по теме → JSON на stdout.
 - `mark.py` — простановка категорийной реакции на список message_id.
+- `classify.py` — классификатор (детерминированные правила + `classify_batch()`).
+- `pipeline.py` — intake-контур: flatten → classify → relevance → project mapping → upgrade path → signals-артефакт (read-only, deterministic).
+- `inbox_queue.py` — staging-очередь постов (JSONL + flock): append (дедуп по message_id) / remove (атомарно).
+- `watch.py` — userbot-демон: NewMessage → append в очередь в real-time (smoke-gated).
 - `config.py` — конфигурация (env, темы, карта эмодзи).
+
+## Pipeline (intake → signals)
+
+`pipeline.py` превращает сырые посты `captures_all.json` в `signals.json` —
+артефакт, который читает карта экосистемы (tools/ecosystem-map) для отображения
+кандидатов апгрейда по проектам.
+
+```bash
+python pipeline.py --input captures_all.json --output signals.json
+python pipeline.py --input captures_all.json --dry-run   # печать, без записи
+```
+
+Фазы: классификация (`classify_batch`) → relevance scoring (0..10) → маппинг
+категория→проект (dotfiles/SERPlux/dv-hub/vault/new) → upgrade path → сортировка
+сигналов. `error`-категория сигнала не даёт. Артефакт несёт `input_digest`
+(sha256 канонического JSON) — одинаковый вход даёт идентичный выход.
+
+Гарантии pipeline: read-only (пишет только собственный output), no network,
+no commits, мутация входов отсутствует.
+
+## Живой слив (не накапливать группу)
+
+Чтобы `@inbox_tools` не копила непомеченные посты, есть слои real-time и pull.
+Оба пишут в staging-очередь `inbox-queue.jsonl`, откуда пост классифицируется,
+помечается реакцией и удаляется за один цикл.
+
+### Демон (real-time)
+
+```bash
+python watch.py --smoke          # слушать NewMessage и сливать в очередь
+python watch.py --smoke --once   # один pull + выход
+```
+
+`watch.py` подписывается на `events.NewMessage(chats="@inbox_tools")`, каждый
+непомеченный пост сериализует через `post_data()` (с `topic`) и дописывает в
+очередь. Работает постоянно — под `systemd --user`, держит Tor/сессию.
+
+### Таймер (pull, fallback)
+
+Каждые N минут `capture.py` уже идемпотентен (ставит 👍, повторно не дёргает).
+Связка для отставания: `capture.py --topic <T>` → `inbox_queue.append` →
+`pipeline.py --input inbox-queue.jsonl`.
+
+```bash
+python inbox_queue.py count
+python inbox_queue.py ls --limit 10
+cat posts.json | python inbox_queue.py append
+python inbox_queue.py remove --ids 100 101
+```
+
+`CAPTURE_QUEUE` (env) переопределяет путь очереди (для тестов/отдельных потоков).
 
 ## Безопасность
 
@@ -85,3 +140,5 @@ python capture.py --topic Софт --limit 10
 - Направление: R-006 Linux UX Lab
 - Команда: `/capture`
 - Потребитель: [[99-Inbox]]
+- Пайплайн → signals: tools/ecosystem-map (панель CAPTURE / intake-сигналы)
+- Живой слив: watch.py (демон) + inbox_queue.py (очередь) + systemd timer (fallback)

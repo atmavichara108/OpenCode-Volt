@@ -24,7 +24,21 @@ import re
 from datetime import date
 from pathlib import Path
 
-SRC = Path(__file__).resolve().parent / "captures_all.json"
+def _resolve_captures() -> Path:
+    """Локализовать captures_all.json (устойчиво к date-suffixing).
+
+    Если канонический файл отсутствует (активный сбор переименовал его в
+    captures_all-<date>.json), берём последний датированный снимок.
+    """
+    d = Path(__file__).resolve().parent
+    canonical = d / "captures_all.json"
+    if canonical.exists():
+        return canonical
+    dated = sorted(d.glob("captures_all-*.json"))
+    return dated[-1] if dated else canonical
+
+
+SRC = _resolve_captures()
 OUT = Path(__file__).resolve().parent / "captures_classified.json"
 
 
@@ -118,9 +132,9 @@ def is_error_content(norm: str, full: str) -> bool:
         return True
     if len(norm) < 3:
         return True
-    # только URL без описания
+    # только URL без описания (голый github-URL — НЕ ошибка: из него извлечётся repo)
     if len(norm) < 60 and re.fullmatch(r"https?://\S+", low):
-        return True
+        return "github.com" not in (full or "").lower()
     # шпаргалка-стубы
     if "Шпаргалка" in norm and "github.com" not in full and len(norm) < 30:
         return True
@@ -386,26 +400,28 @@ def text_signature(text: str) -> str:
 
 # --- Главный цикл -------------------------------------------------------------
 
-def main():
-    with SRC.open(encoding="utf-8") as f:
-        data = json.load(f)
+def classify_batch(flat):
+    """Чистая функция: классифицирует плоский список постов → records + сводка.
 
-    topics_order = list(data["topics"].keys())
-    flat = []
-    for topic in topics_order:
-        for p in data["topics"][topic]:
-            flat.append({**p, "topic": topic})
+    Аргумент `flat` — list[dict] с ключами `text` и `topic` (и любыми доп.).
+    Возвращает dict:
+        posts        — list записей {message_id, topic, title, lang, category,
+                       repo, reason}
+        summary      — счётчики категорий
+        topic_counts — счётчики по темам (в порядке первого появления)
 
-    assert len(flat) == data["total"] == 584, f"count mismatch: {len(flat)}"
-
+    Детерминирована на входе: без wall-clock, без ввода/вывода. Дубликаты по
+    repo и по тексту помечаются error (логика совпадает со старым main()).
+    """
     seen_repos = set()
     seen_texts = set()
     records = []
     summary = {"dotfiles": 0, "vibeos": 0, "new": 0, "serplux": 0, "error": 0}
-    topic_counts = {t: 0 for t in topics_order}
+    topic_counts = {}
 
     for p in flat:
         topic = p["topic"]
+        topic_counts[topic] = topic_counts.get(topic, 0) + 1
         full = p["text"] or ""
         norm = normalize(full)
         title = extract_title(full)
@@ -454,26 +470,49 @@ def main():
             "reason": reason,
         })
         summary[cat] += 1
-        topic_counts[topic] += 1
+
+    return {"posts": records, "summary": summary, "topic_counts": topic_counts}
+
+
+def main():
+    with SRC.open(encoding="utf-8") as f:
+        data = json.load(f)
+
+    # Вход бывает трёх форм:
+    #  - dict {topics: {topic: [post...]}, total} — старый captures_all.json;
+    #  - list [post...] — новый формат активного сбора (уже с полем topic);
+    #  - иначе — плоский dict-пост (не ломаем, отдаём как есть).
+    if isinstance(data, dict) and "topics" in data:
+        topics_order = list(data["topics"].keys())
+        flat = []
+        for topic in topics_order:
+            for p in data["topics"][topic]:
+                flat.append({**p, "topic": topic})
+    elif isinstance(data, list):
+        flat = data
+    else:
+        flat = [data]
+
+    batch = classify_batch(flat)
 
     result = {
         "classified_date": str(date.today()),
-        "total": len(records),
-        "summary": summary,
-        "topics": topic_counts,
-        "posts": records,
+        "total": len(batch["posts"]),
+        "summary": batch["summary"],
+        "topics": batch["topic_counts"],
+        "posts": batch["posts"],
     }
 
     with OUT.open("w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
 
     print(f"Wrote {OUT}")
-    print(f"Total posts: {len(records)}")
+    print(f"Total posts: {len(batch['posts'])}")
     print("Summary:")
-    for k, v in summary.items():
+    for k, v in batch["summary"].items():
         print(f"  {k}: {v}")
     print("Topics:")
-    for k, v in topic_counts.items():
+    for k, v in batch["topic_counts"].items():
         print(f"  {k}: {v}")
 
 
