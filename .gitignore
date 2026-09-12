@@ -37,3 +37,6 @@ tools/ecosystem-map/generated/
 
 # Credentials (корень волта)
 .env
+tools/telegram-capture/signals.json
+tools/telegram-capture/signals-*.json
+tools/telegram-capture/inbox-queue.jsonl
