@@ -343,6 +343,48 @@
   .link-res{color:var(--amber);text-decoration:none;border-bottom:1px dotted var(--amber);cursor:pointer}
   .link-res:hover{color:var(--gold);background:#2a1f00}
 
+  /* ===== v8/B: HUD БОРТОВАЯ ПАНЕЛЬ — виджетная сетка (layout как данные) ===== */
+  .hud-wrap{padding:10px 14px;overflow-y:auto;min-height:0}
+  .hud-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(120px,auto);gap:10px}
+  .hud-w{border:1px solid var(--border);border-radius:3px;background:#0a1208;padding:8px 10px;overflow:hidden;display:flex;flex-direction:column;min-height:0;
+         transition:box-shadow .15s}
+  .hud-w:hover{border-color:var(--green);box-shadow:0 0 10px rgba(0,255,65,.15)}
+  .hud-w.mini{grid-column:span 3}
+  .hud-w.normal{grid-column:span 4}
+  .hud-w.wide{grid-column:span 6}
+  .hud-w.full{grid-column:span 12}
+  .hud-w.tall{grid-row:span 2}
+  .hud-head{display:flex;align-items:center;gap:6px;margin-bottom:6px;flex:none}
+  .hud-head .t{font-size:10px;color:var(--amber);letter-spacing:2px;text-shadow:0 0 4px rgba(255,176,0,.5);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .hud-head .btn{background:transparent;border:1px solid var(--border);color:var(--grey);font-family:inherit;font-size:8px;padding:1px 5px;cursor:pointer;border-radius:2px}
+  .hud-head .btn:hover{color:var(--amber);border-color:var(--amber)}
+  .hud-body{flex:1;min-height:0;overflow-y:auto;font-size:11px}
+  .hud-w.mini .hud-body{font-size:10px}
+  /* виджеты */
+  .hud-stat-row{display:flex;gap:6px;flex-wrap:wrap}
+  .hud-stat{flex:1;min-width:64px;border:1px solid var(--border);border-radius:2px;background:#041204;padding:6px;text-align:center}
+  .hud-stat .n{font-size:22px;color:var(--amber);text-shadow:0 0 8px rgba(255,176,0,.6)}
+  .hud-stat .l{font-size:8px;color:var(--grey);letter-spacing:1px}
+  .hud-stat.ok .n{color:var(--green);text-shadow:0 0 8px rgba(0,255,65,.6)}
+  .hud-stat.bad .n{color:#ff6b6b;text-shadow:0 0 8px rgba(255,107,107,.6)}
+  .hud-mini-kan{display:flex;gap:4px;align-items:flex-end;height:100%}
+  .hud-mini-col{flex:1;background:#041204;border:1px solid var(--border);border-radius:2px;padding:3px;overflow:hidden}
+  .hud-mini-col h5{font-size:7px;color:var(--grey);letter-spacing:1px;margin-bottom:3px;text-align:center}
+  .hud-mini-card{font-size:9px;color:var(--green);border-top:2px solid var(--border);padding:2px 3px;margin-top:2px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .hud-mini-card:hover{color:var(--amber)}
+  .hud-feed{display:flex;flex-direction:column;gap:4px}
+  .hud-feed .fi{border-left:2px solid var(--border);padding:2px 6px;font-size:10px;background:#041204}
+  .hud-feed .fi .ts{color:var(--grey);font-size:8px}
+  .hud-feed .fi.updated{border-left-color:var(--green)}
+  .hud-spark{height:34px;width:100%}
+  .hud-next-item{border:1px solid var(--border);border-left:3px solid var(--border);border-radius:2px;background:#041204;padding:3px 7px;margin-bottom:4px;font-size:10px;display:flex;gap:6px;align-items:center;cursor:pointer}
+  .hud-next-item:hover{background:#0a2a0a}
+  .hud-block-item{border:1px solid #3a1010;border-left:3px solid #ff6b6b;border-radius:2px;background:#120404;padding:3px 7px;margin-bottom:4px;font-size:10px}
+  .hud-preset-row{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+  .hud-preset{background:#031603;border:1px solid var(--border);color:var(--green);font-family:inherit;font-size:10px;letter-spacing:1px;padding:3px 10px;cursor:pointer;border-radius:2px}
+  .hud-preset:hover{border-color:var(--amber);color:var(--amber)}
+  .hud-preset.active{border-color:var(--amber);color:var(--amber);background:#2a1f00}
+
   /* COMMAND PALETTE */
   .palette{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:10000;display:none;align-items:flex-start;justify-content:center;padding-top:14vh}
   .palette.open{display:flex}
@@ -390,6 +432,7 @@
         <label>VIEW</label>
         <div class="view-pills" id="view-pills">
           <button class="view-pill active" data-view="skills">SKILLS</button>
+          <button class="view-pill" data-view="hud">HUD</button>
           <button class="view-pill" data-view="next">NEXT</button>
           <button class="view-pill" data-view="proposals">PROPOSALS</button>
           <button class="view-pill" data-view="matrix">MATRIX</button>
@@ -573,6 +616,8 @@ const STATE_COLOR = {
     updateRefreshInfo();
     if(CURRENT_VIEW !== "skills") renderView(CURRENT_VIEW);
     updateStats();
+    // v8/B: refresh также фиксируется в live-фиде HUD
+    hudFeedPush("данные обновлены (registry+snapshot)", "refresh");
   }
   function setPolling(on){
     REFRESH.on = !!on;
@@ -601,10 +646,15 @@ const STATE_COLOR = {
         try{
           const d = JSON.parse(e.data);
           toast("🔄 файлы изменились (digest " + (d.digest||"").slice(0,8) + ") — обновляю");
+          hudFeedPush("файлы изменились · digest " + (d.digest||"").slice(0,8), "file.watcher.updated");
           refreshData();
         }catch(err){ refreshData(); }
       });
-      es.onopen = () => { LIVE.on = true; badgeLivelink(); };
+      es.onopen = () => {
+        LIVE.on = true;
+        badgeLivelink();
+        hudFeedPush("SSE live подключено", "open");
+      };
       es.onerror = () => {
         // EventSource автопереподключается; считаем попытки
         LIVE.reconnectCount = (LIVE.reconnectCount || 0) + 1;
@@ -1091,6 +1141,193 @@ const STATE_COLOR = {
     return html;
   }
 
+  /* ===== v8/B: HUD — БОРТОВАЯ ПАНЕЛЬ (widget grid, layout as data) ===== */
+  const HUD = {
+    widgets: {},   // id -> {render(mode)|html, size, title}
+    layout: [],    // порядок [{id, size}]
+  };
+  function hudReg(id, title, size, render){
+    HUD.widgets[id] = { id, title, size, render };
+    if(!HUD.layout.find(w => w.id === id)) HUD.layout.push({ id, size });
+  }
+  function loadHudLayout(){
+    try{
+      const s = JSON.parse(localStorage.getItem(STORE_KEY + "-hud") || "null");
+      if(s && Array.isArray(s.layout)){
+        HUD.layout = s.layout.filter(w => HUD.widgets[w.id]);
+      }
+    }catch(e){}
+  }
+  function saveHudLayout(){
+    localStorage.setItem(STORE_KEY + "-hud", JSON.stringify({ layout: HUD.layout }));
+  }
+  function hudResize(id){
+    const order = ["mini","normal","wide","full"];
+    const w = HUD.widgets[id];
+    const li = HUD.layout.find(x => x.id === id);
+    li.size = order[(order.indexOf(li.size) + 1) % order.length];
+    w.size = li.size;
+    saveHudLayout();
+    renderHUD();
+  }
+  /* --- виджеты --- */
+  function wSummary(){
+    const cards = Object.values(REGISTRY.cards || {});
+    const by = {};
+    for(const c of cards) by[c.lifecycle] = (by[c.lifecycle] || 0) + 1;
+    const ready = cards.filter(c => !c.retired && c.lifecycle !== "RETIRED" && ["APPROVED","DESIGN","RESEARCH","IDEA"].includes(c.lifecycle)).length;
+    const verify = by.VERIFY || 0;
+    const blocked = cards.filter(c => /BLOCKED/i.test(c.status_note || "")).length;
+    const drift = (SNAPSHOT && Array.isArray(SNAPSHOT.drift_signals)) ? SNAPSHOT.drift_signals.length : 0;
+    const stat = (label, n, cls) => `<div class="hud-stat ${cls||""}"><div class="n">${n}</div><div class="l">${label}</div></div>`;
+    return `<div class="hud-stat-row">
+      ${stat("CARDS", cards.length)}
+      ${stat("READY", ready, "ok")}
+      ${stat("VERIFY", verify)}
+      ${stat("BLOCKED", blocked, blocked ? "bad" : "")}
+      ${stat("DRIFT", drift, drift ? "bad" : "")}
+    </div>`;
+  }
+  function wNext(){
+    const cards = Object.entries(REGISTRY.cards || {})
+      .filter(([cid,c]) => nextInfo(cid,c).state === "ready" && !c.retired && c.lifecycle !== "RETIRED")
+      .sort(naSort)
+      .slice(0, 8);
+    return cards.map(([cid,c]) => {
+      const col = LIFECYCLE_COLOR[c.lifecycle] || "#666";
+      return `<div class="hud-next-item" data-card="${esc(cid)}" style="border-left-color:${col}">
+        <span style="color:${col}">${esc(cid)}</span>
+        <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(c.title)}</span>
+        ${c.priority ? `<span class="chip" style="color:${col};border-color:${col}">${esc(c.priority)}</span>` : ""}
+      </div>`;
+    }).join("") || '<span class="dim">— нет READY —</span>';
+  }
+  function wBlocked(){
+    const cards = Object.entries(REGISTRY.cards || {})
+      .filter(([cid,c]) => nextInfo(cid,c).state === "blocked")
+      .sort(naSort)
+      .slice(0, 6);
+    return cards.map(([cid,c]) => {
+      const i = nextInfo(cid,c);
+      return `<div class="hud-block-item" data-card="${esc(cid)}">
+        <b>${esc(cid)}</b> ${esc(c.title)}
+        <div class="dim" style="font-size:9px">${esc((i.reasons||[]).join(" · ").slice(0,90))}</div>
+      </div>`;
+    }).join("") || '<span class="dim">— заблокированных нет —</span>';
+  }
+  function wKanban(){
+    const stages = ["DESIGN","APPROVED","BUILD","VERIFY"];
+    return `<div class="hud-mini-kan">${stages.map(st => {
+      const cards = Object.entries(REGISTRY.cards || {}).filter(([ ,c]) => c.lifecycle === st && !c.retired).sort(naSort);
+      const col = LIFECYCLE_COLOR[st] || "#666";
+      return `<div class="hud-mini-col">
+        <h5 style="color:${col}">${st} ${cards.length}</h5>
+        ${cards.slice(0,5).map(([cid,c]) => `<div class="hud-mini-card" data-card="${esc(cid)}" title="${esc(c.title)}">${esc(cid)}</div>`).join("")}
+      </div>`;
+    }).join("")}</div>`;
+  }
+  function wLive(){
+    const events = HUD.feed || [];
+    let head = `<div class="dim" style="font-size:9px;margin-bottom:4px">SSE: ${LIVE.on
+      ? '<span style="color:var(--green)">LIVE · reconnects ' + (LIVE.reconnectCount || 0) + '</span>'
+      : '<span style="color:#ff6b6b">OFFLINE (polling fallback)</span>'}</div>`;
+    if(!events.length) return head + '<span class="dim">— событий пока нет; SSE подключается при старте —</span>';
+    return head + `<div class="hud-feed">${events.slice(0, 12).map(e => `
+      <div class="fi ${e.type === "file.watcher.updated" ? "updated" : ""}">
+        <span class="ts">${e.ts}</span> ${esc(e.text)}
+      </div>`).join("")}</div>`;
+  }
+  function wCaptured(){
+    // сигналы капчура через /action capture-scan (read-only список)
+    return `<div id="hud-cap-list"><span class="dim">загрузка…</span></div>`;
+  }
+  function wDeps(){
+    // мини-карта критического пути (топ-5 по числу держащих)
+    const blocks = {};
+    for(const [cid,c] of Object.entries(REGISTRY.cards||{})){
+      for(const d of (c.depends_on||[])) (blocks[d] = blocks[d]||[]).push(cid);
+    }
+    const cards = Object.entries(REGISTRY.cards || {}).filter(([cid,c]) => !(c.retired||c.lifecycle==="RETIRED"));
+    const holds = cards.map(([cid,c]) => {
+      const seen = new Set();
+      const stack = [...(blocks[cid]||[])];
+      while(stack.length){
+        const x = stack.pop();
+        if(seen.has(x)) continue;
+        seen.add(x);
+        (blocks[x]||[]).forEach(y => stack.push(y));
+      }
+      return {cid, n: seen.size, life: c.lifecycle};
+    }).filter(x => x.n > 0).sort((a,b) => b.n - a.n).slice(0, 5);
+    return holds.map(h => {
+      const col = LIFECYCLE_COLOR[h.life] || "#666";
+      return `<div class="hud-next-item" data-card="${esc(h.cid)}" style="border-left-color:${col}">
+        <span style="color:${col}">${esc(h.cid)}</span>
+        <span class="dim" style="flex:1">держит</span>
+        <b style="color:${col}">${h.n}</b>
+      </div>`;
+    }).join("") || '<span class="dim">— все зависимости закрыты —</span>';
+  }
+  function hudInitWidgets(){
+    hudReg("summary", "STATE", "mini", wSummary);
+    hudReg("next", "NEXT · READY", "normal", wNext);
+    hudReg("blocked", "BLOCKED", "normal", wBlocked);
+    hudReg("kanban", "MINI-KANBAN", "normal", wKanban);
+    hudReg("live", "LIVE FEED", "wide", wLive);
+    hudReg("captured", "CAPTURE · SIGNALS", "normal", wCaptured);
+    hudReg("deps", "CRITICAL PATH", "mini", wDeps);
+  }
+  function renderHUD(){
+    const vw = document.getElementById("view-wrap");
+    const presets = [
+      { id:"morning", label:"УТРО", layout:[["summary","mini"],["next","normal"],["blocked","normal"],["kanban","normal"],["live","wide"],["deps","mini"],["captured","full"]] },
+      { id:"focus",   label:"ФОКУС", layout:[["next","wide"],["blocked","normal"],["deps","normal"],["summary","mini"],["live","mini"],["kanban","wide"],["captured","normal"]] },
+      { id:"triage",  label:"ТРИАЖ", layout:[["blocked","wide"],["next","wide"],["summary","normal"],["deps","normal"],["kanban","normal"],["live","normal"],["captured","wide"]] },
+    ];
+    let html = `<div class="hud-preset-row">${presets.map(p =>
+      `<button class="hud-preset" data-preset="${p.id}" title="Пресет ${p.label}">${p.label}</button>`).join("")}
+      <span class="dim" style="align-self:center;margin-left:6px;font-size:9px">кнопка ▢ в шапке виджета — resize mini→normal→wide→full</span></div>`;
+    html += `<div class="hud-grid">${HUD.layout.map(li => {
+      const w = HUD.widgets[li.id];
+      if(!w) return "";
+      return `<div class="hud-w ${li.size}" data-hud="${li.id}">
+        <div class="hud-head"><span class="t">${esc(w.title)}</span>
+          <button class="btn" data-resize="${li.id}" title="resize">▢</button></div>
+        <div class="hud-body">${w.render()}</div>
+      </div>`;
+    }).join("")}</div>`;
+    vw.innerHTML = html;
+    // wire
+    vw.querySelectorAll("[data-resize]").forEach(b => b.addEventListener("click", () => hudResize(b.getAttribute("data-resize"))));
+    vw.querySelectorAll("[data-card]").forEach(el => el.addEventListener("click", () => renderCardPanel(el.getAttribute("data-card"))));
+    vw.querySelectorAll("[data-preset]").forEach(b => b.addEventListener("click", () => {
+      const p = presets.find(x => x.id === b.getAttribute("data-preset"));
+      if(!p) return;
+      HUD.layout = p.layout.filter(([id]) => HUD.widgets[id]).map(([id, size]) => ({ id, size }));
+      saveHudLayout();
+      renderHUD();
+    }));
+    syncWorkspaceStatus();
+    hudSyncCapture();
+  }
+  async function hudSyncCapture(){
+    const el = document.getElementById("hud-cap-list");
+    if(!el) return;
+    const d = await callAction("capture-scan", {});
+    if(!d || !d.ok){ el.innerHTML = `<span class="dim">capture-scan недоступен</span>`; return; }
+    const sigs = (d.signals || []).slice(0, 8);
+    el.innerHTML = (sigs.length ? sigs.map(s =>
+      `<div class="fi updated" style="margin-bottom:3px"><b>${esc(s.title||"")}</b>
+        <div class="dim" style="font-size:9px">${esc((s.repo||"").replace("https://github.com/",""))}${s.lang ? " · " + esc(s.lang) : ""} · rel=${esc(s.relevance)}</div></div>`).join("")
+      : `<span class="dim">сигналов нет</span>`)
+      + `<div class="dim" style="margin-top:3px">total: ${esc(d.total_signals ?? "—")} · digest ${esc((d.digest||"").slice(0,8))}</div>`;
+  }
+  function hudFeedPush(text, type){
+    HUD.feed = HUD.feed || [];
+    HUD.feed.unshift({ ts: new Date().toTimeString().slice(0,8), text, type: type||"" });
+    HUD.feed = HUD.feed.slice(0, 30);
+  }
+
   function setView(view){
     CURRENT_VIEW = view;
     document.querySelectorAll(".view-pill").forEach(p=>{
@@ -1123,6 +1360,7 @@ const STATE_COLOR = {
       vw.innerHTML = `<h2 class="vtitle">❌ REGISTRY</h2><div class="no-snapshot">registry.json не найден — запусти через локальный HTTP-сервер из tools/ecosystem-map/.</div>`;
       return;
     }
+    if(view === "hud") { renderHUD(); return; }
     if(view === "next") vw.innerHTML = renderNextAction();
     else if(view === "proposals") vw.innerHTML = renderProposals();
     else if(view === "matrix") vw.innerHTML = renderMatrix();
@@ -2268,6 +2506,7 @@ function recomputeAndRedraw(){
   function closePalette(){ const p = document.getElementById("palette"); if(p) p.classList.remove("open"); }
   function palBase(){
     const items = PALETTE_VIEWS.map(v => ({ type:"view", label:`View: ${v.toUpperCase()}`, view:v }));
+    items.unshift({ type:"view", label:"View: HUD (БОРТОВАЯ ПАНЕЛЬ v8)", view:"hud" });
     const cards = Object.entries(REGISTRY.cards || {}).map(([cid,c]) =>
       ({ type:"card", label:`${cid} — ${c.title}`, cid }));
     const projects = (SNAPSHOT && Array.isArray(SNAPSHOT.projects)) ? SNAPSHOT.projects.filter(p=>p.repo).map(p =>
@@ -2405,6 +2644,11 @@ async function init(){
   updateRefreshInfo();
   // v6: SSE live подключение (EventSource; polling остаётся fallback)
   initLive();
+  // v8/B: HUD widget registry + сохранённый layout
+  hudInitWidgets();
+  loadHudLayout();
+  // SSE-события → HUD live-фид
+  HUD.feed = [];
   // v3: live refresh wiring — кнопка ⟳, AUTO-polling, клавиши R/P
   const bref = document.getElementById("btn-refresh");
   if(bref) bref.addEventListener("click", refreshData);

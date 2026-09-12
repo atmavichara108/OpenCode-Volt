@@ -27,6 +27,9 @@ dist/
 # Telegram capture tool (runtime, не коммитить)
 tools/telegram-capture/.env
 tools/telegram-capture/__pycache__/
+tools/telegram-capture/signals.json
+tools/telegram-capture/signals-*.json
+tools/telegram-capture/inbox-queue.jsonl
 
 # Ecosystem observer (generated snapshots, не коммитить)
 tools/ecosystem-map/generated/
@@ -37,3 +40,4 @@ tools/ecosystem-map/generated/
 
 # Credentials (корень волта)
 .env
+tools/verify-cache/generated/
