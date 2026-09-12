@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>VAULT-OS :: v8-BIS КОМАНДНЫЙ ЦЕНТР (прототип)</title>
+<style>
+:root{
+  --bg:#0a0a0a; --green:#00ff41; --amber:#ffb000; --gold:#FFD700;
+  --grey:#666; --panel:#0d1410; --border:#1a3a1a; --red:#ff6b6b; --blue:#00b4ff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{
+  background:var(--bg); color:var(--green);
+  font-family:"Courier New",Consolas,monospace; font-size:14px; line-height:1.4;
+  text-shadow:0 0 2px rgba(0,255,65,.5);
+}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.12) 0,rgba(0,0,0,.12) 1px,transparent 1px,transparent 3px)}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9998;
+  background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.65) 100%)}
+#app{display:grid;grid-template-rows:auto 1fr auto;height:100vh}
+
+/* header */
+header{border-bottom:2px solid var(--border);padding:6px 12px;display:flex;align-items:center;gap:12px;
+  background:linear-gradient(180deg,#0c1a0c,#0a0a0a)}
+header h1{font-size:15px;letter-spacing:2px;color:var(--amber);text-shadow:0 0 6px rgba(255,176,0,.7)}
+header .focus{color:var(--green);font-size:12px}
+header .focus b{color:var(--amber)}
+.hdr-btn{background:#031603;border:1px solid var(--border);color:var(--green);font-family:inherit;
+  font-size:10px;padding:2px 8px;cursor:pointer;border-radius:2px}
+.hdr-btn:hover{border-color:var(--amber);color:var(--amber)}
+.hdr-btn[disabled]{opacity:.35;cursor:default}
+
+/* layout */
+main{display:grid;grid-template-columns:250px 1fr 300px;min-height:0;overflow:hidden}
+#dock{border-right:2px solid var(--border);background:var(--panel);overflow-y:auto;padding:10px}
+#center{overflow-y:auto;padding:14px 18px;min-width:0}
+#ctx{border-left:2px solid var(--border);background:var(--panel);overflow-y:auto;padding:10px}
+
+/* statusbar */
+#sbar{border-top:2px solid var(--border);padding:4px 12px;font-size:10px;color:var(--grey);
+  display:flex;gap:14px;background:#050b05}
+#sbar .v{color:var(--green)}
+#sbar .warn{color:var(--amber)}
+#sbar .bad{color:var(--red)}
+
+/* dock */
+.dsec{margin-bottom:12px}
+.dsec h4{font-size:10px;color:var(--amber);letter-spacing:2px;border-bottom:1px solid var(--border);
+  padding-bottom:2px;margin-bottom:6px;cursor:pointer;user-select:none}
+.dsec h4:hover{color:var(--gold)}
+.drow{display:flex;align-items:center;gap:6px;padding:4px 6px;border:1px solid transparent;border-radius:2px;
+  cursor:pointer;font-size:11px;position:relative}
+.drow:hover{border-color:var(--border);background:#041204}
+.drow.active{border-color:var(--amber);background:#2a1f00;color:var(--amber)}
+.drow .dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--grey)}
+.drow .dot.r{background:var(--green);box-shadow:0 0 6px rgba(0,255,65,.7)}
+.drow .dot.y{background:var(--amber)}
+.drow .dot.v{background:var(--blue)}
+.drow .dot.b{background:var(--red);box-shadow:0 0 6px rgba(255,107,107,.6)}
+.drow .name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.drow .cnt{font-size:10px;color:var(--grey)}
+.dbadge{position:absolute;right:-4px;top:-4px;background:var(--amber);color:#000;font-size:8px;
+  padding:0 4px;border-radius:6px;font-weight:bold}
+
+/* center */
+.cfocus{border:1px solid var(--amber);border-radius:4px;background:#041204;padding:14px 16px;
+  box-shadow:0 0 18px rgba(0,255,65,.12)}
+.cfocus .id{font-size:12px;color:var(--amber);letter-spacing:1px}
+.cfocus .title{font-size:17px;color:var(--gold);margin:4px 0 8px;text-shadow:0 0 8px rgba(255,215,0,.4)}
+.cfocus .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.chip{display:inline-block;padding:1px 7px;border:1px solid var(--border);border-radius:2px;font-size:10px}
+.cbtns{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.cbtn{background:#031603;border:1px solid var(--border);color:var(--green);font-family:inherit;
+  font-size:11px;padding:5px 12px;cursor:pointer;border-radius:2px}
+.cbtn:hover{border-color:var(--amber);color:var(--amber);background:#2a1f00}
+.cbtn.primary{border-color:var(--amber);color:var(--amber)}
+.csect{margin:14px 0 8px;font-size:10px;color:var(--amber);letter-spacing:2px;
+  border-bottom:1px solid var(--border);padding-bottom:3px}
+.dep-row{display:flex;gap:6px;flex-wrap:wrap}
+.depchip{display:inline-block;margin:1px 2px;padding:2px 8px;border:1px solid var(--border);
+  border-radius:2px;font-size:10px;cursor:pointer;background:#031603;color:var(--green)}
+.depchip:hover{border-color:var(--green);background:#0a2a0a}
+.depchip.dim{opacity:.55;cursor:default}
+.note{font-size:11px;opacity:.85;white-space:pre-wrap}
+.hint{color:var(--grey);font-size:10px;font-style:italic}
+
+/* ctx panel */
+.xrow{display:flex;justify-content:space-between;font-size:11px;padding:2px 0}
+.xrow .k{opacity:.7}
+.xsec{margin:10px 0 6px;font-size:9px;color:var(--amber);letter-spacing:2px}
+.xitem{border:1px solid var(--border);border-left:3px solid var(--border);border-radius:2px;
+  background:#041204;padding:4px 8px;margin-bottom:4px;font-size:10px;cursor:pointer}
+.xitem:hover{background:#0a2a0a;border-color:var(--green)}
+.xitem .why{color:var(--grey);font-size:9px}
+.sig{border-left:2px solid var(--blue)}
+.sig .repo{color:var(--blue);font-size:9px}
+.sig .acts{display:flex;gap:4px;margin-top:3px}
+.sig .acts button{background:#031603;border:1px solid var(--border);color:var(--grey);font-family:inherit;
+  font-size:8px;padding:1px 5px;cursor:pointer;border-radius:2px}
+.sig .acts button:hover{color:var(--amber);border-color:var(--amber)}
+.sig.read{opacity:.4}
+
+/* keymap overlay */
+.kmap{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:10000;display:none;align-items:center;justify-content:center}
+.kmap.open{display:flex}
+.kmap-box{width:520px;max-width:92vw;background:#031603;border:1px solid var(--amber);border-radius:4px;padding:18px 22px}
+.kmap-box h3{color:var(--amber);letter-spacing:2px;margin-bottom:10px}
+.kmap-row{display:flex;justify-content:space-between;font-size:11px;padding:3px 0}
+.kmap-row b{color:var(--amber)}
+
+.toast{position:fixed;bottom:44px;right:16px;background:#031603;border:1px solid var(--green);
+  color:var(--green);padding:8px 14px;font-size:12px;z-index:10002;border-radius:3px;
+  box-shadow:0 0 16px rgba(0,255,65,.3);opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.show{opacity:1}
+
+.dim{opacity:.55}
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>VAULT-OS<span class="dim"> :: v8-BIS</span></h1>
+    <span class="focus">фокус: <b id="h-focus">—</b></span>
+    <div style="flex:1"></div>
+    <button class="hdr-btn" id="btn-back" disabled title="назад по истории (Alt+←)">◀</button>
+    <button class="hdr-btn" id="btn-fwd" disabled title="вперёд (Alt+→)">▶</button>
+    <button class="hdr-btn" id="btn-keys" title="шпаргалка (?)">?</button>
+    <button class="hdr-btn" id="btn-pal" title="палитра Ctrl+K">⌘K</button>
+  </header>
+
+  <main>
+    <aside id="dock"></aside>
+    <section id="center"></section>
+    <aside id="ctx"></aside>
+  </main>
+
+  <footer id="sbar">
+    <span>SSE <span class="v" id="sb-sse">…</span></span>
+    <span>HEAD <span class="v" id="sb-head">—</span></span>
+    <span>DRIFT <span class="v" id="sb-drift">—</span></span>
+    <span>READY <span class="warn" id="sb-ready">—</span></span>
+    <span style="flex:1"></span>
+    <span>TAB next READY · ←/→ история · ? клавиши</span>
+  </footer>
+</div>
+
+<div class="kmap" id="kmap">
+  <div class="kmap-box">
+    <h3>КЛАВИШИ v8-BIS</h3>
+    <div class="kmap-row"><b>Tab / Shift+Tab</b><span>следующий / предыдущий READY</span></div>
+    <div class="kmap-row"><b>1..4</b><span>проект в доке (vault/SERPlux/dotfiles/dv-hub)</span></div>
+    <div class="kmap-row"><b>← / → (Alt)</b><span>история фокусов назад/вперёд</span></div>
+    <div class="kmap-row"><b>Enter</b><span>действие по умолчанию (⧉ proposal)</span></div>
+    <div class="kmap-row"><b>?</b><span>эта шпаргалка</span></div>
+    <div class="kmap-row"><b>Esc</b><span>закрыть оверлей</span></div>
+    <div style="margin-top:12px;text-align:right"><button class="cbtn" onclick="document.getElementById('kmap').classList.remove('open')">Закрыть</button></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ================= v8-BIS ПРОТОТИП =================
+   Живые данные: registry.json + generated/snapshot.json через текущий
+   pipboy host (127.0.0.1:8123). Read-only: все «действия» — либо
+   копирование текста, либо /action (tmux/nvim/browser). */
+const LC = ["IDEA","RESEARCH","DESIGN","APPROVED","BUILD","REVIEW","VERIFY","LIVE","OBSERVE","IMPROVE","RETIRED"];
+const LCC = {IDEA:"#666",RESEARCH:"#00b4ff",DESIGN:"#aa66ff",APPROVED:"#ff7733",BUILD:"#ffb000",
+  REVIEW:"#ff00aa",VERIFY:"#00ff41",LIVE:"#FFD700",OBSERVE:"#FFD700",IMPROVE:"#ffb000",RETIRED:"#666"};
+const PRI = ["P0","P1","P2","P3","P4"];
+const PROJECTS_ORDER = ["vault","SERPlux","dotfiles","dv-hub"];
+
+let REG=null, SNAP=null, FOCUS=null, HISTORY=[], HIDX=-1, CAPTURED=null, READY_CACHE=[];
+const READ_SIGS = new Set(JSON.parse(localStorage.getItem("v8bis-read-sigs")||"[]"));
+
+const $ = id => document.getElementById(id);
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function toast(m,ms){const t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("show"),ms||2400)}
+function copyText(text){
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(text).catch(f);
+  else f(text);
+  function f(t){const a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy")}catch(e){}a.remove()}
+}
+async function jget(u){try{const r=await fetch(u,{cache:"no-store"});if(!r.ok)return null;return await r.json()}catch(e){return null}}
+async function callAction(op,params){
+  const q=new URLSearchParams({op,...params});
+  try{const r=await fetch("/action?"+q,{cache:"no-store"});return await r.json()}catch(e){return {ok:false,error:e.message}}
+}
+
+/* ---- readiness (зеркало фронта/actions.py) ---- */
+function stageRank(s){return LC.indexOf(s)}
+function frozenTasks(c){const bl=new Set(SNAP?.tasks?.Blocked||[]);const fz=new Set(SNAP?.tasks?.Frozen||[]);
+  return (c.tasks||[]).filter(t=>bl.has(t)||fz.has(t))}
+function depOK(c){
+  const lc=c.lifecycle;const need=lc==="IDEA"||lc==="RESEARCH"?0:lc==="DESIGN"?stageRank("DESIGN"):stageRank("APPROVED");
+  const bad=[];
+  for(const d of (c.depends_on||[])){
+    const dc=REG.cards[d];
+    if(!dc){bad.push(d+" (нет в registry)");continue}
+    if(dc.retired||dc.lifecycle==="RETIRED"){bad.push(d+" (RETIRED)");continue}
+    if(stageRank(dc.lifecycle)<need)bad.push(d+" ("+dc.lifecycle+")");
+  }
+  return [bad.length===0,bad];
+}
+function nextInfo(cid,c){
+  if(c.retired||c.lifecycle==="RETIRED")return{state:"done",reasons:[]};
+  const [ok,badDeps]=depOK(c);
+  const reasons=[];
+  if(!ok)reasons.push("deps: "+badDeps.join(", "));
+  frozenTasks(c).forEach(t=>reasons.push("frozen: "+t));
+  if(/BLOCKED/i.test(c.status_note||""))reasons.push("status_note: BLOCKED");
+  const lc=c.lifecycle;
+  if(["LIVE","OBSERVE","IMPROVE"].includes(lc))return{state:"done",reasons:[]};
+  let state;
+  if(lc==="VERIFY")state=reasons.length?"blocked":"verify";
+  else if(["BUILD","REVIEW"].includes(lc))state=reasons.length?"blocked":"flight";
+  else state=reasons.length?"blocked":"ready";
+  return {state,reasons};
+}
+function priOf(c){return Math.max(0,PRI.indexOf(c.priority))}
+function readyCards(){
+  return Object.entries(REG.cards||{})
+    .filter(([cid,c])=>nextInfo(cid,c).state==="ready")
+    .sort((a,b)=>priOf(a[1])-priOf(b[1])||(a[0]<b[0]?-1:1));
+}
+
+/* ---- ФОКУС / история ---- */
+function setFocus(cid,{push=true}={}){
+  if(!cid||!REG.cards[cid])return;
+  FOCUS=cid;
+  if(push){HISTORY=HISTORY.slice(0,HIDX+1);HISTORY.push(cid);HIDX=HISTORY.length-1}
+  renderAll();
+}
+function histMove(d){
+  const ni=HIDX+d;
+  if(ni<0||ni>=HISTORY.length)return;
+  HIDX=ni;FOCUS=HISTORY[ni];renderAll({push:false});
+}
+function tabReady(dir){
+  const r=readyCards();
+  if(!r.length)return;
+  let i=r.findIndex(([cid])=>cid===FOCUS);
+  i=i<0?0:(i+dir+r.length)%r.length;
+  setFocus(r[i][0]);
+}
+
+/* ---- РЕНДЕР: dock ---- */
+function dotFor(cards){
+  // сводный статус проекта: worst-готовность его карточек
+  const rel=cards.map(([cid,c])=>nextInfo(cid,c)).filter(x=>x.state!=="done");
+  if(!cards.length)return"";
+  if(rel.some(x=>x.state==="blocked"))return"b";
+  if(rel.some(x=>x.state==="verify"))return"v";
+  if(rel.some(x=>x.state==="ready"))return"r";
+  return"y";
+}
+function renderDock(){
+  const byProject={};
+  for(const [cid,c] of Object.entries(REG.cards||{})){
+    if(!c.project)continue;
+    (byProject[c.project]=byProject[c.project]||[]).push([cid,c]);
+  }
+  const projects=(SNAP?.projects||[]);
+  let html=`<div class="dsec"><h4>ПРОЕКТЫ</h4>`;
+  for(const p of projects){
+    const cards=byProject[p.id]||[];
+    const clickable = PROJECTS_ORDER.includes(p.id);
+    html+=`<div class="drow" ${clickable?`data-proj="${esc(p.id)}"`:'data-proj=""'} ${clickable?"":'style="opacity:.45"'} title="${esc(p.kind||"")}">
+      <span class="dot ${dotFor(cards)}"></span><span class="name">${esc(p.id)}</span>
+      <span class="cnt">${cards.length}</span></div>`;
+  }
+  html+=`</div>`;
+  // fresh capture
+  const fresh=(CAPTURED?.signals||[]).filter(s=>!READ_SIGS.has(s.message_id)).slice(0,8);
+  html+=`<div class="dsec"><h4>CAPTURE · NEW ${fresh.length?`<span class="dbadge">${fresh.length}</span>`:""}</h4>`;
+  html+=fresh.length?fresh.map(s=>`<div class="drow" data-sig="${s.message_id}" title="${esc(s.repo||"")}">
+    <span class="dot v"></span><span class="name">${esc(s.title||"")}</span></div>`).join("")
+    :'<div class="dim" style="font-size:10px;padding:4px 6px">— свежих нет —</div>';
+  html+=`</div>`;
+  // agents (кто может работать)
+  html+=`<div class="dsec"><h4>АГЕНТЫ</h4>`;
+  for(const [aid,a] of Object.entries(REG.agents||{})){
+    const owned=Object.values(REG.cards||{}).filter(c=>c.owner===aid&&!c.retired).length;
+    html+=`<div class="drow" title="${esc(a.role||"")}">
+      <span class="dot ${a.status==="confirmed"?"r":a.status==="frozen"?"b":"y"}"></span>
+      <span class="name">${esc(aid)}</span><span class="cnt">${owned}</span></div>`;
+  }
+  html+=`</div>`;
+  $("dock").innerHTML=html;
+  // wire
+  document.querySelectorAll("[data-proj]").forEach(el=>el.addEventListener("click",()=>{
+    const pid=el.getAttribute("data-proj");if(!pid)return;
+    const first=readyCards().find(([cid,c])=>c.project===pid)||Object.entries(REG.cards).find(([cid,c])=>c.project===pid);
+    if(first)setFocus(first[0]);else toast("у проекта нет карточек");
+  }));
+  document.querySelectorAll("[data-sig]").forEach(el=>el.addEventListener("click",()=>{
+    showSig(el.getAttribute("data-sig"));
+  }));
+}
+
+/* ---- РЕНДЕР: center (фокус) ---- */
+function proposalFor(cid,c){
+  const ni=nextInfo(cid,c);
+  const from=c.lifecycle;
+  if(ni.state==="ready"){
+    const to={IDEA:"RESEARCH",RESEARCH:"DESIGN",DESIGN:"APPROVED",APPROVED:"BUILD"}[from];
+    if(to)return`Move ${cid}: ${from} → ${to}\nReason: dependencies satisfied\nApproval required`;
+    return`Verify ${cid}: ${from}\nApproval required`;
+  }
+  if(ni.state==="verify")return`Verify ${cid}: VERIFY → LIVE\nReason: runtime evidence + независимый verifier acceptance\nApproval required`;
+  return null;
+}
+function renderCenter(){
+  const c=REG.cards[FOCUS];
+  if(!c){$("center").innerHTML='<div class="hint">фокус не выбран</div>';return}
+  const ni=nextInfo(FOCUS,c);
+  const col=LCC[c.lifecycle]||"#666";
+  const stLabel={ready:"READY",flight:"IN FLIGHT",verify:"AWAIT VERIFIER",blocked:"BLOCKED",done:"DONE/LIVE"}[ni.state];
+  const stCol={ready:"var(--green)",flight:"var(--amber)",verify:"var(--blue)",blocked:"var(--red)",done:"#555"}[ni.state];
+  // proposal
+  const prop=proposalFor(FOCUS,c);
+  // связанные: deps, blocks
+  const blocks=Object.entries(REG.cards||{}).filter(([ ,o])=>(o.depends_on||[]).includes(FOCUS)).map(([o])=>o).sort();
+  const tasks=(c.tasks||[]).map(t=>{
+    const sec=(SNAP?.tasks||{});let where="";
+    for(const s of ["Active","Blocked","Planned","Backlog","Done"])if((sec&&SNAP?.tasks?.[s]||[]).includes(t))where=s;
+    return `<span class="depchip" data-t="${esc(t)}" title="${where?"задача в TASKS: "+where:"нет в TASKS.md"}">${esc(t)}${where?` <span style="color:var(--amber)">[${esc(where)}]</span>`:""}</span>`;
+  }).join(" ")||'<span class="dim">—</span>';
+  const art=(c.artifacts||[]).map(a=>`<span class="depchip" data-a="${esc(a)}" title="открыть в Neovim">${esc(a)}</span>`).join(" ")||'<span class="dim">—</span>';
+  $("center").innerHTML=`
+    <div class="cfocus">
+      <div class="id">${esc(FOCUS)} · ${esc(c.layer)} · ${esc((c.facets||[]).join(", ")||"—")}</div>
+      <div class="title">${esc(c.title)}</div>
+      <div class="meta">
+        <span class="chip" style="color:${col};border-color:${col}">${esc(c.lifecycle)}</span>
+        ${c.priority?`<span class="chip" style="color:${col};border-color:${col}">${esc(c.priority)}</span>`:""}
+        ${c.project?`<span class="chip" style="color:var(--amber);border-color:var(--amber)">${esc(c.project)}</span>`:""}
+        <span class="chip" style="color:${stCol};border-color:${stCol}">${stLabel}</span>
+        <span class="chip">owner: ${esc(c.owner)}</span>
+      </div>
+      ${ni.reasons.length?`<div style="color:var(--red);font-size:11px;margin:6px 0">${esc(ni.reasons.join(" · "))}</div>`:""}
+      <div class="cbtns">
+        ${prop?`<button class="cbtn primary" id="a-proposal" title="Скопировать proposal (Enter)">⧉ PROPOSAL</button>`:""}
+        ${c.project?`<button class="cbtn" id="a-workspace" title="tmux pb-${esc(c.project)}">⚡ WORKSPACE</button>`:""}
+        ${c.project?`<button class="cbtn" id="a-projdir" title="Карточка проекта в Neovim">▤ PROJECT.md</button>`:""}
+        <button class="cbtn" id="a-status" title="Порты/docker проекта">☑ STATUS</button>
+      </div>
+    </div>
+
+    <div class="csect">DEPENDS ON (клик — сменить фокус)</div>
+    <div class="dep-row">${(c.depends_on||[]).map(d=>{
+      const dc=REG.cards[d];const dl=dc?dc.lifecycle:"?";
+      const dcol=dc?(LCC[dl]||"#666"):"#666";
+      return`<span class="depchip" data-c="${esc(d)}" style="color:${dcol};border-color:${dcol}">${esc(d)} <span class="dim">${esc(dl)}</span></span>`;
+    }).join("")||'<span class="dim">— нет зависимостей —</span>'}</div>
+
+    <div class="csect">BLOCKS (кто ждёт эту карточку)</div>
+    <div class="dep-row">${blocks.map(b=>{
+      const bc=REG.cards[b];const bcol=LCC[bc.lifecycle]||"#666";
+      return`<span class="depchip" data-c="${esc(b)}" style="color:${bcol};border-color:${bcol}">${esc(b)} <span class="dim">${esc(bc.lifecycle)}</span></span>`;
+    }).join("")||'<span class="dim">— никто не ждёт —</span>'}</div>
+
+    <div class="csect">TASKS</div>
+    <div class="dep-row">${tasks}</div>
+    <div class="csect">EVIDENCE · ARTIFACTS</div>
+    <div class="dep-row">${art}</div>
+    <div class="csect">ACCEPTANCE</div>
+    <div class="note">${esc(c.acceptance||"—")}</div>
+    <div class="csect">STATUS NOTE</div>
+    <div class="note">${esc(c.status_note||"—")}</div>
+    <div class="hint" style="margin-top:14px">Tab — следующий READY · Alt+← — назад по истории · клик по чипу — сменить фокус</div>`;
+
+  // wire
+  $("a-proposal")&&($("a-proposal").onclick=()=>{copyText(prop);toast("proposal в буфере")});
+  $("a-workspace")&&($("a-workspace").onclick=async e=>{e.target.textContent="…";const d=await callAction("workspace-open",{project:c.project});toast(d.ok?"tmux "+(d.session||""):"✗ "+(d.error||""))});
+  $("a-projdir")&&($("a-projdir").onclick=async()=>{const d=await callAction("link-open",{target:"[[03-Projects/"+c.project+"]]",mode:"nvim"});toast(d.ok?"открыл в Neovim":"✗ "+(d.error||""))});
+  $("a-status")&&($("a-status").onclick=async()=>{const d=await callAction("workspace-status",{project:c.project||"vault"});if(d.ok)toast(`tmux:${d.tmux_running?"run":"down"} · порты:${(d.ports||[]).map(p=>p.port+(p.healthy?"↑":"↓")).join(" ")||"—"}`);else toast("✗ "+d.error)});
+  document.querySelectorAll("[data-c]").forEach(el=>el.addEventListener("click",()=>setFocus(el.getAttribute("data-c"))));
+  document.querySelectorAll("[data-a]").forEach(el=>el.addEventListener("click",async()=>{
+    const d=await callAction("link-open",{target:el.getAttribute("data-a"),mode:"nvim"});toast(d.ok?"открыл в Neovim":"✗ "+(d.error||""))}));
+  document.querySelectorAll("[data-t]").forEach(el=>el.addEventListener("click",()=>{
+    toast("T-ID: "+el.getAttribute("data-t")+" — карточка в TASKS.md (read-only)");}));
+}
+
+/* ---- РЕНДЕР: ctx panel ---- */
+function renderCtx(){
+  const c=REG.cards[FOCUS];
+  let html="";
+  if(c){
+    const ni=nextInfo(FOCUS,c);
+    html+=`<div class="xsec">FOCUS</div>
+      <div class="xrow"><span class="k">Card</span><span>${esc(FOCUS)}</span></div>
+      <div class="xrow"><span class="k">State</span><span>${esc({ready:"READY",flight:"IN FLIGHT",verify:"VERIFIER",blocked:"BLOCKED",done:"DONE"}[ni.state])}</span></div>
+      <div class="xrow"><span class="k">Depends</span><span>${(c.depends_on||[]).length}</span></div>
+      <div class="xrow"><span class="k">Blocks</span><span>${Object.values(REG.cards).filter(o=>(o.depends_on||[]).includes(FOCUS)).length}</span></div>
+      <div class="xrow"><span class="k">Tasks</span><span>${(c.tasks||[]).length}</span></div>`;
+    // critical path вхождения
+    const holds=transitiveHolds(FOCUS);
+    if(holds){
+      html+=`<div class="xsec">CRITICAL</div><div class="xitem" style="cursor:default"><span style="color:var(--red)">держит ${holds}</span> карточек транзитивно</div>`;
+    }
+  }
+  // READY рядом (Tab-предпросмотр)
+  const r=readyCards().slice(0,5);
+  html+=`<div class="xsec">READY NEXT (Tab)</div>`;
+  html+=r.map(([cid,cc])=>`<div class="xitem" data-c="${esc(cid)}"><b>${esc(cid)}</b> ${esc(cc.title.slice(0,34))}</div>`).join("")||'<div class="dim" style="font-size:10px">—</div>';
+  // drift
+  const dr=(SNAP?.drift_signals||[]);
+  html+=`<div class="xsec">DRIFT ${dr.length?"("+dr.length+")":""}</div>`;
+  html+=dr.length?dr.map(s=>`<div class="xitem" style="cursor:default"><b>${esc(s.type)}</b> ${esc(s.subject)}<div class="why">${esc((s.detail||"").slice(0,80))}</div></div>`).join(""):'<div class="dim" style="font-size:10px">— чисто —</div>';
+  $("ctx").innerHTML=html;
+  document.querySelectorAll("#ctx [data-c]").forEach(el=>el.addEventListener("click",()=>setFocus(el.getAttribute("data-c"))));
+}
+function transitiveHolds(cid){
+  const blocks={};
+  for(const [x,c] of Object.entries(REG.cards||{}))for(const d of (c.depends_on||[]))(blocks[d]=blocks[d]||[]).push(x);
+  const seen=new Set();const stack=[...(blocks[cid]||[])];
+  while(stack.length){const x=stack.pop();if(seen.has(x))continue;seen.add(x);(blocks[x]||[]).forEach(y=>stack.push(y))}
+  return seen.size;
+}
+
+/* ---- capture signal detail (overlay через center) ---- */
+function showSig(mid){
+  const s=(CAPTURED?.signals||[]).find(x=>String(x.message_id)===String(mid));
+  if(!s)return;
+  $("center").innerHTML=`
+    <div class="cfocus">
+      <div class="id">CAPTURE · ${esc(s.topic||"")} · rel=${esc(s.relevance)}</div>
+      <div class="title">${esc(s.title||"—")}</div>
+      <div class="meta">
+        ${s.lang?`<span class="chip">${esc(s.lang)}</span>`:""}
+        ${s.project?`<span class="chip" style="color:var(--amber);border-color:var(--amber)">${esc(s.project)}</span>`:""}
+        <span class="chip">${esc(s.category||"")}</span>
+      </div>
+      ${s.repo?`<div class="note"><a style="color:var(--blue)" href="${esc(s.repo)}" target="_blank">${esc(s.repo)}</a></div>`:""}
+      ${s.upgrade_path?`<div class="csect">UPGRADE PATH</div><div class="note">${esc(s.upgrade_path)}</div>`:""}
+      <div class="cbtns">
+        ${s.repo?`<button class="cbtn" id="s-browser">🌐 В БРАУЗЕР</button>`:""}
+        <button class="cbtn" id="s-read">✓ ОТМЕТИТЬ ПРОЧИТАННЫМ</button>
+        <button class="cbtn" id="s-back">◀ К ФОКУСУ (Esc)</button>
+      </div>
+    </div>`;
+  $("s-browser")&&($("s-browser").onclick=async()=>{const d=await callAction("link-open",{target:s.repo,mode:"browser"});toast(d.ok?"открыл":"✗")});
+  $("s-read").onclick=()=>{READ_SIGS.add(String(mid));localStorage.setItem("v8bis-read-sigs",JSON.stringify([...READ_SIGS]));renderDock();setFocus(FOCUS)};
+  $("s-back").onclick=()=>setFocus(FOCUS);
+}
+
+/* ---- keyboard ---- */
+document.addEventListener("keydown",e=>{
+  const t=e.target;
+  if(t&&["INPUT","TEXTAREA"].includes(t.tagName))return;
+  if(e.key==="Tab"){
+    e.preventDefault();
+    tabReady(e.shiftKey?-1:1);
+  } else if(e.altKey&&e.key==="ArrowLeft"){e.preventDefault();histMove(-1)}
+  else if(e.altKey&&e.key==="ArrowRight"){e.preventDefault();histMove(1)}
+  else if(e.key>="1"&&e.key<="4"){
+    const pid=PROJECTS_ORDER[+e.key-1];
+    const first=Object.entries(REG.cards||{}).find(([cid,c])=>c.project===pid);
+    if(first)setFocus(first[0]);
+  } else if(e.key==="Enter"){const b=$("a-proposal");b&&b.click()}
+  else if(e.key==="?"){$("kmap").classList.toggle("open")}
+  else if(e.key==="Escape"){$("kmap").classList.remove("open")}
+});
+
+/* ---- statusbar / SSE ---- */
+function renderSbar(){
+  $("sb-head").textContent=SNAP?.git?.head?.slice(0,7)||"—";
+  $("sb-drift").textContent=(SNAP?.drift_signals||[]).length;
+  $("sb-ready").textContent=readyCards().length;
+  $("h-focus").textContent=FOCUS||"—";
+  $("btn-back").disabled=HIDX<=0;
+  $("btn-fwd").disabled=HIDX>=HISTORY.length-1;
+}
+function initSSE(){
+  if(typeof EventSource==="undefined"){ $("sb-sse").textContent="нет EventSource"; return; }
+  const es=new EventSource("/event");
+  es.onopen=()=>{ $("sb-sse").textContent="LIVE"; $("sb-sse").className="v" };
+  es.addEventListener("file.watcher.updated",()=>{
+    $("sb-sse").textContent="UPD…";
+    refresh().then(()=>{$("sb-sse").textContent="LIVE"});
+  });
+  es.onerror=()=>{ $("sb-sse").textContent="OFFLINE"; $("sb-sse").className="warn" };
+}
+async function refresh(){
+  const [reg,snap,cap]=await Promise.all([jget("registry.json"),jget("generated/snapshot.json"),callAction("capture-scan",{})]);
+  if(reg)REG=reg;
+  if(snap)SNAP=snap;
+  if(cap&&cap.ok)CAPTURED=cap;
+  renderAll({push:false});
+}
+
+/* ---- all ---- */
+function renderAll({push=true}={}){
+  if(!FOCUS){
+    const r=readyCards();
+    FOCUS=r.length?r[0][0]:Object.keys(REG.cards||{})[0];
+    if(push){HISTORY=[FOCUS];HIDX=0}
+  }
+  renderDock();
+  renderCenter();
+  renderCtx();
+  renderSbar();
+}
+
+async function init(){
+  $("btn-back").onclick=()=>histMove(-1);
+  $("btn-fwd").onclick=()=>histMove(1);
+  $("btn-keys").onclick=()=>$("kmap").classList.toggle("open");
+  $("btn-pal").onclick=()=>toast("палитра — в полной версии v8-BIS (прототип: клавиши ?)");
+  await refresh();
+  initSSE();
+}
+init();
+</script>
+</body>
+</html>
