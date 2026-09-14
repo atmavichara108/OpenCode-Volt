@@ -82,6 +82,13 @@ body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:13p
 .stage b{color:var(--txt);font-family:var(--mono)}
 .term-box{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
 .term-note{font-size:11px;color:var(--dim)}
+.term-iframe-wrap{display:flex;flex-direction:column;flex:1;min-height:0}
+.term-bar{display:flex;align-items:center;gap:8px;padding:4px 10px;background:var(--surface2);border-bottom:1px solid var(--line)}
+.term-bar .term-proj{font-family:var(--mono);font-size:10px;color:var(--water)}
+.term-bar .term-status{font-size:9px;color:var(--leaf);letter-spacing:1px;text-transform:uppercase;
+  animation:pulse-live 2s ease-in-out infinite}
+@keyframes pulse-live{0%,100%{opacity:.7}50%{opacity:1}}
+.term-iframe{flex:1;border:0;min-height:0;width:100%;background:#0a100d;border-radius:0 0 12px 12px}
 .browser-bar{display:flex;gap:4px;margin-bottom:8px;flex-wrap:wrap}
 .browser-frame{flex:1;min-height:160px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface2)}
 .mono{font-family:var(--mono)}

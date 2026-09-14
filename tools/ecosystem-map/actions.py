@@ -570,8 +570,29 @@ def _is_blocking(cid: str, cards: dict) -> bool:
     return c.get("lifecycle") in ("IDEA", "RESEARCH", "DESIGN", "APPROVED")
 
 
+def do_term_open(project: str, port: int) -> dict:
+    """Запустить termproxy для проекта на порту port."""
+    termproxy = SERVE_DIR / "termproxy.py"
+    if not termproxy.exists():
+        return {"ok": False, "error": "termproxy.py не найден"}
+    repo = repo_for(project)
+    cwd = str(repo) if repo else str(VAULT_ROOT)
+    env = dict(os.environ)
+    if "LD_LIBRARY_PATH" in env:
+        env["LD_LIBRARY_PATH"] = ":".join(
+            p for p in env["LD_LIBRARY_PATH"].split(":") if ".mount_" not in p
+        )
+    python_exe = shutil.which("python3") or shutil.which("python") or sys.executable
+    subprocess.Popen(
+        [python_exe, str(termproxy), "serve", "--port", str(port), "--cwd", cwd],
+        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+        start_new_session=True, close_fds=True, env=env,
+    )
+    return {"ok": True, "project": project, "port": port, "cwd": cwd}
+
+
 def main() -> int:
-    p = argparse.ArgumentParser(description="Pip-Boy actions (workspace/open, link/open, capture)")
+    p = argparse.ArgumentParser(description="Pip-Boy actions (workspace/open, link/open, capture, term-open)")
     sub = p.add_subparsers(dest="cmd", required=True)
     wo = sub.add_parser("workspace-open")
     wo.add_argument("project")
@@ -586,6 +607,9 @@ def main() -> int:
                     help="прогнать pipeline (перегенерировать signals.json)")
     ca.add_argument("--limit", type=int, default=20,
                     help="сколько сигналов вернуть (default 20)")
+    to = sub.add_parser("term-open")
+    to.add_argument("project")
+    to.add_argument("--port", type=int, default=8200)
     qq = sub.add_parser("query")
     qq.add_argument("--q", default="", help="текстовый поиск по карточкам")
     qq.add_argument("--facet", default="", help="фильтр по facet")
@@ -605,6 +629,8 @@ def main() -> int:
             res = do_link_open(args.target, args.mode)
         elif args.cmd == "capture-scan":
             res = do_capture_scan(args.run, args.limit)
+        elif args.cmd == "term-open":
+            res = do_term_open(args.project, args.port)
         elif args.cmd == "query":
             res = do_query(args.q, args.facet, args.project)
         elif args.cmd == "blockers":

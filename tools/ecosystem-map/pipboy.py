@@ -178,7 +178,7 @@ class Handler(SimpleHTTPRequestHandler):
 
         q = urllib.parse.parse_qs(self.path.split("?", 1)[1] if "?" in self.path else "")
         op = (q.get("op") or [""])[0]
-        ALLOWED = {"workspace-open", "workspace-status", "link-open", "capture-scan"}
+        ALLOWED = {"workspace-open", "workspace-status", "link-open", "capture-scan", "term-open"}
         body = None
         code = 200
         if op not in ALLOWED:
@@ -196,6 +196,7 @@ class Handler(SimpleHTTPRequestHandler):
                     "workspace-status": ["project"],
                     "link-open": ["target"],
                     "capture-scan": [],
+                    "term-open": ["project"],
                 }.get(op, [])
                 for key in positional:
                     argv.append((q.get(key) or [""])[0])
@@ -209,6 +210,9 @@ class Handler(SimpleHTTPRequestHandler):
                 if op == "capture-scan" and q.get("limit"):
                     argv.append("--limit")
                     argv.append(q["limit"][0])
+                if op == "term-open" and q.get("port"):
+                    argv.append("--port")
+                    argv.append(q["port"][0])
                 r = subprocess.run(argv, capture_output=True, text=True, timeout=30)
                 try:
                     body = json.loads(r.stdout.strip() or "{}")
