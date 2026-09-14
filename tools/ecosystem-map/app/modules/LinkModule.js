@@ -11,7 +11,10 @@ export class LinkModule extends Module {
 
   async mount(container) {
     super.mount(container);
-    this.on("link:resolve", target => this._openFromEvent(target));
+    if (!this._wired) {
+      this.on("link:resolve", target => this._openFromEvent(target));
+      this._wired = true;
+    }
     this.container.innerHTML = `
       <div class="eco-head">LINK RESOLVER</div>
       <form class="link-form">

@@ -215,11 +215,16 @@ class Handler(SimpleHTTPRequestHandler):
                 if op == "term-open" and q.get("port"):
                     argv.append("--port")
                     argv.append(q["port"][0])
-                # flag-операции (query/blockers/next/dependencies/notify)
-                for flag in ("q", "facet", "project", "limit", "card", "message", "topic", "priority"):
+                # flag-операции (query/blockers/next/dependencies/notify).
+                # NB: "project" НЕ в общем списке — это позиционный аргумент у
+                # workspace-open/status/term-open; для query передаём отдельно.
+                for flag in ("q", "facet", "limit", "card", "message", "topic", "priority"):
                     if q.get(flag):
                         argv.append(f"--{flag}")
                         argv.append(q[flag][0])
+                if op == "query" and q.get("project"):
+                    argv.append("--project")
+                    argv.append(q["project"][0])
                 r = subprocess.run(argv, capture_output=True, text=True, timeout=30)
                 try:
                     body = json.loads(r.stdout.strip() or "{}")

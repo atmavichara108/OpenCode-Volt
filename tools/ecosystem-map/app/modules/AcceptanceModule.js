@@ -40,7 +40,8 @@ export class AcceptanceModule extends Module {
       const stage = dep?.lifecycle || "IDEA";
       const liveRank = STAGES.indexOf("LIVE");
       const depRank = STAGES.indexOf(stage);
-      if (depRank < liveRank) bad.push(`${d} (${stage})`);
+      // OBSERVE/IMPROVE/RETIRED не в STAGES → indexOf -1 → не блокируют LIVE
+      if (depRank >= 0 && depRank < liveRank) bad.push(`${d} (${stage})`);
     }
     return bad;
   }

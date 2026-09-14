@@ -21,7 +21,10 @@ export class DependencyModule extends Module {
 
   async mount(container) {
     super.mount(container);
-    this.on("card:click", cid => this._focus(cid));
+    if (!this._wired) {
+      this.on("card:click", cid => this._focus(cid));
+      this._wired = true;
+    }
     await this.refresh();
   }
 

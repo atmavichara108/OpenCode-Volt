@@ -11,7 +11,10 @@ export class LauncherModule extends Module {
 
   async mount(container) {
     super.mount(container);
-    this.on("project:change", () => this.refresh());
+    if (!this._wired) {
+      this.on("project:change", () => this.refresh());
+      this._wired = true;
+    }
     await this.refresh();
   }
 
