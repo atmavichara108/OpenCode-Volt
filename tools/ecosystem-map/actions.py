@@ -29,6 +29,7 @@ import shutil
 import socket
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 VAULT_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -413,10 +414,9 @@ def _frozen_tasks(card: dict, snap: dict) -> list[str]:
     return [t for t in card.get("tasks", []) if t in blocked or t in frozen]
 
 
-def _dep_ok(card: dict, cards: dict) -> tuple[bool, list[str]]:
-    """depends_on закрыты для стадии карточки (как depState в фронте)."""
-    lifecycle = card.get("lifecycle", "IDEA")
-    rank = LIFECYCLE_ORDER.index(lifecycle) if lifecycle in LIFECYCLE_ORDER else 0
+def _dep_ok(card: dict, cards: dict, stage: str | None = None) -> tuple[bool, list[str]]:
+    """depends_on закрыты для стадии карточки (или для заданной target-стадии)."""
+    lifecycle = stage or card.get("lifecycle", "IDEA")
     need = 0
     if lifecycle in ("IDEA", "RESEARCH"):
         need = 0
@@ -532,6 +532,148 @@ def do_next(limit: int) -> dict:
             "in_flight": flight,
             "counts": {"ready": len(ready), "blocked": len(blocked),
                        "verify": len(verify), "in_flight": len(flight)}}
+
+
+# --- proposal queue (алгоритмический ecosystem observer + apply) -----------
+
+NEXT_STAGE = {
+    "IDEA": "RESEARCH",
+    "RESEARCH": "DESIGN",
+    "DESIGN": "APPROVED",
+    "APPROVED": "BUILD",
+    "BUILD": "REVIEW",
+    "REVIEW": "VERIFY",
+    "VERIFY": "LIVE",
+}
+
+PROPOSALS_LOG = SERVE_DIR / "generated" / "proposals-applied.jsonl"
+
+
+def _proposal_id(kind: str, card_id: str) -> str:
+    return f"{kind}:{card_id}"
+
+
+def do_proposals() -> dict:
+    """Генерирует предложения (read-only) — ничего не применяет.
+
+    Типы:
+      transition — карточка готова перейти на следующую стадию (deps closed)
+      blocked    — карточка заблокирована (deps/frozen/status_note)
+      no_owner   — карточка без owner (не retired)
+      drift      — сигнал drift из snapshot
+    """
+    eco = _load_ecosystem()
+    cards = eco["registry"].get("cards", {})
+    snap = eco["snapshot"]
+    proposals = []
+
+    for cid, c in cards.items():
+        if c.get("retired") or c.get("lifecycle") == "RETIRED":
+            continue
+        lc = c.get("lifecycle", "IDEA")
+        r = _readiness(cid, c, cards, snap)
+        nxt = NEXT_STAGE.get(lc)
+        if nxt and r["state"] == "ready":
+            # deps должны быть закрыты уже для целевой стадии (не только текущей)
+            ok_target, _ = _dep_ok(c, cards, stage=nxt)
+            if not ok_target:
+                continue
+            proposals.append({
+                "id": _proposal_id("transition", cid),
+                "type": "transition", "card": cid,
+                "from": lc, "to": nxt,
+                "title": c.get("title", ""),
+                "priority": c.get("priority", ""),
+                "project": c.get("project") or "",
+                "owner": c.get("owner", ""),
+                "reason": "dependencies satisfied",
+            })
+        elif r["state"] == "blocked":
+            proposals.append({
+                "id": _proposal_id("blocked", cid),
+                "type": "blocked", "card": cid,
+                "title": c.get("title", ""),
+                "lifecycle": lc,
+                "reasons": r["reasons"],
+            })
+        if not c.get("owner"):
+            proposals.append({
+                "id": _proposal_id("no_owner", cid),
+                "type": "no_owner", "card": cid,
+                "title": c.get("title", ""),
+                "lifecycle": lc,
+            })
+
+    for s in snap.get("drift_signals", []):
+        proposals.append({
+            "id": f"drift:{s.get('subject', '')}",
+            "type": "drift",
+            "subject": s.get("subject", ""),
+            "detail": s.get("detail", ""),
+            "kind": s.get("type", ""),
+        })
+
+    # порядок: transitions по приоритету, затем blocked, no_owner, drift
+    order = {"transition": 0, "blocked": 1, "no_owner": 2, "drift": 3}
+    proposals.sort(key=lambda p: (order.get(p["type"], 9), p.get("priority", "P9"), p.get("card", "")))
+    return {"ok": True, "proposals": proposals,
+            "counts": {t: sum(1 for p in proposals if p["type"] == t)
+                       for t in ("transition", "blocked", "no_owner", "drift")}}
+
+
+def _apply_transition(card_id: str, target: str) -> dict:
+    import re
+
+    reg_path = SERVE_DIR / "registry.json"
+    try:
+        text = reg_path.read_text(encoding="utf-8")
+        reg = json.loads(text)
+    except (OSError, json.JSONDecodeError) as e:
+        return {"ok": False, "error": f"registry: {e}"}
+    cards = reg.get("cards", {})
+    card = cards.get(card_id)
+    if not card:
+        return {"ok": False, "error": f"нет карточки {card_id}"}
+    if card.get("retired") or card.get("lifecycle") == "RETIRED":
+        return {"ok": False, "error": f"{card_id} retired — переходы запрещены"}
+    lc = card.get("lifecycle", "IDEA")
+    expected = NEXT_STAGE.get(lc)
+    if target != expected:
+        return {"ok": False, "error": f"{card_id}: {lc} → {target} недопустимо (ожидалось {expected or 'terminal'})"}
+    # deps должны быть закрыты для целевой стадии
+    eco = _load_ecosystem()
+    ok_deps, bad = _dep_ok(card, eco["registry"].get("cards", {}), stage=target)
+    if not ok_deps:
+        return {"ok": False, "error": f"{card_id}: deps не закрыты: {', '.join(bad)}"}
+
+    # хирургическая правка текста (не json round-trip — сохраняет формат файла)
+    m = re.search(rf'("{re.escape(card_id)}"\s*:\s*\{{.*?"lifecycle"\s*:\s*)"[A-Z]+"', text, re.DOTALL)
+    if not m:
+        return {"ok": False, "error": f"{card_id}: не найден lifecycle в registry.json"}
+    text = text[:m.end(1)] + f'"{target}"' + text[m.end():]
+    # обновить meta.updated
+    today = time.strftime("%Y-%m-%d")
+    text = re.sub(r'("updated"\s*:\s*)"[0-9-]+"', rf'\1"{today}"', text, count=1)
+    tmp = reg_path.with_suffix(".json.tmp")
+    tmp.write_text(text, encoding="utf-8")
+    tmp.replace(reg_path)
+
+    # audit log
+    try:
+        os.makedirs(PROPOSALS_LOG.parent, exist_ok=True)
+        with open(PROPOSALS_LOG, "a", encoding="utf-8") as f:
+            f.write(json.dumps({"ts": time.time(), "card": card_id,
+                                "from": lc, "to": target}, ensure_ascii=False) + "\n")
+    except OSError:
+        pass
+    return {"ok": True, "card": card_id, "from": lc, "to": target, "applied": True}
+
+
+def do_apply(card_id: str, target: str) -> dict:
+    """Применить предложение (явное действие пользователя, не silent)."""
+    if not card_id or not target:
+        return {"ok": False, "error": "нужны card и target"}
+    return _apply_transition(card_id, target)
 
 
 def do_dependencies(card_id: str) -> dict:
@@ -731,6 +873,10 @@ def main() -> int:
     nt.add_argument("--topic", default="", help="ntfy-топик (или env PIPBOY_NTFY)")
     nt.add_argument("--priority", default="default",
                     choices=["default", "low", "high", "urgent", "min", "max"])
+    pp = sub.add_parser("proposals")
+    ap = sub.add_parser("apply")
+    ap.add_argument("--card", required=True, help="id карточки")
+    ap.add_argument("--target", required=True, help="целевая стадия")
     args = p.parse_args()
     try:
         if args.cmd == "workspace-open":
@@ -759,6 +905,10 @@ def main() -> int:
             res = do_dependencies(args.card)
         elif args.cmd == "notify":
             res = do_notify(args.message, args.topic, args.priority)
+        elif args.cmd == "proposals":
+            res = do_proposals()
+        elif args.cmd == "apply":
+            res = do_apply(args.card, args.target)
         else:
             res = {"ok": False, "error": "unknown command"}
     except Exception as e:  # noqa: BLE001 — вернуть JSON вместо traceback

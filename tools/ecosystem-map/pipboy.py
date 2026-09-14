@@ -179,7 +179,8 @@ class Handler(SimpleHTTPRequestHandler):
         q = urllib.parse.parse_qs(self.path.split("?", 1)[1] if "?" in self.path else "")
         op = (q.get("op") or [""])[0]
         ALLOWED = {"workspace-open", "workspace-status", "link-open", "link-resolve", "capture-scan", "term-open",
-                   "term-status", "term-close", "query", "blockers", "next", "dependencies", "notify"}
+                   "term-status", "term-close", "query", "blockers", "next", "dependencies", "notify",
+                   "proposals", "apply"}
         body = None
         code = 200
         if op not in ALLOWED:
@@ -220,7 +221,7 @@ class Handler(SimpleHTTPRequestHandler):
                 # flag-операции (query/blockers/next/dependencies/notify).
                 # NB: "project" НЕ в общем списке — это позиционный аргумент у
                 # workspace-open/status/term-open; для query передаём отдельно.
-                for flag in ("q", "facet", "limit", "card", "message", "topic", "priority"):
+                for flag in ("q", "facet", "limit", "card", "message", "topic", "priority", "target"):
                     if q.get(flag):
                         argv.append(f"--{flag}")
                         argv.append(q[flag][0])
