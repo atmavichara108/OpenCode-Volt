@@ -143,6 +143,11 @@ export class TerminalModule extends Module {
     this.ws = null;
     if (this.term) { try { this.term.dispose(); } catch (e) {} }
     this.term = null; this.fit = null;
+    // погасить termproxy, чтобы порт и pty не копились при переключении проекта
+    if (this.port) {
+      this.action("term-close", { project: this.opts.projectId }).catch(() => {});
+      this.port = null;
+    }
     super.unmount();
   }
 }

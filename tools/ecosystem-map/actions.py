@@ -637,6 +637,35 @@ def do_term_status(project: str) -> dict:
             "alive": termproxy_alive(port)}
 
 
+def do_term_close(project: str) -> dict:
+    """Погасить termproxy проекта: /shutdown HTTP, затем pidfile-фолбэк."""
+    port = term_port(project)
+    # 1) graceful: /shutdown эндпоинт (не зависит от pidfile, работает и для старых)
+    try:
+        import urllib.request
+        with urllib.request.urlopen(f"http://127.0.0.1:{port}/shutdown", timeout=3) as r:
+            return {"ok": True, "project": project, "port": port,
+                    "method": "shutdown", "status": r.status}
+    except OSError:
+        pass  # уже мёртв или не поднят
+    # 2) fallback: pidfile + SIGTERM
+    termproxy = SERVE_DIR / "termproxy.py"
+    if not termproxy.exists():
+        return {"ok": False, "error": "termproxy.py не найден"}
+    python_exe = shutil.which("python3") or shutil.which("python") or sys.executable
+    r = run([python_exe, str(termproxy), "stop", "--port", str(port)], timeout=10)
+    if r.returncode != 0:
+        return {"ok": False, "error": f"termproxy stop: {(r.stderr or '').strip()[:200]}"}
+    try:
+        body = json.loads(r.stdout.strip() or "{}")
+    except json.JSONDecodeError:
+        body = {"ok": False, "error": "termproxy stop: не-JSON вывод"}
+    if not body.get("ok") and "нет pidfile" in str(body.get("error", "")):
+        body = {"ok": True, "port": port, "already_dead": True}
+    body["project"] = project
+    return body
+
+
 def do_notify(message: str, topic: str, priority: str) -> dict:
     """Отправить push на телефон через ntfy.sh (self-hosted-совместимо).
 
@@ -686,6 +715,8 @@ def main() -> int:
     to.add_argument("--port", type=int, default=None)
     ts = sub.add_parser("term-status")
     ts.add_argument("project")
+    tc = sub.add_parser("term-close")
+    tc.add_argument("project")
     qq = sub.add_parser("query")
     qq.add_argument("--q", default="", help="текстовый поиск по карточкам")
     qq.add_argument("--facet", default="", help="фильтр по facet")
@@ -716,6 +747,8 @@ def main() -> int:
             res = do_term_open(args.project, args.port)
         elif args.cmd == "term-status":
             res = do_term_status(args.project)
+        elif args.cmd == "term-close":
+            res = do_term_close(args.project)
         elif args.cmd == "query":
             res = do_query(args.q, args.facet, args.project)
         elif args.cmd == "blockers":

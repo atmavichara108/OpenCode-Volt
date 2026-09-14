@@ -11,6 +11,7 @@ WebSocket upgrade работал без блокировки HTTP-потока.
   serve --port PORT --cmd CMD [--cwd DIR]
       foreground-сервер (вызывается из pipboy.py /action term-open)
   status --port PORT   JSON: жив ли
+  stop --port PORT     погасить сервер (по pidfile /tmp/mcode/termproxy-<port>.pid)
 
 Контракт: GET / → HTML-терминал; GET /ws → WebSocket pty-мост.
 """
@@ -36,6 +37,66 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 VENDOR = os.path.join(HERE, "vendor")
 
 DEFAULT_SHELL = os.environ.get("SHELL") or "/bin/bash"
+
+PIDFILE_DIR = "/tmp/mcode"
+
+
+def pidfile_path(port: int) -> str:
+    return f"{PIDFILE_DIR}/termproxy-{port}.pid"
+
+
+def read_pid(port: int) -> int | None:
+    try:
+        with open(pidfile_path(port)) as f:
+            return int(f.read().strip())
+    except (OSError, ValueError):
+        return None
+
+
+def write_pid(port: int, pid: int) -> None:
+    os.makedirs(PIDFILE_DIR, exist_ok=True)
+    with open(pidfile_path(port), "w") as f:
+        f.write(str(pid))
+
+
+def remove_pid(port: int) -> None:
+    try:
+        os.remove(pidfile_path(port))
+    except OSError:
+        pass
+
+
+def stop_server(port: int) -> dict:
+    """Погасить termproxy на порту: SIGTERM по pidfile, затем SIGKILL при необходимости."""
+    pid = read_pid(port)
+    if not pid:
+        return {"ok": False, "error": f"нет pidfile для порта {port}"}
+    try:
+        os.kill(pid, signal.SIGTERM)
+    except ProcessLookupError:
+        remove_pid(port)
+        return {"ok": True, "port": port, "already_dead": True}
+    except OSError as e:
+        return {"ok": False, "error": f"kill: {e}"}
+    for _ in range(20):
+        if not pid_alive(pid):
+            remove_pid(port)
+            return {"ok": True, "port": port, "pid": pid}
+        time.sleep(0.05)
+    try:
+        os.kill(pid, signal.SIGKILL)
+    except OSError:
+        pass
+    remove_pid(port)
+    return {"ok": True, "port": port, "pid": pid, "forced": True}
+
+
+def pid_alive(pid: int) -> bool:
+    try:
+        os.kill(pid, 0)
+        return True
+    except OSError:
+        return False
 
 
 class WSConn:
@@ -291,6 +352,7 @@ def serve(port: int, cmd: str, cwd: str) -> None:
     srv.bind(("127.0.0.1", port))
     srv.listen(32)
     srv.settimeout(1.0)
+    write_pid(port, os.getpid())
     sys.stderr.write(f"termproxy: listening on http://127.0.0.1:{port}/ (cmd={cmd})\n")
     try:
         while True:
@@ -325,9 +387,14 @@ def serve(port: int, cmd: str, cwd: str) -> None:
                         resp = http_response(200, "text/html; charset=utf-8", html_page(port))
                     elif path == "/healthz":
                         resp = http_response(200, "application/json", b'{"termproxy": true}')
+                    elif path == "/shutdown":
+                        resp = http_response(200, "application/json", b'{"shutdown": true}')
+                        client.sendall(resp)
+                        client.close()
+                        break  # выйти из accept-цикла → finally закроет сокет
                     else:
                         resp = http_response(404, "text/plain", b"404")
-                    client.sendall(resp)
+                        client.sendall(resp)
                 except OSError:
                     pass
                 finally:
@@ -336,6 +403,7 @@ def serve(port: int, cmd: str, cwd: str) -> None:
                 client.close()
     finally:
         srv.close()
+        remove_pid(port)
 
 
 def alive(port: int) -> bool:
@@ -355,9 +423,14 @@ def main() -> int:
     sp.add_argument("--cwd", default=HERE)
     st = sub.add_parser("status")
     st.add_argument("--port", type=int, default=8200)
+    sp2 = sub.add_parser("stop")
+    sp2.add_argument("--port", type=int, default=8200)
     args = p.parse_args()
     if args.cmd == "status":
         print(json.dumps({"alive": alive(args.port)}))
+        return 0
+    if args.cmd == "stop":
+        print(json.dumps(stop_server(args.port)))
         return 0
     serve(args.port, args.cmd, args.cwd)
     return 0
