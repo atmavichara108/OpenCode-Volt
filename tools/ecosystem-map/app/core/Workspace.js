@@ -93,6 +93,10 @@ export class Workspace {
 
   /** Показать тайлы активного проекта (или всех, если activeProject=null). */
   render() {
+    // снять все смонтированные тайлы (терминалы, подписки, DOM) перед пересборкой
+    for (const tile of this.tiles.values()) {
+      if (tile.el) tile.module.unmount();
+    }
     this.root.innerHTML = "";
     this.root.dataset.layout = this.layout;
     const tiles = this._orderedTiles().filter(t => {

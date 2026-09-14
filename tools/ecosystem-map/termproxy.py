@@ -245,13 +245,15 @@ term.onData(d => ws.readyState === 1 && ws.send(d));
 
 
 def http_response(code: int, content_type: str, body: bytes) -> bytes:
-    """Build a minimal HTTP/1.1 response."""
+    """Build a minimal HTTP/1.1 response (with CORS for cross-origin healthz)."""
     reasons = {200: "OK", 404: "Not Found"}
     reason = reasons.get(code, "OK")
     header = (
         f"HTTP/1.1 {code} {reason}\r\n"
         f"Content-Type: {content_type}\r\n"
         f"Content-Length: {len(body)}\r\n"
+        "Access-Control-Allow-Origin: *\r\n"
+        "Access-Control-Allow-Headers: *\r\n"
         "Connection: close\r\n\r\n"
     )
     return header.encode("latin-1") + body

@@ -21,10 +21,6 @@ export class DependencyModule extends Module {
 
   async mount(container) {
     super.mount(container);
-    if (!this._wired) {
-      this.on("card:click", cid => this._focus(cid));
-      this._wired = true;
-    }
     await this.refresh();
   }
 
@@ -37,13 +33,6 @@ export class DependencyModule extends Module {
     }
     this.container.innerHTML = this._render();
     this._draw();
-  }
-
-  _focus(cid) {
-    if (!cid || !this.data) return;
-    const n = this.data.nodes?.find(n => n.id === cid);
-    if (!n) return;
-    this.emit("toast", `${cid} — ${n.title || ""} (${n.lifecycle})`);
   }
 
   _render() {
@@ -154,7 +143,7 @@ export class DependencyModule extends Module {
       title.textContent = `${n.id} · ${n.title || ""} · ${n.lifecycle}${n.owner ? " · " + n.owner : ""}`;
       g.appendChild(title);
       g.style.cursor = "pointer";
-      g.addEventListener("click", () => this._focus(n.id));
+      g.addEventListener("click", () => this.emit("card:click", n.id));
       svg.appendChild(g);
     }
   }

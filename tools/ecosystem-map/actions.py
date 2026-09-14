@@ -225,12 +225,6 @@ def do_workspace_status(project: str) -> dict:
     repo = repo_for(project)
     windows = _session_windows(name) if exists else []
     ports = []
-    for pname, plist in PROJECT_PORTS.get(project, []):
-        ports.append({"port": pname if isinstance(pname, int) else plist,
-                      "label": plist if isinstance(pname, int) else "",
-                      "healthy": _port_health(pname if isinstance(pname, int) else 0)})
-    # переупорядочить корректно
-    ports = []
     for port, label in PROJECT_PORTS.get(project, []):
         ports.append({"port": port, "label": label, "healthy": _port_health(port)})
     return {
@@ -596,8 +590,27 @@ def _is_blocking(cid: str, cards: dict) -> bool:
     return c.get("lifecycle") in ("IDEA", "RESEARCH", "DESIGN", "APPROVED")
 
 
-def do_term_open(project: str, port: int) -> dict:
-    """Запустить termproxy для проекта на порту port."""
+def term_port(project: str) -> int:
+    """Детерминированный порт termproxy для проекта (диапазон 8200..8599)."""
+    h = 0
+    for ch in project:
+        h = (h * 31 + ord(ch)) & 0xFFFFFFFF
+    return 8200 + (h % 400)
+
+
+def termproxy_alive(port: int) -> bool:
+    return _port_health(port)
+
+
+def do_term_open(project: str, port: int | None = None) -> dict:
+    """Запустить termproxy для проекта (idempotent).
+
+    Если termproxy на порту уже жив — просто вернуть порт. Иначе поднять.
+    Порт детерминирован от имени проекта (term_port), если не передан явно.
+    """
+    port = port or term_port(project)
+    if termproxy_alive(port):
+        return {"ok": True, "project": project, "port": port, "alive": True}
     termproxy = SERVE_DIR / "termproxy.py"
     if not termproxy.exists():
         return {"ok": False, "error": "termproxy.py не найден"}
@@ -614,7 +627,14 @@ def do_term_open(project: str, port: int) -> dict:
         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
         start_new_session=True, close_fds=True, env=env,
     )
-    return {"ok": True, "project": project, "port": port, "cwd": cwd}
+    return {"ok": True, "project": project, "port": port, "alive": False,
+            "cwd": cwd}
+
+
+def do_term_status(project: str) -> dict:
+    port = term_port(project)
+    return {"ok": True, "project": project, "port": port,
+            "alive": termproxy_alive(port)}
 
 
 def do_notify(message: str, topic: str, priority: str) -> dict:
@@ -663,7 +683,9 @@ def main() -> int:
                     help="сколько сигналов вернуть (default 20)")
     to = sub.add_parser("term-open")
     to.add_argument("project")
-    to.add_argument("--port", type=int, default=8200)
+    to.add_argument("--port", type=int, default=None)
+    ts = sub.add_parser("term-status")
+    ts.add_argument("project")
     qq = sub.add_parser("query")
     qq.add_argument("--q", default="", help="текстовый поиск по карточкам")
     qq.add_argument("--facet", default="", help="фильтр по facet")
@@ -692,6 +714,8 @@ def main() -> int:
             res = do_capture_scan(args.run, args.limit)
         elif args.cmd == "term-open":
             res = do_term_open(args.project, args.port)
+        elif args.cmd == "term-status":
+            res = do_term_status(args.project)
         elif args.cmd == "query":
             res = do_query(args.q, args.facet, args.project)
         elif args.cmd == "blockers":

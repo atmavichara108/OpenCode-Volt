@@ -35,6 +35,7 @@ export class Module {
   /** Снятие: сброс DOM, таймеров, подписок. */
   unmount() {
     if (this.container) this.container.innerHTML = "";
+    this.container = null;
     this.mounted = false;
   }
 

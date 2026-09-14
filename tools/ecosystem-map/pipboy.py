@@ -179,7 +179,7 @@ class Handler(SimpleHTTPRequestHandler):
         q = urllib.parse.parse_qs(self.path.split("?", 1)[1] if "?" in self.path else "")
         op = (q.get("op") or [""])[0]
         ALLOWED = {"workspace-open", "workspace-status", "link-open", "link-resolve", "capture-scan", "term-open",
-                   "query", "blockers", "next", "dependencies", "notify"}
+                   "term-status", "query", "blockers", "next", "dependencies", "notify"}
         body = None
         code = 200
         if op not in ALLOWED:
@@ -199,6 +199,7 @@ class Handler(SimpleHTTPRequestHandler):
                     "link-resolve": ["target"],
                     "capture-scan": [],
                     "term-open": ["project"],
+                    "term-status": ["project"],
                 }.get(op, [])
                 for key in positional:
                     argv.append((q.get(key) or [""])[0])

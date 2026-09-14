@@ -87,9 +87,12 @@ export class AcceptanceModule extends Module {
 
   _wire() {
     this.container.querySelectorAll("[data-link]").forEach(a =>
-      a.addEventListener("click", () => {
+      a.addEventListener("click", e => {
+        e.stopPropagation();
         const target = a.getAttribute("data-link");
         this.emit("link:resolve", target);
       }));
+    this.container.querySelectorAll("[data-card]").forEach(el =>
+      el.addEventListener("click", () => this.emit("card:click", el.getAttribute("data-card"))));
   }
 }
