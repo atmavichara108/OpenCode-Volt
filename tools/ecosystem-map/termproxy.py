@@ -47,7 +47,11 @@ class WSConn:
 
     def recv_frames(self) -> list[tuple[int, bytes]]:
         try:
-            self.buf += self.sock.recv(65536)
+            chunk = self.sock.recv(65536)
+            if not chunk:
+                # EOF: клиент закрыл TCP без close-кадра → сигналим закрытие
+                return [(0x8, b"")]
+            self.buf += chunk
         except (BlockingIOError, InterruptedError):
             pass
         except OSError:
@@ -122,7 +126,10 @@ class TermSession:
         if not r:
             return b""
         try:
-            return os.read(self.fd, 65536)
+            data = os.read(self.fd, 65536)
+            if not data:
+                self.dead = True  # EOF от pty: оболочка завершилась
+            return data
         except OSError:
             self.dead = True
             return b""
@@ -138,6 +145,14 @@ class TermSession:
             os.kill(self.pid, signal.SIGHUP)
         except OSError:
             pass
+        # reap ребёнка, чтобы не копить зомби
+        for _ in range(10):
+            try:
+                if os.waitpid(self.pid, os.WNOHANG)[0] == self.pid:
+                    return
+            except OSError:
+                return
+            time.sleep(0.05)
 
 
 def ws_handshake(sock: socket.socket, pre_read: bytes = b"") -> bool:
