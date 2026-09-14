@@ -340,6 +340,21 @@ def do_link_open(target: str, mode: str) -> dict:
     return open_path(path, mode)
 
 
+def do_link_resolve(target: str) -> dict:
+    """Резолв без открытия: что это и куда ведёт (для предпросмотра в LinkModule)."""
+    kind = classify(target)
+    if kind == "wikilink":
+        path = resolve_wikilink(target)
+        return {"ok": True, "kind": kind, "target": target,
+                "resolved": str(path) if path else None,
+                "exists": bool(path)}
+    if kind == "url":
+        return {"ok": True, "kind": kind, "target": target, "resolved": target, "exists": True}
+    p = Path(target).expanduser()
+    return {"ok": True, "kind": kind, "target": target,
+            "resolved": str(p), "exists": p.exists()}
+
+
 def open_url(url: str, mode: str) -> dict:
     if mode in ("browser", ""):
         spawn(["xdg-open", url])
@@ -552,13 +567,24 @@ def do_dependencies(card_id: str) -> dict:
         if not c:
             return {"id": cid, "error": "нет в registry"}
         return {"id": cid, "title": c.get("title", ""), "lifecycle": c.get("lifecycle", ""),
+                "owner": c.get("owner", ""), "priority": c.get("priority", ""),
                 "depends_on": c.get("depends_on", []),
                 "blocks": sorted(blocks.get(cid, []))}
+    graph_nodes = [{"id": cid, "title": cards[cid].get("title", ""),
+                    "lifecycle": cards[cid].get("lifecycle", ""),
+                    "owner": cards[cid].get("owner", ""),
+                    "depends_on": cards[cid].get("depends_on", [])} for cid in cards]
+    graph_edges = [{"source": d, "target": cid} for cid, c in cards.items()
+                   for d in c.get("depends_on", []) if d in cards]
     return {"ok": True,
             "card": entry(card_id) if card_id else None,
             "critical_path": ranked[:10],
             "orphans": [cid for cid, c in cards.items()
                         if not c.get("depends_on") and not blocks.get(cid)],
+            "no_owner": [cid for cid, c in cards.items()
+                         if not c.get("owner") and not c.get("retired")],
+            "nodes": graph_nodes,
+            "edges": graph_edges,
             "cards": {cid: entry(cid) for cid in (cards if not card_id else [card_id])}
             if card_id else None}
 
@@ -591,6 +617,32 @@ def do_term_open(project: str, port: int) -> dict:
     return {"ok": True, "project": project, "port": port, "cwd": cwd}
 
 
+def do_notify(message: str, topic: str, priority: str) -> dict:
+    """Отправить push на телефон через ntfy.sh (self-hosted-совместимо).
+
+    Топик из --topic или env PIPBOY_NTFY. Хост из PIPBOY_NTFY_HOST
+    (default https://ntfy.sh). Без топика — инструкция, а не ошибка сети.
+    """
+    t = topic or os.environ.get("PIPBOY_NTFY", "")
+    if not t:
+        return {"ok": False,
+                "error": "ntfy-топик не задан: export PIPBOY_NTFY=<topic> (или --topic)"}
+    if not message:
+        message = "Pip-Boy: проверка связи"
+    host = os.environ.get("PIPBOY_NTFY_HOST", "https://ntfy.sh").rstrip("/")
+    url = f"{host}/{t}"
+    try:
+        import urllib.request
+        req = urllib.request.Request(url, data=message.encode("utf-8"), method="POST")
+        req.add_header("Title", "Pip-Boy")
+        req.add_header("Priority", priority or "default")
+        with urllib.request.urlopen(req, timeout=6) as r:
+            return {"ok": True, "topic": t, "status": r.status,
+                    "id": r.read().decode("utf-8", "replace").strip()}
+    except Exception as e:  # noqa: BLE001
+        return {"ok": False, "error": f"ntfy: {e}"}
+
+
 def main() -> int:
     p = argparse.ArgumentParser(description="Pip-Boy actions (workspace/open, link/open, capture, term-open)")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -602,6 +654,8 @@ def main() -> int:
     lo = sub.add_parser("link-open")
     lo.add_argument("target")
     lo.add_argument("--mode", default="browser", choices=["browser", "nvim", "tmux"])
+    lr = sub.add_parser("link-resolve")
+    lr.add_argument("target")
     ca = sub.add_parser("capture-scan")
     ca.add_argument("--run", action="store_true",
                     help="прогнать pipeline (перегенерировать signals.json)")
@@ -619,6 +673,11 @@ def main() -> int:
     qn.add_argument("--limit", type=int, default=10)
     qd = sub.add_parser("dependencies")
     qd.add_argument("--card", default="", help="конкретная карточка (опционально)")
+    nt = sub.add_parser("notify")
+    nt.add_argument("--message", default="", help="текст пуша")
+    nt.add_argument("--topic", default="", help="ntfy-топик (или env PIPBOY_NTFY)")
+    nt.add_argument("--priority", default="default",
+                    choices=["default", "low", "high", "urgent", "min", "max"])
     args = p.parse_args()
     try:
         if args.cmd == "workspace-open":
@@ -627,6 +686,8 @@ def main() -> int:
             res = do_workspace_status(args.project)
         elif args.cmd == "link-open":
             res = do_link_open(args.target, args.mode)
+        elif args.cmd == "link-resolve":
+            res = do_link_resolve(args.target)
         elif args.cmd == "capture-scan":
             res = do_capture_scan(args.run, args.limit)
         elif args.cmd == "term-open":
@@ -639,6 +700,8 @@ def main() -> int:
             res = do_next(args.limit)
         elif args.cmd == "dependencies":
             res = do_dependencies(args.card)
+        elif args.cmd == "notify":
+            res = do_notify(args.message, args.topic, args.priority)
         else:
             res = {"ok": False, "error": "unknown command"}
     except Exception as e:  # noqa: BLE001 — вернуть JSON вместо traceback

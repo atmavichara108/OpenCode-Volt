@@ -123,6 +123,78 @@ body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:13p
   .pb-main{grid-template-columns:1fr}
   .tile-wide{grid-column:span 1}
 }
+
+/* --- layout presets (data-layout на .pb-main) --- */
+.pb-main[data-layout="columns"]{grid-template-columns:repeat(3,minmax(0,1fr))}
+.pb-main[data-layout="columns"] .tile-wide{grid-column:span 2}
+.pb-main[data-layout="rows"]{grid-template-columns:1fr}
+.pb-main[data-layout="rows"] .tile-wide{grid-column:span 1}
+.pb-main[data-layout="focus"]{grid-template-columns:repeat(3,minmax(0,1fr))}
+.pb-main[data-layout="focus"] .tile:nth-child(1){grid-column:1/-1;grid-row:span 1;min-height:340px}
+.pb-main[data-layout="focus"] .tile-wide{grid-column:span 2}
+
+.pb-layouts{display:flex;gap:3px}
+.pb-layouts .pb-proj{padding:3px 8px}
+
+/* --- acceptance dashboard --- */
+.acc-card{border:1px solid var(--line);border-radius:12px;padding:8px 10px;margin-bottom:6px;background:rgba(255,255,255,.015)}
+.acc-head{display:flex;align-items:center;gap:8px;font-size:11px;flex-wrap:wrap}
+.acc-id{font-family:var(--mono);font-size:10px;color:var(--leaf)}
+.acc-stage{font-family:var(--mono);font-size:9px;letter-spacing:1px}
+.acc-owner{font-size:9px;color:var(--dim);border:1px solid var(--line);border-radius:99px;padding:1px 7px}
+.acc-owner.warn{color:var(--sun);border-color:rgba(163,230,53,.4)}
+.acc-body{margin-top:6px;display:flex;flex-direction:column;gap:3px}
+.acc-line{font-size:10.5px;color:var(--dim);display:flex;gap:6px}
+.acc-line .lbl{font-family:var(--mono);font-size:8.5px;color:var(--faint);letter-spacing:1px;flex:0 0 auto;min-width:62px}
+.acc-line .lbl.rot{color:var(--rot)}
+.acc-line .ev{color:var(--water);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.acc-meta{font-size:10.5px;color:var(--dim);margin-bottom:8px}
+
+/* --- dependency graph --- */
+.dep-stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.dep-stats .stat{font-size:10px;color:var(--dim)}
+.dep-stats .stat b{color:var(--txt);font-family:var(--mono)}
+.dep-stats .stat.warn b{color:var(--sun)}
+.cp-list{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px}
+.cp{font-family:var(--mono);font-size:9px;color:var(--sun);border:1px solid rgba(163,230,53,.3);
+  border-radius:99px;padding:2px 8px;cursor:pointer}
+.cp b{color:var(--txt)}
+.dep-svg-wrap{width:100%;overflow-x:auto}
+.dep-svg{width:100%;min-width:560px;height:auto;display:block}
+.dep-legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.lg{font-size:9px;color:var(--dim);display:inline-flex;align-items:center;gap:4px}
+.lg i{width:8px;height:8px;border-radius:50%;display:inline-block}
+
+/* --- link resolver --- */
+.link-form{display:flex;gap:6px;margin-bottom:8px}
+.link-input{flex:1;background:var(--surface2);border:1px solid var(--line2);color:var(--txt);
+  font-family:var(--mono);font-size:11px;padding:6px 10px;border-radius:8px;outline:0}
+.link-input:focus{border-color:rgba(74,222,128,.5)}
+.link-result{font-size:10.5px;margin-bottom:8px;word-break:break-all}
+.lk-kind{font-family:var(--mono);font-size:9px;color:var(--water);border:1px solid var(--line2);
+  border-radius:99px;padding:1px 7px;margin-right:6px}
+.lk-path{font-family:var(--mono);font-size:10px;color:var(--txt)}
+.link-actions{display:flex;gap:5px;flex-wrap:wrap}
+
+/* --- workspace launcher --- */
+.ws-status{font-size:11px;margin-bottom:8px;color:var(--dim)}
+.ws-status.up{color:var(--leaf)}
+.ws-wins{display:flex;gap:5px;flex-wrap:wrap}
+.ws-win{font-family:var(--mono);font-size:9.5px;color:var(--water);border:1px solid var(--line2);
+  border-radius:8px;padding:2px 8px}
+.ws-row{display:flex;align-items:center;gap:8px;padding:3px 0;font-size:11px}
+.ws-port{font-family:var(--mono);font-size:10px;color:var(--water)}
+.ws-port.down{color:var(--dim)}
+.ws-health{font-size:9px;font-family:var(--mono)}
+.ws-health.up{color:var(--leaf)}
+.ws-health.down{color:var(--faint)}
+.launch-actions{display:flex;gap:6px;margin-top:10px}
+
+/* mobile stack */
+body.mobile .pb-topbar{gap:6px;padding:8px 10px}
+body.mobile .pb-btn{padding:6px 10px}
+body.mobile .pb-main{padding:8px;gap:8px}
+body.mobile .tile{min-height:200px}
 </style>
 </head>
 <body>
