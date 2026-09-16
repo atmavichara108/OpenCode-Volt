@@ -98,6 +98,15 @@ def log_path(port: int) -> str:
 class Handler(SimpleHTTPRequestHandler):
     server_version = "PipBoyHost/1"
 
+    def end_headers(self) -> None:
+        # статические файлы SimpleHTTPRequestHandler отдаёт без Cache-Control,
+        # из-за чего браузер кеширует устаревшие JS/HTML после обновления.
+        # Форсируем no-store на всём, кроме SSE (у SSE свой Cache-Control).
+        if not getattr(self, "_sse_written", False):
+            if not self.headers.get("Cache-Control"):
+                self.send_header("Cache-Control", "no-store")
+        super().end_headers()
+
     def do_GET(self) -> None:  # noqa: N802
         STATE["last"] = time.time()
         STATE["n_req"] += 1
@@ -138,6 +147,7 @@ class Handler(SimpleHTTPRequestHandler):
         Формат: `event: <name>\ndata: {json}\n\n`, heartbeat `:ping` каждые 2 с
         (держит соединение и обновляет idle-активность). Клиент — EventSource.
         """
+        self._sse_written = True
         self.send_response(200)
         self.send_header("Content-Type", "text/event-stream")
         self.send_header("Cache-Control", "no-cache")
