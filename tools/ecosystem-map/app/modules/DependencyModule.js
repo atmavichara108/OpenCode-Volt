@@ -6,6 +6,8 @@
  *   - orphan-карточки (нет deps и никто не блокирует);
  *   - карточки без owner;
  *   - циклы (обратные рёбра).
+ *
+ * Zoom/pan: колесо — зум (к курсору), drag — пан, кнопки + / − / ⟲ сброс.
  */
 import { Module } from "../core/Module.js";
 
@@ -17,7 +19,8 @@ const COLORS = {
 };
 
 export class DependencyModule extends Module {
-  constructor(id, title, opts) { super(id, title, opts); this.data = null; }
+  constructor(id, title, opts) { super(id, title, opts); this.data = null;
+    this._zoom = 1; this._tx = 0; this._ty = 0; }
 
   async mount(container) {
     super.mount(container);
@@ -33,6 +36,7 @@ export class DependencyModule extends Module {
     }
     this.container.innerHTML = this._render();
     this._draw();
+    this._wirePanZoom();
   }
 
   _render() {
@@ -48,7 +52,13 @@ export class DependencyModule extends Module {
       </div>
       ${cp.length ? `<div class="csect">КРИТИЧЕСКИЙ ПУТЬ (кто блокирует больше всего)</div>
       <div class="cp-list">${cp.map(c => `<span class="cp" data-cid="${this.esc(c.id)}">${this.esc(c.id)} <b>×${c.holds}</b></span>`).join("")}</div>` : ""}
-      <div class="dep-svg-wrap"><svg class="dep-svg" id="dep-svg"></svg></div>
+      <div class="dep-toolbar">
+        <button class="pb-mini" data-z="+">+</button>
+        <button class="pb-mini" data-z="-">−</button>
+        <button class="pb-mini" data-z="reset">⟲</button>
+        <span class="dim mono dep-zoom-label" id="dep-zoom">100%</span>
+      </div>
+      <div class="dep-svg-wrap" id="dep-wrap"><svg class="dep-svg" id="dep-svg"></svg></div>
       <div class="dep-legend">
         ${RANK.filter(r => COLORS[r]).slice(0, 8).map(r => `<span class="lg"><i style="background:${COLORS[r]}"></i>${r}</span>`).join("")}
       </div>`;
@@ -67,15 +77,15 @@ export class DependencyModule extends Module {
     // слои по рангу
     const cols = {};
     for (const n of nodes) (cols[rank(n.id)] ||= []).push(n);
-    const W = Math.max(720, nodes.length * 8);
-    const H = 520;
+    const W = Math.max(760, nodes.length * 8);
+    const H = 560;
     svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
     svg.innerHTML = "";
     const colW = W / Math.max(1, Object.keys(cols).length || 1);
     const pos = {};
     const maxInCol = Math.max(1, ...Object.values(cols).map(a => a.length));
     const rowH = H / Math.max(1, maxInCol + 1);
-    const r = Math.min(22, colW / 3);
+    const r = Math.min(24, colW / 3);
     for (const [rankIdx, arr] of Object.entries(cols)) {
       const x = colW * (+rankIdx) + colW / 2;
       arr.forEach((n, i) => {
@@ -127,7 +137,7 @@ export class DependencyModule extends Module {
       const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
       label.setAttribute("text-anchor", "middle");
       label.setAttribute("dy", "3.5");
-      label.setAttribute("font-size", "9");
+      label.setAttribute("font-size", "10");
       label.setAttribute("font-family", "JetBrains Mono, monospace");
       label.setAttribute("fill", COLORS[n.lifecycle] || "#e8f2ea");
       label.textContent = n.id;
@@ -146,5 +156,70 @@ export class DependencyModule extends Module {
       g.addEventListener("click", () => this.emit("card:click", n.id));
       svg.appendChild(g);
     }
+  }
+
+  _applyTransform() {
+    const g = this.container?.querySelector("#dep-content");
+    const wrap = this.container?.querySelector("#dep-wrap");
+    if (g && wrap) {
+      g.setAttribute("transform", `translate(${this._tx},${this._ty}) scale(${this._zoom})`);
+    }
+    const lbl = this.container?.querySelector("#dep-zoom");
+    if (lbl) lbl.textContent = Math.round(this._zoom * 100) + "%";
+  }
+
+  _wirePanZoom() {
+    const wrap = this.container?.querySelector("#dep-wrap");
+    const svg = this.container?.querySelector("#dep-svg");
+    if (!wrap || !svg) return;
+    // обернуть содержимое svg в <g> для трансформации
+    const content = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    content.setAttribute("id", "dep-content");
+    while (svg.firstChild) content.appendChild(svg.firstChild);
+    svg.appendChild(content);
+    this._applyTransform();
+
+    // zoom buttons
+    this.container.querySelectorAll("[data-z]").forEach(b =>
+      b.addEventListener("click", () => {
+        const z = b.getAttribute("data-z");
+        if (z === "+") this._zoom = Math.min(4, this._zoom * 1.25);
+        else if (z === "-") this._zoom = Math.max(0.25, this._zoom / 1.25);
+        else { this._zoom = 1; this._tx = 0; this._ty = 0; }
+        this._applyTransform();
+      }));
+
+    // wheel zoom (к курсору)
+    wrap.addEventListener("wheel", e => {
+      e.preventDefault();
+      const rect = wrap.getBoundingClientRect();
+      const cx = e.clientX - rect.left;
+      const cy = e.clientY - rect.top;
+      const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+      const newZoom = Math.min(4, Math.max(0.25, this._zoom * factor));
+      // сохраняем точку под курсором
+      this._tx = cx - (cx - this._tx) * (newZoom / this._zoom);
+      this._ty = cy - (cy - this._ty) * (newZoom / this._zoom);
+      this._zoom = newZoom;
+      this._applyTransform();
+    }, { passive: false });
+
+    // drag pan
+    let drag = null;
+    wrap.addEventListener("mousedown", e => {
+      if (e.target.closest("title")) return;
+      drag = { x: e.clientX, y: e.clientY, tx: this._tx, ty: this._ty };
+      wrap.style.cursor = "grabbing";
+    });
+    window.addEventListener("mousemove", e => {
+      if (!drag) return;
+      this._tx = drag.tx + (e.clientX - drag.x);
+      this._ty = drag.ty + (e.clientY - drag.y);
+      this._applyTransform();
+    });
+    window.addEventListener("mouseup", () => {
+      if (drag) { drag = null; if (wrap) wrap.style.cursor = "grab"; }
+    });
+    wrap.style.cursor = "grab";
   }
 }
