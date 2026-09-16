@@ -54,6 +54,7 @@ export class ProposalModule extends Module {
         <span class="prop-text">${this.esc(p.card)} <span class="dim">${this.esc(p.title)}</span>
           <span class="prop-move">${this.esc(p.from)} → <b>${this.esc(p.to)}</b></span></span>
         <button class="pb-mini up" data-approve="${this.esc(p.card)}" data-to="${this.esc(p.to)}">APPROVE</button>
+        ${p.project ? `<button class="pb-mini" data-run="${this.esc(p.project)}" title="открыть workspace ${this.esc(p.project)}">RUN</button>` : ""}
       </div>`;
     }
     if (p.type === "blocked") {
@@ -61,6 +62,7 @@ export class ProposalModule extends Module {
         <i style="color:${color}">${icon}</i>
         <span class="prop-text">${this.esc(p.card)} <span class="dim">${this.esc(p.title)}</span>
           <span class="prop-move rot">${this.esc((p.reasons || []).join(", "))}</span></span>
+        <button class="pb-mini" data-review="${this.esc(p.card)}" title="открыть карточку">REVIEW</button>
       </div>`;
     }
     if (p.type === "no_owner") {
@@ -68,10 +70,11 @@ export class ProposalModule extends Module {
         <i style="color:${color}">${icon}</i>
         <span class="prop-text">${this.esc(p.card)} <span class="dim">${this.esc(p.title)}</span>
           <span class="prop-move">назначь owner</span></span>
+        <button class="pb-mini" data-review="${this.esc(p.card)}">REVIEW</button>
       </div>`;
     }
     // drift
-    return `<div class="prop-row">
+    return `<div class="prop-row" data-review="${this.esc(p.subject || '')}">
       <i style="color:${color}">${icon}</i>
       <span class="prop-text">${this.esc(p.subject || p.kind)} <span class="dim">${this.esc(p.detail || "")}</span></span>
     </div>`;
@@ -80,7 +83,7 @@ export class ProposalModule extends Module {
   _wire() {
     this.container.querySelectorAll("[data-card]").forEach(el =>
       el.addEventListener("click", e => {
-        if (e.target.closest("[data-approve]")) return;
+        if (e.target.closest("[data-approve],[data-run],[data-review]")) return;
         this.emit("card:click", el.getAttribute("data-card"));
       }));
     this.container.querySelectorAll("[data-approve]").forEach(b =>
@@ -90,6 +93,20 @@ export class ProposalModule extends Module {
         const d = await this.action("apply", { card, target: to });
         this.emit("toast", d.ok ? `${card} → ${to}` : "✗ " + (d.error || ""));
         await this.refresh();
+      }));
+    // RUN — открыть workspace проекта карточки
+    this.container.querySelectorAll("[data-run]").forEach(b =>
+      b.addEventListener("click", async () => {
+        const proj = b.getAttribute("data-run");
+        const d = await this.action("workspace-open", { project: proj });
+        this.emit("toast", d.ok ? "tmux " + d.session : "✗ " + (d.error || ""));
+      }));
+    // REVIEW — открыть inspector карточки (или text-клик для drift)
+    this.container.querySelectorAll("[data-review]").forEach(b =>
+      b.addEventListener("click", () => {
+        const card = b.getAttribute("data-review");
+        if (card && card.startsWith("ECO-")) this.emit("card:click", card);
+        else this.emit("toast", "drift: " + card);
       }));
   }
 }
