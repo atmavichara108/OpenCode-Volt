@@ -23,10 +23,12 @@ export class SearchModule extends Module {
     this.facetsBox = this.container.querySelector("#search-facets");
     this.count = this.container.querySelector("#search-count");
     this.results = this.container.querySelector("#search-results");
-    this.input.addEventListener("input", () => {
-      clearTimeout(this._t);
-      this._t = setTimeout(() => this._run(), 250);
-    });
+    if (this.input?.addEventListener) {
+      this.input.addEventListener("input", () => {
+        clearTimeout(this._t);
+        this._t = setTimeout(() => this._run(), 250);
+      });
+    }
     // сразу показать всё (кэш из registry) — приятнее для первого взгляда
     const reg = await this.fetchJson("registry.json");
     if (reg) { this._registry = reg; await this._run(); }
@@ -34,7 +36,7 @@ export class SearchModule extends Module {
 
   async _run() {
     if (!this.container) return;
-    const q = this.input.value.trim();
+    const q = (this.input?.value || "").trim();
     this.lastQ = q;
     const d = await this.action("query", { q });
     if (!d.ok) { this.results.innerHTML = `<span class="rot">✗ ${this.esc(d.error)}</span>`; return; }

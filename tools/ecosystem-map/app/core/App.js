@@ -239,7 +239,7 @@ export class PipBoyApp {
       if (e.key === "?" ) { this._toggleKmap(); return; }
       if (e.key === "r" || e.key === "R") { this.refreshAll(); return; }
       if (e.key === "l" || e.key === "L") { this._cycleLayout(); return; }
-      if (e.key === "Escape") { this.root.querySelector("#pb-kmap").style.display = "none"; return; }
+      if (e.key === "Escape") { this._clearTileFocus(); this.root.querySelector("#pb-kmap").style.display = "none"; return; }
       // Ctrl+K или p → command palette
       if ((e.ctrlKey || e.metaKey) && (e.key === "k" || e.key === "K")) { e.preventDefault(); this._openPalette(); return; }
       // Alt+1..9 → проект по номеру; Alt+0 → все проекты
@@ -253,12 +253,66 @@ export class PipBoyApp {
           e.preventDefault();
           this.setActiveProject(null);
         }
+        return;
       }
+      // Keyboard-first навигация по тайлам: стрелки = фокус, Enter = активировать,
+      // x = закрыть, f = focus-лейаут (первый тайл на всю ширину)
+      if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
+        e.preventDefault();
+        this._navTile(e.key);
+        return;
+      }
+      if (e.key === "x" || e.key === "X") { this._closeFocusedTile(); return; }
+      if (e.key === "n" || e.key === "Tab") { e.preventDefault(); this._cycleTileFocus(); return; }
     });
     this.root.querySelector("#pb-cmd").addEventListener("click", () => this._openPalette());
     this.root.querySelector("#pb-refresh").addEventListener("click", () => this.refreshAll());
     this.root.querySelector("#pb-keys").addEventListener("click", () => this._toggleKmap());
     this.overlayEl.addEventListener("click", e => { if (e.target === this.overlayEl) this._closeOverlay(); });
+  }
+
+  _visibleTiles() {
+    return [...this.main.querySelectorAll(".tile")].filter(t => t.offsetParent !== null || t.style.display !== "none");
+  }
+
+  _focusTile(el) {
+    this._visibleTiles().forEach(t => t.classList.remove("tile-focused"));
+    el?.classList.add("tile-focused");
+    el?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }
+
+  _focusedTile() {
+    return this.main.querySelector(".tile.tile-focused");
+  }
+
+  _clearTileFocus() {
+    this.main.querySelectorAll(".tile-focused").forEach(t => t.classList.remove("tile-focused"));
+  }
+
+  _cycleTileFocus() {
+    const tiles = this._visibleTiles();
+    if (!tiles.length) return;
+    const idx = tiles.indexOf(this._focusedTile());
+    this._focusTile(tiles[(idx + 1) % tiles.length]);
+  }
+
+  _navTile(dir) {
+    // простой линейный обход + переход по стрелкам как по сетке (по колонкам)
+    const tiles = this._visibleTiles();
+    if (!tiles.length) return;
+    const cur = this._focusedTile();
+    if (!cur) { this._focusTile(tiles[0]); return; }
+    const i = tiles.indexOf(cur);
+    const step = (dir === "ArrowRight" || dir === "ArrowDown") ? 1 : -1;
+    this._focusTile(tiles[(i + step + tiles.length) % tiles.length]);
+  }
+
+  _closeFocusedTile() {
+    const t = this._focusedTile();
+    if (!t) { this.eventBus.emit("toast", "нет фокуса: стрелки — выбрать тайл, x — закрыть"); return; }
+    const tileId = t.dataset.tile;
+    this.workspace.removeTile(tileId);
+    this.workspace.render();
   }
 
   _toggleKmap() {
@@ -270,8 +324,10 @@ export class PipBoyApp {
       <div class="krow"><b>Ctrl+K</b><span>command palette</span></div>
       <div class="krow"><b>L</b><span>цикл лейаута (grid/columns/focus/rows)</span></div>
       <div class="krow"><b>R</b><span>обновить все модули</span></div>
+      <div class="krow"><b>← ↑ ↓ → / Tab</b><span>фокус тайла (следующий/предыдущий)</span></div>
+      <div class="krow"><b>x</b><span>закрыть сфокусированный тайл</span></div>
       <div class="krow"><b>?</b><span>эта справка</span></div>
-      <div class="krow"><b>Esc</b><span>закрыть оверлей/справку</span></div>
+      <div class="krow"><b>Esc</b><span>снять фокус / закрыть оверлей</span></div>
       <div class="krow"><b>drag</b><span>перетащить тайл за шапку</span></div>
     </div>`;
   }
