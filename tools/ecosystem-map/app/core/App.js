@@ -25,6 +25,7 @@ import { ProposalModule } from "../modules/ProposalModule.js";
 import { AgentModule } from "../modules/AgentModule.js";
 import { NextActionModule } from "../modules/NextActionModule.js";
 import { SearchModule } from "../modules/SearchModule.js";
+import { HealthModule } from "../modules/HealthModule.js";
 
 const LAYOUTS = [
   ["grid", "⊞"],
@@ -98,7 +99,8 @@ export class PipBoyApp {
         .registerModule("proposal", ProposalModule)
         .registerModule("agent", AgentModule)
         .registerModule("next", NextActionModule)
-        .registerModule("search", SearchModule);
+        .registerModule("search", SearchModule)
+        .registerModule("health", HealthModule);
 
     // 3. проекты + глобальные тайлы
     await this._loadProjects();
@@ -147,6 +149,7 @@ export class PipBoyApp {
     this.workspace.addTile("—", this.instantiate("agent", "—"));
     this.workspace.addTile("—", this.instantiate("next", "—"), { size: "wide" });
     this.workspace.addTile("—", this.instantiate("search", "—"));
+    this.workspace.addTile("—", this.instantiate("health", "—"), { size: "wide" });
     this.workspace.addTile("—", this.instantiate("link", "—"));
     if (this._projectList.length) this.setActiveProject(this._projectList[0].id);
   }

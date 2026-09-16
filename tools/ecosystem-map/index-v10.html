@@ -331,6 +331,24 @@ body.mobile .kmap-box{padding:16px}
 /* --- clickable wikilinks --- */
 .wl{color:var(--water);cursor:pointer;text-decoration:underline;text-underline-offset:2px;font-family:var(--mono);font-size:0.95em}
 .wl:hover{color:var(--leaf);background:rgba(74,222,128,.08);border-radius:2px}
+
+/* --- health radar + heatmap --- */
+.hr-list{display:flex;flex-direction:column;gap:5px;margin-bottom:10px}
+.hr-proj{display:flex;align-items:center;gap:8px;cursor:pointer}
+.hr-proj:hover .hr-name{color:var(--leaf)}
+.hr-name{font-size:10.5px;color:var(--dim);width:70px;flex:0 0 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hr-bar{flex:1;height:12px;border-radius:6px;overflow:hidden;display:flex;background:rgba(255,255,255,.03)}
+.hr-seg{height:100%}
+.hr-seg.healthy{background:var(--leaf)}
+.hr-seg.inflight{background:var(--water)}
+.hr-seg.stale{background:#3a4a40}
+.hr-nums{font-size:8.5px;color:var(--faint);width:44px;flex:0 0 auto;text-align:right}
+.hm{display:flex;flex-direction:column;gap:2px;margin-bottom:8px;overflow-x:auto}
+.hm-row{display:flex;gap:2px;align-items:center;min-width:460px}
+.hm-head .hm-lc{font-size:7.5px;color:var(--faint);text-align:center}
+.hm-layer{font-family:var(--mono);font-size:9px;color:var(--dim);width:26px;flex:0 0 auto}
+.hm-cell{flex:1;height:18px;border-radius:3px;display:grid;place-items:center;font-family:var(--mono);font-size:8px;color:var(--txt);min-width:20px}
+.hm-lc{flex:1;font-size:0;min-width:20px}
 </style>
 </head>
 <body>
