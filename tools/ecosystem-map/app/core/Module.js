@@ -45,6 +45,15 @@ export class Module {
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   }
 
+  /** Экранировать текст и сделать [[wikilinks]] интерактивными (.wl). */
+  linkify(s) {
+    const esc = this.esc(s);
+    return esc.replace(/\[\[([^\]]+)\]\]/g, (m, target) => {
+      const t = target.split("|")[0].trim();
+      return `<span class="wl" data-link="${this.esc(t)}" role="link">[[${this.esc(target)}]]</span>`;
+    });
+  }
+
   emit(event, payload) {
     this.app && this.app.eventBus.emit(event, payload);
   }

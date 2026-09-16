@@ -412,9 +412,9 @@ export class PipBoyApp {
         </div>
         <div class="insp-sec"><span class="lbl">DEPS</span> ${this._esc(deps)}</div>
         <div class="insp-sec"><span class="lbl">TASKS</span> ${this._esc(tasks)}</div>
-        ${c.acceptance ? `<div class="insp-sec"><span class="lbl">ACCEPT</span> ${this._esc(c.acceptance)}</div>` : ""}
-        ${c.status_note ? `<div class="insp-sec"><span class="lbl">NOTE</span> ${this._esc(c.status_note)}</div>` : ""}
-        ${c.rollback ? `<div class="insp-sec"><span class="lbl">ROLLBACK</span> ${this._esc(c.rollback)}</div>` : ""}
+        ${c.acceptance ? `<div class="insp-sec"><span class="lbl">ACCEPT</span> ${this.linkify(c.acceptance)}</div>` : ""}
+        ${c.status_note ? `<div class="insp-sec"><span class="lbl">NOTE</span> ${this.linkify(c.status_note)}</div>` : ""}
+        ${c.rollback ? `<div class="insp-sec"><span class="lbl">ROLLBACK</span> ${this.linkify(c.rollback)}</div>` : ""}
         <div class="insp-sec"><span class="lbl">ARTIFACTS</span><div class="insp-arts">${arts}</div></div>
       </div>
       <div class="insp-actions">
@@ -437,8 +437,22 @@ export class PipBoyApp {
         const d = await this.actionRaw("link-open", { target: a.getAttribute("data-open"), mode: "browser" });
         this.eventBus.emit("toast", d.ok ? "открыто" : "✗ " + (d.error || ""));
       }));
+    // кликабельные wikilinks внутри текста (note/accept/rollback)
+    this.overlayEl.querySelectorAll(".wl[data-link]").forEach(a =>
+      a.addEventListener("click", () => {
+        this.eventBus.emit("link:resolve", a.getAttribute("data-link"));
+        this._closeOverlay();
+      }));
   }
 
   _esc(s) { return String(s ?? "").replace(/[&<>"']/g, c =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+
+  _linkify(s) {
+    return this._esc(s).replace(/\[\[([^\]]+)\]\]/g, (m, target) => {
+      const t = target.split("|")[0].trim();
+      return `<span class="wl" data-link="${this._esc(t)}" role="link">[[${this._esc(target)}]]</span>`;
+    });
+  }
+  linkify(s) { return this._linkify(s); }
 }

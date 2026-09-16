@@ -59,9 +59,9 @@ export class AcceptanceModule extends Module {
         ${c.owner ? `<span class="acc-owner">${this.esc(c.owner)}</span>` : '<span class="acc-owner warn">no owner</span>'}
       </div>
       <div class="acc-body">
-        ${c.acceptance ? `<div class="acc-line"><span class="lbl">ACCEPT</span> ${this.esc(c.acceptance)}</div>` : ""}
-        ${c.review ? `<div class="acc-line"><span class="lbl">REVIEW</span> ${this.esc(c.review)}</div>` : ""}
-        ${c.rollback ? `<div class="acc-line"><span class="lbl">ROLLBACK</span> ${this.esc(c.rollback)}</div>` : ""}
+        ${c.acceptance ? `<div class="acc-line"><span class="lbl">ACCEPT</span> ${this.linkify(c.acceptance)}</div>` : ""}
+        ${c.review ? `<div class="acc-line"><span class="lbl">REVIEW</span> ${this.linkify(c.review)}</div>` : ""}
+        ${c.rollback ? `<div class="acc-line"><span class="lbl">ROLLBACK</span> ${this.linkify(c.rollback)}</div>` : ""}
         ${blockers.length ? `<div class="acc-line"><span class="lbl rot">BLOCKS LIVE</span> ${blockers.map(this.esc, this).join(", ")}</div>` : ""}
         ${evidence ? `<div class="acc-line"><span class="lbl">EVIDENCE</span> ${evidence}</div>` : ""}
       </div>
@@ -86,6 +86,7 @@ export class AcceptanceModule extends Module {
   }
 
   _wire() {
+    // кликабельные wikilinks (из linkify)
     this.container.querySelectorAll("[data-link]").forEach(a =>
       a.addEventListener("click", e => {
         e.stopPropagation();
