@@ -44,6 +44,13 @@ stack: Python 3.11+ / requests / gspread / FastAPI / OpenCode Go / SQLite / Dock
 - ✅ POST /run расширен: `client_id`, `label_mode` (default `domains`), `force_relabel` + валидация
 - ✅ migrate.py идемпотентен (любое состояние БД → корректная схема)
 - ✅ Тесты: **256/256 зелёных** (pytest, executed на HEAD f7ccd3e, 2026-08-04; канон `docs/test-metrics.md`)
+- ✅ **TUI-кабина (2026-09-07, коммиты 05ef81b/f519328):** песочница (sandbox/:
+  моки Topvisor/LLM + seed, SANDBOX_MODE → JSON вместо Sheets, полный pipeline
+  без внешних ключей), `scripts/serpctl.py` (JSON-cockpit: sandbox/health/
+  test/db/smoke/release), `/version` эндпоинт, immutable release pipeline
+  (теги v* → GHCR → SSH → scripts/release.sh с backup/migration-preflight/
+  auto-rollback), ruff в CI. Runbook: `docs/serpctl.md` в репо serp.
+  Docker-проверка песочницы и первый релиз (`serpctl release vX.Y.Z --yes`) — за пользователем.
 
 ## Что делаем сейчас
 
