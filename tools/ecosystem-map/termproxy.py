@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import argparse
 import base64
+import collections
 import hashlib
 import json
 import os
@@ -172,7 +173,12 @@ class WSConn:
 
 
 class TermSession:
-    """Одна pty-сессия на WS-клиента."""
+    """Одна pty-сессия на процесс (per-port). Переживает переподключения WS:
+
+    pty остаётся живой между WS-соединениями; вывод буферизуется (deque),
+    новый клиент получает replay буфера при подключении. Это реализует
+    keep-alive терминала: переключение тайла/проекта не убивает оболочку.
+    """
 
     def __init__(self, cmd: str, cwd: str):
         self.pid, self.fd = pty.fork()
@@ -181,6 +187,8 @@ class TermSession:
             os.environ["TERM"] = "xterm-256color"
             os.execvp("/bin/sh", ["/bin/sh", "-c", cmd])
         self.dead = False
+        self.lock = threading.Lock()
+        self.buffer: collections.deque = collections.deque(maxlen=2000)  # replay-буфер
 
     def read_some(self, timeout=0.1) -> bytes:
         r, _, _ = select.select([self.fd], [], [], timeout)
@@ -190,6 +198,9 @@ class TermSession:
             data = os.read(self.fd, 65536)
             if not data:
                 self.dead = True  # EOF от pty: оболочка завершилась
+            else:
+                with self.lock:
+                    self.buffer.append(data)
             return data
         except OSError:
             self.dead = True
@@ -200,6 +211,12 @@ class TermSession:
             os.write(self.fd, data)
         except OSError:
             self.dead = True
+
+    def replay(self) -> bytes:
+        with self.lock:
+            out = b"".join(self.buffer)
+            self.buffer.clear()
+            return out
 
     def close(self) -> None:
         try:
@@ -252,15 +269,24 @@ def ws_handshake(sock: socket.socket, pre_read: bytes = b"") -> bool:
         return False
 
 
-def handle_ws(sock: socket.socket, cmd: str, cwd: str, pre_read: bytes = b"") -> None:
-    """WebSocket handler: pty ↔ ws bidirectional bridge."""
+def handle_ws(sock: socket.socket, sess: "TermSession", pre_read: bytes = b"") -> None:
+    """WebSocket handler: pty ↔ ws bidirectional bridge.
+
+    sess — общая persistent-сессия (per-port); переживает reconnect.
+    При подключении клиенту отдаётся replay-буфер (вывод, накопленный
+    пока никого не было), затем writer расшарен на всех клиентов сессии.
+    """
     if not ws_handshake(sock, pre_read):
         sock.close()
         return
     ws = WSConn(sock)
-    sess = TermSession(cmd, cwd)
     sock.setblocking(False)
     stop = threading.Event()
+
+    # отдать накопленный буфер (keep-alive replay)
+    replay = sess.replay()
+    if replay:
+        ws.send_text(replay.decode("utf-8", "replace"))
 
     def writer():
         while not stop.is_set() and not sess.dead:
@@ -273,14 +299,14 @@ def handle_ws(sock: socket.socket, cmd: str, cwd: str, pre_read: bytes = b"") ->
 
     t = threading.Thread(target=writer, daemon=True)
     t.start()
-    while not sess.dead:
+    while not stop.is_set():
+        if sess.dead:
+            break
         frames = ws.recv_frames()
         for op, payload in frames:
             if op == 0x8:
                 stop.set()
-                sess.close()
-                ws.close()
-                return
+                break
             if op in (0x1, 0x2):
                 sess.write(payload)
         if not frames:
@@ -288,7 +314,8 @@ def handle_ws(sock: socket.socket, cmd: str, cwd: str, pre_read: bytes = b"") ->
         if sess.dead:
             break
     stop.set()
-    sess.close()
+    # НЕ закрывать sess здесь — она переиспользуется другими клиентами
+    # и владельцем (serve). ws закрываем только своё соединение.
     ws.close()
 
 
@@ -354,6 +381,7 @@ def serve(port: int, cmd: str, cwd: str) -> None:
     srv.settimeout(1.0)
     write_pid(port, os.getpid())
     sys.stderr.write(f"termproxy: listening on http://127.0.0.1:{port}/ (cmd={cmd})\n")
+    sess = TermSession(cmd, cwd)  # persistent per-port: переживает reconnect
     try:
         while True:
             try:
@@ -377,7 +405,7 @@ def serve(port: int, cmd: str, cwd: str) -> None:
                 # WebSocket: spawn handler in thread (non-blocking)
                 threading.Thread(
                     target=handle_ws,
-                    args=(client, cmd, cwd, first),
+                    args=(client, sess, first),
                     daemon=True,
                 ).start()
             elif method in ("GET", "HEAD"):
@@ -403,6 +431,7 @@ def serve(port: int, cmd: str, cwd: str) -> None:
                 client.close()
     finally:
         srv.close()
+        sess.close()
         remove_pid(port)
 
 

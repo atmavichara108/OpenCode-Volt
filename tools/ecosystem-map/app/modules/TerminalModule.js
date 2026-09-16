@@ -5,10 +5,15 @@
  * к termproxy (pty→WS). termproxy поднимается лениво и идемпотентно через
  * /action term-open; порт детерминирован от имени проекта (backend term_port).
  *
+ * Keep-alive: pty на сервере переживает переключение тайла/проекта
+ * (termproxy держит persistent сессию + replay-буфер). При возврате на тайл
+ * терминал переподключается и дочитывает накопленный вывод. Явный kill —
+ * кнопкой EJECT (сбрасывает pty через term-close).
+ *
  * Жизненный цикл:
  *   mount()  → placeholder + авто-connect (spawn termproxy, если нужен)
  *   refresh()→ re-fit (не рвёт живую сессию)
- *   unmount()→ закрыть WS, dispose term, disconnect observer
+ *   unmount()→ закрыть WS, dispose term (pty остаётся живым — keep-alive)
  */
 import { Module } from "../core/Module.js";
 
@@ -43,7 +48,7 @@ export class TerminalModule extends Module {
     this._connecting = true;
     try {
       const project = this.opts.projectId;
-      // 1. idempotent spawn termproxy
+      // 1. idempotent spawn termproxy (переиспользует живую pty, если уже поднята)
       let d = await this.action("term-open", { project });
       if (!d.ok) { this._showError(d.error); return; }
       this.port = d.port;
@@ -89,16 +94,29 @@ export class TerminalModule extends Module {
     ws.onopen = () => this._setStatus("LIVE");
     ws.onmessage = e => this.term?.write(e.data);
     ws.onerror = () => this._setStatus("WS ERROR");
-    ws.onclose = () => this._setStatus("CLOSED");
+    ws.onclose = () => this._setStatus("RECONNECT…");
     this.term.onData(d => { if (ws.readyState === 1) ws.send(d); });
   }
 
   _renderHost() {
     this.container.innerHTML = `<div class="term-host">
       <div class="term-bar"><span class="term-proj">${this.esc(this.opts.projectId)}</span>
-        <span class="term-status" id="term-st">…</span></div>
+        <span class="term-status">…</span>
+        <span class="spacer"></span>
+        <button class="tx" data-act="kill" title="перезапустить pty" style="margin:0;font-size:11px">⏏</button>
+      </div>
       <div class="term-body"></div>
     </div>`;
+    this.container.querySelector("[data-act=kill]")?.addEventListener("click", () => this._kill());
+  }
+
+  async _kill() {
+    if (this.port) await this.action("term-close", { project: this.opts.projectId }).catch(() => {});
+    // сбросить локальный xterm и переподключить (поднимет свежую pty)
+    if (this.term) { try { this.term.dispose(); } catch (e) {} }
+    this.term = null; this.fit = null; this.port = null;
+    this._renderPlaceholder();
+    await this._connect();
   }
 
   _setStatus(s) {
@@ -143,11 +161,8 @@ export class TerminalModule extends Module {
     this.ws = null;
     if (this.term) { try { this.term.dispose(); } catch (e) {} }
     this.term = null; this.fit = null;
-    // погасить termproxy, чтобы порт и pty не копились при переключении проекта
-    if (this.port) {
-      this.action("term-close", { project: this.opts.projectId }).catch(() => {});
-      this.port = null;
-    }
+    // keep-alive: НЕ гасим termproxy — pty переживает переключение тайла/проекта.
+    // Явный kill — кнопкой ⏏ (EJECT).
     super.unmount();
   }
 }
