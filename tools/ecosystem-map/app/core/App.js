@@ -154,8 +154,11 @@ export class PipBoyApp {
   setActiveProject(projectId) {
     this.activeProject = projectId;
     this.workspace.setActiveProject(projectId);
+    this._layoutIdx = LAYOUTS.findIndex(l => l[0] === this.workspace.layout);
+    if (this._layoutIdx < 0) this._layoutIdx = 0;
     this.eventBus.emit("project:change", { projectId });
     this._renderProjectsBar();
+    this._renderLayoutBtns();
   }
 
   _renderProjectsBar() {

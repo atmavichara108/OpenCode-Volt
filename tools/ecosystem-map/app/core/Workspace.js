@@ -19,6 +19,7 @@ export class Workspace {
     this.projectTiles = new Map(); // projectId -> Set<tileId>
     this.activeProject = null;
     this.layout = layoutConfig.layout || "grid";
+    this.layouts = {};           // per-project layout: { "<projectId>"|"__all__": layout }
     this.order = [];             // tileId-порядок (восстанавливается из storage)
     this.sizes = {};             // tileId -> size
     this._loadLayout();
@@ -31,6 +32,7 @@ export class Workspace {
       if (!raw) return;
       const s = JSON.parse(raw);
       if (s.layout) this.layout = s.layout;
+      if (s.layouts) this.layouts = s.layouts;
       if (Array.isArray(s.order)) this.order = s.order;
       if (s.sizes) this.sizes = s.sizes;
     } catch (e) { /* повреждённый storage — игнорируем */ }
@@ -40,16 +42,25 @@ export class Workspace {
     try {
       localStorage.setItem("pipboy-layout-v10", JSON.stringify({
         layout: this.layout,
+        layouts: this.layouts,
         order: [...this.tiles.keys()],
         sizes: Object.fromEntries([...this.tiles.values()].map(t => [t.id, t.size])),
       }));
     } catch (e) { /* quota/private mode */ }
   }
 
+  _layoutKey() { return this.activeProject || "__all__"; }
+
   setLayout(layout) {
     this.layout = layout;
+    this.layouts[this._layoutKey()] = layout;
     this.root.dataset.layout = layout;
     this._saveLayout();
+  }
+
+  /** Вернуть сохранённый лейаут проекта или дефолт (не переключая). */
+  layoutFor(projectId) {
+    return this.layouts[projectId || "__all__"] || this.layouts["__all__"] || "grid";
   }
 
   /** Зарегистрировать тайл модуля в проекте. */
@@ -126,6 +137,8 @@ export class Workspace {
 
   setActiveProject(projectId) {
     this.activeProject = projectId;
+    // переключить лейаут на сохранённый для этого проекта (per-project layout)
+    this.layout = this.layoutFor(projectId);
     this.render();
   }
 
