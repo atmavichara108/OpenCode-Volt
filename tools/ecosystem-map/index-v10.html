@@ -309,6 +309,22 @@ body.mobile .kmap-box{padding:16px}
 .nx-empty{padding:4px 0;color:var(--faint);font-size:10px}
 .nx-filter{display:flex;gap:4px;margin-bottom:8px}
 .nx-filter .pb-mini.nx-active{color:var(--leaf);border-color:rgba(74,222,128,.5);background:rgba(74,222,128,.08)}
+
+/* --- search --- */
+.search-input{width:100%;background:var(--surface2);border:1px solid var(--line2);color:var(--txt);
+  font-family:var(--mono);font-size:12px;padding:8px 10px;border-radius:8px;outline:0;margin-bottom:8px}
+.search-input:focus{border-color:rgba(74,222,128,.5)}
+.search-facets{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px}
+.facet-chip{font-size:9px;color:var(--dim);border:1px solid var(--line2);border-radius:99px;padding:1px 8px;cursor:pointer;background:transparent}
+.facet-chip.on{color:var(--leaf);border-color:rgba(74,222,128,.5);background:rgba(74,222,128,.1)}
+.search-count{font-size:10px;margin-bottom:6px}
+.search-results{max-height:340px;overflow-y:auto}
+.sr-row{display:flex;align-items:baseline;gap:8px;padding:5px 4px;border-bottom:1px solid var(--line);cursor:pointer;font-size:11px}
+.sr-row:hover{background:rgba(255,255,255,.02)}
+.sr-row b{font-size:10.5px;color:var(--leaf)}
+.sr-title{flex:1;color:var(--txt);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sr-meta{font-family:var(--mono);font-size:8.5px;color:var(--dim)}
+.sr-proj{font-size:9px;color:var(--water)}
 </style>
 </head>
 <body>
