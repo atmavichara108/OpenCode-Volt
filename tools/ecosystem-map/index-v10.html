@@ -289,6 +289,26 @@ body.mobile .kmap-box{padding:16px}
 .chip{font-family:var(--mono);font-size:9px;color:var(--leaf);border:1px solid var(--line2);border-radius:99px;padding:1px 7px}
 .chip.rot{color:var(--rot);border-color:rgba(244,63,94,.3)}
 .agent-routes{display:flex;gap:6px;flex-wrap:wrap}
+
+/* --- next action --- */
+.nx-row{display:flex;gap:8px;padding:7px 5px;border-bottom:1px solid var(--line);cursor:pointer;font-size:10.5px}
+.nx-row:hover{background:rgba(255,255,255,.02)}
+.nx-p{font-family:var(--mono);font-size:9px;font-weight:700;flex:0 0 auto;width:22px;padding-top:1px}
+.nx-main{flex:1;min-width:0}
+.nx-idline{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.nx-idline b{font-size:10.5px;color:var(--leaf)}
+.nx-title{font-size:10.5px}
+.nx-meta{display:flex;align-items:center;gap:6px;margin-top:2px;flex-wrap:wrap}
+.nx-owner{font-size:9px;color:var(--dim);border:1px solid var(--line);border-radius:99px;padding:0 6px}
+.nx-owner.warn{color:var(--sun);border-color:rgba(163,230,53,.35)}
+.nx-proj{font-size:9px;color:var(--water)}
+.nx-lc{font-size:8.5px;color:var(--faint);letter-spacing:1px}
+.nx-reasons{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px}
+.nx-reason{font-family:var(--mono);font-size:8px;color:var(--rot);border:1px solid rgba(244,63,94,.25);
+  border-radius:99px;padding:0 6px}
+.nx-empty{padding:4px 0;color:var(--faint);font-size:10px}
+.nx-filter{display:flex;gap:4px;margin-bottom:8px}
+.nx-filter .pb-mini.nx-active{color:var(--leaf);border-color:rgba(74,222,128,.5);background:rgba(74,222,128,.08)}
 </style>
 </head>
 <body>
