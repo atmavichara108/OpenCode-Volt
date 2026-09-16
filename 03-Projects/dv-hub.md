@@ -1,6 +1,7 @@
 ---
 type: project
 repo: /home/rudra/Projects/dv-hub
+spec-home: /home/rudra/Projects/dv-hub/docs/specs/
 kind: волонтёрский
 stack: TypeScript strict / Hono / better-sqlite3 / Vanilla JS + Tailwind / Vite
 ---
@@ -13,7 +14,7 @@ stack: TypeScript strict / Hono / better-sqlite3 / Vanilla JS + Tailwind / Vite
 **CI / проверка:** `npm run ci` = lint(.ts,.tsx) + typecheck + test + build · GitHub Actions `.github/workflows/ci.yml`
 **Деплой:** `deploy:vps` (rsync + PM2, target DV-008); Cloudflare (`deploy:cf`) выпилен.
 **Особенность:** `context/` — git submodule на dv-project (Obsidian-волт: vision, задачи, kanban). Клон с `--recurse-submodules`.
-**Canonical specs:** `06-Specs/dv-hub/` (Vault) — execution source of truth; локальный `/spec` указывает туда.
+**Canonical specs:** `docs/specs/` в репозитории dv-hub (`/home/rudra/Projects/dv-hub/docs/specs/`) — execution source of truth; локальный `/spec` резолвит оттуда.
 
 ## Стек: current vs target
 - Current: Node.js + better-sqlite3 + Hono (миграция с Cloudflare по коду завершена, DV-008)
@@ -79,4 +80,5 @@ architecture.md (ADR) · product-vision.md · roadmap.md · glossary.md · infra
 - 2026-06-27: убрано упоминание claude-mem; статус memory-management обновлён
 - 2026-06-29: добавлены статусы всех 6 методов
 - 2026-06-30: ревью — исправлены статусы (distill ✅, model-routing ✅, context-as-docs 🟡, memory-mgmt 🟡), infra mode primary, модели агентов добавлены, docs дополнены, команды 7
-- 2026-09-15: dev-loop апгрейд отражён (порт 8787, ci=lint+typecheck+test+build, деплой deploy:vps, Docker dev, миграции идемпотентны, seed.js/db:seed удалены); добавлена ссылка на canonical specs `06-Specs/dv-hub/`.
+- 2026-09-15: dev-loop апгрейд отражён (порт 8787, ci=lint+typecheck+test+build, деплой deploy:vps, Docker dev, миграции идемпотентны, seed.js/db:seed удалены); добавлена ссылка на canonical specs `docs/specs/` (локально в dv-hub).
+- 2026-09-16: specs dv-hub перенесены из `06-Specs/dv-hub/` в `~/Projects/dv-hub/docs/specs/` (правило владения 06-Specs/README).

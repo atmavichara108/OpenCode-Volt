@@ -40,8 +40,8 @@ Append-only: одна запись на подтверждённый shift, да
   `/android-plan` или свободный запрос. Dotfiles используется отдельно для
   `/sysaudit`, Vault `/ask` даёт контекст; bridge не является обязательным и
   reports не копируются.
-- Basis: [[06-Specs/AndroidOS/androidos-return-to-implementation]],
-  [[06-Specs/dotfiles/coordination-bridge-freeze]].
+- Basis: /home/rudra/Projects/AndroidOS/docs/androidos-return-to-implementation.md,
+  /home/rudra/dotfiles/docs/specs/coordination-bridge-freeze.md.
 
 ### 2026-08-29 — Global Coordination Bridge command
 
