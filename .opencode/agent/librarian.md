@@ -6,7 +6,7 @@ model: opencode-go/gpt-5.6-luna
 temperature: 0.2
 steps: 15
 permission:
-  doom_loop: allow
+  doom_loop: ask
   external_directory: allow
   bash:
     "*": deny
