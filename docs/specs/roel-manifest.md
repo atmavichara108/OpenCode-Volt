@@ -13,6 +13,7 @@
 | noop-guard | `noop-guard.ts` + `noop-guard-helpers.js` | `event session.idle` | smoke **9/9** (T-136) |
 | input-security | `input-security.ts` + `input-security-helpers.js` | `chat.message` / `messages.transform` | smoke **14/14** (T-137) |
 | decision-queue-hook | `decision-queue-hook.ts` (глобальный) | `permission.ask/replied` | smoke 25/25 (T-132) |
+| main-protector | `main-protector.ts` (глобальный) | `tool.execute.before` | блок commit в main/master + edit hot-files в main; fail-open; обход `ALLOW_MAIN=1` |
 
 ### Layer 2 — Control-Plane
 - Decision Queue: `control-plane/decision-queue/` — JSON-карточки (`YYYY-MM-DD-<slug>.json`) + `SCHEMA.md` + `runtime-events.jsonl` (append-only).

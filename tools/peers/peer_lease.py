@@ -49,6 +49,7 @@ HOT_FILES = {
     "04-Memory/active-context.md": "активный контекст",
     "tools/ecosystem-map/registry.json": "registry карточек",
     "00-INDEX.md": "дашборд-вход",
+    "AGENTS.md": "правила агента",
 }
 
 
