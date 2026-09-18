@@ -188,6 +188,21 @@ test("пустой/неполный input безопасен", () => {
   assert.doesNotThrow(() => applyReplayBudget([{}]))
 })
 
+test("текущий tool-input не мутируется, старый — pruned", () => {
+  const prompt = "p".repeat(500)
+  const payload = "x".repeat(500)
+  const messages = [
+    { info: { role: "assistant" }, parts: [{ type: "tool", state: { input: { prompt, payload } } }] },
+    { info: { role: "user" }, parts: [] },
+    { info: { role: "assistant" }, parts: [{ type: "tool", state: { input: { prompt, payload } } }] },
+  ]
+  applyReplayBudget(messages)
+  assert.equal(messages[2].parts[0].state.input.prompt, prompt)
+  assert.equal(messages[2].parts[0].state.input.payload, payload)
+  assert.equal(messages[0].parts[0].state.input.prompt, prompt)
+  assert.equal(messages[0].parts[0].state.input.payload, "[500 characters cleared]")
+})
+
 // Summary
 console.log(`\n${passed} passed, ${failed} failed`)
 console.log(`\nNote: smoke test imports the actual plugin helpers (replay-budget-helpers.js),`)

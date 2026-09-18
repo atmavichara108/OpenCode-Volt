@@ -9,27 +9,26 @@ permission:
   doom_loop: ask
   external_directory: allow
   bash:
-    "*": deny
-    "ls*": allow
-    "cat*": allow
-    "grep*": allow
-    "git status*": allow
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git branch*": allow
-    "git rev-parse*": allow
-    "git tag -l*": allow
-    "git ls-files*": allow
-    "git remote -v*": allow
-    "git describe*": allow
-    "git symbolic-ref*": allow
-    "git blame*": allow
-    "git pull*": allow
-    "git add*": ask
-    "git commit*": ask
-    "jq*": allow
-    "mv*": allow
+    "*": allow
+    "sudo *": deny
+    "chown *": deny
+    "chmod *": deny
+    "mkfs*": deny
+    "shutdown*": deny
+    "reboot*": deny
+    "systemctl stop*": deny
+    "systemctl disable*": deny
+    "systemctl mask*": deny
+    "git push --force*": deny
+    "git push -f*": deny
+    "git branch -D*": deny
+    "git tag -d*": deny
+    "git reset --hard*": ask
+    "git clean*": ask
+    "rm -rf*": deny
+    "rm -fr*": deny
+    "rm*": ask
+    "ssh*": ask
   webfetch: allow
   edit:
     "**/.opencode/**": allow

@@ -206,6 +206,28 @@ on-demand механизм (stdlib, без зависимостей):
 - Если Pip-Boy открыт, а хост погашен — бейдж refresh покажет
   `DOWN · pipboy.py up`.
 
+## Pip-Boy v10: tiling multiplexer
+
+Точка входа v10 — `tools/ecosystem-map/index-v10.html`. Это тайловый
+multiplexer для одновременной работы с control plane и project workspace.
+
+- **Модули:** Ecosystem, Projects, Upgrade, Terminal и Browser.
+- **Per-project isolation:** у каждого проекта собственные контекст, terminal
+  и browser tiles; workspace tiles одного проекта не смешиваются с другим.
+- **Terminal:** используется vendor `termproxy` для подключения терминального
+  tile к изолированному project workspace.
+- **Hotkeys:** `Alt+1..9` — выбор workspace tile, `R` — refresh, `?` —
+  справка, `Esc` — закрыть overlay/вернуть фокус; tiles можно переставлять
+  drag-жестом.
+- **SSE:** клиент слушает `file.watcher.updated` через `EventSource` и после
+  сигнала обновляет активный tile; `observer.py` пересобирает generated
+  snapshot, а polling остаётся fallback.
+
+Запуск и проверка: `python3 tools/ecosystem-map/pipboy.py up`,
+`python3 tools/ecosystem-map/pipboy.py status`, затем
+`python3 tools/ecosystem-map/pipboy.py open`; observer запускается командой
+`python3 tools/ecosystem-map/observer.py`.
+
 ## Действия: workspace / link resolver / localhost-panel (v5)
 
 Сервер пробрасывает безопасный `/action` endpoint (GET, whitelist операций

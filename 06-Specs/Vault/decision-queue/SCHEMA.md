@@ -62,13 +62,15 @@ Readable summary in `06-Specs/Vault/decision-queue-log.md` (append-only).
 
 **Plugin:** `/home/rudra/dotfiles/opencode-global/.config/opencode/plugins/decision-queue-hook.ts`
 
-**Hook:** `permission.ask` `[проверить exact signature]` с graceful fallback на event catch-all.
+**Hook:** `permission.ask` and event catch-all are implemented; live event fire remains `[проверить]`.
 
 **Storage:** Append-only JSONL (`runtime-events.jsonl`) в:
 - Canonical: `06-Specs/Vault/decision-queue/runtime-events.jsonl` (если path существует)
-- Fallback: `.decision-queue/runtime-events.jsonl` (project root)
+- Fallback: structured `client.app.log` only; project-root fallback is forbidden.
 
-**Card shape:** см. выше. Все cards создаются со `status: "pending"`, `resolution: null`. User resolves via `/decisions` command.
+**Card shape:** runtime cards include `created`, `updated`, optional source message/call IDs,
+and `dilemma.recommendation: null`; all resolution fields remain `null`.
+All runtime cards start with `status: "pending"`; manual JSON cards are managed by `/decisions`.
 
 **Constraints:**
 - Metadata-only: no prompt content, no tool output, no secrets
@@ -76,6 +78,7 @@ Readable summary in `06-Specs/Vault/decision-queue-log.md` (append-only).
 - No shell/git/network/file edit actions
 - No card resolution, no commit/push
 
-**Smoke test:** `06-Specs/Vault/decision-queue-smoke-test.mjs` (25/25 PASS, pure functions, no live runtime required).
+**Smoke test:** `06-Specs/Vault/decision-queue-smoke-test.mjs` (shared pure helpers, no live runtime required).
 
-**Integration layer:** plugin создаёт JSONL, `/decisions` command ожидает JSON files. Integration layer не реализован (future work). Currently plugin creates runtime log, manual cards created via `/decisions new` remain separate JSON files.
+**Integration layer:** plugin JSONL is a separate append-only runtime log. `/decisions` currently lists
+manual JSON cards only; JSONL projection is future work and is not claimed.
