@@ -3,7 +3,7 @@
 # Run manually to verify permissions work as expected
 # No mutation, no network, no dangerous operations
 #
-# Usage: bash 06-Specs/Vault/permission-smoke-test.sh
+# Usage: bash docs/specs/permission-smoke-test.sh
 # (Executable bit pending manual chmod +x; chmod denied in Vault project config)
 
 set -euo pipefail

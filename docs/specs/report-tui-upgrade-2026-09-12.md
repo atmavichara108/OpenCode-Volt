@@ -141,7 +141,7 @@ python3 tools/verify-cache/verify.py [--force] [--json]
   `PYTHONPATH=.venv/lib/python3.14/site-packages`.
 - **`tools/verify-cache`** — verify.py, tree-hash кэш гейтов. PASS.
 
-## 5. Decision Queue (06-Specs/Vault/decision-queue/)
+## 5. Decision Queue (control-plane/decision-queue/)
 
 - **Что это**: persistent machine-readable хранилище «карточек дилемм» —
   одна JSON-карточка на файл `YYYY-MM-DD-<slug>.json` (status pending/approved/
@@ -213,14 +213,14 @@ python3 tools/verify-cache/verify.py [--force] [--json]
 
 ## 7. Ключевые файлы
 
-- Спеки Pip-Boy: `06-Specs/Vault/pipboy-v8-rethink.md`, `pipboy-v8bis-ux.md`,
+- Спеки Pip-Boy: `docs/specs/pipboy-v8-rethink.md`, `pipboy-v8bis-ux.md`,
   `pipboy-v9-terrarium.md`
 - Runbook: `07-Runbooks/ecosystem-kanban-runbook.md` (323 строки — свод по
   пользованию v3–v7 + custom tools + capture)
 - Registry: `tools/ecosystem-map/registry.json` (35 карточек ECO)
 - Backend: `tools/ecosystem-map/{pipboy,actions,observer}.py`
 - Фронт: `index.html` / `v8bis.html` / `terrarium.html`
-- Decision queue: `06-Specs/Vault/decision-queue/{SCHEMA.md, runtime-events.jsonl,
+- Decision queue: `control-plane/decision-queue/{SCHEMA.md, runtime-events.jsonl,
   decision-queue-smoke-test.mjs, 4 карточки}`
 - Capture: `tools/telegram-capture/{README.md, watch.py, inbox_queue.py, pipeline.py,
   classify.py, capture.py, mark.py}`

@@ -11,12 +11,13 @@ timestamp: 2026-09-08
 > Автоматически обновляется librarian. Читается при старте каждой сессии.
 
 ## Текущий фокус
+- **Promo-provider protocol (2026-09-16):** метод [[02-Methods/promo-provider-protocol]] принят; карточки [[01-Reference/provider-cards/linaliapi]] (✅ ACTIVE) и [[01-Reference/provider-cards/justwoker]] (❌ BLOCKED/NO_MODELS) зафиксированы. Hook-spec /home/rudra/dotfiles/docs/specs/promo-provider-probe-balance-hook.md передан sysop/агентам dotfiles — реализация НЕ начата. **JustDoWork blocked** (пустой `/v1/models`, Cloudflare 403 на чат-пробе, referral-баланс `$121.34` неспендируем через API `[проверить]`); **no default switch** на него.
 - **Фокус: T-143 (P0)** — фикс мутации живых tool-input в replay-budget (инцидент пустых task-промптов субагентов 2026-09-07): эксперимент → фикс (clone/граница текущего хода/keep) → smoke-кейс → verifier. T-135 закрыт 2026-09-08 (live hook-fire подтверждён, facts.md). capture 2026-09-07 завершён полностью (517 постов, 516 помечено, коммит 8471030). LinaliAPI-часть ниже — архив (2026-09-06).
-- **LinaliAPI → OpenCode (2026-09-06 — Vault-часть завершена):** подключён провайдер `linaliapi`, создан spec [[06-Specs/dotfiles/linaliapi-provider-canon]], обновлены reference/memory-файлы. Dotfiles-канон и stow-синхронизация переданы `sysop`/агентам проекта dotfiles — librarian их не выполняет. GUI M Code (`~/.config/mcode/opencode.jsonc`) содержит блок; видимость/auth после рестарта GUI остаётся `[проверить]`.
+- **LinaliAPI → OpenCode (2026-09-06 — Vault-часть завершена):** подключён провайдер `linaliapi`, создан spec /home/rudra/dotfiles/docs/specs/linaliapi-provider-canon.md, обновлены reference/memory-файлы. Dotfiles-канон и stow-синхронизация переданы `sysop`/агентам проекта dotfiles — librarian их не выполняет. GUI M Code (`~/.config/mcode/opencode.jsonc`) содержит блок; видимость/auth после рестарта GUI остаётся `[проверить]`.
 - **Секрет экономии токенов M Code (2026-09-05, T-135 — secret extracted, implementation next):** расход сессии — центы. Причина — replay budget (добавка форка, в TUI 1.18.5 НЕТ — strings-проверка): старые tool-результаты при отправке истории режутся до 2000 симв. (head 75%/tail 25%), защита последних 40 KB (`REPLAY_PROTECTED_CHARS`), pruning старых tool-входов >120 симв., дроп неподписанного reasoning, image budget 5, doom-loop guard. Константы/алгоритм (truncateToolOutput, replayCapPlan) извлечены из app.asar — задокументированы в [[01-Reference/mcode-desktop]] § «Секрет экономии токенов». **T-135 (P0) — порт в TUI, первый приоритет P6 (#42).**
 - **M Code Desktop adoption (2026-09-05, T-133 — study complete):** изучены новые органы движка изнутри сессии (peers/peer_*/session_message, task-субагенты с worktree-изоляцией, verify-кэш, memory-стор, oracle, ask_image/download/send_file, background bash, question/todowrite/skill). Подтверждено: M Code — Electron-форк OpenCode (updater anomalyco/opencode), читает legacy `.opencode/` волта; глобальный kernel (meta/researcher/reviewer/sysop/verifier) и плагины (decision-queue, session-flush) уже в `~/.config/mcode/`. Создана [[01-Reference/mcode-desktop]], путь апгрейда дополнен P6. **Решение Rudra (2026-09-05): TUI — основное окружение; M Code Desktop — майнинг-станция фич.** P6 переформатирован в очередь порта органов в TUI-стек (#40 Playwright-браузер = T-134 — приоритет; peers-семантика, verify-кэш, oracle route, майнинг релизов; memory-стор ➖ не нужен — 04-Memory SSOT). Librarian-роль в M Code — семантическая (чтение файла + протокол), не рантаймная: модель сессии `opencode-go/glm-5.3-flash`, Manual mode оператора [проверить: переключение агентов через UI].
 - **Decision Queue runtime slice (2026-09-05, T-132 — implementation complete, verifier pending):** создан global plugin `decision-queue-hook.ts` (`/home/rudra/dotfiles/opencode-global/.config/opencode/plugins/`), metadata-only card creation на permission events. Plugin: append-only JSONL output, sanitization (no secrets/prompts/tool output), risk inference (critical/high/medium/low), graceful fallback если `permission.ask` signature uncertain `[проверить]`. Smoke test: 25/25 PASS (pure functions, no live runtime required). Existing 4 cards remain pending (no fabricated approvals). Spec/skill/command updates с runtime integration notes. Residuals `[проверить]`: exact `permission.ask` payload signature, external_directory permissions для Vault path, live runtime hook fire. facts.md не тронут.
-- **Permission audit + role profiles (2026-09-05, T-131 — verifier PASS, Done):** исправлены критические баги в global config (git push allow → ask, verifier mutation commands removed), внедрены role-based profiles (researcher/reviewer/verifier/meta) с явными command allowlists, создана decision queue infrastructure (schema + /decisions command + Vault projection). Spec: [[06-Specs/Vault/permission-audit-role-profiles]], log: [[06-Specs/Vault/decision-queue-log]], команда: [[.opencode/command/decisions]]. Acceptance: verifier PASS 2026-09-05, evidence в [[04-Memory/session-log/2026-09-05]]. Residuals [проверить]: runtime hook integration, ~/.local/state/opencode/ path permissions, TUI "allow forever" persistence, project-specific .opencode/ configs, decision queue skill permissions, smoke test executable bit. facts.md не тронут.
+- **Permission audit + role profiles (2026-09-05, T-131 — verifier PASS, Done):** исправлены критические баги в global config (git push allow → ask, verifier mutation commands removed), внедрены role-based profiles (researcher/reviewer/verifier/meta) с явными command allowlists, создана decision queue infrastructure (schema + /decisions command + Vault projection). Spec: [[docs/specs/permission-audit-role-profiles]], log: [[control-plane/decision-queue-log]], команда: [[.opencode/command/decisions]]. Acceptance: verifier PASS 2026-09-05, evidence в [[04-Memory/session-log/2026-09-05]]. Residuals [проверить]: runtime hook integration, ~/.local/state/opencode/ path permissions, TUI "allow forever" persistence, project-specific .opencode/ configs, decision queue skill permissions, smoke test executable bit. facts.md не тронут.
 - **Ecosystem Kanban control plane (2026-08-31, вторая сессия; T-129 —
   verifier PASS 2026-08-31, Done):** canonical registry расширен 8→28 карточек
   (ECO-001..028: полное покрытие L0..L4 × фасетов, project adoption
@@ -37,13 +38,13 @@ timestamp: 2026-09-08
   2026-08-31 (независимый verifier acceptance — PASS; T-118..T-122 →
   Done):** созданы plan v2
   ([[06-Audits/2026-08-31-ecosystem-upgrade-plan-v2]]), registry spec
-  ([[06-Specs/Vault/ecosystem-registry]]) + canonical
+  ([[docs/specs/ecosystem-registry]]) + canonical
   `tools/ecosystem-map/registry.json` (8 карточек ECO-001..008, Layers ×
   Facets, lifecycle IDEA→RETIRED), read-only детерминированный observer
   (`tools/ecosystem-map/observer.py` → gitignored
   `generated/snapshot.json`), Pip-Boy v3 multi-view (MATRIX/KANBAN/
   PROJECTS/AGENTS/BLOCKERS/WORKSPACE; static/generated метки, real-time
-  не заявляется), MCP spec ([[06-Specs/Vault/mcp-readonly]],
+  не заявляется), MCP spec ([[docs/specs/mcp-readonly]],
   implementation BLOCKED) + custom tool `.opencode/tools/
   ecosystem-snapshot.ts` (runtime loading `[проверить]`). Research
   artifact получил append-only Addendum 2026-08-31 (OpenCode
@@ -65,10 +66,10 @@ timestamp: 2026-09-08
   runtime-гейты `task: ask`/`edit: ask`) и команды `/flush`/`/dream`.
   Acceptance HITL/`/flush` — verifier PASS (после reviewer evidence); live
   smoke выполняется в соседней сессии, его результат здесь не зафиксирован.
-  Создан spec `06-Specs/Vault/risk-based-orchestration.md` (status:
+  Создан spec `docs/specs/risk-based-orchestration.md` (status:
   proposed); реализация отложена до отдельной сессии.
 - **Следующий actionable focus (2026-08-30):** запустить отдельную сессию по
-  `06-Specs/Vault/risk-based-orchestration.md` (review/decision по spec);
+  `docs/specs/risk-based-orchestration.md` (review/decision по spec);
   реализацию spec не выполнять в текущей сессии.
 - **SERPlux local-first release workflow (2026-08-30):** authoritative specs и
   workflow находятся в `/home/rudra/Projects/serp/docs/specs/`; Vault SERPlux
@@ -405,7 +406,7 @@ Sysop primary smoke подтверждён отдельно и scoped; T-109 о�
   exact `vault` read-only chain `librarian -> researcher -> reviewer ->
   verifier`, sequential, без `general` fallback и self-marker. Runtime
   automation/router не внедрён. Evidence: [[04-Memory/route-log/2026-08-29-orchestration-smoke]],
-  [[06-Specs/Vault/control-plane-smoke]]. R1/F1/F2/F3 закрыты документально;
+  [[docs/specs/control-plane-smoke]]. R1/F1/F2/F3 закрыты документально;
   uncommitted/negative deny/local merge/literal output gaps остаются.
 
 2026-08-29 — **Routing checkpoint pause:** capability-routing приостановлен

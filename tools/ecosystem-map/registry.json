@@ -3,7 +3,7 @@
     "schema": "ecosystem-registry/1.1",
     "canonical": true,
     "updated": "2026-09-05",
-    "source_of_truth": "06-Specs/Vault/ecosystem-registry.md",
+    "source_of_truth": "docs/specs/ecosystem-registry.md",
     "projections": [
       "tools/ecosystem-map/index.html",
       "tools/ecosystem-map/generated/snapshot.json"
@@ -151,7 +151,7 @@
       "acceptance": "Повторный запуск на том же входе → идентичный snapshot.json (детерминизм); no mutation/no network подтверждены ревью кода; вывод читается Pip-Boy",
       "risk": "Snapshot принят за источник правды (запрещено: canonical = registry/карточки)",
       "rollback": "Удалить observer.py + generated/ (gitignored); проекции Pip-Boy возвращаются к registry-only",
-      "artifacts": ["tools/ecosystem-map/observer.py", "06-Specs/Vault/ecosystem-registry.md"],
+      "artifacts": ["tools/ecosystem-map/observer.py", "docs/specs/ecosystem-registry.md"],
       "tasks": ["T-120"],
       "status_note": "MVP acceptance подтверждён независимым verifier PASS 2026-08-31 (T-120): детерминизм + read-only гарантии. Правка 2026-08-31 (косметика проекции, гарантии неизменны): парсинг TASKS только по ID-колонке (раньше T-ID из Related-колонок попадали в секции); summary карточек расширено (facets/priority/project); добавлен drift-signal task_ref_missing. LIVE не заявляется: live watcher/cross-repo — later; snapshot не источник правды",
       "retired": false
@@ -169,7 +169,7 @@
       "acceptance": "Unblock: подтверждённая потребность внешнего MCP-клиента + оценка context overhead 3 tools + отдельный approval",
       "risk": "MCP context overhead (docs caveat 2026-08-31); dependency explosion; прецедент user-freeze MCP (T-110)",
       "rollback": "Spec-only: удалять нечего; runtime нет и не заявляется",
-      "artifacts": ["06-Specs/Vault/mcp-readonly.md", ".opencode/tools/ecosystem-snapshot.ts"],
+      "artifacts": ["docs/specs/mcp-readonly.md", ".opencode/tools/ecosystem-snapshot.ts"],
       "tasks": ["T-122"],
       "status_note": "Spec верифицирован как артефакт (независимый verifier PASS 2026-08-31, T-122); implementation остаётся BLOCKED (plan v2 §7); custom tool ecosystem-snapshot runtime loading [проверить] (T-127/ECO-015) — runtime не заявляется",
       "retired": false
@@ -223,7 +223,7 @@
       "acceptance": "Named routes подтверждены scoped runtime smokes с independent verifier evidence (researcher, reviewer, sysop, orchestration); negative deny smoke + local-extension merge smoke закрыты; automatic router adoption — отдельное решение",
       "risk": "Partial rollout принят за общий; silent fallback на general",
       "rollback": "Метод/спека — git-файлы; routes не меняют runtime без adoption-решения",
-      "artifacts": ["02-Methods/capability-routing.md", "06-Audits/2026-08-25-capability-routing-design-note.md", "06-Specs/Vault/control-plane-smoke.md", "01-Reference/capability-routing.md"],
+      "artifacts": ["02-Methods/capability-routing.md", "06-Audits/2026-08-25-capability-routing-design-note.md", "docs/specs/control-plane-smoke.md", "01-Reference/capability-routing.md"],
       "tasks": ["T-112", "T-113", "T-115", "T-116", "T-117"],
       "status_note": "Scoped smokes PASS 2026-08-29 (verifier-confirmed): researcher, reviewer, sysop (exact global primary), orchestration chain; paused after v0.1 checkpoint. Открыто (T-117): negative permission smoke, local-extension merge. Automatic router / prompt-normalizer / task-compiler не реализованы; UNROUTABLE вместо silent fallback; model-routing не меняет (ECO-028 отдельно)",
       "retired": false
@@ -241,7 +241,7 @@
       "acceptance": "Глобальный AGENTS.md контракт + runtime-гейты task:ask/edit:ask приняты; verifier PASS по HITL//flush evidence",
       "risk": "Локальные overrides ослабляют гейт; контракт молча ослабляется в проектах",
       "rollback": "Контракт — файл ~/.config/opencode/AGENTS.md (dotfiles-контур, вне vault); runtime-гейты — permissions в opencode.jsonc",
-      "artifacts": ["04-Memory/session-log/2026-08-30.md", "06-Specs/Vault/risk-based-orchestration.md"],
+      "artifacts": ["04-Memory/session-log/2026-08-30.md", "docs/specs/risk-based-orchestration.md"],
       "tasks": [],
       "status_note": "Создан/принят 2026-08-30 (ADR-009 в dotfiles; глобальный AGENTS.md + runtime task:ask/edit:ask); verifier PASS по HITL//flush; live smoke выполнялся в соседней сессии — результат в vault не зафиксирован. Prompt-контракт действует во всех проектах независимо от overrides; slash-команда = подтверждение её заявленного scope",
       "retired": false
@@ -296,7 +296,7 @@
       "acceptance": "Live-сессия подтверждает видимость tool агенту и успешный вызов (T-127 smoke); без smoke работоспособность не заявляется",
       "risk": "Runtime loading custom tools [проверить]; false claim готовности",
       "rollback": "Удалить .opencode/tools/ecosystem-snapshot.ts; observer CLI остаётся",
-      "artifacts": [".opencode/tools/ecosystem-snapshot.ts", "06-Specs/Vault/mcp-readonly.md",
+      "artifacts": [".opencode/tools/ecosystem-snapshot.ts", "docs/specs/mcp-readonly.md",
                     ".opencode/tools/ecosystem-next.ts", ".opencode/tools/ecosystem-blockers.ts",
                     ".opencode/tools/ecosystem-query.ts", ".opencode/tools/ecosystem-dependencies.ts",
                     ".opencode/tools/ecosystem-summary.ts", ".opencode/tools/ecosystem-open-workspace.ts"],
@@ -318,7 +318,7 @@
       "acceptance": "pre-commit падает на невалидный registry (unknown layer/facet/lifecycle/priority/owner, битые deps/artifacts/task-refs); observer warnings = fail gate",
       "risk": "Хук не установлен/обойдён; false positives блокируют коммиты",
       "rollback": "Отключить шаг в pre-commit-check.sh",
-      "artifacts": ["05-Templates/pre-commit-check.sh", "06-Specs/Vault/ecosystem-registry.md"],
+      "artifacts": ["05-Templates/pre-commit-check.sh", "docs/specs/ecosystem-registry.md"],
       "tasks": ["T-126"],
       "status_note": "Later gate (spec §8); текущая валидация — ручная (observer warnings в snapshot); автоматизации нет",
       "retired": false
@@ -411,7 +411,7 @@
       "acceptance": "verifier-pattern/closed-loop/memory-management доведены 🟡→✅; /sysaudit scoped; system-ops apply — только через explicit approval",
       "risk": "system-ops/root experiments заморожены пользователем (T-108) — не активировать",
       "rollback": "dotfiles — git repo; откат коммитом",
-      "artifacts": ["03-Projects/dotfiles.md", "06-Specs/dotfiles/coordination-bridge-freeze.md"],
+      "artifacts": ["03-Projects/dotfiles.md", "/home/rudra/dotfiles/docs/specs/coordination-bridge-freeze.md"],
       "tasks": ["T-059", "T-060", "T-061", "T-108"],
       "status_note": "Частично: verifier/closed-loop/flush созданы (T-059..T-061 Done 2026-07-03), методы в 00-INDEX 🟡. system-ops FROZEN by user (T-108; scalar edit:deny root cause зафиксирован 2026-08-30, fresh-session verification pending); bridge freeze — отдельный spec; /sysaudit — scoped read-only",
       "retired": false
@@ -449,7 +449,7 @@
       "acceptance": "PA MVP контракты/ADR подтверждены; real-device validation на Redmi Note 15 Pro+ (T-106) зафиксирована lab report; выбор технологий не объявляется до acceptance",
       "risk": "Объявление выбора до real-device acceptance; bridge-интеграция (frozen) как скрытая зависимость",
       "rollback": "AndroidOS — git repo; vault — карточка/память",
-      "artifacts": ["03-Projects/AndroidOS.md", "06-Audits/2026-08-22-androidos-pa-mvp-architecture-adr.md", "06-Audits/2026-08-22-androidos-open-source-first.md", "06-Specs/AndroidOS/androidos-return-to-implementation.md"],
+      "artifacts": ["03-Projects/AndroidOS.md", "06-Audits/2026-08-22-androidos-pa-mvp-architecture-adr.md", "06-Audits/2026-08-22-androidos-open-source-first.md", "/home/rudra/Projects/AndroidOS/docs/specs/androidos-return-to-implementation.md"],
       "tasks": ["T-101", "T-106"],
       "status_note": "ADR provisional (STT/DB/sync/LLM сравнения); реализация не начата; следующий шаг — /android-plan <PA MVP intent>; real-device validation pending (T-106; телефон подтверждён через ADB: Redmi flourite, Android 16/API 36); bridge frozen (T-109) — local-first работа",
       "retired": false
@@ -522,7 +522,7 @@
       "acceptance": "Spec review/decision сессия завершена; реализация только после approval; до этого — design-only",
       "risk": "Реализация в текущей сессии без отдельного решения (запрещено); ослабление safety-гейтов",
       "rollback": "Spec — git-файл; реализации нет",
-      "artifacts": ["06-Specs/Vault/risk-based-orchestration.md"],
+      "artifacts": ["docs/specs/risk-based-orchestration.md"],
       "tasks": [],
       "status_note": "Spec создан 2026-08-30 (status: proposed); цель — снизить orchestration overhead для простых docs/config задач без ослабления HITL; следующий шаг — отдельная review/decision сессия; реализация отложена",
       "retired": false

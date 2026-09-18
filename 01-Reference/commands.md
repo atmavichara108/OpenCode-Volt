@@ -54,7 +54,7 @@ subtask: true           # форсить вызов как subagent (не зас
 | Команда | Source | Назначение |
 |---------|--------|-----------|
 | [`/bridge`](file:///home/rudra/dotfiles/opencode-global/.config/opencode/command/bridge.md) | `/home/rudra/dotfiles/opencode-global/.config/opencode/command/bridge.md` → `~/.config/opencode/command/bridge.md` | FROZEN BY USER 2026-08-30 (historical, не вызывать); Protocol entrypoint для canonical AndroidOS Coordination Bridge: читает контекст текущего repo, определяет relation и named route, сам сохраняет report/evidence/handoff/status в bridge, останавливается с `UNROUTABLE`/`BLOCKED` при невозможности записи. Freeze spec: /home/rudra/dotfiles/docs/specs/coordination-bridge-freeze.md |
-| [`/spec`](file:///home/rudra/dotfiles/opencode-global/.config/opencode/command/spec.md) | `/home/rudra/dotfiles/opencode-global/.config/opencode/command/spec.md` → `~/.config/opencode/command/spec.md` | Для обычных проектов читает Vault `06-Specs/<project>/`; SERPlux — approved project-local exception, его `.opencode/command/spec.md` имеет precedence и читает только `docs/specs/` |
+| [`/spec`](file:///home/rudra/dotfiles/opencode-global/.config/opencode/command/spec.md) | `/home/rudra/dotfiles/opencode-global/.config/opencode/command/spec.md` → `~/.config/opencode/command/spec.md` | Универсальный resolver по `spec-home` карточки проекта; SERPlux резолвит только `docs/specs/` (репо-локально) |
 | `/prov` | `~/.config/opencode/command/prov.md` | Роутинг модели провайдера: `/prov <сокр> <медиум|фри> [g]` |
 
 После изменения глобальной команды нужно полностью перезапустить OpenCode:

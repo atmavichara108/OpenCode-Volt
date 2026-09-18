@@ -8,7 +8,7 @@ sources:
   - "[[06-Audits/2026-08-03-ecosystem-upgrade-plan-v1]]"
   - "[[06-Audits/2026-08-03-execution-sequence-note]]"
   - "[[06-Audits/2026-08-22-androidos-open-source-first]]"
-  - "[[06-Specs/Vault/ecosystem-registry]]"
+  - "[[docs/specs/ecosystem-registry]]"
 tags: [upgrade-plan, draft, ecosystem, layers-facets, oss-first, workspace, observer, pip-boy]
 ---
 # Ecosystem upgrade plan v2 (2026-08-31)
@@ -57,7 +57,7 @@ tags: [upgrade-plan, draft, ecosystem, layers-facets, oss-first, workspace, obse
 
 ## 2. Layers × Facets matrix
 
-> Canonical schema и card-контракт — в [[06-Specs/Vault/ecosystem-registry]];
+> Canonical schema и card-контракт — в [[docs/specs/ecosystem-registry]];
 > machine-readable registry — `tools/ecosystem-map/registry.json`.
 > Здесь — только состав слоёв/фасетов и принцип.
 
@@ -169,7 +169,7 @@ tags: [upgrade-plan, draft, ecosystem, layers-facets, oss-first, workspace, obse
   только с минимальным числом tools (context caveat подтверждён docs
   2026-08-31). Любой MCP — через OSS-first gate.
 - **Реализация:** **BLOCKED** — полный контракт в
-  [[06-Specs/Vault/mcp-readonly]] (tools: `ecosystem_state`,
+  [[docs/specs/mcp-readonly]] (tools: `ecosystem_state`,
   `ecosystem_card`, `ecosystem_kanban`; stdio local; без secrets).
   Причины block: (a) MCP context overhead vs 3 tools; (b) новая
   dependency (MCP SDK) без нужды; (c) прецедент user-freeze MCP facade

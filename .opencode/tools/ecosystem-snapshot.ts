@@ -10,7 +10,7 @@ import path from "path"
  * projects / tasks / route_log / registry_cards / drift_signals.
  *
  * Гарантии: no network, no mutation (dry-run), no secrets.
- * Контракт: 06-Specs/Vault/mcp-readonly.md (§5), 06-Specs/Vault/ecosystem-registry.md (§6).
+ * Контракт: docs/specs/mcp-readonly.md (§5), docs/specs/ecosystem-registry.md (§6).
  * Runtime loading в OpenCode [проверить] — live smoke не выполнялся (2026-08-31).
  */
 export default tool({

@@ -5,7 +5,7 @@ status: blocked
 date: 2026-08-31
 owner: librarian
 source_plan: "[[06-Audits/2026-08-31-ecosystem-upgrade-plan-v2]]"
-related: "[[06-Specs/Vault/ecosystem-registry]]"
+related: "[[docs/specs/ecosystem-registry]]"
 tags: [spec, vault, mcp, read-only, blocked]
 ---
 # Read-only MCP server — ecosystem state (2026-08-31)

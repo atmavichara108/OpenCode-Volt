@@ -52,5 +52,5 @@ PYTHONPATH=.venv/lib/python3.14/site-packages python3 tools/playwright-browser/b
 ## Связанные
 - Реализует: [[02-Methods/tool-integration-pattern]]
 - Референс семантики: [[01-Reference/mcode-desktop]] § «Playwright-CLI»
-- Спеки: [[06-Specs/Vault/ecosystem-registry]] (ECO-031)
+- Спеки: [[docs/specs/ecosystem-registry]] (ECO-031)
 - Задача: [[TASKS]] T-134, [[DEVELOPMENT-ROADMAP]] P6 #40

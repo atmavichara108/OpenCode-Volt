@@ -68,8 +68,8 @@ Runtime TUI "allow forever" NOT considered persistence evidence until verified.
 
 ### Storage
 
-`06-Specs/Vault/decision-queue/` — JSON files, append-only.
-Schema: `06-Specs/Vault/decision-queue/SCHEMA.md`
+`control-plane/decision-queue/` — JSON files, append-only.
+Schema: `control-plane/decision-queue/SCHEMA.md`
 
 **Future:** `~/.local/state/opencode/decision-queue/` (XDG-compliant, requires permission allow)
 
@@ -89,11 +89,11 @@ Currently manual creation only. Runtime hook integration not confirmed.
 
 ### Vault projection
 
-`06-Specs/Vault/decision-queue-log.md` — append-only readable summary.
+`control-plane/decision-queue-log.md` — append-only readable summary.
 
 ## Smoke test
 
-See `06-Specs/Vault/permission-smoke-test.sh` for representative safe commands.
+See `docs/specs/permission-smoke-test.sh` for representative safe commands.
 
 ## Pending [проверить]
 

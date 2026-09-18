@@ -29,7 +29,7 @@ Append-only: одна запись на подтверждённый shift, да
   runbook. Переходы lifecycle — через librarian/approval; проекция read-only
   (no silent mutation); real-time не заявляется (static/generated only).
 - Basis: [[06-Audits/2026-08-31-ecosystem-upgrade-plan-v2]],
-  [[06-Specs/Vault/ecosystem-registry]],
+  [[docs/specs/ecosystem-registry]],
   [[07-Runbooks/ecosystem-kanban-runbook]].
 
 ### 2026-08-30 — User decision: Coordination Bridge frozen
@@ -121,4 +121,4 @@ Append-only: одна запись на подтверждённый shift, да
   researcher → reviewer → verifier; sequential, read-only, без `general`
   fallback и self-marker evidence. Automatic runtime router не внедрён.
 - Basis: [[04-Memory/route-log/2026-08-29-orchestration-smoke]],
-  [[06-Specs/Vault/control-plane-smoke]].
+  [[docs/specs/control-plane-smoke]].

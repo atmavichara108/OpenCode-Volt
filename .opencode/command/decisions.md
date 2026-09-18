@@ -6,8 +6,8 @@ agent: librarian
 
 Manage persistent dilemma cards for permission conflicts, UNROUTABLE routes, acceptance gates, and high-risk decisions.
 
-Storage: `06-Specs/Vault/decision-queue/` (JSON files, append-only).
-Vault projection: `06-Specs/Vault/decision-queue-log.md`.
+Storage: `control-plane/decision-queue/` (JSON files, append-only).
+Vault projection: `control-plane/decision-queue-log.md`.
 
 ## Subcommands
 
@@ -16,12 +16,12 @@ List all pending decisions with title, risk, status.
 
 ```bash
 # Using jq (allowed in librarian/meta/reviewer/verifier)
-for f in 06-Specs/Vault/decision-queue/*.json; do
+for f in control-plane/decision-queue/*.json; do
   jq -r '"\(.id) [\(.status)] [\(.risk)] \(.dilemma.title)"' "$f"
 done
 
 # Fallback: python3 (if jq unavailable)
-for f in 06-Specs/Vault/decision-queue/*.json; do
+for f in control-plane/decision-queue/*.json; do
   python3 -c "import json,sys; d=json.load(open(sys.argv[1])); print(f\"{d['id']} [{d['status']}] [{d['risk']}] {d['dilemma']['title']}\")" "$f"
 done
 ```
@@ -30,8 +30,8 @@ done
 Show full decision card.
 
 ```bash
-jq . 06-Specs/Vault/decision-queue/<id>.json
-# or: python3 -m json.tool 06-Specs/Vault/decision-queue/<id>.json
+jq . control-plane/decision-queue/<id>.json
+# or: python3 -m json.tool control-plane/decision-queue/<id>.json
 ```
 
 ### `/decisions new <title>`
@@ -44,8 +44,8 @@ Create new decision card interactively. Agent asks:
 6. Risk (low/medium/high/critical)
 7. Stop condition (when to auto-close)
 
-Write to `06-Specs/Vault/decision-queue/YYYY-MM-DD-<slug>.json`.
-Append summary to `06-Specs/Vault/decision-queue-log.md`.
+Write to `control-plane/decision-queue/YYYY-MM-DD-<slug>.json`.
+Append summary to `control-plane/decision-queue-log.md`.
 
 ### `/decisions resolve <id> <choice>`
 Mark decision as resolved. Requires explicit user confirmation.
@@ -84,16 +84,16 @@ Future: automatic card creation on permission.asked, tool blocked, UNROUTABLE, a
 
 **Plugin:** `/home/rudra/dotfiles/opencode-global/.config/opencode/plugins/decision-queue-hook.ts`
 
-**Hook:** `permission.ask` `[проверить exact signature]` с graceful fallback на event catch-all.
+**Hook:** `permission.ask` and event catch-all are implemented; live event fire remains `[проверить]`.
 
 **Storage:** Append-only JSONL (`runtime-events.jsonl`) в:
-- Canonical: `06-Specs/Vault/decision-queue/runtime-events.jsonl` (если path существует)
-- Fallback: `.decision-queue/runtime-events.jsonl` (project root)
+- Canonical: `control-plane/decision-queue/runtime-events.jsonl` (если path существует)
+- Fallback: structured application log only; no project-root file is created.
 
 **Workflow:**
 1. Plugin автоматически создаёт metadata-only card на permission events
 2. Card сохраняется в JSONL (append-only)
-3. User reviews cards via `/decisions list` (показывает manual JSON cards + runtime JSONL)
+3. User reviews manual JSON cards via `/decisions list`; runtime JSONL remains separate until projection is implemented.
 4. User resolves via `/decisions resolve <id> <choice>` (требует explicit confirmation)
 
 **Constraints:**
@@ -102,6 +102,6 @@ Future: automatic card creation on permission.asked, tool blocked, UNROUTABLE, a
 - No shell/git/network/file edit actions
 - No card resolution, no commit/push
 
-**Smoke test:** `06-Specs/Vault/decision-queue-smoke-test.mjs` (25/25 PASS, pure functions, no live runtime required).
+**Smoke test:** `control-plane/decision-queue-smoke-test.mjs` (shared pure helpers, no live runtime required).
 
-**Integration layer:** plugin создаёт JSONL, `/decisions` command ожидает JSON files. Integration layer не реализован (future work). Currently plugin creates runtime log, manual cards created via `/decisions new` remain separate JSON files.
+**Integration layer:** plugin JSONL and manual JSON cards remain separate; JSONL projection is future work and is not claimed.

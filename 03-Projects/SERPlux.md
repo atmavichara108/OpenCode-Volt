@@ -1,6 +1,7 @@
 ---
 type: project
 repo: /home/rudra/Projects/serp
+spec-home: /home/rudra/Projects/serp/docs/specs/
 kind: коммерция / продукт SERP Factory
 stack: Python 3.11+ / requests / gspread / FastAPI / OpenCode Go / SQLite / Docker
 ---

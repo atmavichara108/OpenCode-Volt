@@ -1,6 +1,7 @@
 ---
 type: project
 repo: /home/rudra/Projects/ChaT
+spec-home: /home/rudra/Projects/ChaT/docs/specs/
 kind: knowledge-operations
 stack: Markdown / Obsidian / OpenCode
 description: Новая территория, документируемая через интервью и knowledge-operations; старый ChaT/Notion учитывается только как legacy-источник концепций.

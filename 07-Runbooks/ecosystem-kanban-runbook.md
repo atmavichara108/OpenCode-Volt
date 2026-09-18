@@ -11,7 +11,7 @@ tags: [runbooks, operations, ecosystem, kanban, registry, pip-boy]
 Как оператору (Max Rudra) пользоваться Kanban control plane экосистемы:
 видеть всю картину апгрейдов, выбирать следующий шаг, управлять переходами
 lifecycle через librarian/approval. Это runbook пользования, не дизайна:
-архитектура, schema и gates — в [[06-Specs/Vault/ecosystem-registry]] и
+архитектура, schema и gates — в [[docs/specs/ecosystem-registry]] и
 [[06-Audits/2026-08-31-ecosystem-upgrade-plan-v2]]; здесь на них только
 ссылки.
 
@@ -206,6 +206,28 @@ on-demand механизм (stdlib, без зависимостей):
 - Если Pip-Boy открыт, а хост погашен — бейдж refresh покажет
   `DOWN · pipboy.py up`.
 
+## Pip-Boy v10: tiling multiplexer
+
+Точка входа v10 — `tools/ecosystem-map/index-v10.html`. Это тайловый
+multiplexer для одновременной работы с control plane и project workspace.
+
+- **Модули:** Ecosystem, Projects, Upgrade, Terminal и Browser.
+- **Per-project isolation:** у каждого проекта собственные контекст, terminal
+  и browser tiles; workspace tiles одного проекта не смешиваются с другим.
+- **Terminal:** используется vendor `termproxy` для подключения терминального
+  tile к изолированному project workspace.
+- **Hotkeys:** `Alt+1..9` — выбор workspace tile, `R` — refresh, `?` —
+  справка, `Esc` — закрыть overlay/вернуть фокус; tiles можно переставлять
+  drag-жестом.
+- **SSE:** клиент слушает `file.watcher.updated` через `EventSource` и после
+  сигнала обновляет активный tile; `observer.py` пересобирает generated
+  snapshot, а polling остаётся fallback.
+
+Запуск и проверка: `python3 tools/ecosystem-map/pipboy.py up`,
+`python3 tools/ecosystem-map/pipboy.py status`, затем
+`python3 tools/ecosystem-map/pipboy.py open`; observer запускается командой
+`python3 tools/ecosystem-map/observer.py`.
+
 ## Действия: workspace / link resolver / localhost-panel (v5)
 
 Сервер пробрасывает безопасный `/action` endpoint (GET, whitelist операций
@@ -316,8 +338,8 @@ rofi-script(5):
 
 ## Ссылки
 
-- Schema/контракт: [[06-Specs/Vault/ecosystem-registry]] (canonical),
+- Schema/контракт: [[docs/specs/ecosystem-registry]] (canonical),
   [[06-Audits/2026-08-31-ecosystem-upgrade-plan-v2]] (план v2).
 - Операционная модель: [[07-Runbooks/vibecoding-operator-handbook]];
   история практики: [[07-Runbooks/vibecoding-changelog]].
-- MCP-политика: [[06-Specs/Vault/mcp-readonly]] (implementation BLOCKED).
+- MCP-политика: [[docs/specs/mcp-readonly]] (implementation BLOCKED).

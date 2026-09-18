@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Read-only MCP server — ecosystem state (stdio JSON-RPC, stdlib only).
 
-Контракт: 06-Specs/Vault/mcp-readonly.md (§2, §3, §4).
+Контракт: docs/specs/mcp-readonly.md (§2, §3, §4).
 
 3 tools (минимальный surface, read-only):
   ecosystem_state  — сводка: projects/tasks/route_log counts, drift_signals,

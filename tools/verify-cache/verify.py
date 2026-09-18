@@ -33,6 +33,7 @@ import argparse
 import hashlib
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -49,8 +50,9 @@ CONTENT_DIRS = [
     "04-Memory",
     "05-Templates",
     "06-Audits",
-    "06-Specs",
     "07-Runbooks",
+    "docs",
+    "control-plane",
     "98-Temporary",
     "99-Inbox",
     "99-Inbox.md",
@@ -58,6 +60,9 @@ CONTENT_DIRS = [
 
 # Суффиксы, которые участвуют в tree-hash и разрешении викилинков.
 LINK_SUFFIXES = [".md", ".json", ".jsonc", ".js", ".sh"]
+
+# Ветки, в которые запрещён прямой (не-merge) коммит — как в pre-commit hook.
+PROTECTED_BRANCHES = ("main", "master")
 
 
 def sha256_file(path: Path) -> str:
@@ -144,6 +149,9 @@ def _resolve_wikilink(target: str) -> bool:
 
 WIKILINK_RE = re.compile(r"\[\[([^\]|]+)")
 
+# Git merge-conflict маркеры (та же логика, что pre-commit hook).
+CONFLICT_RE = re.compile(r"^(<{7}[ \t]|>{7}[ \t]|={7}$)")
+
 
 def strip_code_spans(text: str) -> str:
     """Замаскировать содержимое инлайн-кода (``...``) и fenced-блоков (```...```),
@@ -190,11 +198,57 @@ def check_wikilinks() -> list[str]:
     return sorted(set(problems))
 
 
+def check_conflict_markers() -> list[str]:
+    """Git merge-conflict маркеры (<<<<<<< / ======= / >>>>>>>) в файлах контент-слоёв."""
+    problems: list[str] = []
+    for f in collect_files():
+        try:
+            text = f.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        for i, line in enumerate(text.splitlines(), start=1):
+            if CONFLICT_RE.match(line):
+                problems.append(f"conflict-маркер: {f.relative_to(VAULT_ROOT)}:{i}")
+                break  # одного достаточно, чтобы пометить файл
+    return sorted(problems)
+
+
 def run_checks() -> dict:
     return {
         "empty_files": check_empty_files(),
         "broken_wikilinks": check_wikilinks(),
+        "conflict_markers": check_conflict_markers(),
     }
+
+
+CACHED_KEYS = ("empty_files", "broken_wikilinks", "conflict_markers")
+
+
+def _git_live_state() -> dict:
+    """Живое git-состояние (грязное дерево, ветка). НЕ кэшируется — это не
+    детерминированная функция от tree-hash, а мигрирующее состояние рабочей копии."""
+    state: dict = {"dirty": [], "branch": None, "is_protected": False}
+    try:
+        dirty = subprocess.run(
+            ["git", "status", "--porcelain"],
+            cwd=VAULT_ROOT, capture_output=True, text=True, check=False,
+        )
+        if dirty.returncode == 0:
+            state["dirty"] = sorted(l for l in dirty.stdout.splitlines() if l)
+    except OSError:
+        return state
+
+    try:
+        branch = subprocess.run(
+            ["git", "symbolic-ref", "--short", "-q", "HEAD"],
+            cwd=VAULT_ROOT, capture_output=True, text=True, check=False,
+        )
+        state["branch"] = branch.stdout.strip() if branch.returncode == 0 else "(detached)"
+    except OSError:
+        pass
+
+    state["is_protected"] = state["branch"] in PROTECTED_BRANCHES
+    return state
 
 
 def build_verdict(force: bool = False) -> dict:
@@ -205,17 +259,18 @@ def build_verdict(force: bool = False) -> dict:
         try:
             cached = json.loads(CACHE_PATH.read_text(encoding="utf-8"))
             if (cached.get("meta", {}).get("tree_hash") == current_tree
-                    and "empty_files" in cached and "broken_wikilinks" in cached):
-                return {
+                    and all(k in cached for k in CACHED_KEYS)):
+                verdict = {
                     "meta": {
                         "schema": "verify-cache/1.0",
                         "tree_hash": current_tree,
                         "from_cache": True,
                         "deterministic": True,
                     },
-                    "empty_files": cached["empty_files"],
-                    "broken_wikilinks": cached["broken_wikilinks"],
                 }
+                for k in CACHED_KEYS:
+                    verdict[k] = cached[k]
+                return verdict
         except (OSError, json.JSONDecodeError):
             pass  # повреждённый кэш — пересчитываем
 
@@ -229,6 +284,7 @@ def build_verdict(force: bool = False) -> dict:
         },
         "empty_files": problems["empty_files"],
         "broken_wikilinks": problems["broken_wikilinks"],
+        "conflict_markers": problems["conflict_markers"],
     }
 
     # сохранить кэш
@@ -241,6 +297,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Детерминированные гейты волта с tree-hash кэшем")
     parser.add_argument("--force", action="store_true", help="игнорировать кэш, пересчитать")
     parser.add_argument("--json", action="store_true", help="вывод вердикта как JSON")
+    parser.add_argument("--git", action="store_true", help="добавить живую git-гигиену (грязное дерево / защищённая ветка)")
     args = parser.parse_args()
 
     try:
@@ -251,7 +308,18 @@ def main() -> int:
 
     empty = verdict["empty_files"]
     broken = verdict["broken_wikilinks"]
-    ok = not empty and not broken
+    conflicts = verdict["conflict_markers"]
+    ok = not empty and not broken and not conflicts
+
+    git_problems: list[str] = []
+    if args.git:
+        git = _git_live_state()
+        verdict["git"] = git
+        if git["dirty"]:
+            ok = False
+            git_problems += [f"грязный worktree: {l}" for l in git["dirty"]]
+        if git["is_protected"]:
+            git_problems.append(f"прямой коммит в защищённую ветку '{git['branch']}'")
 
     if args.json:
         verdict["meta"]["ok"] = ok
@@ -259,12 +327,19 @@ def main() -> int:
     else:
         src = "кэш" if verdict["meta"]["from_cache"] else "пересчёт"
         print(f"verify: tree {verdict['meta']['tree_hash'][:12]} ({src})")
+        if args.git:
+            git = verdict.get("git", {})
+            print(f"  git: branch={git.get('branch')} dirty={len(git.get('dirty', []))}")
         if ok:
             print("✅ все гейты прошли")
         else:
             for p in empty:
                 print(f"❌ {p}")
             for p in broken:
+                print(f"❌ {p}")
+            for p in conflicts:
+                print(f"❌ {p}")
+            for p in git_problems:
                 print(f"❌ {p}")
 
     return 0 if ok else 1

@@ -43,8 +43,8 @@
 
 ### Storage
 
-- **Location:** `06-Specs/Vault/decision-queue/` (JSON files, append-only)
-- **Schema:** `06-Specs/Vault/decision-queue/SCHEMA.md`
+- **Location:** `control-plane/decision-queue/` (JSON files, append-only)
+- **Schema:** `control-plane/decision-queue/SCHEMA.md`
 - **Constraints:** no secrets, no full prompts, metadata only, append-only, bounded (30-day archive)
 - **Future (optional):** `~/.local/state/opencode/decision-queue/` — XDG-compliant, blocked by external_directory permissions, not active
 
@@ -57,7 +57,7 @@
 
 ### Vault projection
 
-- **Location:** `06-Specs/Vault/decision-queue-log.md` (append-only readable summary)
+- **Location:** `control-plane/decision-queue-log.md` (append-only readable summary)
 - **Initial cards:** 4 decisions from this session (git push, verifier mutation, meta agent, storage location) — all status `pending`, no fabricated resolutions
 
 ### Skill
@@ -71,10 +71,10 @@
 
 ### Created
 
-1. `06-Specs/Vault/permission-audit-role-profiles.md` — full spec
-2. `06-Specs/Vault/decision-queue/SCHEMA.md` — canonical format
-3. `06-Specs/Vault/decision-queue-log.md` — append-only log (4 initial cards, status pending)
-4. `06-Specs/Vault/permission-smoke-test.sh` — representative safe commands (run via `bash script.sh`; executable bit pending manual chmod)
+1. `docs/specs/permission-audit-role-profiles.md` — full spec
+2. `control-plane/decision-queue/SCHEMA.md` — canonical format
+3. `control-plane/decision-queue-log.md` — append-only log (4 initial cards, status pending)
+4. `docs/specs/permission-smoke-test.sh` — representative safe commands (run via `bash script.sh`; executable bit pending manual chmod)
 5. `.opencode/command/decisions.md` — /decisions command
 6. `.opencode/skills/decision-queue/SKILL.md` — decision queue skill
 7. `04-Memory/session-log/2026-09-05.md` — session log
@@ -114,7 +114,7 @@
 
 ### 1. Permission smoke (manual or verifier)
 
-Run `06-Specs/Vault/permission-smoke-test.sh` in OpenCode TUI:
+Run `docs/specs/permission-smoke-test.sh` in OpenCode TUI:
 - Verify each role can execute representative safe commands
 - Verify dangerous commands are denied/ask
 
@@ -138,7 +138,7 @@ python3 -m json.tool < /home/rudra/dotfiles/opencode.json  # validate JSON
 grep -iE "(api[_-]?key|password|secret|token|credential)" \
   /home/rudra/dotfiles/opencode.json \
   /home/rudra/Projects/OpenCode-Vault/.opencode/command/decisions.md \
-  /home/rudra/Projects/OpenCode-Vault/06-Specs/Vault/permission-audit-role-profiles.md
+  /home/rudra/Projects/OpenCode-Vault/docs/specs/permission-audit-role-profiles.md
 ```
 
 ---
@@ -151,14 +151,14 @@ grep -iE "(api[_-]?key|password|secret|token|credential)" \
 
 ### Created
 
-- `/home/rudra/Projects/OpenCode-Vault/06-Specs/Vault/permission-audit-role-profiles.md`
-- `/home/rudra/Projects/OpenCode-Vault/06-Specs/Vault/decision-queue/SCHEMA.md`
-- `/home/rudra/Projects/OpenCode-Vault/06-Specs/Vault/decision-queue/2026-09-05-git-push-permission.json`
-- `/home/rudra/Projects/OpenCode-Vault/06-Specs/Vault/decision-queue/2026-09-05-verifier-mutation.json`
-- `/home/rudra/Projects/OpenCode-Vault/06-Specs/Vault/decision-queue/2026-09-05-meta-agent-creation.json`
-- `/home/rudra/Projects/OpenCode-Vault/06-Specs/Vault/decision-queue/2026-09-05-decision-queue-storage.json`
-- `/home/rudra/Projects/OpenCode-Vault/06-Specs/Vault/decision-queue-log.md`
-- `/home/rudra/Projects/OpenCode-Vault/06-Specs/Vault/permission-smoke-test.sh`
+- `/home/rudra/Projects/OpenCode-Vault/docs/specs/permission-audit-role-profiles.md`
+- `/home/rudra/Projects/OpenCode-Vault/control-plane/decision-queue/SCHEMA.md`
+- `/home/rudra/Projects/OpenCode-Vault/control-plane/decision-queue/2026-09-05-git-push-permission.json`
+- `/home/rudra/Projects/OpenCode-Vault/control-plane/decision-queue/2026-09-05-verifier-mutation.json`
+- `/home/rudra/Projects/OpenCode-Vault/control-plane/decision-queue/2026-09-05-meta-agent-creation.json`
+- `/home/rudra/Projects/OpenCode-Vault/control-plane/decision-queue/2026-09-05-decision-queue-storage.json`
+- `/home/rudra/Projects/OpenCode-Vault/control-plane/decision-queue-log.md`
+- `/home/rudra/Projects/OpenCode-Vault/docs/specs/permission-smoke-test.sh`
 - `/home/rudra/Projects/OpenCode-Vault/.opencode/command/decisions.md`
 - `/home/rudra/Projects/OpenCode-Vault/.opencode/skills/decision-queue/SKILL.md`
 - `/home/rudra/Projects/OpenCode-Vault/04-Memory/session-log/2026-09-05.md`

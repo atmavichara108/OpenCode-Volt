@@ -4,7 +4,7 @@ title: TUI plugin /pipboy — подтверждённый API + блокер с
 status: blocked-pending-smoke-test
 date: 2026-09-15
 owner: rudra
-related: "[[06-Specs/Vault/pipboy-v8-rethink]]"
+related: "[[docs/specs/pipboy-v8-rethink]]"
 tags: [spec, vault, pipboy, tui, plugin]
 ---
 

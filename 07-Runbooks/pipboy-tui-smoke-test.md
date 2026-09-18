@@ -3,14 +3,14 @@ type: Runbook
 title: Pip-Boy TUI plugin /pipboy — controlled smoke-test
 date: 2026-09-15
 owner: rudra
-related: "[[06-Specs/Vault/pipboy-tui-plugin-research]]"
+related: "[[docs/specs/pipboy-tui-plugin-research]]"
 tags: [runbook, pipboy, tui, plugin, smoke-test]
 ---
 
 # Pip-Boy TUI plugin `/pipboy` — controlled smoke-test
 
 > Цель: проверить, что native TUI route реально работает в живом OpenCode/M-Code TUI.
-> Контракт: `06-Specs/Vault/pipboy-tui-plugin-research.md`. Блокер: JSX-поверхность
+> Контракт: `docs/specs/pipboy-tui-plugin-research.md`. Блокер: JSX-поверхность
 > `@opentui/solid` хост-приватна — собрать/typecheck плагин из репозитория нельзя,
 > проверяем только в рантайме TUI.
 
