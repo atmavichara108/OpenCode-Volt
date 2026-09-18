@@ -42,12 +42,13 @@ timestamp: 2026-09-01
 ## Reference (возможности OpenCode)
 [[agents]] · [[commands]] · [[config]] · [[global-config]] · [[memory]] · [[permissions]] · [[plugins]]
 [[providers]] · [[config-modes]] · [[mcode-desktop]]
+[[provider-cards/linaliapi]] · [[provider-cards/justwoker]] — канонические операционные карточки провайдеров (schema: [[promo-provider-protocol]])
 
 ## Сторонний софт (01-Reference/tools/)
 [[tools/GTweak]] — Windows-твикер (редко, для чужой машины)
 
 ## Methods (мои приёмы)
-[[closed-loop]] · [[verifier-pattern]] · [[context-as-docs]] · [[memory-management]] · [[model-routing]] · [[capability-routing]] · [[distill-pattern]] · [[multi-agent-pipeline]] · [[tool-integration-pattern]]
+[[closed-loop]] · [[verifier-pattern]] · [[context-as-docs]] · [[memory-management]] · [[model-routing]] · [[capability-routing]] · [[distill-pattern]] · [[multi-agent-pipeline]] · [[tool-integration-pattern]] · [[promo-provider-protocol]]
 
 ### Cross-project contracts
 [[user-profile-contract]] · [[06-Audits/2026-08-22-androidos-open-source-first]] · [[TASKS]] T-103–T-105
@@ -67,6 +68,7 @@ timestamp: 2026-09-01
 | [[capability-routing]] | ❌ | ❌ | ❌ | ❌ |
 | [[multi-agent-pipeline]] | ✅ | ❌ | ✅ | ❌ |
 | [[tool-integration-pattern]] | ➖ | ➖ | ➖ | 🟡 |
+| [[promo-provider-protocol]] | ➖ | ➖ | 🟡 | 🟡 |
 
 > ❌ не внедрён · 🟡 частично · ✅ внедрён · ➖ не применимо
 

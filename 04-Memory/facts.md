@@ -565,3 +565,22 @@ timestamp: 2026-08-17
   конфиг-рут подтверждён `~/.config/mcode/opencode.jsonc`, `provider.linaliapi`
   уже присутствовал (внесён пользователем), jq VALID; auth-стор M Code для
   linaliapi не проверен `[проверить]` (401 в GUI → ключ через /connect в GUI).
+
+### Promo-provider protocol / JustDoWork (2026-09-16)
+
+- **JustDoWork (`justwoker`)** — аутентифицированный `GET /v1/models`
+  (`https://api.justwoker.icu/v1`) вернул пустой `data: []`. По правилу метода
+  [[02-Methods/promo-provider-protocol]] пустой список = `DEGRADED`/`BLOCKED`
+  даже при ненулевом dashboard-балансе. Карточка:
+  [[01-Reference/provider-cards/justwoker]].
+- **Dashboard JustDoWork** показывал баланс `$121.34` (referral/promotional) и
+  при этом не имел секций Models / Channels / Tokens / Top-up. Фактическая
+  API-спендируемость referral-баланса не подтверждена `[проверить]`.
+- **Чат-проб JustDoWork** на `gpt-4o-mini` вернул Cloudflare 403. Model IDs
+  отсутствуют — провайдер не подключается и не становится default.
+- **LinaliAPI (`linaliapi`)** — провайдер имеет 6 настроенных моделей и
+  работает в TUI по подтверждению пользователя. Баланс не измерен `[проверить]`;
+  карточка: [[01-Reference/provider-cards/linaliapi]].
+- **Правило ID провайдера:** provider ID в конфиге обязан совпадать с ID
+  записи в auth-сторе — только тогда `apiKey` подтягивается автоматически;
+  `apiKey` в конфиге не хранится (обобщение правила LinaliAPI 2026-09-06).
