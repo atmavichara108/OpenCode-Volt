@@ -228,13 +228,18 @@ class Handler(SimpleHTTPRequestHandler):
                 if op == "term-open" and q.get("port"):
                     argv.append("--port")
                     argv.append(q["port"][0])
-                # flag-операции (query/blockers/next/dependencies/notify).
-                # NB: "project" НЕ в общем списке — это позиционный аргумент у
-                # workspace-open/status/term-open; для query передаём отдельно.
-                for flag in ("q", "facet", "limit", "card", "message", "topic", "priority", "target"):
+                # flag-операции (query/blockers/next/dependencies/notify/apply).
+                # NB: "project" и "target" НЕ в общем списке — это позиционные
+                # аргументы у workspace-open/status/term-open и link-open/link-resolve
+                # соответственно; для query передаём project отдельно, для apply —
+                # target. "card" use only in dependencies/apply (flag-операции).
+                for flag in ("q", "facet", "limit", "card", "message", "topic", "priority"):
                     if q.get(flag):
                         argv.append(f"--{flag}")
                         argv.append(q[flag][0])
+                if op == "apply" and q.get("target"):
+                    argv.append("--target")
+                    argv.append(q["target"][0])
                 if op == "query" and q.get("project"):
                     argv.append("--project")
                     argv.append(q["project"][0])

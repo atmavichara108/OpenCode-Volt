@@ -422,7 +422,7 @@ def serve(port: int, cmd: str, cwd: str) -> None:
                         break  # выйти из accept-цикла → finally закроет сокет
                     else:
                         resp = http_response(404, "text/plain", b"404")
-                        client.sendall(resp)
+                    client.sendall(resp)
                 except OSError:
                     pass
                 finally:
