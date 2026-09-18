@@ -89,13 +89,17 @@ color: "#hex"|primary|accent|...
 
 | Агент | Mode | Модель | Назначение |
 |-------|------|--------|-----------|
-| sysop | primary | deepseek-v4-flash-free | Системный инспектор |
-| planner | primary | deepseek-v4-flash-free | Архитектор |
-| builder | primary | deepseek-v4-flash-free | Строитель |
-| reviewer | subagent | deepseek-v4-flash-free | Код-ревью |
-| qtile-dev | subagent | deepseek-v4-flash-free | Конфиг qtile |
-| bash-dev | subagent | deepseek-v4-flash-free | Shell-скрипты |
-| util-dev | subagent | deepseek-v4-flash-free | Утилиты |
+| sysop | primary | opencode-go/gpt-5.6-luna | Оператор-оркестратор (анализ/проект/код/делегирование) |
+| planner | subagent | opencode-go/gpt-5.6-luna | Стратег/ADR (был primary) |
+| builder | subagent | opencode-go/qwen3.7-plus | Строитель конфигов/скриптов (был primary) |
+| verifier | subagent | opencode/deepseek-v4-flash-free | Верификатор применимости |
+| reviewer | subagent (global) | linaliapi/deepseek/deepseek-v4-pro | Код-ревью |
+| researcher | subagent (global) | linaliapi/google/gemini-3.8-flash | Исследование |
+| system-audit | subagent (global) | opencode-go/glm-5.3-flash | Read-only аудит (ранее global `sysop`) |
+| system-ops | subagent (global) | opencode-go/gpt-5.6-luna | High-risk apply planning |
+| qtile-dev | subagent | opencode-go/qwen3.7-plus | Конфиг qtile |
+| bash-dev | subagent | opencode-go/qwen3.7-plus | Shell-скрипты |
+| util-dev | subagent | opencode-go/qwen3.7-plus | Утилиты |
 
 ### vault (`/home/rudra/Projects/OpenCode-Vault`)
 

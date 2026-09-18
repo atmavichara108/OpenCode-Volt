@@ -11,31 +11,37 @@ tags: [method, architecture, multi-agent]
 ## Решение
 Мульти-агентная архитектура с пайплайнами: специализированные агенты связаны в цепочки задач, каждая с проверкой качества. Память и UX-профиль делают агентов осознанными — они знают для кого работают.
 
-Это паттерн, реализованный в [[dotfiles]] v2 — эталонная реализация.
+С 2026-09-17 эталон перешёл на модель **один primary + плоская иерархия субагентов** (ADR-010): primary сам анализирует/проектирует/пишет и по необходимости `task`-ает субагентов; субагенты не оркестрируют друг друга.
+
+Это паттерн, реализованный в [[dotfiles]] v3 — эталонная реализация.
 
 ## Архитектура
 
-### Роли агентов
+### Роли агентов (v3 — один primary)
 
 | Роль | Mode | Назначение |
 |------|------|-----------|
-| **sysop** | primary | Инспектор (read-only аудит системы) |
-| **planner** | primary | Архитектор (ADR, планы, дизайн решений) |
-| **builder** | primary | Строитель (конфиги, скрипты, модули) |
-| **reviewer** | subagent | Верификатор (PASS/FAIL, безопасность) |
-| **domain-dev** | subagent | Доменный специалист (qtile-dev, bash-dev, util-dev...) |
+| **sysop** | primary | Оператор-оркестратор: анализ, проектирование, код, делегирование субагентам |
+| **planner** | subagent | Стратег/ADR (проектирование, код не пишет) |
+| **builder** | subagent | Строитель конфигов/скриптов по спеку |
+| **reviewer** | subagent | Read-only ревью (PASS/FAIL, безопасность) |
+| **verifier** | subagent | Верификатор применимости (синтаксис, dry-run) |
+| **domain-dev** | subagent | Доменный специалист (qtile-dev, bash-dev, util-dev, stow-ops...) |
+| **system-audit** | subagent (global) | Read-only аудит системы/экосистемы |
+| **system-ops** | subagent (global) | High-risk apply planning (approval-gated) |
 
-### Пайплайны
+### Пайплайны (sysop — точка входа каждой команды)
 
 ```
-/sysaudit    → sysop (автономный аудит)
-/script      → planner → bash-dev → reviewer
-/qtile       → planner → qtile-dev → reviewer
-/util        → planner → util-dev → reviewer
-/prompt      → builder → docs/cheatsheets/
-/notify      → util-dev → reviewer
-/macro       → util-dev → reviewer
-/plugin      → builder → reviewer
+/sysaudit    → sysop → system-audit (read-only аудит)
+/script      → sysop → bash-dev → reviewer
+/qtile       → sysop → qtile-dev → reviewer
+/util        → sysop → util-dev → reviewer
+/prompt      → sysop → docs/cheatsheets/
+/notify      → sysop → util-dev → reviewer
+/macro       → sysop → util-dev → reviewer
+/plugin      → sysop → builder → reviewer
+/loop        → sysop → verifier (closed-loop build→verify→fix)
 ```
 
 ### Память
@@ -53,20 +59,21 @@ tags: [method, architecture, multi-agent]
 - Anti-goals (чего НЕ хочет)
 - Контекст системы (OS, DE, paths)
 
-### Конфигурация (opencode.json)
+### Конфигурация (v3 — `.md`-канон)
+
+Канон агента — `.md`-файл в `.opencode/agent/` (или глобальном
+`~/.config/opencode/agent/`), frontmatter задаёт description/mode/model/permission:
 
 ```json
 {
-  "default_agent": "planner",
-  "model": "opencode/deepseek-v4-flash-free",
-  "agent": {
-    "planner": { "mode": "primary", "permission": { "edit": "deny", "task": { "*": "allow" } } },
-    "builder": { "mode": "primary", "permission": { "edit": "allow", "task": { "reviewer": "allow" } } },
-    "reviewer": { "mode": "subagent", "permission": { "edit": "deny" } },
-    "domain-dev": { "mode": "subagent", "permission": { "edit": "allow" } }
-  }
+  "default_agent": "sysop",
+  "model": "opencode/deepseek-v4-flash-free"
 }
 ```
+
+`opencode.json` больше не дублирует agent-блоки ядра: primary и субагенты
+определены `.md`-frontmatter'ом (`sysop.md`, `planner.md`, `builder.md`,
+`verifier.md`, domain-dev'ы).
 
 ## Как применить к новому проекту
 
@@ -74,7 +81,8 @@ tags: [method, architecture, multi-agent]
 Определи домены проекта. Для dotfiles: qtile, bash, утилиты. Для другого проекта могут быть: frontend, backend, infra, tests...
 
 ### Шаг 2: Роли
-Создай primary-агентов (planner, builder) и subagent по доменам.
+Создай primary-агента (один, оркестратор) и субагентов по доменам и по
+каноническим ролям (planner/builder/verifier/domain-dev/reviewer).
 
 ### Шаг 3: Пайплайны
 Для каждого типа задачи создай команду-пайплайн в `.opencode/command/`.
@@ -104,12 +112,12 @@ tags: [method, architecture, multi-agent]
 **Factory variant** — облегчённая версия multi-agent-pipeline с фокусом на сборку продукта.
 
 ### Отличия от эталона (dotfiles)
-| Аспект | dotfiles (эталон) | SERP Factory (products) |
+| Аспект | dotfiles (эталон v3) | SERP Factory (products) |
 |--------|------------------|------------------------|
 | Цель | Управление конфигами | Производство deployable-продуктов |
-| Роли | sysop + planner + builder | build + plan + domain-dev |
-| Subagent | domain-dev (qtile, bash, util) | ui-dev, infra-dev, collector-dev, reviewer |
-| Команды | 8 пайплайнов | `/interface`, `/container`, `/deploy` |
+| Роли | sysop (primary) + planner/builder/domain-dev/reviewer | build + plan + domain-dev |
+| Subagent | domain-dev (qtile, bash, util, stow-ops) + planner/builder | ui-dev, infra-dev, collector-dev, reviewer |
+| Команды | 9 пайплайнов | `/interface`, `/container`, `/deploy` |
 | После деплоя | — | Глубокая модернизация каждого куска |
 
 ### Когда применять
@@ -119,10 +127,10 @@ tags: [method, architecture, multi-agent]
 - После деплоя — полный multi-agent-pipeline
 
 ### Внедрён в
-- [[dotfiles]] ✅ — эталонная реализация v2
+- [[dotfiles]] ✅ — эталонная реализация v3 (один primary + субагенты, 2026-09-17)
 - [[SERPlux]] ✅ — первый продукт SERP Factory (6 агентов, 3 команды)
 - [[dv-hub]] ❌ — 5 агентов, но без пайплайнов-команд
-- [[vault]] ❌ — 1 агент (librarian)
+- [[vault]] ✅ — 1 агент (librarian) = чистый «один primary» паттерн
 
 ## Связанные
 - Reference: [[agents]], [[commands]], [[permissions]]
