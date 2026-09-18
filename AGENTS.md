@@ -39,6 +39,10 @@ timestamp: 2026-07-02
 - Память сессии → 04-Memory/.
 - Источник правды по API OpenCode — официальные доки; 01-Reference это выжимка с датой проверки.
 - **Python-окружение:** каждый Python-проект использует direnv + .venv. В корне `.envrc` с `source .venv/bin/activate`. После создания — `direnv allow` (один раз). Зависимости ставятся в venv, НЕ глобально.
+- **Git-изоляция потоков (2026-09-18):** каждая сессия работает в своей ветке
+  `task/<slug>`; коммит прямо в `main` запрещён pre-commit хук-ом. Горячие файлы
+  (`TASKS.md`, `04-Memory/active-context.md`, `registry.json`, `00-INDEX.md`) —
+  только через flock-lease. Метод: [[02-Methods/git-worktree-isolation]].
 
 ## Execution specs
 - Каждый новый execution spec для обычных проектов размещается только в
