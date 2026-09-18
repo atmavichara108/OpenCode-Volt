@@ -712,6 +712,21 @@ def do_dependencies(card_id: str) -> dict:
                     "depends_on": cards[cid].get("depends_on", [])} for cid in cards]
     graph_edges = [{"source": d, "target": cid} for cid, c in cards.items()
                    for d in c.get("depends_on", []) if d in cards]
+    # актуальные циклы зависимости (A → … → A, включая самозависимость)
+    cycles = _detect_cycles(cards, blocks)
+    # карточки без acceptance-критерия (заявленный функционал ECO-006)
+    no_acceptance = [cid for cid, c in cards.items()
+                     if not c.get("retired") and not c.get("acceptance")]
+    # карточки, блокируемые frozen/blocked задачами (T-109/T-107/T-108)
+    frozen_tasks = set(eco["snapshot"].get("tasks", {}).get("Blocked", [])) \
+        | set(eco["snapshot"].get("tasks", {}).get("Frozen", []))
+    blocked_by_task = {}
+    for cid, c in cards.items():
+        if c.get("retired"):
+            continue
+        for t in c.get("tasks", []):
+            if t in frozen_tasks:
+                blocked_by_task.setdefault(t, []).append(cid)
     return {"ok": True,
             "card": entry(card_id) if card_id else None,
             "critical_path": ranked[:10],
@@ -719,10 +734,46 @@ def do_dependencies(card_id: str) -> dict:
                         if not c.get("depends_on") and not blocks.get(cid)],
             "no_owner": [cid for cid, c in cards.items()
                          if not c.get("owner") and not c.get("retired")],
+            "no_acceptance": no_acceptance,
+            "cycles": cycles,
+            "blocked_by_task": [{"task": t, "cards": cids, "state": "frozen"}
+                               for t, cids in sorted(blocked_by_task.items())],
             "nodes": graph_nodes,
             "edges": graph_edges,
             "cards": {cid: entry(cid) for cid in (cards if not card_id else [card_id])}
             if card_id else None}
+
+
+def _detect_cycles(cards: dict, blocks: dict) -> list[list[str]]:
+    """Обнаружить реальные циклы в графе depends_on (не самозависимости).
+    Возвращает список циклов (каждый — список id в порядке обхода)."""
+    dep = {cid: [d for d in c.get("depends_on", []) if d in cards]
+           for cid, c in cards.items()}
+    cycles = []
+    seen = set()
+    color = {}  # 0=white 1=gray 2=black
+
+    def dfs(node, path, pathset):
+        color[node] = 1
+        for nxt in dep.get(node, []):
+            if nxt == node:
+                continue
+            if color.get(nxt) == 1:
+                # нашли обратное ребро → цикл
+                start = path.index(nxt)
+                cycle = path[start:] + [nxt]
+                key = tuple(sorted(cycle))
+                if key not in seen:
+                    seen.add(key)
+                    cycles.append(cycle)
+            elif color.get(nxt, 0) == 0:
+                dfs(nxt, path + [nxt], pathset | {nxt})
+        color[node] = 2
+
+    for nid in dep:
+        if color.get(nid, 0) == 0:
+            dfs(nid, [nid], {nid})
+    return cycles
 
 
 def _is_blocking(cid: str, cards: dict) -> bool:

@@ -105,7 +105,7 @@ def read_tasks() -> tuple[dict, dict[str, str], set[str]]:
     path = VAULT_ROOT / "TASKS.md"
     text = path.read_text(encoding="utf-8")
     hashes = {"TASKS.md": sha256_file(path)}
-    sections: dict[str, list[str]] = {"Active": [], "Blocked": [], "Planned": [], "Backlog": [], "Done": []}
+    sections: dict[str, list[str]] = {"Active": [], "Blocked": [], "Planned": [], "Backlog": [], "Done": [], "Frozen": []}
     all_ids: set[str] = set()
     current = None
     for line in text.splitlines():
@@ -132,6 +132,11 @@ def read_tasks() -> tuple[dict, dict[str, str], set[str]]:
             all_ids.add(tid)
             if current and tid not in sections[current]:
                 sections[current].append(tid)
+            # FROZEN BY USER / DEFERRED — задача заморожена пользователем
+            ll = line.lower()
+            if "frozen" in ll and ("by user" in ll or "deferred" in ll):
+                if tid not in sections["Frozen"]:
+                    sections["Frozen"].append(tid)
     return sections, hashes, all_ids
 
 
@@ -242,7 +247,13 @@ def drift_signals(
         signals.append({
             "type": "task_blocked",
             "subject": tid,
-            "detail": "TASKS.md: секция Blocked/Frozen",
+            "detail": "TASKS.md: секция Blocked",
+        })
+    for tid in tasks.get("Frozen", []):
+        signals.append({
+            "type": "task_frozen",
+            "subject": tid,
+            "detail": "TASKS.md: FROZEN BY USER",
         })
     for w in warnings:
         signals.append({"type": "registry_schema", "subject": "registry", "detail": w})

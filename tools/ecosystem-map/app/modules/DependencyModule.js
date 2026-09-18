@@ -37,21 +37,46 @@ export class DependencyModule extends Module {
     this.container.innerHTML = this._render();
     this._draw();
     this._wirePanZoom();
+    this._wireAlerts();
+  }
+
+  _wireAlerts() {
+    this.container.querySelectorAll("[data-cid]").forEach(el =>
+      el.addEventListener("click", () => this.emit("card:click", el.getAttribute("data-cid"))));
   }
 
   _render() {
     const cp = (this.data.critical_path || []).slice(0, 5);
     const orphans = this.data.orphans || [];
     const noOwner = this.data.no_owner || [];
+    const noAccept = this.data.no_acceptance || [];
+    const cycles = this.data.cycles || [];
+    const blockedBy = this.data.blocked_by_task || [];
+    const noAcceptIds = new Set(noAccept);
+    const cycleIds = new Set(cycles.flat());
+    const taskIds = new Set(blockedBy.flatMap(b => b.cards));
+
+    const alerts = [];
+    if (cycles.length) alerts.push(`<div class="csect rot">ЦИКЛЫ В ЗАВИСИМОСТЯХ <b>${cycles.length}</b></div>
+      <div class="cp-list">${cycles.map(c => `<span class="cp cyc">${c.map(this.esc.bind(this)).join(" → ")}</span>`).join("")}</div>`);
+    if (noAccept.length) alerts.push(`<div class="csect">БЕЗ ACCEPTANCE-КРИТЕРИЯ <b>${noAccept.length}</b></div>
+      <div class="cp-list">${noAccept.map(id => `<span class="cp na" data-cid="${this.esc(id)}">${this.esc(id)}</span>`).join("")}</div>`);
+    if (blockedBy.length) alerts.push(`<div class="csect">БЛОКИРУЮТ ЗАМОРОЖЕННЫЕ ЗАДАЧИ</div>
+      <div class="cp-list">${blockedBy.map(b => `<span class="cp bt">${this.esc(b.task)} → ${b.cards.map(c => `<b data-cid="${this.esc(c)}">${this.esc(c)}</b>`).join(" ")}</span>`).join("")}</div>`);
+
     return `<div class="eco-head">DEPENDENCY GRAPH</div>
       <div class="dep-stats">
         <span class="stat">узлов <b>${(this.data.nodes || []).length}</b></span>
         <span class="stat">рёбер <b>${(this.data.edges || []).length}</b></span>
         <span class="stat warn">orphans <b>${orphans.length}</b></span>
         <span class="stat warn">без owner <b>${noOwner.length}</b></span>
+        <span class="stat warn">без acceptance <b>${noAccept.length}</b></span>
+        ${cycles.length ? `<span class="stat rot">циклы <b>${cycles.length}</b></span>` : ""}
+        ${taskIds.size ? `<span class="stat rot">frozen-блок <b>${taskIds.size}</b></span>` : ""}
       </div>
       ${cp.length ? `<div class="csect">КРИТИЧЕСКИЙ ПУТЬ (кто блокирует больше всего)</div>
       <div class="cp-list">${cp.map(c => `<span class="cp" data-cid="${this.esc(c.id)}">${this.esc(c.id)} <b>×${c.holds}</b></span>`).join("")}</div>` : ""}
+      ${alerts.join("")}
       <div class="dep-toolbar">
         <button class="pb-mini" data-z="+">+</button>
         <button class="pb-mini" data-z="-">−</button>
@@ -61,6 +86,8 @@ export class DependencyModule extends Module {
       <div class="dep-svg-wrap" id="dep-wrap"><svg class="dep-svg" id="dep-svg"></svg></div>
       <div class="dep-legend">
         ${RANK.filter(r => COLORS[r]).slice(0, 8).map(r => `<span class="lg"><i style="background:${COLORS[r]}"></i>${r}</span>`).join("")}
+        <span class="lg"><i style="background:none;border:1px dashed #f43f5e"></i>нет acceptance</span>
+        <span class="lg"><i style="background:none;border:1.5px solid #fbbf24"></i>frozen-блок</span>
       </div>`;
   }
 
@@ -121,6 +148,9 @@ export class DependencyModule extends Module {
     const cpIds = new Set((this.data.critical_path || []).map(c => c.id));
     const orphanIds = new Set(this.data.orphans || []);
     const noOwnerIds = new Set(this.data.no_owner || []);
+    const noAcceptIds = new Set(this.data.no_acceptance || []);
+    const cycleIds = new Set((this.data.cycles || []).flat());
+    const taskIds = new Set((this.data.blocked_by_task || []).flatMap(b => b.cards));
     for (const n of nodes) {
       const p = pos[n.id];
       if (!p) continue;
@@ -134,6 +164,29 @@ export class DependencyModule extends Module {
       circle.setAttribute("stroke-width", cpIds.has(n.id) ? 2.5 : 1);
       if (noOwnerIds.has(n.id)) circle.setAttribute("stroke-dasharray", "3 2");
       g.appendChild(circle);
+      // нет acceptance → красный пунктирный ореол
+      if (noAcceptIds.has(n.id)) {
+        const na = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        na.setAttribute("r", r + 6); na.setAttribute("fill", "none");
+        na.setAttribute("stroke", "#f43f5e"); na.setAttribute("stroke-width", 1);
+        na.setAttribute("stroke-dasharray", "4 2");
+        g.appendChild(na);
+      }
+      // блокируется замороженной задачей → янтарная рамка
+      if (taskIds.has(n.id)) {
+        const bt = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        bt.setAttribute("r", r + 3); bt.setAttribute("fill", "none");
+        bt.setAttribute("stroke", "#fbbf24"); bt.setAttribute("stroke-width", 1.4);
+        g.appendChild(bt);
+      }
+      // в цикле → фиолетовое кольцо
+      if (cycleIds.has(n.id)) {
+        const cy = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        cy.setAttribute("r", r + 9); cy.setAttribute("fill", "none");
+        cy.setAttribute("stroke", "#c084fc"); cy.setAttribute("stroke-width", 1.2);
+        cy.setAttribute("stroke-dasharray", "1 3");
+        g.appendChild(cy);
+      }
       const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
       label.setAttribute("text-anchor", "middle");
       label.setAttribute("dy", "3.5");

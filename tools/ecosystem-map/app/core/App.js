@@ -26,6 +26,9 @@ import { AgentModule } from "../modules/AgentModule.js";
 import { NextActionModule } from "../modules/NextActionModule.js";
 import { SearchModule } from "../modules/SearchModule.js";
 import { HealthModule } from "../modules/HealthModule.js";
+import { KanbanModule } from "../modules/KanbanModule.js";
+import { MatrixModule } from "../modules/MatrixModule.js";
+import { SkillsModule } from "../modules/SkillsModule.js";
 
 const LAYOUTS = [
   ["grid", "⊞"],
@@ -33,6 +36,8 @@ const LAYOUTS = [
   ["focus", "▣"],
   ["rows", "≡"],
 ];
+
+const APP_VERSION = "v10.3";
 
 export class PipBoyApp {
   constructor(rootEl) {
@@ -60,7 +65,7 @@ export class PipBoyApp {
     this.root.innerHTML = `
       <header class="pb-topbar">
         <span class="pb-logo">PIP<b>BOY</b></span>
-        <span class="pb-tag">v10 · tiling multiplexer</span>
+        <span class="pb-tag">${APP_VERSION} · tiling multiplexer</span>
         <nav class="pb-projects" id="pb-projects"></nav>
         <span class="spacer"></span>
         <span class="pb-layouts" id="pb-layouts" title="пресет лейаута (L)"></span>
@@ -100,7 +105,10 @@ export class PipBoyApp {
         .registerModule("agent", AgentModule)
         .registerModule("next", NextActionModule)
         .registerModule("search", SearchModule)
-        .registerModule("health", HealthModule);
+        .registerModule("health", HealthModule)
+        .registerModule("kanban", KanbanModule)
+        .registerModule("matrix", MatrixModule)
+        .registerModule("skills", SkillsModule);
 
     // 3. проекты + глобальные тайлы
     await this._loadProjects();
@@ -150,6 +158,9 @@ export class PipBoyApp {
     this.workspace.addTile("—", this.instantiate("next", "—"), { size: "wide" });
     this.workspace.addTile("—", this.instantiate("search", "—"));
     this.workspace.addTile("—", this.instantiate("health", "—"), { size: "wide" });
+    this.workspace.addTile("—", this.instantiate("kanban", "—"), { size: "wide" });
+    this.workspace.addTile("—", this.instantiate("matrix", "—"), { size: "wide" });
+    this.workspace.addTile("—", this.instantiate("skills", "—"), { size: "wide" });
     this.workspace.addTile("—", this.instantiate("link", "—"));
     if (this._projectList.length) this.setActiveProject(this._projectList[0].id);
   }
