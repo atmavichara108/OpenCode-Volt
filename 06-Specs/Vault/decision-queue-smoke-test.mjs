@@ -2,138 +2,10 @@
 // Smoke test: decision-queue-hook pure functions
 // Tests: sanitization, card shape, risk inference, no-content
 // No live OpenCode runtime required.
+// Imports pure helpers from shared module to test actual plugin logic, not copy.
 
 import { strict as assert } from "assert"
-
-// Inline pure functions from plugin (no runtime dependencies)
-function inferRisk(tool, permission) {
-  const toolLower = (tool || "").toLowerCase()
-  const permLower = (permission || "").toLowerCase()
-
-  if (
-    toolLower.includes("push") ||
-    toolLower.includes("force") ||
-    toolLower.includes("reset") ||
-    toolLower.includes("clean") ||
-    (permLower.includes("bash") && (permLower.includes("sudo") || permLower.includes("rm")))
-  ) {
-    return "critical"
-  }
-
-  if (
-    toolLower.includes("git") ||
-    toolLower.includes("edit") ||
-    toolLower.includes("write") ||
-    permLower.includes("edit") ||
-    permLower.includes("external_directory")
-  ) {
-    return "high"
-  }
-
-  if (
-    toolLower.includes("task") ||
-    toolLower.includes("webfetch") ||
-    toolLower.includes("websearch") ||
-    permLower.includes("task")
-  ) {
-    return "medium"
-  }
-
-  return "low"
-}
-
-function sanitizeReason(reason) {
-  if (!reason) return "Permission event captured"
-
-  let sanitized = reason.slice(0, 200)
-
-  sanitized = sanitized
-    .replace(/(?:api[_-]?key|token|password|secret|auth)[\s:=]+[^\s,;]+/gi, "[REDACTED]")
-    .replace(/(?:sk-|ghp_|github_pat_)[a-z0-9]{10,}/gi, "[REDACTED]")
-    .replace(/Bearer\s+[^\s]+/gi, "[REDACTED]")
-
-  sanitized = sanitized.replace(/\/home\/[^\s]+/g, "[PATH]")
-  sanitized = sanitized.replace(/\/Users\/[^\s]+/g, "[PATH]")
-
-  return sanitized.trim() || "Permission event captured"
-}
-
-function generateCardId(tool, permission) {
-  const now = new Date()
-  const dateStr = now.toISOString().split("T")[0]
-  const timeStr = now.toTimeString().split(" ")[0].replace(/:/g, "")
-
-  const slug = (tool || permission || "permission")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "")
-    .slice(0, 30)
-
-  return `${dateStr}-${timeStr}-${slug}`
-}
-
-function createCard(event) {
-  const tool = event.tool || "unknown"
-  const permission = event.permission || "unknown"
-  const agent = event.agent || "unknown"
-  const session = event.session || "unknown"
-  const directory = event.directory || "unknown"
-  const reason = sanitizeReason(event.reason)
-  const risk = inferRisk(tool, permission)
-
-  const title = `Permission event: ${tool}`
-  const context = `Agent ${agent} triggered ${permission} for tool ${tool}`
-
-  const options = [
-    {
-      id: "A",
-      label: "Allow this time",
-      pros: ["Unblocks current operation"],
-      cons: ["May not align with policy"]
-    },
-    {
-      id: "B",
-      label: "Deny and review",
-      pros: ["Safe default", "Requires policy review"],
-      cons: ["Blocks operation"]
-    },
-    {
-      id: "C",
-      label: "Update policy",
-      pros: ["Permanent fix"],
-      cons: ["Requires config change"]
-    }
-  ]
-
-  return {
-    id: generateCardId(tool, permission),
-    created: new Date().toISOString(),
-    status: "pending",
-    risk,
-    source: {
-      agent,
-      session,
-      trigger: "permission.asked",
-      tool,
-      permission,
-      directory
-    },
-    dilemma: {
-      title,
-      context,
-      options,
-      recommendation: null,
-      reason
-    },
-    resolution: {
-      choice: null,
-      approved_by: null,
-      approved_at: null,
-      evidence: null
-    },
-    stop_condition: "after user decision via /decisions command"
-  }
-}
+import { inferRisk, sanitizeReason, generateCardId } from "../../../../dotfiles/opencode-global/.config/opencode/plugins/decision-queue-helpers.js"
 
 // Test suite
 console.log("Running decision-queue-hook smoke tests...\n")
@@ -155,11 +27,11 @@ function test(name, fn) {
 
 // Test 1: Risk inference — critical
 test("inferRisk: git push → critical", () => {
-  assert.equal(inferRisk("git push", "bash"), "critical")
+  assert.equal(inferRisk("bash", "git push"), "critical")
 })
 
 test("inferRisk: git reset → critical", () => {
-  assert.equal(inferRisk("git reset", "bash"), "critical")
+  assert.equal(inferRisk("bash", "git reset"), "critical")
 })
 
 test("inferRisk: bash sudo → critical", () => {
@@ -168,7 +40,7 @@ test("inferRisk: bash sudo → critical", () => {
 
 // Test 2: Risk inference — high
 test("inferRisk: git commit → high", () => {
-  assert.equal(inferRisk("git commit", "bash"), "high")
+  assert.equal(inferRisk("bash", "git commit"), "high")
 })
 
 test("inferRisk: edit → high", () => {
@@ -198,7 +70,7 @@ test("inferRisk: grep → low", () => {
 })
 
 // Test 5: Sanitization — no secrets
-test("sanitizeReason: strips API keys", () => {
+test("sanitizeReason: strips API keys (api_key=)", () => {
   const input = "Failed with api_key=sk-1234567890abcdef"
   const output = sanitizeReason(input)
   assert.ok(!output.includes("sk-1234567890abcdef"))
@@ -242,115 +114,40 @@ test("sanitizeReason: handles null input", () => {
   assert.equal(output, "Permission event captured")
 })
 
-// Test 6: Card shape — required fields
-test("createCard: has all required fields", () => {
-  const card = createCard({
-    tool: "git push",
-    permission: "bash",
-    agent: "meta",
-    session: "abc123",
-    directory: "/home/user/project",
-    reason: "Push to remote"
-  })
-
-  assert.ok(card.id)
-  assert.ok(card.created)
-  assert.equal(card.status, "pending")
-  assert.ok(["low", "medium", "high", "critical"].includes(card.risk))
-  assert.ok(card.source.agent)
-  assert.ok(card.source.session)
-  assert.ok(card.source.trigger)
-  assert.ok(card.dilemma.title)
-  assert.ok(card.dilemma.context)
-  assert.ok(Array.isArray(card.dilemma.options))
-  assert.ok(card.dilemma.options.length >= 2)
-  assert.equal(card.resolution.choice, null)
-  assert.equal(card.resolution.approved_by, null)
+// Test 6: Sanitization — "api key" with space (blocker 6)
+test("sanitizeReason: strips 'api key' with space", () => {
+  const input = "Failed with api key sk-1234567890abcdef"
+  const output = sanitizeReason(input)
+  assert.ok(!output.includes("sk-1234567890abcdef"))
+  assert.ok(output.includes("[REDACTED]"))
 })
 
-// Test 7: Card shape — no content leakage
-test("createCard: no prompt content in card", () => {
-  const card = createCard({
-    tool: "bash",
-    permission: "bash",
-    agent: "meta",
-    session: "abc123",
-    directory: "/home/user/project",
-    reason: "User asked to run git push --force to deploy secret API key sk-1234567890abcdef"
-  })
-
-  const cardStr = JSON.stringify(card)
-  // Secrets must be redacted
-  assert.ok(!cardStr.includes("sk-1234567890abcdef"))
-  // Reason is metadata and can be preserved (after sanitization)
-  assert.ok(card.dilemma.reason.includes("[REDACTED]"))
+test("sanitizeReason: strips 'api-key' with dash", () => {
+  const input = "Failed with api-key=sk-1234567890abcdef"
+  const output = sanitizeReason(input)
+  assert.ok(!output.includes("sk-1234567890abcdef"))
+  assert.ok(output.includes("[REDACTED]"))
 })
 
-test("createCard: no tool output in card", () => {
-  const card = createCard({
-    tool: "bash",
-    permission: "bash",
-    agent: "meta",
-    session: "abc123",
-    directory: "/home/user/project",
-    reason: "Command output: password=secret123 token=ghp_abcdefghijklmnopqrstuvwxyz"
-  })
-
-  const cardStr = JSON.stringify(card)
-  assert.ok(!cardStr.includes("secret123"))
-  assert.ok(!cardStr.includes("ghp_abcdefghijklmnopqrstuvwxyz"))
-})
-
-// Test 8: Card ID generation
+// Test 7: Card ID generation
 test("generateCardId: includes date", () => {
-  const id = generateCardId("git push", "bash")
+  const id = generateCardId("bash", "git push")
   const today = new Date().toISOString().split("T")[0]
   assert.ok(id.startsWith(today))
 })
 
-test("generateCardId: includes tool slug", () => {
-  const id = generateCardId("git push", "bash")
-  assert.ok(id.includes("git-push"))
+test("generateCardId: includes type slug", () => {
+  const id = generateCardId("bash", "git push")
+  assert.ok(id.includes("bash"))
 })
 
-test("generateCardId: handles missing tool", () => {
+test("generateCardId: handles missing type", () => {
   const id = generateCardId(undefined, "bash")
   assert.ok(id.includes("bash"))
 })
 
-// Test 9: Options structure
-test("createCard: options have required fields", () => {
-  const card = createCard({
-    tool: "git push",
-    permission: "bash",
-    agent: "meta",
-    session: "abc123",
-    directory: "/home/user/project",
-    reason: "Push to remote"
-  })
-
-  for (const option of card.dilemma.options) {
-    assert.ok(option.id)
-    assert.ok(option.label)
-    assert.ok(Array.isArray(option.pros))
-    assert.ok(Array.isArray(option.cons))
-  }
-})
-
-// Test 10: No auto-recommendation
-test("createCard: recommendation is null (no auto-recommendation)", () => {
-  const card = createCard({
-    tool: "git push",
-    permission: "bash",
-    agent: "meta",
-    session: "abc123",
-    directory: "/home/user/project",
-    reason: "Push to remote"
-  })
-
-  assert.equal(card.dilemma.recommendation, null)
-})
-
 // Summary
 console.log(`\n${passed} passed, ${failed} failed`)
+console.log(`\nNote: smoke test imports pure helpers from shared module (decision-queue-helpers.js),`)
+console.log(`testing actual plugin logic, not copy. createCard() not tested here (requires runtime types).`)
 process.exit(failed > 0 ? 1 : 0)
