@@ -783,6 +783,68 @@ def _is_blocking(cid: str, cards: dict) -> bool:
     return c.get("lifecycle") in ("IDEA", "RESEARCH", "DESIGN", "APPROVED")
 
 
+MODEL_ROUTER = SERVE_DIR / "model-router.py"
+
+
+def _python_bin() -> str:
+    """Надёжный интерпретатор для дочернего процесса.
+
+    sys.executable под M Code GUI указывает на AppImage-бинарь приложения —
+    тогда берём PIPBOY_PYTHON или python3 из PATH (тот же контракт, что в pipboy.py).
+    """
+    exe = os.environ.get("PIPBOY_PYTHON") or sys.executable or ""
+    if os.path.basename(exe).startswith("python") and os.path.isfile(exe):
+        return exe
+    if os.environ.get("PIPBOY_PYTHON") and os.path.isfile(os.environ["PIPBOY_PYTHON"]):
+        return os.environ["PIPBOY_PYTHON"]
+    return shutil.which("python3") or shutil.which("python") or sys.executable
+
+
+def _model_router(*argv: str) -> dict:
+    """Вызвать model-router.py и вернуть его JSON (единый контракт вывода)."""
+    if not MODEL_ROUTER.exists():
+        return {"ok": False, "error": "model-router.py не найден"}
+    cmd = [_python_bin(), str(MODEL_ROUTER), *argv]
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+    except (OSError, subprocess.TimeoutExpired) as e:
+        return {"ok": False, "error": f"{type(e).__name__}: {e}"}
+    try:
+        body = json.loads(r.stdout.strip() or "{}")
+    except json.JSONDecodeError:
+        return {"ok": False, "error": "model-router: не-JSON вывод",
+                "stderr": r.stderr[:300]}
+    if r.returncode != 0 and body.get("ok"):
+        body = {"ok": False, "error": body.get("error") or f"exit {r.returncode}"}
+    return body
+
+
+def do_model_list(project: str | None = None) -> dict:
+    """Агенты (глобальные + проектные + встроенные) с текущей моделью."""
+    argv = ["list"]
+    if project:
+        argv += ["--project", project]
+    return _model_router(*argv)
+
+
+def do_model_models() -> dict:
+    """Объединённый список доступных моделей (live + declared + in-use + registry)."""
+    return _model_router("models")
+
+
+def do_model_apply(agent: str, model: str, scope: str | None = None,
+                   project: str | None = None, dry_run: bool = False) -> dict:
+    """Сменить модель агента точечно (flock + backup внутри model-router)."""
+    argv = ["apply", "--agent", agent, "--model", model]
+    if scope:
+        argv += ["--scope", scope]
+    if project:
+        argv += ["--project", project]
+    if dry_run:
+        argv.append("--dry-run")
+    return _model_router(*argv)
+
+
 def term_port(project: str) -> int:
     """Детерминированный порт termproxy для проекта (диапазон 8200..8599)."""
     h = 0
@@ -928,6 +990,15 @@ def main() -> int:
     ap = sub.add_parser("apply")
     ap.add_argument("--card", required=True, help="id карточки")
     ap.add_argument("--target", required=True, help="целевая стадия")
+    ml = sub.add_parser("model-list")
+    ml.add_argument("--project", default=None, help="ограничить проектным id")
+    mm = sub.add_parser("model-models")
+    ma = sub.add_parser("model-apply")
+    ma.add_argument("--agent", required=True)
+    ma.add_argument("--model", required=True)
+    ma.add_argument("--scope", choices=["global", "project"], default=None)
+    ma.add_argument("--project", default=None)
+    ma.add_argument("--dry-run", action="store_true")
     args = p.parse_args()
     try:
         if args.cmd == "workspace-open":
@@ -960,6 +1031,13 @@ def main() -> int:
             res = do_proposals()
         elif args.cmd == "apply":
             res = do_apply(args.card, args.target)
+        elif args.cmd == "model-list":
+            res = do_model_list(args.project)
+        elif args.cmd == "model-models":
+            res = do_model_models()
+        elif args.cmd == "model-apply":
+            res = do_model_apply(args.agent, args.model, args.scope,
+                                 args.project, args.dry_run)
         else:
             res = {"ok": False, "error": "unknown command"}
     except Exception as e:  # noqa: BLE001 — вернуть JSON вместо traceback

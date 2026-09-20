@@ -190,7 +190,7 @@ class Handler(SimpleHTTPRequestHandler):
         op = (q.get("op") or [""])[0]
         ALLOWED = {"workspace-open", "workspace-status", "link-open", "link-resolve", "capture-scan", "term-open",
                    "term-status", "term-close", "query", "blockers", "next", "dependencies", "notify",
-                   "proposals", "apply"}
+                   "proposals", "apply", "model-list", "model-models", "model-apply"}
         body = None
         code = 200
         if op not in ALLOWED:
@@ -243,6 +243,17 @@ class Handler(SimpleHTTPRequestHandler):
                 if op == "query" and q.get("project"):
                     argv.append("--project")
                     argv.append(q["project"][0])
+                # model-router: list/models/apply (apply — точечная правка model:)
+                if op == "model-list" and q.get("project"):
+                    argv.append("--project")
+                    argv.append(q["project"][0])
+                if op == "model-apply":
+                    for key in ("agent", "model", "scope", "project"):
+                        if q.get(key):
+                            argv.append(f"--{key}")
+                            argv.append(q[key][0])
+                    if "dry_run" in q:
+                        argv.append("--dry-run")
                 r = subprocess.run(argv, capture_output=True, text=True, timeout=30)
                 try:
                     body = json.loads(r.stdout.strip() or "{}")

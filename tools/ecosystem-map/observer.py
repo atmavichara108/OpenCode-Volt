@@ -32,6 +32,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import subprocess
 import sys
@@ -40,6 +41,15 @@ from pathlib import Path
 VAULT_ROOT = Path(__file__).resolve().parent.parent.parent
 REGISTRY_PATH = VAULT_ROOT / "tools" / "ecosystem-map" / "registry.json"
 DEFAULT_OUTPUT = VAULT_ROOT / "tools" / "ecosystem-map" / "generated" / "snapshot.json"
+
+# Каноническая глобальная конфигурация (symlink ~/.config/opencode).
+# Только чтение фронтматтера model: — точка правды моделей агентов.
+GLOBAL_OPENCODE_DIR = Path(
+    os.environ.get(
+        "PIPBOY_GLOBAL_OPENCODE_DIR",
+        str(Path.home() / "dotfiles" / "opencode-global" / ".config" / "opencode"),
+    )
+)
 
 ALLOWED_LIFECYCLE = [
     "IDEA", "RESEARCH", "DESIGN", "APPROVED", "BUILD",
@@ -185,6 +195,70 @@ def read_registry() -> tuple[dict, dict[str, str], list[str]]:
     return registry, hashes, warnings
 
 
+def _agent_model_from_frontmatter(text: str) -> str | None:
+    """Извлечь `model:` из frontmatter (пропуская ведущие пустые строки)."""
+    lines = text.lstrip("\ufeff").splitlines()
+    first = 0
+    while first < len(lines) and not lines[first].strip():
+        first += 1
+    if first >= len(lines) or lines[first].strip() != "---":
+        return None
+    for i in range(first + 1, len(lines)):
+        if lines[i].strip() == "---":
+            break
+        m = re.match(r"^model:\s*(.+?)\s*$", lines[i])
+        if m:
+            return m.group(1).strip().strip("'\"")
+    return None
+
+
+def read_agent_models() -> tuple[dict[str, str], dict[str, str]]:
+    """{агент: model} из точек правды (read-only): глобальные/проектные .md
+    агент-файлы + встроенные агенты из agent-блоков конфигов.
+
+    Возвращает (models, hashes) — hashes входят в input_digest (детерминизм).
+    """
+    models: dict[str, str] = {}
+    hashes: dict[str, str] = {}
+
+    def scan_dir(d: Path) -> None:
+        for f in sorted(d.glob("*.md")):
+            try:
+                text = f.read_text(encoding="utf-8")
+            except OSError:
+                continue
+            hashes[f"agent:{f}"] = sha256_file(f)
+            m = _agent_model_from_frontmatter(text)
+            if m:
+                # setdefault: глобальный агент (сканируется первым) приоритетен;
+                # проектные .md с тем же именем не затирают registry-уровень.
+                models.setdefault(f.stem, m)
+
+    gdir = GLOBAL_OPENCODE_DIR / "agent"
+    if gdir.is_dir():
+        scan_dir(gdir)
+    for card in sorted((VAULT_ROOT / "03-Projects").glob("*.md")):
+        repo = parse_frontmatter(card.read_text(encoding="utf-8")).get("repo", "")
+        if not repo or not (Path(repo) / ".opencode" / "agent").is_dir():
+            continue
+        scan_dir(Path(repo) / ".opencode" / "agent")
+
+    # встроенные агенты из agent-блоков конфигов (json/jsonc)
+    for cfg in [*sorted((GLOBAL_OPENCODE_DIR).glob("opencode.json*")),
+                *sorted((VAULT_ROOT).glob("opencode.json*"))]:
+        try:
+            text = cfg.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        hashes[f"cfg:{cfg}"] = sha256_file(cfg)
+        # точечное извлечение agent.<name>.model ТОЛЬКО для известных built-in
+        for name in ("general", "build", "explore", "plan"):
+            mm = re.search(r'"' + name + r'"\s*:\s*\{[^}]*?"model"\s*:\s*"([^"]+)"', text)
+            if mm:
+                models.setdefault(name, mm.group(1))
+    return models, hashes
+
+
 def git_state() -> tuple[dict, dict[str, str]]:
     """Read-only git plumbing (vault only): HEAD, porcelain, последняя дата коммита."""
     hashes = {}
@@ -266,8 +340,9 @@ def build_snapshot() -> dict:
     routes, h3 = read_route_log()
     registry, h4, warnings = read_registry()
     git, h5 = git_state()
+    agent_models, h6 = read_agent_models()
 
-    input_hashes = {**h1, **h2, **h3, **h4, **h5}
+    input_hashes = {**h1, **h2, **h3, **h4, **h5, **h6}
     digest = hashlib.sha256(
         "\n".join(f"{k}:{v}" for k, v in sorted(input_hashes.items())).encode("utf-8")
     ).hexdigest()
@@ -301,7 +376,11 @@ def build_snapshot() -> dict:
         "route_log": routes,
         "registry_cards": cards_summary,
         "agents": {
-            aid: {"role": a.get("role", ""), "status": a.get("status", "")}
+            aid: {
+                "role": a.get("role", ""),
+                "status": a.get("status", ""),
+                "model": agent_models.get(aid, ""),
+            }
             for aid, a in sorted(registry.get("agents", {}).items())
         },
         "git": git,

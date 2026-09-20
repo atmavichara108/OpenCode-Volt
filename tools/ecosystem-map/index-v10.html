@@ -406,6 +406,43 @@ body.mobile .kmap-box{padding:16px}
 .sq{font-size:9.5px;color:var(--dim)}
 .sq.ok{color:var(--leaf)}
 .sq .dim{color:var(--faint);margin-left:4px}
+
+/* --- MODELS dashboard --- */
+.mdl-top{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+.mdl-filter{flex:1;min-width:160px;background:var(--surface2);border:1px solid var(--line2);
+  color:var(--txt);font-family:var(--mono);font-size:11px;padding:5px 9px;border-radius:8px;outline:0}
+.mdl-filter:focus{border-color:rgba(74,222,128,.5)}
+.mdl-count{font-size:9.5px}
+.mdl-count b{color:var(--txt);font-family:var(--mono)}
+.mdl-note{font-size:9.5px;line-height:1.5;margin-bottom:8px;padding:6px 8px;
+  border-left:2px solid var(--line2);background:rgba(255,255,255,.015)}
+.mdl-note code{font-family:var(--mono);color:var(--sun)}
+.mdl-row{display:grid;grid-template-columns:minmax(120px,1.1fr) minmax(90px,.7fr) minmax(140px,1.3fr) minmax(150px,1.4fr);
+  gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--line)}
+.mdl-name{display:flex;align-items:center;gap:5px;flex-wrap:wrap;min-width:0}
+.mdl-name b{font-family:var(--mono);font-size:10.5px;color:var(--txt);overflow:hidden;text-overflow:ellipsis}
+.mdl-scope{font-family:var(--mono);font-size:7.5px;letter-spacing:.5px;padding:1px 5px;border-radius:99px}
+.mdl-scope.global{color:var(--water);border:1px solid rgba(34,211,238,.35)}
+.mdl-scope.project{color:var(--spore);border:1px solid rgba(192,132,252,.35)}
+.mdl-proj{font-size:8.5px;color:var(--faint)}
+.mdl-meta{display:flex;flex-direction:column;gap:1px;font-size:8.5px;min-width:0}
+.mdl-kind{color:var(--faint)}
+.mdl-mode{color:var(--dim)}
+.mdl-cur{font-family:var(--mono);font-size:9.5px;color:var(--leaf);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mdl-cur.rot{color:var(--rot)}
+.mdl-select{width:100%;background:var(--surface2);border:1px solid var(--line2);color:var(--txt);
+  font-family:var(--mono);font-size:9.5px;padding:4px 6px;border-radius:7px;outline:0;cursor:pointer}
+.mdl-select:focus{border-color:rgba(74,222,128,.5)}
+.mdl-select:disabled{opacity:.5;cursor:wait}
+.mdl-select.mdl-dirty{border-color:rgba(74,222,128,.55);background:rgba(74,222,128,.07)}
+.mdl-providers{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
+.mdl-chip{font-family:var(--mono);font-size:8.5px;color:var(--dim);border:1px solid var(--line2);
+  border-radius:99px;padding:2px 8px;display:inline-flex;align-items:center;gap:4px}
+.mdl-chip b{color:var(--txt)}
+.mdl-chip i{font-style:normal;color:var(--faint);font-size:7.5px}
+.mdl-chip.rot{color:var(--rot);border-color:rgba(244,63,94,.35)}
+body.mobile .mdl-row{grid-template-columns:1fr 1fr;row-gap:4px}
 </style>
 </head>
 <body>

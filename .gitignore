@@ -34,6 +34,9 @@ tools/telegram-capture/inbox-queue.jsonl
 # Ecosystem observer (generated snapshots, не коммитить)
 tools/ecosystem-map/generated/
 
+# model-router бэкапы (точечная правка model: — runtime, не коммитить)
+.model-router-backups/
+
 # Telegram session (авторизация, не коммитить!)
 *.session
 *.session-journal

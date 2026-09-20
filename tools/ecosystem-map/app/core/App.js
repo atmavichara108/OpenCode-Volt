@@ -29,6 +29,7 @@ import { HealthModule } from "../modules/HealthModule.js";
 import { KanbanModule } from "../modules/KanbanModule.js";
 import { MatrixModule } from "../modules/MatrixModule.js";
 import { SkillsModule } from "../modules/SkillsModule.js";
+import { ModelsModule } from "../modules/ModelsModule.js";
 
 const LAYOUTS = [
   ["grid", "⊞"],
@@ -37,7 +38,7 @@ const LAYOUTS = [
   ["rows", "≡"],
 ];
 
-const APP_VERSION = "v10.3";
+const APP_VERSION = "v10.4";
 
 export class PipBoyApp {
   constructor(rootEl) {
@@ -108,7 +109,8 @@ export class PipBoyApp {
         .registerModule("health", HealthModule)
         .registerModule("kanban", KanbanModule)
         .registerModule("matrix", MatrixModule)
-        .registerModule("skills", SkillsModule);
+        .registerModule("skills", SkillsModule)
+        .registerModule("models", ModelsModule);
 
     // 3. проекты + глобальные тайлы
     await this._loadProjects();
@@ -124,6 +126,30 @@ export class PipBoyApp {
     this._renderProjectsBar();
     this._renderLayoutBtns();
     this._renderSbar();
+    this._handleDeepLink();
+    window.addEventListener("hashchange", () => this._handleDeepLink());
+  }
+
+  /* --- hash deep-link: #models / #next / #deps … фокусирует тайл модуля.
+   * Глобальные тайлы видны при любом проекте; для надёжности переключаем
+   * на ALL (activeProject=null) и скроллим к тайлу. --- */
+  _handleDeepLink() {
+    const h = (location.hash || "").replace(/^#/, "").toLowerCase().trim();
+    if (!h) return;
+    const alias = { deps: "dependency", kanban: "kanban", matrix: "matrix",
+                    skills: "skills", models: "models", next: "next",
+                    proposals: "proposal", agents: "agent" };
+    const target = alias[h] || h;
+    if (!this.modules.has(target)) return;
+    if (this.activeProject !== null) this.setActiveProject(null);
+    const tile = [...this.main.querySelectorAll(".tile")].find(t =>
+      t.querySelector(".t")?.textContent === target);
+    if (tile) {
+      this._focusTile(tile);
+      // повторный скролл после асинхронного mount модулей
+      requestAnimationFrame(() => tile.scrollIntoView({ block: "start", behavior: "smooth" }));
+    }
+    history.replaceState(null, "", location.pathname + location.search); // убрать hash из URL
   }
 
   instantiate(moduleId, projectId, opts = {}) {
@@ -161,6 +187,7 @@ export class PipBoyApp {
     this.workspace.addTile("—", this.instantiate("kanban", "—"), { size: "wide" });
     this.workspace.addTile("—", this.instantiate("matrix", "—"), { size: "wide" });
     this.workspace.addTile("—", this.instantiate("skills", "—"), { size: "wide" });
+    this.workspace.addTile("—", this.instantiate("models", "—"), { size: "wide" });
     this.workspace.addTile("—", this.instantiate("link", "—"));
     if (this._projectList.length) this.setActiveProject(this._projectList[0].id);
   }
