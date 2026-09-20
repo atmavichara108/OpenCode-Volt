@@ -125,8 +125,8 @@ stop_conditions: [no-progress, repeated-intent, empty-handoff, timeout, scope-dr
 
 - В каждый dispatch передаётся `context_bundle`: summary задачи, key evidence,
   changed paths, route decision. Агент НЕ перечитывает весь набор файлов.
-- Canonical source of truth: execution spec в `06-Specs/<project>/` (для
-  SERPlux — локальный `docs/specs/`); route contract —
+- Canonical source of truth: execution spec в `spec-home` текущего проекта
+  (`<repo>/docs/specs/`, репо-локально); route contract —
   [[02-Methods/capability-routing]]; глобальный контракт — `AGENTS.md`.
 - Invalidation: изменение scope, изменение файла из bundle, смена режима →
   bundle пересобирается; старый bundle не переиспользуется молча.

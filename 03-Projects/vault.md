@@ -1,6 +1,7 @@
 ---
 type: project
 repo: /home/rudra/Projects/OpenCode-Vault
+spec-home: /home/rudra/Projects/OpenCode-Vault/docs/specs/
 kind: справочник
 stack: markdown + OpenCode
 ---

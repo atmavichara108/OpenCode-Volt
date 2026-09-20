@@ -7,7 +7,7 @@ Use the ecosystem control-plane route protocol for `vault`, `global`, or
 `project:<name>` scope. This command selects and records a route; it does not
 execute the selected command and does not provide an automatic runtime router.
 The exact orchestration smoke is documented at
-[[06-Specs/Vault/control-plane-smoke]].
+[[docs/specs/control-plane-smoke]].
 
 ## Required decision
 

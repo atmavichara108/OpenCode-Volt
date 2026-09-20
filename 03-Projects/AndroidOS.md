@@ -1,7 +1,7 @@
 ---
 type: project
 repo: /home/rudra/Projects/AndroidOS
-spec-home: /home/rudra/Projects/AndroidOS/docs/
+spec-home: /home/rudra/Projects/AndroidOS/docs/specs/
 kind: umbrella / mobile / ecosystem
 status: planning
 stack: Android / Kotlin (to validate) / OpenCode / offline-first data
@@ -15,7 +15,7 @@ timestamp: 2026-08-22
 
 > **Coordination Bridge FROZEN BY USER (2026-08-30):** bridge не является
 > обязательным шагом AndroidOS и не вызывается. Historical artifacts сохраняются;
-> canonical execution spec: /home/rudra/Projects/AndroidOS/docs/androidos-return-to-implementation.md.
+> canonical execution spec: /home/rudra/Projects/AndroidOS/docs/specs/androidos-return-to-implementation.md.
 
 > **Historical T-109 bootstrap (2026-08-28):** в AndroidOS создан canonical docs-only
 > surface `coordination/bridge/`. Bridge artifacts uncommitted/untracked; the

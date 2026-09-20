@@ -39,15 +39,25 @@ timestamp: 2026-07-02
 - Память сессии → 04-Memory/.
 - Источник правды по API OpenCode — официальные доки; 01-Reference это выжимка с датой проверки.
 - **Python-окружение:** каждый Python-проект использует direnv + .venv. В корне `.envrc` с `source .venv/bin/activate`. После создания — `direnv allow` (один раз). Зависимости ставятся в venv, НЕ глобально.
+- **Git-изоляция потоков (2026-09-18):** каждая сессия работает в своей ветке
+  `task/<slug>`; коммит прямо в `main` запрещён pre-commit хук-ом. Горячие файлы
+  (`TASKS.md`, `04-Memory/active-context.md`, `registry.json`, `00-INDEX.md`) —
+  только через flock-lease. Метод: [[02-Methods/git-worktree-isolation]].
 
 ## Execution specs
-- Каждый новый execution spec для обычных проектов размещается только в
-  `06-Specs/<project>/` этого Vault. Approved exception SERPlux: specs создаются
-  только в `/home/rudra/Projects/serp/docs/specs/`.
-- Не создавать конкурирующие specs в случайных `docs/`; для SERPlux локальный
-  `docs/specs/` authoritative, а старые Vault-файлы SERPlux archived.
-- Проектные агенты перед изменением читают canonical spec через `/spec <selector>`;
-  approval, commit/tag и verifier gates из spec обязательны.
-- Для обычных проектов при недоступности canonical Vault остановиться с
-  `BLOCKED`, без fallback. Для SERPlux `/spec` читает только local
-  `AGENTS.md`/`README.md` и `docs/specs/`, без обращения к Vault.
+- Каждый execution spec живёт в репозитории агента, который его исполняет:
+  `<repo>/docs/specs/`. Для Vault-агентов — `docs/specs/` этого Vault.
+  Исключений нет; каталог `06-Specs/` упразднён.
+- Vault не хранит execution-спеки чужих проектов. Единственный кросс-репо
+  указатель — поле `spec-home` в карточке проекта.
+- Librarian пишет спеку для проекта прямо в `<repo>/docs/specs/` (через субагента),
+  с обновлением `spec-home` в карточке при переезде каталога.
+- Проектные агенты перед изменением читают canonical spec через `/spec <selector>`,
+  который резолвит только внутри `spec-home`; approval, commit/tag и verifier gates
+  из spec обязательны.
+- При недоступности `spec-home` или неоднозначности selector остановиться с
+  `BLOCKED`, без fallback и без обращения к Vault.
+- Спека несёт `kind: task | contract` (по умолчанию `task`); исполненную
+  `task`-спеку исполнивший агент переносит в `spec-home/done/` только после
+  независимого verifier PASS + commit/tag. `contract` не переносится. Перенос —
+  lifecycle-шаг, не доказательство выполнения.

@@ -16,8 +16,8 @@ Manage persistent dilemma cards for permission conflicts, UNROUTABLE routes, acc
 
 ## Storage
 
-**Current (canonical):** `06-Specs/Vault/decision-queue/` (JSON files, append-only).
-Schema: `06-Specs/Vault/decision-queue/SCHEMA.md`.
+**Current (canonical):** `control-plane/decision-queue/` (JSON files, append-only).
+Schema: `control-plane/decision-queue/SCHEMA.md`.
 
 **Future (optional):** `~/.local/state/opencode/decision-queue/` — XDG-compliant user state path. Currently blocked by external_directory permissions. Requires explicit allow in global config. Not active.
 
@@ -25,9 +25,9 @@ Schema: `06-Specs/Vault/decision-queue/SCHEMA.md`.
 
 ### 1. Create decision card
 
-Filename: `YYYY-MM-DD-<slug>.json` in `06-Specs/Vault/decision-queue/`.
+Filename: `YYYY-MM-DD-<slug>.json` in `control-plane/decision-queue/`.
 
-Use schema from `06-Specs/Vault/decision-queue/SCHEMA.md`:
+Use schema from `control-plane/decision-queue/SCHEMA.md`:
 - `id`: unique identifier
 - `status`: pending|approved|rejected|deferred|resolved
 - `risk`: low|medium|high|critical
@@ -43,12 +43,12 @@ Use schema from `06-Specs/Vault/decision-queue/SCHEMA.md`:
 
 ```bash
 # List pending decisions (using python3 for JSON parsing)
-for f in 06-Specs/Vault/decision-queue/*.json; do
+for f in control-plane/decision-queue/*.json; do
   python3 -c "import json,sys; d=json.load(open(sys.argv[1])); print(f\"{d['id']} [{d['status']}] [{d['risk']}] {d['dilemma']['title']}\")" "$f"
 done
 
 # Show full card
-python3 -m json.tool 06-Specs/Vault/decision-queue/<id>.json
+python3 -m json.tool control-plane/decision-queue/<id>.json
 ```
 
 ### 3. Resolve decision
@@ -62,7 +62,7 @@ Update card:
 
 ### 4. Vault projection
 
-Append summary to `06-Specs/Vault/decision-queue-log.md`:
+Append summary to `control-plane/decision-queue-log.md`:
 ```markdown
 ## YYYY-MM-DD HH:MM — <title>
 - **Status:** pending|approved|rejected
@@ -88,16 +88,16 @@ Append summary to `06-Specs/Vault/decision-queue-log.md`:
 
 **Plugin:** `/home/rudra/dotfiles/opencode-global/.config/opencode/plugins/decision-queue-hook.ts`
 
-**Hook:** `permission.ask` `[проверить exact signature]` с graceful fallback на event catch-all.
+**Hook:** `permission.ask` and event catch-all are implemented; live event fire remains `[проверить]`.
 
 **Storage:** Append-only JSONL (`runtime-events.jsonl`) в:
-- Canonical: `06-Specs/Vault/decision-queue/runtime-events.jsonl` (если path существует)
-- Fallback: `.decision-queue/runtime-events.jsonl` (project root)
+- Canonical: `control-plane/decision-queue/runtime-events.jsonl` (если path существует)
+- Fallback: structured application log only; no project-root file is created.
 
 **Workflow:**
 1. Plugin автоматически создаёт metadata-only card на permission events
 2. Card сохраняется в JSONL (append-only)
-3. User reviews cards via `/decisions list` (показывает manual JSON cards + runtime JSONL)
+3. User reviews manual JSON cards via `/decisions list`; runtime JSONL remains separate until projection is implemented.
 4. User resolves via `/decisions resolve <id> <choice>` (требует explicit confirmation)
 
 **Constraints:**
@@ -106,6 +106,6 @@ Append summary to `06-Specs/Vault/decision-queue-log.md`:
 - No shell/git/network/file edit actions
 - No card resolution, no commit/push
 
-**Smoke test:** `06-Specs/Vault/decision-queue-smoke-test.mjs` (25/25 PASS, pure functions, no live runtime required).
+**Smoke test:** `control-plane/decision-queue-smoke-test.mjs` (shared pure helpers, no live runtime required).
 
-**Integration layer:** plugin создаёт JSONL, `/decisions` command ожидает JSON files. Integration layer не реализован (future work). Currently plugin creates runtime log, manual cards created via `/decisions new` remain separate JSON files.
+**Integration layer:** plugin JSONL and manual JSON cards remain separate; JSONL projection is future work and is not claimed.

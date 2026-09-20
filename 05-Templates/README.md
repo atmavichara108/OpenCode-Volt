@@ -6,6 +6,7 @@
 |------|-----------|
 | `project-card.md` | Шаблон карточки проекта в `03-Projects/` |
 | `method.md` | Шаблон метода в `02-Methods/` |
+| `spec.md` | Шаблон execution spec (`kind: task \| contract`, gates, `done/` closure) |
 
 ## Использование
 

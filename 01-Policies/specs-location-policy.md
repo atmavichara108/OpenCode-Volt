@@ -1,27 +1,27 @@
 ---
 type: Policy
 status: approved
-date: 2026-08-29
+date: 2026-09-18
 ---
 # Specs Location Policy
 
-1. Для всех проектов, кроме утверждённого исключения SERPlux, центральный Vault
-   — source of truth для execution specs:
-   `/home/rudra/Projects/OpenCode-Vault/06-Specs/<project>/`.
-2. Approved exception: для SERPlux canonical execution specs находятся только в
-   `/home/rudra/Projects/serp/docs/specs/`. Этот локальный каталог и локальная
-   команда `/spec` authoritative; старые Vault-файлы SERPlux — historical,
-   non-authoritative archive и не могут быть источником инструкций.
+1. Каждая execution spec живёт в репозитории того агента, который её исполняет:
+   `<repo>/docs/specs/<spec>.md`. Для Vault-агентов — `docs/specs/` этого Vault.
+   Исключений нет.
+2. Vault не хранит execution-спеки чужих проектов. Единственный кросс-репо
+   указатель — поле `spec-home` в карточке проекта (`03-Projects/<project>.md`).
 3. Канонический путь детерминирован; новые execution specs не размещаются в
    случайных project `docs/` и не копируются между репозиториями.
-4. Локальный pointer разрешён для discoverability, но не авторитетен и не
-    содержит вторую версию инструкций.
-5. `/spec` — protocol entrypoint: читает локальные `AGENTS.md`/`README.md`, затем
-   canonical spec. Для SERPlux читает только `docs/specs/`; к Vault не обращается.
-   Для остальных проектов читает canonical Vault spec; без selector показывает
+4. `/spec` — protocol entrypoint: определяет `spec-home` текущего проекта (из
+   карточки или локальных `AGENTS.md`/`README.md`), читает локальные context
+   files, затем canonical spec только внутри `spec-home`. Без selector показывает
    доступные specs; при недоступном обязательном источнике возвращает `BLOCKED`
-   и не делает fallback.
-6. Локальная `/spec` может существовать для совместимости только как wrapper с
-    тем же canonical precedence. Legacy generation должен иметь отдельное имя.
-7. Spec — execution instructions, не evidence of execution. Approval, commit/tag
+   и не делает fallback. Vault в резолвинг чужих проектов не участвует.
+5. Spec — execution instructions, не evidence of execution. Approval, commit/tag
    и verifier gates внутри spec остаются authoritative.
+6. Каждая spec несёт `kind: task | contract` (по умолчанию `task`). Исполненная
+   `task`-спека переносится исполнившим агентом в `spec-home/done/` только после
+   независимого verifier PASS + commit/tag. `contract`-спеки не переносятся.
+   Перенос — lifecycle-шаг, не доказательство выполнения.
+
+См. протокол: [[docs/specs/README]].

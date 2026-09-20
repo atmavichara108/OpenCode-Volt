@@ -1,6 +1,6 @@
 # Decision Queue Log
 
-Append-only log of decision cards. Readable projection from `06-Specs/Vault/decision-queue/`.
+Append-only log of decision cards. Readable projection from `control-plane/decision-queue/`.
 
 > **Future:** `~/.local/state/opencode/decision-queue/` — XDG-compliant user state path. Not yet active; blocked by external_directory permissions.
 
@@ -56,7 +56,7 @@ Append-only log of decision cards. Readable projection from `06-Specs/Vault/deci
 - **Context:** Where to store decision queue cards
 - **Options:**
   - A: `~/.local/state/opencode/decision-queue/` (XDG, blocked by permissions)
-  - B: `OpenCode-Vault/06-Specs/Vault/decision-queue/` (recommended, current)
+  - B: `OpenCode-Vault/control-plane/decision-queue/` (recommended, current)
   - C: `~/.config/opencode/decision-queue/`
 - **Recommendation:** B
 - **Reason:** Vault path works without permission changes; XDG path is future goal

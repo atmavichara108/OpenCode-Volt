@@ -21,7 +21,7 @@
       },
       {
         "id": "B",
-        "label": "Use OpenCode-Vault/06-Specs/Vault/decision-queue/",
+        "label": "Use OpenCode-Vault/control-plane/decision-queue/",
         "pros": ["Already in vault, no permission issues", "Version controlled with vault"],
         "cons": ["Not XDG-compliant", "Mixed with other specs"]
       },

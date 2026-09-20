@@ -1,6 +1,7 @@
 ---
 type: Execution Spec
 title: Ecosystem Registry — canonical matrix/registry/kanban design
+kind: contract
 status: proposed
 date: 2026-08-31
 owner: librarian
@@ -21,7 +22,7 @@ tags: [spec, vault, registry, kanban, matrix, lifecycle]
 
 | Уровень | Артефакт | Роль |
 |---------|----------|------|
-| **S0 design** | этот spec (`06-Specs/Vault/ecosystem-registry.md`) | schema + правила lifecycle/projections |
+| **S0 design** | этот spec (`docs/specs/ecosystem-registry.md`) | schema + правила lifecycle/projections |
 | **S1 canonical data** | `tools/ecosystem-map/registry.json` | единственный источник карточек/слоёв/фасетов/агентов |
 | **S2 projections (committed)** | `tools/ecosystem-map/data.json` (skills-граф, исторический T-069) | отдельная предметная проекция навыков; не дублирует registry-карточки |
 | **S3 projections (generated)** | `tools/ecosystem-map/generated/snapshot.json` | observer output; gitignored; не источник правды |

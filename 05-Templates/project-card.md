@@ -1,6 +1,7 @@
 ---
 type: project
 repo: /path/to/repo
+spec-home: /path/to/repo/docs/specs/
 kind: коммерция | волонтёрский | система
 stack: технологии через /
 ---
@@ -12,6 +13,8 @@ stack: технологии через /
 **Окружение:** зависимости, секреты, запуск.
 **CI / проверка:** команды для тестов.
 **Провайдер:** OpenCode Zen / другой.
+**Canonical specs:** `docs/specs/` в этом репозитории (`spec-home` выше) — execution
+source of truth; локальный `/spec` резолвит оттуда.
 
 ## Агенты (.opencode/agents/)
 | Агент | Назначение |

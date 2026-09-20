@@ -153,7 +153,7 @@ C (хроника как ECO-017 в фоне)**.
 ## 6. Ссылки
 
 - [[07-Runbooks/ecosystem-kanban-runbook]] — текущее пользование v3–v7.
-- [[06-Specs/Vault/ecosystem-registry]] — canonical schema.
+- [[docs/specs/ecosystem-registry]] — canonical schema.
 - [[06-Audits/2026-08-31-ecosystem-upgrade-plan-v2]] — план v2 (gates).
 - Сигналы: `tools/telegram-capture/signals-2026-07-12.json` (468),
   свежая регенерация — capture-scan action в Pip-Boy.

@@ -23,6 +23,22 @@ timestamp: 2026-09-06
 
 ---
 
+## Provider cards (канонические операционные записи)
+
+> Provider cards — **источник правды** по текущему состоянию каждого
+> провайдера (баланс, статус, модели, probe-свидетельства). Этот раздел даёт
+> только ссылки и статус; полные данные не дублируются — смотри карточки.
+
+| Provider ID | Карточка | Статус | Endpoint |
+|-------------|----------|--------|----------|
+| `linaliapi` | [[01-Reference/provider-cards/linaliapi]] | ✅ ACTIVE | `https://api.linaliapi.com/v1` |
+| `justwoker` | [[01-Reference/provider-cards/justwoker]] | ❌ BLOCKED/NO_MODELS | `https://api.justwoker.icu/v1` |
+
+Метод приёмки промо/реферальных провайдеров и контракт balance hook:
+[[02-Methods/promo-provider-protocol]].
+
+---
+
 ## Бесплатные модели по провайдерам
 
 ### 1. OpenCode Zen (`opencode/`) — Бесплатные модели
@@ -288,5 +304,7 @@ opencode
 
 - [[02-Methods/model-routing]] — Политика выбора модели под роль
 - [[02-Methods/capability-routing]] — Capability-based routing (ортогонально model-routing)
+- [[02-Methods/promo-provider-protocol]] — приёмка промо/реферальных провайдеров
+- [[01-Reference/provider-cards/linaliapi]] · [[01-Reference/provider-cards/justwoker]] — provider cards
 - [[04-Memory/facts.md]] — Реестр фактов (историческая запись о временном переводе на Zen)
 - [[TASKS]] — T-048, T-049 (возврат Zen/Go, профили моделей под провайдера)

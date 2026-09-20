@@ -20,7 +20,7 @@ timestamp: 2026-09-01
 - Coordination Bridge → FROZEN BY USER 2026-08-30 (historical, не вызывать); local-first → `/android-plan`
 - Capability route → `/route <свободный intent>`
 - Посмотреть дорожную карту → [[DEVELOPMENT-ROADMAP]]
-- Execution specs → [[06-Specs/README]] / `/spec <selector>`
+- Execution specs → [[docs/specs/README]] / `/spec <selector>`
 - Навигация по OKF → [[index]]
 - Трекер задач → [[TASKS]]
 
@@ -42,12 +42,13 @@ timestamp: 2026-09-01
 ## Reference (возможности OpenCode)
 [[agents]] · [[commands]] · [[config]] · [[global-config]] · [[memory]] · [[permissions]] · [[plugins]]
 [[providers]] · [[config-modes]] · [[mcode-desktop]]
+[[provider-cards/linaliapi]] · [[provider-cards/justwoker]] — канонические операционные карточки провайдеров (schema: [[promo-provider-protocol]])
 
 ## Сторонний софт (01-Reference/tools/)
 [[tools/GTweak]] — Windows-твикер (редко, для чужой машины)
 
 ## Methods (мои приёмы)
-[[closed-loop]] · [[verifier-pattern]] · [[context-as-docs]] · [[memory-management]] · [[model-routing]] · [[capability-routing]] · [[distill-pattern]] · [[multi-agent-pipeline]] · [[tool-integration-pattern]]
+[[closed-loop]] · [[verifier-pattern]] · [[context-as-docs]] · [[memory-management]] · [[model-routing]] · [[capability-routing]] · [[distill-pattern]] · [[multi-agent-pipeline]] · [[tool-integration-pattern]] · [[promo-provider-protocol]]
 
 ### Cross-project contracts
 [[user-profile-contract]] · [[06-Audits/2026-08-22-androidos-open-source-first]] · [[TASKS]] T-103–T-105
@@ -67,6 +68,7 @@ timestamp: 2026-09-01
 | [[capability-routing]] | ❌ | ❌ | ❌ | ❌ |
 | [[multi-agent-pipeline]] | ✅ | ❌ | ✅ | ❌ |
 | [[tool-integration-pattern]] | ➖ | ➖ | ➖ | 🟡 |
+| [[promo-provider-protocol]] | ➖ | ➖ | 🟡 | 🟡 |
 
 > ❌ не внедрён · 🟡 частично · ✅ внедрён · ➖ не применимо
 
@@ -90,7 +92,7 @@ timestamp: 2026-09-01
 > **Runbooks** = live usage and operator workflows.
 
 ## Execution specs
-[[06-Specs/README]] · [[06-Specs/Vault/ecosystem-registry]] · [[06-Specs/Vault/mcp-readonly]] · SERPlux local specs:
+[[docs/specs/README]] · [[docs/specs/ecosystem-registry]] · [[docs/specs/mcp-readonly]] · SERPlux local specs:
 `file:///home/rudra/Projects/serp/docs/specs/`
 
 > Для всех проектов, кроме SERPlux, canonical execution specs находятся в Vault.

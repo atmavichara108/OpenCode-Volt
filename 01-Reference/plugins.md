@@ -113,6 +113,7 @@ export const CustomToolsPlugin: Plugin = async (ctx) => {
 | notify | SERPlux (.js), dv-hub (.ts) | уведомления (звук/сообщение) о событиях (`session.*`) |
 | compaction | dv-hub (.ts) | управление сжатием длинного контекста (`experimental.session.compacting`) |
 | session-flush | глобальный (.ts) | копит `file.edited`, при `session.idle` дописывает в `04-Memory/session-log/YYYY-MM-DD.md`. Детерминированный, агентов не вызывает |
+| main-protector | глобальный (.ts) | защита main/master: блок `git commit` в защищённой ветке (кроме merge) + блок edit/write на hot-files (`TASKS.md`, `00-INDEX.md`, `active-context.md`, `registry.json`, `AGENTS.md`) в main. Обход `ALLOW_MAIN=1`. Fail-open на ошибках git-разведки |
 
 ## Заметки
 - В SERPlux плагины на `.js`, в dv-hub на `.ts` — стоит унифицировать [проверить какой формат предпочтительнее].
