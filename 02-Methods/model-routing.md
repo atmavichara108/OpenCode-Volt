@@ -69,6 +69,12 @@ Static routing — модель под роль (подходит для фик�
 
 **Переключение режимов:** через `model variants` (keybind `variant_cycle`) или переменные окружения. См. [[config-modes]].
 
+**Переключение одного агента (точечно):** визуально через дашборд **MODELS** в Pip-Boy
+(`tools/ecosystem-map/` → вкладка MODELS; `/agents`; rofi `models`) или CLI
+`python3 tools/ecosystem-map/model-router.py apply --agent <агент> --model <provider/model>`.
+Правка точечная (только строка `model:` / агент-блок), с flock + бэкапом; применяется
+с рестарта инструмента / новой сессии (hot-reload модели в движке нет).
+
 ## Когда применять / когда НЕ применять
 - Применять: как только появляется >2 ролей или петля гоняет verifier часто.
 - НЕ усложнять dynamic-роутингом: при <500 вызовов/день overhead классификатора дороже экономии. Мне хватает static.
@@ -130,3 +136,4 @@ Capability routing ортогонален model routing: capability отвеча
 - Влияет на: [[verifier-pattern]], [[closed-loop]] (стоимость петли)
 - Внедрён в: [[dv-hub]] ✅ (5 агентов, 4 модели: qwen3.7-max / deepseek-v4-flash / deepseek-v4-pro / qwen3.6-plus), [[SERPlux]] 🟡 (target: economical policy above — planned; actual config см. `03-Projects/SERPlux.md`), [[vault]] ➖ (один агент)
 - Ортогонально: [[capability-routing]] — capability routing отвечает за "кто делает", model routing за "какая модель"
+- Инструмент переключения: Pip-Boy MODELS dashboard (`tools/ecosystem-map/model-router.py`) — см. ROEL manifest Layer 3
