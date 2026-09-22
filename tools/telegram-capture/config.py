@@ -39,19 +39,21 @@ TOPIC_NAMES = [
     "Обучалки",
     "ИИ",
     "Питонизм",
+    "Абуз",
 ]
 
 # Карта категорий → эмодзи. Двухуровневая маркировка.
 # Эмодзи выбраны из 73 доступных реакций Telegram (GetAvailableReactionsRequest).
-# 📥⚠️🐧🤖🌐🧠🎯 НЕ доступны — заменены на семантически близкие.
+# 📥⚠️🐧🌐🧠🎯 НЕ доступны — заменены на семантически близкие.
 EMOJI_MAP = {
     "ingested": "👍",      # обработан (Thumbs Up)
     "error": "🤔",          # ошибка/требует внимания (Thinking Face)
-    "dotfiles": "👨‍💻",     # dotfiles / Linux UX (Man Technologist)
-    "serplux": "🔥",        # SERPlux (Fire — горячие позиции)
-    "dv-hub": "🤝",         # dv-hub (Handshake — связи/хаб)
+    "dotfiles": "👨‍",     # dotfiles / Linux UX (Man Technologist)
+    "serplux": "",        # SERPlux (Fire — горячие позиции)
+    "dv-hub": "",         # dv-hub (Handshake — связи/хаб)
     "vibeos": "🏆",         # VibeOS / метод (Trophy)
     "new": "🎉",            # новый проект (Party Popper)
+    "abuse": "💸",          # промо/абуз провайдер (Money with Wings — бесплатный кредит)
 }
 
 # Любая из этих реакций на посте = «уже обработан», пропускам при извлечении.
