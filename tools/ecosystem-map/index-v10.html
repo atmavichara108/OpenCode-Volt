@@ -526,6 +526,33 @@ body.mobile .kmap-box{padding:16px}
 .sq.ok{color:var(--leaf)}
 .sq .dim{color:var(--faint);margin-left:4px}
 
+/* --- проектная панель (статус по всем проектам) --- */
+.pj-sum{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:9.5px;margin-bottom:7px}
+.pj-sum b{color:var(--txt);font-family:var(--mono)}
+.pj-sum .leaf{color:var(--leaf)}
+.pj-sum .warn{color:var(--sun)}
+.pj-legend{margin-left:auto;color:var(--faint);font-size:8.5px}
+.pj-list{display:flex;flex-direction:column;gap:5px}
+.proj-row{display:flex;align-items:center;gap:7px;padding:6px 9px;border:1px solid var(--line);
+  border-radius:9px;cursor:pointer;background:var(--surface2);transition:border-color .12s;font-size:11px}
+.proj-row:hover{border-color:rgba(var(--rgb-water),.35)}
+.proj-row.active{border-color:rgba(var(--rgb-leaf),.55);background:rgba(var(--rgb-leaf),.07)}
+.proj-row.err{border-color:rgba(var(--rgb-rot),.35);cursor:default}
+.proj-row b{color:var(--water);font-family:var(--mono);font-size:10.5px}
+.proj-row.active b{color:var(--leaf)}
+.pj-dot{width:7px;height:7px;border-radius:50%;flex:0 0 auto;background:var(--faint)}
+.pj-dot.up{background:var(--leaf);box-shadow:0 0 8px rgba(var(--rgb-leaf),.55)}
+.pj-dot.down{background:var(--faint)}
+.pj-status{font-size:8.5px;color:var(--dim);border:1px solid var(--line2);border-radius:99px;padding:0 6px}
+.pj-ports{display:flex;gap:3px;flex:0 0 auto}
+.pj-port{font-family:var(--mono);font-size:8.5px;padding:1px 5px;border-radius:5px;
+  border:1px solid transparent;cursor:default}
+.pj-port.up{color:var(--leaf);background:rgba(var(--rgb-leaf),.12);border-color:rgba(var(--rgb-leaf),.3)}
+.pj-port.down{color:var(--rot);background:rgba(var(--rgb-rot),.10);border-color:rgba(var(--rgb-rot),.28)}
+.pj-none{font-size:9px}
+.pj-wins,.pj-docker{font-family:var(--mono);font-size:9px;color:var(--dim);min-width:26px;text-align:right}
+.pj-docker:not(:empty){color:var(--water)}
+
 /* --- MODELS dashboard --- */
 .mdl-top{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
 .mdl-filter{flex:1;min-width:160px;background:var(--surface2);border:1px solid var(--line2);

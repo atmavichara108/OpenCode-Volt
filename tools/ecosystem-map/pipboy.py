@@ -188,7 +188,8 @@ class Handler(SimpleHTTPRequestHandler):
 
         q = urllib.parse.parse_qs(self.path.split("?", 1)[1] if "?" in self.path else "")
         op = (q.get("op") or [""])[0]
-        ALLOWED = {"workspace-open", "workspace-status", "link-open", "link-resolve", "capture-scan", "term-open",
+        ALLOWED = {"workspace-open", "workspace-status", "workspace-status-all", "link-open", "link-resolve",
+                   "capture-scan", "term-open",
                    "term-status", "term-close", "query", "blockers", "next", "dependencies", "notify",
                    "proposals", "apply", "model-list", "model-models", "model-apply"}
         body = None

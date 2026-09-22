@@ -237,6 +237,37 @@ def do_workspace_status(project: str) -> dict:
     }
 
 
+def do_workspace_status_all() -> dict:
+    """Статус всех проектов сразу (tmux/порты/docker) — один вызов вместо N.
+
+    Для проектной панели Pip-Boy: по subprocess на проект через /action дороже,
+    чем один батч. Порядок = порядок snapshot.projects.
+    """
+    eco = _load_ecosystem()
+    rows = []
+    for p in eco["snapshot"].get("projects", []):
+        if not p.get("repo"):
+            continue
+        st = do_workspace_status(p.get("id", ""))
+        if not st.get("ok"):
+            rows.append({"id": p.get("id", ""), "ok": False,
+                         "error": st.get("error", "")})
+            continue
+        rows.append({
+            "id": p.get("id", ""),
+            "kind": p.get("kind", ""),
+            "status": p.get("status", ""),
+            "repo": st.get("repo", ""),
+            "session": st.get("session", ""),
+            "tmux_running": st.get("tmux_running", False),
+            "windows": st.get("windows", []),
+            "ports": st.get("ports", []),
+            "docker": st.get("docker", []),
+            "docker_enabled": st.get("docker_enabled", False),
+        })
+    return {"ok": True, "count": len(rows), "projects": rows}
+
+
 def do_capture_scan(regen: bool, limit: int) -> dict:
     """Отдаёт intake-сигналы из signals.json (read-only ключ к входам capture).
 
@@ -955,6 +986,7 @@ def main() -> int:
     wo.add_argument("--no-term", action="store_true")
     ws = sub.add_parser("workspace-status")
     ws.add_argument("project")
+    sub.add_parser("workspace-status-all")
     lo = sub.add_parser("link-open")
     lo.add_argument("target")
     lo.add_argument("--mode", default="browser", choices=["browser", "nvim", "tmux"])
@@ -1005,6 +1037,8 @@ def main() -> int:
             res = do_workspace_open(args.project, args.no_term)
         elif args.cmd == "workspace-status":
             res = do_workspace_status(args.project)
+        elif args.cmd == "workspace-status-all":
+            res = do_workspace_status_all()
         elif args.cmd == "link-open":
             res = do_link_open(args.target, args.mode)
         elif args.cmd == "link-resolve":
