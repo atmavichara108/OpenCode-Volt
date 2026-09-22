@@ -288,6 +288,7 @@ export class PipBoyApp {
       this.workspace.addTile(p.id, this.instantiate("terminal", p.id));
       this.workspace.addTile(p.id, this.instantiate("browser", p.id));
     }
+    this.workspace.addTile("—", this.instantiate("projects", "—"));
     this.workspace.addTile("—", this.instantiate("upgrade", "—"), { size: "wide" });
     this.workspace.addTile("—", this.instantiate("dependency", "—"), { size: "wide" });
     this.workspace.addTile("—", this.instantiate("acceptance", "—"), { size: "wide" });
