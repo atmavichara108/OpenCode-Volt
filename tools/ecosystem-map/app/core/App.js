@@ -39,7 +39,7 @@ const LAYOUTS = [
   ["rows", "≡"],
 ];
 
-const APP_VERSION = "v10.4";
+const APP_VERSION = "v11.0";
 
 /* Группы виджетов для rail-навигации: [группа, иконка, [модули]].
  * Порядок = порядок появления в rail. Модули без тайла просто не попадут в rail. */
@@ -72,6 +72,7 @@ export class PipBoyApp {
     this._prevLayout = null;
     this._railWide = localStorage.getItem("pipboy-rail-wide") === "1";
     this._compact = localStorage.getItem("pipboy-compact") === "1";
+    this._theme = localStorage.getItem("pipboy-theme") || "phosphor";
     this._activeModule = null; // подсветка в rail: модуль видимого/сфокусированного тайла
   }
 
@@ -81,6 +82,7 @@ export class PipBoyApp {
   }
 
   async init() {
+    this._applyTheme();
     // 1. скелет UI
     this.root.innerHTML = `
       <header class="pb-topbar">
@@ -89,6 +91,7 @@ export class PipBoyApp {
         <nav class="pb-projects" id="pb-projects"></nav>
         <span class="spacer"></span>
         <span class="pb-layouts" id="pb-layouts" title="пресет лейаута (L)"></span>
+        <button class="pb-btn" id="pb-theme" title="тема (Alt+T)">◐</button>
         <button class="pb-btn" id="pb-cmd" title="command palette (Ctrl+K)">⌘</button>
         <button class="pb-btn" id="pb-keys" title="клавиши (?)">?</button>
         <button class="pb-btn" id="pb-refresh" title="обновить данные (R)">⟳</button>
@@ -393,8 +396,10 @@ export class PipBoyApp {
       }
       // Ctrl+K или p → command palette
       if ((e.ctrlKey || e.metaKey) && (e.key === "k" || e.key === "K")) { e.preventDefault(); this._openPalette(); return; }
-      // Alt+1..9 → проект по номеру; Alt+0 → все проекты
+      // темы — Alt+T (Ctrl+T/Ctrl+Shift+T заняты браузером)
+      // Alt+1..9 → проект по номеру; Alt+0 → все проекты; Alt+T → тема
       if (e.altKey) {
+        if (e.key === "t" || e.key === "T") { e.preventDefault(); this._cycleTheme(); return; }
         if (e.key >= "1" && e.key <= "9") {
           e.preventDefault();
           const idx = +e.key - 1;
@@ -416,10 +421,25 @@ export class PipBoyApp {
       if (e.key === "x" || e.key === "X") { this._closeFocusedTile(); return; }
       if (e.key === "n" || e.key === "Tab") { e.preventDefault(); this._cycleTileFocus(); return; }
     });
+    this.root.querySelector("#pb-theme").addEventListener("click", () => this._cycleTheme());
     this.root.querySelector("#pb-cmd").addEventListener("click", () => this._openPalette());
     this.root.querySelector("#pb-refresh").addEventListener("click", () => this.refreshAll());
     this.root.querySelector("#pb-keys").addEventListener("click", () => this._toggleKmap());
     this.overlayEl.addEventListener("click", e => { if (e.target === this.overlayEl) this._closeOverlay(); });
+  }
+
+  /* --- темы: phosphor (дефолт) / amber / ice --- */
+  _applyTheme() {
+    document.documentElement.dataset.theme = this._theme === "phosphor" ? "" : this._theme;
+  }
+
+  _cycleTheme() {
+    const order = ["phosphor", "amber", "ice"];
+    const i = order.indexOf(this._theme);
+    this._theme = order[(i + 1) % order.length];
+    localStorage.setItem("pipboy-theme", this._theme);
+    this._applyTheme();
+    this.eventBus.emit("toast", "тема: " + this._theme);
   }
 
   /* --- плотность (compact): меньше отступов и крупнее сетка тайлов --- */
@@ -550,6 +570,8 @@ export class PipBoyApp {
     LAYOUTS.forEach(([id]) => cmds.push({ id: "layout:" + id, label: "Лейаут: " + id, run: () => this.setLayout(id) }));
     cmds.push({ id: "compact", label: this._compact ? "Плотность: обычная" : "Плотность: компактная",
                 run: () => this._toggleCompact() });
+    cmds.push({ id: "theme", label: `Тема: следующая (сейчас ${this._theme})`,
+                hint: "Alt+T", run: () => this._cycleTheme() });
     // прыжок к виджету (дублирует rail — для keyboard-first)
     const present = new Set([...this.workspace.tiles.values()].map(t => t.module.id));
     for (const [grp, , ids] of RAIL_GROUPS) {
