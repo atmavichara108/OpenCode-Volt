@@ -24,7 +24,32 @@ body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:13p
 ::-webkit-scrollbar-track{background:transparent}
 ::selection{background:rgba(163,230,53,.25)}
 
-#app{display:grid;grid-template-rows:auto 1fr auto;height:100vh}
+#app{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto 1fr auto;height:100vh}
+.pb-topbar{grid-column:1/-1}
+.pb-sbar{grid-column:1/-1}
+
+/* rail виджетов (левая навигация по модулям) */
+.pb-rail{grid-column:1;grid-row:2;width:52px;display:flex;flex-direction:column;gap:2px;
+  padding:8px 6px;overflow-y:auto;overflow-x:hidden;border-right:1px solid var(--line);
+  background:rgba(10,16,13,.6);backdrop-filter:blur(10px);transition:width .16s ease}
+.pb-rail.wide{width:168px}
+.rail-toggle{background:transparent;border:1px solid var(--line);color:var(--dim);cursor:pointer;
+  font-family:var(--mono);font-size:10px;padding:3px 0;border-radius:6px;margin-bottom:4px}
+.rail-toggle:hover{color:var(--txt);border-color:var(--line2)}
+.rail-grp{font-size:7.5px;letter-spacing:1.2px;color:var(--faint);padding:6px 4px 3px;text-transform:uppercase}
+.pb-rail:not(.wide) .rail-grp{display:none}
+.rail-item{display:flex;align-items:center;gap:8px;background:transparent;border:0;color:var(--dim);
+  cursor:pointer;font-family:var(--mono);font-size:10px;padding:5px 6px;border-radius:7px;
+  white-space:nowrap;overflow:hidden;text-align:left}
+.rail-item:hover{color:var(--txt);background:rgba(163,230,53,.06)}
+.rail-item.active{color:var(--leaf);background:rgba(74,222,128,.10)}
+.rail-ico{width:16px;flex:0 0 auto;text-align:center;font-size:11px}
+.rail-lbl{overflow:hidden;text-overflow:ellipsis}
+.pb-rail:not(.wide) .rail-lbl{display:none}
+.rail-badge{margin-left:auto;font-size:8px;font-family:var(--mono);color:var(--sun);
+  background:rgba(163,230,53,.12);border-radius:99px;padding:0 5px}
+.rail-badge.rot{color:var(--rot);background:rgba(244,63,94,.14)}
+.pb-rail:not(.wide) .rail-badge{position:absolute;display:none}
 
 /* topbar */
 .pb-topbar{padding:8px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
@@ -203,6 +228,16 @@ body.mobile .pb-logo{font-size:14px}
 body.mobile .pb-projects{display:flex;overflow-x:auto;flex:1;gap:4px;scrollbar-width:none}
 body.mobile .pb-projects::-webkit-scrollbar{display:none}
 body.mobile .pb-btn{padding:8px 12px;font-size:13px}
+body.mobile #app{grid-template-columns:1fr;grid-template-rows:auto 1fr auto auto}
+body.mobile .pb-rail{grid-column:1;grid-row:3;width:auto;flex-direction:row;gap:4px;padding:6px 8px;
+  overflow-x:auto;overflow-y:hidden;border-right:0;border-top:1px solid var(--line);scrollbar-width:none}
+body.mobile .pb-rail::-webkit-scrollbar{display:none}
+body.mobile .pb-rail.wide{width:auto}
+body.mobile .rail-toggle{display:none}
+body.mobile .rail-grp{display:none}
+body.mobile .rail-item{flex:0 0 auto;padding:8px 12px;font-size:11px}
+/* перебиваем .pb-rail:not(.wide) .rail-lbl{display:none} — на mobile подписи нужны */
+body.mobile .pb-rail .rail-lbl{display:inline}
 body.mobile .pb-main{padding:8px;gap:8px}
 body.mobile .tile{min-height:260px}
 body.mobile .tile-head{cursor:default;padding:10px 12px}

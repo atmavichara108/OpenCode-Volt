@@ -83,7 +83,9 @@ export class Workspace {
   removeTile(tileId) {
     const tile = this.tiles.get(tileId);
     if (!tile) return;
-    tile.module.unmount();
+    if (tile.mounted) tile.module.unmount();
+    tile.mounted = false;
+    this._io?.unobserve(tile.el);
     tile.el?.remove();
     this.tiles.delete(tileId);
     this.projectTiles.get(tile.projectId)?.delete(tileId);
@@ -107,7 +109,11 @@ export class Workspace {
     // снять все смонтированные тайлы (терминалы, подписки, DOM) перед пересборкой
     for (const tile of this.tiles.values()) {
       if (tile.el) tile.module.unmount();
+      tile.el = null;
+      tile.mounted = false;
     }
+    this._io?.disconnect();
+    this._io = null;
     this.root.innerHTML = "";
     this.root.dataset.layout = this.layout;
     const tiles = this._orderedTiles().filter(t => {
@@ -126,13 +132,54 @@ export class Workspace {
       </header><div class="tile-body"></div>`;
       this.root.appendChild(el);
       tile.el = el;
-      tile.module.mount(el.querySelector(".tile-body"));
       el.querySelector("[data-close]").addEventListener("click", () => {
         this.removeTile(tile.id);
         this.render();
       });
+      this._mountWhenVisible(tile);
     }
     this._wireDrag();
+  }
+
+  /* --- lazy mount: модуль монтируется, когда тайл попадает в viewport.
+   * ALL-режим = 37 тайлов; без этого все фетчат данные сразу. --- */
+  _ensureObserver() {
+    if (this._io) return this._io;
+    if (typeof IntersectionObserver === "undefined") return null;
+    this._io = new IntersectionObserver(entries => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        const tile = this.tiles.get(e.target.dataset.tile);
+        if (tile && !tile.mounted) this._mountTile(tile);
+        this._io.unobserve(e.target);
+      }
+    }, { root: this.root, rootMargin: "400px 0px" });
+    return this._io;
+  }
+
+  _mountTile(tile) {
+    if (tile.mounted || !tile.el) return;
+    tile.mounted = true;
+    try {
+      tile.module.mount(tile.el.querySelector(".tile-body"));
+    } catch (err) {
+      tile.mounted = false;
+      const body = tile.el.querySelector(".tile-body");
+      if (body) body.innerHTML = `<span class="dim">✗ ${this._esc(err?.message || err)}</span>`;
+    }
+  }
+
+  _mountWhenVisible(tile) {
+    const io = this._ensureObserver();
+    if (!io) { this._mountTile(tile); return; }
+    io.observe(tile.el);
+  }
+
+  /** Домонтировать все ещё не смонтированные видимые тайлы (после refreshAll). */
+  mountVisible() {
+    for (const tile of this.tiles.values()) {
+      if (!tile.mounted && tile.el) this._mountTile(tile);
+    }
   }
 
   setActiveProject(projectId) {

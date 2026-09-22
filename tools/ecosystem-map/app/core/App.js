@@ -40,6 +40,21 @@ const LAYOUTS = [
 
 const APP_VERSION = "v10.4";
 
+/* Группы виджетов для rail-навигации: [группа, иконка, [модули]].
+ * Порядок = порядок появления в rail. Модули без тайла просто не попадут в rail. */
+const RAIL_GROUPS = [
+  ["WORK", "▸", ["launcher", "terminal", "browser", "link", "search"]],
+  ["PLAN", "◈", ["next", "proposal", "kanban", "dependency", "acceptance"]],
+  ["STATE", "◎", ["ecosystem", "projects", "matrix", "skills", "health"]],
+  ["INFRA", "⚙", ["upgrade", "agent", "models"]],
+];
+const RAIL_ICONS = {
+  launcher: "▣", terminal: "▤", browser: "◫", link: "⛓", search: "⌕",
+  next: "▶", proposal: "✦", kanban: "▦", dependency: "⑃", acceptance: "✓",
+  ecosystem: "◉", projects: "◈", matrix: "⊞", skills: "✎", health: "✚",
+  upgrade: "⇡", agent: "☖", models: "⌘",
+};
+
 export class PipBoyApp {
   constructor(rootEl) {
     this.root = rootEl;
@@ -54,6 +69,8 @@ export class PipBoyApp {
     this._projectList = []; // [{id, ...}] только с repo
     this._overlay = null;
     this._prevLayout = null;
+    this._railWide = localStorage.getItem("pipboy-rail-wide") === "1";
+    this._activeModule = null; // подсветка в rail: модуль видимого/сфокусированного тайла
   }
 
   registerModule(id, ModuleClass) {
@@ -74,6 +91,7 @@ export class PipBoyApp {
         <button class="pb-btn" id="pb-keys" title="клавиши (?)">?</button>
         <button class="pb-btn" id="pb-refresh" title="обновить данные (R)">⟳</button>
       </header>
+      <nav class="pb-rail" id="pb-rail"></nav>
       <main class="pb-main" id="pb-main"></main>
       <footer class="pb-sbar" id="pb-sbar">
         <span>SSE <b id="pb-sse">…</b></span>
@@ -87,6 +105,7 @@ export class PipBoyApp {
     `;
     this.topbar = this.root.querySelector("#pb-projects");
     this.main = this.root.querySelector("#pb-main");
+    this.rail = this.root.querySelector("#pb-rail");
     this.overlayEl = this.root.querySelector("#pb-overlay");
     this.workspace = new Workspace(this.main);
     this._layoutIdx = LAYOUTS.findIndex(l => l[0] === this.workspace.layout);
@@ -126,29 +145,85 @@ export class PipBoyApp {
     this._renderProjectsBar();
     this._renderLayoutBtns();
     this._renderSbar();
+    this._renderRail();
+    this._initRailScrollSync();
     this._handleDeepLink();
     window.addEventListener("hashchange", () => this._handleDeepLink());
   }
 
-  /* --- hash deep-link: #models / #next / #deps … фокусирует тайл модуля.
-   * Глобальные тайлы видны при любом проекте; для надёжности переключаем
-   * на ALL (activeProject=null) и скроллим к тайлу. --- */
+  /* Подсвечивать в rail тот модуль, чей тайл сейчас у верхнего края. */
+  _initRailScrollSync() {
+    let t = null;
+    this.main?.addEventListener("scroll", () => {
+      clearTimeout(t);
+      t = setTimeout(() => {
+        if (Date.now() < (this._syncUntil || 0)) return; // после явного прыжка не перебиваем
+        const tiles = [...this.main.querySelectorAll(".tile")];
+        const top = this.main.getBoundingClientRect().top;
+        const vis = tiles.find(el => el.getBoundingClientRect().bottom > top + 8);
+        const mod = vis?.querySelector(".t")?.textContent || null;
+        if (mod && mod !== this._activeModule) {
+          this._activeModule = mod;
+          this._renderRail();
+        }
+      }, 90);
+    }, { passive: true });
+  }
+
+  /* --- rail: навигация по виджетам (все модули, сгруппированные) --- */
+  _renderRail() {
+    if (!this.rail) return;
+    this.rail.classList.toggle("wide", this._railWide);
+    const present = new Set([...this.workspace.tiles.values()].map(t => t.module.id));
+    const html = [`<button class="rail-toggle" id="rail-toggle">${this._railWide ? "«" : "»"}</button>`];
+    for (const [grp, gico, ids] of RAIL_GROUPS) {
+      const items = ids.filter(id => present.has(id));
+      if (!items.length) continue;
+      html.push(`<div class="rail-grp">${gico} ${grp}</div>`);
+      for (const id of items) {
+        const active = id === this._activeModule ? " active" : "";
+        html.push(`<button class="rail-item${active}" data-mod="${this._esc(id)}"
+          title="${this._esc(id)}"><span class="rail-ico">${RAIL_ICONS[id] || "·"}</span>
+          <span class="rail-lbl">${this._esc(id)}</span></button>`);
+      }
+    }
+    this.rail.innerHTML = html.join("");
+    this.rail.querySelector("#rail-toggle")?.addEventListener("click", () => {
+      this._railWide = !this._railWide;
+      localStorage.setItem("pipboy-rail-wide", this._railWide ? "1" : "0");
+      this._renderRail();
+    });
+    this.rail.querySelectorAll("[data-mod]").forEach(b =>
+      b.addEventListener("click", () => this._jumpToModule(b.getAttribute("data-mod"))));
+  }
+
+  /* --- прыжок к виджету: rail, палитра или #hash --- */
+  _jumpToModule(moduleId) {
+    const find = () => [...this.main.querySelectorAll(".tile")].find(t =>
+      t.querySelector(".t")?.textContent === moduleId);
+    let tile = find();
+    if (!tile && this.activeProject !== null) {
+      // тайл есть, но в другом проекте → показываем все
+      this.setActiveProject(null);
+      tile = find();
+    }
+    if (!tile) { this.eventBus.emit("toast", `${moduleId}: тайл не найден`); return; }
+    this._activeModule = moduleId;
+    this._renderRail();
+    this._focusTile(tile);
+    // scroll-sync не должен перебить только что выбранный модуль
+    this._syncUntil = Date.now() + 900;
+    tile.scrollIntoView({ block: "start", behavior: "smooth" });
+  }
+
+  /* --- hash deep-link: #models / #deps / #next … (алиасы как в rofi) --- */
   _handleDeepLink() {
     const h = (location.hash || "").replace(/^#/, "").toLowerCase().trim();
     if (!h) return;
-    const alias = { deps: "dependency", kanban: "kanban", matrix: "matrix",
-                    skills: "skills", models: "models", next: "next",
-                    proposals: "proposal", agents: "agent" };
+    const alias = { deps: "dependency", proposals: "proposal", agents: "agent" };
     const target = alias[h] || h;
     if (!this.modules.has(target)) return;
-    if (this.activeProject !== null) this.setActiveProject(null);
-    const tile = [...this.main.querySelectorAll(".tile")].find(t =>
-      t.querySelector(".t")?.textContent === target);
-    if (tile) {
-      this._focusTile(tile);
-      // повторный скролл после асинхронного mount модулей
-      requestAnimationFrame(() => tile.scrollIntoView({ block: "start", behavior: "smooth" }));
-    }
+    this._jumpToModule(target);
     history.replaceState(null, "", location.pathname + location.search); // убрать hash из URL
   }
 
@@ -371,7 +446,9 @@ export class PipBoyApp {
   }
 
   async refreshAll() {
+    // только смонтированные тайлы: несмонтированные подхватятся при lazy mount
     for (const t of this.workspace.tiles.values()) {
+      if (t.mounted === false) continue;
       try { t.module.refresh(); } catch (e) { console.error(`[refresh:${t.id}]`, e); }
     }
     this._renderSbar();
@@ -412,6 +489,15 @@ export class PipBoyApp {
     this._projectList.forEach((p, i) =>
       cmds.push({ id: "proj:" + p.id, label: "Проект: " + p.id, hint: "Alt+" + (i + 1), run: () => this.setActiveProject(p.id) }));
     LAYOUTS.forEach(([id]) => cmds.push({ id: "layout:" + id, label: "Лейаут: " + id, run: () => this.setLayout(id) }));
+    // прыжок к виджету (дублирует rail — для keyboard-first)
+    const present = new Set([...this.workspace.tiles.values()].map(t => t.module.id));
+    for (const [grp, , ids] of RAIL_GROUPS) {
+      for (const id of ids) {
+        if (!present.has(id)) continue;
+        cmds.push({ id: "go:" + id, label: `Перейти: ${id}`, hint: grp,
+                    run: () => this._jumpToModule(id) });
+      }
+    }
     cmds.push({ id: "refresh", label: "Обновить всё", hint: "R", run: () => this.refreshAll() });
     cmds.push({ id: "ws", label: "Открыть workspace активного проекта", run: () => this._openWorkspace() });
     cmds.push({ id: "notify", label: "Push на телефон (ntfy)", run: () => this._promptNotify() });
