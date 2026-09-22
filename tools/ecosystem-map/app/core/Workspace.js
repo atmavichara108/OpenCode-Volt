@@ -12,6 +12,12 @@
  *   focus    — первый тайл на всю ширину, остальные в 2 колонки
  * Порядок и размеры тайлов сохраняются в localStorage (pipboy-layout-v10).
  */
+/* Заглушка тела тайла до (lazy) монтирования — видно, что данные едут. */
+const SKELETON = `<div class="skel">
+  <span class="sk sk-1"></span><span class="sk sk-2"></span><span class="sk sk-3"></span>
+  <span class="sk sk-4"></span>
+</div>`;
+
 export class Workspace {
   constructor(root, layoutConfig = {}) {
     this.root = root;
@@ -130,7 +136,7 @@ export class Workspace {
         <span class="t">${this._esc(tile.module.title)}</span>
         <span class="tp">${this._esc(tile.projectId)}</span>
         <button class="tx" data-close="${tile.id}">✕</button>
-      </header><div class="tile-body"></div>`;
+      </header><div class="tile-body">${SKELETON}</div>`;
       this.root.appendChild(el);
       tile.el = el;
       el.querySelector("[data-close]").addEventListener("click", () => {
@@ -171,10 +177,24 @@ export class Workspace {
       }
     } catch (err) {
       tile.mounted = false;
-      const body = tile.el.querySelector(".tile-body");
-      if (body) body.innerHTML = `<span class="dim">✗ ${this._esc(err?.message || err)}</span>`;
+      this._renderTileError(tile, err?.message || String(err));
       this.onTileReady?.(tile);
     }
+  }
+
+  /** Тело тайла при ошибке монтирования: текст + кнопка «повторить». */
+  _renderTileError(tile, msg) {
+    const body = tile.el?.querySelector(".tile-body");
+    if (!body) return;
+    body.innerHTML = `<div class="tile-err">
+      <span class="rot">✕ не загружено</span>
+      <span class="dim mono">${this._esc(msg)}</span>
+      <button class="pb-mini" data-retry="1">⟳ повторить</button>
+    </div>`;
+    body.querySelector("[data-retry]")?.addEventListener("click", () => {
+      body.innerHTML = SKELETON;
+      this._mountTile(tile);
+    });
   }
 
   _mountWhenVisible(tile) {

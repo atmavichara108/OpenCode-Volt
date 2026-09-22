@@ -79,6 +79,18 @@ body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:13p
 .tile-focused{border-color:rgba(74,222,128,.7)!important;box-shadow:0 0 0 1px rgba(74,222,128,.4),0 0 26px rgba(74,222,128,.14)}
 .tile-head{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line);
   cursor:grab;user-select:none;background:var(--surface2)}
+/* skeleton / ошибка тайла */
+.skel{display:flex;flex-direction:column;gap:8px;padding:4px 0}
+.sk{height:10px;border-radius:4px;background:linear-gradient(90deg,rgba(163,230,53,.05),rgba(163,230,53,.13),rgba(163,230,53,.05));
+  background-size:200% 100%;animation:skshine 1.4s ease-in-out infinite}
+.sk-1{width:72%}.sk-2{width:90%}.sk-3{width:64%}.sk-4{width:48%;height:22px}
+@keyframes skshine{0%{background-position:200% 0}100%{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.sk{animation:none}}
+.tile-err{display:flex;flex-direction:column;gap:6px;align-items:flex-start;
+  border-left:2px solid var(--rot);padding:6px 8px;background:rgba(244,63,94,.05)}
+.tile-err .rot{font-size:10px;font-weight:600}
+.tile-err .dim{font-size:9px;word-break:break-word;max-width:100%}
+
 .tdot{font-family:var(--mono);font-size:8.5px;line-height:1;min-width:15px;padding:1px 4px;
   border-radius:99px;color:var(--faint);background:rgba(163,230,53,.10);text-align:center}
 .tdot:empty{display:none}
@@ -149,10 +161,21 @@ body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:13p
 .krow b{color:var(--leaf);font-family:var(--mono);font-size:11px}
 
 /* toast */
-.pb-toast{position:fixed;bottom:44px;right:18px;background:var(--surface);border:1px solid var(--line2);
-  color:var(--txt);padding:10px 16px;font-size:12.5px;z-index:10002;border-radius:14px;
-  opacity:0;transition:all .2s;pointer-events:none}
-.pb-toast.show{opacity:1}
+/* toast-стек: контейнер прозрачен для клика, каждый тост — нет */
+.pb-toast{position:fixed;bottom:44px;right:18px;z-index:10002;display:flex;flex-direction:column;
+  gap:6px;align-items:flex-end;pointer-events:none;max-width:min(420px,90vw)}
+.toast-item{background:var(--surface);border:1px solid var(--line2);color:var(--txt);
+  padding:9px 14px;font-size:12.5px;border-radius:14px;pointer-events:auto;
+  display:flex;align-items:center;gap:10px;max-width:100%;
+  box-shadow:0 8px 26px rgba(0,0,0,.35);animation:toastin .18s ease-out}
+.toast-item.out{opacity:0;transform:translateY(6px);transition:all .18s}
+.toast-item.err{border-color:rgba(244,63,94,.5)}
+.toast-item .tt{flex:1;word-break:break-word}
+.toast-act{background:transparent;border:1px solid var(--line2);color:var(--leaf);cursor:pointer;
+  font-family:var(--mono);font-size:10px;padding:3px 10px;border-radius:8px;white-space:nowrap}
+.toast-act:hover{border-color:rgba(74,222,128,.55);background:rgba(74,222,128,.08)}
+@keyframes toastin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.toast-item{animation:none}}
 
 @media (max-width:700px){
   .pb-main{grid-template-columns:1fr}
@@ -495,13 +518,39 @@ import { PipBoyApp } from "./app/core/App.js";
 
 const app = new PipBoyApp(document.getElementById("app"));
 
-// глобальный toast-канал
-app.eventBus.on("toast", msg => {
-  const t = document.getElementById("pb-toast");
-  t.textContent = msg; t.classList.add("show");
-  clearTimeout(t._h);
-  t._h = setTimeout(() => t.classList.remove("show"), 2400);
-});
+// глобальный toast-канал: строка или {text, err, action:{label, run}}
+const toastBox = document.getElementById("pb-toast");
+const MAX_TOASTS = 3;
+
+function pushToast(msg) {
+  const spec = (typeof msg === "string") ? { text: msg } : (msg || {});
+  const el = document.createElement("div");
+  el.className = "toast-item" + (spec.err ? " err" : "");
+  const span = document.createElement("span");
+  span.className = "tt";
+  span.textContent = String(spec.text ?? "");
+  el.appendChild(span);
+
+  let timer = null;
+  const close = () => {
+    clearTimeout(timer);
+    el.classList.add("out");
+    setTimeout(() => el.remove(), 200);
+  };
+  if (spec.action && typeof spec.action.run === "function") {
+    const btn = document.createElement("button");
+    btn.className = "toast-act";
+    btn.textContent = spec.action.label || "действие";
+    btn.addEventListener("click", () => { close(); spec.action.run(); });
+    el.appendChild(btn);
+  }
+  toastBox.appendChild(el);
+  // не даём стеку расти: убираем самые старые
+  while (toastBox.children.length > MAX_TOASTS) toastBox.firstElementChild.remove();
+  timer = setTimeout(close, spec.action ? 9000 : 2600);
+}
+
+app.eventBus.on("toast", pushToast);
 
 await app.init();
 </script>

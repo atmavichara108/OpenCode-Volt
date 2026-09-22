@@ -152,12 +152,28 @@ export class ModelsModule extends Module {
     sel.disabled = false;
 
     if (!d?.ok) {
-      this.emit("toast", `✗ ${agent}: ${d?.error || "ошибка"}`);
+      this.emit("toast", { text: `✗ ${agent}: ${d?.error || "ошибка"}`, err: true });
       sel.value = previous || "";   // откат визуального выбора
       return;
     }
     if (d.changed) {
-      this.emit("toast", `${agent}: ${d.old_model || "—"} → ${d.model} · применится после рестарта`);
+      // Undo: вернуть предыдущую модель (предложение живёт 9 секунд в toast)
+      const undo = d.old_model ? {
+        label: "↩ отменить",
+        run: async () => {
+          const r = await this.action("model-apply", { ...params, model: d.old_model });
+          if (r?.ok) {
+            this.emit("toast", `↩ ${agent}: возвращено ${d.old_model}`);
+            await this.refresh();
+          } else {
+            this.emit("toast", { text: `✗ откат не удался: ${r?.error || ""}`, err: true });
+          }
+        },
+      } : null;
+      this.emit("toast", {
+        text: `${agent}: ${d.old_model || "—"} → ${d.model} · применится после рестарта`,
+        action: undo,
+      });
       sel.setAttribute("data-prev", d.model);
       sel.classList.add("mdl-dirty");
     } else {
