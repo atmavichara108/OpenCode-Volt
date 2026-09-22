@@ -91,6 +91,31 @@ body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:13p
 .tile-err .rot{font-size:10px;font-weight:600}
 .tile-err .dim{font-size:9px;word-break:break-word;max-width:100%}
 
+/* compact-плотность */
+.pb-main.compact{gap:6px;padding:6px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  grid-auto-rows:minmax(180px,auto)}
+.pb-main.compact .tile{border-radius:10px}
+.pb-main.compact .tile-head{padding:5px 9px;gap:6px}
+.pb-main.compact .tile-body{padding:8px}
+body:not(.mobile) .pb-main.compact{font-size:12px}
+
+/* focus2: активный тайл большой, остальные — полоски-заголовки */
+.pb-main[data-layout=focus2]{grid-template-columns:1fr;grid-auto-rows:min-content;align-content:start}
+.pb-main[data-layout=focus2] .tile:not(.tile-focused){overflow:hidden}
+.pb-main[data-layout=focus2] .tile:not(.tile-focused) .tile-body{display:none}
+.pb-main[data-layout=focus2] .tile:not(.tile-focused) .tile-head{border-bottom:0;cursor:pointer}
+.pb-main[data-layout=focus2] .tile-focused{min-height:62vh}
+
+/* фуллскрин тайла */
+.tile-full{position:fixed;inset:0;z-index:9998;margin:0;border-radius:0;
+  background:var(--bg);display:flex;flex-direction:column;max-height:none!important}
+.tile-full .tile-head{position:sticky;top:0;background:rgba(10,16,13,.96);backdrop-filter:blur(8px);z-index:1}
+.tile-full .tile-body{flex:1;overflow:auto;min-height:0}
+.tile-head .tf{margin-left:auto;background:transparent;border:0;color:var(--faint);cursor:pointer;font-size:12px}
+.tile-head .tf:hover{color:var(--leaf)}
+.tile-head .tx{margin-left:6px}
+body.has-full .pb-main{overflow:hidden}
+
 .tdot{font-family:var(--mono);font-size:8.5px;line-height:1;min-width:15px;padding:1px 4px;
   border-radius:99px;color:var(--faint);background:rgba(163,230,53,.10);text-align:center}
 .tdot:empty{display:none}

@@ -62,6 +62,7 @@ export class Workspace {
     this.layouts[this._layoutKey()] = layout;
     this.root.dataset.layout = layout;
     this._saveLayout();
+    this._applyFocus2();   // переразложить активный/свёрнутые (без remount)
   }
 
   /** Вернуть сохранённый лейаут проекта или дефолт (не переключая). */
@@ -135,6 +136,7 @@ export class Workspace {
         <span class="tdot"></span>
         <span class="t">${this._esc(tile.module.title)}</span>
         <span class="tp">${this._esc(tile.projectId)}</span>
+        <button class="tf" data-full="${tile.id}" title="на весь экран (f)">⤢</button>
         <button class="tx" data-close="${tile.id}">✕</button>
       </header><div class="tile-body">${SKELETON}</div>`;
       this.root.appendChild(el);
@@ -143,9 +145,34 @@ export class Workspace {
         this.removeTile(tile.id);
         this.render();
       });
+      el.querySelector("[data-full]").addEventListener("click", () => this.toggleFull(tile.id));
       this._mountWhenVisible(tile);
     }
     this._wireDrag();
+    this._applyFocus2();
+  }
+
+  /* --- focus2: активный тайл большой, остальные свёрнуты в заголовки.
+   * Клик по заголовку (или стрелки) делает тайл активным → он разворачивается. --- */
+  _applyFocus2() {
+    this.root.querySelectorAll(".tile").forEach(el => el.classList.remove("tile-focused"));
+    if (this.layout !== "focus2") return;
+    const first = this.root.querySelector(".tile");
+    if (first) first.classList.add("tile-focused");
+    this.root.querySelectorAll(".tile-head").forEach(head => {
+      if (head.dataset.focus2) return;
+      head.dataset.focus2 = "1";
+      head.addEventListener("click", e => {
+        if (this.layout !== "focus2") return;
+        if (e.target.closest("[data-close],[data-full]")) return;
+        const el = head.parentElement;
+        if (el.classList.contains("tile-focused")) return;
+        this.root.querySelectorAll(".tile").forEach(t => t.classList.remove("tile-focused"));
+        el.classList.add("tile-focused");
+        this._mountTile(this.tiles.get(el.dataset.tile));
+        el.scrollIntoView({ block: "start", behavior: "smooth" });
+      });
+    });
   }
 
   /* --- lazy mount: модуль монтируется, когда тайл попадает в viewport.
@@ -209,6 +236,36 @@ export class Workspace {
       if (!tile.mounted && tile.el) this._mountTile(tile);
     }
   }
+
+  /** Фуллскрин тайла: развернуть на весь экран / вернуть в сетку. */
+  toggleFull(tileId) {
+    const tile = this.tiles.get(tileId);
+    if (!tile?.el) return;
+    if (this._fullId === tileId) { this.exitFull(); return; }
+    if (this._fullId) this.exitFull();
+    this._fullId = tileId;
+    tile.el.classList.add("tile-full");
+    const btn = tile.el.querySelector("[data-full]");
+    if (btn) { btn.textContent = "⤡"; btn.title = "вернуть в сетку (Esc)"; }
+    document.body.classList.add("has-full");
+    this._mountTile(tile);           // наверняка смонтировать
+    this.onFullChange?.(tile);
+  }
+
+  exitFull() {
+    if (!this._fullId) return;
+    const tile = this.tiles.get(this._fullId);
+    this._fullId = null;
+    if (tile?.el) {
+      tile.el.classList.remove("tile-full");
+      const btn = tile.el.querySelector("[data-full]");
+      if (btn) { btn.textContent = "⤢"; btn.title = "на весь экран (f)"; }
+    }
+    document.body.classList.remove("has-full");
+    this.onFullChange?.(null);
+  }
+
+  fullTileId() { return this._fullId; }
 
   setActiveProject(projectId) {
     this.activeProject = projectId;

@@ -35,6 +35,7 @@ const LAYOUTS = [
   ["grid", "⊞"],
   ["columns", "▤"],
   ["focus", "▣"],
+  ["focus2", "◨"],
   ["rows", "≡"],
 ];
 
@@ -70,6 +71,7 @@ export class PipBoyApp {
     this._overlay = null;
     this._prevLayout = null;
     this._railWide = localStorage.getItem("pipboy-rail-wide") === "1";
+    this._compact = localStorage.getItem("pipboy-compact") === "1";
     this._activeModule = null; // подсветка в rail: модуль видимого/сфокусированного тайла
   }
 
@@ -92,7 +94,7 @@ export class PipBoyApp {
         <button class="pb-btn" id="pb-refresh" title="обновить данные (R)">⟳</button>
       </header>
       <nav class="pb-rail" id="pb-rail"></nav>
-      <main class="pb-main" id="pb-main"></main>
+      <main class="pb-main${this._compact ? " compact" : ""}" id="pb-main"></main>
       <footer class="pb-sbar" id="pb-sbar">
         <span>SSE <b id="pb-sse">…</b></span>
         <span>HEAD <b id="pb-head">—</b></span>
@@ -384,7 +386,11 @@ export class PipBoyApp {
       if (e.key === "?" ) { this._toggleKmap(); return; }
       if (e.key === "r" || e.key === "R") { this.refreshAll(); return; }
       if (e.key === "l" || e.key === "L") { this._cycleLayout(); return; }
-      if (e.key === "Escape") { this._clearTileFocus(); this.root.querySelector("#pb-kmap").style.display = "none"; return; }
+      if (e.key === "f" || e.key === "F") { this._toggleFullFocused(); return; }
+      if (e.key === "Escape") {
+        if (this.workspace.fullTileId()) { this.workspace.exitFull(); return; }
+        this._clearTileFocus(); this.root.querySelector("#pb-kmap").style.display = "none"; return;
+      }
       // Ctrl+K или p → command palette
       if ((e.ctrlKey || e.metaKey) && (e.key === "k" || e.key === "K")) { e.preventDefault(); this._openPalette(); return; }
       // Alt+1..9 → проект по номеру; Alt+0 → все проекты
@@ -414,6 +420,23 @@ export class PipBoyApp {
     this.root.querySelector("#pb-refresh").addEventListener("click", () => this.refreshAll());
     this.root.querySelector("#pb-keys").addEventListener("click", () => this._toggleKmap());
     this.overlayEl.addEventListener("click", e => { if (e.target === this.overlayEl) this._closeOverlay(); });
+  }
+
+  /* --- плотность (compact): меньше отступов и крупнее сетка тайлов --- */
+  _toggleCompact() {
+    this._compact = !this._compact;
+    localStorage.setItem("pipboy-compact", this._compact ? "1" : "0");
+    this.main.classList.toggle("compact", this._compact);
+    this.eventBus.emit("toast", "плотность: " + (this._compact ? "компактная" : "обычная"));
+  }
+
+  /* --- фуллскрин сфокусированного тайла (клавиша f / кнопка ⤢) --- */
+  _toggleFullFocused() {
+    const full = this.workspace.fullTileId();
+    if (full) { this.workspace.exitFull(); return; }
+    const el = this._focusedTile() || this._visibleTiles()[0];
+    if (!el) return;
+    this.workspace.toggleFull(el.dataset.tile);
   }
 
   _visibleTiles() {
@@ -467,13 +490,15 @@ export class PipBoyApp {
       <div class="krow"><b>Alt+1..9</b><span>переключить проект по номеру</span></div>
       <div class="krow"><b>Alt+0</b><span>все проекты (ALL)</span></div>
       <div class="krow"><b>Ctrl+K</b><span>command palette</span></div>
-      <div class="krow"><b>L</b><span>цикл лейаута (grid/columns/focus/rows)</span></div>
+      <div class="krow"><b>L</b><span>цикл лейаута (grid / columns / focus / focus2 / rows)</span></div>
       <div class="krow"><b>R</b><span>обновить все модули</span></div>
       <div class="krow"><b>← ↑ ↓ → / Tab</b><span>фокус тайла (следующий/предыдущий)</span></div>
+      <div class="krow"><b>f</b><span>тайл на весь экран / вернуть (или кнопка ⤢)</span></div>
       <div class="krow"><b>x</b><span>закрыть сфокусированный тайл</span></div>
       <div class="krow"><b>?</b><span>эта справка</span></div>
-      <div class="krow"><b>Esc</b><span>снять фокус / закрыть оверлей</span></div>
+      <div class="krow"><b>Esc</b><span>выйти из фуллскрина / снять фокус / закрыть оверлей</span></div>
       <div class="krow"><b>drag</b><span>перетащить тайл за шапку</span></div>
+      <div class="krow"><b>rail слева</b><span>перейти к виджету (или Ctrl+K → «Перейти: …»)</span></div>
     </div>`;
   }
 
@@ -523,6 +548,8 @@ export class PipBoyApp {
     this._projectList.forEach((p, i) =>
       cmds.push({ id: "proj:" + p.id, label: "Проект: " + p.id, hint: "Alt+" + (i + 1), run: () => this.setActiveProject(p.id) }));
     LAYOUTS.forEach(([id]) => cmds.push({ id: "layout:" + id, label: "Лейаут: " + id, run: () => this.setLayout(id) }));
+    cmds.push({ id: "compact", label: this._compact ? "Плотность: обычная" : "Плотность: компактная",
+                run: () => this._toggleCompact() });
     // прыжок к виджету (дублирует rail — для keyboard-first)
     const present = new Set([...this.workspace.tiles.values()].map(t => t.module.id));
     for (const [grp, , ids] of RAIL_GROUPS) {
