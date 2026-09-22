@@ -108,6 +108,8 @@ export class PipBoyApp {
     this.rail = this.root.querySelector("#pb-rail");
     this.overlayEl = this.root.querySelector("#pb-overlay");
     this.workspace = new Workspace(this.main);
+    // тайл доехал (lazy mount + данные) → обновить бейджи rail и шапок
+    this.workspace.onTileReady = () => { this._renderRail(); this._renderTileBadges(); };
     this._layoutIdx = LAYOUTS.findIndex(l => l[0] === this.workspace.layout);
     if (this._layoutIdx < 0) this._layoutIdx = 0;
 
@@ -182,9 +184,11 @@ export class PipBoyApp {
       html.push(`<div class="rail-grp">${gico} ${grp}</div>`);
       for (const id of items) {
         const active = id === this._activeModule ? " active" : "";
+        const b = this._moduleBadge(id);
+        const badge = b ? `<span class="rail-badge ${b.level || ""}" title="${this._esc(b.text || "")}">${b.n}</span>` : "";
         html.push(`<button class="rail-item${active}" data-mod="${this._esc(id)}"
-          title="${this._esc(id)}"><span class="rail-ico">${RAIL_ICONS[id] || "·"}</span>
-          <span class="rail-lbl">${this._esc(id)}</span></button>`);
+          title="${this._esc(b ? `${id} — ${b.text}` : id)}"><span class="rail-ico">${RAIL_ICONS[id] || "·"}</span>
+          <span class="rail-lbl">${this._esc(id)}</span>${badge}</button>`);
       }
     }
     this.rail.innerHTML = html.join("");
@@ -195,6 +199,34 @@ export class PipBoyApp {
     });
     this.rail.querySelectorAll("[data-mod]").forEach(b =>
       b.addEventListener("click", () => this._jumpToModule(b.getAttribute("data-mod"))));
+  }
+
+  /* Бейдж модуля: максимальный по «важности» среди всех его тайлов.
+   * Модули сами выставляют this.badge = {n, level, text} в refresh(). */
+  _moduleBadge(moduleId) {
+    const rank = { rot: 2, warn: 1, leaf: 0 };
+    let best = null;
+    for (const t of this.workspace.tiles.values()) {
+      if (t.module.id !== moduleId) continue;
+      const b = t.module.badge;
+      if (!b || !b.n) continue;
+      if (!best || (rank[b.level] ?? 0) > (rank[best.level] ?? 0)) best = b;
+      else if (best && (rank[b.level] ?? 0) === (rank[best.level] ?? 0) && b.n > best.n) best = b;
+    }
+    return best;
+  }
+
+  /** Точка-статус в шапке тайла (по badge модуля). */
+  _renderTileBadges() {
+    for (const t of this.workspace.tiles.values()) {
+      const dot = t.el?.querySelector(".tdot");
+      if (!dot) continue;
+      const b = t.module.badge;
+      if (!b || !b.n) { dot.textContent = ""; dot.className = "tdot"; dot.title = ""; continue; }
+      dot.textContent = String(b.n);
+      dot.className = `tdot ${b.level || ""}`;
+      dot.title = b.text || "";
+    }
   }
 
   /* --- прыжок к виджету: rail, палитра или #hash --- */
@@ -449,8 +481,10 @@ export class PipBoyApp {
     // только смонтированные тайлы: несмонтированные подхватятся при lazy mount
     for (const t of this.workspace.tiles.values()) {
       if (t.mounted === false) continue;
-      try { t.module.refresh(); } catch (e) { console.error(`[refresh:${t.id}]`, e); }
+      try { await t.module.refresh(); } catch (e) { console.error(`[refresh:${t.id}]`, e); }
     }
+    this._renderRail();
+    this._renderTileBadges();
     this._renderSbar();
   }
 

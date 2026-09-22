@@ -126,6 +126,7 @@ export class Workspace {
       el.className = `tile tile-${tile.size}`;
       el.dataset.tile = tile.id;
       el.innerHTML = `<header class="tile-head">
+        <span class="tdot"></span>
         <span class="t">${this._esc(tile.module.title)}</span>
         <span class="tp">${this._esc(tile.projectId)}</span>
         <button class="tx" data-close="${tile.id}">✕</button>
@@ -161,11 +162,18 @@ export class Workspace {
     if (tile.mounted || !tile.el) return;
     tile.mounted = true;
     try {
-      tile.module.mount(tile.el.querySelector(".tile-body"));
+      const r = tile.module.mount(tile.el.querySelector(".tile-body"));
+      // mount асинхронный: бейдж/статус появляются, когда данные доехали
+      if (r && typeof r.then === "function") {
+        r.then(() => this.onTileReady?.(tile), () => this.onTileReady?.(tile));
+      } else {
+        this.onTileReady?.(tile);
+      }
     } catch (err) {
       tile.mounted = false;
       const body = tile.el.querySelector(".tile-body");
       if (body) body.innerHTML = `<span class="dim">✗ ${this._esc(err?.message || err)}</span>`;
+      this.onTileReady?.(tile);
     }
   }
 

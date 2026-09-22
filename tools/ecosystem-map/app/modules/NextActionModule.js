@@ -30,8 +30,11 @@ export class NextActionModule extends Module {
     this.data = await this.action("next", { limit: 50 });
     if (!this.data?.ok) {
       this.container.innerHTML = `<span class="dim">не загружено: ${this.esc(this.data?.error || "")}</span>`;
+      this.badge = null;
       return;
     }
+    const c = this.data.counts || {};
+    this.badge = c.ready ? { n: c.ready, level: "leaf", text: `готово к выполнению: ${c.ready}` } : null;
     this.container.innerHTML = this._render();
     this._wire();
   }

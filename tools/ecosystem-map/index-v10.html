@@ -79,6 +79,12 @@ body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:13p
 .tile-focused{border-color:rgba(74,222,128,.7)!important;box-shadow:0 0 0 1px rgba(74,222,128,.4),0 0 26px rgba(74,222,128,.14)}
 .tile-head{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line);
   cursor:grab;user-select:none;background:var(--surface2)}
+.tdot{font-family:var(--mono);font-size:8.5px;line-height:1;min-width:15px;padding:1px 4px;
+  border-radius:99px;color:var(--faint);background:rgba(163,230,53,.10);text-align:center}
+.tdot:empty{display:none}
+.tdot.warn{color:var(--sun);background:rgba(163,230,53,.16)}
+.tdot.rot{color:var(--rot);background:rgba(244,63,94,.16);box-shadow:0 0 10px rgba(244,63,94,.25)}
+.tdot.leaf{color:var(--leaf);background:rgba(74,222,128,.14)}
 .tile-head .t{font-size:10px;color:var(--faint);letter-spacing:1.6px;text-transform:uppercase}
 .tile-head .tp{font-size:10px;color:var(--water);font-family:var(--mono)}
 .tile-head .tx{margin-left:auto;background:transparent;border:0;color:var(--faint);cursor:pointer;font-size:12px}

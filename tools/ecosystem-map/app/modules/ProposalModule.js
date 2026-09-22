@@ -23,8 +23,15 @@ export class ProposalModule extends Module {
     this.data = await this.action("proposals", {});
     if (!this.data?.ok) {
       this.container.innerHTML = `<span class="dim">предложения не загружены: ${this.esc(this.data?.error || "")}</span>`;
+      this.badge = null;
       return;
     }
+    const ps = this.data.proposals || [];
+    const blocked = ps.filter(p => p.type === "blocked").length;
+    this.badge = ps.length
+      ? { n: ps.length, level: blocked ? "warn" : "leaf",
+          text: blocked ? `предложений: ${ps.length} (заблокировано ${blocked})` : `предложений: ${ps.length}` }
+      : null;
     this.container.innerHTML = this._render();
     this._wire();
   }

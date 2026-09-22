@@ -32,8 +32,17 @@ export class DependencyModule extends Module {
     this.data = await this.action("dependencies", {});
     if (!this.data?.ok) {
       this.container.innerHTML = `<span class="dim">граф не загружен: ${this.esc(this.data?.error || "")}</span>`;
+      this.badge = null;
       return;
     }
+    // бейдж: циклы (красный) → frozen-блоки (янтарный) → нет acceptance (янтарный)
+    const cyc = (this.data.cycles || []).length;
+    const frozen = new Set((this.data.blocked_by_task || []).flatMap(b => b.cards));
+    const na = (this.data.no_acceptance || []).length;
+    this.badge = cyc ? { n: cyc, level: "rot", text: `циклов в зависимостях: ${cyc}` }
+      : frozen.size ? { n: frozen.size, level: "warn", text: `блокировано frozen-задачами: ${frozen.size}` }
+      : na ? { n: na, level: "warn", text: `без acceptance: ${na}` }
+      : null;
     this.container.innerHTML = this._render();
     this._draw();
     this._wirePanZoom();
