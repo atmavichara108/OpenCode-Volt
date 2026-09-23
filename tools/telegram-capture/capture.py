@@ -56,7 +56,15 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Только показать что извлечётся, не ставить реакцию 📥.",
     )
-    return parser.parse_args()
+    parser.add_argument(
+        "--all",
+        action="store_true",
+        help="Извлечь все непомеченные посты (игнорирует --limit).",
+    )
+    args = parser.parse_args()
+    if args.all:
+        args.limit = 10000  # effectively unlimited
+    return args
 
 
 def _media_type(msg) -> str:
