@@ -20,6 +20,9 @@ timestamp: 2026-08-17
 
 - **2026-09-08: live hook-fire подтверждён в TUI.** Плагин `replay-budget.ts` (хук `experimental.chat.messages.transform`) работает в живых сессиях: маркеры `[N characters cleared]` (pruneToolInput, старые tool-входы) и `[mcode: replay budget — omitted N chars …]` (truncateToolOutput, старые tool-результаты) наблюдаются в контексте живой сессии; контент на диске при этом полный — резHistory режется только на реплее к модели, исполнение не трогается. Smoke 14/14 PASS. Бывший residual `[проверить]` закрыт.
 - **2026-09-08 [проверить → T-143]:** побочный эффект — `applyReplayBudget` применяет `pruneToolInput` ко всем tool-частям без границы «текущего хода» + мутация in-place; при живых ссылках на store возможна мутация task-промптов субагентов (инцидент: 3 субагента получили `[N characters cleared]` вместо промпта 2026-09-07). Улика сильная, причинность не доказана — контролируемый эксперимент в T-143.
+- **2026-09-17: doom_loop в волте зафиксирован как `ask` (решение Rudra).** Конфиг `opencode.json` и `.opencode/agent/librarian.md` frontmatter содержат `doom_loop: ask`.
+- **2026-09-18: плагин `main-protector.ts` и worktree-изоляция внедрены.** Хук `tool.execute.before` блокирует коммиты в `main`/`master` и правки 5 hot-files на защищённых ветках. Метод: [[02-Methods/git-worktree-isolation]].
+- **2026-09-19: живой evidence работы replay-budget.** В сессии 2026-09-19 при чтении файлов волта зафиксированы маркеры резки вывода `[mcode: replay budget — omitted N chars …]` в реальном времени; контент на диске полный.
 
 ## OpenCode
 
