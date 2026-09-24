@@ -1,0 +1,20 @@
+{
+  "provider_id": "anymodel",
+  "model_id": "am/free",
+  "benchmark_version": "0.1.0",
+  "date": "2026-09-24T09:34:50Z",
+  "gates": {
+    "fast": {
+      "score": 1.0,
+      "passed_threshold": null,
+      "cost_tokens": 6430,
+      "cost_usd_est": 0.0,
+      "latency_ms_median": 2312,
+      "notes": ""
+    }
+  },
+  "recommendation": [],
+  "advisory": true,
+  "task_set_hash": "acd13ac0c8d9",
+  "k": 1
+}
