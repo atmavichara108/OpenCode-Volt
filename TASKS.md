@@ -80,6 +80,7 @@ timestamp: 2026-08-31
 
 | T-144 | Dotfiles: реализовать read-only probe + balance monitor для promo/реферальных провайдеров по spec /home/rudra/dotfiles/docs/specs/promo-provider-probe-balance-hook.md. Только dotfiles-скрипты/конфиги; без ключей в репо/логах, без автотрат и мутации конфига; machine-readable JSON выход + exit-status ACTIVE/DEGRADED/BLOCKED/ERROR + пороги 25/10/0 + stale/error-семантика. **Planned, НЕ done.** | P2 | [[02-Methods/promo-provider-protocol]], /home/rudra/dotfiles/docs/specs/promo-provider-probe-balance-hook.md, [[01-Reference/provider-cards/linaliapi]], [[03-Projects/dotfiles]] |
 | T-145 | Verify promo-provider probe/balance hook независимым свидетельством (verifier) после T-144: fixture-based no-network тесты (empty models, 401/403, proxy, redaction, balance warning) + независимое доказательство, что хук не выводит секреты и не мутирует конфиг. **Planned, НЕ done.** | P4 | /home/rudra/dotfiles/docs/specs/promo-provider-probe-balance-hook.md, [[02-Methods/verifier-pattern]], T-144 |
+| T-146 | Model-capability-bench реализация по docs/specs/model-capability-bench.md. | P2 | [[02-Methods/model-routing]], [[02-Methods/promo-provider-protocol]], [[02-Methods/verifier-pattern]], T-144, T-145 |
 
 ### Контур планирования апгрейдов вайбкодинг-слоя (seed: `06-Audits/2026-08-02-upgrade-planning-seed`)
 | ID | Задача | Приоритет | Связано |
