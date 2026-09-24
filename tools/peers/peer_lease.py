@@ -14,7 +14,7 @@
 мутировать hot-file ТОЛЬКО через `peer_lease run -- <cmd>`, а не через edit/write.
 
 Hot-files (канон): TASKS.md, 04-Memory/active-context.md,
-tools/ecosystem-map/registry.json, 00-INDEX.md. Лок-файл — найденный target
+tools/ecosystem-map/registry.json, 00-INDEX.md, AGENTS.md. Лок-файл — найденный target
 ломается через `flock <file>`; лишнего отдельного локирования не нужно.
 
 Использование:

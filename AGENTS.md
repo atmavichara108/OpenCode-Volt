@@ -41,7 +41,7 @@ timestamp: 2026-07-02
 - **Python-окружение:** каждый Python-проект использует direnv + .venv. В корне `.envrc` с `source .venv/bin/activate`. После создания — `direnv allow` (один раз). Зависимости ставятся в venv, НЕ глобально.
 - **Git-изоляция потоков (2026-09-18):** каждая сессия работает в своей ветке
   `task/<slug>`; коммит прямо в `main` запрещён pre-commit хук-ом. Горячие файлы
-  (`TASKS.md`, `04-Memory/active-context.md`, `registry.json`, `00-INDEX.md`) —
+  (`TASKS.md`, `04-Memory/active-context.md`, `tools/ecosystem-map/registry.json`, `00-INDEX.md`, `AGENTS.md`) —
   только через flock-lease. Метод: [[02-Methods/git-worktree-isolation]].
 
 ## Execution specs

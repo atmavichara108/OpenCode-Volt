@@ -23,6 +23,8 @@ const {
   countOutputTokens,
   hasToolActivity,
   isNoOpTurn,
+  isAbortedTurn,
+  looksLikeAwaitingUser,
   buildNudgeParts,
 } = require(helpersPath)
 
@@ -96,6 +98,36 @@ test("buildNudgeParts: synthetic user text part", () => {
   assert.equal(parts[0].type, "text")
   assert.equal(parts[0].text, NO_OP_NUDGE)
   assert.equal(parts[0].synthetic, true)
+})
+
+// --- isAbortedTurn ---
+test("isAbortedTurn: MessageAbortedError = прерванный ход", () => {
+  assert.equal(isAbortedTurn({ error: { name: "MessageAbortedError" } }), true)
+})
+
+test("isAbortedTurn: нет error / другой name — не aborted", () => {
+  assert.equal(isAbortedTurn({}), false)
+  assert.equal(isAbortedTurn(undefined), false)
+  assert.equal(isAbortedTurn({ error: { name: "MessageOutputLengthError" } }), false)
+})
+
+// --- looksLikeAwaitingUser ---
+test("looksLikeAwaitingUser: текст заканчивается '?' → ждёт ответа", () => {
+  assert.equal(looksLikeAwaitingUser([{ type: "text", text: "Сделать X или Y?" }]), true)
+})
+
+test("looksLikeAwaitingUser: явная просьба подтвердить", () => {
+  assert.equal(looksLikeAwaitingUser([{ type: "text", text: "Подтверди, что мне продолжить" }]), true)
+})
+
+test("looksLikeAwaitingUser: обычный короткий текст без вопроса — не ждёт", () => {
+  assert.equal(looksLikeAwaitingUser([{ type: "text", text: "Продолжаю без вопросов" }]), false)
+})
+
+test("looksLikeAwaitingUser: пусто/без text-частей — не ждёт", () => {
+  assert.equal(looksLikeAwaitingUser([]), false)
+  assert.equal(looksLikeAwaitingUser(undefined), false)
+  assert.equal(looksLikeAwaitingUser([{ type: "tool", state: {} }]), false)
 })
 
 // Summary
