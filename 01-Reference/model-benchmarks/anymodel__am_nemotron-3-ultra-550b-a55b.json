@@ -1,39 +1,39 @@
 {
   "provider_id": "anymodel",
-  "model_id": "am/free",
+  "model_id": "am/nemotron-3-ultra-550b-a55b",
   "benchmark_version": "0.1.0",
-  "date": "2026-09-24T11:44:20Z",
+  "date": "2026-09-24T13:14:23Z",
   "gates": {
     "tools": {
       "score": 1.0,
       "passed_threshold": true,
-      "cost_tokens": 11299,
+      "cost_tokens": 11296,
       "cost_usd_est": 0.0,
-      "latency_ms_median": 6806,
+      "latency_ms_median": 5812,
       "notes": ""
     },
     "build": {
-      "score": 0.8,
+      "score": 1.0,
       "passed_threshold": true,
-      "cost_tokens": 11750,
+      "cost_tokens": 11211,
       "cost_usd_est": 0.0,
-      "latency_ms_median": 7597,
+      "latency_ms_median": 5214,
       "notes": ""
     },
     "reasoning": {
       "score": 0.5,
       "passed_threshold": false,
-      "cost_tokens": 8900,
+      "cost_tokens": 6648,
       "cost_usd_est": 0.0,
-      "latency_ms_median": 5796.5,
+      "latency_ms_median": 6525,
       "notes": ""
     },
     "fast": {
-      "score": 1.0,
+      "score": 0.6667,
       "passed_threshold": null,
-      "cost_tokens": 6424,
+      "cost_tokens": 4300,
       "cost_usd_est": 0.0,
-      "latency_ms_median": 1744,
+      "latency_ms_median": 2938.5,
       "notes": ""
     }
   },

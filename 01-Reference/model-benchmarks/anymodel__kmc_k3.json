@@ -1,0 +1,47 @@
+{
+  "provider_id": "anymodel",
+  "model_id": "kmc/k3",
+  "benchmark_version": "0.1.0",
+  "date": "2026-09-24T13:16:18Z",
+  "gates": {
+    "tools": {
+      "score": 0.6,
+      "passed_threshold": false,
+      "cost_tokens": 2171,
+      "cost_usd_est": 0.00032565000000000003,
+      "latency_ms_median": 8818,
+      "notes": ""
+    },
+    "build": {
+      "score": 1.0,
+      "passed_threshold": true,
+      "cost_tokens": 1927,
+      "cost_usd_est": 0.00028905000000000006,
+      "latency_ms_median": 5905,
+      "notes": ""
+    },
+    "reasoning": {
+      "score": 1.0,
+      "passed_threshold": true,
+      "cost_tokens": 1444,
+      "cost_usd_est": 0.00021660000000000003,
+      "latency_ms_median": 6438.5,
+      "notes": ""
+    },
+    "fast": {
+      "score": 1.0,
+      "passed_threshold": null,
+      "cost_tokens": 651,
+      "cost_usd_est": 9.765000000000002e-05,
+      "latency_ms_median": 4550,
+      "notes": ""
+    }
+  },
+  "recommendation": [
+    "build",
+    "reasoning"
+  ],
+  "advisory": true,
+  "task_set_hash": "acd13ac0c8d9",
+  "k": 1
+}

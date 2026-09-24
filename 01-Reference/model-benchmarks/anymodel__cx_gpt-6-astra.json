@@ -1,0 +1,48 @@
+{
+  "provider_id": "anymodel",
+  "model_id": "cx/gpt-6-astra",
+  "benchmark_version": "0.1.0",
+  "date": "2026-09-24T13:19:52Z",
+  "gates": {
+    "tools": {
+      "score": 1.0,
+      "passed_threshold": true,
+      "cost_tokens": 13226,
+      "cost_usd_est": 0.005290400000000001,
+      "latency_ms_median": 4787,
+      "notes": ""
+    },
+    "build": {
+      "score": 1.0,
+      "passed_threshold": true,
+      "cost_tokens": 13249,
+      "cost_usd_est": 0.005299600000000001,
+      "latency_ms_median": 3717,
+      "notes": ""
+    },
+    "reasoning": {
+      "score": 1.0,
+      "passed_threshold": true,
+      "cost_tokens": 10468,
+      "cost_usd_est": 0.004187199999999999,
+      "latency_ms_median": 2627.0,
+      "notes": ""
+    },
+    "fast": {
+      "score": 1.0,
+      "passed_threshold": null,
+      "cost_tokens": 7761,
+      "cost_usd_est": 0.0031044,
+      "latency_ms_median": 6249,
+      "notes": ""
+    }
+  },
+  "recommendation": [
+    "tools",
+    "build",
+    "reasoning"
+  ],
+  "advisory": true,
+  "task_set_hash": "acd13ac0c8d9",
+  "k": 1
+}

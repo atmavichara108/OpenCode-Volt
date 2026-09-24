@@ -1,9 +1,9 @@
 ---
 type: Active Context
 title: Активный контекст
-description: Сессия 2026-09-19 — интеграция накопленного техдолга и хвостов (снэпшот, слияние в main без потерь, 5 hot-files, specs-миграция, promo-provider, models-dashboard). Следующий фокус — T-143 (live replay-budget store mutation fix) и T-144 (promo-provider probe hook).
+description: Сессия 2026-09-24 — model-bench (T-146) + инцидент verifier-цикла. Следующий фокус — перезапуск verifier для T-146 после рестарта сессии, T-147 (bench.py → report.py), решить task:deny для meta.
 tags: [memory]
-timestamp: 2026-09-19
+timestamp: 2026-09-24
 ---
 
 # Активный контекст
@@ -11,6 +11,12 @@ timestamp: 2026-09-19
 > Автоматически обновляется librarian. Читается при старте каждой сессии.
 
 ## Текущий фокус
+- **T-146 ЗАКРЫТ** verifier PASS 2026-09-24. Матрица 6 моделей заполнена.
+- **T-148 (P2) — приоритет:** cost-guard занижает оценку в ~36× (не учитывает prompt+reasoning токены), накопительного бюджета нет. До фикса прогонять бенч только по одной модели и сверять факт.
+- **T-147 (P3):** bench.py → авто-вызов report.py.
+- **Роутинг:** рассмотреть `cx/gpt-5.6-sol` как дефолт (все гейты за $0.0006). `kmc/k3` не для strict tool-calling.
+- **Незакоммичено:** артефакты model-benchmarks (6 json + matrix.md), facts.md, session-log, active-context.md, TASKS.md. В TASKS.md посторонние правки T-123/T-124 — не захватить при коммите.
+- `meta` без `task: deny` — осознанное решение оператора, не техдолг.
 - **Интеграция техдолга и хвостов (2026-09-19):** грязное дерево (~72 пути) зафиксировано снэпшотом `69de278`, слито в интеграционную ветку `task/tails-2026-09-19` и готово к fast-forward в `main`. 0 потерь по всем 8 веткам задач. Specs-миграция `06-Specs/ → docs/specs/` + `control-plane/` завершена. Hot-files сведены к 5 (`TASKS.md`, `00-INDEX.md`, `04-Memory/active-context.md`, `tools/ecosystem-map/registry.json`, `AGENTS.md`) в `peer_lease.py`, `AGENTS.md` и `main-protector.ts`.
 - **Models dashboard module (2026-09-19):** spec `docs/specs/model-dashboard-models-module.md` и handoff влиты в `main` (`98a7167`, сессия Pip-Boy).
 - **Main-protector & git-worktree-isolation (2026-09-18):** плагин `main-protector.ts` перехватывает `tool.execute.before`, блокируя коммиты в main и правку hot-files в main; метод изоляции потоков оформлен в [[02-Methods/git-worktree-isolation]].

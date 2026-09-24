@@ -1,0 +1,48 @@
+{
+  "provider_id": "anymodel",
+  "model_id": "cc/claude-opus-5",
+  "benchmark_version": "0.1.0",
+  "date": "2026-09-24T13:18:33Z",
+  "gates": {
+    "tools": {
+      "score": 1.0,
+      "passed_threshold": true,
+      "cost_tokens": 45397,
+      "cost_usd_est": 0.013619100000000002,
+      "latency_ms_median": 3066,
+      "notes": ""
+    },
+    "build": {
+      "score": 1.0,
+      "passed_threshold": true,
+      "cost_tokens": 45578,
+      "cost_usd_est": 0.013673400000000002,
+      "latency_ms_median": 3510,
+      "notes": ""
+    },
+    "reasoning": {
+      "score": 1.0,
+      "passed_threshold": true,
+      "cost_tokens": 36224,
+      "cost_usd_est": 0.0108672,
+      "latency_ms_median": 3494.0,
+      "notes": ""
+    },
+    "fast": {
+      "score": 1.0,
+      "passed_threshold": null,
+      "cost_tokens": 26991,
+      "cost_usd_est": 0.008097300000000002,
+      "latency_ms_median": 3224,
+      "notes": ""
+    }
+  },
+  "recommendation": [
+    "tools",
+    "build",
+    "reasoning"
+  ],
+  "advisory": true,
+  "task_set_hash": "acd13ac0c8d9",
+  "k": 1
+}

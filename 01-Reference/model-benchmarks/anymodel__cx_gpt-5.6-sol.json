@@ -1,0 +1,48 @@
+{
+  "provider_id": "anymodel",
+  "model_id": "cx/gpt-5.6-sol",
+  "benchmark_version": "0.1.0",
+  "date": "2026-09-24T13:17:40Z",
+  "gates": {
+    "tools": {
+      "score": 1.0,
+      "passed_threshold": true,
+      "cost_tokens": 1085,
+      "cost_usd_est": 0.000217,
+      "latency_ms_median": 3988,
+      "notes": ""
+    },
+    "build": {
+      "score": 1.0,
+      "passed_threshold": true,
+      "cost_tokens": 1015,
+      "cost_usd_est": 0.000203,
+      "latency_ms_median": 2915,
+      "notes": ""
+    },
+    "reasoning": {
+      "score": 1.0,
+      "passed_threshold": true,
+      "cost_tokens": 677,
+      "cost_usd_est": 0.0001354,
+      "latency_ms_median": 3070.5,
+      "notes": ""
+    },
+    "fast": {
+      "score": 1.0,
+      "passed_threshold": null,
+      "cost_tokens": 387,
+      "cost_usd_est": 7.740000000000001e-05,
+      "latency_ms_median": 3058,
+      "notes": ""
+    }
+  },
+  "recommendation": [
+    "tools",
+    "build",
+    "reasoning"
+  ],
+  "advisory": true,
+  "task_set_hash": "acd13ac0c8d9",
+  "k": 1
+}
