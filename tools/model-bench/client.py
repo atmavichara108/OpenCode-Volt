@@ -31,6 +31,21 @@ COST_COEFFICIENTS = {
     ("amd-radeon", None): 0,  # весь провайдер — free tier
 }
 
+# Наблюдаемые множители расхода токенов (факт/оценка) по моделям.
+# Значения измерены 2026-09-24 полным прогоном 4 гейтов k=1 и являются
+# эмпирическими, а НЕ гарантией: предсказание всегда неточно (разброс
+# 0.74×..36×). Основная защита бюджета — принудительный останов по
+# фактическому расходу (bench.py), а не этот множитель.
+OBSERVED_TOKEN_MULTIPLIER = {
+    ("anymodel", "cx/gpt-5.6-sol"): 0.8,
+    ("anymodel", "kmc/k3"): 1.5,
+    ("anymodel", "am/nemotron"): 8.0,
+    ("anymodel", "am/free"): 9.0,
+    ("anymodel", "cx/gpt-6-astra"): 10.5,
+    ("anymodel", "cc/claude-opus-5"): 36.5,
+}
+DEFAULT_TOKEN_MULTIPLIER = 4.0  # неизвестная модель: консервативно выше 1
+
 
 def _coefficient(provider_id, model_id):
     """Возвращает коэффициент стоимости или None, если модель неизвестна."""
@@ -42,6 +57,20 @@ def _coefficient(provider_id, model_id):
     if provider_id == "anymodel" and model_id.startswith("am/nemotron"):
         return 0
     return None
+
+
+def token_multiplier(provider_id, model_id):
+    """Наблюдаемый множитель расхода токенов (факт/оценка) или дефолт.
+
+    Точное совпадение → измеренное значение; ``anymodel`` + ``am/nemotron*``
+    → 8.0; иначе ``DEFAULT_TOKEN_MULTIPLIER``.
+    """
+    key = (provider_id, model_id)
+    if key in OBSERVED_TOKEN_MULTIPLIER:
+        return OBSERVED_TOKEN_MULTIPLIER[key]
+    if provider_id == "anymodel" and model_id.startswith("am/nemotron"):
+        return 8.0
+    return DEFAULT_TOKEN_MULTIPLIER
 
 
 def estimate_cost_usd(provider_id, model_id, usage):

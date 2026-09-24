@@ -2,11 +2,15 @@
 
 Логи — в stderr, финальный JSON-итог — в stdout. Промпты и ответы модели в
 артефакт НЕ попадают (только score/метрики/заметки без содержимого ответов).
+
+Артефакт содержит, помимо гейтов, поля бюджета: ``budget_usd``, ``spent_usd_est``,
+``budget_stop``, ``gates_skipped`` (см. build_artifact/main).
 """
 import argparse
 import datetime
 import json
 import logging
+import math
 import os
 import re
 import statistics
@@ -16,6 +20,7 @@ from pathlib import Path
 import client
 import config
 import graders
+import report
 import tasks
 
 log = logging.getLogger("model-bench")
@@ -30,18 +35,27 @@ def slugify(model_id):
 
 
 def estimate_run_cost(provider_id, model_id, gates, k):
-    """Оценка стоимости прогона по максимальному числу токенов (max_tokens).
+    """Оценка стоимости прогона по промпт-токенам + max_tokens + множителю.
 
-    Возвращает float (USD) или None (неизвестная модель — не выдумываем).
+    Эвристика промпт-токенов: 1 токен ≈ 4 символа (грубо, по латинице/кириллице
+    вперемешку). Скрытые reasoning-токены непредсказуемы — их накрывает
+    ``client.token_multiplier`` (эмпирические множители, см. client.py).
+
+    Возвращает кортеж ``(cost_usd, total_tokens_est)``. ``cost_usd`` — float
+    или None (неизвестная модель — не выдумываем цену); ``total_tokens_est`` —
+    int, возвращается всегда.
     """
-    total_max = 0
+    base_tokens = 0
     for gate in gates:
         for task in tasks.TASKS_BY_GATE[gate]:
-            total_max += task["max_tokens"] * k
+            prompt_tokens_est = len(task["prompt"]) // 4
+            base_tokens += (prompt_tokens_est + task["max_tokens"]) * k
+    total_est = int(base_tokens * client.token_multiplier(provider_id, model_id))
     coeff = client._coefficient(provider_id, model_id)
     if coeff is None:
-        return None
-    return client.COST_BASE_USD_PER_1M * coeff * total_max / 1_000_000
+        return None, total_est
+    cost = client.COST_BASE_USD_PER_1M * coeff * total_est / 1_000_000
+    return cost, total_est
 
 
 def run_gate(gate, provider_id, model_id, base_url, key, proxies, k):
@@ -143,7 +157,8 @@ def dry_run_plan(provider_id, model_id, gates, k):
         total_requests += n * k
         lines.append(f"  gate={gate}: {n} задач × {k} повтор(ов) = {n * k} запросов")
     lines.append(f"  всего запросов: {total_requests}")
-    cost = estimate_run_cost(provider_id, model_id, gates, k)
+    cost, tokens_est = estimate_run_cost(provider_id, model_id, gates, k)
+    lines.append(f"  оценка токенов: ~{tokens_est} (с множителем {client.token_multiplier(provider_id, model_id)})")
     if cost is None:
         lines.append("  оценка бюджета: неизвестная модель (cost_usd_est=null)")
     else:
@@ -162,16 +177,40 @@ def main(argv=None):
     parser.add_argument("--k", type=int, default=1, help="число повторов (default 1)")
     parser.add_argument("--dry-run", action="store_true", help="план без сетевых вызовов")
     parser.add_argument("--force", action="store_true", help="игнорировать cost-guard")
+    parser.add_argument(
+        "--budget",
+        type=float,
+        default=0.02,
+        help="лимит фактических расходов прогона в USD (default 0.02); превышение останавливает оставшиеся гейты",
+    )
+    parser.add_argument("--skip-matrix", action="store_true", help="не генерировать matrix.md")
     parser.add_argument("--out", default=str(DEFAULT_OUT_DIR), help="каталог артефактов")
     args = parser.parse_args(argv)
 
     logging.basicConfig(stream=sys.stderr, level=logging.INFO, format="%(message)s")
+
+    if not math.isfinite(args.budget) or args.budget <= 0:
+        log.error(
+            "Некорректный --budget: %r. Ожидается конечное положительное число USD.",
+            args.budget,
+        )
+        return 3
 
     gates = [g.strip() for g in args.gates.split(",") if g.strip()]
     for g in gates:
         if g not in tasks.TASKS_BY_GATE:
             log.error("Неизвестный гейт: %s", g)
             return 3
+
+    seen = set()
+    deduped = []
+    for g in gates:
+        if g not in seen:
+            seen.add(g)
+            deduped.append(g)
+    if len(deduped) != len(gates):
+        log.warning("Повторяющиеся гейты убраны: %s", ", ".join(gates))
+    gates = deduped
 
     if args.dry_run:
         sys.stdout.write(dry_run_plan(args.provider, args.model, gates, args.k) + "\n")
@@ -183,25 +222,44 @@ def main(argv=None):
         return 3
     key = config.resolve_key(args.provider)
 
-    # Cost guard
-    cost = estimate_run_cost(args.provider, args.model, gates, args.k)
-    if cost is not None and cost > config.COST_GUARD_USD and not args.force:
+    # Cost guard (предварительный): лимит = min(COST_GUARD_USD, budget).
+    est_cost, _est_tokens = estimate_run_cost(args.provider, args.model, gates, args.k)
+    guard_limit = min(config.COST_GUARD_USD, args.budget)
+    if est_cost is not None and est_cost > guard_limit and not args.force:
         log.error(
-            "Cost-guard: ожидаемая стоимость $%.6f превышает лимит $%.2f. "
+            "Cost-guard: ожидаемая стоимость $%.6f превышает лимит $%.6f. "
             "Используйте --force для продолжения.",
-            cost, config.COST_GUARD_USD,
+            est_cost, guard_limit,
         )
         return 2
 
     proxies = config.proxies_from_env()
 
     gates_result = {}
-    for gate in gates:
+    gates_skipped = []
+    spent_usd = 0.0
+    budget_stop = False
+    for idx, gate in enumerate(gates):
         gates_result[gate] = run_gate(
             gate, args.provider, args.model, base_url, key, proxies, args.k
         )
+        spent_usd += gates_result[gate].get("cost_usd_est") or 0.0
+        remaining = gates[idx + 1:]
+        if spent_usd > args.budget and remaining and not args.force:
+            log.warning(
+                "Budget-guard: фактический расход $%.6f превысил лимит $%.6f — "
+                "останавливаю оставшиеся гейты: %s",
+                spent_usd, args.budget, ", ".join(remaining),
+            )
+            gates_skipped = remaining
+            budget_stop = True
+            break
 
     artifact = build_artifact(args.provider, args.model, gates_result, args.k)
+    artifact["budget_usd"] = args.budget
+    artifact["spent_usd_est"] = round(spent_usd, 6)
+    artifact["budget_stop"] = budget_stop
+    artifact["gates_skipped"] = gates_skipped
 
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -211,6 +269,14 @@ def main(argv=None):
         json.dumps(artifact, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
+
+    if not args.skip_matrix:
+        try:
+            artifacts = report.load_artifacts(out_dir)
+            md = report.render_matrix(artifacts)
+            (out_dir / "matrix.md").write_text(md, encoding="utf-8")
+        except Exception as exc:  # noqa: BLE001
+            log.warning("matrix.md не сгенерирован (артефакт уже записан): %s", exc)
 
     sys.stdout.write(json.dumps(artifact, ensure_ascii=False, indent=2) + "\n")
     return 0

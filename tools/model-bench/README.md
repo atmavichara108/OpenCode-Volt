@@ -48,7 +48,7 @@ python tools/model-bench/bench.py --provider anymodel --model am/free
 python tools/model-bench/bench.py --provider anymodel --model cx/gpt-6-astra \
     --gates tools,build --k 3 --force
 
-# Генерация сводной матрицы
+# Генерация сводной матрицы (после каждого прогона — авто; --skip-matrix отключает)
 python tools/model-bench/report.py --out 01-Reference/model-benchmarks
 ```
 
@@ -68,11 +68,21 @@ python tools/model-bench/report.py --out 01-Reference/model-benchmarks
 
 ## Cost guard
 
-- Бюджет ≤ `$0.05` на модель за стандартный прогон (`k=1`).
-- `k=3` — только для финальной приёмки, с указанием бюджета.
+- Предварительная оценка: промпт-токены (1 токен ≈ 4 символа) + `max_tokens`,
+  умноженные на эмпирический `client.token_multiplier` (факт/оценка, см.
+  `OBSERVED_TOKEN_MULTIPLIER`). Предсказание всегда неточно (разброс
+  0.74×..36×) — это лишь сигнал.
+- Основная защита — **накопительный останов по фактическому расходу**:
+  `--budget` (default `$0.02`) суммирует фактический `cost_usd_est` после
+  каждого гейта и, при превышении, останавливает оставшиеся гейты.
+- Предварительный cost-guard срабатывает по `min(COST_GUARD_USD, --budget)`.
+- `--force` отключает и предварительный guard, и накопительный останов.
 - Free-модели (`am/free`, `am/nemotron*`, весь `amd-radeon`) — вне бюджета,
   но токены считаются.
 - Неизвестная модель → `cost_usd_est: null` (цену не выдумываем).
+
+В артефакт попадают поля `budget_usd`, `spent_usd_est`, `budget_stop`,
+`gates_skipped` (список непрогнанных гейтов).
 
 ## Ограничения и безопасность
 

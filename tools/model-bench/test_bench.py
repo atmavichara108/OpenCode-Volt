@@ -109,3 +109,162 @@ def test_unknown_gate_returns_3(capsys):
         "--provider", "anymodel", "--model", "am/free", "--gates", "bogus",
     ])
     assert code == 3
+
+
+# --- валидация --budget -----------------------------------------------------
+
+@pytest.mark.parametrize("budget", ["nan", "inf", "-1", "0"])
+def test_invalid_budget_returns_3_no_calls(monkeypatch, budget):
+    calls = {"n": 0}
+
+    def fake_chat(*a, **k):
+        calls["n"] += 1
+        return "OK", {"total_tokens": 2}, 10, ""
+
+    monkeypatch.setattr(client, "chat", fake_chat)
+    code = bench.main([
+        "--provider", "anymodel", "--model", "cx/gpt-5.6-sol",
+        "--gates", "tools", "--budget", budget,
+    ])
+    assert code == 3
+    assert calls["n"] == 0
+
+
+# --- дедупликация гейтов -----------------------------------------------------
+
+def test_duplicate_gates_run_once(monkeypatch, tmp_path):
+    calls = {"n": 0}
+
+    def fake_chat(base_url, key, model, prompt, max_tokens, timeout=120, proxies=None):
+        calls["n"] += 1
+        return "OK", {"prompt_tokens": 1, "completion_tokens": 1, "total_tokens": 2}, 10, ""
+
+    monkeypatch.setattr(client, "chat", fake_chat)
+    code = bench.main([
+        "--provider", "anymodel", "--model", "am/free",
+        "--gates", "tools,tools", "--k", "1", "--out", str(tmp_path),
+    ])
+    assert code == 0
+    assert calls["n"] == len(tasks.TOOLS_TASKS)
+    art = json.loads((tmp_path / "anymodel__am_free.json").read_text(encoding="utf-8"))
+    assert "tools" in art["gates"]
+
+
+# --- token_multiplier -------------------------------------------------------
+
+def test_token_multiplier_exact_match():
+    assert client.token_multiplier("anymodel", "cc/claude-opus-5") == 36.5
+    assert client.token_multiplier("anymodel", "cx/gpt-5.6-sol") == 0.8
+
+
+def test_token_multiplier_nemotron_prefix():
+    assert client.token_multiplier("anymodel", "am/nemotron-3-ultra-550b-a55b") == 8.0
+
+
+def test_token_multiplier_unknown_default():
+    assert client.token_multiplier("anymodel", "zzz-unknown") == client.DEFAULT_TOKEN_MULTIPLIER
+    assert client.token_multiplier("other", "any/model") == client.DEFAULT_TOKEN_MULTIPLIER
+
+
+# --- estimate_run_cost ------------------------------------------------------
+
+def test_estimate_run_cost_includes_prompt_tokens():
+    # fast: 3 ping-задачи, max_tokens=16 каждая → только max_tokens дали бы 48.
+    cost, tokens_est = bench.estimate_run_cost(
+        "anymodel", "cc/claude-opus-5", ["fast"], 1
+    )
+    assert tokens_est > 3 * 16
+    assert cost is not None
+
+
+def test_estimate_run_cost_applies_multiplier():
+    # base = 3 * (len("Reply with: OK") // 4 + 16) = 3 * (3 + 16) = 57
+    base = sum(len(t["prompt"]) // 4 + t["max_tokens"] for t in tasks.FAST_TASKS)
+    cost, tokens_est = bench.estimate_run_cost("anymodel", "cc/claude-opus-5", ["fast"], 1)
+    assert tokens_est == int(base * 36.5)
+
+
+def test_estimate_run_cost_unknown_model_returns_none_cost_but_tokens():
+    cost, tokens_est = bench.estimate_run_cost("anymodel", "zzz-unknown", ["fast"], 1)
+    assert cost is None
+    assert tokens_est > 0
+
+
+# --- накопительный бюджет ---------------------------------------------------
+
+def _make_chat_expensive():
+    calls = {"n": 0}
+
+    def fake_chat(base_url, key, model, prompt, max_tokens, timeout=120, proxies=None):
+        calls["n"] += 1
+        return "OK", {"prompt_tokens": 1, "completion_tokens": 49999, "total_tokens": 50000}, 10, ""
+
+    return fake_chat, calls
+
+
+def test_budget_stop_skips_remaining_gates(monkeypatch, tmp_path):
+    fake_chat, calls = _make_chat_expensive()
+    monkeypatch.setattr(client, "chat", fake_chat)
+    code = bench.main([
+        "--provider", "anymodel", "--model", "cx/gpt-5.6-sol",
+        "--gates", "tools,build,reasoning,fast", "--k", "1",
+        "--budget", "0.02", "--out", str(tmp_path),
+    ])
+    assert code == 0
+    # tools-гейт (5 задач) превышает бюджет → build/reasoning/fast не прогоняются.
+    assert calls["n"] == len(tasks.TOOLS_TASKS)
+    art = json.loads((tmp_path / "anymodel__cx_gpt-5.6-sol.json").read_text(encoding="utf-8"))
+    assert art["budget_stop"] is True
+    assert art["gates_skipped"] == ["build", "reasoning", "fast"]
+    assert set(art["gates"].keys()) == {"tools"}
+
+
+def test_budget_force_bypasses_stop(monkeypatch, tmp_path):
+    fake_chat, calls = _make_chat_expensive()
+    monkeypatch.setattr(client, "chat", fake_chat)
+    code = bench.main([
+        "--provider", "anymodel", "--model", "cx/gpt-5.6-sol",
+        "--gates", "tools,build,reasoning,fast", "--k", "1",
+        "--budget", "0.02", "--force", "--out", str(tmp_path),
+    ])
+    assert code == 0
+    total_tasks = sum(len(tasks.TASKS_BY_GATE[g]) for g in ["tools", "build", "reasoning", "fast"])
+    assert calls["n"] == total_tasks
+    art = json.loads((tmp_path / "anymodel__cx_gpt-5.6-sol.json").read_text(encoding="utf-8"))
+    assert art["budget_stop"] is False
+    assert art["gates_skipped"] == []
+
+
+def test_preliminary_guard_uses_min_budget(monkeypatch, tmp_path):
+    # COST_GUARD_USD высокий, но --budget ужесточает лимит → cost-guard срабатывает.
+    monkeypatch.setattr(config, "COST_GUARD_USD", 100.0)
+    monkeypatch.setattr(client, "chat", _make_chat())
+    code = bench.main([
+        "--provider", "anymodel", "--model", "cx/gpt-6-astra",
+        "--gates", "tools", "--k", "1",
+        "--budget", "0.000001", "--out", str(tmp_path),
+    ])
+    assert code == 2
+
+
+# --- авто-генерация матрицы -------------------------------------------------
+
+def test_matrix_generated_after_run(monkeypatch, tmp_path):
+    monkeypatch.setattr(client, "chat", _make_chat(reply_map=TOOLS_REPLIES))
+    code = bench.main([
+        "--provider", "anymodel", "--model", "am/free",
+        "--gates", "tools", "--k", "1", "--out", str(tmp_path),
+    ])
+    assert code == 0
+    assert (tmp_path / "matrix.md").exists()
+
+
+def test_skip_matrix_no_matrix_file(monkeypatch, tmp_path):
+    monkeypatch.setattr(client, "chat", _make_chat(reply_map=TOOLS_REPLIES))
+    code = bench.main([
+        "--provider", "anymodel", "--model", "am/free",
+        "--gates", "tools", "--k", "1", "--skip-matrix", "--out", str(tmp_path),
+    ])
+    assert code == 0
+    assert (tmp_path / "anymodel__am_free.json").exists()
+    assert not (tmp_path / "matrix.md").exists()
