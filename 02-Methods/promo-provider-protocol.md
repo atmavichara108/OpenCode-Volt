@@ -144,6 +144,10 @@ Hook (spec: /home/rudra/dotfiles/docs/specs/promo-provider-probe-balance-hook.md
 3. Перевести карточку в `RETIRED` с причиной и датой; факты — в
    [[04-Memory/facts]] при необходимости.
 
+## Reserved: telemetry slot
+
+Место под будущую measured-телеметрию `control-plane/telemetry/provider-usage.jsonl` (append-only, schema: provider_id/model_id/tokens/cost_estimate/source/checked_at). Реализуется отдельной сессией. Провайдеры без balance-API (AnyModel, AMD-вероятно) будут feed'ить туда из usage полей ответов.
+
 ## Ссылки
 
 - [[01-Reference/providers]] — обзор провайдеров и бесплатных лимитов.

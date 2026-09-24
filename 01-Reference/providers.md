@@ -33,6 +33,7 @@ timestamp: 2026-09-06
 |-------------|----------|--------|----------|
 | `linaliapi` | [[01-Reference/provider-cards/linaliapi]] | ✅ ACTIVE | `https://api.linaliapi.com/v1` |
 | `justwoker` | [[01-Reference/provider-cards/justwoker]] | ❌ BLOCKED/NO_MODELS | `https://api.justwoker.icu/v1` |
+| `anymodel` | [[01-Reference/provider-cards/anymodel]] | ✅ ACTIVE | `https://anymodel.org/v1` |
 
 Метод приёмки промо/реферальных провайдеров и контракт balance hook:
 [[02-Methods/promo-provider-protocol]].
