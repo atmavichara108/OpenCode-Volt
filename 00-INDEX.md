@@ -30,6 +30,7 @@ timestamp: 2026-09-01
 | SERPlux | коммерция | Python / FastAPI | **6 агентов**: build, plan, collector-dev, reviewer, ui-dev, infra-dev · 5 команд | [[SERPlux]] | ✅ active |
 | dv-hub | волонтёрский | TS / Hono | plan, build, reviewer, researcher, infra | [[dv-hub]] | ✅ active |
 | ChaT | knowledge-operations | Markdown / Obsidian / OpenCode | curator | [[ChaT]] | 🟢 planning |
+| Ekstasis | творческий/литературный | Markdown / Obsidian / OpenCode | curator + 4 субагента | [[Ekstasis]] | 🟢 active |
 | dotfiles | система | shell/configs | **multi-agent** (8 агентов, 10 команд) | [[dotfiles]] | ✅ active |
 | vault | справочник | markdown | librarian | [[vault]] | ✅ active |
 | rudra-phone | инфраструктура | Kotlin/Flutter/Telegram API | — | [[rudra-phone]] | 🟢 planning |
