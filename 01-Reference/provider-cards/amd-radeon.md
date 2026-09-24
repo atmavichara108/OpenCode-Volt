@@ -18,11 +18,11 @@ timestamp: 2026-09-23
 | `endpoint` | `https://developer.amd.com.cn/radeon/api/v1` |
 | `compatibility` | OpenAI-compatible |
 | `status` | 🟢 `CALIBRATE` |
-| `checked_at` | 2026-09-23 |
+| `checked_at` | 2026-09-24 |
 | `source` | официальный бесплатный API от AMD |
 | `account_kind` | `promotional/free` |
-| `initial_balance` | бесплатно (дневная квота ~$10, не подтверждена) |
-| `current_balance` | неизвестно (квота не видна в UI) `[проверить]` |
+| `initial_balance` | бесплатно; дневной лимит **$1 per period** (HTTP 429 `rate_limit_exceeded`, подтверждён 2026-09-24) |
+| `current_balance` | дневной лимит $1 исчерпан на 2026-09-24 (`rate_limit_exceeded`) |
 | `models` | 7 моделей: DeepSeek-V4-Flash, GLM-5.3-Flash, MiMo-V2.6-Flash, MinerU2.5-Pro, MiniCPM5-2B, Qwen3.8-27B, Qwen3.8-Flash-Next |
 | `proxy` | не нужен (работает напрямую из РФ) |
 | `expiry` | неизвестен `[проверить]` |
@@ -52,9 +52,25 @@ timestamp: 2026-09-23
 }
 ```
 
+## Probe результаты (2026-09-24)
+
+- **Канонический baseURL** — `https://developer.amd.com.cn/radeon/api/v1`
+  (совпадает с карточкой и конфигом). Попытка `api.cloud.amd.com` дала HTTP 000 —
+  это ошибка librarian, НЕ смена эндпоинта.
+- **`GET /v1/models`** → HTTP 200, **7 моделей** (те же: DeepSeek-V4-Flash,
+  GLM-5.3-Flash, MiMo-V2.6-Flash, MinerU2.5-Pro, MiniCPM5-2B, Qwen3.8-27B,
+  Qwen3.8-Flash-Next).
+- **Бенч (профиль tools,fast) провалился — HTTP 429 двух видов:**
+  `Daily usage limit exceeded: maximum $1 per period` (`rate_limit_exceeded`)
+  и `Model API rate limit exceeded` (`global_concurrency_rate_limit_exceeded`).
+  Дневной лимит исчерпан.
+- **Бенч отложен до сброса квоты.**
+
 ## Статус
 
-`🟢 CALIBRATE`. Probe пройден, DeepSeek-V4-Flash работает. Следующий шаг — подключение в конфиги OpenCode (TUI global, dotfiles, M Code).
+`🟢 CALIBRATE`. Probe пройден, DeepSeek-V4-Flash работает; дневная квота
+**$1 per period** (2026-09-24). Бенч отложен до сброса квоты. Следующий шаг —
+подключение в конфиги OpenCode (TUI global, dotfiles, M Code).
 
 ## Ссылки
 

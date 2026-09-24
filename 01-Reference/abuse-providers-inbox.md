@@ -31,6 +31,7 @@ timestamp: 2026-09-23
 | A-013 | **Meta Muse** | `https://introducing.muse.ai/` | — | Персональный агент Muse, до 100M токенов в неделю бесплатно, работает на Muse Spark 1.3 | [post 824](https://t.me/inbox_tools/824) | 🟤 inbox | 🟡 MEDIUM | iOS/Android, пока отдельные регионы, не API-шлюз |
 | A-014 | **NVIDIA build.nvidia.com** | `https://build.nvidia.com` | — | MoonshotAI Kimi K3 (и другие модели) | [post 816](https://t.me/inbox_tools/816) | 🟤 inbox | 🟡 MEDIUM | Официальный NVIDIA, требует проверки |
 | A-015 | **free-coding-models** | `https://github.com/vava-nessa/free-coding-models` | — | Каталог бесплатных моделей кодирования от 20+ провайдеров в реальном времени | [post 812](https://t.me/inbox_tools/812) | 🟤 inbox | 🟡 MEDIUM | Агрегатор/каталог, не провайдер |
+| A-016 | **JustDoWork (justwoker)** | `https://api.justwoker.icu/v1` | `JUSTWOKER_API_KEY` | Реферальная программа, баланс $121.34 (referral/promotional) | реферальная | ⚠️ degraded | 🟡 MEDIUM | DEGRADED: 1 модель `claude-opus-4-8` в каталоге, chat под Cloudflare captcha (2026-09-24) |
 
 ## Статусы
 

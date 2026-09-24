@@ -588,6 +588,21 @@ timestamp: 2026-08-17
   записи в auth-сторе — только тогда `apiKey` подтягивается автоматически;
   `apiKey` в конфиге не хранится (обобщение правила LinaliAPI 2026-09-06).
 
+### Promo-provider protocol update (2026-09-24)
+
+- **JustDoWork (`justwoker`)** — каталог ожил: `GET /v1/models` вернул HTTP 200
+  и 1 модель `claude-opus-4-8` (ранее пустой `data: []`). Но
+  `POST /v1/chat/completions` отдаёт Cloudflare 403 captcha при любом UA —
+  браузерной сессии (cookies/JWT/JS-challenge) у API-ключа нет, одного
+  Bearer-ключа мало. Статус DEGRADED, в конфиги не добавлен.
+- **AMD Radeon (`amd-radeon`)** — 7 моделей живы (HTTP 200), канонический
+  baseURL `https://developer.amd.com.cn/radeon/api/v1`. Дневной лимит
+  **$1 per period** даёт HTTP 429 `rate_limit_exceeded`, отдельно ловится
+  `global_concurrency_rate_limit_exceeded`. Бенч отложен до сброса квоты.
+- **Урок промо-протокола:** `GET /v1/models` HTTP 200 НЕ означает
+  работоспособность — обязателен отдельный chat-smoke, иначе провайдер
+  помечается CONNECTED ошибочно.
+
 ### OpenCode agent infrastructure (2026-09-24)
 
 - **Плагины защиты НЕ существуют физически.** Каталоги `.opencode/plugin/`
