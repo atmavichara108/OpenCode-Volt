@@ -5,13 +5,13 @@
  * горячие клавиши, SSE-канал, command palette, card inspector.
  *
  * Клавиатура:
- *   Alt+1..9  переключить проект по номеру
- *   Alt+0     все проекты (ALL)
- *   Ctrl+K / p  command palette
- *   L         цикл лейаута · R обновить · ? клавиши · Esc закрыть оверлей
+ *   Alt+1..9/0  переключить проект
+ *   Alt+Shift+HJKL  фокус тайлов
+ *   Alt+Shift+P  command palette
+ *   Alt+Shift+R  refresh · ? клавиши · Esc закрыть оверлей
  */
 import { EventBus } from "./EventBus.js";
-import { Workspace } from "./Workspace.js";
+import { Workspace, PROFILES } from "./Workspace.js";
 import { EcosystemModule } from "../modules/EcosystemModule.js";
 import { ProjectsModule } from "../modules/ProjectsModule.js";
 import { UpgradeModule } from "../modules/UpgradeModule.js";
@@ -32,14 +32,18 @@ import { SkillsModule } from "../modules/SkillsModule.js";
 import { ModelsModule } from "../modules/ModelsModule.js";
 
 const LAYOUTS = [
+  ["columns", "Columns"],
+  ["treetab", "TreeTab"],
+  ["plasma", "Plasma"],
+  ["monad3", "Three Columns"],
+  ["slice", "Slice"],
   ["grid", "⊞"],
-  ["columns", "▤"],
   ["focus", "▣"],
   ["focus2", "◨"],
   ["rows", "≡"],
 ];
 
-const APP_VERSION = "v11.0";
+const APP_VERSION = "v11.1";
 
 /* Группы виджетов для rail-навигации: [группа, иконка, [модули]].
  * Порядок = порядок появления в rail. Модули без тайла просто не попадут в rail. */
@@ -89,12 +93,13 @@ export class PipBoyApp {
         <span class="pb-logo">PIP<b>BOY</b></span>
         <span class="pb-tag">${APP_VERSION} · tiling multiplexer</span>
         <nav class="pb-projects" id="pb-projects"></nav>
+        <label class="pb-profile-label">Работа <select id="pb-profile" aria-label="Рабочий профиль"></select></label>
         <span class="spacer"></span>
-        <span class="pb-layouts" id="pb-layouts" title="пресет лейаута (L)"></span>
-        <button class="pb-btn" id="pb-theme" title="тема (Alt+T)">◐</button>
-        <button class="pb-btn" id="pb-cmd" title="command palette (Ctrl+K)">⌘</button>
-        <button class="pb-btn" id="pb-keys" title="клавиши (?)">?</button>
-        <button class="pb-btn" id="pb-refresh" title="обновить данные (R)">⟳</button>
+        <span class="pb-layouts" id="pb-layouts" title="Раскладка"></span>
+        <button class="pb-btn" id="pb-theme" title="Тема (Alt+Shift+T)">◐</button>
+        <button class="pb-btn" id="pb-cmd" title="Команды (Alt+Shift+P)">⌘</button>
+        <button class="pb-btn" id="pb-keys" title="Клавиши">?</button>
+        <button class="pb-btn" id="pb-refresh" title="Обновить данные (Alt+Shift+R)">⟳</button>
       </header>
       <nav class="pb-rail" id="pb-rail"></nav>
       <main class="pb-main${this._compact ? " compact" : ""}" id="pb-main"></main>
@@ -103,7 +108,7 @@ export class PipBoyApp {
         <span>HEAD <b id="pb-head">—</b></span>
         <span>READY <b id="pb-ready">—</b></span>
         <span class="spacer"></span>
-        <span><kbd>Alt+1..9</kbd> проекты · <kbd>Ctrl+K</kbd> команды · <kbd>?</kbd> клавиши</span>
+        <span><kbd>Alt+1..9</kbd> проекты · <kbd>Alt+Shift+P</kbd> команды</span>
       </footer>
       <div class="pb-kmap" id="pb-kmap" style="display:none"></div>
       <div class="pb-overlay" id="pb-overlay" style="display:none"></div>
@@ -113,6 +118,7 @@ export class PipBoyApp {
     this.rail = this.root.querySelector("#pb-rail");
     this.overlayEl = this.root.querySelector("#pb-overlay");
     this.workspace = new Workspace(this.main);
+    this.root.querySelector("#pb-profile").addEventListener("change", e => this.setProfile(e.target.value));
     // тайл доехал (lazy mount + данные) → обновить бейджи rail и шапок
     this.workspace.onTileReady = () => { this._renderRail(); this._renderTileBadges(); };
     this._layoutIdx = LAYOUTS.findIndex(l => l[0] === this.workspace.layout);
@@ -152,6 +158,7 @@ export class PipBoyApp {
     this._renderProjectsBar();
     this._renderLayoutBtns();
     this._renderSbar();
+    this._renderProfiles();
     this._renderRail();
     this._initRailScrollSync();
     this._handleDeepLink();
@@ -165,7 +172,7 @@ export class PipBoyApp {
       clearTimeout(t);
       t = setTimeout(() => {
         if (Date.now() < (this._syncUntil || 0)) return; // после явного прыжка не перебиваем
-        const tiles = [...this.main.querySelectorAll(".tile")];
+        const tiles = this._visibleTiles();
         const top = this.main.getBoundingClientRect().top;
         const vis = tiles.find(el => el.getBoundingClientRect().bottom > top + 8);
         const mod = vis?.querySelector(".t")?.textContent || null;
@@ -236,14 +243,7 @@ export class PipBoyApp {
 
   /* --- прыжок к виджету: rail, палитра или #hash --- */
   _jumpToModule(moduleId) {
-    const find = () => [...this.main.querySelectorAll(".tile")].find(t =>
-      t.querySelector(".t")?.textContent === moduleId);
-    let tile = find();
-    if (!tile && this.activeProject !== null) {
-      // тайл есть, но в другом проекте → показываем все
-      this.setActiveProject(null);
-      tile = find();
-    }
+    const tile = this.workspace.revealModule(moduleId);
     if (!tile) { this.eventBus.emit("toast", `${moduleId}: тайл не найден`); return; }
     this._activeModule = moduleId;
     this._renderRail();
@@ -302,17 +302,38 @@ export class PipBoyApp {
     this.workspace.addTile("—", this.instantiate("skills", "—"), { size: "wide" });
     this.workspace.addTile("—", this.instantiate("models", "—"), { size: "wide" });
     this.workspace.addTile("—", this.instantiate("link", "—"));
-    if (this._projectList.length) this.setActiveProject(this._projectList[0].id);
+    let previous;
+    try { previous = localStorage.getItem("pipboy-active-project"); } catch {}
+    const selected = this._projectList.find(p => p.id === previous);
+    if (this._projectList.length) this.setActiveProject(previous === "__all__" ? null : (selected || this._projectList[0]).id);
   }
 
   setActiveProject(projectId) {
     this.activeProject = projectId;
     this.workspace.setActiveProject(projectId);
+    try { localStorage.setItem("pipboy-active-project", projectId || "__all__"); } catch {}
     this._layoutIdx = LAYOUTS.findIndex(l => l[0] === this.workspace.layout);
     if (this._layoutIdx < 0) this._layoutIdx = 0;
     this.eventBus.emit("project:change", { projectId });
     this._renderProjectsBar();
     this._renderLayoutBtns();
+    this._renderProfiles();
+    this._renderRail();
+  }
+
+  _renderProfiles() {
+    const select = this.root.querySelector("#pb-profile");
+    select.innerHTML = Object.entries(PROFILES).map(([id, p]) =>
+      `<option value="${id}"${id === this.workspace.profile ? " selected" : ""}>${this._esc(p.label)}</option>`).join("");
+    this._compact = this.workspace.compact;
+  }
+
+  setProfile(id) {
+    this.workspace.setProfile(id);
+    this._layoutIdx = LAYOUTS.findIndex(([layout]) => layout === this.workspace.layout);
+    this._renderProfiles();
+    this._renderLayoutBtns();
+    this._renderRail();
   }
 
   _renderProjectsBar() {
@@ -367,13 +388,6 @@ export class PipBoyApp {
     const apply = () => {
       const mobile = window.innerWidth < 700;
       document.body.classList.toggle("mobile", mobile);
-      if (mobile && this.workspace.layout !== "rows") {
-        this._prevLayout = this.workspace.layout;
-        this.workspace.setLayout("rows");
-      } else if (!mobile && this.workspace.layout === "rows" && this._prevLayout) {
-        this.workspace.setLayout(this._prevLayout);
-        this._prevLayout = null;
-      }
     };
     window.addEventListener("resize", apply);
     apply();
@@ -382,45 +396,35 @@ export class PipBoyApp {
   /* --- keyboard --- */
   _wireKeys() {
     document.addEventListener("keydown", e => {
+      if (e.defaultPrevented || e.isComposing || e.ctrlKey || e.metaKey || e.getModifierState?.("AltGraph")) return;
+      if (e.target.closest("input,textarea,select,[contenteditable]:not([contenteditable=false]),.xterm,iframe")) return;
       if (this._overlay) {
         if (e.key === "Escape") this._closeOverlay();
         return;
       }
-      if (e.target.closest("input,textarea,select")) return;
-      if (e.key === "?" ) { this._toggleKmap(); return; }
-      if (e.key === "r" || e.key === "R") { this.refreshAll(); return; }
-      if (e.key === "l" || e.key === "L") { this._cycleLayout(); return; }
-      if (e.key === "f" || e.key === "F") { this._toggleFullFocused(); return; }
       if (e.key === "Escape") {
         if (this.workspace.fullTileId()) { this.workspace.exitFull(); return; }
         this._clearTileFocus(); this.root.querySelector("#pb-kmap").style.display = "none"; return;
       }
-      // Ctrl+K или p → command palette
-      if ((e.ctrlKey || e.metaKey) && (e.key === "k" || e.key === "K")) { e.preventDefault(); this._openPalette(); return; }
-      // темы — Alt+T (Ctrl+T/Ctrl+Shift+T заняты браузером)
-      // Alt+1..9 → проект по номеру; Alt+0 → все проекты; Alt+T → тема
-      if (e.altKey) {
-        if (e.key === "t" || e.key === "T") { e.preventDefault(); this._cycleTheme(); return; }
-        if (e.key >= "1" && e.key <= "9") {
-          e.preventDefault();
-          const idx = +e.key - 1;
-          const p = this._projectList[idx];
-          if (p) this.setActiveProject(p.id);
-        } else if (e.key === "0") {
-          e.preventDefault();
-          this.setActiveProject(null);
+      if (!e.altKey) return;
+      if (!e.shiftKey && /^Digit[0-9]$/.test(e.code)) {
+        const i = Number(e.code.slice(-1));
+        if (i === 0 || this._projectList[i - 1]) {
+          e.preventDefault(); this.setActiveProject(i ? this._projectList[i - 1].id : null);
         }
         return;
       }
-      // Keyboard-first навигация по тайлам: стрелки = фокус, Enter = активировать,
-      // x = закрыть, f = focus-лейаут (первый тайл на всю ширину)
-      if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
-        e.preventDefault();
-        this._navTile(e.key);
-        return;
-      }
-      if (e.key === "x" || e.key === "X") { this._closeFocusedTile(); return; }
-      if (e.key === "n" || e.key === "Tab") { e.preventDefault(); this._cycleTileFocus(); return; }
+      if (!e.shiftKey) return;
+      const direction = {KeyH:"ArrowLeft", KeyJ:"ArrowDown", KeyK:"ArrowUp", KeyL:"ArrowRight"}[e.code];
+      const action = direction ? () => this._navTile(direction) : {
+        KeyP: () => this._openPalette(), KeyR: () => this.refreshAll(),
+        KeyF: () => this._toggleFullFocused(), KeyZ: () => this._toggleFullFocused(),
+        KeyX: () => this._closeFocusedTile(), KeyN: () => this.workspace.resetRatios(),
+        KeyT: () => this._cycleTheme(), KeyC: () => this._toggleCompact(),
+        BracketLeft: () => this.workspace.adjustRatio(-.05), BracketRight: () => this.workspace.adjustRatio(.05),
+        Equal: () => this._cycleLayout(),
+      }[e.code];
+      if (action) { e.preventDefault(); action(); }
     });
     this.root.querySelector("#pb-theme").addEventListener("click", () => this._cycleTheme());
     this.root.querySelector("#pb-cmd").addEventListener("click", () => this._openPalette());
@@ -445,9 +449,8 @@ export class PipBoyApp {
 
   /* --- плотность (compact): меньше отступов и крупнее сетка тайлов --- */
   _toggleCompact() {
-    this._compact = !this._compact;
-    localStorage.setItem("pipboy-compact", this._compact ? "1" : "0");
-    this.main.classList.toggle("compact", this._compact);
+    this.workspace.toggleCompact();
+    this._compact = this.workspace.compact;
     this.eventBus.emit("toast", "плотность: " + (this._compact ? "компактная" : "обычная"));
   }
 
@@ -461,12 +464,11 @@ export class PipBoyApp {
   }
 
   _visibleTiles() {
-    return [...this.main.querySelectorAll(".tile")].filter(t => t.offsetParent !== null || t.style.display !== "none");
+    return [...this.main.querySelectorAll(".tile")].filter(t => !t.hidden && t.style.display !== "none");
   }
 
   _focusTile(el) {
-    this._visibleTiles().forEach(t => t.classList.remove("tile-focused"));
-    el?.classList.add("tile-focused");
+    this.workspace.focusTile(el);
     el?.scrollIntoView({ block: "nearest", behavior: "smooth" });
   }
 
@@ -510,12 +512,16 @@ export class PipBoyApp {
     km.innerHTML = `<div class="kmap-box"><h3>КЛАВИШИ</h3>
       <div class="krow"><b>Alt+1..9</b><span>переключить проект по номеру</span></div>
       <div class="krow"><b>Alt+0</b><span>все проекты (ALL)</span></div>
-      <div class="krow"><b>Ctrl+K</b><span>command palette</span></div>
-      <div class="krow"><b>L</b><span>цикл лейаута (grid / columns / focus / focus2 / rows)</span></div>
-      <div class="krow"><b>R</b><span>обновить все модули</span></div>
-      <div class="krow"><b>← ↑ ↓ → / Tab</b><span>фокус тайла (следующий/предыдущий)</span></div>
-      <div class="krow"><b>f</b><span>тайл на весь экран / вернуть (или кнопка ⤢)</span></div>
-      <div class="krow"><b>x</b><span>закрыть сфокусированный тайл</span></div>
+      <div class="krow"><b>Alt+Shift+P</b><span>command palette</span></div>
+      <div class="krow"><b>Alt+Shift+HJKL</b><span>фокус тайла</span></div>
+      <div class="krow"><b>Alt+Shift+Z/F</b><span>тайл на весь экран / вернуть</span></div>
+      <div class="krow"><b>Alt+Shift+X</b><span>закрыть сфокусированный тайл</span></div>
+      <div class="krow"><b>Alt+Shift+R</b><span>обновить смонтированные модули</span></div>
+      <div class="krow"><b>Alt+Shift+N</b><span>нормализовать размеры</span></div>
+      <div class="krow"><b>Alt+Shift+[ / ]</b><span>изменить ratio раскладки</span></div>
+      <div class="krow"><b>Alt+Shift+=</b><span>следующая раскладка</span></div>
+      <div class="krow"><b>Alt+Shift+T</b><span>сменить тему</span></div>
+      <div class="krow"><b>Alt+Shift+C</b><span>compact-плотность</span></div>
       <div class="krow"><b>?</b><span>эта справка</span></div>
       <div class="krow"><b>Esc</b><span>выйти из фуллскрина / снять фокус / закрыть оверлей</span></div>
       <div class="krow"><b>drag</b><span>перетащить тайл за шапку</span></div>
@@ -572,7 +578,7 @@ export class PipBoyApp {
     cmds.push({ id: "compact", label: this._compact ? "Плотность: обычная" : "Плотность: компактная",
                 run: () => this._toggleCompact() });
     cmds.push({ id: "theme", label: `Тема: следующая (сейчас ${this._theme})`,
-                hint: "Alt+T", run: () => this._cycleTheme() });
+                hint: "Alt+Shift+T", run: () => this._cycleTheme() });
     // прыжок к виджету (дублирует rail — для keyboard-first)
     const present = new Set([...this.workspace.tiles.values()].map(t => t.module.id));
     for (const [grp, , ids] of RAIL_GROUPS) {
@@ -582,7 +588,10 @@ export class PipBoyApp {
                     run: () => this._jumpToModule(id) });
       }
     }
-    cmds.push({ id: "refresh", label: "Обновить всё", hint: "R", run: () => this.refreshAll() });
+    cmds.push({ id: "refresh", label: "Обновить всё", hint: "Alt+Shift+R", run: () => this.refreshAll() });
+    Object.entries(PROFILES).forEach(([id, p]) =>
+      cmds.push({ id: "profile:" + id, label: "Работа: " + p.label,
+        run: () => this.setProfile(id) }));
     cmds.push({ id: "ws", label: "Открыть workspace активного проекта", run: () => this._openWorkspace() });
     cmds.push({ id: "notify", label: "Push на телефон (ntfy)", run: () => this._promptNotify() });
     cmds.push({ id: "help", label: "Клавиши", hint: "?", run: () => this._toggleKmap() });

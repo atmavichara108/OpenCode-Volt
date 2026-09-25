@@ -52,6 +52,9 @@ def render_matrix(artifacts):
         gates = a.get("gates") or {}
         for g in GATE_ORDER:
             meta = gates.get(g) or {}
+            if meta.get("status", "OK") == "ERROR":
+                row.append("ERROR")
+                continue
             score = meta.get("score")
             threshold = tasks.THRESHOLDS.get(g)
             if score is None:

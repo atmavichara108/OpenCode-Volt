@@ -25,6 +25,35 @@ def _write_artifact(out_dir, provider, model, rec):
     )
 
 
+def _write_error_artifact(out_dir, provider, model):
+    data = {
+        "provider_id": provider,
+        "model_id": model,
+        "benchmark_version": "0.1.0",
+        "date": "2026-09-23T00:00:00Z",
+        "gates": {
+            "tools": {
+                "status": "ERROR", "score": None, "passed_threshold": None,
+                "error_count": 5, "error_rate": 1.0, "error_kinds": ["rate_limit"],
+            },
+        },
+        "recommendation": [],
+        "advisory": True,
+        "task_set_hash": "deadbeef1234",
+    }
+    (out_dir / f"{provider}__{model.replace('/', '_')}.json").write_text(
+        json.dumps(data, ensure_ascii=False), encoding="utf-8"
+    )
+
+
+def test_render_matrix_error_gate(tmp_path):
+    _write_error_artifact(tmp_path, "anymodel", "am/free")
+    arts = report.load_artifacts(tmp_path)
+    md = report.render_matrix(arts)
+    assert "ERROR" in md
+    assert "0.0 / 1.0" not in md
+
+
 def test_render_matrix_deterministic_order(tmp_path):
     _write_artifact(tmp_path, "anymodel", "am/free", ["tools"])
     _write_artifact(tmp_path, "anymodel", "am/nemotron-x", [])

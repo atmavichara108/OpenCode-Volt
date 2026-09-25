@@ -17,6 +17,7 @@ operator workflows и правила обновления практики.
 - **Runbooks** — как оператор реально пользуется системой сейчас.
 
 [[07-Runbooks/vibecoding-operator-handbook]] — текущее рабочее состояние.
+[[07-Runbooks/pipboy-v11-user-guide]] — полное руководство оператора по Pip-Boy v11 (профили, раскладки, управление моделями агентов, Alt-хоткеи, темплейты тем).
 [[07-Runbooks/ecosystem-kanban-runbook]] — как пользоваться Kanban control
 plane (registry/Pip-Boy/TASKS/observer): master/facet/project Kanban,
 выбор карточки, переходы через librarian/approval, static vs generated.
