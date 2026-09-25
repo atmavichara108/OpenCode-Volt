@@ -2,7 +2,7 @@
   "provider_id": "anymodel",
   "model_id": "cc/claude-sonnet-5",
   "benchmark_version": "0.1.0",
-  "date": "2026-09-25T18:29:43Z",
+  "date": "2026-09-25T19:21:16Z",
   "gates": {
     "tools": {
       "score": 1.0,
@@ -10,6 +10,22 @@
       "cost_tokens": 44004,
       "cost_usd_est": 0.006600600000000002,
       "latency_ms_median": 6248,
+      "notes": ""
+    },
+    "build": {
+      "score": 1.0,
+      "passed_threshold": true,
+      "cost_tokens": 18176,
+      "cost_usd_est": 0.0027264000000000004,
+      "latency_ms_median": 10313,
+      "notes": ""
+    },
+    "reasoning": {
+      "score": 0.75,
+      "passed_threshold": true,
+      "cost_tokens": 35041,
+      "cost_usd_est": 0.00525615,
+      "latency_ms_median": 4916.0,
       "notes": ""
     },
     "fast": {
@@ -22,7 +38,9 @@
     }
   },
   "recommendation": [
-    "tools"
+    "tools",
+    "build",
+    "reasoning"
   ],
   "advisory": true,
   "task_set_hash": "acd13ac0c8d9",
