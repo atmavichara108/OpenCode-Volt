@@ -66,6 +66,20 @@ python tools/model-bench/report.py --out 01-Reference/model-benchmarks
 
 `recommendation` — список гейтов, прошедших порог; `fast` в него не входит.
 
+### Status / error semantics
+
+Каждый гейт в артефакте несёт поле `status`: `"OK"` (числовой score и порог)
+или `"ERROR"`. Гейт получает `status: "ERROR"`, если хотя бы один запрос
+завершился транспортной/парсинговой ошибкой (HTTP 429/503, network, parse и
+т. п.) — при этом `score: null`, `passed_threshold: null`, `latency_ms_median:
+null`, а в `error_count`/`error_rate`/`error_kinds` (deduplicated sorted list
+видов сбоя) фиксируется факт сбоя без тел ответов и ключей. Сырые тексты
+ошибок в артефакт не попадают (только redacted-лог в stderr). Ошибочные
+запросы не дают ложный `score: 0` (это
+capability-fail) и не попадают в токены/латентность. `build_recommendation`
+не включает гейты со `status != "OK"`, а матрица показывает их как `ERROR`.
+Старые артефакты без `status` трактуются как `OK`.
+
 ## Cost guard
 
 - Предварительная оценка: промпт-токены (1 токен ≈ 4 символа) + `max_tokens`,

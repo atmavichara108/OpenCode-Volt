@@ -58,35 +58,84 @@ def estimate_run_cost(provider_id, model_id, gates, k):
     return cost, total_est
 
 
+def _classify_error(err):
+    """Классифицирует сообщение об ошибке в kind без раскрытия секретов.
+
+    ``err`` уже отредактирован клиентом (без ключа). Возвращает один из:
+    ``rate_limit`` (HTTP 429), ``service_unavailable`` (HTTP 503),
+    ``http_error`` (прочие HTTP 4xx/5xx), ``network``, ``parse``, ``unknown``.
+    """
+    msg = err or ""
+    m = re.match(r"HTTP (\d{3})", msg)
+    if m:
+        code = int(m.group(1))
+        if code == 429:
+            return "rate_limit"
+        if code == 503:
+            return "service_unavailable"
+        return "http_error"
+    if msg.startswith("network error"):
+        return "network"
+    if msg.startswith("parse error"):
+        return "parse"
+    return "unknown"
+
+
 def run_gate(gate, provider_id, model_id, base_url, key, proxies, k):
-    """Прогоняет гейт, возвращает метрики гейта (score, tokens, latency...)."""
+    """Прогоняет гейт, возвращает метрики гейта.
+
+    Разделяет transport/error и grading: transport-ошибка НЕ даёт score 0 и НЕ
+    добавляет latency/tokens. Если хотя бы одна ошибка — гейт ``status: ERROR``,
+    ``score: null`` (частичный результат не превращается в ложный capability-fail).
+    """
     task_list = tasks.TASKS_BY_GATE[gate]
     scores = []
     total_tokens = 0
     latencies = []
-    cost_usd = None
+    attempts = 0
+    error_count = 0
+    error_kinds = set()
     for task in task_list:
         for _ in range(k):
+            attempts += 1
             reply, usage, latency_ms, err = client.chat(
                 base_url, key, model_id, task["prompt"], task["max_tokens"],
                 proxies=proxies,
             )
             if err:
+                error_count += 1
+                error_kinds.add(_classify_error(err))
                 log.warning("gate=%s task=%s error: %s", gate, task["id"], err)
-                scores.append(0)
                 continue
             latencies.append(latency_ms)
             total_tokens += (usage or {}).get("total_tokens", 0)
             ok = _grade_one(task, reply)
             scores.append(1 if ok else 0)
-    score = sum(scores) / len(scores) if scores else 0.0
     cost = client.estimate_cost_usd(
         provider_id, model_id, {"total_tokens": total_tokens}
     )
+    error_rate = round(error_count / attempts, 4) if attempts else 0.0
+    if error_count > 0:
+        return {
+            "status": "ERROR",
+            "score": None,
+            "passed_threshold": None,
+            "attempts": attempts,
+            "error_count": error_count,
+            "error_rate": error_rate,
+            "error_kinds": sorted(error_kinds),
+            "cost_tokens": total_tokens,
+            "cost_usd_est": cost,
+            "latency_ms_median": None,
+        }
+    score = sum(scores) / len(scores) if scores else 0.0
     median = statistics.median(latencies) if latencies else None
     return {
+        "status": "OK",
         "score": round(score, 4),
         "passed_threshold": _passed(score, gate),
+        "attempts": attempts,
+        "error_count": 0,
         "cost_tokens": total_tokens,
         "cost_usd_est": cost,
         "latency_ms_median": median,
@@ -123,6 +172,8 @@ def build_recommendation(gates_result):
     rec = []
     for gate, meta in gates_result.items():
         if gate == "fast":
+            continue
+        if meta.get("status", "OK") != "OK":
             continue
         if meta.get("passed_threshold") is True:
             rec.append(gate)

@@ -20,6 +20,7 @@ PROVIDER_ENV = {
     "anymodel": "ANYMODEL_API_KEY",
     "amd-radeon": "AMD_RADEON_API_KEY",
     "linaliapi": "LINALIAPI_API_KEY",
+    "apinex": "APINEX_API_KEY",
 }
 
 # Порог бюджета на один стандартный прогон (k=1).

@@ -35,6 +35,7 @@ COST_COEFFICIENTS = {
     ("anymodel", "cc/claude-sonnet-5"): 3,
     ("anymodel", "kmc/kimi-for-coding"): 1.5,
     ("amd-radeon", None): 0,  # весь провайдер — free tier
+    ("apinex", None): 0,  # весь провайдер — free tier
 }
 
 # Наблюдаемые множители расхода токенов (факт/оценка) по моделям.
@@ -83,6 +84,8 @@ def token_multiplier(provider_id, model_id):
         return OBSERVED_TOKEN_MULTIPLIER[key]
     if provider_id == "anymodel" and model_id.startswith("am/nemotron"):
         return 8.0
+    if provider_id == "apinex" and model_id.startswith("free/"):
+        return 1.0
     return DEFAULT_TOKEN_MULTIPLIER
 
 

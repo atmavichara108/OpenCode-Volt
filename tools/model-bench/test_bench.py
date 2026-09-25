@@ -1,5 +1,6 @@
 """Тесты bench.py с мок-клиентом: прогон гейта, артефакт, cost-guard, dry-run."""
 import json
+import uuid
 
 import pytest
 
@@ -38,7 +39,122 @@ def test_run_gate_tools_all_pass(monkeypatch):
     res = bench.run_gate("tools", "anymodel", "am/free", "http://x", "k", None, 1)
     assert res["score"] == 1.0
     assert res["passed_threshold"] is True
+    assert res["status"] == "OK"
+    assert res["error_count"] == 0
     assert res["cost_tokens"] == 2 * len(tasks.TOOLS_TASKS)
+
+
+def _make_chat_error(err="HTTP 429: rate limited"):
+    def fake_chat(base_url, key, model, prompt, max_tokens, timeout=120, proxies=None):
+        return "", {}, None, err
+
+    return fake_chat
+
+
+def test_run_gate_all_429_errors(monkeypatch):
+    monkeypatch.setattr(client, "chat", _make_chat_error("HTTP 429: daily limit"))
+    res = bench.run_gate("tools", "anymodel", "am/free", "http://x", "k", None, 1)
+    assert res["status"] == "ERROR"
+    assert res["score"] is None
+    assert res["passed_threshold"] is None
+    assert res["error_count"] == len(tasks.TOOLS_TASKS)
+    assert res["error_kinds"] == ["rate_limit"]
+    assert res["cost_tokens"] == 0
+    assert res["latency_ms_median"] is None
+    assert res["error_rate"] == 1.0
+
+
+def test_run_gate_all_503_errors(monkeypatch):
+    monkeypatch.setattr(client, "chat", _make_chat_error("HTTP 503: overloaded"))
+    res = bench.run_gate("tools", "anymodel", "am/free", "http://x", "k", None, 1)
+    assert res["status"] == "ERROR"
+    assert res["score"] is None
+    assert res["error_kinds"] == ["service_unavailable"]
+
+
+def test_run_gate_error_not_capability_fail(monkeypatch):
+    monkeypatch.setattr(client, "chat", _make_chat_error("network error: timeout"))
+    gates = {
+        "tools": bench.run_gate("tools", "anymodel", "am/free", "http://x", "k", None, 1),
+    }
+    assert gates["tools"]["score"] is None
+    assert gates["tools"]["status"] == "ERROR"
+    assert bench.build_recommendation(gates) == []
+
+
+def test_run_gate_parse_error(monkeypatch):
+    err = {"count": 0}
+
+    def fake_chat(base_url, key, model, prompt, max_tokens, timeout=120, proxies=None):
+        err["count"] += 1
+        if err["count"] == 1:
+            return "", {}, None, "parse error: synthetic response body"
+        return '{"name": "x", "age": 1}', {"total_tokens": 2}, 10, ""
+
+    monkeypatch.setattr(client, "chat", fake_chat)
+    res = bench.run_gate("tools", "anymodel", "am/free", "http://x", "k", None, 1)
+    assert res["status"] == "ERROR"
+    assert res["score"] is None
+    assert res["error_count"] == 1
+    assert res["error_kinds"] == ["parse"]
+    art = bench.build_artifact("anymodel", "am/free", {"tools": res}, 1)
+    assert "tools" not in art["recommendation"]
+
+
+def test_run_gate_mixed_partial_error(monkeypatch):
+    err = {"count": 0}
+
+    def fake_chat(base_url, key, model, prompt, max_tokens, timeout=120, proxies=None):
+        err["count"] += 1
+        if err["count"] == 1:
+            return "", {}, None, "HTTP 429: rate limited"
+        return '{"name": "x", "age": 1}', {"total_tokens": 2}, 10, ""
+
+    monkeypatch.setattr(client, "chat", fake_chat)
+    res = bench.run_gate("tools", "anymodel", "am/free", "http://x", "k", None, 1)
+    assert res["status"] == "ERROR"
+    assert res["score"] is None
+    assert res["passed_threshold"] is None
+    assert res["error_count"] == 1
+    assert res["attempts"] == len(tasks.TOOLS_TASKS)
+    assert res["error_rate"] == round(1 / len(tasks.TOOLS_TASKS), 4)
+    assert res["error_kinds"] == ["rate_limit"]
+    assert res["cost_tokens"] == 2 * (len(tasks.TOOLS_TASKS) - 1)
+    art = bench.build_artifact("anymodel", "am/free", {"tools": res}, 1)
+    assert "tools" not in art["recommendation"]
+
+
+def test_artifact_no_raw_error_messages_or_secrets(monkeypatch):
+    secret_key = "sk-test-" + uuid.uuid4().hex
+    bearer = "Bearer test-" + uuid.uuid4().hex
+    synthetic_prompt = "SYNTH-PROMPT-" + uuid.uuid4().hex
+    synthetic_response = "SYNTH-RESP-" + uuid.uuid4().hex
+    http_body = (
+        '{"error": {"message": "invalid api key ' + secret_key + '", '
+        '"authorization": "' + bearer + '", "account": "acct_private", '
+        '"prompt": "' + synthetic_prompt + '", "response": "' + synthetic_response + '"}}'
+    )
+    err = "HTTP 401: " + http_body
+    markers = [
+        secret_key,
+        bearer,
+        synthetic_prompt,
+        synthetic_response,
+        "acct_private",
+        "invalid api key",
+    ]
+
+    monkeypatch.setattr(client, "chat", _make_chat_error(err))
+    res = bench.run_gate("tools", "anymodel", "am/free", "http://x", "k", None, 1)
+    art = bench.build_artifact("anymodel", "am/free", {"tools": res}, 1)
+    s = json.dumps(art, ensure_ascii=False)
+
+    assert "error_messages" not in s
+    assert "prompt" not in s
+    assert "response" not in s
+    assert res["error_kinds"] == ["http_error"]
+    for marker in markers:
+        assert marker not in s
 
 
 def test_build_artifact_no_prompts_no_answers():
