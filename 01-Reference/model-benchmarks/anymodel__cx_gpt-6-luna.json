@@ -1,0 +1,52 @@
+{
+  "provider_id": "anymodel",
+  "model_id": "cx/gpt-6-luna",
+  "benchmark_version": "0.1.0",
+  "date": "2026-09-25T18:36:44Z",
+  "gates": {
+    "tools": {
+      "score": 1.0,
+      "passed_threshold": true,
+      "cost_tokens": 13235,
+      "cost_usd_est": 0.000992625,
+      "latency_ms_median": 11038,
+      "notes": ""
+    },
+    "build": {
+      "score": 1.0,
+      "passed_threshold": true,
+      "cost_tokens": 13266,
+      "cost_usd_est": 0.00099495,
+      "latency_ms_median": 6962,
+      "notes": ""
+    },
+    "reasoning": {
+      "score": 1.0,
+      "passed_threshold": true,
+      "cost_tokens": 10530,
+      "cost_usd_est": 0.0007897500000000001,
+      "latency_ms_median": 7438.0,
+      "notes": ""
+    },
+    "fast": {
+      "score": 1.0,
+      "passed_threshold": null,
+      "cost_tokens": 7761,
+      "cost_usd_est": 0.000582075,
+      "latency_ms_median": 23213,
+      "notes": ""
+    }
+  },
+  "recommendation": [
+    "tools",
+    "build",
+    "reasoning"
+  ],
+  "advisory": true,
+  "task_set_hash": "acd13ac0c8d9",
+  "k": 1,
+  "budget_usd": 0.02,
+  "spent_usd_est": 0.003359,
+  "budget_stop": false,
+  "gates_skipped": []
+}

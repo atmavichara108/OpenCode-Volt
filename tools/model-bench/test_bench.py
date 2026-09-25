@@ -91,6 +91,39 @@ def test_cost_guard_free_not_blocked(monkeypatch, tmp_path):
     assert (tmp_path / "anymodel__am_free.json").exists()
 
 
+def test_unknown_model_blocked_without_force(monkeypatch, tmp_path):
+    calls = {"n": 0}
+
+    def fake_chat(*a, **k):
+        calls["n"] += 1
+        return "OK", {"total_tokens": 2}, 10, ""
+
+    monkeypatch.setattr(client, "chat", fake_chat)
+    code = bench.main([
+        "--provider", "anymodel", "--model", "unknown/zzz",
+        "--gates", "tools", "--k", "1", "--out", str(tmp_path),
+    ])
+    assert code == 3
+    assert calls["n"] == 0
+
+
+def test_unknown_model_passes_with_force(monkeypatch, tmp_path):
+    calls = {"n": 0}
+
+    def fake_chat(base_url, key, model, prompt, max_tokens, timeout=120, proxies=None):
+        calls["n"] += 1
+        return "OK", {"prompt_tokens": 1, "completion_tokens": 1, "total_tokens": 2}, 10, ""
+
+    monkeypatch.setattr(client, "chat", fake_chat)
+    code = bench.main([
+        "--provider", "anymodel", "--model", "unknown/zzz",
+        "--gates", "tools", "--k", "1", "--force", "--skip-matrix",
+        "--out", str(tmp_path),
+    ])
+    assert code == 0
+    assert calls["n"] == len(tasks.TOOLS_TASKS)
+
+
 def test_dry_run_no_calls(monkeypatch, capsys):
     called = []
     monkeypatch.setattr(client, "chat", lambda *a, **k: called.append(1))

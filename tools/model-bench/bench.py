@@ -212,6 +212,17 @@ def main(argv=None):
         log.warning("Повторяющиеся гейты убраны: %s", ", ".join(gates))
     gates = deduped
 
+    # Неизвестная модель (коэффициент стоимости не задан) — блокируем заранее,
+    # в т.ч. для --dry-run, если нет --force: прогон может быть дорогим.
+    est_cost, _est_tokens = estimate_run_cost(args.provider, args.model, gates, args.k)
+    if est_cost is None and not args.force:
+        log.error(
+            "Неизвестная модель %s — коэффициент стоимости не задан. "
+            "Прогон может быть дорогим. Используйте --force если уверены.",
+            args.model,
+        )
+        return 3
+
     if args.dry_run:
         sys.stdout.write(dry_run_plan(args.provider, args.model, gates, args.k) + "\n")
         return 0
@@ -223,7 +234,6 @@ def main(argv=None):
     key = config.resolve_key(args.provider)
 
     # Cost guard (предварительный): лимит = min(COST_GUARD_USD, budget).
-    est_cost, _est_tokens = estimate_run_cost(args.provider, args.model, gates, args.k)
     guard_limit = min(config.COST_GUARD_USD, args.budget)
     if est_cost is not None and est_cost > guard_limit and not args.force:
         log.error(

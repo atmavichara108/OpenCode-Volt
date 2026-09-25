@@ -28,6 +28,12 @@ COST_COEFFICIENTS = {
     ("anymodel", "cc/claude-opus-5"): 6,
     ("anymodel", "cx/gpt-5.6-sol"): 4,
     ("anymodel", "kmc/k3"): 3,
+    # Коэффициенты ниже сверены с billing.coefficient API 2026-09-25.
+    ("anymodel", "cx/gpt-6-sol"): 4,
+    ("anymodel", "cx/gpt-6-luna"): 1.5,
+    ("anymodel", "cc/claude-opus-5-5"): 6,
+    ("anymodel", "cc/claude-sonnet-5"): 3,
+    ("anymodel", "kmc/kimi-for-coding"): 1.5,
     ("amd-radeon", None): 0,  # весь провайдер — free tier
 }
 
@@ -43,6 +49,13 @@ OBSERVED_TOKEN_MULTIPLIER = {
     ("anymodel", "am/free"): 9.0,
     ("anymodel", "cx/gpt-6-astra"): 10.5,
     ("anymodel", "cc/claude-opus-5"): 36.5,
+    # Ниже — ПРЕДПОЛОЖЕНИЕ по семейству (не замер), подлежит уточнению
+    # после первого прогона.
+    ("anymodel", "cx/gpt-6-sol"): 1.7,      # по аналогии с cx/gpt-6-astra
+    ("anymodel", "cx/gpt-6-luna"): 3.5,     # то же семейство gen-6
+    ("anymodel", "cc/claude-opus-5-5"): 36.5, # opus-семейство, замер opus-5
+    ("anymodel", "cc/claude-sonnet-5"): 4.4, # claude не-opus, оценка сверху
+    ("anymodel", "kmc/kimi-for-coding"): 1.5, # по аналогии с kmc/k3
 }
 DEFAULT_TOKEN_MULTIPLIER = 4.0  # неизвестная модель: консервативно выше 1
 
