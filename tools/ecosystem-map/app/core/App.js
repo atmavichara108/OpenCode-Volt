@@ -525,7 +525,7 @@ export class PipBoyApp {
       <div class="krow"><b>?</b><span>эта справка</span></div>
       <div class="krow"><b>Esc</b><span>выйти из фуллскрина / снять фокус / закрыть оверлей</span></div>
       <div class="krow"><b>drag</b><span>перетащить тайл за шапку</span></div>
-      <div class="krow"><b>rail слева</b><span>перейти к виджету (или Ctrl+K → «Перейти: …»)</span></div>
+      <div class="krow"><b>rail слева</b><span>перейти к виджету (или Alt+Shift+P → «Перейти: …»)</span></div>
     </div>`;
   }
 
@@ -597,7 +597,7 @@ export class PipBoyApp {
     cmds.push({ id: "help", label: "Клавиши", hint: "?", run: () => this._toggleKmap() });
 
     this._openOverlay(`<div class="palette">
-      <div class="palette-head">COMMAND PALETTE <span class="dim">Ctrl+K</span></div>
+      <div class="palette-head">COMMAND PALETTE <span class="dim">Alt+Shift+P</span></div>
       <input class="palette-input" placeholder="начни печатать…" autofocus>
       <div class="palette-list"></div>
     </div>`);
