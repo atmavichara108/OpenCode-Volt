@@ -564,22 +564,22 @@
       "retired": false
     },
     "ECO-030": {
-      "title": "Doom-loop + no-op guard в TUI (порт M Code)",
+      "title": "Doom-loop guard в TUI (no-op guard упразднён)",
       "layer": "L2",
       "facets": ["verification", "telemetry"],
-      "lifecycle": "DESIGN",
+      "lifecycle": "RETIRED",
       "owner": "meta",
       "priority": "P0",
       "depends_on": ["ECO-029"],
       "oss_first": { "approved": true, "note": "Собственный детектор; семантика из задокументированных констант M Code" },
-      "review": "reviewer + verifier (acceptance: зацикленный вызов стопается с педагогическим текстом, пустой turn получает нудж)",
-      "acceptance": "Byte-identical tool-call ≥3 подряд (THRESHOLD=3) → BurstError со стопом turn; пустой turn (<200 output tokens, без тула/ответа) → NO_OP_NUDGE, retry ≤3; smoke-тест обоих детекторов PASS",
-      "risk": "Ложные срабатывания на легитимных повтора (retry с идентичными аргументами иногда оправдан); поведение настраивается флагами",
-      "rollback": "Флаги doom_loop: on/off, threshold/burst конфигурируемы",
+      "review": "upstream doom-loop детектор нативен (ya=3); no-op guard удалён пользователем как вредный (бесконечно перезапускал агента, жёг токены)",
+      "acceptance": "Byte-identical tool-call ≥3 подряд (THRESHOLD=3) → BurstError со стопом turn; no-op guard упразднён 2026-09-23",
+      "risk": "Ложные срабатывания на легитимных повтора (retry с идентичными аргументами иногда оправдан)",
+"rollback": "Флаги doom_loop: on/off, threshold/burst конфигурируемы",
       "artifacts": ["01-Reference/mcode-desktop.md"],
+      "retired": true,
       "tasks": ["T-136"],
-      "status_note": "2026-09-05: константы verified в app.asar (THRESHOLD=3, BURST=9, CAPACITY=512 LRU, NO_OP_OUTPUT_THRESHOLD=200, NO_OP_RETRY_LIMIT=3); главный убийца зацикливаний — после replay budget второй порт",
-      "retired": false
+      "status_note": "2026-09-23: no-op guard упразднён пользователем (бесконечно перезапускал агента, жёг токены). Остаётся нативный doom-loop детектор (doom_loop deny/ask)."
     },
     "ECO-031": {
       "title": "Playwright-браузер в TUI (JS-рендеринг, сессии, storage state)",
