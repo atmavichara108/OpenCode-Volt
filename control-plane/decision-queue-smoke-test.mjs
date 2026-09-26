@@ -5,7 +5,7 @@
 // Imports pure helpers from shared module to test actual plugin logic, not copy.
 
 import { strict as assert } from "assert"
-import { inferRisk, sanitizeReason, generateCardId } from "../../../../dotfiles/opencode-global/.config/opencode/plugins/decision-queue-helpers.js"
+import { inferRisk, sanitizeReason, generateCardId } from "../../../dotfiles/opencode-global/.config/opencode/lib/decision-queue-helpers.js"
 
 // Test suite
 console.log("Running decision-queue-hook smoke tests...\n")

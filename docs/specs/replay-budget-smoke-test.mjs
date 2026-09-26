@@ -12,10 +12,10 @@ import { dirname, join } from "path"
 const require = createRequire(import.meta.url)
 const here = dirname(fileURLToPath(import.meta.url))
 
-// Плагин лежит в dotfiles canonical: ~/dotfiles/opencode-global/.config/opencode/plugins/
+// Хелперы лежат в dotfiles canonical: ~/dotfiles/opencode-global/.config/opencode/lib/
 const helpersPath = join(
   here, "..", "..", "..", "..", "dotfiles",
-  "opencode-global", ".config", "opencode", "plugins", "replay-budget-helpers.js",
+  "opencode-global", ".config", "opencode", "lib", "replay-budget-helpers.js",
 )
 const {
   TOOL_OUTPUT_MAX_CHARS,
