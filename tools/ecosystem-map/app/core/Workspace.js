@@ -143,7 +143,7 @@ export class Workspace {
     this.layouts[this._layoutKey()] = layout;
     this._applyRootState();
     this._saveLayout();
-    this._applyLayoutMode();
+    this._applyFocus2();
   }
 
   layoutFor(projectId) {
@@ -312,13 +312,6 @@ export class Workspace {
     const tabbed = this.layout === "treetab" || this.layout === "focus2";
     this.root.querySelectorAll(".tile").forEach(el => {
       el.classList.toggle("tile-focused", tabbed && el.dataset.tile === this.focuses[this._projectOrderKey()]);
-      const head = el.querySelector(".tile-head");
-      if (!head || head.dataset.focusWired) return;
-      head.dataset.focusWired = "1";
-      head.addEventListener("click", e => {
-        if (e.target.closest("[data-close],[data-full],[data-size]")) return;
-        this.focusTile(el);
-      });
     });
     this._applyLayoutMode();
   }
@@ -478,6 +471,13 @@ export class Workspace {
       if (head.dataset.dragWired) return;
       head.dataset.dragWired = "1";
       head.setAttribute("draggable", "true");
+      head.addEventListener("click", () => {
+        // focus2/treetab: клик по заголовку переключает фокус на этот тайл.
+        // Кнопки ✕/⤢/↔ внутри шапки вызывают stopPropagation и сюда не попадают.
+        if (this.layout !== "focus2" && this.layout !== "treetab") return;
+        const tileEl = head.closest(".tile");
+        if (tileEl) this.focusTile(tileEl);
+      });
       head.addEventListener("dragstart", () => { drag = head.parentElement; drag.classList.add("dragging"); });
       head.addEventListener("dragend", () => {
         drag?.classList.remove("dragging");
