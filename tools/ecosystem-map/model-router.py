@@ -495,6 +495,8 @@ def cmd_apply(args) -> int:
     cands = [a for a in agents if a["agent"] == agent]
     if args.scope:
         cands = [a for a in cands if a["scope"] == args.scope]
+    if args.kind:
+        cands = [a for a in cands if a.get("kind") == args.kind]
     if not cands:
         return fail(f"агент '{agent}' не найден (scope={args.scope or 'любой'})")
     if len(cands) > 1:
@@ -576,6 +578,8 @@ def main() -> int:
     pa.add_argument("--agent", required=True)
     pa.add_argument("--model", required=True)
     pa.add_argument("--scope", choices=["global", "project"], default=None)
+    pa.add_argument("--kind", choices=["file", "config"], default=None,
+                    help="kind кандидата: file (.md агент) | config (agent-блок конфига)")
     pa.add_argument("--project", default=None, help="project id (для scope=project)")
     pa.add_argument("--dry-run", action="store_true")
     pa.add_argument("--no-backup", action="store_true")

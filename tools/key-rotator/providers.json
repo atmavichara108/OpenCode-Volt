@@ -1,0 +1,402 @@
+{
+  "meta": {
+    "schema": "key-rotator/providers/1.1",
+    "updated": "2026-09-28",
+    "note": "Декларативный каталог провайдеров для probe/ротатора. Ключей здесь НЕТ: резолв env -> vault .env -> auth.json. endpoints без * [проверить] — конвенция <site>/v1, уточняется probe. transport влияет только на smoke-chat (Iter-1); probe всегда ходит GET /models в openai-совместимом стиле. skip=провайдер вне активной ротации (managed/backlog/endpoint_dynamic). models_detail (если есть) — агентские характеристики моделей (ctx/vision/tools).",
+    "last_probe": "2026-09-27T20:00:38Z",
+    "last_probe_result": "14 ACTIVE / 3 BLOCKED / 2 ERROR / 3 SKIPPED (read-only, health-log: control-plane/telemetry/provider-health.jsonl)",
+    "backlog": {
+      "note": "Подготовленные, но НЕ активные провайдеры (ждут ключа/оплаты/триггера). Onboarding: регистрация -> ключ в .env/auth.json -> probe -> убрать skip. Пилот New API и активная ротация их не трогают.",
+      "openrouter": "в каталоге со skip=backlog; ждёт +$10 (тогда убрать skip)",
+      "candidates_from_consolidated_list": [
+        "nvidia-nim (build.nvidia.com, 120+ free, ~40 RPM)",
+        "groq (30 RPM, LPU, ультраскорость)",
+        "cerebras (free tier, высокий throughput)",
+        "mistral (La Plateforme Experiment, Codestral/Devstral, data opt-in)",
+        "deepseek-direct (5M кредитов новичкам)",
+        "sambanova (200K tok/day, требует карту)",
+        "together (signup-кредит)",
+        "cloudflare-workers-ai (10k neurons/day)"
+      ]
+    }
+  },
+  "providers": {
+    "amd-radeon": {
+      "display_name": "AMD Radeon Cloud Token Factory",
+      "endpoint": "https://developer.amd.com.cn/radeon/api/v1",
+      "endpoints": [
+        "https://developer.amd.com.cn/radeon/api/v1"
+      ],
+      "env": "AMD_RADEON_API_KEY",
+      "auth_id": "amd-radeon",
+      "transport": "openai",
+      "roles": [
+        "coding",
+        "vision",
+        "general"
+      ],
+      "priority": 85,
+      "source": "01-Reference/provider-cards/amd-radeon.md",
+      "notes": "Официальный free-кей; лимитация нагрузкой, не квотой. Probe 2026-09-28: ACTIVE, 9 моделей. Все (кроме MinerU) поддерживают tools+json_output. Агентские (tool-calling + большой контекст): DeepSeek-V4.1-Flash/V4-Flash/MiMo-V2.6-Flash = 1M ctx; GLM-5.3-Flash/Qwen3.8-27B/Qwen3.8-Flash-Next = 256K. НЕ агентские: MiniCPM5-2B (2B, слабое понимание — риск вредных действий), MinerU2.5-Pro (парсинг документов, без tools/chat).",
+      "models_detail": {
+        "DeepSeek-V4.1-Flash": {"ctx": 1048576, "vision": true, "tools": true, "role": "coding", "note": "топ-выбор: 1M контекст + vision + tools + json"},
+        "DeepSeek-V4-Flash": {"ctx": 1048576, "vision": false, "tools": true, "role": "coding"},
+        "MiMo-V2.6-Flash": {"ctx": 1048576, "vision": true, "tools": true, "role": "coding"},
+        "DeepSeek-V4-Flash-Vision-Exp": {"ctx": 1048576, "vision": true, "tools": true, "role": "vision", "note": "экспериментальная"},
+        "GLM-5.3-Flash": {"ctx": 262144, "vision": false, "tools": true, "role": "general"},
+        "Qwen3.8-27B": {"ctx": 262144, "vision": true, "tools": true, "role": "coding", "note": "27B dense — сильный исполнитель"},
+        "Qwen3.8-Flash-Next": {"ctx": 262144, "vision": true, "tools": true, "role": "vision"},
+        "MiniCPM5-2B": {"ctx": 131072, "vision": false, "tools": true, "role": null, "excluded": "2B слишком слаб для агентских задач"},
+        "MinerU2.5-Pro": {"ctx": null, "vision": false, "tools": false, "role": null, "excluded": "парсинг документов, не chat"}
+      }
+    },
+    "google": {
+      "display_name": "Google AI Studio (Gemini free key)",
+      "endpoint": "https://generativelanguage.googleapis.com/v1beta/openai",
+      "endpoints": [
+        "https://generativelanguage.googleapis.com/v1beta/openai"
+      ],
+      "env": null,
+      "auth_id": "google",
+      "transport": "openai",
+      "roles": [
+        "coding",
+        "general",
+        "vision"
+      ],
+      "priority": 80,
+      "source": "key-rotator-brief 2026-09-27",
+      "notes": "Бесплатный ключ: flash-lite прошли все гейты бенча; rate-limit в минуту — 429-ретраи обязательны"
+    },
+    "openrouter": {
+      "display_name": "OpenRouter",
+      "endpoint": "https://openrouter.ai/api/v1",
+      "endpoints": [
+        "https://openrouter.ai/api/v1"
+      ],
+      "env": null,
+      "auth_id": "openrouter",
+      "transport": "openai",
+      "roles": [
+        "coding",
+        "general"
+      ],
+      "priority": 75,
+      "source": "auth.json",
+      "skip": "backlog",
+      "backlog_reason": "awaiting_payment",
+      "notes": "BACKLOG (подготовлен, но вне активной ротации/пилота до +$10 баланса). Probe 2026-09-27: ACTIVE, 460 моделей (17 :free). Конфиг сохранён — реактивация = убрать поля skip/backlog_reason. Free-кодинг :free: qwen/qwen3.8-27b:free, nvidia/nemotron-3-*:free, google/gemma-4-*:free."
+    },
+    "linaliapi": {
+      "display_name": "LinaliAPI",
+      "endpoint": "https://api.linaliapi.com/v1",
+      "endpoints": [
+        "https://api.linaliapi.com/v1"
+      ],
+      "env": "LINALIAPI_API_KEY",
+      "auth_id": "linaliapi",
+      "transport": "openai",
+      "roles": [
+        "coding",
+        "general"
+      ],
+      "priority": 70,
+      "source": "01-Reference/provider-cards/linaliapi.md",
+      "notes": "Ключ только в auth.json (.env пустой)"
+    },
+    "mistral": {
+      "display_name": "Mistral La Plateforme",
+      "endpoint": "https://api.mistral.ai/v1",
+      "endpoints": [
+        "https://api.mistral.ai/v1"
+      ],
+      "env": null,
+      "auth_id": "mistral",
+      "transport": "openai",
+      "roles": [
+        "coding",
+        "general"
+      ],
+      "priority": 70,
+      "source": "auth.json",
+      "notes": "Experiment tier бесплатен (data opt-in); Codestral/Devstral"
+    },
+    "apinex": {
+      "display_name": "APInex",
+      "endpoint": "https://apinex.bond/v1",
+      "endpoints": [
+        "https://apinex.bond/v1",
+        "https://api.apinex.bond/v1"
+      ],
+      "env": "APINEX_API_KEY",
+      "auth_id": null,
+      "transport": "openai",
+      "roles": [
+        "coding",
+        "general"
+      ],
+      "priority": 60,
+      "source": "opencode.jsonc / opencode.json (расхождение baseURL — probe проверит оба)",
+      "notes": "Ключ в .env, в auth.json нет"
+    },
+    "anymodel": {
+      "display_name": "AnyModel",
+      "endpoint": "https://anymodel.org/v1",
+      "endpoints": [
+        "https://anymodel.org/v1"
+      ],
+      "env": "ANYMODEL_API_KEY",
+      "auth_id": "anymodel",
+      "transport": "openai",
+      "roles": [
+        "coding",
+        "general"
+      ],
+      "priority": 55,
+      "source": "01-Reference/provider-cards/anymodel.md",
+      "notes": "free am/* зависают на нулевом балансе (30с, 0 байт); usage API врёт +2000 — не для учёта"
+    },
+    "deepseek-bloodthemes": {
+      "display_name": "DeepSeek (bloodthemes relay)",
+      "endpoint": "https://deepseek.bloodthemes.ru/v1",
+      "endpoints": [
+        "https://deepseek.bloodthemes.ru/v1"
+      ],
+      "env": "DEEPSEEK_BLOODTHEMES_API_KEY",
+      "auth_id": null,
+      "transport": "openai",
+      "roles": [
+        "coding",
+        "general"
+      ],
+      "priority": 50,
+      "source": ".env",
+      "notes": "Probe 2026-09-27: ACTIVE (7 моделей deepseek v4/reasoner/chat); заявленный безлимитность [проверить] по факту нагрузки"
+    },
+    "tokenin-my-id": {
+      "display_name": "tokenin.my.id",
+      "endpoint": "https://tokenin.my.id/v1",
+      "endpoints": [
+        "https://tokenin.my.id/v1"
+      ],
+      "env": "TOKENIN_MY_ID_API_KEY",
+      "auth_id": null,
+      "transport": "openai",
+      "roles": [
+        "coding",
+        "general"
+      ],
+      "priority": 50,
+      "source": ".env",
+      "notes": "Probe 2026-09-27: ACTIVE (86 моделей), endpoint-конвенция подтверждена"
+    },
+    "eirouter": {
+      "display_name": "EIRouter",
+      "endpoint": "https://eirouter.ai/v1",
+      "endpoints": [
+        "https://eirouter.ai/v1"
+      ],
+      "env": "EIROUTER_API_KEY",
+      "auth_id": null,
+      "transport": "openai",
+      "roles": [
+        "coding"
+      ],
+      "priority": 45,
+      "source": ".env",
+      "notes": "Probe 2026-09-27: BLOCKED non_json_body (HTML вместо JSON, вероятно лендинг/логин — endpoint [проверить])"
+    },
+    "ai-hdd-sb": {
+      "display_name": "ai.hdd.sb",
+      "endpoint": "https://ai.hdd.sb/v1",
+      "endpoints": [
+        "https://ai.hdd.sb/v1"
+      ],
+      "env": "HDD_SB_API_KEY",
+      "auth_id": null,
+      "transport": "openai",
+      "roles": [
+        "general",
+        "coding"
+      ],
+      "priority": 45,
+      "source": ".env",
+      "notes": "Probe 2026-09-27: ACTIVE (22 модели: glm-5.3, kimi-k3, deepseek-v4 и др.)"
+    },
+    "nova-vcrauo": {
+      "display_name": "nova.vcrauo.com",
+      "endpoint": "https://nova.vcrauo.com/v1",
+      "endpoints": [
+        "https://nova.vcrauo.com/v1"
+      ],
+      "env": "NOVA_VCRAUO_API_KEY",
+      "auth_id": null,
+      "transport": "openai",
+      "roles": [
+        "coding"
+      ],
+      "priority": 40,
+      "source": ".env",
+      "notes": "Probe 2026-09-27: BLOCKED empty_models (200, но data: [] — эндпоинт отвечает без каталога; возможно нужен другой путь или ключ без моделей)"
+    },
+    "ai-furry-vg": {
+      "display_name": "ai.furry.vg",
+      "endpoint": "https://ai.furry.vg/v1",
+      "endpoints": [
+        "https://ai.furry.vg/v1"
+      ],
+      "env": "AI_FURRY_VG_API_KEY",
+      "auth_id": null,
+      "transport": "openai",
+      "roles": [
+        "coding",
+        "general"
+      ],
+      "priority": 40,
+      "source": ".env",
+      "notes": "Probe 2026-09-27: ACTIVE (143 модели), endpoint-конвенция подтверждена"
+    },
+    "htai91": {
+      "display_name": "htai91.com",
+      "endpoint": "https://htai91.com/v1",
+      "endpoints": [
+        "https://htai91.com/v1"
+      ],
+      "env": "HTAI91_API_KEY",
+      "auth_id": null,
+      "transport": "openai",
+      "roles": [
+        "coding",
+        "general"
+      ],
+      "priority": 40,
+      "source": ".env",
+      "notes": "Probe 2026-09-27: ACTIVE (24 модели), endpoint-конвенция подтверждена"
+    },
+    "justwoker": {
+      "display_name": "JustDoWork / justwoker",
+      "endpoint": "https://api.justwoker.icu/v1",
+      "endpoints": [
+        "https://api.justwoker.icu/v1"
+      ],
+      "env": "JUSTWOKER_API_KEY",
+      "auth_id": "justwoker",
+      "transport": "anthropic",
+      "roles": [
+        "coding",
+        "general"
+      ],
+      "priority": 15,
+      "source": "01-Reference/provider-cards/justwoker.md",
+      "notes": "Probe 2026-09-27: ACTIVE через anthropic-путь /models (catalog: claude-opus-4-8); openai /chat/completions по-прежнему закрыт CF — транспорт anthropic"
+    },
+    "vercel": {
+      "display_name": "Vercel AI Gateway",
+      "endpoint": "https://ai-gateway.vercel.sh/v1",
+      "endpoints": [
+        "https://ai-gateway.vercel.sh/v1"
+      ],
+      "env": null,
+      "auth_id": "vercel",
+      "transport": "openai",
+      "roles": [
+        "coding",
+        "general"
+      ],
+      "priority": 35,
+      "source": "auth.json",
+      "notes": "Probe 2026-09-27: ACTIVE, endpoint-гипотеза подтверждена (391 модель)"
+    },
+    "tabitoken": {
+      "display_name": "TabiToken",
+      "endpoint": "https://tabitoken.com/v1",
+      "endpoints": [
+        "https://tabitoken.com/v1"
+      ],
+      "env": "TABITOKEN_API_KEY",
+      "auth_id": null,
+      "transport": "openai",
+      "roles": [
+        "coding"
+      ],
+      "priority": 35,
+      "source": ".env",
+      "notes": "Раздача ключей по $120; ключ в .env не заполнен"
+    },
+    "freeai-railway": {
+      "display_name": "freeai.up.railway.app",
+      "endpoint": "https://freeai.up.railway.app/v1",
+      "endpoints": [
+        "https://freeai.up.railway.app/v1"
+      ],
+      "env": "FREEAI_RAILWAY_API_KEY",
+      "auth_id": null,
+      "transport": "openai",
+      "roles": [
+        "coding"
+      ],
+      "priority": 35,
+      "source": ".env",
+      "notes": "$10000 для Claude Opus 5; ключ в .env не заполнен"
+    },
+    "agentrouter": {
+      "display_name": "AgentRouter",
+      "endpoint": null,
+      "endpoints": [],
+      "env": null,
+      "auth_id": "agentrouter",
+      "transport": "openai",
+      "roles": [
+        "coding"
+      ],
+      "priority": 30,
+      "source": "auth.json + ~/.config/mcode/providers.json (agr)",
+      "notes": "Ключ есть, endpoint/модели не подтверждены [проверить] — probe без endpoint → no_endpoint"
+    },
+    "tokenbom": {
+      "display_name": "TokenBom",
+      "endpoint": null,
+      "endpoints": [],
+      "env": "TOKENBOM_API_KEY",
+      "auth_id": null,
+      "transport": "openai",
+      "roles": [
+        "coding"
+      ],
+      "priority": 30,
+      "source": ".env",
+      "skip": "endpoint_dynamic",
+      "notes": "Endpoint зависит от выбранного провайдера — статический probe невозможен"
+    },
+    "opencode-go": {
+      "display_name": "OpenCode Go (subscription)",
+      "endpoint": null,
+      "endpoints": [],
+      "env": null,
+      "auth_id": "opencode-go",
+      "transport": "openai",
+      "roles": [
+        "coding"
+      ],
+      "priority": 0,
+      "source": "opencode runtime",
+      "skip": "managed",
+      "notes": "Управляется самим opencode; публичного probe-эндпоинта нет"
+    },
+    "opencode": {
+      "display_name": "OpenCode Zen",
+      "endpoint": null,
+      "endpoints": [],
+      "env": null,
+      "auth_id": null,
+      "transport": "openai",
+      "roles": [
+        "coding"
+      ],
+      "priority": 0,
+      "source": "opencode runtime",
+      "skip": "managed",
+      "notes": "Управляется самим opencode; авторизация внутри приложения"
+    }
+  }
+}
