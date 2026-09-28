@@ -14,7 +14,6 @@
       "/home/rudra/dotfiles/**": "allow",
       "/home/rudra/.config/opencode/**": "allow",
       "/home/rudra/.local/share/m-code-data/**": "allow",
-      "/home/rudra/.local/share/opencode/auth.json": "allow",
       "**/.env*": "deny",
       "**/credentials.json": "deny",
       "**/*.pem": "deny",

@@ -653,3 +653,28 @@ timestamp: 2026-08-17
   нагрузкой (наблюдалось на `am/nemotron-3-ultra-550b-a55b`, 2 из 17 запросов).
   Probe-скрипты должны переносить частичные сбои без падения прогона.
   | 2026-09-24 |
+
+### Bench/провайдеры (2026-09-28)
+
+- **6 багов бенча из брифа закрыты**: tools `max_tokens` 200→1500 + статус
+  `TRUNCATED` с `finish_reasons` в артефакте; ретрай 429 паузой 20с;
+  `resolve_coefficient` (таблица → `--price-per-1m` → живой GET /models
+  billing/pricing, иначе null) + валидация флага; `tokens_estimated` рядом с
+  raw `cost_tokens`, `KNOWN_INFLATED_USAGE={"anymodel"}` — деньги по панели;
+  герметичные тесты (conftest подменяет CONFIG_PATHS/AUTH/VAULT_ROOT);
+  `http.client.HTTPException` ловится как network. 98 passed офлайн.
+  | 2026-09-28 |
+- **auth.json закрыт для агентов**: строка allow удалена из vault
+  `opencode.json` (2026-09-28). `config.resolve_key` читает auth.json
+  напрямую питоновским open — permission ему не нужен.
+  | 2026-09-28 |
+- **Vercel AI Gateway ACTIVE** (2026-09-28): каталог 391 модель (HTTP 200),
+  smoke `google/gemini-2.5-flash-lite` → PROBE_OK, $2.4e-06. Ключ только в
+  auth.json id `vercel`. Подключён в TUI + M Code. Ежемесячная квота и
+  неработающие модели со слов пользователя — `[проверить]` поштучным smoke.
+  | 2026-09-28 |
+- **JustDoWork chat недоступен с нашей сети обоими транспортами**
+  (2026-09-28): `/v1/messages` (x-api-key, direct и прокси) → 403
+  `server: cloudflare`, пустое тело; каталог при этом 200. Шлюз автора
+  отчёта ходит со своих IP — блок сетевой, не ключевой. В конфиги не
+  добавлен осознанно. | 2026-09-28 |

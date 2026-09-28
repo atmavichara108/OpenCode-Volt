@@ -19,7 +19,7 @@ TOOLS_TASKS = [
             "Верни СТРОГО JSON-объект (без markdown-обёртки и пояснений) с "
             "полями: \"name\" (строка), \"age\" (целое число)."
         ),
-        "max_tokens": 200,
+        "max_tokens": 1500,
         "schema": {"name": str, "age": int},
     },
     {
@@ -30,7 +30,7 @@ TOOLS_TASKS = [
             "\"x\" (число с плавающей точкой), \"y\" (число с плавающей точкой), "
             "\"label\" (строка)."
         ),
-        "max_tokens": 200,
+        "max_tokens": 1500,
         "schema": {"x": float, "y": float, "label": str},
     },
     {
@@ -41,7 +41,7 @@ TOOLS_TASKS = [
             "\"user\" — объект с полями \"id\" (целое) и \"email\" (строка), "
             "и поле \"active\" (булево)."
         ),
-        "max_tokens": 200,
+        "max_tokens": 1500,
         "schema": {
             "user": {"id": int, "email": str},
             "active": bool,
@@ -54,7 +54,7 @@ TOOLS_TASKS = [
             "Верни СТРОГО JSON-объект (без markdown) с полем \"tags\" — "
             "массив строк, и полем \"count\" — целое число."
         ),
-        "max_tokens": 200,
+        "max_tokens": 1500,
         "schema": {"tags": list, "count": int},
     },
     {
@@ -65,7 +65,7 @@ TOOLS_TASKS = [
             "\"title\" (строка), \"items\" (массив целых чисел), "
             "\"enabled\" (булево)."
         ),
-        "max_tokens": 200,
+        "max_tokens": 1500,
         "schema": {"title": str, "items": list, "enabled": bool},
     },
 ]

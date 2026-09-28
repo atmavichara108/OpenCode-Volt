@@ -80,6 +80,14 @@ capability-fail) и не попадают в токены/латентность
 не включает гейты со `status != "OK"`, а матрица показывает их как `ERROR`.
 Старые артефакты без `status` трактуются как `OK`.
 
+Отдельный статус `"TRUNCATED"`: ошибок нет, но часть успешных ответов оборвана
+по `finish_reason == "length"` и порог не пройден. Это сигнал о слишком малом
+`max_tokens`, а НЕ провал модели — `score: null`, `passed_threshold: null`,
+`truncated_count` > 0. Гейт с `status: "OK"` и `truncated_count > 0` означает,
+что модель обрезалась, но всё равно прошла порог. Каждый гейт несёт
+`finish_reasons` (sorted unique non-null) и `tokens_estimated` — оценку
+промпт-токенов + `max_tokens` по задачам гейта (не зависит от `usage`).
+
 ## Cost guard
 
 - Предварительная оценка: промпт-токены (1 токен ≈ 4 символа) + `max_tokens`,
@@ -93,7 +101,19 @@ capability-fail) и не попадают в токены/латентность
 - `--force` отключает и предварительный guard, и накопительный останов.
 - Free-модели (`am/free`, `am/nemotron*`, весь `amd-radeon`) — вне бюджета,
   но токены считаются.
-- Неизвестная модель → `cost_usd_est: null` (цену не выдумываем).
+- Коэффициент стоимости берётся из `client.resolve_coefficient` с приоритетом:
+  таблица `COST_COEFFICIENTS` → флаг `--price-per-1m` (абсолют USD/1M) →
+  живой `GET /models` (`billing.coefficient` или `pricing`). При fetch-ошибке
+  цена не выдумывается.
+- Неизвестная модель → `cost_usd_est: null` (цену не выдумываем); для прогона
+  используйте `--force` или `--price-per-1m`.
+
+### Завышение usage и оценочная цена
+
+Для провайдеров с доказанным завышением `usage` (`KNOWN_INFLATED_USAGE`,
+сейчас `{"anymodel"}`) истина — панель биллинга: `cost_usd_est` считается от
+raw `usage` и помечается оценочным, а решения о деньгах принимаются по
+`tokens_estimated` (оценка промпт-токенов + `max_tokens`), а не по raw usage.
 
 В артефакт попадают поля `budget_usd`, `spent_usd_est`, `budget_stop`,
 `gates_skipped` (список непрогнанных гейтов).

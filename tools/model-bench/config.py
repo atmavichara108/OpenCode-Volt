@@ -13,7 +13,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-BENCHMARK_VERSION = "0.1.0"
+BENCHMARK_VERSION = "0.2.0"
 
 # Маппинг provider_id → имя env-переменной с ключом (порядок приоритета №1).
 PROVIDER_ENV = {

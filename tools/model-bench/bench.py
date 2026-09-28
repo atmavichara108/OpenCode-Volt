@@ -34,16 +34,18 @@ def slugify(model_id):
     return re.sub(r"[^A-Za-z0-9_.-]+", "_", model_id)
 
 
-def estimate_run_cost(provider_id, model_id, gates, k):
+def estimate_run_cost(provider_id, model_id, gates, k, cli_price=None,
+                      base_url=None, key=None, proxies=None):
     """Оценка стоимости прогона по промпт-токенам + max_tokens + множителю.
 
     Эвристика промпт-токенов: 1 токен ≈ 4 символа (грубо, по латинице/кириллице
     вперемешку). Скрытые reasoning-токены непредсказуемы — их накрывает
     ``client.token_multiplier`` (эмпирические множители, см. client.py).
 
-    Возвращает кортеж ``(cost_usd, total_tokens_est)``. ``cost_usd`` — float
-    или None (неизвестная модель — не выдумываем цену); ``total_tokens_est`` —
-    int, возвращается всегда.
+    Коэффициент стоимости берётся из ``client.resolve_coefficient`` (таблица →
+    ``--price-per-1m`` → живой GET /models). Возвращает кортеж
+    ``(cost_usd, total_tokens_est)``. ``cost_usd`` — float или None (неизвестная
+    модель — не выдумываем цену); ``total_tokens_est`` — int, возвращается всегда.
     """
     base_tokens = 0
     for gate in gates:
@@ -51,7 +53,10 @@ def estimate_run_cost(provider_id, model_id, gates, k):
             prompt_tokens_est = len(task["prompt"]) // 4
             base_tokens += (prompt_tokens_est + task["max_tokens"]) * k
     total_est = int(base_tokens * client.token_multiplier(provider_id, model_id))
-    coeff = client._coefficient(provider_id, model_id)
+    coeff, _source = client.resolve_coefficient(
+        provider_id, model_id, base_url=base_url, key=key, proxies=proxies,
+        cli_price=cli_price,
+    )
     if coeff is None:
         return None, total_est
     cost = client.COST_BASE_USD_PER_1M * coeff * total_est / 1_000_000
@@ -87,6 +92,10 @@ def run_gate(gate, provider_id, model_id, base_url, key, proxies, k):
     Разделяет transport/error и grading: transport-ошибка НЕ даёт score 0 и НЕ
     добавляет latency/tokens. Если хотя бы одна ошибка — гейт ``status: ERROR``,
     ``score: null`` (частичный результат не превращается в ложный capability-fail).
+
+    Если ошибок нет, но часть успешных ответов оборвана по ``finish_reason ==
+    "length"`` и порог не пройден — гейт ``status: TRUNCATED`` (score/passed
+    null): это сигнал о слишком малом ``max_tokens``, а не провал модели.
     """
     task_list = tasks.TASKS_BY_GATE[gate]
     scores = []
@@ -94,11 +103,13 @@ def run_gate(gate, provider_id, model_id, base_url, key, proxies, k):
     latencies = []
     attempts = 0
     error_count = 0
+    truncated_count = 0
     error_kinds = set()
+    finish_reasons = set()
     for task in task_list:
         for _ in range(k):
             attempts += 1
-            reply, usage, latency_ms, err = client.chat(
+            reply, usage, latency_ms, err, finish_reason = client.chat(
                 base_url, key, model_id, task["prompt"], task["max_tokens"],
                 proxies=proxies,
             )
@@ -109,8 +120,15 @@ def run_gate(gate, provider_id, model_id, base_url, key, proxies, k):
                 continue
             latencies.append(latency_ms)
             total_tokens += (usage or {}).get("total_tokens", 0)
+            if finish_reason:
+                finish_reasons.add(finish_reason)
+            if finish_reason == "length":
+                truncated_count += 1
             ok = _grade_one(task, reply)
             scores.append(1 if ok else 0)
+    tokens_estimated = sum(
+        (len(t["prompt"]) // 4 + t["max_tokens"]) * k for t in task_list
+    )
     cost = client.estimate_cost_usd(
         provider_id, model_id, {"total_tokens": total_tokens}
     )
@@ -125,21 +143,44 @@ def run_gate(gate, provider_id, model_id, base_url, key, proxies, k):
             "error_rate": error_rate,
             "error_kinds": sorted(error_kinds),
             "cost_tokens": total_tokens,
+            "tokens_estimated": tokens_estimated,
             "cost_usd_est": cost,
             "latency_ms_median": None,
+            "truncated_count": truncated_count,
+            "finish_reasons": sorted(finish_reasons),
         }
     score = sum(scores) / len(scores) if scores else 0.0
+    passed = _passed(score, gate)
+    if truncated_count > 0 and passed is False:
+        return {
+            "status": "TRUNCATED",
+            "score": None,
+            "passed_threshold": None,
+            "attempts": attempts,
+            "error_count": 0,
+            "error_rate": 0.0,
+            "error_kinds": [],
+            "cost_tokens": total_tokens,
+            "tokens_estimated": tokens_estimated,
+            "cost_usd_est": cost,
+            "latency_ms_median": statistics.median(latencies) if latencies else None,
+            "truncated_count": truncated_count,
+            "finish_reasons": sorted(finish_reasons),
+        }
     median = statistics.median(latencies) if latencies else None
     return {
         "status": "OK",
         "score": round(score, 4),
-        "passed_threshold": _passed(score, gate),
+        "passed_threshold": passed,
         "attempts": attempts,
         "error_count": 0,
         "cost_tokens": total_tokens,
+        "tokens_estimated": tokens_estimated,
         "cost_usd_est": cost,
         "latency_ms_median": median,
         "notes": "",
+        "truncated_count": truncated_count,
+        "finish_reasons": sorted(finish_reasons),
     }
 
 
@@ -198,7 +239,7 @@ def build_artifact(provider_id, model_id, gates_result, k):
     }
 
 
-def dry_run_plan(provider_id, model_id, gates, k):
+def dry_run_plan(provider_id, model_id, gates, k, cli_price=None):
     """Печатает план прогона без сетевых вызовов."""
     lines = []
     lines.append(f"DRY-RUN: provider={provider_id} model={model_id} k={k}")
@@ -208,8 +249,12 @@ def dry_run_plan(provider_id, model_id, gates, k):
         total_requests += n * k
         lines.append(f"  gate={gate}: {n} задач × {k} повтор(ов) = {n * k} запросов")
     lines.append(f"  всего запросов: {total_requests}")
-    cost, tokens_est = estimate_run_cost(provider_id, model_id, gates, k)
+    cost, tokens_est = estimate_run_cost(provider_id, model_id, gates, k, cli_price=cli_price)
     lines.append(f"  оценка токенов: ~{tokens_est} (с множителем {client.token_multiplier(provider_id, model_id)})")
+    _coeff, source = client.resolve_coefficient(
+        provider_id, model_id, cli_price=cli_price
+    )
+    lines.append(f"  источник цены: {source or 'нет (неизвестная модель)'}")
     if cost is None:
         lines.append("  оценка бюджета: неизвестная модель (cost_usd_est=null)")
     else:
@@ -236,6 +281,12 @@ def main(argv=None):
     )
     parser.add_argument("--skip-matrix", action="store_true", help="не генерировать matrix.md")
     parser.add_argument("--out", default=str(DEFAULT_OUT_DIR), help="каталог артефактов")
+    parser.add_argument(
+        "--price-per-1m",
+        type=float,
+        default=None,
+        help="абсолютная цена USD за 1M токенов для неизвестной модели (finite>0)",
+    )
     args = parser.parse_args(argv)
 
     logging.basicConfig(stream=sys.stderr, level=logging.INFO, format="%(message)s")
@@ -244,6 +295,15 @@ def main(argv=None):
         log.error(
             "Некорректный --budget: %r. Ожидается конечное положительное число USD.",
             args.budget,
+        )
+        return 3
+
+    if args.price_per_1m is not None and (
+        not math.isfinite(args.price_per_1m) or args.price_per_1m <= 0
+    ):
+        log.error(
+            "Некорректный --price-per-1m: %r. Ожидается конечное положительное число USD.",
+            args.price_per_1m,
         )
         return 3
 
@@ -265,17 +325,23 @@ def main(argv=None):
 
     # Неизвестная модель (коэффициент стоимости не задан) — блокируем заранее,
     # в т.ч. для --dry-run, если нет --force: прогон может быть дорогим.
-    est_cost, _est_tokens = estimate_run_cost(args.provider, args.model, gates, args.k)
+    est_cost, _est_tokens = estimate_run_cost(
+        args.provider, args.model, gates, args.k, cli_price=args.price_per_1m
+    )
     if est_cost is None and not args.force:
         log.error(
             "Неизвестная модель %s — коэффициент стоимости не задан. "
-            "Прогон может быть дорогим. Используйте --force если уверены.",
+            "Прогон может быть дорогим. Используйте --force или --price-per-1m "
+            "если уверены.",
             args.model,
         )
         return 3
 
     if args.dry_run:
-        sys.stdout.write(dry_run_plan(args.provider, args.model, gates, args.k) + "\n")
+        sys.stdout.write(
+            dry_run_plan(args.provider, args.model, gates, args.k, cli_price=args.price_per_1m)
+            + "\n"
+        )
         return 0
 
     base_url, models = config.resolve_provider(args.provider)
@@ -283,6 +349,12 @@ def main(argv=None):
         log.error("Не найден baseURL для провайдера %s", args.provider)
         return 3
     key = config.resolve_key(args.provider)
+
+    # Повторная оценка с живым GET /models (источник цены для не-табличных моделей).
+    est_cost, _est_tokens = estimate_run_cost(
+        args.provider, args.model, gates, args.k, cli_price=args.price_per_1m,
+        base_url=base_url, key=key, proxies=config.proxies_from_env(),
+    )
 
     # Cost guard (предварительный): лимит = min(COST_GUARD_USD, budget).
     guard_limit = min(config.COST_GUARD_USD, args.budget)

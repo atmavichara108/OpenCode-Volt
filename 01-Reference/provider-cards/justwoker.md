@@ -18,7 +18,7 @@ timestamp: 2026-09-16
 | `endpoint` | `https://api.justwoker.icu/v1` |
 | `compatibility` | New API / One API style (OpenAI-совместимый по контракту) |
 | `status` | 🟡 `DEGRADED` |
-| `checked_at` | 2026-09-24 |
+| `checked_at` | 2026-09-28 |
 | `source` | реферальная программа JustDoWork |
 | `account_kind` | `user/promotional referral` |
 | `initial_balance` | `$121.34` (displayed в dashboard), kind `referral/promotional`; фактическая спендируемость не подтверждена `[проверить]` |
@@ -51,6 +51,19 @@ timestamp: 2026-09-16
   все 403. Cloudflare требует браузерную сессию (cookies/JWT/JS-challenge),
   одного Bearer-ключа мало.
 - **В конфиги не добавлен** — подключать нечего, пока chat отдаёт капчу.
+
+## Probe evidence (2026-09-28)
+
+- **`GET /v1/models`** → HTTP 200, `["claude-opus-4-8"]` (каталог жив).
+- **`POST /v1/chat/completions`** (Bearer-ключ) → HTTP 403 Cloudflare.
+- **`POST /v1/messages`** (x-api-key, напрямую и через прокси) → HTTP 403
+  `server: cloudflare`, пустое тело.
+
+**Вывод:** chat недоступен с нашей сети **обоими** транспортами
+(OpenAI-compatible `/chat/completions` и Anthropic-style `/messages`) —
+добавлять нерабочий провайдер в конфиги НЕЛЬЗЯ. Шлюз отчёта ходит со своих
+IP (у них работает, у нас — нет); для снятия блока нужен либо allowlist наших
+IP на их стороне, либо работа через их шлюз.
 
 ## Статус
 
