@@ -59,12 +59,12 @@ timestamp: 2026-09-01
 
 | Метод | SERPlux | dv-hub | dotfiles | vault |
 |-------|---------|--------|----------|-------|
-| [[closed-loop]] | ✅ | ❌ | 🟡 | ❌ |
-| [[verifier-pattern]] | ✅ | ❌ | 🟡 | ❌ |
+| [[closed-loop]] | ✅ | ❌ | ✅ | ❌ |
+| [[verifier-pattern]] | ✅ | ❌ | ✅ | ❌ |
 | [[context-as-docs]] | ✅ | 🟡 | ✅ | ✅ |
 | [[distill-pattern]] | ✅ | ✅ | ✅ | ✅ |
-| [[memory-management]] | 🟡 | 🟡 | 🟡 | 🟡 |
-| [[model-routing]] | ✅ | ✅ | ➖ | ➖ |
+| [[memory-management]] | 🟡 | 🟡 | ✅ | 🟡 |
+| [[model-routing]] | ✅ | ✅ | 🟡 | ➖ |
 | [[capability-routing]] | ❌ | ❌ | ❌ | ❌ |
 | [[multi-agent-pipeline]] | ✅ | ❌ | ✅ | ❌ |
 | [[tool-integration-pattern]] | ➖ | ➖ | ➖ | 🟡 |

@@ -164,7 +164,7 @@ timestamp: 2026-08-31
 | T-067 | Smoke-тест: проверка эмодзи из EMOJI_MAP против Telegram API (GetAvailableReactions). `test_smoke.py`, маркер `--smoke`, 1 PASS (74 доступных, все 7 валидны) | P3 | 2026-07-09 | [[02-Methods/tool-integration-pattern]], [[02-Methods/verifier-pattern]] |
 | T-062 | `/capture` команда + `tools/telegram-capture/` — Telethon-скрипт: извлечение постов из группы @inbox_tools по теме, маркировка реакциями, JSON-вывод для librarian. Восстановлена `/inbox` (обработка 99-Inbox). **2026-09-06:** классификатор выделен в `classify_batch` + `pipeline.py` (intake→signals, 468 сигналов, детерминизм по sha256); живой слив: `inbox_queue.py` (JSONL+flock, дедуп) + `watch.py` (userbot-демон NewMessage, smoke-gated) + `load_input` в pipeline (jsonl); 76 тестов PASS; ECO-035 | P2 | 2026-07-08 | [[02-Methods/tool-integration-pattern]], [[03-Projects/vault]] |
 | T-065 | VibeOS.md v0.3.0 — раздел «Инструменты (tools/)», новый метод в таблице, Linux UX Lab в направлениях, чейнджлог | P3 | 2026-07-07 | [[VibeOS]] |
-| T-064 | Linux UX Lab — направление R-006 в 99-Inbox: систематический апгрейд UX Linux (Manjaro), источник идей — Telegram группа, связь с dotfiles | P3 | 2026-07-07 | [[99-Inbox]], [[03-Projects/dotfiles]], [[VibeOS]] |
+| T-064 | ~~Linux UX Lab — направление R-006 в 99-Inbox…~~ superseded: см. VibeOS v0.3.0 (T-065) — направление уже включено в метод | P3 | 2026-07-07 | [[99-Inbox]], [[03-Projects/dotfiles]], [[VibeOS]] |
 | T-063 | `tool-integration-pattern` — седьмой метод VibeOS (02-Methods/): «LLM думает, API делает» — внешние API как детерминированные инструменты агентов | P2 | 2026-07-07 | [[02-Methods/tool-integration-pattern]], [[VibeOS]] |
 | T-059 | dotfiles: verifier-pattern (🟡→✅) — создать verifier.md агента по образцу SERPlux | P1 | 2026-07-03 | [[03-Projects/dotfiles]], [[02-Methods/verifier-pattern]] |
 | T-060 | dotfiles: closed-loop (🟡→✅) — создать /loop команду + verifier | P1 | 2026-07-03 | [[03-Projects/dotfiles]], [[02-Methods/closed-loop]] |
@@ -180,13 +180,13 @@ timestamp: 2026-08-31
 | T-020 | Создать VibeOS — концептуальный дашборд системы вайбкодинга | P2 | 2026-06-30 | [[VibeOS]] |
 | T-021 | Смена модели librarian Claude Sonnet 4.6 → DeepSeek v4-flash-free | P2 | 2026-06-30 | [[04-Memory/facts.md]] |
 | T-022 | Ревью волта: исправить 17 багов (статусы, модели, команды, docs) | P1 | 2026-06-30 | [[Architecture]] |
-| T-023 | Инициализировать OpenCode в dotfiles — sysop, /sysaudit | P3 | 2026-06-30 | [[03-Projects/dotfiles]] |
+| T-023 | ~~Инициализировать OpenCode в dotfiles — sysop, /sysaudit~~ superseded: выполнено 2026-06-30 (карточка dotfiles, v1); хвосты (первый /sysaudit) учтены в чеклисте карточки | P3 | 2026-06-30 | [[03-Projects/dotfiles]] |
 | T-024 | dotfiles v2 — мульти-агентная архитектура (7 агентов, 8 пайплайнов) | P2 | 2026-06-30 | [[03-Projects/dotfiles]] |
 | T-025 | distill-pipeline + multi-agent-pipeline метод | P2 | 2026-06-30 | [[02-Methods/multi-agent-pipeline]] |
 | T-026 | Создать README.md — визитка репозитория как VibeOS | P1 | 2026-06-30 | [[README]] |
 | T-027 | Добавить лицензию GPL-3.0 + секция в README (copyleft, коммерция, фонд инженера) | P1 | 2026-06-30 | [[LICENSE]] |
 | T-043 | SERP Factory — архитектура в волте: SERPlux как продукт, агенты ux-dev + infra-dev, команды /interface /container /deploy | P1 | 2026-06-30 | [[03-Projects/SERPlux]] |
-| T-019 | Инициализировать OpenCode в dotfiles — sysop, /sysaudit | P3 | 2026-06-30 | [[03-Projects/dotfiles]] |
+| T-019 | ~~Инициализировать OpenCode в dotfiles — sysop, /sysaudit~~ superseded: дублирует T-023, dotfiles инициализирован 2026-06-30 (карточка, v1) | P3 | 2026-06-30 | [[03-Projects/dotfiles]] |
 | T-000 | Переименовать `99-Inbox.md.md` → `99-Inbox.md` | P0 | 2026-06-27 | — |
 | T-000 | Убрать claude-mem из всей базы | P0 | 2026-06-27 | [[01-Reference/memory.md]] |
 | T-000 | Создать OKF-подбандл памяти `04-Memory/` | P0 | 2026-06-27 | [[04-Memory/index.md]] |
