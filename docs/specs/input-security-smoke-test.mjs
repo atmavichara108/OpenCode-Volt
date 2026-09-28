@@ -13,7 +13,7 @@ const here = dirname(fileURLToPath(import.meta.url))
 
 const helpersPath = join(
   here, "..", "..", "..", "..", "dotfiles",
-  "opencode-global", ".config", "opencode", "plugins", "input-security-helpers.js",
+  "opencode-global", ".config", "opencode", "lib", "input-security-helpers.js",
 )
 const {
   SYSTEM_REMINDER_RE,
