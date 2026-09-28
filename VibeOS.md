@@ -274,7 +274,7 @@ vault — пилотная реализация. Директория `tools/` �
 - Команды: 12 — /ask, /capture, /inbox, /project, /commit, /project-add, /audit, /decisions, /distill-pipeline, /handoff, /route, /verify
 - Память: OKF-подбандл (active-context + facts + session-log)
 - Инструменты: tools/ (telegram-capture, ecosystem-map, playwright-browser, verify-cache, peers)
-- **P6 порт M Code → TUI:** replay budget, doom-loop/no-op guard, санитизация/redaction, playwright, verify-кэш, parallel audit, peers — см. [[01-Reference/mcode-desktop]] и [[DEVELOPMENT-ROADMAP]]
+- **P6 порт M Code → TUI:** replay budget, doom-loop, санитизация/redaction, playwright, verify-кэш, parallel audit, peers — см. [[01-Reference/mcode-desktop]] и [[DEVELOPMENT-ROADMAP]]
 
 ---
 
@@ -506,8 +506,8 @@ plan-агент с `edit: deny` и `task: { build: allow }` — думает, н
   майнинг-станцией фич, удачные решения переносятся в TUI без форка:
   - **replay budget** — плагин `replay-budget.ts`: старые tool-результаты
     капятся до 2000 симв. (head/tail), защита последних 40 KB, pruning входов.
-  - **doom-loop/no-op guard** — `doom_loop: deny` (нативный детектор) +
-    плагин `noop-guard.ts` (нудж молчаливых ходов, retry 3).
+  - **doom-loop** — `doom_loop: deny` (нативный детектор; no-op guard
+    упразднён 2026-09-23 как вредный — бесконечно перезапускал агента).
   - **санитизация + redaction** — плагин `input-security.ts`: system-reminder/markup
     экранирование, pattern-based вычищение секретов.
   - **Playwright-браузер** — `tools/playwright-browser/browser.py`: JS-рендеринг,

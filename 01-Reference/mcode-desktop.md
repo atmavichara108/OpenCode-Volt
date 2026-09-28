@@ -167,11 +167,12 @@ byte-identical `JSON.stringify(input)===JSON.stringify(H)`), разница то
 работой: model получает нудж «сделай работу или скажи одной фразой, что
 блокирует». Ловит молчаливые сгоревшие ходы.
 
-**Порт в TUI (2026-09-06):** в бинаре 1.18.5 отсутствовал полностью. Написан
-плагин `noop-guard.ts` + helpers `noop-guard-helpers.js` (event `session.idle` →
-`session.messages` прочитать последний assistant → `session.promptAsync` нудж,
-retry limit 3, debounce по messageID). Smoke 9/9. Live hook-fire `[проверить]`
-после рестарта TUI.
+**Порт в TUI (2026-09-06, упразднён 2026-09-23):** в бинаре 1.18.5 отсутствовал
+полностью. Был написан плагин `noop-guard.ts` + helpers `noop-guard-helpers.js`
+(event `session.idle` → `session.messages` → `session.promptAsync` нудж, retry
+limit 3, debounce по messageID), smoke 9/9 — но упразднён пользователем
+2026-09-23: бесконечно перезапускал агента и жёг токены. Защиту от молчаливых
+ходов даёт только нативный doom-loop (`doom_loop: deny`).
 
 ### Auto-compaction с continuation summary
 `DEFAULT_TOKEN_THRESHOLD = 100000` — при переполнении контекст заменяется

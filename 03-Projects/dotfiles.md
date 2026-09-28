@@ -118,8 +118,9 @@ stack: shell / GNU Stow / конфиги Manjaro (23 пакета) / OpenCode mu
 - [x] closed-loop формализация: /loop (builder → @verifier)
 - [x] memory-management: /flush + формализованный flush-протокол
 - [x] opencode-global плагины (2026-09-06, dotfiles-коммит 0e46291): replay-budget.ts (T-135),
-  noop-guard.ts (T-136), input-security.ts (T-137) + helpers — порт органов M Code в TUI;
-  loading через symlink ~/.config/opencode/plugins/; live hook-fire после рестарта TUI [проверить]
+  input-security.ts (T-137) + helpers — порт органов M Code в TUI; noop-guard.ts (T-136)
+  упразднён 2026-09-23. loading через symlink ~/.config/opencode/plugins/; live hook-fire
+  после рестарта TUI [проверить]
 - [ ] первый /sysaudit
 - [ ] model-routing (после тестов)
 - [ ] system-ops: permission/root smoke-test (T-108) — **FROZEN BY USER; не активировать.** Existing evidence сохраняется; root, MCP и permission experiments не выполнять.
@@ -134,4 +135,4 @@ stack: shell / GNU Stow / конфиги Manjaro (23 пакета) / OpenCode mu
 - 2026-08-29: protocol report T-108 зафиксировал в named session `ses_fb0ee381fffeHfjxggBF0CXpm3/` отказ edit для evidence и отказ external_directory для task/handoff; fallback не использовался. Статический merged config правила содержит, но runtime application не доказан; T-108 остаётся BLOCKED.
 - 2026-08-30: probable root cause identified: canonical scalar `edit: deny` overrode project scoped object; prompt policy is now object deny-default with evidence-only edit and scoped task/handoff/evidence external reads. Fresh-session runtime merge/live evidence pending; T-108 remains BLOCKED.
 - 2026-08-30: Coordination Bridge и T-108/system-ops frozen by user; bridge integration не продолжается, root/MCP/permission experiments не выполнять. `/sysaudit` остаётся отдельным read-only workflow.
-- 2026-09-07: P6 порты — 6 плагинов (replay-budget, noop-guard, input-security + helpers) закоммичены в opencode-global (0e46291); smoke 14/14 + 9/9 + 14/14 в волте. 
+- 2026-09-07: P6 порты — плагины replay-budget, input-security + helpers закоммичены в opencode-global (0e46291); smoke 14/14 + 14/14 в волте (noop-guard упразднён 2026-09-23). 

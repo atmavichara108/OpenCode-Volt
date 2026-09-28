@@ -76,7 +76,7 @@ stack: markdown + OpenCode
 - [x] dotfiles — репо создан, путь зафиксирован в карточке
 - [x] tools/ — 5 инструментов: telegram-capture, ecosystem-map, playwright-browser (T-134), verify-cache (P6 #33), peers (P6 #31)
 - [x] tool-integration-pattern — метод VibeOS; внедрён в vault полностью (5 tools)
-- [x] P6 — порт органов M Code Desktop в TUI-стек: replay-budget, noop-guard, input-security (плагины в dotfiles), sandbox/serpctl/release pipeline (в serp), parallel /audit, verify-subagent, oracle route. Реф: [[01-Reference/mcode-desktop]]
+- [x] P6 — порт органов M Code Desktop в TUI-стек: replay-budget, input-security (плагины в dotfiles), sandbox/serpctl/release pipeline (в serp), parallel /audit, verify-subagent, oracle route. Реф: [[01-Reference/mcode-desktop]]
 - [ ] дорожная карта P5: Telegram-бот, классификация фич, /project-upgrade
 
 ## Окружение
@@ -92,4 +92,4 @@ stack: markdown + OpenCode
 - 2026-07-04: T-061 — memory-management 🟡→✅ (flush-протокол в librarian.md + session-flush плагин уже был)
 - 2026-07-07: VibeOS v0.3.0 — новый метод tool-integration-pattern (7-й), директория tools/ + tools/telegram-capture (T-062, в разработке), новое направление R-006 Linux UX Lab, /capture как первый шаг к Telegram-интеграции
 - 2026-07-08: внедрено direnv + .venv (Python окружение, авт активация). Зависимости: telethon, python-dotenv, pytest. 39/39 тестов PASS в venv.
-- 2026-09-07: P6 апгрейд — порт органов M Code → TUI (replay budget, doom-loop/no-op guard, санитизация/redaction, playwright-browser, verify-cache + /verify, peers, parallel /audit, verify-subagent, oracle route); 5 tools; 12 команд; VibeOS v0.3.1. Коммиты 4a16790/cba43c5/bfa6c7e/3437182 (+dotfiles 0e46291, serp 05ef81b/f519328)
+- 2026-09-07: P6 апгрейд — порт органов M Code → TUI (replay budget, doom-loop, санитизация/redaction, playwright-browser, verify-cache + /verify, peers, parallel /audit, verify-subagent, oracle route); 5 tools; 12 команд; VibeOS v0.3.1. Коммиты 4a16790/cba43c5/bfa6c7e/3437182 (+dotfiles 0e46291, serp 05ef81b/f519328)

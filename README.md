@@ -173,7 +173,7 @@ opencode .
 | P3: Проекты | ✅ Завершено | Карточки синхронизированы, статусы реконсилированы, VibeOS v0.2.3 |
 | P4: CI волта | ✅ Завершено | Pre-commit hook, валидация викилинков, авто-архивация логов |
 | P5: Будущее | 🟡 В планах | Telegram-бот · классификация фич · `/project-upgrade` · closed-loop |
-| P6: Порт M Code → TUI | ✅ Завершено (итерация 1) | replay budget · doom-loop/no-op guard · санитизация · Playwright · verify-кэш · peers |
+| P6: Порт M Code → TUI | ✅ Завершено (итерация 1) | replay budget · doom-loop · санитизация · Playwright · verify-кэш · peers |
 
 Подробнее → [DEVELOPMENT-ROADMAP.md](DEVELOPMENT-ROADMAP.md)
 
