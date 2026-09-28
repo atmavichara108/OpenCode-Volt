@@ -1,8 +1,8 @@
 ---
 type: contract
 title: Канонический профиль пользователя
-status: planning
-updated: 2026-08-22
+status: active
+updated: 2026-09-28
 ---
 # Канонический профиль пользователя — Max Rudra
 
