@@ -17,7 +17,7 @@ timestamp: 2026-09-16
 | `provider_id` | `justwoker` |
 | `endpoint` | `https://api.justwoker.icu/v1` |
 | `compatibility` | New API / One API style (OpenAI-совместимый по контракту) |
-| `status` | 🟡 `DEGRADED` |
+| `status` | ✅ `ACTIVE` (Anthropic-транспорт, с 2026-09-28) |
 | `checked_at` | 2026-09-28 |
 | `source` | реферальная программа JustDoWork |
 | `account_kind` | `user/promotional referral` |
@@ -27,8 +27,20 @@ timestamp: 2026-09-16
 | `proxy` | Cloudflare challenge перед chat-endpoint (403 captcha на любом UA) |
 | `expiry` | неизвестен `[проверить]` |
 | `risks` | referral-баланс может быть неспендируем через API; chat под Cloudflare captcha |
-| `next_action` | для chat нужна браузерная сессия (cookies/JWT/JS-challenge), одного Bearer-ключа мало; подключение в конфиги отложено до снятия Cloudflare-блока |
-| `config_targets` | не подключён (DEGRADED — chat недоступен) |
+| `next_action` | подключён: TUI + M Code через `@ai-sdk/anthropic`, baseURL `https://api.justwoker.icu/v1`, модель `claude-opus-4-8`; OpenAI-путь остаётся закрыт CF |
+| `config_targets` | TUI `justwoker` + M Code `justwoker` — подключены (auth по id из auth.json, `apiKey` в конфигах нет) |
+
+## Probe evidence (2026-09-28, победа)
+
+- **`POST /v1/messages`** (заголовок `x-api-key`, реальная модель
+  `claude-opus-4-8`, `max_tokens: 8`) → **HTTP 200**, ответ `PROBE_OK`,
+  usage `input_tokens: 6655` (скрытая подсказка ~6.6K — учитывать в учёте),
+  `output_tokens: 3`, `cost: 0.000634`.
+- Ключ: Bearer для каталога + x-api-key для chat — один и тот же ключ,
+  разные заголовки. Ранее тестировали `/messages` только с несуществующей
+  моделью (отсюда ложный 403) — с реальной моделью путь открыт.
+- Подключение: провайдер `justwoker` через `aisdk:@ai-sdk/anthropic`
+  (TUI обе секции + M Code), модель `claude-opus-4-8`.
 
 ## Probe evidence (2026-09-16)
 
