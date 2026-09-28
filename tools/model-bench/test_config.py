@@ -73,6 +73,14 @@ def test_resolve_provider_from_jsonc(monkeypatch, tmp_path):
     assert models == ["am/free", "cx/gpt-6-astra"]
 
 
+def test_resolve_provider_uses_hermetic_fixture():
+    # autouse-фикстура подменила CONFIG_PATHS на tmp: реального ~/.config нет.
+    base_url, models = config.resolve_provider("anymodel")
+    assert base_url == "https://anymodel.test/v1"
+    assert models == ["am/free", "cx/gpt-6-astra"]
+    assert "anymodel.org" not in base_url
+
+
 def test_resolve_key_env_order(monkeypatch, tmp_path):
     monkeypatch.delenv("ANYMODEL_API_KEY", raising=False)
     monkeypatch.setattr(config, "VAULT_ROOT", tmp_path)

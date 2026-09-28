@@ -55,6 +55,9 @@ def render_matrix(artifacts):
             if meta.get("status", "OK") == "ERROR":
                 row.append("ERROR")
                 continue
+            if meta.get("status", "OK") == "TRUNCATED":
+                row.append("TRUNCATED")
+                continue
             score = meta.get("score")
             threshold = tasks.THRESHOLDS.get(g)
             if score is None:

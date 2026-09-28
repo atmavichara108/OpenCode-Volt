@@ -5,6 +5,7 @@
 коэффициентами (см. ``estimate_cost_usd``). Ключ никогда не логируется и не
 попадает в ошибки — всё прогоняется через ``redact``.
 """
+import http.client
 import json
 import logging
 import time
@@ -17,6 +18,7 @@ log = logging.getLogger("model-bench")
 
 RETRY_COUNT = 2
 RETRY_PAUSE_SECONDS = 2.0
+RETRY_429_PAUSE_SECONDS = 20.0
 
 # Таблица известных коэффициентов стоимости: (base_usd_per_1M, multiplier).
 # unknown → None (в артефакт попадёт cost_usd_est: null).
@@ -60,6 +62,11 @@ OBSERVED_TOKEN_MULTIPLIER = {
 }
 DEFAULT_TOKEN_MULTIPLIER = 4.0  # неизвестная модель: консервативно выше 1
 
+# Провайдеры с доказанным завышением usage: панель биллинга — истина, а
+# cost_usd_est (считается от raw usage) помечается как оценочный. Решения о
+# деньгах принимаются по tokens_estimated, а не по raw usage.
+KNOWN_INFLATED_USAGE = {"anymodel"}
+
 
 def _coefficient(provider_id, model_id):
     """Возвращает коэффициент стоимости или None, если модель неизвестна."""
@@ -101,12 +108,87 @@ def estimate_cost_usd(provider_id, model_id, usage):
     return COST_BASE_USD_PER_1M * coeff * total / 1_000_000
 
 
+def resolve_coefficient(provider, model, base_url=None, key=None, proxies=None, cli_price=None):
+    """Возвращает (coeff|None, source) коэффициента стоимости модели.
+
+    Приоритет источника:
+      1. ``table`` — таблица ``COST_COEFFICIENTS`` (+ free-tier правила
+         amd-radeon / anymodel am/nemotron*);
+      2. ``cli_price`` — флаг ``--price-per-1m`` (абсолют USD/1M → coeff =
+         price / ``COST_BASE_USD_PER_1M``);
+      3. ``live`` — живой ``GET /models`` (billing.coefficient или pricing);
+      4. ``None`` — цена не выдумывается (fetch-ошибка/неизвестная модель).
+    """
+    coeff = _coefficient(provider, model)
+    if coeff is not None:
+        return coeff, "table"
+    if cli_price is not None:
+        return cli_price / COST_BASE_USD_PER_1M, "cli_price"
+    if base_url and key:
+        coeff = _fetch_coefficient(base_url, key, proxies)
+        if coeff is not None:
+            return coeff, "live"
+    return None, None
+
+
+def _fetch_coefficient(base_url, key, proxies):
+    """Живой ``GET /models`` → коэффициент стоимости или None.
+
+    Парсит два формата:
+      - anymodel-стиль: ``billing.coefficient.input/output`` (коэффициенты,
+        берём max);
+      - абсолют: ``pricing.prompt/completion`` (USD/1M, берём max и делим на
+        ``COST_BASE_USD_PER_1M``).
+    Любая сетевая/парсинговая ошибка → None (цену не выдумываем).
+    """
+    url = base_url.rstrip("/") + "/models"
+    headers = {
+        "User-Agent": "opencode-vault-model-bench/0.1",
+        "Authorization": "Bearer " + key,
+    }
+    try:
+        opener = config.build_opener(proxies)
+        req = urllib.request.Request(url, headers=headers, method="GET")
+        resp = (
+            opener.open(req, timeout=30)
+            if opener
+            else urllib.request.urlopen(req, timeout=30)
+        )
+        raw = resp.read().decode("utf-8")
+        data = json.loads(raw)
+    except Exception:  # noqa: BLE001
+        return None
+
+    billing = (data.get("billing") or {}).get("coefficient") or {}
+    if isinstance(billing, dict):
+        vals = [
+            float(v)
+            for v in (billing.get("input"), billing.get("output"))
+            if isinstance(v, (int, float))
+        ]
+        if vals:
+            return max(vals)
+
+    pricing = data.get("pricing") or {}
+    if isinstance(pricing, dict):
+        vals = [
+            float(v)
+            for v in (pricing.get("prompt"), pricing.get("completion"))
+            if isinstance(v, (int, float))
+        ]
+        if vals:
+            return max(vals) / COST_BASE_USD_PER_1M
+    return None
+
+
 def chat(base_url, key, model, prompt, max_tokens, timeout=120, proxies=None):
     """Один запрос к chat/completions.
 
-    Возвращает (reply_text, usage_dict, latency_ms, error). ``error`` — пустая
-    строка при успехе, иначе структурное сообщение (без ключа). При сетевой
-    ошибке/5xx — до RETRY_COUNT повторов с паузой; 4xx — сразу ошибка.
+    Возвращает ``(reply_text, usage_dict, latency_ms, error, finish_reason)``.
+    ``error`` — пустая строка при успехе, иначе структурное сообщение (без
+    ключа); ``finish_reason`` — ``choices[0].finish_reason`` (OpenAI-стиль)
+    или None. При сетевой ошибке/5xx/429 — до RETRY_COUNT повторов с паузой
+    (для 429 — RETRY_429_PAUSE_SECONDS); прочие 4xx — сразу ошибка.
     """
     url = base_url.rstrip("/") + "/chat/completions"
     payload = {
@@ -123,6 +205,7 @@ def chat(base_url, key, model, prompt, max_tokens, timeout=120, proxies=None):
     opener = config.build_opener(proxies)
 
     last_err = ""
+    last_pause = RETRY_PAUSE_SECONDS
     for attempt in range(RETRY_COUNT + 1):
         try:
             req = urllib.request.Request(url, data=body, headers=headers, method="POST")
@@ -133,20 +216,34 @@ def chat(base_url, key, model, prompt, max_tokens, timeout=120, proxies=None):
             data = json.loads(raw)
             reply = _extract_reply(data)
             usage = data.get("usage") or {}
-            return reply, usage, latency_ms, ""
+            finish_reason = _extract_finish_reason(data)
+            return reply, usage, latency_ms, "", finish_reason
         except urllib.error.HTTPError as exc:
             code = exc.code
-            if 400 <= code < 500:
-                return "", {}, 0, _http_error(exc, key)
-            last_err = _http_error(exc, key)
+            if code == 429:
+                # 429 — ретраим (rate limit может сброситься), отдельная пауза.
+                last_err = _http_error(exc, key)
+                last_pause = RETRY_429_PAUSE_SECONDS
+            elif 400 <= code < 500:
+                return "", {}, 0, _http_error(exc, key), None
+            else:
+                last_err = _http_error(exc, key)
+                last_pause = RETRY_PAUSE_SECONDS
+        except http.client.HTTPException as exc:
+            # BadStatusLine / IncompleteRead / ResponseNotReady — сетевые сбои,
+            # ретраим как network (не падение процесса).
+            last_err = "network error: " + _redact_str(exc, key)
+            last_pause = RETRY_PAUSE_SECONDS
         except (urllib.error.URLError, TimeoutError, OSError) as exc:
             last_err = "network error: " + _redact_str(exc, key)
+            last_pause = RETRY_PAUSE_SECONDS
         except (json.JSONDecodeError, KeyError, ValueError) as exc:
             last_err = "parse error: " + _redact_str(exc, key)
+            last_pause = RETRY_PAUSE_SECONDS
         if attempt < RETRY_COUNT:
-            time.sleep(RETRY_PAUSE_SECONDS)
+            time.sleep(last_pause)
 
-    return "", {}, 0, last_err or "unknown error"
+    return "", {}, 0, last_err or "unknown error", None
 
 
 def _extract_reply(data):
@@ -156,6 +253,14 @@ def _extract_reply(data):
         return ""
     msg = choices[0].get("message") or {}
     return msg.get("content") or ""
+
+
+def _extract_finish_reason(data):
+    """Достаёт finish_reason из choices[0] (OpenAI-стиль) или None."""
+    choices = data.get("choices") or []
+    if not choices:
+        return None
+    return choices[0].get("finish_reason")
 
 
 def _redact_str(exc, key):

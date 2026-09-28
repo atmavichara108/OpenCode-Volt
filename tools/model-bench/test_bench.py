@@ -10,7 +10,7 @@ import config
 import tasks
 
 
-def _make_chat(reply_map=None):
+def _make_chat(reply_map=None, finish_reason="stop"):
     """Строит мок client.chat, возвращающий ответ по первому совпадению needle в промпте."""
 
     def fake_chat(base_url, key, model, prompt, max_tokens, timeout=120, proxies=None):
@@ -20,7 +20,7 @@ def _make_chat(reply_map=None):
                 if needle in prompt:
                     reply = r
                     break
-        return reply, {"prompt_tokens": 1, "completion_tokens": 1, "total_tokens": 2}, 10, ""
+        return reply, {"prompt_tokens": 1, "completion_tokens": 1, "total_tokens": 2}, 10, "", finish_reason
 
     return fake_chat
 
@@ -42,11 +42,43 @@ def test_run_gate_tools_all_pass(monkeypatch):
     assert res["status"] == "OK"
     assert res["error_count"] == 0
     assert res["cost_tokens"] == 2 * len(tasks.TOOLS_TASKS)
+    assert res["tokens_estimated"] > 0
+    assert res["finish_reasons"] == ["stop"]
+
+
+def test_run_gate_sets_finish_reason_tokens_estimated(monkeypatch):
+    monkeypatch.setattr(client, "chat", _make_chat(reply_map=TOOLS_REPLIES, finish_reason="stop"))
+    res = bench.run_gate("tools", "anymodel", "am/free", "http://x", "k", None, 1)
+    assert res["status"] == "OK"
+    assert res["finish_reasons"] == ["stop"]
+    assert res["tokens_estimated"] > 0
+    assert res["truncated_count"] == 0
+
+
+def test_run_gate_truncated_status(monkeypatch):
+    monkeypatch.setattr(client, "chat", _make_chat(finish_reason="length"))
+    res = bench.run_gate("tools", "anymodel", "am/free", "http://x", "k", None, 1)
+    # finish_reason=length → все ответы "OK" не валидный JSON → score 0,
+    # passed_threshold false → TRUNCATED
+    assert res["status"] == "TRUNCATED"
+    assert res["score"] is None
+    assert res["passed_threshold"] is None
+    assert res["truncated_count"] == len(tasks.TOOLS_TASKS)
+    assert res["finish_reasons"] == ["length"]
+
+
+def test_truncated_not_blocks_recommendation(monkeypatch):
+    gates = {
+        "tools": {"status": "TRUNCATED", "score": None, "passed_threshold": None},
+        "build": {"status": "OK", "passed_threshold": True},
+    }
+    assert "tools" not in bench.build_recommendation(gates)
+    assert "build" in bench.build_recommendation(gates)
 
 
 def _make_chat_error(err="HTTP 429: rate limited"):
     def fake_chat(base_url, key, model, prompt, max_tokens, timeout=120, proxies=None):
-        return "", {}, None, err
+        return "", {}, None, err, None
 
     return fake_chat
 
@@ -62,6 +94,8 @@ def test_run_gate_all_429_errors(monkeypatch):
     assert res["cost_tokens"] == 0
     assert res["latency_ms_median"] is None
     assert res["error_rate"] == 1.0
+    assert res["tokens_estimated"] > 0
+    assert res["truncated_count"] == 0
 
 
 def test_run_gate_all_503_errors(monkeypatch):
@@ -88,8 +122,8 @@ def test_run_gate_parse_error(monkeypatch):
     def fake_chat(base_url, key, model, prompt, max_tokens, timeout=120, proxies=None):
         err["count"] += 1
         if err["count"] == 1:
-            return "", {}, None, "parse error: synthetic response body"
-        return '{"name": "x", "age": 1}', {"total_tokens": 2}, 10, ""
+            return "", {}, None, "parse error: synthetic response body", None
+        return '{"name": "x", "age": 1}', {"total_tokens": 2}, 10, "", "stop"
 
     monkeypatch.setattr(client, "chat", fake_chat)
     res = bench.run_gate("tools", "anymodel", "am/free", "http://x", "k", None, 1)
@@ -107,8 +141,8 @@ def test_run_gate_mixed_partial_error(monkeypatch):
     def fake_chat(base_url, key, model, prompt, max_tokens, timeout=120, proxies=None):
         err["count"] += 1
         if err["count"] == 1:
-            return "", {}, None, "HTTP 429: rate limited"
-        return '{"name": "x", "age": 1}', {"total_tokens": 2}, 10, ""
+            return "", {}, None, "HTTP 429: rate limited", None
+        return '{"name": "x", "age": 1}', {"total_tokens": 2}, 10, "", "stop"
 
     monkeypatch.setattr(client, "chat", fake_chat)
     res = bench.run_gate("tools", "anymodel", "am/free", "http://x", "k", None, 1)
@@ -212,7 +246,7 @@ def test_unknown_model_blocked_without_force(monkeypatch, tmp_path):
 
     def fake_chat(*a, **k):
         calls["n"] += 1
-        return "OK", {"total_tokens": 2}, 10, ""
+        return "OK", {"total_tokens": 2}, 10, "", "stop"
 
     monkeypatch.setattr(client, "chat", fake_chat)
     code = bench.main([
@@ -228,7 +262,7 @@ def test_unknown_model_passes_with_force(monkeypatch, tmp_path):
 
     def fake_chat(base_url, key, model, prompt, max_tokens, timeout=120, proxies=None):
         calls["n"] += 1
-        return "OK", {"prompt_tokens": 1, "completion_tokens": 1, "total_tokens": 2}, 10, ""
+        return "OK", {"prompt_tokens": 1, "completion_tokens": 1, "total_tokens": 2}, 10, "", "stop"
 
     monkeypatch.setattr(client, "chat", fake_chat)
     code = bench.main([
@@ -268,7 +302,7 @@ def test_invalid_budget_returns_3_no_calls(monkeypatch, budget):
 
     def fake_chat(*a, **k):
         calls["n"] += 1
-        return "OK", {"total_tokens": 2}, 10, ""
+        return "OK", {"total_tokens": 2}, 10, "", "stop"
 
     monkeypatch.setattr(client, "chat", fake_chat)
     code = bench.main([
@@ -286,7 +320,7 @@ def test_duplicate_gates_run_once(monkeypatch, tmp_path):
 
     def fake_chat(base_url, key, model, prompt, max_tokens, timeout=120, proxies=None):
         calls["n"] += 1
-        return "OK", {"prompt_tokens": 1, "completion_tokens": 1, "total_tokens": 2}, 10, ""
+        return "OK", {"prompt_tokens": 1, "completion_tokens": 1, "total_tokens": 2}, 10, "", "stop"
 
     monkeypatch.setattr(client, "chat", fake_chat)
     code = bench.main([
@@ -346,7 +380,7 @@ def _make_chat_expensive():
 
     def fake_chat(base_url, key, model, prompt, max_tokens, timeout=120, proxies=None):
         calls["n"] += 1
-        return "OK", {"prompt_tokens": 1, "completion_tokens": 49999, "total_tokens": 50000}, 10, ""
+        return "OK", {"prompt_tokens": 1, "completion_tokens": 49999, "total_tokens": 50000}, 10, "", "stop"
 
     return fake_chat, calls
 
@@ -417,3 +451,51 @@ def test_skip_matrix_no_matrix_file(monkeypatch, tmp_path):
     assert code == 0
     assert (tmp_path / "anymodel__am_free.json").exists()
     assert not (tmp_path / "matrix.md").exists()
+
+
+# --- tokens_estimated (независимо от usage) ----------------------------------
+
+def test_tokens_estimated_independent_of_usage(monkeypatch):
+    def fake_chat(base_url, key, model, prompt, max_tokens, timeout=120, proxies=None):
+        return "OK", {}, 10, "", "stop"
+
+    monkeypatch.setattr(client, "chat", fake_chat)
+    res = bench.run_gate("fast", "anymodel", "am/free", "http://x", "k", None, 1)
+    assert res["cost_tokens"] == 0  # raw usage пуст
+    assert res["tokens_estimated"] > 0  # оценка по промптам не зависит от usage
+
+
+# --- --price-per-1m ----------------------------------------------------------
+
+@pytest.mark.parametrize("price", ["nan", "inf", "-1", "0"])
+def test_invalid_price_per_1m_returns_3(monkeypatch, price):
+    calls = {"n": 0}
+
+    def fake_chat(*a, **k):
+        calls["n"] += 1
+        return "OK", {"total_tokens": 2}, 10, "", "stop"
+
+    monkeypatch.setattr(client, "chat", fake_chat)
+    code = bench.main([
+        "--provider", "anymodel", "--model", "am/free",
+        "--gates", "tools", "--price-per-1m", price,
+    ])
+    assert code == 3
+    assert calls["n"] == 0
+
+
+def test_price_per_1m_allows_unknown_model(monkeypatch, tmp_path):
+    calls = {"n": 0}
+
+    def fake_chat(base_url, key, model, prompt, max_tokens, timeout=120, proxies=None):
+        calls["n"] += 1
+        return '{"name": "x", "age": 1}', {"total_tokens": 2}, 10, "", "stop"
+
+    monkeypatch.setattr(client, "chat", fake_chat)
+    code = bench.main([
+        "--provider", "anymodel", "--model", "unknown/zzz",
+        "--gates", "tools", "--k", "1", "--price-per-1m", "0.10",
+        "--out", str(tmp_path),
+    ])
+    assert code == 0
+    assert calls["n"] == len(tasks.TOOLS_TASKS)
