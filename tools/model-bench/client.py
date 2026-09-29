@@ -38,6 +38,9 @@ COST_COEFFICIENTS = {
     ("anymodel", "kmc/kimi-for-coding"): 1.5,
     ("amd-radeon", None): 0,  # весь провайдер — free tier
     ("apinex", None): 0,  # весь провайдер — free tier
+    # modelhub: free:true в каталоге + pricing 0, smoke.probe 2026-09-29.
+    ("modelhub", "gemini-3.1-flash-lite"): 0,
+    ("modelhub", "codestral-latest"): 0,
 }
 
 # Наблюдаемые множители расхода токенов (факт/оценка) по моделям.

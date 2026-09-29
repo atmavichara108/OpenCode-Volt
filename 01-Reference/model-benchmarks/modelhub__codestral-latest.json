@@ -1,0 +1,50 @@
+{
+  "provider_id": "modelhub",
+  "model_id": "codestral-latest",
+  "benchmark_version": "0.2.0",
+  "date": "2026-09-29T01:41:25Z",
+  "gates": {
+    "tools": {
+      "status": "OK",
+      "score": 1.0,
+      "passed_threshold": true,
+      "attempts": 5,
+      "error_count": 0,
+      "cost_tokens": 1424,
+      "tokens_estimated": 7647,
+      "cost_usd_est": 0.0,
+      "latency_ms_median": 1275,
+      "notes": "",
+      "truncated_count": 0,
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    "fast": {
+      "status": "OK",
+      "score": 1.0,
+      "passed_threshold": null,
+      "attempts": 3,
+      "error_count": 0,
+      "cost_tokens": 630,
+      "tokens_estimated": 57,
+      "cost_usd_est": 0.0,
+      "latency_ms_median": 1082,
+      "notes": "",
+      "truncated_count": 0,
+      "finish_reasons": [
+        "stop"
+      ]
+    }
+  },
+  "recommendation": [
+    "tools"
+  ],
+  "advisory": true,
+  "task_set_hash": "2fcf9f19daa3",
+  "k": 1,
+  "budget_usd": 0.02,
+  "spent_usd_est": 0.0,
+  "budget_stop": false,
+  "gates_skipped": []
+}
