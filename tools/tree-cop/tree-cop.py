@@ -166,7 +166,8 @@ def cmd_stash_foreign(args) -> int:
         out({"ok": True, "stashed": [], "note": "чужой грязи нет"})
         return 0
     # Stash только чужих путей (pathspec) — своё остаётся в дереве.
-    code, _ = run_git("stash", "push", "-m", args.message, "--",
+    # -u обязателен: untracked-пути иначе не stash-ятся (pathspec их не видит).
+    code, _ = run_git("stash", "push", "-u", "-m", args.message, "--",
                       *foreign_paths)
     if code != 0:
         return fail("stash не удался — дерево не тронуто")
