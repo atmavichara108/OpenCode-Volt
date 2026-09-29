@@ -125,7 +125,9 @@ def origin_ahead() -> tuple[int, int]:
     if code != 0:
         return -1, -1
     try:
-        ahead, behind = (int(x) for x in text.split())
+        # --left-right: левая колонка — коммиты только в origin/main (behind),
+        # правая — только в HEAD (ahead). Порядок важен.
+        behind, ahead = (int(x) for x in text.split())
     except ValueError:
         return -1, -1
     return ahead, behind

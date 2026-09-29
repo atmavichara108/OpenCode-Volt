@@ -125,12 +125,25 @@ def test_verdict_go_when_only_mine(capsys):
 
 
 def test_verdict_stop_when_origin_main_ahead(capsys):
-    tc.run_git = _fake_git(revlist="0\t2")
+    # rev-list --left-right: слева behind, справа ahead.
+    tc.run_git = _fake_git(revlist="2\t0")
     code = tc.cmd_status(type("A", (), {"mine": []})())
     payload = tc.json.loads(capsys.readouterr().out)
     assert code == 1
     assert payload["origin_main"]["behind"] == 2
+    assert payload["origin_main"]["ahead"] == 0
     assert any("origin/main" in r for r in payload["reasons"])
+
+
+def test_own_ahead_is_not_behind(capsys):
+    """Свой аванс — не отставание: GO, иначе коп вечно блокирует выкладку."""
+    tc.run_git = _fake_git(revlist="0\t2")
+    code = tc.cmd_status(type("A", (), {"mine": []})())
+    payload = tc.json.loads(capsys.readouterr().out)
+    assert code == 0
+    assert payload["verdict"] == "GO"
+    assert payload["origin_main"] == {"ahead": 2, "behind": 0}
+    assert payload["reasons"] == []
 
 
 def test_stash_foreign_paths_only(monkeypatch):
