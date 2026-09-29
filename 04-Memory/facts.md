@@ -690,3 +690,13 @@ timestamp: 2026-08-17
   tools 5/5 + fast, $0. TUI + M Code подключены. `kimi-k3` мёртв на
   апстриме (000). Ключ чужой (`MODELHUB_API_KEY` в `.env`) — только
   free-модели, экономия обязательна. | 2026-09-29 |
+
+- **DeepSeek local bridge ACTIVE** (2026-09-29): мост к free веб-чату
+  (`~/Projects/deepseek-bridge`), PROBE_OK + tool_calls сквозняком, бенч
+  tools 5/5 + fast, $0. systemd-unit `deepseek-bridge` (enable/active,
+  прокси вычищены). TUI + M Code (`local-deepseek`), плагин дисциплины.
+  Запросы строго по очереди, аккаунт не хаммерить. | 2026-09-29 |
+- **Фоновый `opencode serve` кэширует список провайдеров**: новые provider id
+  появляются в `opencode models` только после рестарта сервиса (рестарт
+  TUI-сессии недостаточен). Проверено на modelhub/local-deepseek.
+  | 2026-09-29 |

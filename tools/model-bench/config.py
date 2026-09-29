@@ -22,6 +22,7 @@ PROVIDER_ENV = {
     "linaliapi": "LINALIAPI_API_KEY",
     "apinex": "APINEX_API_KEY",
     "modelhub": "MODELHUB_API_KEY",
+    "local-deepseek": "LOCAL_DEEPSEEK_API_KEY",  # unset: мост игнорирует ключ
 }
 
 # Порог бюджета на один стандартный прогон (k=1).
