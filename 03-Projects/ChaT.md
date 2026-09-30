@@ -32,7 +32,7 @@ description: Новая территория, документируемая ч�
 - [[/home/rudra/Projects/ChaT/registers/hypotheses|Гипотезы]]
 - [[/home/rudra/Projects/ChaT/registers/decisions|Решения]]
 - [[/home/rudra/Projects/ChaT/registers/questions|Вопросы]]
-- [[/home/rudra/Projects/ChaT/.opencode/agents/curator|Curator]]
+- [[/home/rudra/Projects/ChaT/.mcode/agents/curator|Curator]]
 - [[/home/rudra/Projects/ChaT/legacy/notion-reference|Legacy: Notion-референс]]
 
 ## Агенты (.opencode/agents/)
