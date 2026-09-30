@@ -43,6 +43,10 @@ timestamp: 2026-07-02
   `task/<slug>`; коммит прямо в `main` запрещён pre-commit хук-ом. Горячие файлы
   (`TASKS.md`, `04-Memory/active-context.md`, `tools/ecosystem-map/registry.json`, `00-INDEX.md`, `AGENTS.md`) —
   только через flock-lease. Метод: [[02-Methods/git-worktree-isolation]].
+  Новая сессия — новая ветка (глобальный branch-auto; при грязном дереве только
+  ref + инструкция). После выкладки — свежая ветка, не оставаться в `main`.
+  Намёк на конфликт (unmerged-пути, `MERGE_HEAD`, маркеры `<<<<<<<`) — новая
+  `task/*`-ветка с суффиксом `-conflict`, разбор только в ней.
 
 ## Execution specs
 - Каждый execution spec живёт в репозитории агента, который его исполняет:
