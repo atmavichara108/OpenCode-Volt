@@ -228,7 +228,7 @@ PASS (7 подкоманд). Venv-нюанс: под GUI M Code direnv не по
   маркера: линия резюма позволяет дочитать файл без перечитки.
 
 ## Что это меняет для workflows волта
-1. **[[.opencode/command/audit]] → параллельный fan-out:** `task(explore)` по проектам
+1. **[[.mcode/command/audit]] → параллельный fan-out:** `task(explore)` по проектам
    вместо последовательного git pull-обхода.
 2. **verifier-pattern:** машиностроимые гейты — `verify` с кэшем; acceptance — verify-subagent по diff.
 3. **Orchestration protocol:** `peer_role` claims вместо переговоров; контроль хопов встроен.
