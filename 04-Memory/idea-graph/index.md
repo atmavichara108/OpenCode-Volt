@@ -51,6 +51,11 @@ peer-comms (канон «на связи»):
 - первый корректный двусторонний обмен: write доставлен соседу
   `ses_effd908b3ffeNnpC0PZ4zkIf18` с моделью `opencode-go/glm-5.3-flash` —
   `n-0056` confirmed-write
+- `n-0056` понижен до `candidate`/one-way: ack соседа не отправлен; обновить
+  до `accepted` после получения ack — `n-0057` peer-agreed-correction
+- `n-0058`: ack librarian доставлен соседу (позиционный write с моделью
+  отправителя); двусторонний обмен COMPLETE — `n-0056` → accepted, `n-0057`
+  исполнено
 
 ## event — события-гейты
 

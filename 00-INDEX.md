@@ -36,6 +36,7 @@ timestamp: 2026-09-01
 | prod-monitor | инфраструктура | Prometheus/Python/Bash | — | [[prod-monitor]] | 🟢 planning |
 | rudra-ai | mobile/ai | Kotlin/Jetpack Compose | — | [[rudra-ai]] | 🟢 planning |
 | AndroidOS | umbrella mobile/ecosystem | Android / OpenCode / offline-first | planned | [[AndroidOS]] | 🟢 planning |
+| recruiting-hr | коммерция | Python / mammoth / markdownify | — | [[recruiting-hr]] | 🟡 bootstrap |
 
 > 📊 **Сводка:** `/audit` — проверить все проекты · Таблица статусов методов ниже · Новые проекты в planning
 
@@ -48,7 +49,7 @@ timestamp: 2026-09-01
 [[tools/GTweak]] — Windows-твикер (редко, для чужой машины)
 
 ## Methods (мои приёмы)
-[[closed-loop]] · [[verifier-pattern]] · [[context-as-docs]] · [[memory-management]] · [[model-routing]] · [[capability-routing]] · [[distill-pattern]] · [[multi-agent-pipeline]] · [[tool-integration-pattern]] · [[promo-provider-protocol]]
+[[closed-loop]] · [[verifier-pattern]] · [[context-as-docs]] · [[memory-management]] · [[model-routing]] · [[capability-routing]] · [[distill-pattern]] · [[multi-agent-pipeline]] · [[tool-integration-pattern]] · [[promo-provider-protocol]] · [[peer-comms]]
 
 ### Cross-project contracts
 [[user-profile-contract]] · [[06-Audits/2026-08-22-androidos-open-source-first]] · [[TASKS]] T-103–T-105

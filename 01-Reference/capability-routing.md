@@ -16,6 +16,7 @@ timestamp: 2026-08-29
 | `quality-review` | `reviewer` | `runtime-smoke-confirmed` | only exact dated smoke; [[04-Memory/route-log/2026-08-29-reviewer-smoke]] |
 | `orchestration` | `librarian` | `runtime-smoke-confirmed` | only exact dated smoke; [[04-Memory/route-log/2026-08-29-orchestration-smoke]] |
 | `meta-infrastructure` | `meta` | `registry/documented` | global infrastructure changes/audit; runtime availability requires evidence |
+| `peer-comms` | `librarian` | `registry/documented` | global; `peer-comms.md`; «на связи» через opencode run/api + idea-graph |
 
 `system-audit -> sysop` подтверждён только для exact global primary smoke. Это
 не orchestration/general rollout и не разрешение использовать `sysop` как task
@@ -29,6 +30,14 @@ subagent: `sysop` работает в режиме `primary`.
 `sysop` остаётся read-only. `system-ops` apply — отдельный local extension и
 отдельный маршрут с собственным approval и acceptance; эта запись его не
 подтверждает.
+
+### Канал «на связи» (peer-comms)
+
+`peer-comms` — контрольный канал координации параллельных сессий через
+`opencode run -s <sessionID> --prompt "..."` (write), `opencode api/session
+export` (read) и общее append-only поле `04-Memory/idea-graph/` (common field).
+Общение ≠ авторизация: письмо соседу не создаёт задач и не даёт прав, работает
+только явный подтверждённый scope. Механизм — [[02-Methods/peer-comms]].
 
 ## Ecosystem orchestration boundary
 
