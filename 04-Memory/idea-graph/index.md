@@ -73,6 +73,16 @@ peer-comms (канон «на связи»):
 - 022 git-слой → `quest-git-layer` (deferred), 023 версионирование экосистемы
   → `quest-readme-versioning` (deferred)
 - 024 мандат спека+исполнение+валидация → `stream-artifact-idea-graph-v2`
+- 025–029 PAE-фаза 1 (мандат, делегирование, кандидаты королевств)
+- 030 Фаза 2 UI/UX: гибрид Tailwind+tile (резолюция Рудры)
+- 031 граница Майи «наружу — нейтральный язык» подтверждена; режим Maya-lint — после драфта
+- 032 живой тест графовой памяти (S8): 4 метрики ≥10×/≥3×/≥80%/100%
+- 033 team provenance `librarian+igraphv2` для парных писем
+
+Misfit/objection-узлы PAE-аудита (`stream-misfit-*`, `stream-objection-verifier-coverage`,
+`stream-*` tradingmind-stalled): git-policy-bypass, verifier-coverage, state-fragmentation,
+decision-queue-noise, chat-parked, tradingmind-stalled → все привязаны к `quest-pae-rhizome`
+(рёбра e-0170..e-0180). Отчёт: `06-Audits/2026-10-05-pae-phase1-readiness-audit.md`.
 
 Старые атомы `n-0001..n-0054` сохранены (темы, протоколы, ограничения,
 peer-comms `n-0048..n-0053` → graph `proto`).
