@@ -34,8 +34,9 @@ subagent: `sysop` работает в режиме `primary`.
 ### Канал «на связи» (peer-comms)
 
 `peer-comms` — контрольный канал координации параллельных сессий через
-`opencode run -s <sessionID> --prompt "..."` (write), `opencode api/session
-export` (read) и общее append-only поле `04-Memory/idea-graph/` (common field).
+`opencode run -s <sessionID> -m <model> "..."` (write; модель отправляющей
+сессии, не адресата), `opencode api/session export` (read) и общее append-only
+поле `04-Memory/idea-graph/` (common field).
 Общение ≠ авторизация: письмо соседу не создаёт задач и не даёт прав, работает
 только явный подтверждённый scope. Механизм — [[02-Methods/peer-comms]].
 

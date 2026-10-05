@@ -1,13 +1,13 @@
 ---
 type: VibeOS
 title: VibeOS — Персональная система вайбкодинга
-version: 0.3.1
+version: 0.4
 description: Концептуальный дашборд-путеводитель по стилю, методам, проектам и философии Max Rudra как вайбкодера.
-timestamp: 2026-07-07
+timestamp: 2026-10-05
 tags: [meta, system, vibe-coding]
 ---
 
-# VibeOS v0.3.1 — Персональная система вайбкодинга
+# VibeOS v0.4 — Персональная система вайбкодинга
 
 > Это не журнал. Это концептуальный слепок того, как я кодирую и какие экосистемы и пайплайны создаю с ИИ. Своеобразный дашборд, показывает какие подходы и 
 > приёмы использую, какие проекты веду и куда расту. Версионируется вместе со
@@ -20,6 +20,10 @@ tags: [meta, system, vibe-coding]
 | Раздел                                                              | О чём                                                   |
 | ------------------------------------------------------------------- | ------------------------------------------------------- |
 | [[#Философия\|Философия]]                                           | Как я мыслю вайбкодинг, принципы, нетривиальные решения |
+| [[#Сейчас кипит\|Сейчас кипит]]                                     | Активные лаборатории и evidence                   |
+| [[#Изящные решения\|Изящные решения]]                               | Методология и экстремальный вайбкодинг            |
+| [[#Память и эволюция графов\|Память и эволюция графов]]              | Файловая память, flush и idea-graph                |
+| [[#Витрины проектов\|Витрины проектов]]                             | Человеческие входы в проекты                       |
 | [[#Система\|Система]]                                               | Как устроена моя экосистема: волт, OpenCode, проекты    |
 | [[#Инструменты\|Инструменты]]                                       | Внешние API как детерминированные инструменты (tools/)  |
 | [[#Методы\|Методы]]                                                 | Все приёмы с реальным статусом внедрения                |
@@ -29,6 +33,127 @@ tags: [meta, system, vibe-coding]
 | [[#Нетривиальные решения\|Нетривиальные решения]]                   | Что отличает мою систему от типовой                     |
 | [[#Вектор роста\|Вектор роста]]                                     | Куда развиваюсь, какие навыки/методы осваиваю           |
 | [[#Чейнджлог\|Чейнджлог]]                                           | История версий VibeOS                                   |
+
+---
+
+## Витринный слой
+
+VibeOS — витрина экосистемы: один канон, два представления. Этот Markdown
+предназначен для Obsidian и глубины; [HTML-витрина](docs/vibeos/index.html) —
+для offline-веба и будущего GitHub Pages. Устойчивость здесь означает
+**биоразнообразие**: разные проекты, роли и методы усиливают друг друга, не
+сливаясь в один монолит.
+
+### Сейчас кипит
+
+| Лаборатория | Зачем | Статус | Evidence |
+|---|---|---|---|
+| **peer-comms** | Общение параллельных сессий через `opencode run -s <sessionID> -m <model>` и общее поле; `-m` обязателен для отправляющей модели | 🟡 метод proposed | [[02-Methods/peer-comms]], [[04-Memory/idea-graph/README]] |
+| **idea-graph** | Из эксперимента двух сессий — в append-only поле nodes/edges/protocol с provenance | ✅ валидатор работает | [[04-Memory/idea-graph/README]], [[tools/idea-graph/validate.mjs]] |
+| **decision-queue** | Дилеммы и approval-gates не теряются в разговоре | ✅ runtime slice; acceptance pending | [[.mcode/skills/decision-queue/SKILL]], [[.mcode/command/decisions]], [[control-plane/decision-queue/SCHEMA]] |
+| **key-rotator** | Операционно ротировать ключи без попадания секретов в репозиторий | [проверить] | [[tools/key-rotator/README]] |
+| **model-bench** | Сравнивать capability/стоимость моделей до маршрутизации | ✅ реализация, дальнейшие фиксы planned | [[tools/model-bench/README]], [[TASKS#T-146]] |
+| **mcp-readonly** | Интегрировать MCP только в read-only границах | [проверить] / часть мостов frozen | [[tools/mcp-readonly/server.py]], [[TASKS#T-108]] |
+| **mem-index** | Быстро находить durable facts без перечитывания волта | [проверить] | [[tools/mem-index/README]] |
+| **noop-guard** | Эксперимент с нуджем молчаливых ходов | ❌ упразднён 2026-09-23: бесконечно перезапускал агента и жёг токены | [[TASKS#T-136]], [[03-Projects/dotfiles#Состояние]] |
+
+### Изящные решения
+
+| Проблема | Изящный ход | Где живёт |
+|---|---|---|
+| Контекст разрастается и дорожает | **replay-budget**: cap старых tool-результатов, head/tail и защита последних 40 KB | `~/.config/opencode/plugins/replay-budget.ts`, [[TASKS#T-135]] |
+| Агент повторяет один tool-call | Нативный **doom-loop** детектор; авто-deny — конфигурационный гейт, не самописный watchdog | [[TASKS#T-136]], `doom_loop` |
+| Вставленный текст притворяется системным | **input-security/sanitization**: экранирование transport markup и redaction секретов | `~/.config/opencode/plugins/input-security.ts`, [[TASKS#T-137]] |
+| Компакция убивает знания | **session-flush**: durable summary и session-log до/во время idle | `~/.config/opencode/plugins/session-flush*`, [[02-Methods/memory-management]] |
+| Повторная проверка тратит время | **verify-кэш** по tree-hash: тот же вход не проверять вслепую | `tools/verify-cache/`, [[TASKS#T-135]] |
+| Параллельные сессии сталкиваются | **peer_role/peer_lease**: сигнализация ролей и владения через файл, без локов | `tools/peers/peer_role.py`, [[02-Methods/peer-comms]] |
+| Планировщик не должен писать код | **plan→build через task-tool**: права доступа закрепляют разделение думать/делать | SERPlux, [[02-Methods/multi-agent-pipeline]] |
+| Слои замедляют маленький продукт | **FLAT layout**: модули в корне как осознанный контракт | SERPlux, [[03-Projects/SERPlux]] |
+| Несколько клиентов требуют копий приложений | **Мультиклиентность через схему БД**: clients/positions/labels, идемпотентная миграция | SERPlux, [[03-Projects/SERPlux]] |
+
+### Память и эволюция графов
+
+- **Три уровня файловой памяти:** `04-Memory/active-context.md` — текущий
+  контекст; `facts.md` — устойчивые факты; `session-log/` — последовательность
+  событий. Это разные сроки жизни, а не три копии одного текста.
+- **Pre-compaction flush** сбрасывает решения и handoff до сжатия. В Vault это
+  закреплено в memory-management и session-flush-плагине.
+- **idea-graph** — `nodes/`, `edges/`, `protocol` в append-only JSONL; каждая
+  запись несёт provenance `quoted` или `derived`. Граф переживает compact и
+  handoff, потому что живёт на диске, а не в окне модели.
+- **Memory over claude-mem:** файлы версионируются Git, доступны offline,
+  прозрачны для аудита и не зависят от внешнего сервиса/провайдера.
+
+### Витрины проектов
+
+- **recruiting-hr — bootstrap-кейс.** Материалы docx→md и агентский слой уже
+  заведены; операционная норма — 5 человек в неделю, целевой рывок — 20 за
+  2–3 дня [проверить по первоисточнику карточки/кейса]. Метрика перехода к
+  второму объекту — 10 найденных и пристроенных рабочих. [[03-Projects/recruiting-hr]]
+- **ChaT — 8 агентов knowledge-operations.** Новая территория собирается
+  интервью; legacy Notion остаётся референсом, а профильные записи проходят
+  approval-gated governor. [[03-Projects/ChaT]]
+- **AndroidOS — evolution/classifier.** Umbrella mobile/offline-first в
+  planning: Personal Assistant ведёт inbox→structure, а путь к on-device
+  определяется исследованием и acceptance, не декларацией. Laya vs Jev —
+  [проверить: evidence в карточке не найден]. [[03-Projects/AndroidOS]]
+- **M Code Desktop — майнинг-станция фич.** Изучаем внутренние органы и
+  переносим ордены в TUI: replay budget, peers, verify-кэш и браузер. Это
+  источник решений, а не отдельный runtime-клей. [[01-Reference/mcode-desktop]]
+
+### Философский слой как инструкция
+
+| Принцип | Операционный механизм |
+|---|---|
+| Документация — инфраструктура | Сначала canonical spec/карточка и DoD, затем build; evidence возвращается в документ |
+| Метод важнее промпта | Повторяемый паттерн дистиллируется в команду; в Vault 12 команд и отдельные skills |
+| Централизованное знание | Vault хранит canonical facts, проекты ссылаются через wikilinks, не копируют их |
+| Агенты — инструменты | plan/build/reviewer/verifier получают разные права и named route |
+| Системный инженер, не prompt-инженер | Проектировать loop и гейты: capture→classify→route→verify |
+| Память — диск, а не RAM | flush-протокол + session-flush перед compaction |
+| Общение ≠ авторизация | peer-comms передаёт сигнал/письмо; approval и task-dispatch остаются отдельным гейтом |
+
+### Mermaid: три живых контура
+
+```mermaid
+graph LR
+  M[Методы] --> S[SERPlux]
+  M --> D[dotfiles]
+  M --> V[Vault]
+  M --> C[ChaT]
+  M --> A[AndroidOS]
+  VP[verifier-pattern] --> S
+  MM[memory-management] --> D
+  TIP[tool-integration-pattern] --> V
+```
+
+```mermaid
+flow LR
+  capture[Capture] --> classify[Classify]
+  classify --> route[Route named role]
+  route --> verify[Verify PASS/FAIL]
+```
+
+```mermaid
+flow LR
+  write[peer write: opencode run -s -m] --> field[(idea-graph common field)]
+  field --> read[peer read/export]
+  read --> write
+```
+
+### Живой режим
+
+Текст — карта смыслов, а [Pip-Boy host: `tools/ecosystem-map/`](tools/ecosystem-map/)
+— интерактивное продолжение витрины: фильтры, зависимости, acceptance и
+Kanban-проекция живого registry. Карта read-only и не заменяет этот канон.
+
+### Чарты витрины
+
+Перегенерация одной командой: `python3 tools/vibeos-vitrina/charts.py`.
+
+![Heatmap внедрения методов](tools/vibeos-vitrina/generated/methods-heatmap.svg)
+![Timeline версий](tools/vibeos-vitrina/generated/version-timeline.svg)
+![TASKS burndown](tools/vibeos-vitrina/generated/tasks-burndown.svg)
 
 ---
 
@@ -108,7 +233,8 @@ tags: [meta, system, vibe-coding]
 |-----------|------|
 | OpenCode | Основной IDE-фреймворк с ИИ-агентами |
 | LinaliAPI | Провайдер моделей (linaliapi/*) |
-| GLM 5.3 Luna | **Основная модель librarian** (`opencode-go/gpt-5.6-luna`) |
+| GLM 5.3 Flash | Глобальная модель по умолчанию (`opencode-go/glm-5.3-flash` в opencode.json) |
+| librarian-модель | **Основная модель librarian** — `opencode-go/gpt-5.6-luna` |
 | M Code Desktop | Майнинг-станция фич (форк OpenCode, ордены портируются в TUI) |
 | Obsidian | Редактор markdown для волта |
 | Git + GitHub | Версионирование всего (волт + проекты) |
@@ -130,6 +256,13 @@ tags: [meta, system, vibe-coding]
 | `tools/playwright-browser/` | Браузерный тул: JS-рендеринг, снапшот→element-ref, сессии | ✅ (T-134) |
 | `tools/verify-cache/` | Гейты волта с tree-hash кэшем (пустые .md + викилинки) | ✅ (P6 #33) |
 | `tools/peers/` | Файл-реестр ролей параллельных сессий (claim/holds/release) | ✅ (P6 #31) |
+| `tools/idea-graph/` | Валидатор общего append-only графа (`validate.mjs`); данные графа находятся в `04-Memory/idea-graph/` | ✅ |
+| `tools/tree-cop/` | Чистота дерева и выкладка ветки (stash-foreign, именованные stash) | [проверить] |
+| `tools/mem-index/` | Индекс памяти | [проверить] |
+| `tools/model-bench/` | Бенч моделей | [проверить] |
+| `tools/key-rotator/` | Ротация ключей | [проверить] |
+| `tools/mcp-readonly/` | Read-only MCP-доступ | [проверить] |
+| `tools/agent-ops/` | Операции над агентами | [проверить] |
 
 Принцип: **LLM думает, API делает.** Инструмент получает данные (через API),
 librarian анализирует и раскладывает. Снижение токенов, повышение надёжности.
@@ -151,7 +284,12 @@ librarian анализирует и раскладывает. Снижение �
 | [[02-Methods/closed-loop\|closed-loop]] | ✅ | ❌ | ✅ | ❌ |
 | [[02-Methods/verifier-pattern\|verifier-pattern]] | ✅ | ❌ | ✅ | ❌ |
 | [[02-Methods/multi-agent-pipeline\|multi-agent-pipeline]] | ✅ | ❌ | ✅ | ❌ |
-| [[02-Methods/tool-integration-pattern\|tool-integration-pattern]] | ➖ | ➖ | ➖ | 🟡 |
+| [[02-Methods/tool-integration-pattern\|tool-integration-pattern]] | ➖ | ➖ | ➖ | ✅ stable |
+| [[02-Methods/capability-routing\|capability-routing]] | [проверить] | [проверить] | [проверить] | ✅ stable |
+| [[02-Methods/git-worktree-isolation\|git-worktree-isolation]] | ➖ | ➖ | ➖ | ✅ stable |
+| [[02-Methods/parallel-sessions\|parallel-sessions]] | ➖ | ➖ | ➖ | proposed |
+| [[02-Methods/peer-comms\|peer-comms]] | ➖ | ➖ | ➖ | proposed |
+| [[02-Methods/promo-provider-protocol\|promo-provider-protocol]] | ➖ | ➖ | ➖ | 🟡 |
 
 ### Легенда
 
@@ -159,14 +297,17 @@ librarian анализирует и раскладывает. Снижение �
 - 🟡 **Частично** — есть зачатки, но не формализован/не автоматизирован
 - ❌ **Не внедрён** — нет реализации, кандидат на апгрейд
 - ➖ **Не применимо** — контекст проекта не предполагает этот метод
+- proposed / design-contract **В проекте** — метод описан, внедрение впереди
+- [проверить] **Нет evidence** — статус по карточке не подтверждён репо
 
 ### Развёрнутый анализ
 
 #### ✅ distill-pattern (dv-hub + vault)
 dv-hub — 7 команд (`/morning`, `/spec`, `/review`, `/hygiene`, `/sync-context`,
-`/sync-context-self`, `/sync-task`). vault — 9 команд (`/ask`, `/capture`,
-`/inbox`, `/project`, `/commit`, `/project-add`, `/audit`, `/done`,
-`/distill-pipeline`). Образец для SERPlux.
+`/sync-context-self`, `/sync-task`). vault — 12 команд (`/ask`, `/audit`,
+`/capture`, `/commit`, `/decisions`, `/distill-pipeline`, `/handoff`, `/inbox`,
+`/project`, `/project-add`, `/route`, `/verify`; команды `/done` нет).
+Образец для SERPlux.
 
 #### ✅ context-as-docs (vault) + 🟡 (SERPlux, dv-hub)
 - **vault**: AGENTS.md + Architecture.md + OKF-структура = документация как
@@ -220,10 +361,10 @@ dv-hub — 7 команд (`/morning`, `/spec`, `/review`, `/hygiene`, `/sync-co
   (collector-dev, reviewer, ui-dev, infra-dev), 5 команд-пайплайнов.
   plan делегирует исполнение build через task-tool (`task: { build: allow }`).
 
-#### 🟡 tool-integration-pattern (vault)
-vault — пилотная реализация. Директория `tools/` создана, первый инструмент
-`tools/telegram-capture/` (T-062) в разработке. Команда `/capture` будет
-извлекать посты из Telegram-группы @inbox_tools, librarian классифицировать.
+#### ✅ tool-integration-pattern (vault)
+vault — эталонная реализация. Директория `tools/` (12 инструментов, см.
+[[#Инструменты\|Инструменты]]): `telegram-capture` извлекает посты из
+Telegram-группы @inbox_tools (команда `/capture`), librarian классифицирует.
 Связь с R-006 (Linux UX Lab) — основной потребитель captures.
 
 ---
@@ -233,9 +374,15 @@ vault — пилотная реализация. Директория `tools/` �
 | Проект | Тип | Стек | Стадия | OpenCode |
 |--------|-----|------|--------|----------|
 | [[03-Projects/SERPlux\|SERPlux]] | Продукт SERP Factory | Python/FastAPI/SQLite/Docker | Core ✅, Docker ✅, Deploy ✅, мультиклиентность ✅ | ✅ (6 агентов) |
-| [[03-Projects/dv-hub\|dv-hub]] | Волонтёрский | TS/Hono/better-sqlite3 | Активная разработка | ✅ (6 агентов) |
+| [[03-Projects/dv-hub\|dv-hub]] | Волонтёрский | TS/Hono/better-sqlite3 | Активная разработка | ✅ (5 агентов) |
 | [[03-Projects/dotfiles\|dotfiles]] | Система | shell/конфиги Manjaro | Мульти-агент v3 + verifier + closed-loop + flush | ✅ (8 агентов) |
-| [[03-Projects/vault\|vault]] | Справочник | markdown/OpenCode/Python tools | ✅ Рабочий командный центр + tools/ | ✅ (librarian) |
+| [[03-Projects/vault\|vault]] | Справочник | markdown/OpenCode/Python tools | ✅ Рабочий командный центр + tools/ (12) | ✅ (librarian primary + tree-cop subagent) |
+| [[03-Projects/recruiting-hr\|recruiting-hr]] | Коммерция / рекрутинг | Python / docx→md | 🟡 Bootstrap (2026-10-01) | [проверить] |
+| [[03-Projects/AndroidOS\|AndroidOS]] | Umbrella / mobile | Android / Kotlin [проверить] / offline-first | 🟢 Planning | [проверить] |
+| [[03-Projects/ChaT\|ChaT]] | Knowledge-operations | Markdown / Obsidian / OpenCode | Активная территория (интервью) | ✅ (8 агентов) |
+| [[03-Projects/rudra-ai\|rudra-ai]] | Mobile / AI | Kotlin / DeepSeek API [проверить] | 🟢 Planning | [проверить] |
+| [[03-Projects/rudra-phone\|rudra-phone]] | Инфраструктура / mobile | Kotlin / Flutter / Telegram API [проверить] | 🟢 Planning | [проверить] |
+| [[03-Projects/prod-monitor\|prod-monitor]] | Инфраструктура / monitoring | Python / Bash / Prometheus [проверить] | 🟢 Planning (заглушки) | [проверить] |
 
 ### SERPlux — первый продукт SERP Factory
 **Сбор позиций Google** через Topvisor Snapshots API → классификация URL
@@ -270,11 +417,27 @@ vault — пилотная реализация. Директория `tools/` �
 ### vault (текущий волт)
 **Командный центр знаний.** librarian управляет проектами отсюда.
 - Методы: ➖ все (волт — надстройка, а не объект внедрения)
-- Агенты: librarian (opencode-go/gpt-5.6-luna)
+- Агенты: librarian primary (opencode-go/gpt-5.6-luna) + tree-cop subagent
 - Команды: 12 — /ask, /capture, /inbox, /project, /commit, /project-add, /audit, /decisions, /distill-pipeline, /handoff, /route, /verify
+- Скиллы: 4 — capability-routing, capture, decision-queue, spec-write-routing
 - Память: OKF-подбандл (active-context + facts + session-log)
-- Инструменты: tools/ (telegram-capture, ecosystem-map, playwright-browser, verify-cache, peers)
+- Инструменты: tools/ (12) — telegram-capture, ecosystem-map, playwright-browser, verify-cache, peers, idea-graph, tree-cop, mem-index, model-bench, key-rotator, mcp-readonly, agent-ops
+- Registry: tools/ecosystem-map/registry.json (schema ecosystem-registry/1.1, canonical, ECO-карточки; полей версий проектов нет)
 - **P6 порт M Code → TUI:** replay budget, doom-loop, санитизация/redaction, playwright, verify-кэш, parallel audit, peers — см. [[01-Reference/mcode-desktop]] и [[DEVELOPMENT-ROADMAP]]
+
+### Новые проекты (слепок 2026-10-05, детали — по карточкам 03-Projects/)
+
+- **[[03-Projects/recruiting-hr\|recruiting-hr]]** — 🟡 Bootstrap (2026-10-01):
+  коммерция/рекрутинг, материалы сконвертированы (docx → md). Агенты/команды — [проверить].
+- **[[03-Projects/ChaT\|ChaT]]** — knowledge-operations: новая территория через
+  интервью, legacy Notion — только референс. 8 агентов (состав — [проверить]).
+- **[[03-Projects/AndroidOS\|AndroidOS]]** — 🟢 Planning: модульная персональная
+  ОС (umbrella/mobile). Стек и агенты — [проверить].
+- **[[03-Projects/rudra-ai\|rudra-ai]] / [[03-Projects/rudra-phone\|rudra-phone]]** —
+  🟢 Planning: AI-ассистент на Android / управление проектами с телефона.
+  Детали стека — [проверить].
+- **[[03-Projects/prod-monitor\|prod-monitor]]** — 🟢 Planning (заглушки):
+  production monitoring. Детали — [проверить].
 
 ---
 
@@ -347,8 +510,8 @@ vault — пилотная реализация. Директория `tools/` �
 
 - **OKF v0.1** — полная архитектура волта (Reference → Methods → Projects → Memory → Templates)
 - **librarian** — командный центр с правами, памятью, автодокументированием
-- **Команды vault** — /ask, /capture, /inbox, /project, /commit, /project-add, /audit, /done, /distill-pipeline
-- **6 методов в 02-Methods/** — все описаны, статусы проставлены
+- **Команды vault** — 12: /ask, /capture, /inbox, /project, /commit, /project-add, /audit, /decisions, /distill-pipeline, /handoff, /route, /verify (команды /done нет)
+- **13 методов в 02-Methods/** — все описаны, статусы проставлены (10 stable + parallel-sessions/peer-comms proposed + promo-provider-protocol 🟡)
 - **Distill-pattern в dv-hub** — 7 команд, работает в production
 - **Distill-pattern в dotfiles** — 10 пайплайнов-команд (+/loop, /flush)
 - **Distill-pattern в SERPlux** — 5 команд (/commit, /container, /deploy, /dream, /interface)
@@ -360,7 +523,7 @@ vault — пилотная реализация. Директория `tools/` �
 - **Closed-loop в dotfiles** — /loop (builder → @verifier), автономная итерация build → verify → fix
 - **Memory-management в dotfiles** — /flush + формализованный flush-протокол pre-compaction
 - **Memory-management в vault** — flush-протокол в librarian.md + session-flush плагин (глобальный)
-- **tool-integration-pattern** — метод описан (02-Methods/), директория tools/ создана, первый инструмент в разработке
+- **tool-integration-pattern** — метод описан (02-Methods/), в `tools/` фактически 12 инструментов; рабочий пример — `telegram-capture`
 - **Model-routing в SERPlux** — 6 агентов на 3 моделях (kimi-k2.7-code / glm-5.2 / qwen3.7-plus)
 - **Делегирование plan→build в SERPlux** — plan (edit deny) делегирует исполнение build через task-tool
 - **FLAT layout в SERPlux** — все модули в корне репо, каталога src/ нет и не будет
@@ -369,9 +532,9 @@ vault — пилотная реализация. Директория `tools/` �
 - **Плагин compaction** — в SERPlux (.js) и dv-hub (.ts), flush summary
 - **Плагин commit-guard в SERPlux** — CI-проверка перед коммитом
 - **Pre-commit hook** — проверка пустых файлов + викилинков
-- **Карточки проектов** — SERPlux, dv-hub, dotfiles, vault — синхронизированы
-- **04-Memory/** — OKF-подбандл: active-context + facts + session-log
-- **Трекер TASKS.md** — полный цикл Backlog → Planned → Active → Done
+- **Карточки проектов** — 10 (SERPlux, dv-hub, dotfiles, vault + recruiting-hr, AndroidOS, ChaT, rudra-ai, rudra-phone, prod-monitor); детали новых — по карточкам 03-Projects/
+- **04-Memory/** — OKF-подбандл: active-context + facts + session-log + idea-graph (общее append-only поле параллельных сессий: nodes/edges/protocol JSONL 146/168/2 на 2026-10-05, `README.md`; валидатор — `tools/idea-graph/validate.mjs`)
+- **Трекер TASKS.md** — полный цикл Backlog → Planned → Active → Done (11 active / 1 blocked / 69 planned / 87 done на 2026-10-05)
 - **DEVELOPMENT-ROADMAP** — P0–P5 с чётким статусом
 
 ### 🟡 Готово, но ждёт внедрения (кандидаты на апгрейд)
@@ -380,7 +543,7 @@ vault — пилотная реализация. Директория `tools/` �
 |-----|-----------|--------------|
 | **context-as-docs** формализация | doD-формат описан в методе | dv-hub 🟡→✅ |
 | **model-routing** | Таблица ролей составлена, модель под каждую роль определена | dotfiles (после тестов) |
-| **memory-management** flush-протокол | Метод описывает pre-compaction flush | SERPlux 🟡→✅, dv-hub 🟡→✅ (dotfiles ✅, vault ✅ с v0.2.5) |
+| **memory-management** flush-протокол | Метод описывает pre-compaction flush | SERPlux 🟡→✅, dv-hub 🟡→✅ (dotfiles ✅, vault ✅) |
 | **Distill-pattern** | 3+ кандидатов на команды | dv-hub — расширение |
 | **dotfiles инициализация** | Карточка, план, sysop-спека — готовы | dotfiles |
 | **session-log архивация** | archive-session-log.sh готов | Настроить cron |
@@ -473,10 +636,10 @@ plan-агент с `edit: deny` и `task: { build: allow }` — думает, н
 ## Вектор роста
 
 ### Что осваиваю прямо сейчас
-- **OKF v0.1** — доведение до production-качества
-- **librarian протокол** — авто-документирование и мониторинг
-- **Аудит проектов** — `/audit`, сверка карточек с репо
-- **tool-integration-pattern** — первый инструмент (telegram-capture), интеграция внешних API
+- **Параллельность сессий** — `parallel-sessions` и `peer-comms` пока proposed
+- **idea-graph** — общее append-only поле nodes/edges/protocol JSONL (146/168/2 на 2026-10-05)
+- **Реконсилиация экосистемы** — Pip-Boy registry, `/audit`, decision-queue и tree-cop
+- **tool-integration-pattern** — эксплуатация набора из 12 инструментов
 
 ### Что буду осваивать (ближайшие сессии)
 - **Verifier-pattern в dv-hub** — создание subagent-верификатора по образцу SERPlux
@@ -500,6 +663,29 @@ plan-агент с `edit: deny` и `task: { build: allow }` — думает, н
 ---
 
 ## Чейнджлог
+
+### v0.4 (2026-10-05)
+Фактический слепок экосистемы по аудиту 2026-10-05:
+- **Проекты 03-Projects/: 4 → 10** — +recruiting-hr (bootstrap 2026-10-01),
+  AndroidOS (planning), ChaT (knowledge-operations, 8 агентов), rudra-ai/phone,
+  prod-monitor (planning-заглушки). Детали новых — по карточкам, без выдуманных
+  статусов внешних репо.
+- **Методы 02-Methods/: 13** — 10 stable (включая git-worktree-isolation) +
+  parallel-sessions/peer-comms proposed + promo-provider-protocol 🟡.
+- **Команды волта: 12** — /ask, /audit, /capture, /commit, /decisions,
+  /distill-pipeline, /handoff, /inbox, /project-add, /project, /route, /verify
+  (/done нет). **Скиллы: 4** — capability-routing, capture, decision-queue,
+  spec-write-routing.
+- **tools/: 12** — +idea-graph (nodes/edges/protocol JSONL 146/168/2),
+  peers, verify-cache, tree-cop, mem-index, model-bench, key-rotator,
+  mcp-readonly, agent-ops, ecosystem-map, telegram-capture, playwright-browser.
+- **Агенты волта:** librarian primary (`opencode-go/gpt-5.6-luna`) + tree-cop
+  subagent; default_agent librarian, глобальная модель `opencode-go/glm-5.3-flash`.
+- **TASKS.md:** 11 active / 1 blocked / 69 planned / 87 done.
+- **Registry Pip-Boy:** tools/ecosystem-map/registry.json, schema
+  ecosystem-registry/1.1, canonical, ECO-карточки; полей версий проектов нет.
+- Инфраструктурное (peer-comms, idea-graph, decision-queue) отражено;
+  нарративный канон мира в VibeOS не вносится.
 
 ### v0.3.1 (2026-09-07)
 - **Порт «органов» M Code Desktop в TUI (P6)** — M Code Desktop назначен
