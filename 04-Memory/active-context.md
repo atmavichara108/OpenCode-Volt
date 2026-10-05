@@ -1,9 +1,9 @@
 ---
 type: Active Context
 title: Активный контекст
-description: Сессия 2026-09-24 — model-bench (T-146) + инцидент verifier-цикла. Следующий фокус — перезапуск verifier для T-146 после рестарта сессии, T-147 (bench.py → report.py), решить task:deny для meta.
+description: Сессия 2026-10-05 — канон мира Вельзевула (layer v1.2-альфа) зафиксирован; жду письмо форка о графе v2.
 tags: [memory]
-timestamp: 2026-09-24
+timestamp: 2026-10-05
 ---
 
 # Активный контекст
@@ -11,6 +11,25 @@ timestamp: 2026-09-24
 > Автоматически обновляется librarian. Читается при старте каждой сессии.
 
 ## Текущий фокус
+- **2026-10-05 мир-слой VibeOS/RPG (Великий мудрец layer v1.2-альфа, accepted):**
+  канон мира утверждён Рудрой — имена Рудра/Майя/Allis Maya (Сила, Симуляция Мира)/
+  Вельзевул (читает законы Мира; Allis Maya пишет)/Голос Мира; механики (Independent
+  Counsel, Emergency Defense, Naming=канонизация, эволюция через жертвование,
+  Harvest Festival=safe-mode, Ability Lab, Вельдора=M Code↔T-156); idea-stream skill v2
+  с тремя входами. Graph memory-layer v1: `04-Memory/idea-graph/` (47/48, форк-сессия).
+  **Жду:** письмо-подтверждение от форка (граф v2 + экстрактор сути интентов) →
+  сверка librarian по факту → evidence. Детали: [[04-Memory/session-log/2026-10-05]].
+  Следующие темы по запросу (не начинать): git-слой/git-агент; версионирование
+  экосистемы + программный порядок README/VibeOS.
+- **2026-10-03 hotkey-аудит OpenCode (dotfiles, done):** аудит хоткеев TUI v2.0.19 + гайд под тайловый vim-стиль — `docs/opencode-hotkeys-audit-2026-10-01.md` (0acdaed, main). Минимальный набор keybinds применён в локальном `~/.config/opencode/cli.json` (`<L>.`/`<L>,` — вкладки, `<L>v` — variants). **Следующий шаг — после рестарта TUI проверить бинды вживую; полный блок (hjkl-вкладки, цифры) — на выбор Макса.**
+- **T-156 M Code ↔ OpenCode мост (P2, 2026-10-01):** дизайн подтверждён Rudra, зафиксирован (Addendum в аудите + changelog). **Route decision зафиксирован** в `04-Memory/route-log/2026-10-01-mcode-bridge-dotfiles.md`; handoff-промт для dotfiles-агента подготовлен. Дизайн: M Code автономен, расширяется в OpenCode как HTTP-клиент управляемого v2 service; оркестрация `M Code → OpenCode`; обратный канал гибрид (live в делегированной сессии, unprompted — git-дерево); live-пуша в M Code нет. **Следующий шаг — dispatch в dotfiles-сессии** (librarian не task()-ит чужой primary): оператор переключается в dotfiles-харнес и отдаёт промт; dotfiles пишет спеку → service+обёртка → verifier PASS → commit. Risk=high (сервисный apply, approval+rollback), verifier обязателен.
+- **T-150 recruiting-hr bootstrap (P1):** новый проект «рекрутинг рабочих на стройку» (кейс «КПО Новосёлки», СПб). Материалы GenSpark распакованы и сконвертированы (6 docx→md), карточка [[03-Projects/recruiting-hr]] создана. AGENTS.md оператора готов (создан вручную 2026-10-01, замена /init) + слой агентов внедрён 2026-10-01: .opencode/agents/{top-manager, sourcing, poster, recruiter, build, verifier} + skills {tg-ops, intel} + .gitignore. Следующий шаг — оператор открывает сессию в recruiting-hr, top-manager проводит операционное интервью, затем git-этап (origin recruiting_HR, чистая история). CRM-решение принято 2026-10-01 — **EspoCRM на RF-VPS** (ADR-001 + [[06-Audits/2026-10-01-recruiting-hr-crm-research]]), T-151 закрыт; дальше две задачи — инфра-деплой (sysop/dotfiles, T-157) и доменная настройка (агенты recruiting-hr, T-158). **Stage 0 закрыт 2026-10-03:** researcher верифицировал деплой (10.0.9, compose 4 сервиса, PHP 8.3–8.5, MariaDB 10.6+, API+Lead Capture); поправка: Workflow=платный Advanced Pack → ADR-002 (свой handler); VPS Selectel 1-2-25 + домен .RU; route-log + addendum записаны. Дальше: ручное создание VPS/домена оператором → инфра-хендофф (T-157) → домен (T-158).
+- **2026-10-03 (дежурная dotfiles-сессия):** рабочий TG-аккаунт оператора в
+  recruiting-hr подключён — telethon-сессия пересоздана (`data-private/tg_user.session`),
+  ключи+прокси в gitignored `data-private/tg.env`, обязательный SOCKS5
+  (`TG_PROXY`, прямой MTProto заблокирован), python-socks в `.venv`;
+  `git init` сделан. Блокер «настройка Telegram» из памяти проекта закрыт;
+  следующий шаг по-прежнему — интервью top-manager + git-этап (T-150).
 - **T-146 ЗАКРЫТ** verifier PASS 2026-09-24. Матрица 6 моделей заполнена.
 - **T-148/T-147 ЗАКРЫТЫ** — коммит `3b30eab`, запушены.
 - **T-149 (P2) — приоритет:** ложные нули при транспортных ошибках (429/503 → `score: 0.0` при `cost_tokens: 0`/`latency: null`); различать «ошибка транспорта» и «неверный ответ».
