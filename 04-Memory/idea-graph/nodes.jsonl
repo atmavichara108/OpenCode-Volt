@@ -144,3 +144,4 @@
 
 
 
+{"id":"event-pae-phase1-approved","graph":"event","kind":"gate","label":"Фаза-1 PAE утверждена Рудрой (2026-10-05): делегирована соседней сессии ses_ef6d9ec61ffexSWJ2nYTfQwEW2, спека docs/specs/pae-phase1-readiness.md; живой тест памяти остаётся на линии librarian","status":"accepted","provenance":{"source":"current-dialogue:user-request","observed_at":"2026-10-05","scope":"phase-gate","basis":"quoted"},"projection":["index","compact","handoff"]}

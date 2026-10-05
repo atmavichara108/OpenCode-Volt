@@ -1,0 +1,86 @@
+# Spec: PAE Phase 1 — Readiness Audit
+
+---
+spec: pae-phase1-readiness
+kind: task
+status: active
+owner-session: ses_ef6d9ec61ffexSWJ2nYTfQwEW2
+spec-home: OpenCode-Vault/docs/specs/ (этот repo)
+mandate: Рудра, 2026-10-05 — «фаза 1 утверждена, делегируй реализацию соседней сессии»
+mandate-graph: idea-graph quest-pae-rhizome / stream-intent-025..026
+verifier: required (независимый verifier перед финальным коммитом отчёта)
+---
+
+## S1. Цель
+
+Определить, готов ли подход «Pip-Boy Agent's Ecosys» (PAE) стать ядром
+вайбкодинга вместо текущего хаоса: составить фактическую карту экосистемы
+(что уже соответствует подходу, что противоречит, что шум) и минимальный
+список доработок ядра, без которого перестройку начинать нельзя.
+
+PAE-ядро = idea-graph (append-only мультиграф + валидатор) + peer-comms
++ HITL-гейты + верификаторы + канон мира (диегетический слой).
+
+## S2. Объект сверки (read-only survey)
+
+1. Репо: OpenCode-Vault, dotfiles, serp (SERPlux), AndroidOS, dv-hub, ChaT,
+   recruiting-hr; TradingMind — как королевство-кандидат на bootstrap.
+   Каталоги вне external_directory allowlist (например dv-hub) НЕ открывать
+   силой: честно пометить `BLOCKED/permission` и continue.
+2. Сессии-логи OpenCode: последние 10–15 сессий (титулы + хвосты), не все.
+3. Управленческие артефакты волта: TASKS.md, карточки 03-Projects/,
+   01-Reference/ (agents, commands, capability-routing), VibeOS.md,
+   00-INDEX.md, route-logs, decision-queue.
+4. Глобальная конфигурация: `~/.config/opencode/**`, плагины, skills.
+
+## S3. Метод
+
+- Шаг 1 — детерминированный survey: git log (окно ~3 недели), статусы
+  веток, карточки, TASKS-колонки, свежие session-logs → таблица фактов.
+- Шаг 2 — карта соответствия PAE: каждый объект → один из слотов:
+  `core-aligned` (уже соответствует), `projection-now` (бегущая проекция
+  графа, надо связать), `projection-later` (перенос возможен позже),
+  `contradiction` (практика противоречит инвариантам PAE), `deadwood`
+  (не нужен, кандидат на архив/retire).
+- Шаг 3 — отчёт-минимум изменений: ranked список «что перестроить»
+  (маленькие контуры первыми, не большой замах сразу).
+
+## S4. Deliverables
+
+1. `06-Audits/2026-10-05-pae-phase1-readiness-audit.md` — отчёт с
+   evidence (пути, даты, цитаты, ссылки на узлы графа).
+2. Аппенды в idea-graph: objection/misfit-узлы (graph `stream` / `quest`),
+   validated (`node tools/idea-graph/validate.mjs`, exit 0).
+3. Maya-lint design draft — «граница Майи»: словарь Maya-терминов ↔
+   нейтральные аналоги, два режима (strict lint-gate в release-пайплайне
+   vs норма+аудит), точка интеграции. ТОЛЬКО дизайн: ни один lint-инструмент
+   не реализуется в этом мандате.
+4. Секция «Живой тест» — рекомендации по метрикам (источник данных —
+   сессия librarian, live-метрики не в этом мандате).
+
+## S5. Границы (НЕ делать)
+
+- Не переписывать TASKS.md, карточки, README, VibeOS (только отчёт
+  рекомендует).
+- Не трогать чужую незакоммиченную WIP в дереве (recruiting-hr, аудиты,
+  route-logs, mem-index и пр.).
+- Не править код приложений и prod-конфиги.
+- Не публиковать наружу Mayа-терминологию: сам отчёт — внутренний
+  артефакт волта (диегеза разрешена); Maya-lint design — тоже внутренний.
+
+## S6. Процесс
+
+- Своя ветка не требуется: коммить в `task/branch-policy-vault` как раньше,
+  pre-commit гейты, только свои пути в `git add`.
+- Коммиты: спека/отчёт/граф-аппенды отдельными логичными коммитами;
+  финальный отчёт — после verifier PASS.
+- Provenance: каждый вывод с evidence-ссылкой; гипотезы помечать `derived`,
+  прямые цитаты `quoted`.
+
+## S7. Acceptance
+
+- Отчёт существует, содержит карту соответствия по всем объектам S2
+  (или честные BLOCKED), минимальный список изменений и Maya-lint draft.
+- Валидатор idea-graph PASS после аппендов.
+- Verifier PASS по отчёту (независимый).
+- Ничего вне S2/S4 не изменено.
