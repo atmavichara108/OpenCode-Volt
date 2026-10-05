@@ -45,6 +45,13 @@ TradingMind (typed-edge эпистемология → `proto-typed-edges`).
 общения (RESERVED — первый форк), версионирование (minor++ / alpha-beta-stable),
 idea-stream v2, typed edges.
 
+peer-comms (канон «на связи»):
+- канал write всегда явно указывает `-m` с моделью **отправляющей** сессии
+  (не модель адресата — она у пользователя сломана) — `n-0055` confirmed-fix
+- первый корректный двусторонний обмен: write доставлен соседу
+  `ses_effd908b3ffeNnpC0PZ4zkIf18` с моделью `opencode-go/glm-5.3-flash` —
+  `n-0056` confirmed-write
+
 ## event — события-гейты
 
 Именования: Майя, Allis Maya, Вельзевул, Голос Мира, Вельдора.
