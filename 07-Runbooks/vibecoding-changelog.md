@@ -18,6 +18,25 @@ Append-only: одна запись на подтверждённый shift, да
 
 ## Entries
 
+### 2026-10-01 — M Code ↔ OpenCode bridge: согласованный дизайн
+
+- Подтверждён паттерн моста (design gate, не реализация): M Code остаётся
+  **автономным харнесом** и расширяется в OpenCode как HTTP-клиент
+  управляемого OpenCode v2 service. Оркестрация фактически `M Code → OpenCode`
+  (дирижёр M Code, исполнитель OpenCode build-агент).
+- Обратный канал — гибрид под автономию: live-прогресс только в рамках
+  делегированной OpenCode-сессии (M Code опрашивает `GET /message`, видит
+  `synthetic`); unprompted OpenCode → M Code — только git-дерево (async).
+  Принятый предел: незапрошенного live-пуша в M Code нет (ограничение API
+  M Code).
+- Транспорт — тонкая обёртка в dotfiles (контракт `prompt`/`read`/`handoff`,
+  токен из `service.json`). Условие live-режима — управляемый OpenCode v2
+  service (зона dotfiles), не orphan `serve --service`.
+- Статус: **design-agreed, не operational** (нет управляемого сервиса и
+  обёртки). Реализация — после отдельного gate, трекинг T-156.
+- Basis: [[06-Audits/2026-09-30-mcode-opencode-bridge]] (Addendum 2026-10-01),
+  решение Rudra 2026-10-01.
+
 ### 2026-08-31 — Ecosystem Kanban control plane
 
 - Планирование апгрейдов экосистемы переведено на Kanban control plane:

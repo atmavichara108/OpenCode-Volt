@@ -106,3 +106,32 @@ M Code общаются через peer-механизм, так же иници
 
 - Первый промт для OpenCode build-агента (задача-контракт) — отдельно.
 - Спека bridge-слоя (`kind: task`) при решении строить постоянный мост.
+
+## Addendum — согласованный дизайн (2026-10-01, подтверждён Rudra)
+
+Направление шаринга: **из M Code наружу в OpenCode**. M Code остаётся
+**автономным харнесом** (свой peer-bus, свои сессии для M Code-native работы) и
+дополнительно расширяется в OpenCode как HTTP-клиент управляемого OpenCode v2
+service.
+
+- **Оркестрация:** фактически `M Code → OpenCode` (дирижёр M Code, исполнитель
+  OpenCode build-агент). Полная live-двусторонность невозможна: M Code API не
+  принимает инжект (`/prompt`/`synthetic` отсутствуют), OpenCode не может сам
+  протолкнуть задачу в живую M Code-сессию.
+- **Обратный канал (гибрид под автономию):**
+  - *Live в рамках делегированной задачи:* M Code опрашивает созданную им
+    OpenCode-сессию (`GET /message`) и видит `message` + `synthetic` агента.
+    Автономию не нарушает — читается сессия, которую M Code сам инициировал.
+  - *Unprompted OpenCode → M Code:* только git-дерево (claims / TASKS /
+    `task/*` / handoff), асинхронно.
+- **Жёсткий предел (принят):** незапрошенного live-пуша OpenCode → M Code нет —
+  обратная инициатива всегда асинхронна через git-дерево; упирается в API самого
+  M Code, не в реализацию.
+- **Тонкая обёртка (dotfiles), один контракт** для M Code и будущего
+  TUI-браузера: `prompt` (поставить задачу), `read` (message/finish/synthetic),
+  `handoff` (git-tree как async reverse). Отдельного «synthetic push в M Code» в
+  контракте нет — адресовать некуда. Токен — из `~/.config/opencode/service.json`,
+  без хардкода.
+- **Порядок внедрения (после этого design gate):** (1) dotfiles — управляемый
+  OpenCode v2 service + авторизованная модель; (2) dotfiles — тонкая обёртка;
+  (3) Vault — спека `kind: task` в spec-home + route decision. Трекинг: T-156.

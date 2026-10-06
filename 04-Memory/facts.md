@@ -16,6 +16,28 @@ timestamp: 2026-08-17
 - **Язык:** русский (основной), терминал-нативный стек
 - **GitHub:** [max-ai](https://github.com/max-ai)
 
+## M Code ↔ OpenCode bridge (T-156, 2026-10-06)
+
+- **Сервер v2 принимает только HTTP Basic `base64("opencode:<password>")`** —
+  Bearer/пустой username/`?auth_token=` без префикса → 401. Подтверждено живым
+  прогоном (dotfiles, T-156 Incident 1; librarian re-check → 200).
+- **Порт моста `127.0.0.1:49374`** держит managed systemd user-unit
+  `opencode-serve.service` (active+enabled, cgroup-ownership проверена по
+  `/proc/<pid>/cgroup`). Орфан-режим `serve --service` от TUI больше не
+  канон; `opencode-reload` при убийстве бэкенда трогает и managed unit —
+  после релоада сервис надо поднимать через `systemctl --user restart`.
+- **Обёртка `opencode-bridge`** (dotfiles `scripts/.local/bin/`): операции
+  `prompt` (тело — ключ `text`), `read` (`content[]`, не `parts[]`),
+  `handoff` (git-tree). Токен только из `service.json`.
+- **Ротация пароля service.json гасит сервис** — делать в плановом окне,
+  затем `systemctl --user restart opencode-serve.service` и re-pair M Code
+  (подтверждено практикой 2026-10-06).
+- **leak-guard** (глобальный плагин dotfiles): редакция известных
+  секрет-литералов в выводе инструментов до транскрипта; инвалидация кэша
+  секретов по mtime+size, debounce 5s.
+- **M Code peer-взаимодействие:** sессии M Code работают на том же общем
+  OpenCode-сервисе — после рестарта юнита они переподключаются сами.
+
 ## Replay budget (T-135, порт M Code)
 
 - **2026-09-08: live hook-fire подтверждён в TUI.** Плагин `replay-budget.ts` (хук `experimental.chat.messages.transform`) работает в живых сессиях: маркеры `[N characters cleared]` (pruneToolInput, старые tool-входы) и `[mcode: replay budget — omitted N chars …]` (truncateToolOutput, старые tool-результаты) наблюдаются в контексте живой сессии; контент на диске при этом полный — резHistory режется только на реплее к модели, исполнение не трогается. Smoke 14/14 PASS. Бывший residual `[проверить]` закрыт.
