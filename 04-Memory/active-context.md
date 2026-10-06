@@ -469,3 +469,12 @@ edit evidence path и отказ `external_directory` для task/handoff; host 
 merged config содержит scoped rules, но runtime application edit не доказан;
 T-108 остаётся BLOCKED. Safe next step — fresh-session controlled smoke, без
 broad allow.
+- **2026-10-06 фокус: правило Mannschaft-контура**. канон: team-protocol v1 принят;
+  S8 PASS 8/8 (41.6x/11.3x/87.5%/4-4); Maya-lint v2 report-mode; полный
+  per-session проход М3 = 68 сессий (74% → 81% по скорректированному
+  методу, detail: 06-Audits/2026-10-06-memory-s8-full-scan-draft.md).
+  ЖДУ от Рудры: (a) blessing 3 кандидатов (правповтор-процесс/рекрутинг-сессии
+  в М3/автосканер), (b) разрешение на запуск dotfiles-сессии
+  (промпт готов — см. переписку), (c) решение багфикс-канала (внедрение,
+  в работе). Полный проход ожидает один reviewer+verifier цикл после
+  blessing.
