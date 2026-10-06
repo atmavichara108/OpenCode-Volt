@@ -109,3 +109,17 @@ Note: попытка отправить это же через write-канал 
 
 ## Проверка
 Прочитай файл целиком после append, подтвердите что ранние строки не изменились. Верни evidence: количество строк было/стало.
+
+---
+
+## Ping-ответ: STATUS (2026-10-06, append #4)
+
+> STATUS. Багфикс write-канала: в работе — root-cause (turn vs delivery) проверяется, workaround (б) control-timeout/flush и (в) idle-wait в реализации; следующий этап: 2 автосмока доставки (rc=0 ≤120с) + verifier PASS. Draft-отчёты A+B: reviewer findings получены, независимый verifier — следующий шаг. route-log активен; write-канал 3/3 сбоев. Ветка/файлы не тронуты.
+
+Autosmok доставки запущен в фоне (rpm: opencode run ourselves+delivery-check), результат — отдельным append по завершении.
+
+---
+
+## ACK2 — autosmoke write-channel (2026-10-06)
+
+ACK2
