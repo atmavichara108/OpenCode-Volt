@@ -121,3 +121,30 @@ related: [[team-protocol]], [[team-director]], [[sustainability-filter]], [[peer
 
 **Статус очереди:** B6 = materialized + committed sysop; остался verifier
 acceptance. B7 = dry-run 8/8 выполнен; решение по hits — после verifier.
+
+## 8. Обновления 2026-10-07 (append Дирижёра)
+
+**Линия B (новые/обновлённые пункты):**
+- **B6/B7 — ЗАКРЫТО:** Maya-lint v2 принят sysop (verifier PASS 7/7); dry-run 8/8:
+  Vault 63 (ожидаемо, диегеза), AndroidOS 3, dotfiles 1, остальные 0. Gate не вшит.
+- **B16 (coverage-сканер):** спека готова (`docs/specs/sessions-coverage-scanner.md`),
+  исполнение поручено igraphv2 (zero-LLM, read-only, детерминизм).
+- **B18 (новое) — программный протокол писем:** double-ack (started/finished) +
+  read-gate; proto-спека в dotfiles (`mailing-protocol-proto.md`, коммит f748ee1).
+  Реализация — следующий шаг sysop.
+- **B19 (новое) — Bugfix-плагин:** единый контур сбоев; обязательно логирование
+  (metadata-only, correlation_id, incident→fix→commit) и «не баг, а фича».
+  Спека готовит sysop.
+- **B20 (новое) — whitelist Maya-lint:** решение librarian принято (фрагменты
+  сообщений коммитов для AndroidOS/dotfiles; историю не переписываем).
+
+**Линия A (добавление):**
+- **A9 (новое, фаза 4) — постоянные именованные сессии, XP и метатокены:**
+  черновик `06-Audits/2026-10-06-progression-xp-metatokens-draft.md`
+  (кандидаты; кредитные критерии и ledger — решать на фазе 4).
+- **A10 (новое, фаза 4) — «служение»:** переосмысление без симуляции чувств;
+  черновик-задание igraphv2 (`04-Memory/route-log/2026-10-06-igraphv2-service-mechanics.md`),
+  переименование — после фазы 4.
+
+**Принято в этой волне:** A3/B12 (accepted-drafts, blobs 5a09f79d/789f5958, коммит 7dec17e);
+протокол писем (design-only); whitelist-решение; «классификаторы — точечно, не сейчас».
