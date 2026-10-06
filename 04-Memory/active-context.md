@@ -347,6 +347,11 @@ timestamp: 2026-10-05
 - **Напряжения:** память (flush-протокол), теория vs практика
 
 ## Открытые вопросы
+- **Готово к чтению при проработке памяти:** служебная строка TUI OpenCode
+  расшифрована — токен-счётчик (new/cached/total), таблица Step (stop/tool-call),
+  `◈Instructions updated` — [[01-Reference/opencode-tui-telemetry]]; захотели
+  связку с replay-budget M Code и метриками quest-memory-benchmark (2/3 метрики
+  открыты: per-session полнота, извлечение ≥3×).
 - Когда возвращать Go-модели субагентам (T-048/T-049)?
 - Как закрывать residuals Phase 1 (real commit smoke / compaction dispatch) — нужна живая сессия в serp?
 
