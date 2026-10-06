@@ -52,3 +52,12 @@
   помечено): 167 сессий, прямое 62%, скорр. 89%/92% PAE (denom 162), OOS 5,
   micro 0; sum-check OK; тг-сессия→OOS; все «Верификация X»→repeat-process;
   детерминизм diff=пусто; graph_unchanged; validator PASS; BLOCKED-stale удалён.
+
+### UPDATE: внешний verifier восстановлен (после замечания Рудры про retry со своей моделью)
+- Verifier со своей моделью (первичная, не «другая рабочая»): **VERDICT: PASS**
+  A–D все PASS (ses_eec7c7ffaffe…, независимые прогоны: детерминизм на своём
+  снапшоте, exit-коды 0/3/4/5, --micro 20 стресс, stale-BLOCKED rm, спека↔код,
+  167/167 md=json, repeat_process=46 authoritative).
+- Инцидент-урок: я нарушил существующий канон (retry упавшего субагента — со
+  СВОЕЙ моделью): сделал retry на «другую рабочую» и дважды потерял verifier.
+  Усиление записано в verifier-pattern (чеклист dispatch, коммит 76db750).
