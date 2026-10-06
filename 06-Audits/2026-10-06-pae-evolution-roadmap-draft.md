@@ -173,3 +173,14 @@ B9 остаётся **открытым** до двух правок (`freed.py` 
 Опасность не в удалении, а в том, что `.mcode/` не в git: объекты живут только
 локально. Задачи-следствия: (a) обновить карточки ChaT/AndroidOS/dv-hub под
 `.mcode`; (b) решить,(versioning `.mcode` — отдельное решение Рудры, не моё).
+
+## 11. Статусы на 2026-10-07 01:4x (append Дирижёра)
+
+| Пункт | Статус | Evidence |
+|---|---|---|
+| B9 race-test | **CLOSED PASS** | детектор ловит гонку (WARN + rc=1), sandbox-валидатор с путём PASS, прод PASS, 20/20 уникальных id; acc6023, 96199ea |
+| T-157 / T-158 | Done | freed.py `is_common_field` + `--untracked-files=all`; validate.mjs path-режим |
+| B21 forensic | ЗАКРЫТО | миграция .opencode→.mcode, не потеря; `.mcode` не в git (facts.md) |
+| B19 bugfix-плагин спека | reviewer→verifier PASS (sysop) | SHA 7f558421; untracked до approval Рудры |
+| B4/B16 coverage-сканер | **реализация готова, verifier PASS 4/4** (igraphv2) | SHA ece3725a; числа: 147 сессий, 69% прямое / 91–94% с p-0003 |
+| B15 model-overwrite | РАЗБЛОКИРОВАН | scope выдан sysop: guard против перезаписи модели адресата письмом |
