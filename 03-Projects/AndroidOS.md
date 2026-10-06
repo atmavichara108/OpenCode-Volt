@@ -33,6 +33,18 @@ timestamp: 2026-08-22
 
 > Профиль: Personal Assistant будет тесно связан с каноническим профилем через scoped adapter и approval-gated proposals. Практическая глубокая интеграция AndroidOS откладывается до завершения Personal Assistant MVP; до этого фиксируются только контракты, threat model и research.
 
+## Агентная инфраструктура (`.mcode/`)
+
+> **Миграция 2026-10 (B21):** агенты и команды переехали из `.opencode/` в
+> `.mcode/`. Каталог `.mcode/` **не отслеживается git** — объекты живут только
+> локально на диске. Evidence: [[04-Memory/facts]],
+> [[06-Audits/2026-10-06-pae-evolution-roadmap-draft]] §B21.
+
+На диске (проверено 2026-10-07): `.mcode/agents/` — 5 агентов (builder,
+planner, researcher, reviewer, verifier), `.mcode/command/` — 5 команд,
+`.mcode/memory/` и `.mcode/logs/` — служебные. `.opencode/` пуст.
+Карточка ранее агентов не перечисляла — расхождение с диском **закрыто**.
+
 ## Граница umbrella
 
 AndroidOS объединяет самостоятельные модули, которые могут развиваться и проверяться отдельно, а затем интегрироваться через явные контракты данных, синхронизации и прав доступа. Он не заменяет Vault, dotfiles или ChaT и не является обещанием единого backend/cloud.

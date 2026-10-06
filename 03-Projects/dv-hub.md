@@ -32,7 +32,13 @@ migrations/NNNN__.sql
 
 Таблицы: cells, users, materials, topics, discussion_rooms, messages, publications, sessions.
 
-## Агенты (.opencode/agents/ + opencode.json)
+## Агенты (`.mcode/agents/` + opencode.json)
+
+> **Миграция 2026-10 (B21):** агенты/команды/плагины переехали из `.opencode/`
+> в `.mcode/`. Каталог `.mcode/` **не отслеживается git** — объекты живут
+> только локально на диске. Evidence: [[04-Memory/facts]],
+> [[06-Audits/2026-10-06-pae-evolution-roadmap-draft]] §B21.
+
 | Агент | Mode | Модель | Назначение | Зона |
 |-------|------|--------|-----------|------|
 | plan | primary | opencode-go/qwen3.7-max | ADR, спеки, read-only | docs/architecture, product-vision, roadmap |
@@ -41,15 +47,20 @@ migrations/NNNN__.sql
 | researcher | subagent | opencode-go/qwen3.6-plus | tech spike | docs/research/ |
 | infra | primary | opencode-go/qwen3.7-max | DevOps Phase 0 | docs/infra-runbook, scripts/deploy, server configs |
 
+Статус расхождения карточка↔диск: **закрыто 2026-10-07** — на диске 5 агентов
+в `.mcode/agents/` (build/infra/plan/reviewer/researcher), совпадает с таблицей.
+`.opencode/` пуст.
+
 > Модели разведены по ролям — реализация [[model-routing]] (static routing).
 
-## Команды (.opencode/commands/) — 7
+## Команды (`.mcode/commands/`) — 7
 /morning · /spec · /review · /hygiene · /sync-context · /sync-context-self · /sync-task
 
 > 7 дистиллированных команд — реализация [[distill-pattern]].
 
-## Плагины (.opencode/plugins/)
-compaction.ts · env-guard.ts · notify.ts
+## Плагины (`.mcode/plugins/` + `.mcode/plugin/`)
+compaction.ts · env-guard.ts · notify.ts — на диске 6 файлов плагинов
+(расхождение: карточка перечисляет 3, на диске больше; сверить при следующем аудите).
 
 ## Скрипты (package.json)
 dev · build · build:server · start · deploy:vps · db:init · db:migrate:local · db:reset · context:init/sync/bump/status/log · task:sync · lint · typecheck · test · format · format:check · ci

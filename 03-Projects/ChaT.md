@@ -35,7 +35,14 @@ description: Новая территория, документируемая ч�
 - [[/home/rudra/Projects/ChaT/.mcode/agents/curator|Curator]]
 - [[/home/rudra/Projects/ChaT/legacy/notion-reference|Legacy: Notion-референс]]
 
-## Агенты (.opencode/agents/)
+## Агенты (`.mcode/agents/`)
+
+> **Миграция 2026-10 (B21):** агенты/команды/плагины переехали из `.opencode/`
+> в `.mcode/`. Каталог `.mcode/` **не отслеживается git** (0 файлов в
+> `git ls-files`) — объекты существуют только на диске локально.
+> Evidence: [[06-Audits/2026-10-07-external-repos-pass-draft]], §B21 в
+> [[06-Audits/2026-10-06-pae-evolution-roadmap-draft]], [[04-Memory/facts]].
+
 | Агент | Mode | Модель | Назначение |
 |-------|------|--------|-----------|
 | chat-librarian | primary | opencode-go/gpt-5.6-luna | Координация знаний, интервью, решения и memory flush |
@@ -50,11 +57,16 @@ description: Новая территория, документируемая ч�
 
 `chat-librarian` заменил `curator` в рамках текущей bootstrap-структуры; существующие новые agent-файлы сохраняются.
 
-## Команды
-Команды проекта не добавлены; потребность в них ещё не оценивалась.
+Статус расхождения карточка↔диск: **закрыто 2026-10-07** — на диске 9 агентов
+в `.mcode/agents/`, что совпадает с таблицей; ранее карточка указывала путь
+`.opencode/agents/` (ныне пусто).
 
-## Плагины (.opencode/plugins/)
-—
+## Команды (`.mcode/command/` — 9)
+Корпус команд существует на диске (9 `.md`); перечень в карточке не
+перечислялся — сверить при следующем аудите проекта.
+
+## Плагины
+Плагинов в ChaT нет (`.mcode/` не содержит каталога plugin/plugins).
 
 ## Конфиг
 Собственного `opencode.json` нет. Используется глобальный stow-конфиг с fallback `opencode-go/gpt-5.6-luna`; role-specific overrides заданы в agent frontmatter.
