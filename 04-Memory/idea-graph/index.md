@@ -78,6 +78,8 @@ peer-comms (канон «на связи»):
 - 031 граница Майи «наружу — нейтральный язык» подтверждена; режим Maya-lint — после драфта
 - 032 живой тест графовой памяти (S8): 4 метрики ≥10×/≥3×/≥80%/100%
 - 033 team provenance `librarian+igraphv2` для парных писем
+- 034 фильтр устойчивого развития (ресурсы/окно/токены) — канон решений (метод sustainability-filter)
+- 035 Maya-lint v2 детерминированная (скан+гейт без LLM) — ждёт консультации соседа и вердикта Рудры
 
 Misfit/objection-узлы PAE-аудита (`stream-misfit-*`, `stream-objection-verifier-coverage`,
 `stream-*` tradingmind-stalled): git-policy-bypass, verifier-coverage, state-fragmentation,
