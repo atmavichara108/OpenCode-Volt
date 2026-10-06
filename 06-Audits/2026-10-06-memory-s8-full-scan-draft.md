@@ -244,3 +244,11 @@ accepted, provenance = blessing Рудры). Recruiting/TG подтвержде�
 Пометка (note 1 verifier, append-строка): в строках «кандидат в протокол
 **p-0002**» — описка, имелось в виду p-0003 (p-0002 занят epoch-v2);
 правило канонизировано как p-0003. Draft принят.
+
+### Статус (append, 2026-10-06, координатор)
+
+Frontmatter `status` — обновлён на **accepted** (append-пометка здесь,
+тело frontmatter не переписывается — append-only): полный проход принят
+координатором (PASS-with-notes), blessed Рудрой (канонизация p-0003
+«подтверждаю всё, благословляю», правила Repeat-process + Recruiting
+scope). Provenance: blessing Рудры + канал старшего.
