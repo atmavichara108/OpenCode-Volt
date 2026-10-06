@@ -2,7 +2,7 @@
 type: contract
 title: Канонический профиль пользователя
 status: active
-updated: 2026-09-28
+updated: 2026-10-06
 ---
 # Канонический профиль пользователя — Max Rudra
 
@@ -27,6 +27,18 @@ updated: 2026-09-28
 - Consumers request the minimum fields needed and record provenance when storing a derived fact.
 - Changes are proposed as a diff with reason and affected consumers; no destructive rewrite or silent merge.
 - Conflicting facts are marked `[уточнить]` and resolved at the canonical source.
+
+## Vault-local operational preferences
+
+Эти предпочтения живут в Vault как operational preferences самого верхнего
+уровня (по Scoped access выше); канонический профиль остаётся в
+`/home/rudra/dotfiles/.opencode/memory/user-profile.md`.
+
+- **Род и обращение:** Рудра — мужской род. Обращение и глаголы в мужском роде
+  («попросил», «подтвердил», «принял решение»), не в женском.
+  Source: прямая поправка Рудры, 2026-10-06 (provenance: quoted).
+  Status: `[уточнить]` — в канонический профиль (dotfiles) факт ещё не
+  выгружен; выгрузка — по линии dotfiles.
 
 ## ChaT consumer contract
 
