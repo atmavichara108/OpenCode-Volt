@@ -2,12 +2,14 @@
 // idea-graph v2 validator — контракт: docs/specs/idea-graph-v2.md
 // Запуск: node tools/idea-graph/validate.mjs   (exit 0 = PASS)
 
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, statSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
-const DIR = join(ROOT, "04-Memory/idea-graph");
+const argvPath = process.argv[2];
+const isProd = argvPath === undefined;
+const DIR = isProd ? join(ROOT, "04-Memory/idea-graph") : resolve(process.cwd(), argvPath);
 
 const GRAPHS = new Set(["world", "organ", "mech", "tech", "proto", "event", "quest", "stream"]);
 const EDGE_TYPES = new Set([
@@ -26,10 +28,10 @@ const STATUSES = new Set(["raw", "candidate", "accepted", "implemented"]);
 const errors = [];
 const warnings = [];
 
-function loadJsonl(file) {
-  const path = join(DIR, file);
+function loadJsonl(file, required = isProd) {
+  const path = isProd ? join(DIR, file) : file;
   if (!existsSync(path)) {
-    errors.push(`MISSING file: ${path}`);
+    if (required) errors.push(`MISSING file: ${path}`);
     return [];
   }
   const out = [];
@@ -55,26 +57,63 @@ function requireFields(file, entry, fields) {
 }
 
 // --- загрузка ---
-const nodes = loadJsonl("nodes.jsonl");
-const edges = loadJsonl("edges.jsonl");
-const protocol = loadJsonl("protocol.jsonl");
+import { readdirSync } from "node:fs";
+
+function listSandboxJsonl() {
+  try {
+    if (statSync(DIR).isFile()) return DIR.endsWith(".jsonl") ? [DIR] : [];
+    return readdirSync(DIR)
+      .filter((f) => f.endsWith(".jsonl"))
+      .map((f) => join(DIR, f));
+  } catch {
+    return [];
+  }
+}
+
+const nodes = [];
+const edges = [];
+const protocol = [];
+
+if (isProd) {
+  for (const n of loadJsonl("nodes.jsonl")) nodes.push({ file: "nodes.jsonl", ...n });
+  for (const e of loadJsonl("edges.jsonl")) edges.push({ file: "edges.jsonl", ...e });
+  for (const p of loadJsonl("protocol.jsonl")) protocol.push({ file: "protocol.jsonl", ...p });
+} else {
+  // Песочница: каталог даёт все *.jsonl, файл — только сам файл.
+  // Класс записи определяется содержимым, а не именем файла.
+  const files = listSandboxJsonl();
+  if (files.length === 0) errors.push(`MISSING jsonl files in sandbox: ${DIR}`);
+  for (const f of files) {
+    const recs = loadJsonl(f, true).map((r) => ({ file: f, ...r }));
+    for (const rec of recs) {
+      if (Object.prototype.hasOwnProperty.call(rec.obj, "from") ||
+          Object.prototype.hasOwnProperty.call(rec.obj, "to")) {
+        edges.push(rec);
+      } else {
+        nodes.push(rec);
+      }
+    }
+  }
+}
+
+const fname = (file, fallback) => (file ?? fallback);
 
 // --- узлы ---
 const nodeById = new Map();
 for (const n of nodes) {
-  requireFields("nodes.jsonl", n, ["id", "graph", "kind", "label", "status", "provenance", "projection"]);
+  requireFields(fname(n.file, "nodes.jsonl"), n, ["id", "graph", "kind", "label", "status", "provenance", "projection"]);
   const id = n.obj.id;
   if (id === undefined) continue;
-  if (nodeById.has(id)) errors.push(`nodes.jsonl:${n.line} duplicate node id: ${id}`);
+  if (nodeById.has(id)) errors.push(`${n.file}:${n.line} duplicate node id: ${id}`);
   nodeById.set(id, n.obj);
   if (n.obj.graph !== undefined && !GRAPHS.has(n.obj.graph)) {
-    errors.push(`nodes.jsonl:${n.line} unknown graph "${n.obj.graph}" (id=${id})`);
+    errors.push(`${n.file}:${n.line} unknown graph "${n.obj.graph}" (id=${id})`);
   }
   if (n.obj.status !== undefined && !STATUSES.has(n.obj.status)) {
-    errors.push(`nodes.jsonl:${n.line} unknown status "${n.obj.status}" (id=${id})`);
+    errors.push(`${n.file}:${n.line} unknown status "${n.obj.status}" (id=${id})`);
   }
   if (n.obj.provenance && (!n.obj.provenance.source || !n.obj.provenance.observed_at)) {
-    errors.push(`nodes.jsonl:${n.line} provenance incomplete (id=${id})`);
+    errors.push(`${n.file}:${n.line} provenance incomplete (id=${id})`);
   }
 }
 
@@ -82,43 +121,47 @@ for (const n of nodes) {
 const edgeIds = new Set();
 let relatedCount = 0;
 for (const e of edges) {
-  requireFields("edges.jsonl", e, ["id", "graph", "from", "to", "type", "status", "provenance"]);
+  requireFields(fname(e.file, "edges.jsonl"), e, ["id", "graph", "from", "to", "type", "status", "provenance"]);
   const { id, from, to, type } = e.obj;
   if (id === undefined) continue;
-  if (edgeIds.has(id)) errors.push(`edges.jsonl:${e.line} duplicate edge id: ${id}`);
+  if (edgeIds.has(id)) errors.push(`${e.file}:${e.line} duplicate edge id: ${id}`);
   edgeIds.add(id);
-  if (!EDGE_TYPES.has(type)) errors.push(`edges.jsonl:${e.line} unknown edge type "${type}" (id=${id})`);
+  if (!EDGE_TYPES.has(type)) errors.push(`${e.file}:${e.line} unknown edge type "${type}" (id=${id})`);
   if (type === "related") relatedCount++;
   const fn = nodeById.get(from);
   const tn = nodeById.get(to);
-  if (from !== undefined && !fn) errors.push(`edges.jsonl:${e.line} dangling from: ${from} (id=${id})`);
-  if (to !== undefined && !tn) errors.push(`edges.jsonl:${e.line} dangling to: ${to} (id=${id})`);
+  if (from !== undefined && !fn) errors.push(`${e.file}:${e.line} dangling from: ${from} (id=${id})`);
+  if (to !== undefined && !tn) errors.push(`${e.file}:${e.line} dangling to: ${to} (id=${id})`);
   if (fn && fn.external !== true && e.obj.graph !== fn.graph) {
-    errors.push(`edges.jsonl:${e.line} graph mismatch: edge.graph=${e.obj.graph} vs from-node graph=${fn.graph} (id=${id})`);
+    errors.push(`${e.file}:${e.line} graph mismatch: edge.graph=${e.obj.graph} vs from-node graph=${fn.graph} (id=${id})`);
   }
 }
 
 // --- protocol ---
-for (const p of protocol) requireFields("protocol.jsonl", p, ["id", "kind", "status", "provenance"]);
+for (const p of protocol) {
+  requireFields(fname(p.file, "protocol.jsonl"), p, ["id", "kind", "status", "provenance"]);
+}
 
 // --- пороги v2 (S-приёмка) ---
-if (nodeById.size < 90) errors.push(`nodes count ${nodeById.size} < 90 (spec acceptance)`);
-if (edgeIds.size < 120) errors.push(`edges count ${edgeIds.size} < 120 (spec acceptance)`);
-const graphsUsed = new Set([...nodeById.values()].map((n) => n.graph));
-for (const g of ["world", "organ", "mech", "tech", "proto", "event", "quest", "stream"]) {
-  if (!graphsUsed.has(g)) errors.push(`graph "${g}" has no nodes`);
-}
-if (edges.length > 0) {
-  const share = relatedCount / edges.length;
-  if (share > 0.4) errors.push(`"related" share ${(share * 100).toFixed(1)}% > 40% — дисциплина typed edges нарушена`);
-}
+if (isProd) {
+  if (nodeById.size < 90) errors.push(`nodes count ${nodeById.size} < 90 (spec acceptance)`);
+  if (edgeIds.size < 120) errors.push(`edges count ${edgeIds.size} < 120 (spec acceptance)`);
+  const graphsUsed = new Set([...nodeById.values()].map((n) => n.graph));
+  for (const g of ["world", "organ", "mech", "tech", "proto", "event", "quest", "stream"]) {
+    if (!graphsUsed.has(g)) errors.push(`graph "${g}" has no nodes`);
+  }
+  if (edges.length > 0) {
+    const share = relatedCount / edges.length;
+    if (share > 0.4) errors.push(`"related" share ${(share * 100).toFixed(1)}% > 40% — дисциплина typed edges нарушена`);
+  }
 
-// --- архив эпохи v1 ---
-if (!existsSync(join(DIR, "archive/v1-2026-10-04/nodes.jsonl"))) {
-  errors.push("archive/v1-2026-10-04/nodes.jsonl missing — эпоха v1 не заархивирована");
-}
-if (!existsSync(join(ROOT, "docs/specs/idea-graph-v2.md"))) {
-  errors.push("docs/specs/idea-graph-v2.md missing");
+  // --- архив эпохи v1 ---
+  if (!existsSync(join(DIR, "archive/v1-2026-10-04/nodes.jsonl"))) {
+    errors.push("archive/v1-2026-10-04/nodes.jsonl missing — эпоха v1 не заархивирована");
+  }
+  if (!existsSync(join(ROOT, "docs/specs/idea-graph-v2.md"))) {
+    errors.push("docs/specs/idea-graph-v2.md missing");
+  }
 }
 
 // --- сводка ---
@@ -135,6 +178,9 @@ for (const e of edges) {
 }
 
 console.log("=== idea-graph v2 validation ===");
+if (!isProd) {
+  console.log(`MODE: sandbox (${DIR}) — прод-пороги не применяются`);
+}
 console.log(`nodes: ${nodeById.size}   edges: ${edgeIds.size}   protocol: ${protocol.length}`);
 console.log(`by graph:  ${JSON.stringify(byGraph)}`);
 console.log(`by status: ${JSON.stringify(byStatus)}`);

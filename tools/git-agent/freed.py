@@ -27,7 +27,9 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[2]
 CLAIMS = REPO / "tools" / "peers" / "generated" / "claims.jsonl"
 COMMON_DIR = "04-Memory/idea-graph"
-COMMON_FILES = {"nodes.jsonl", "edges.jsonl", "protocol.jsonl"}
+# Общие append-only поля распознаются ШАБЛОНОМ: любой *.jsonl рекурсивно
+# в общей зоне (включая подкаталоги/песочницы). Архив — не живое поле.
+COMMON_EXCLUDE_DIRS = ("_archive", "archive")
 LEASE_TTL_MIN = 30
 
 
@@ -51,12 +53,12 @@ def is_conflict() -> tuple[bool, str]:
 
 
 def dirty_map() -> dict[str, str]:
-    out = run(["git", "status", "--porcelain=v1"])
+    out = run(["git", "status", "--porcelain=v1", "--untracked-files=all"])
     res: dict[str, str] = {}
     for line in out.splitlines():
         if not line.strip():
             continue
-        code, path = line[:2], line[3:].strip().strip('"')
+        code, path = line[:2], line[2:].strip().strip('"')
         res[path] = code
     return res
 
@@ -101,11 +103,19 @@ def active_claims() -> list[dict]:
     return live
 
 
+def is_common_field(path: str) -> bool:
+    """Общий append-слой = любой *.jsonl под COMMON_DIR, включая песочницы.
+    Архивы не считаются живым полем."""
+    if not path.startswith(COMMON_DIR + "/"):
+        return False
+    if not path.endswith(".jsonl"):
+        return False
+    rel = path[len(COMMON_DIR) + 1:]
+    return not any(seg in COMMON_EXCLUDE_DIRS for seg in rel.split("/")[:-1])
+
+
 def classify(dirty: dict[str, str]) -> dict:
-    common_dirty = [
-        p for p in dirty
-        if p.startswith(COMMON_DIR + "/") and Path(p).name in COMMON_FILES
-    ]
+    common_dirty = [p for p in dirty if is_common_field(p)]
     trash = [p for p, c in dirty.items() if c in {"??", "A ", "AM"} and
              (p.startswith("/tmp") or p == ".DS_Store")]
     return {
@@ -116,6 +126,44 @@ def classify(dirty: dict[str, str]) -> dict:
     }
 
 
+def common_health() -> list[str]:
+    """Проверить JSONL-поле на битые строки и дублирующиеся id."""
+    warnings: list[str] = []
+    root = REPO / COMMON_DIR
+    if not root.exists():
+        return warnings
+    for path in sorted(root.rglob("*.jsonl")):
+        rel = path.relative_to(REPO).as_posix()
+        if not is_common_field(rel):
+            continue
+        seen: set[object] = set()
+        duplicate_ids: set[object] = set()
+        try:
+            with path.open(encoding="utf-8") as stream:
+                for line_no, line in enumerate(stream, 1):
+                    if not line.strip():
+                        continue
+                    try:
+                        record = json.loads(line)
+                    except json.JSONDecodeError:
+                        warnings.append(f"bad-json:{rel}:{line_no}")
+                        continue
+                    if not isinstance(record, dict) or "id" not in record:
+                        continue
+                    record_id = record["id"]
+                    try:
+                        duplicate = record_id in seen
+                        seen.add(record_id)
+                    except TypeError:
+                        continue
+                    if duplicate and record_id not in duplicate_ids:
+                        warnings.append(f"dup-id:{rel}:{record_id}")
+                        duplicate_ids.add(record_id)
+        except (OSError, UnicodeError):
+            continue
+    return warnings
+
+
 def detect() -> dict:
     branch = run(["git", "rev-parse", "--abbrev-ref", "HEAD"]) or "?"
     head = run(["git", "rev-parse", "HEAD"])[:12]
@@ -123,6 +171,7 @@ def detect() -> dict:
     conf, marker = is_conflict()
     claims = active_claims()
     cls = classify(dirty)
+    health = common_health()
     warnings: list[str] = []
     blocked: list[str] = []
     if conf:
@@ -131,6 +180,7 @@ def detect() -> dict:
         blocked.append("branch:main-denied")
     if cls["common_field_dirty"]:
         warnings.append("common-field:" + ",".join(cls["common_field_dirty"]))
+    warnings.extend(health)
     live = [c for c in claims if c["fresh"]]
     if live:
         warnings.append("leases:" + ",".join(c["claim_id"] for c in live))
@@ -143,6 +193,7 @@ def detect() -> dict:
         "dirty_count": len(dirty),
         "classify": cls,
         "claims": claims,
+        "common_health": health,
         "warnings": warnings,
         "blocked": blocked,
         "ok": not blocked,
