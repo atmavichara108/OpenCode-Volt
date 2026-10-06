@@ -23,16 +23,17 @@ dead/архив-кандидат (нужно решение Рудры).
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 import time
 from pathlib import Path
 
 ROSTER = {
-    "ses_effd908b3ffeNnpC0PZ4zkIf18": "librarian (Дирижёр, Vault)",
-    "ses_ef6d9ec61ffexSWJ2nYTfQwEW2": "igraphv2 (граф памяти, Vault)",
-    "ses_ef77a5cfbffeKpXtCXsI6sYL30": "внедрение (Vault, STOPPED)",
-    "ses_eedd28c45ffeFJU6TDjG69z6A7": "sysop (dotfiles инфра)",
+    "ses_effd908b3ffeNnpC0PZ4zkIf18": {"name": "librarian (Дирижёр, Vault)", "state": "active"},
+    "ses_ef6d9ec61ffexSWJ2nYTfQwEW2": {"name": "igraphv2 (граф памяти, Vault)", "state": "active"},
+    "ses_ef77a5cfbffeKpXtCXsI6sYL30": {"name": "внедрение (Vault, RECOVERY)", "state": "recovery"},
+    "ses_eedd28c45ffeFJU6TDjG69z6A7": {"name": "sysop (dotfiles инфра)", "state": "active"},
 }
 PROJECT_DIRS = [
     Path("/home/rudra/Projects/OpenCode-Vault"),
@@ -43,6 +44,24 @@ QUEUE = Path(__file__).resolve().parents[2] / ("tools/peers/generated/director_q
 FRESH_S = 600
 STALE_S = 2 * 3600
 DEAD_S = 24 * 3600
+OUTPUT_LIMIT = 80
+SECRET_PATTERNS = (
+    re.compile(r"(?i)\b(?:bearer|basic)\s+[^\s|]+"),
+    re.compile(r"(?i)\b(?:token|password|passwd|secret|api[_-]?key)\s*[:=]\s*[^\s|]+"),
+    re.compile(r"\b(?:sk|pk)-[A-Za-z0-9_-]{12,}"),
+)
+
+
+def safe_output(value: str, limit: int = OUTPUT_LIMIT) -> str:
+    """Return bounded, single-line, non-secret text for human/JSON output."""
+    text = " ".join(value.split())
+    for pattern in SECRET_PATTERNS:
+        text = pattern.sub("[REDACTED]", text)
+    return text[:limit]
+
+
+def queue_diagnostic(message: str) -> None:
+    print(f"director_queue: {message}", file=sys.stderr)
 
 
 def sessions_by_project(cwd: Path) -> dict:
@@ -78,50 +97,110 @@ def state_of(age_s: float) -> str:
     return "dead"
 
 
-def queue_notes() -> dict:
+def queue_notes() -> tuple[dict, set[str]]:
     notes = {}
+    unknown = set()
     if QUEUE.exists():
-        for line in QUEUE.read_text(encoding="utf-8").splitlines():
+        try:
+            lines = QUEUE.read_text(encoding="utf-8").splitlines()
+        except (OSError, UnicodeError) as exc:
+            queue_diagnostic(f"cannot read queue: {exc}")
+            return {}, set()
+        for line_no, line in enumerate(lines, 1):
             line = line.strip()
             if not line:
                 continue
             try:
                 r = json.loads(line)
             except json.JSONDecodeError:
+                queue_diagnostic(f"skip malformed JSON at line {line_no}")
                 continue
-            if r.get("op") == "dispatch" and not r.get("closed"):
-                notes[r.get("session_id", "?")] = r.get("scope", "?")
-    return notes
+            if not isinstance(r, dict):
+                queue_diagnostic(f"skip non-object event at line {line_no}")
+                continue
+            sid = r.get("session_id")
+            if not isinstance(sid, str) or not sid.strip():
+                queue_diagnostic(f"skip event with invalid session_id at line {line_no}")
+                continue
+            task_id = r.get("task_id", "default")
+            if not isinstance(task_id, str) or not task_id.strip():
+                queue_diagnostic(f"skip event with invalid task_id at line {line_no}")
+                continue
+            op = r.get("op")
+            if not isinstance(op, str):
+                queue_diagnostic(f"skip event with invalid op at line {line_no}")
+                continue
+            for field in ("scope", "next_action"):
+                if field in r and not isinstance(r[field], str):
+                    queue_diagnostic(f"skip event with invalid {field} at line {line_no}")
+                    break
+            else:
+                notes.setdefault(sid, {})
+                if op == "dispatch":
+                    if not isinstance(r.get("scope"), str) or not isinstance(r.get("next_action"), str):
+                        queue_diagnostic(f"skip dispatch missing scope/next_action at line {line_no}")
+                        continue
+                    notes[sid][task_id] = r
+                elif op in ("complete", "stop", "blocked"):
+                    notes[sid].pop(task_id, None)
+                else:
+                    continue
+                if sid not in ROSTER:
+                    unknown.add(sid)
+    return {sid: list(tasks.values()) for sid, tasks in notes.items() if tasks}, unknown
 
 
 def main() -> int:
     now_ms = time.time() * 1000
     per = collect()
-    notes = queue_notes()
+    notes, unknown = queue_notes()
     rows, worst = [], 0
-    for sid, name in ROSTER.items():
+    for sid, meta in ROSTER.items():
+        name = meta["name"]
         s = per.get(sid)
+        tasks = notes.get(sid, [])
+        if meta["state"] in ("stopped", "recovery"):
+            label = "STOPPED" if meta["state"] == "stopped" else "RECOVERY"
+            scope = tasks[0].get("scope", "—") if tasks else "—"
+            action = tasks[0].get("next_action", "handoff: symptom/repro/status/next") if tasks else "восстановить рабочий канал"
+            rows.append((name, "—", label, scope, action))
+            worst = max(worst, 1)
+            continue
         if not s:
-            rows.append((name[:34], "?", "unseen", "-", "-"))
+            rows.append((name, "?", "UNSEEN", "—", "сверить session list"))
+            worst = max(worst, 1)
             continue
         age_s = max(0.0, (now_ms - s.get("updated", 0)) / 1000.0)
-        st = state_of(age_s)
+        age_state = state_of(age_s)
+        st = age_state
         age_h = age_s / 3600
-        rows.append((name[:34], f"{int(age_s//60)}m" if age_s < 3600 else f"{age_h:.1f}h", st, notes.get(sid, "-"), s.get("title", "")[:26]))
-        worst = max(worst, 2 if st == "dead" else 1 if st == "stale" else 0)
-    if rows and rows[0][2] == "unseen":
-        pass
-    fmt = "{:<34} {:>6} {:<8} {:<14} {}"
+        scope = safe_output(" | ".join(t.get("scope", "?") for t in tasks)) if tasks else "—"
+        action = safe_output(" | ".join(t.get("next_action", "отчёт") for t in tasks)) if tasks else "назначить задачу"
+        if not tasks:
+            st = "IDLE→ASSIGN"
+        elif st == "stale":
+            st = "STALE→PING"
+        elif st == "dead":
+            st = "DEAD→RUDRA"
+        rows.append((name, f"{int(age_s//60)}m" if age_s < 3600 else f"{age_h:.1f}h", st, scope, action))
+        worst = max(worst, 2 if age_state == "dead" else 1 if (age_state == "stale" or not tasks) else 0)
+    for sid in sorted(unknown):
+        tasks = notes.get(sid, [])
+        scope = safe_output(" | ".join(t.get("scope", "?") for t in tasks)) if tasks else "—"
+        action = safe_output(" | ".join(t.get("next_action", "отчёт") for t in tasks)) if tasks else "сверить session roster"
+        rows.append((f"UNKNOWN ({safe_output(sid)})", "?", "UNKNOWN", scope, action))
+        worst = max(worst, 1)
+    fmt = "{:<34} {:>7} {:<15} {:<36} {}"
     if "--json" in sys.argv:
         print(json.dumps([
-            {"session": r[0], "age": r[1], "state": r[2], "open_scope": r[3], "last_title": r[4]}
+            {"session": r[0], "age": r[1], "state": r[2], "scope": r[3], "next_action": r[4]}
             for r in rows
         ], ensure_ascii=False, indent=2))
     else:
-        print(fmt.format("сессия", "молчит", "статус", "открытый scope", "титул"))
+        print(fmt.format("сессия", "молчит", "статус", "поручение", "следующее действие"))
         for r in rows:
             print(fmt.format(*r))
-        stale = [r[0] for r in rows if r[2] in ("stale", "dead", "unseen")]
+        stale = [r[0] for r in rows if r[2] in ("stale", "dead", "unseen", "IDLE→ASSIGN", "STALE→PING", "DEAD→RUDRA")]
         if stale:
             print("\nТРЕБУЕТ ДЕЙСТВИЯ:", "; ".join(stale))
     return worst
