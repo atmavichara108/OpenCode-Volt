@@ -44,3 +44,6 @@ tools/ecosystem-map/generated/
 # Credentials (корень волта)
 .env
 tools/verify-cache/generated/
+
+# Sessions coverage scanner (generated reports, не коммитить)
+tools/idea-graph/generated/
