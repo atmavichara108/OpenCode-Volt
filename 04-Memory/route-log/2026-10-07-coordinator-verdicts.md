@@ -79,3 +79,16 @@ Git Freed считать готовым к распространению по �
 Разблокировано: bug model (peer-comms смена модели получателя) — следующийnamed fix-route.
 
 Правки в коммит: `tools/git-agent/freed.py`, `tools/idea-graph/validate.mjs`, `docs/specs/git-freed.md`.
+
+# B9 verdict (append) — 04 10-07 координатор
+Кейс сам описан во вложении 191 строка. Проверил напрямую:
+- ход A/B руками: writer A и writer B; подготовка, считан root cause.
+- bug model (смена модели получателя): предыдущая попытка ответа sysop дана коротким
+  сопровождением; сейчас модель адресата зафиксирована (sysop-сессия).
+Дальше — фиксы. Основные находки (факты) при интроспекции:
+- sysop-main: "Go usage limit exceeded" НЕ на send-канале, а на провайдере
+  opencode-go — запуски под его моделью просто не стартуют; это объясняет все
+  «стало тихо» кейсы за вечер.
+- free-текст-письмо sysop доходит (модель sysop — DeepSeek-V4.1-Flash).
+Финал: B9 — честный FAIL по §S4.2 (детектор слеп), и именно поэтому привожу
+freed.py к шаблонной детекции: templates recursive + untracked-files=all.
