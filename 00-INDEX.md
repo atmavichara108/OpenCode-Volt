@@ -50,7 +50,7 @@ timestamp: 2026-09-01
 [[opencode-tui-telemetry]] — служебная строка TUI: токены/кэш/шаги/инструкции
 
 ## Methods (мои приёмы)
-[[closed-loop]] · [[verifier-pattern]] · [[context-as-docs]] · [[memory-management]] · [[model-routing]] · [[capability-routing]] · [[distill-pattern]] · [[multi-agent-pipeline]] · [[tool-integration-pattern]] · [[promo-provider-protocol]] · [[peer-comms]] · [[incident-fix]] · [[sustainability-filter]]
+[[closed-loop]] · [[verifier-pattern]] · [[context-as-docs]] · [[memory-management]] · [[model-routing]] · [[capability-routing]] · [[distill-pattern]] · [[multi-agent-pipeline]] · [[tool-integration-pattern]] · [[promo-provider-protocol]] · [[peer-comms]] · [[team-protocol]] · [[incident-fix]] · [[sustainability-filter]]
 
 ### Cross-project contracts
 [[user-profile-contract]] · [[06-Audits/2026-08-22-androidos-open-source-first]] · [[TASKS]] T-103–T-105
