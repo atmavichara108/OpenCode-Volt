@@ -29,7 +29,7 @@ tags: [method, routing, capabilities]
 
 | Слой | Содержание | Вопрос |
 |---|---|---|
-| **A: engineering conventions** | качество, структура, style contract и anti-shitcode ограничения | как должен быть сделан результат? |
+| **A: engineering conventions** | качество, структура, style contract, anti-shitcode ограничения и sustainability-filter (3 чека: ресурсы машины / контекстное окно / токеномика) | как должен быть сделан результат и сколько он будет стоить постоянно? |
 | **B: language/runtime** | язык, framework, runtime, tooling и локальные технические ограничения | чем и в каком окружении это делать? |
 | **C: routing policy** | capability, role, порядок шагов, риск, reviewer/verifier и fallback | кто и в какой последовательности делает/проверяет? |
 
@@ -57,13 +57,18 @@ risk: read-only | low | medium | high
 mutability: read-only | docs-only | project-edit | infra-edit
 review: none | reviewer
 acceptance: none | project-verifier | named-acceptance-gate
+sustainability: pass | flagged (flagged требует обоснования в мандате)
 fallback: <named fallback or UNROUTABLE>
 override: null | {reason: <text>, approver: <role>}
 ```
 
 Незаполненные `capability`, `role`, `agent`, `risk`, `mutability` и
 `acceptance` не являются разрешением на dispatch: решение должно стать
-`UNROUTABLE`.
+`UNROUTABLE`. Поле `sustainability` обязательно для любого решения о
+модернизации (новый инструмент, агент, плагин, пайплайн, агентная инфраструктура,
+постоянный процесс): `flagged` означает, что хотя бы один из трёх чеков фильтра
+отрицателен и требует явного обоснования в мандате. Метод фильтра —
+[[sustainability-filter]].
 
 ## Capability registry
 
