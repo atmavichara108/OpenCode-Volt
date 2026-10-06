@@ -237,3 +237,10 @@ accepted, provenance = blessing Рудры). Recruiting/TG подтвержде�
   (reviewer → verifier) следует отдельно.
 - Формулировка для приёмки: «per-session полнота при канонизированном
   p-0003 = 78% (полное окно) / 88% (PAE-denominator)».
+
+### Приёмка (append, 2026-10-06)
+
+Единый verifier cycle: **PASS 8/8** (независимая приёмка, ses_eed4302aeffeKMq8JFiHQVhGEX).
+Пометка (note 1 verifier, append-строка): в строках «кандидат в протокол
+**p-0002**» — описка, имелось в виду p-0003 (p-0002 занят epoch-v2);
+правило канонизировано как p-0003. Draft принят.
