@@ -23,12 +23,13 @@ const GEN = join(ROOT, "tools/idea-graph/generated");
 
 // ---------- аргументы ----------
 const args = process.argv.slice(2);
-let since = "2026-10-04", until = null, outDir = GEN, snapArg = null;
+let since = "2026-10-04", until = null, outDir = GEN, snapArg = null, microN = 3;
 for (let i = 0; i < args.length; i++) {
   if (args[i] === "--since") since = args[++i];
   else if (args[i] === "--until") until = args[++i];
   else if (args[i] === "--out-dir") outDir = args[++i];
   else if (args[i] === "--snapshot") snapArg = args[++i];
+  else if (args[i] === "--micro") { microN = Number(args[++i]); if (!Number.isInteger(microN) || microN < 0) { console.error("invalid --micro"); process.exit(5); } }
   else { console.error(`sessions-coverage: неизвестный параметр ${args[i]}`); process.exit(5); }
 }
 if (!/^\d{4}-\d{2}-\d{2}$/.test(since)) { console.error("invalid --since"); process.exit(5); }
@@ -122,8 +123,13 @@ try {
 // ---------- правила классификации (литеральные, порядок важен) ----------
 // ВАЖНО: /i не работает для кириллицы без флага u — сравниваем lowercased-строку.
 // p-0003: повтор-процесс = верификация/приёмка/retry/final/диагностика/повтор/прогон.
-const RX_REPEAT = /верифиц|приёмк|retry|диагноз|повторн|финальн|прогон|re-?verif/;
+// Инкремент 10-07: стемы «верифик»/«диагност» — существительные формы
+// («верификация», «диагностика»), которые стем «верифиц/диагноз» не ловил.
+const RX_REPEAT = /верифиц|верифик|приёмк|retry|диагноз|диагност|повторн|финальн|прогон|re-?verif/;
 // отдельный memory scope: рекрутинг/telegram вне PAE-знаменателя.
+// Инкремент 10-07: кириллический «тг». ВНИМАНИЕ: \b не работает для кириллицы
+// (\w ASCII-only) — границы задаём явным классом, как в MINOR-2 для якорей.
+const RX_OOS_TG = /(^|[^a-z0-9а-яё])тг([^a-z0-9а-яё]|$)/;
 const RX_OOS = /рекрут|телеграм|telegram|\btg_|tg_login/;
 // якорная таблица известных тем (детерминированный список, пополняется через мандат).
 const ANCHORS = ["t-156", "t-124", "t-123", "s8", "pae", "a3", "b12", "a4", "b4", "b16",
@@ -141,8 +147,11 @@ const rows = [];
 for (const s of sessions) {
   const tLow = String(s.title || "").toLowerCase();
   if (!s.msgs) { rows.push({ id: s.id, title: s.title, msgs: 0, bytes: 0, class: "empty", hit: null }); continue; }
+  // Инкремент 10-07: микросессии (< --micro сообщений, по умолчанию 3) — без
+  // содержательной работы, отдельный класс вне знаменателя.
+  if (s.msgs < microN) { rows.push({ id: s.id, title: s.title, msgs: s.msgs, bytes: s.bytes || 0, class: "micro", hit: null }); continue; }
   // MAJOR-2 fix (S4.4): OOS до REPEAT — recruiting/TG безусловно вне знаменателя
-  if (RX_OOS.test(tLow)) { rows.push({ id: s.id, title: s.title, msgs: s.msgs, bytes: s.bytes || 0, class: "out-of-scope", hit: null }); continue; }
+  if (RX_OOS.test(tLow) || RX_OOS_TG.test(tLow)) { rows.push({ id: s.id, title: s.title, msgs: s.msgs, bytes: s.bytes || 0, class: "out-of-scope", hit: null }); continue; }
   if (RX_REPEAT.test(tLow)) { rows.push({ id: s.id, title: s.title, msgs: s.msgs, bytes: s.bytes || 0, class: "repeat-process", hit: null }); continue; }
   // короткие якоря (<5) — по границам токена (MINOR-2), длинные — подстрокой
   const anchor = ANCHORS.find((a) => a.length >= 5
@@ -159,7 +168,12 @@ const unc = rows.filter((r) => r.class === "uncovered").length;
 const rep = rows.filter((r) => r.class === "repeat-process").length;
 const oos = rows.filter((r) => r.class === "out-of-scope").length;
 const emp = rows.filter((r) => r.class === "empty").length;
-const denom = cov + unc + rep; // PAE-знаменатель: без out-of-scope/пустых
+const mic = rows.filter((r) => r.class === "micro").length;
+// Опредeление знаменателя (инкремент 10-07, явно): PAE-знаменатель =
+// covered + uncovered + repeat-process, т.е. сессии с содержательной работой
+// PAE-линии. Вне его: out-of-scope (recruiting/TG, p-0003 scope),
+// micro (< --micro сообщений), empty. «Полное окно» = все строки, справочно.
+const denom = cov + unc + rep;
 const pct = (n, d) => (d ? (n / d * 100).toFixed(0) : "—");
 
 // ---------- целостность графа (сканер пишет только в generated/) ----------
@@ -173,7 +187,8 @@ const md = `# Sessions-coverage отчёт (детерминированный �
 - БД: sha256=${dbSha} (${dbBytes} Б); окно: с ${since}${until ? " по " + until : ""}; сессий в скоупе: ${total}
 - граф-хэш до: ${graphShaBefore.slice(0, 16)}…; после: ${graphShaAfter.slice(0, 16)}… — ${graphUnchanged ? "не изменился (read-only подтверждён)" : "ВНИМАНИЕ: граф менялся во время прогона (живая сессия?)"}
 - tokens: unknown (probe=${tokenProbe}); байтовая метрика — прокси, не токены.
-- правила: p-0003 (повтор-процесс — отдельный класс), recruiting/TG — отдельный scope.
+- правила: p-0003 (повтор-процесс — отдельный класс), recruiting/TG (включая «тг») — отдельный scope; micro < ${microN} сообщ. — вне знаменателя. Версия правил: 2026-10-07.
+- знаменатель PAE (определение): covered+uncovered+repeat-process; вне: out-of-scope, micro, empty. Полное окно — справочно.
 - корпус сопоставления: label/essence/announcement всех узлов (уклонение от буквальной S4.3: intent-only = 48%, вне acceptance-полосы S6.1; расхождение зафиксировано).
 
 ## Агрегаты (семантика как у ручного full-scan)
@@ -181,7 +196,7 @@ const md = `# Sessions-coverage отчёт (детерминированный �
 - прямое покрытие (covered ко всем): ${cov}/${total} = ${pct(cov, total)}%
 - с учётом p-0003 (covered + повторы через event-узлы): ${cov + rep}/${total} = ${pct(cov + rep, total)}%
 - PAE-знаменатель (cov+unc+rep): ${denom} — прямое ${pct(cov, denom)}%, скорр. ${pct(cov + rep, denom)}%
-- out-of-scope (recruiting/TG): ${oos}; пустых сессий: ${emp}
+- out-of-scope (recruiting/TG): ${oos}; micro (<${microN}): ${mic}; пустых сессий: ${emp}
 
 ## Совместимость с ручным проходом
 
@@ -203,12 +218,14 @@ writeFileSync(join(outDir, "sessions-coverage.json"), JSON.stringify({
   graph_sha_before: graphShaBefore, graph_sha_after: graphShaAfter,
   graph_unchanged: graphUnchanged, tokens: "unknown", token_probe: tokenProbe,
   bytes_proxy_total: rows.reduce((n, r) => n + (r.bytes || 0), 0),
-  agg: { total, covered: cov, uncovered: unc, repeat_process: rep, out_of_scope: oos, empty: emp,
+  agg: { total, covered: cov, uncovered: unc, repeat_process: rep, out_of_scope: oos, empty: emp, micro: mic, rules_version: "2026-10-07", micro_threshold: microN,
     direct_pct: +pct(cov, total), adjusted_by_p0003_pct: +pct(cov + rep, total),
     pae: { denom, direct: cov, adjusted: cov + rep, direct_pct: +pct(cov, denom), adjusted_pct: +pct(cov + rep, denom) } },
   rows,
 }, null, 2));
 writeFileSync(join(outDir, "sessions-coverage.md"), md);
+// MINOR (review 10-07): не оставлять протухший BLOCKED-маркер после успеха
+try { execFileSync("rm", ["-f", join(outDir, "sessions-coverage-BLOCKED.md")]); } catch {}
 console.log(md);
 console.log(`sessions-coverage: отчёты записаны в ${outDir}/`);
 if (!snapArg) { try { execFileSync("rm", ["-f", snap]); } catch {} }
