@@ -301,3 +301,12 @@ freed.py к шаблонной детекции: templates recursive + untracked
   по staged, GARBAGE_OK обход) — тест: дефект→rc=1, чисто→GO.
 - Evidence: validate PASS; Голос CLEAN; сквозной тест гейта 7 rc=1 на
   staged-дефекте. Ограничение в очередь: латинический класс мусора.
+
+## Раскатка garbage-guard в продуктовые порты — ГО (2026-10-07, Дирижёр)
+- Данные вместо тезиса: rg-скан рабочих деревьев — ChaT 0 CJK, AndroidOS 0 CJK,
+  dv-hub 1 (вендор context/.obsidian/plugins/dataview/main.js → whitelist
+  prefix). FP-риск в живом контенте = ноль; русский пользовательский контент
+  dv-hub — как раз зона защиты.
+- ГО всем трём. Оговорки: whitelist-конфиг репо (dv-hub: dataview-префикс),
+  exclude build-каталогов AndroidOS; приёмка = staged-дефект rc=1 на каждом
+  порту. Игровой терминологии в гейте нет (граница v2 respected).
