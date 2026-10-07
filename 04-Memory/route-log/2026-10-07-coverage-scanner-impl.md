@@ -69,3 +69,13 @@
   (призрак-адрес, права), мои — по лимитам/рестарту. Мой ответ не требовался
   («повтор не нужен») — зависшее письмо снято, resend нет.
 - Мердж `task/coverage-scanner-incr` — сводкой фаз 1–3, решение Рудры.
+
+## B7: Maya-boundary dry-run 8 репо (мандат Дирижёра 2026-10-07)
+- Артефакты: `06-Audits/b7-maya-boundary/` (SUMMARY.md + repro scan8.mjs +
+  out/maya-boundary.{md,json}, sha c1b51783…/4fd56f89…, словарь 33a0b07c… v2).
+- Read-only: git show HEAD + log -200, прод-деревья не тронуты; детерминизм diff=пуст.
+- Итог: live 333 / history 56 / internal 176 (FP-дайджест). ChaT/TradingMind/
+  recruiting-hr чистые; OpenCode-Vault 269 live (доминанта t09-dashboard).
+- КЛЮЧЕВОЙ finding: 6/7 remote-репо ПУБЛИЧНЫ (GitHub HTTP 200) — часть live уже
+  наружу сейчас; рекомендация (решение Рудры): приоритет видимости репо >
+  переписывания текстов. Термины в отчёте кодами tNN, язык границы соблюдён.

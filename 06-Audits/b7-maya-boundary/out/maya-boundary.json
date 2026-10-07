@@ -1,0 +1,5173 @@
+{
+  "dict_version": 2,
+  "dict_sha": "33a0b07c983c0a64daf2b5ad851497b2fcd557d7b668ee0b3f8c370ea658594c",
+  "heads": {
+    "/home/rudra/Projects/AndroidOS": "dd48ede082f537ad664ae1dde29f80d4db27d992",
+    "/home/rudra/Projects/ChaT": "c2063600a55ae956133733d707f7e3fdc1c6ee17",
+    "/home/rudra/Projects/OpenCode-Vault": "c44fa86bd353c22985ee2d9c246224d57a09c59f",
+    "/home/rudra/Projects/TradingMind": "4dff35983a7e5b5fcef86f0df09731a4826471dc",
+    "/home/rudra/Projects/dv-hub": "e803d02ccf87561a9be906d3f54c06984e2ac626",
+    "/home/rudra/Projects/recruiting-hr": "a7b65a8413c6868f3a277750c3b2f2333a6f9507",
+    "/home/rudra/Projects/serp": "d94b8a06e21208d0cc1cbaf2e25ec2c48c7785db",
+    "/home/rudra/dotfiles": "43b5258da0ec159dbe5964e76d1d6a0329c54512"
+  },
+  "scanned": {
+    "/home/rudra/Projects/AndroidOS": 46,
+    "/home/rudra/Projects/ChaT": 40,
+    "/home/rudra/Projects/OpenCode-Vault": 354,
+    "/home/rudra/Projects/TradingMind": 52,
+    "/home/rudra/Projects/dv-hub": 91,
+    "/home/rudra/Projects/recruiting-hr": 42,
+    "/home/rudra/Projects/serp": 114,
+    "/home/rudra/dotfiles": 181
+  },
+  "buckets": {
+    "live": 333,
+    "history": 56,
+    "internal_infra": 176,
+    "total": 565
+  },
+  "hits": [
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/decisions.md",
+      "line": 417,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/handoffs/2026-10-06-sysop-maya-lint-8repos.md",
+      "line": 22,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/handoffs/2026-10-06-sysop-maya-lint-8repos.md",
+      "line": 22,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/handoffs/2026-10-06-sysop-maya-lint-8repos.md",
+      "line": 22,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/handoffs/2026-10-06-sysop-maya-lint-8repos.md",
+      "line": 22,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/handoffs/2026-10-06-sysop-maya-lint-8repos.md",
+      "line": 22,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/handoffs/2026-10-06-sysop-maya-lint-8repos.md",
+      "line": 23,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/handoffs/2026-10-06-sysop-maya-lint-8repos.md",
+      "line": 25,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/handoffs/2026-10-06-sysop-maya-lint-8repos.md",
+      "line": 50,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/handoffs/2026-10-06-sysop-maya-lint-8repos.md",
+      "line": 52,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/handoffs/2026-10-06-sysop-maya-lint-8repos.md",
+      "line": 61,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/handoffs/2026-10-06-sysop-maya-lint-8repos.md",
+      "line": 75,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/handoffs/2026-10-06-sysop-maya-lint-8repos.md",
+      "line": 80,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/handoffs/2026-10-06-sysop-maya-lint-8repos.md",
+      "line": 81,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/handoffs/2026-10-06-sysop-team-hello.md",
+      "line": 4,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/handoffs/2026-10-06-sysop-team-hello.md",
+      "line": 43,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/specs/done/pipboy-hotkey.md",
+      "line": 3,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/specs/done/pipboy-hotkey.md",
+      "line": 10,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/specs/done/pipboy-hotkey.md",
+      "line": 14,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/specs/done/pipboy-hotkey.md",
+      "line": 19,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/specs/done/pipboy-hotkey.md",
+      "line": 43,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/specs/done/pipboy-hotkey.md",
+      "line": 57,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/specs/done/pipboy-hotkey.md",
+      "line": 63,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/specs/done/pipboy-hotkey.md",
+      "line": 71,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/specs/maya-lint-v2.md",
+      "line": 32,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/specs/maya-lint-v2.md",
+      "line": 32,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/specs/maya-lint-v2.md",
+      "line": 64,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/specs/maya-lint-v2.md",
+      "line": 64,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/specs/maya-lint-v2.md",
+      "line": 64,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/specs/maya-lint-v2.md",
+      "line": 64,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/specs/maya-lint-v2.md",
+      "line": 64,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/specs/maya-lint-v2.md",
+      "line": 65,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "docs/specs/maya-lint-v2.md",
+      "line": 70,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "opencode-global/.config/opencode/command/agents.md",
+      "line": 2,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "opencode-global/.config/opencode/command/agents.md",
+      "line": 6,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "opencode-global/.config/opencode/command/agents.md",
+      "line": 8,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "qtile/.config/qtile/keys.py",
+      "line": 62,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 29,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 34,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 39,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 44,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 49,
+      "term": "t05",
+      "cat": "feature-mining",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 54,
+      "term": "t06",
+      "cat": "safe-mode migration",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 54,
+      "term": "t07",
+      "cat": "safe-mode migration",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 59,
+      "term": "t07",
+      "cat": "safe-mode migration",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 64,
+      "term": "t08",
+      "cat": "community track",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 69,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 74,
+      "term": "t10",
+      "cat": "M Code",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 79,
+      "term": "t11",
+      "cat": "agent fleet",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 84,
+      "term": "t12",
+      "cat": "agent fleet",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 89,
+      "term": "t13",
+      "cat": "catalog",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 94,
+      "term": "t14",
+      "cat": "changelog",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 99,
+      "term": "t15",
+      "cat": "acceptance gate (raw to canon)",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 112,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 114,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 123,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 133,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 140,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 147,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 154,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/dotfiles",
+      "file": "tools/maya-lint/dictionary.json",
+      "line": 161,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/AndroidOS",
+      "file": "docs/pip-boy-product-blueprint.md",
+      "line": 1,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/AndroidOS",
+      "file": "docs/pip-boy-product-blueprint.md",
+      "line": 11,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/AndroidOS",
+      "file": "docs/pip-boy-product-blueprint.md",
+      "line": 88,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/AndroidOS",
+      "file": "docs/pip-boy-product-blueprint.md",
+      "line": 172,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/AndroidOS",
+      "file": "docs/research/evolution-applications.md",
+      "line": 1,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/AndroidOS",
+      "file": "docs/research/evolution-applications.md",
+      "line": 5,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/AndroidOS",
+      "file": "docs/research/jev-classifier.md",
+      "line": 36,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/AndroidOS",
+      "file": "docs/research/liya-audit.md",
+      "line": 41,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/AndroidOS",
+      "file": "docs/research/voice-transcriptor-audit.md",
+      "line": 13,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/AndroidOS",
+      "file": "docs/research/voice-transcriptor-audit.md",
+      "line": 38,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/AndroidOS",
+      "file": "docs/roadmap.md",
+      "line": 5,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/AndroidOS",
+      "file": "docs/roadmap.md",
+      "line": 5,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/AndroidOS",
+      "file": "docs/studio-interface-guide.md",
+      "line": 6,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/AndroidOS",
+      "file": "docs/studio-interface-guide.md",
+      "line": 15,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/AndroidOS",
+      "file": "docs/studio-interface-guide.md",
+      "line": 20,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/AndroidOS",
+      "file": "docs/studio-interface-guide.md",
+      "line": 41,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/AndroidOS",
+      "file": "docs/studio-interface-guide.md",
+      "line": 42,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/AndroidOS",
+      "file": "docs/widget-interface-guide.md",
+      "line": 15,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/dv-hub",
+      "file": "docs/decisions.md",
+      "line": 43,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/dv-hub",
+      "file": "docs/decisions.md",
+      "line": 58,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/dv-hub",
+      "file": "docs/decisions.md",
+      "line": 59,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/dv-hub",
+      "file": "docs/specs/audit-drift-backlog.md",
+      "line": 13,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/dv-hub",
+      "file": "docs/specs/dev-loop-upgrade-2026-09.md",
+      "line": 12,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/dv-hub",
+      "file": "docs/specs/pipboy-synergy.md",
+      "line": 3,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/dv-hub",
+      "file": "docs/specs/pipboy-synergy.md",
+      "line": 9,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/dv-hub",
+      "file": "docs/specs/pipboy-synergy.md",
+      "line": 11,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/dv-hub",
+      "file": "docs/specs/pipboy-synergy.md",
+      "line": 13,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/dv-hub",
+      "file": "docs/specs/pipboy-synergy.md",
+      "line": 17,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/dv-hub",
+      "file": "docs/specs/pipboy-synergy.md",
+      "line": 21,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/dv-hub",
+      "file": "docs/specs/pipboy-synergy.md",
+      "line": 21,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/dv-hub",
+      "file": "docs/specs/pipboy-synergy.md",
+      "line": 31,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/dv-hub",
+      "file": "docs/specs/pipboy-synergy.md",
+      "line": 43,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/dv-hub",
+      "file": "docs/specs/pipboy-synergy.md",
+      "line": 45,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/dv-hub",
+      "file": "docs/specs/pipboy-synergy.md",
+      "line": 48,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/dv-hub",
+      "file": "docs/specs/pipboy-synergy.md",
+      "line": 48,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/dv-hub",
+      "file": "docs/specs/pipboy-synergy.md",
+      "line": 50,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/dv-hub",
+      "file": "docs/specs/pipboy-synergy.md",
+      "line": 63,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/dv-hub",
+      "file": "docs/specs/README.md",
+      "line": 42,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/dv-hub",
+      "file": "docs/specs/README.md",
+      "line": 50,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": ".opencode/tools/ecosystem-next.ts",
+      "line": 10,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "00-INDEX.md",
+      "line": 87,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "00-INDEX.md",
+      "line": 116,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "01-Reference/commands.md",
+      "line": 59,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "02-Methods/git-worktree-isolation.md",
+      "line": 64,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "02-Methods/model-routing.md",
+      "line": 72,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "02-Methods/model-routing.md",
+      "line": 81,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "02-Methods/model-routing.md",
+      "line": 152,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "02-Methods/team-protocol.md",
+      "line": 19,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "02-Methods/team-protocol.md",
+      "line": 82,
+      "term": "t12",
+      "cat": "agent fleet",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "03-Projects/vault.md",
+      "line": 23,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/active-context.md",
+      "line": 4,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/active-context.md",
+      "line": 15,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/active-context.md",
+      "line": 21,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/active-context.md",
+      "line": 22,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/active-context.md",
+      "line": 23,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/active-context.md",
+      "line": 23,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/active-context.md",
+      "line": 23,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/active-context.md",
+      "line": 25,
+      "term": "t06",
+      "cat": "safe-mode migration",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/active-context.md",
+      "line": 25,
+      "term": "t07",
+      "cat": "safe-mode migration",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/active-context.md",
+      "line": 25,
+      "term": "t10",
+      "cat": "M Code",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/active-context.md",
+      "line": 52,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/active-context.md",
+      "line": 68,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/active-context.md",
+      "line": 87,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/active-context.md",
+      "line": 340,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/active-context.md",
+      "line": 372,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/active-context.md",
+      "line": 394,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/facts.md",
+      "line": 110,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/facts.md",
+      "line": 719,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/facts.md",
+      "line": 720,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/facts.md",
+      "line": 721,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/facts.md",
+      "line": 722,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/facts.md",
+      "line": 722,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/facts.md",
+      "line": 723,
+      "term": "t10",
+      "cat": "M Code",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/facts.md",
+      "line": 754,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/archive/v1-2026-10-04/index.md",
+      "line": 9,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/archive/v1-2026-10-04/index.md",
+      "line": 10,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/archive/v1-2026-10-04/index.md",
+      "line": 12,
+      "term": "t08",
+      "cat": "community track",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/archive/v1-2026-10-04/index.md",
+      "line": 12,
+      "term": "t12",
+      "cat": "agent fleet",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/archive/v1-2026-10-04/index.md",
+      "line": 12,
+      "term": "t14",
+      "cat": "changelog",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 10,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 11,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 12,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 12,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 15,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 17,
+      "term": "t10",
+      "cat": "M Code",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 20,
+      "term": "t08",
+      "cat": "community track",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 20,
+      "term": "t12",
+      "cat": "agent fleet",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 20,
+      "term": "t13",
+      "cat": "catalog",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 20,
+      "term": "t14",
+      "cat": "changelog",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 23,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 28,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 33,
+      "term": "t06",
+      "cat": "safe-mode migration",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 33,
+      "term": "t07",
+      "cat": "safe-mode migration",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 62,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 62,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 62,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 62,
+      "term": "t10",
+      "cat": "M Code",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 63,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 70,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 103,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 105,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/index.md",
+      "line": 126,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/README.md",
+      "line": 4,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/README.md",
+      "line": 62,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/README.md",
+      "line": 62,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/README.md",
+      "line": 62,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/README.md",
+      "line": 62,
+      "term": "t10",
+      "cat": "M Code",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/README.md",
+      "line": 63,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/README.md",
+      "line": 64,
+      "term": "t06",
+      "cat": "safe-mode migration",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/README.md",
+      "line": 64,
+      "term": "t07",
+      "cat": "safe-mode migration",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/README.md",
+      "line": 80,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/README.md",
+      "line": 80,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/idea-graph/README.md",
+      "line": 81,
+      "term": "t15",
+      "cat": "acceptance gate (raw to canon)",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/route-log/2026-10-06-librarian-reply-draft.md",
+      "line": 6,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/route-log/2026-10-06-librarian-reply-draft.md",
+      "line": 250,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/route-log/2026-10-07-coordinator-verdicts.md",
+      "line": 148,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-07-08.md",
+      "line": 67,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-07-13-part2.md",
+      "line": 4,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-07-13-part2.md",
+      "line": 12,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-07-13-part2.md",
+      "line": 16,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-07-13-part2.md",
+      "line": 29,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-08-31.md",
+      "line": 5,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-08-31.md",
+      "line": 6,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-08-31.md",
+      "line": 13,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-08-31.md",
+      "line": 32,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-08-31.md",
+      "line": 49,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-08-31.md",
+      "line": 71,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-08-31.md",
+      "line": 104,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-08-31.md",
+      "line": 126,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-08-31.md",
+      "line": 156,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-08-31.md",
+      "line": 181,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-08-31.md",
+      "line": 213,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-09-06.md",
+      "line": 57,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-09-06.md",
+      "line": 77,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-09-12.md",
+      "line": 4,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-09-12.md",
+      "line": 12,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-09-12.md",
+      "line": 19,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-09-12.md",
+      "line": 19,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-09-12.md",
+      "line": 28,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-09-17.md",
+      "line": 4,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-09-17.md",
+      "line": 15,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-09-17.md",
+      "line": 21,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-09-17.md",
+      "line": 24,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-09-25.md",
+      "line": 10,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-09-25.md",
+      "line": 16,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 6,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 6,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 6,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 13,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 15,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 15,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 16,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 17,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 17,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 21,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 25,
+      "term": "t06",
+      "cat": "safe-mode migration",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 25,
+      "term": "t07",
+      "cat": "safe-mode migration",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 30,
+      "term": "t10",
+      "cat": "M Code",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 32,
+      "term": "t11",
+      "cat": "agent fleet",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 32,
+      "term": "t12",
+      "cat": "agent fleet",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 33,
+      "term": "t08",
+      "cat": "community track",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 33,
+      "term": "t13",
+      "cat": "catalog",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 34,
+      "term": "t14",
+      "cat": "changelog",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 39,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 40,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 41,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "04-Memory/session-log/2026-10-05.md",
+      "line": 58,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-08-02-upgrade-planning-seed.md",
+      "line": 119,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-08-02-upgrade-planning-seed.md",
+      "line": 293,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-08-02-vibecoding-layer-audit.md",
+      "line": 98,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-08-02-vibecoding-layer-audit.md",
+      "line": 101,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-08-02-vibecoding-layer-audit.md",
+      "line": 106,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-08-02-vibecoding-layer-audit.md",
+      "line": 151,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-08-02-vibecoding-layer-audit.md",
+      "line": 267,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-08-02-vibecoding-layer-audit.md",
+      "line": 277,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-08-02-vibecoding-layer-audit.md",
+      "line": 314,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-08-02-vibecoding-layer-audit.md",
+      "line": 335,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-08-31-ecosystem-upgrade-plan-v2.md",
+      "line": 12,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-08-31-ecosystem-upgrade-plan-v2.md",
+      "line": 20,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-08-31-ecosystem-upgrade-plan-v2.md",
+      "line": 48,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-08-31-ecosystem-upgrade-plan-v2.md",
+      "line": 72,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-08-31-ecosystem-upgrade-plan-v2.md",
+      "line": 81,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-08-31-ecosystem-upgrade-plan-v2.md",
+      "line": 184,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-08-31-ecosystem-upgrade-plan-v2.md",
+      "line": 209,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-08-31-ecosystem-upgrade-plan-v2.md",
+      "line": 213,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-08-31-ecosystem-upgrade-plan-v2.md",
+      "line": 252,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-08-31-ecosystem-upgrade-plan-v2.md",
+      "line": 268,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-01-dual-sdk-architecture.md",
+      "line": 20,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-01-dual-sdk-architecture.md",
+      "line": 42,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-01-dual-sdk-architecture.md",
+      "line": 74,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-05-pae-phase1-readiness-audit.md",
+      "line": 98,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-05-pae-phase1-readiness-audit.md",
+      "line": 158,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-05-pae-phase1-readiness-audit.md",
+      "line": 158,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-05-pae-phase1-readiness-audit.md",
+      "line": 159,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-05-pae-phase1-readiness-audit.md",
+      "line": 161,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-05-pae-phase1-readiness-audit.md",
+      "line": 163,
+      "term": "t11",
+      "cat": "agent fleet",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-05-pae-phase1-readiness-audit.md",
+      "line": 163,
+      "term": "t12",
+      "cat": "agent fleet",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-05-pae-phase1-readiness-audit.md",
+      "line": 164,
+      "term": "t15",
+      "cat": "acceptance gate (raw to canon)",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-05-pae-phase1-readiness-audit.md",
+      "line": 165,
+      "term": "t05",
+      "cat": "feature-mining",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-05-pae-phase1-readiness-audit.md",
+      "line": 166,
+      "term": "t06",
+      "cat": "safe-mode migration",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-05-pae-phase1-readiness-audit.md",
+      "line": 166,
+      "term": "t07",
+      "cat": "safe-mode migration",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-05-pae-phase1-readiness-audit.md",
+      "line": 167,
+      "term": "t08",
+      "cat": "community track",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-05-pae-phase1-readiness-audit.md",
+      "line": 168,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-05-pae-phase1-readiness-audit.md",
+      "line": 170,
+      "term": "t14",
+      "cat": "changelog",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-05-pae-phase1-readiness-audit.md",
+      "line": 171,
+      "term": "t13",
+      "cat": "catalog",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-05-pae-phase1-readiness-audit.md",
+      "line": 189,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-05-pae-phase1-readiness-audit.md",
+      "line": 189,
+      "term": "t05",
+      "cat": "feature-mining",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-05-pae-phase1-readiness-audit.md",
+      "line": 189,
+      "term": "t07",
+      "cat": "safe-mode migration",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-game-mechanics-map-draft.md",
+      "line": 79,
+      "term": "t13",
+      "cat": "catalog",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-game-mechanics-map-draft.md",
+      "line": 81,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-game-mechanics-map-draft.md",
+      "line": 107,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-game-mechanics-map-draft.md",
+      "line": 109,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-game-mechanics-map-draft.md",
+      "line": 143,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-game-mechanics-map-draft.md",
+      "line": 143,
+      "term": "t13",
+      "cat": "catalog",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-game-mechanics-map-draft.md",
+      "line": 144,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-game-mechanics-map-draft.md",
+      "line": 150,
+      "term": "t13",
+      "cat": "catalog",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-game-mechanics-map-draft.md",
+      "line": 172,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-game-mechanics-map-draft.md",
+      "line": 173,
+      "term": "t13",
+      "cat": "catalog",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-game-mechanics-map-draft.md",
+      "line": 175,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-game-mechanics-map-draft.md",
+      "line": 184,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-game-mechanics-map-draft.md",
+      "line": 193,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-memory-s8-live-test-draft.md",
+      "line": 58,
+      "term": "t10",
+      "cat": "M Code",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-memory-s8-live-test-draft.md",
+      "line": 60,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-memory-s8-live-test-draft.md",
+      "line": 83,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-memory-s8-live-test-draft.md",
+      "line": 84,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-pae-evolution-roadmap-draft.md",
+      "line": 10,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-pae-evolution-roadmap-draft.md",
+      "line": 17,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-pae-evolution-roadmap-draft.md",
+      "line": 18,
+      "term": "t12",
+      "cat": "agent fleet",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-pae-evolution-roadmap-draft.md",
+      "line": 38,
+      "term": "t12",
+      "cat": "agent fleet",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-pae-evolution-roadmap-draft.md",
+      "line": 58,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-pae-evolution-roadmap-draft.md",
+      "line": 83,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-pae-evolution-roadmap-draft.md",
+      "line": 197,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-progression-xp-metatokens-draft.md",
+      "line": 44,
+      "term": "t06",
+      "cat": "safe-mode migration",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-progression-xp-metatokens-draft.md",
+      "line": 44,
+      "term": "t07",
+      "cat": "safe-mode migration",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-vibecoding-layer-object-audit-draft.md",
+      "line": 46,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-vibecoding-layer-object-audit-draft.md",
+      "line": 68,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-vibecoding-layer-object-audit-draft.md",
+      "line": 206,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-06-vibecoding-layer-object-audit-draft.md",
+      "line": 206,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-scene-name-draft.md",
+      "line": 49,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-scene-name-draft.md",
+      "line": 55,
+      "term": "t10",
+      "cat": "M Code",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-scene-name-draft.md",
+      "line": 79,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-scene-name-draft.md",
+      "line": 79,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-scene-name-draft.md",
+      "line": 109,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-scene-world-voice-draft.md",
+      "line": 5,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-scene-world-voice-draft.md",
+      "line": 10,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-scene-world-voice-draft.md",
+      "line": 21,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-scene-world-voice-draft.md",
+      "line": 35,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-scene-world-voice-draft.md",
+      "line": 36,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-scene-world-voice-draft.md",
+      "line": 36,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-scene-world-voice-draft.md",
+      "line": 36,
+      "term": "t10",
+      "cat": "M Code",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-scene-world-voice-draft.md",
+      "line": 38,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-scene-world-voice-draft.md",
+      "line": 75,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-scene-world-voice-draft.md",
+      "line": 80,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-scene-world-voice-draft.md",
+      "line": 80,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-worlds-matrix-draft.md",
+      "line": 18,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-worlds-matrix-draft.md",
+      "line": 19,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-worlds-matrix-draft.md",
+      "line": 20,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-worlds-matrix-draft.md",
+      "line": 21,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-worlds-matrix-draft.md",
+      "line": 22,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-worlds-matrix-draft.md",
+      "line": 28,
+      "term": "t12",
+      "cat": "agent fleet",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "06-Audits/2026-10-07-worlds-matrix-draft.md",
+      "line": 42,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "internal-infra"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/ecosystem-kanban-runbook.md",
+      "line": 4,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/ecosystem-kanban-runbook.md",
+      "line": 5,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/ecosystem-kanban-runbook.md",
+      "line": 24,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/ecosystem-kanban-runbook.md",
+      "line": 27,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/ecosystem-kanban-runbook.md",
+      "line": 104,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/ecosystem-kanban-runbook.md",
+      "line": 153,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/ecosystem-kanban-runbook.md",
+      "line": 157,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/ecosystem-kanban-runbook.md",
+      "line": 177,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/ecosystem-kanban-runbook.md",
+      "line": 183,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/ecosystem-kanban-runbook.md",
+      "line": 185,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/ecosystem-kanban-runbook.md",
+      "line": 189,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/ecosystem-kanban-runbook.md",
+      "line": 198,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/ecosystem-kanban-runbook.md",
+      "line": 206,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/ecosystem-kanban-runbook.md",
+      "line": 209,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/ecosystem-kanban-runbook.md",
+      "line": 290,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/ecosystem-kanban-runbook.md",
+      "line": 310,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/ecosystem-kanban-runbook.md",
+      "line": 313,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/ecosystem-kanban-runbook.md",
+      "line": 332,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/ecosystem-kanban-runbook.md",
+      "line": 333,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/pipboy-tui-smoke-test.md",
+      "line": 3,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/pipboy-tui-smoke-test.md",
+      "line": 10,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/pipboy-tui-smoke-test.md",
+      "line": 21,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/pipboy-tui-smoke-test.md",
+      "line": 40,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/pipboy-tui-smoke-test.md",
+      "line": 87,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/pipboy-v11-user-guide.md",
+      "line": 3,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/pipboy-v11-user-guide.md",
+      "line": 4,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/pipboy-v11-user-guide.md",
+      "line": 9,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/pipboy-v11-user-guide.md",
+      "line": 11,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/pipboy-v11-user-guide.md",
+      "line": 33,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/pipboy-v11-user-guide.md",
+      "line": 86,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/pipboy-v11-user-guide.md",
+      "line": 104,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/README.md",
+      "line": 20,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/README.md",
+      "line": 22,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "07-Runbooks/vibecoding-changelog.md",
+      "line": 45,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "99-Inbox/2026-10-06-pipboy-retrospective-vision.md",
+      "line": 3,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "99-Inbox/2026-10-06-pipboy-retrospective-vision.md",
+      "line": 9,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "99-Inbox/2026-10-06-pipboy-retrospective-vision.md",
+      "line": 12,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "99-Inbox/2026-10-06-pipboy-retrospective-vision.md",
+      "line": 15,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "99-Inbox/2026-10-06-pipboy-retrospective-vision.md",
+      "line": 20,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "99-Inbox/2026-10-06-pipboy-retrospective-vision.md",
+      "line": 24,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "99-Inbox/2026-10-06-pipboy-retrospective-vision.md",
+      "line": 27,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "99-Inbox/2026-10-06-pipboy-retrospective-vision.md",
+      "line": 34,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "99-Inbox/2026-10-06-pipboy-retrospective-vision.md",
+      "line": 39,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "99-Inbox/2026-10-06-pipboy-retrospective-vision.md",
+      "line": 48,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "99-Inbox/vault-upgrade-research-2026-08-02.md",
+      "line": 1450,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "99-Inbox/vault-upgrade-research-2026-08-02.md",
+      "line": 1526,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "99-Inbox/vault-upgrade-research-2026-08-02.md",
+      "line": 1545,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "99-Inbox/vault-upgrade-research-2026-08-02.md",
+      "line": 1548,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "99-Inbox/vault-upgrade-research-2026-08-02.md",
+      "line": 1554,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/agent-debug-budget-guard.md",
+      "line": 14,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/agent-debug-budget-guard.md",
+      "line": 113,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/dotfiles-doomone-removal-handoff.md",
+      "line": 13,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/dotfiles-doomone-removal-handoff.md",
+      "line": 62,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/dotfiles-doomone-removal-handoff.md",
+      "line": 80,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/ecosystem-registry.md",
+      "line": 18,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/ecosystem-registry.md",
+      "line": 149,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/ecosystem-registry.md",
+      "line": 170,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/ecosystem-registry.md",
+      "line": 200,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/ecosystem-registry.md",
+      "line": 209,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/ecosystem-registry.md",
+      "line": 217,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/git-freed.md",
+      "line": 95,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/idea-graph-v2.md",
+      "line": 6,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/idea-graph-v2.md",
+      "line": 10,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/idea-graph-v2.md",
+      "line": 80,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/idea-graph-v2.md",
+      "line": 83,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/idea-graph-v2.md",
+      "line": 83,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/idea-graph-v2.md",
+      "line": 86,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/idea-graph-v2.md",
+      "line": 87,
+      "term": "t10",
+      "cat": "M Code",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/idea-graph-v2.md",
+      "line": 91,
+      "term": "t11",
+      "cat": "agent fleet",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/idea-graph-v2.md",
+      "line": 91,
+      "term": "t12",
+      "cat": "agent fleet",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/idea-graph-v2.md",
+      "line": 97,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/idea-graph-v2.md",
+      "line": 106,
+      "term": "t06",
+      "cat": "safe-mode migration",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/idea-graph-v2.md",
+      "line": 106,
+      "term": "t07",
+      "cat": "safe-mode migration",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/idea-graph-v2.md",
+      "line": 112,
+      "term": "t07",
+      "cat": "safe-mode migration",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/idea-graph-v2.md",
+      "line": 145,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/model-dashboard-models-module.md",
+      "line": 3,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/model-dashboard-models-module.md",
+      "line": 4,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/model-dashboard-models-module.md",
+      "line": 4,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/model-dashboard-models-module.md",
+      "line": 13,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/model-dashboard-models-module.md",
+      "line": 19,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/model-dashboard-models-module.md",
+      "line": 71,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pae-phase1-readiness.md",
+      "line": 16,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-hotkey-conflict-audit.md",
+      "line": 4,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-hotkey-conflict-audit.md",
+      "line": 9,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-hotkey-conflict-audit.md",
+      "line": 18,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-hotkey-conflict-audit.md",
+      "line": 30,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-hotkey-conflict-audit.md",
+      "line": 35,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-hotkey-conflict-audit.md",
+      "line": 44,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-hotkey-conflict-audit.md",
+      "line": 48,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-hotkey-conflict-audit.md",
+      "line": 62,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-hotkey-conflict-audit.md",
+      "line": 67,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-hotkey-conflict-audit.md",
+      "line": 75,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-hotkey-conflict-audit.md",
+      "line": 75,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-hotkey-conflict-audit.md",
+      "line": 80,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-hotkey-conflict-audit.md",
+      "line": 85,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-tui-plugin-research.md",
+      "line": 51,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-v8-rethink.md",
+      "line": 3,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-v8-rethink.md",
+      "line": 4,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-v8-rethink.md",
+      "line": 5,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-v8-rethink.md",
+      "line": 8,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-v8-rethink.md",
+      "line": 55,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-v8-rethink.md",
+      "line": 159,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-v8bis-ux.md",
+      "line": 3,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-v8bis-ux.md",
+      "line": 5,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-v8bis-ux.md",
+      "line": 8,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-v8bis-ux.md",
+      "line": 24,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-v8bis-ux.md",
+      "line": 30,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-v8bis-ux.md",
+      "line": 44,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-v8bis-ux.md",
+      "line": 64,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-v8bis-ux.md",
+      "line": 149,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/pipboy-v8bis-ux.md",
+      "line": 181,
+      "term": "t14",
+      "cat": "changelog",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/README.md",
+      "line": 16,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/README.md",
+      "line": 28,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/README.md",
+      "line": 78,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/report-tui-upgrade-2026-09-12.md",
+      "line": 1,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/report-tui-upgrade-2026-09-12.md",
+      "line": 4,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/report-tui-upgrade-2026-09-12.md",
+      "line": 12,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/report-tui-upgrade-2026-09-12.md",
+      "line": 19,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/report-tui-upgrade-2026-09-12.md",
+      "line": 36,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/report-tui-upgrade-2026-09-12.md",
+      "line": 38,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/report-tui-upgrade-2026-09-12.md",
+      "line": 43,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/report-tui-upgrade-2026-09-12.md",
+      "line": 63,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/report-tui-upgrade-2026-09-12.md",
+      "line": 66,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/report-tui-upgrade-2026-09-12.md",
+      "line": 77,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/report-tui-upgrade-2026-09-12.md",
+      "line": 134,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/report-tui-upgrade-2026-09-12.md",
+      "line": 195,
+      "term": "t14",
+      "cat": "changelog",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/report-tui-upgrade-2026-09-12.md",
+      "line": 196,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/report-tui-upgrade-2026-09-12.md",
+      "line": 216,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/roel-manifest.md",
+      "line": 22,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/roel-manifest.md",
+      "line": 23,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/roel-manifest.md",
+      "line": 34,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/specs/roel-manifest.md",
+      "line": 50,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "docs/vibeos/index.html",
+      "line": 6,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 147,
+      "term": "t02",
+      "cat": "coordinating agent / senior agent",
+      "src": "history",
+      "commit": "db44e703243f",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 147,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "db44e703243f",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 171,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "9b305d4e1e6d",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 186,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "8d46e3f02216",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 191,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "8d46e3f02216",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 209,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "history",
+      "commit": "e299f4ab9f87",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 209,
+      "term": "t03",
+      "cat": "world-simulator",
+      "src": "history",
+      "commit": "e299f4ab9f87",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 209,
+      "term": "t04",
+      "cat": "notification channel",
+      "src": "history",
+      "commit": "e299f4ab9f87",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 230,
+      "term": "t01",
+      "cat": "coordinating agent",
+      "src": "history",
+      "commit": "9f0ebb873569",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 298,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "a0f432161c7d",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 305,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "1170849f439a",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 347,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "097ab0ad03e0",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 360,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "c9078886ba9b",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 380,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "87d145ad3a4c",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 382,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "cf97aa2f65f1",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 397,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "c8216e2e60fa",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 399,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "e9a7230b39a7",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 401,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "ce9a437e8b95",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 405,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "150be82ef409",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 407,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "6896e689208d",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 412,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "6896e689208d",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 609,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "63758dd7ac38",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 627,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "45ae077b2cc0",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 640,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "607f85008df7",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 656,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "24cd13f44663",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 674,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "2401bdd22799",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 687,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "486d3ca5af20",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 699,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "8ddf9eb03c81",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 723,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "536d57f61317",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 726,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "954d051f9694",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 746,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "98a7167d1fab",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 746,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "98a7167d1fab",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 753,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "685391e71959",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 777,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "2b57372844ee",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 809,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "0174189ef9ba",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 813,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "a225b27fe08f",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 821,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "0f406251fb28",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 831,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "514bf7fafaa7",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 838,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "419b3314bd86",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 845,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "2aa6cc6da3fa",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 853,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "7269825b4c2e",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 868,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "d92c92ec5975",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 875,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "c97645caa87d",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 881,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "b354d6c5d17e",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 890,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "d999d0303a0d",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 895,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "bcb5028d24e1",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 912,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "6a6e7d99d663",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 928,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "12c757c58ff0",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 937,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "da5797a3e709",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 953,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "5724907ca66d",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 963,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "e670582cc7de",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 968,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "f846693530ed",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 977,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "0c45bd9cb781",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 986,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "cc110ff5d786",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 1026,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "3c4c3fdd7f02",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "git-log",
+      "line": 1052,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "history",
+      "commit": "1b5aa9608858",
+      "bucket": "history"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "TASKS.md",
+      "line": 107,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "TASKS.md",
+      "line": 120,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "TASKS.md",
+      "line": 120,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "TASKS.md",
+      "line": 125,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "TASKS.md",
+      "line": 144,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "TASKS.md",
+      "line": 145,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "TASKS.md",
+      "line": 146,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "TASKS.md",
+      "line": 147,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "TASKS.md",
+      "line": 148,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "TASKS.md",
+      "line": 148,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "TASKS.md",
+      "line": 149,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "TASKS.md",
+      "line": 152,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "TASKS.md",
+      "line": 153,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "TASKS.md",
+      "line": 156,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "TASKS.md",
+      "line": 181,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/actions.py",
+      "line": 2,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/actions.py",
+      "line": 2,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/actions.py",
+      "line": 44,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/actions.py",
+      "line": 243,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/actions.py",
+      "line": 966,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/actions.py",
+      "line": 972,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/actions.py",
+      "line": 982,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/app/core/App.js",
+      "line": 660,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/app/core/Module.js",
+      "line": 2,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/app/core/Workspace.js",
+      "line": 3,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/app/modules/BrowserModule.js",
+      "line": 10,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/app/modules/UpgradeModule.js",
+      "line": 37,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/data.json",
+      "line": 361,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/index-v10.html",
+      "line": 6,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/index.html",
+      "line": 6,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/index.html",
+      "line": 10,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/pipboy.py",
+      "line": 2,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/pipboy.py",
+      "line": 2,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/pipboy.py",
+      "line": 4,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/pipboy.py",
+      "line": 21,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/pipboy.py",
+      "line": 468,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/registry.json",
+      "line": 18,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/registry.json",
+      "line": 26,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/registry.json",
+      "line": 122,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/registry.json",
+      "line": 132,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/registry.json",
+      "line": 151,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/registry.json",
+      "line": 153,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/registry.json",
+      "line": 345,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/registry.json",
+      "line": 373,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/registry.json",
+      "line": 378,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/registry.json",
+      "line": 657,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/ecosystem-map/registry.json",
+      "line": 671,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/version-oracle/oracle.py",
+      "line": 21,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "tools/version-oracle/README.md",
+      "line": 21,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "VibeOS.md",
+      "line": 146,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "VibeOS.md",
+      "line": 255,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "VibeOS.md",
+      "line": 641,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/OpenCode-Vault",
+      "file": "VibeOS.md",
+      "line": 685,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    },
+    {
+      "repo": "/home/rudra/Projects/serp",
+      "file": "scripts/serpctl.py",
+      "line": 187,
+      "term": "t09",
+      "cat": "dashboard",
+      "src": "files",
+      "bucket": "live"
+    }
+  ]
+}
