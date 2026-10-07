@@ -155,3 +155,12 @@ freed.py к шаблонной детекции: templates recursive + untracked
   имя/агент. agent-switched previous==agent означает «без изменения».
 - Урок для Дирижёра: перед выдачей бага проверять ВСЕХ затронутых, не один
   случай (симптом в одной сессии ≠ механизм). Ретракт отправлен до старта работ.
+
+## Фазы 1"": МЕРДЖ ВЫПОЛНЕН (2026-10-07, решение Рудры «мержи и пуш»)
+- Vault: task/coverage-scanner-incr (91 коммитов, включал git-freed-common-field,
+  branch-policy-vault, coverage-scanner) → main fast-forward e549c7f,
+  push origin/main 8ac742a..e549c7f.
+- dotfiles: task/maya-lint-handshake (49 коммитов, письмо letter.sh включено) →
+  main ff 43b5258, push 8981298..43b5258.
+- Метод: изолированный worktree .merge-wt (общее дерево и чужие правки не тронуты),
+  worktree удалён после пуша.
