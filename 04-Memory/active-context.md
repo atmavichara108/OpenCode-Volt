@@ -43,7 +43,17 @@ timestamp: 2026-10-05
 - **T-149 (P2) — приоритет:** ложные нули при транспортных ошибках (429/503 → `score: 0.0` при `cost_tokens: 0`/`latency: null`); различать «ошибка транспорта» и «неверный ответ».
 - **2026-09-25 завершено:** добавлены 3 проверенные AnyModel-модели, артефакты объединены до 4 gates, матрица обновлена; экономичный routing: `general` → `anymodel/cx/gpt-5.6-sol`, `build`/`plan` → `anymodel/cx/gpt-6-luna`, `explore` → бесплатный Nemotron. Следующий фокус — T-149.
 - **AMD Radeon:** бенч отложен до сброса дневной квоты $1 (HTTP 429 `rate_limit_exceeded`).
-- **JustDoWork DEGRADED (non-stream-only, 2026-10-07):** anthropic `/v1/messages` работает только без стрима; со `stream:true` шлюз не отдаёт `content_block_*` (3/3) → OpenCode (всегда стримит) отвечает пустотой. OpenAI-путь `/chat/completions` закрыт CF 403. Root cause: регрессия New API-шлюза. **Временный фикс (решение оператора):** локальный стриминг-шим (в работе, meta) — non-stream upstream → синтез SSE. **Целевое:** justwoker как канал New API ([[docs/specs/newapi-gateway-layer]]); шим снимается. Баланс $300+.
+- **JustDoWork WORKING через локальный шим (2026-10-07, вечер):** шим
+  `justwoker-shim.service` (bun, :8787) active+enabled — синтез SSE + OpenAI-фасад +
+  keep-alive пинги (ECONNRESET-инцидент починен: SSE сразу, ping/8c, idleTimeout=255,
+  ретраи 403/503; см. facts T-168). Бенч k=1: tools/build/reasoning = 1.0 (уровень
+  флагмана). Identity: за шлюзом New API (ошибка "(distributor)"), персона-промпт
+  ~10.4K перебивается нашим system (только anthropic-путь); тюнинг: t/top_p/stop/
+  response_format/tools работают, OpenAI-only параметры игнорируются.
+  **Целевое:** justwoker как канал New API ([[docs/specs/newapi-gateway-layer]]);
+  шим снимается. Баланс $300+. /ship на паузе: мои правки (dotfiles: opencode.jsonc
+  на шим + shim/ + unit; vault: бенч-артефакты + память) ждут команды Рудры;
+  freed.py оба дерева — ok.
 - **Экономия токенов — требование оператора:** бенчи гонять дешёвым профилем `tools,fast` по одной модели.
 - **Роутинг:** рассмотреть `cx/gpt-5.6-sol` как дефолт (все гейты за $0.0006). `kmc/k3` не для strict tool-calling.
 - **Незакоммичено:** артефакты model-benchmarks (6 json + matrix.md), facts.md, session-log, active-context.md, TASKS.md. В TASKS.md посторонние правки T-123/T-124 — не захватить при коммите.
