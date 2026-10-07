@@ -108,7 +108,11 @@ while read -r target; do
     echo "❌ Битый викилинк: [[$target]]"
     exit 1
   fi
-done < <(rg -o '\[\[([^\]|]+)' --type md --no-filename --no-line-number 2>/dev/null | sed 's/\[\[//' | sort -u)
+done < <(git diff --cached --name-only --diff-filter=ACMR | grep -E '\.md$' | while IFS= read -r f; do
+  # Known-FP fix v2: вырезаем fenced code-блоки и inline-code — иначе
+  # mermaid-узлы [[...]] и bash [[ ]] в код-примерах дают ложные битые линки.
+  git show ":$f" 2>/dev/null | awk '/^```/{c=!c;next} !c' | sed 's/`[^`]*`//g'
+done | rg -o '\[\[([^\]|]+)' --no-filename --no-line-number 2>/dev/null | sed 's/\[\[//' | sort -u)
 
 echo "✅ Все викилинки валидны"
 echo "🎉 Все pre-commit гейты пройдены"
