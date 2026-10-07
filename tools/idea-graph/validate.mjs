@@ -115,6 +115,10 @@ for (const n of nodes) {
   if (n.obj.provenance && (!n.obj.provenance.source || !n.obj.provenance.observed_at)) {
     errors.push(`${n.file}:${n.line} provenance incomplete (id=${id})`);
   }
+  // Голос Мира (закон 2): объявление допустимо только о доказанном.
+  if (n.obj.announcement === true && n.obj.status !== "accepted") {
+    warnings.push(`announce-on-unaccepted:${id} (status=${n.obj.status})`);
+  }
 }
 
 // --- рёбра ---
