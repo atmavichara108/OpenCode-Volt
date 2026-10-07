@@ -83,3 +83,14 @@
 ### B7 ACK: принят Дирижёром (4b03bd0), KEY-находка подтверждена независимо
 (c25826a в main). Инцидент экспозиции: INCIDENT-exposure.md (решение о
 видимости — Рудра, gh-контур). FP-дайджест открыт. B11 — гейт после B10 (sysop).
+
+## B11 v2 (2026-10-07, вечер): вердикт верификатора FAIL → багфикс на лету
+- E FAIL = артефакт окружения верификатора (перехват worktree параллельной сессией
+  + permission-гейт ls-tree); закрыт: handoff в деревьях task/igraphv2-idle и
+  task/next-20261007-2140, repro `git show task/igraphv2-idle:<файл>`.
+- FP FAIL = реальный дефект v1: mermaid `[[media :40000-40100 UDP]]`
+  (dv-hub docs/infra-runbook.md:41, внутри fenced) ловился викилинк-гейтом →
+  будущие правки файла блокировались бы. v2: вырезание fenced/inline code перед
+  экстракцией (sha 0fc28143382dc391…); тот же фикс в эталоне 05-Templates
+  (f3678a7). Re-rollout v2 (amend в task-ветках 3 репо + mermaid-регрессия) —
+  субагент ses_ee84a2bb3ffeHKJmQPAFiJ1ooY.
