@@ -17,7 +17,7 @@ timestamp: 2026-10-07
 | `provider_id` | `justwoker` |
 | `endpoint` | `https://api.justwoker.icu/v1` |
 | `compatibility` | Anthropic-style; OpenAI-style заблокирован CF |
-| `status` | 🟡 `DEGRADED` (non-stream-only, 2026-10-07) |
+| `status` | 🟡 `DEGRADED` (non-stream-only, 2026-10-07); шим стабилен по крашам (crash-guard `dee6f15`), но открыт TimeoutError ~300с на больших non-stream — расследуется |
 | `checked_at` | 2026-10-07 |
 | `source` | реферальная программа JustDoWork |
 | `account_kind` | `user/promotional referral` |
@@ -117,6 +117,14 @@ PASS → канал`) для permanent-варианта сохраняется.
 `🟡 DEGRADED (non-stream-only)`. Anthropic-style `/messages` работает только без
 стрима; стриминг шлюза не отдаёт content_block, поэтому прямой OpenCode-провайдер
 отвечает пустотой. Временный фикс — локальный стриминг-шим; целевое — канал New API.
+
+**Шим (2026-10-07, вечер):** стабилен по крашам — второй фикс (crash-guard стрима,
+`dee6f15`) закрыл краш bun-процесса при отмене клиента. **Открыто:** `TimeoutError`
+ровно через ~300с (240–300с) на больших non-stream запросах Opus — пользователь
+видит `api_error: shim: TimeoutError`; гипотеза — Bun игнорирует `headersTimeout: 0`/
+`requestTimeout: 0` и рвёт по дефолтному HeadersTimeout 300с. Расследуется отдельным
+агентом (`task/opus-transport-*` в dotfiles). См. [[04-Memory/facts]] (T-168, фикс 2
+и открытая проблема).
 
 ## Ссылки
 

@@ -831,7 +831,7 @@ timestamp: 2026-08-17
   2026-10-06 фактически (started/finished receipts); librarian принимает как
   контракт: входящий мандат → started, завершение хода → finished.
 
-### 2026-10-07 (head-guard usage)- **T-170. claim/release требуют полный OPENCODE_SESSION_ID из env.**  Усечённый ID создаёт ложный claim и блокирует законного владельца (мой  случай 01:2x). Источник истины: $OPENCODE_SESSION_ID.
+### 2026-10-07 (head-guard usage)
 ### 2026-10-07 (B22)
 - **B22 принят (dotfiles main=faaf45b).** head-guard.sh + claim/release в
   hello.sh + гейт-5 pre-commit. Режим soft-block: блок только при свежем
@@ -899,3 +899,6 @@ timestamp: 2026-08-17
   `api_error: shim: TimeoutError`. Гипотеза: Bun игнорирует эти опции, дефолтный
   HeadersTimeout 300с обрывает соединение до ответа апстрима. Диагностику/фикс
   ведёт отдельный агент (ветка `task/opus-transport-*` в dotfiles). Статус: «в работе».
+- **Claim требует ПОЛНЫЙ OPENCODE_SESSION_ID (2026-10-07, T-170, Дирижёр):**
+  усечённый ID в printf-формате создаёт ложный claim (поймал автора гейта же).
+  Формат claims/peer-каналов — только полный `ses_...` ID без сокращений.
