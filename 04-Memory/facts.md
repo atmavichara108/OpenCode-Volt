@@ -830,3 +830,15 @@ timestamp: 2026-08-17
 - **Double-ack контракт принят всеми адресатами.** igraphv2 исполняет с
   2026-10-06 фактически (started/finished receipts); librarian принимает как
   контракт: входящий мандат → started, завершение хода → finished.
+
+### 2026-10-07 (B22)
+- **B22 принят (dotfiles main=faaf45b).** head-guard.sh + claim/release в
+  hello.sh + гейт-5 pre-commit. Режим soft-block: блок только при свежем
+  чужом claim (rc=1); legacy/stale/unknown — GO или WARN в
+  ~/.local/state/opencode/head-guard.log. Дирижёр воспроизвёл: чужой→1,
+  свой→0, после claim-release→0. Синтаксис: hello.sh claim-release
+  --session --branch (НЕ release). B18-довинт: журнал sent пишется ДО
+  блокирующего run (timeout больше не теряет запись).
+- **Вопрос-флаг:** sysop заявил garbage-guard «подтверждён Рудрой» — у
+  Дирижёра подтверждения нет (ни facts, ни route-log, ни TASKS). Ждёт слова
+  Рудры; до него мандат не выдаётся.
