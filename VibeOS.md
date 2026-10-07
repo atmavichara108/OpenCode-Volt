@@ -50,7 +50,7 @@ VibeOS — витрина экосистемы: один канон, два пр
 |---|---|---|---|
 | **peer-comms** | Общение параллельных сессий через `opencode run -s <sessionID> -m <model>` и общее поле; `-m` обязателен для отправляющей модели | 🟡 метод proposed | [[02-Methods/peer-comms]], [[04-Memory/idea-graph/README]] |
 | **idea-graph** | Из эксперимента двух сессий — в append-only поле nodes/edges/protocol с provenance | ✅ валидатор работает | [[04-Memory/idea-graph/README]], [[tools/idea-graph/validate.mjs]] |
-| **decision-queue** | Дилеммы и approval-gates не теряются в разговоре | ✅ runtime slice; acceptance pending | [[.mcode/skills/decision-queue/SKILL]], [[.mcode/command/decisions]], [[control-plane/decision-queue/SCHEMA]] |
+| **decision-queue** | Дилеммы и approval-gates не теряются в разговоре | ✅ runtime slice; acceptance pending | `.mcode/skills/decision-queue/SKILL` (вне волта), `.mcode/command/decisions` (вне волта), [[control-plane/decision-queue/SCHEMA]] |
 | **key-rotator** | Операционно ротировать ключи без попадания секретов в репозиторий | [проверить] | [[tools/key-rotator/README]] |
 | **model-bench** | Сравнивать capability/стоимость моделей до маршрутизации | ✅ реализация, дальнейшие фиксы planned | [[tools/model-bench/README]], [[TASKS#T-146]] |
 | **mcp-readonly** | Интегрировать MCP только в read-only границах | [проверить] / часть мостов frozen | [[tools/mcp-readonly/server.py]], [[TASKS#T-108]] |

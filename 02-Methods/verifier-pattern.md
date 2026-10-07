@@ -60,7 +60,7 @@ If FAIL: numbered list of minimal fixes for the build agent.
   — за кэшем.
 - **Порядок.** Quality-review (`reviewer`, mutable work) предшествует
   acceptance (`verifier`). В [[vault]] это опрокидывается в orchestration
-  protocol librarian (`[[.mcode/agent/librarian]]` § «Orchestration protocol»).
+  protocol librarian (``.mcode/agent/librarian` (вне волта)` § «Orchestration protocol»).
 
 ## Жёсткий чеклист dispatch любого субагента (решение Рудры 2026-10-07)
 
