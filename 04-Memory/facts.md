@@ -35,12 +35,12 @@ timestamp: 2026-08-17
 - **leak-guard** (глобальный плагин dotfiles): редакция известных
   секрет-литералов в выводе инструментов до транскрипта; инвалидация кэша
   секретов по mtime+size, debounce 5s.
-- **M Code peer-взаимодействие:** sессии M Code работают на том же общем
+- **M Code peer-взаимодействие:** сессии M Code работают на том же общем
   OpenCode-сервисе — после рестарта юнита они переподключаются сами.
 
 ## Replay budget (T-135, порт M Code)
 
-- **2026-09-08: live hook-fire подтверждён в TUI.** Плагин `replay-budget.ts` (хук `experimental.chat.messages.transform`) работает в живых сессиях: маркеры `[N characters cleared]` (pruneToolInput, старые tool-входы) и `[mcode: replay budget — omitted N chars …]` (truncateToolOutput, старые tool-результаты) наблюдаются в контексте живой сессии; контент на диске при этом полный — резHistory режется только на реплее к модели, исполнение не трогается. Smoke 14/14 PASS. Бывший residual `[проверить]` закрыт.
+- **2026-09-08: live hook-fire подтверждён в TUI.** Плагин `replay-budget.ts` (хук `experimental.chat.messages.transform`) работает в живых сессиях: маркеры `[N characters cleared]` (pruneToolInput, старые tool-входы) и `[mcode: replay budget — omitted N chars …]` (truncateToolOutput, старые tool-результаты) наблюдаются в контексте живой сессии; контент на диске при этом полный — результат режется только на реплее к модели, исполнение не трогается. Smoke 14/14 PASS. Бывший residual `[проверить]` закрыт.
 - **2026-09-08 [проверить → T-143]:** побочный эффект — `applyReplayBudget` применяет `pruneToolInput` ко всем tool-частям без границы «текущего хода» + мутация in-place; при живых ссылках на store возможна мутация task-промптов субагентов (инцидент: 3 субагента получили `[N characters cleared]` вместо промпта 2026-09-07). Улика сильная, причинность не доказана — контролируемый эксперимент в T-143.
 - **2026-09-17: doom_loop в волте зафиксирован как `ask` (решение Rudra).** Конфиг `opencode.json` и `.opencode/agent/librarian.md` frontmatter содержат `doom_loop: ask`.
 - **2026-09-18: плагин `main-protector.ts` и worktree-изоляция внедрены.** Хук `tool.execute.before` блокирует коммиты в `main`/`master` и правки 5 hot-files на защищённых ветках. Метод: [[02-Methods/git-worktree-isolation]].
@@ -787,7 +787,7 @@ timestamp: 2026-08-17
   AndroidOS=детище волта, наследует лицензию (предложено GPL-3.0).
 - **T-166. TradingMind — правило тишины (подтверждено повторно).** Ни в
   отчётах Рудре, ни в промптах агентов, ни в аудитах — до явного слова о
-  бутстрапе. Uрок B7: имя просочилось через словарь графа; фильтровать в
+  бутстрапе. Урок B7: имя просочилось через словарь графа; фильтровать в
   dispatch.
 
 ### 2026-10-07 (skill-инвокация)
@@ -799,7 +799,7 @@ timestamp: 2026-08-17
   id строки скилла первым аргументом; баг-фикс ядра OpenCode не делаем.
 
 ### 2026-10-07 (шим justwoker: ECONNRESET / 504)
-- **T-168. Корень сбоев рабочих сессий через shим — не «шлюз лежит».** Symptom:
+- **T-168. Корень сбоев рабочих сессий через шим — не «шлюз лежит».** Symptom:
   `Retry due attempt N: ECONNRESET: socket closed unexpectedly` / `shim: upstream
   timeout` у Рудры в чате, при этом curl в тот же апстрим 12/12 = 200.
   Root cause: шим держал HTTP-коннект OpenCode пустым, пока ждал non-stream
@@ -854,7 +854,7 @@ timestamp: 2026-08-17
 - **Garbage-guard provenance ПОДТВЕРЖДЁН read-gate:** sqlite session_message
   msg_117add5b50018qevDS0UqIaBUF, ses_eedd28c4…, 2026-10-07 21:43:50,
   Рудра: «Защита от мусора моделей - да.» GO sysop выдан.
-- **B18 довinvt (sent-журнал до run) в main** dotfiles cherry-pick 905f0cd →
+- **B18 довинтегрирован (sent-журнал до run) в main** dotfiles cherry-pick 905f0cd →
   main=3def168.
 - **Инцидент «6 публичных репо» ЗАКРЫТ (2026-10-07, слово Рудры):** публичность
   волта/дотфайлов осознанна — игровой слой не маскируется (ценность);
@@ -899,3 +899,6 @@ timestamp: 2026-08-17
   `api_error: shim: TimeoutError`. Гипотеза: Bun игнорирует эти опции, дефолтный
   HeadersTimeout 300с обрывает соединение до ответа апстрима. Диагностику/фикс
   ведёт отдельный агент (ветка `task/opus-transport-*` в dotfiles). Статус: «в работе».
+- **Claim требует ПОЛНЫЙ OPENCODE_SESSION_ID (2026-10-07, T-170, Дирижёр):**
+  усечённый ID в printf-формате создаёт ложный claim (поймал автора гейта же).
+  Формат claims/peer-каналов — только полный `ses_...` ID без сокращений.
