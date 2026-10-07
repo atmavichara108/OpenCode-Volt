@@ -76,7 +76,7 @@ Git Freed считать готовым к распространению по �
 4. целостность: 20 строк / 20 уникальных id / 4 писателя (A, B, B-conflict, detector-test); потерь нет.
 
 Итог: **B9 CLOSED PASS** (детектор + валидатор + целостность одновременно).
-Разблокировано: bug model (peer-comms смена модели получателя) — следующийnamed fix-route.
+Разблокировано: bug model (peer-comms смена модели получателя) — следующий по fix-route.
 
 Правки в коммит: `tools/git-agent/freed.py`, `tools/idea-graph/validate.mjs`, `docs/specs/git-freed.md`.
 
@@ -170,7 +170,7 @@ freed.py к шаблонной детекции: templates recursive + untracked
   push 27a1301..21d4b30). Append-only конфликты разрулены ort чисто.
 - dotfiles: main=43b5258 == task/maya-lint-handshake, рабочее дерево B10 ещё не
   коммитилось sysop (3 файла M/?? — его зона, не трогал).
-- ХВОСТ НА РАЗБОР ПОСЛЕ ПОРОГА (не мержить вслепую; чerry-pick по одному с
+- ХВОСТ НА РАЗБОР ПОСЛЕ ПОРОГА (не мержить вслепую; cherry-pick по одному с
   проверкой актуальности против миграции .mcode):
   vault: deepseek-bridge(3), agent-infra(3), lit-project-bootstrap(2),
   main-protector(2), v2-config, modelhub, specs-migration, promo-provider,
@@ -218,7 +218,7 @@ freed.py к шаблонной детекции: templates recursive + untracked
   06-Audits/2026-10-07-pae-market-research.md.
 
 ## ПОРОГ ПЕРЕХОДЖЕН: фаза 4 открыта (2026-10-07 21:xx, слово Рудры)
-- Триггеры закрыты: имя (Терминал/Pip-Boy blessed), merдж+push (main=fb2e168,
+- Триггеры закрыты: имя (Терминал/Pip-Boy blessed), merge+push (main=fb2e168,
   dotfiles=68f7663), EXPOSURE закрыт вердиктом границы v2, B10 принят лично
   Дирижёром (repro воспроизведён: гонка rc=1, чистое rc=0) и вмерджен.
 - Market-scan принят: ПРЯМЫХ конкурентов нет (переводной слой мир↔работа уникален);
@@ -273,7 +273,7 @@ freed.py к шаблонной детекции: templates recursive + untracked
   Мерж в продуктовые main — отдельный шаг при чистом дереве (не B11-скоуп).
 - Garbage-guard: provenance проверен по sqlite (сообщение Рудры 21:43:50).
   Мандат sysop выдан (guard+гейт+letter-гейт+запись инцидента decode-глючности).
-- B18 довinvt в main (3def168).
+- B18 довинт в main (3def168).
 
 ## Витрина ПРИНЯТА + слово Рудры в графе (2026-10-07 00:1x)
 - Витрина (06-Audits/2026-10-07-scenes-vitrina.md): приёмка поабзапной
@@ -310,3 +310,14 @@ freed.py к шаблонной детекции: templates recursive + untracked
 - ГО всем трём. Оговорки: whitelist-конфиг репо (dv-hub: dataview-префикс),
   exclude build-каталогов AndroidOS; приёмка = staged-дефект rc=1 на каждом
   порту. Игровой терминологии в гейте нет (граница v2 respected).
+
+## B11-v3 ПРИНЯТ + dogfooding-цикл (2026-10-07 01:3x)
+- Хук v3 (5847747…) идентичен в 3 портах, GG_EXCLUDE per-repo, приёмка на
+  каждом порте: чисто 0 / дефект 1. Ветки ждут хозяев продуктов.
+- Цикл закрыт полностью: гейт поймал миксы в чужих вечерних записях —
+  реальные опечатки исправлены (следующий по/cherry-pick/merge+push/
+  довинт/шим/сессии/результат/Урок), 2 цитаты-доказательства дефектов →
+  whitelist (история сохраняется цитатой, не переписывается). Латин-класс
+  dotfiles main=9af9619.
+- Урок: claim head-guard требует ПОЛНЫЙ OPENCODE_SESSION_ID из env
+  (усечённый ID создал ложный claim и поймал законного владельца). T-170.
