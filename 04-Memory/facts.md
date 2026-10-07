@@ -48,6 +48,8 @@ timestamp: 2026-08-17
 
 ## OpenCode
 
+- **2026-10-07 JustDoWork (justwoker) FIXED:** Anthropic-style `/messages` с `x-api-key` работает, OpenAI-style `/chat/completions` блокируется Cloudflare. Баланс $300+ (referral/promotional). Решение: использовать Anthropic-транспорт (TUI + M Code уже работают через `@ai-sdk/anthropic`). Обновлены карточки провайдеров, добавлен justwoker-openai в конфиг (OpenAI-style заблокирован).
+
 ### Агенты
 - **librarian** — агент командного центра. Режим: primary (default в opencode.json). Запускается без `/agent`. Области: мониторинг проектов, аудит, управление знаниями.
 - Primary agents переключаются через `Tab` или настроенный keybind
@@ -747,3 +749,9 @@ timestamp: 2026-08-17
   отчёта**; при расхождении сначала `git log`/`git status`, потом вердикт.
   Правило для исполнителя: перед записью scope — сверить, что артефакт ещё
   не изменён/не закрыт соседом. | 2026-10-07 |
+
+- **Факт 2026-10-07: профиль агента сессии ≠ её заголовок.** Сессия «великий
+  мудрец - внедрение» (ses_ef77a5cf…) после перезапуска сервера несёт агентский
+  профиль librarian (agent-switched: librarian→librarian); её ответы в письмах
+  печатаются как «librarian · …». Дирижёр обязан перед доверием к авторству
+  сверять type=agent-switched в session_message, а не полагаться на заголовок/имя.
