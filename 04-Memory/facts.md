@@ -797,3 +797,20 @@ timestamp: 2026-08-17
   Симптом наблюдён 2026-10-07 (вызов decision-queue дважды упал с пустым
   {} на серверной стороне). Харнес-квирк, НЕ наш код: фикс = всегда передавать
   id строки скилла первым аргументом; баг-фикс ядра OpenCode не делаем.
+
+### 2026-10-07 (шим justwoker: ECONNRESET / 504)
+- **T-168. Корень сбоев рабочих сессий через shим — не «шлюз лежит».** Symptom:
+  `Retry due attempt N: ECONNRESET: socket closed unexpectedly` / `shim: upstream
+  timeout` у Рудры в чате, при этом curl в тот же апстрим 12/12 = 200.
+  Root cause: шим держал HTTP-коннект OpenCode пустым, пока ждал non-stream
+  ответ апстрима (Opus генерация десятки секунд); соединение простаивало и
+  рвалось (Bun idleTimeout default 10s + нетранспарентные обрывы).
+  Fix (justwoker-shim.ts): SSE открывается сразу и держится стандартными
+  Anthropic `ping` каждые 8с; idleTimeout=255; forward()-ретраи 403/503
+  (пульс балансировщика: CF-rate-limit 403 ~0.5c, New API «No available
+  channel, distributor» 503); try/catch хендлера вместо падения процесса;
+  UPSTREAM_TIMEOUT_MS=600s; при ошибке апстрима — SSE error-событие.
+  Evidence: стрим max_tokens=1500 прожил 34.9c и завершился message_stop
+  (5 пингов в потоке); сервис active, crash count 0. Факт: **апстрим
+  justwoker жив и отвечает 200 за 2.5–6c** — предыдущий вывод «канал лёг»
+  был артефактом этого бага шима.
