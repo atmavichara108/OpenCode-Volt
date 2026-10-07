@@ -842,3 +842,16 @@ timestamp: 2026-08-17
 - **Вопрос-флаг:** sysop заявил garbage-guard «подтверждён Рудрой» — у
   Дирижёра подтверждения нет (ни facts, ни route-log, ни TASKS). Ждёт слова
   Рудры; до него мандат не выдаётся.
+
+### 2026-10-07 (B11 + garbage-guard provenance)
+- **B11 ПРИНЯТ ( Дирижёр лично).** Ветки task/git-freed-b11 в dv-hub (287e887),
+  ChaT (ce60502), AndroidOS (c1f2569): хуки идентичны sha 0fc28143382dc391,
+  симлинк .git/hooks живой. Песочница Дирижёра: mermaid-fp rc=0, битый
+  викилинк rc=1, чистый staged rc=0. Чужой WIP не тронут, merge/push в
+  продуктовые main НЕ делался (вне скоупа B11) — мерж в main каждого продукта
+  отдельным шагом при чистом дереве через tree-cop.
+- **Garbage-guard provenance ПОДТВЕРЖДЁН read-gate:** sqlite session_message
+  msg_117add5b50018qevDS0UqIaBUF, ses_eedd28c4…, 2026-10-07 21:43:50,
+  Рудра: «Защита от мусора моделей - да.» GO sysop выдан.
+- **B18 довinvt (sent-журнал до run) в main** dotfiles cherry-pick 905f0cd →
+  main=3def168.

@@ -267,3 +267,10 @@ freed.py к шаблонной детекции: templates recursive + untracked
 - Repro.sysop верен (уточнение: глагол claim-release). 9/9 приняла, моя
   тройка совпала. Мерж dotfiles main=faaf45b. Soft-block обоснован.
 - garbage-guard: происхождение не подтверждено — уточнить у Рудры.
+
+## B11 принят + garbage-guard GO (2026-10-07 23:0x)
+- B11: личная сверка (хук-триплет идентичен, sandbox 3 кейса, чужое цело).
+  Мерж в продуктовые main — отдельный шаг при чистом дереве (не B11-скоуп).
+- Garbage-guard: provenance проверен по sqlite (сообщение Рудры 21:43:50).
+  Мандат sysop выдан (guard+гейт+letter-гейт+запись инцидента decode-глючности).
+- B18 довinvt в main (3def168).
