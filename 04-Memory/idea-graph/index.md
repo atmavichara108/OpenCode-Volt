@@ -42,6 +42,11 @@ JEV / Laya / open-jev / open-alternative-jev (ветка классификат�
 GEPA (Evolution Lab), obra/knowledge-graph и Obsidian-стек (проекции),
 TradingMind (typed-edge эпистемология → `proto-typed-edges`).
 
+Кластер аналогов Терминала (`tech-analogs-terminal-hub`, candidate): линия
+Тенсуро (мудрецы/обжорство/Вельдора-внутри/мысленная связь) + внешние
+франшизы (Omni-tool, COMP SMT, ТАРДИС, JARVIS+костюм, HEV, дроны Культуры).
+Литературный канон [проверить]; кандидат на ревизию мира, blessing за Рудрой.
+
 ## proto — протоколы
 
 Черновики, без потерь, матрица миров (pending), канон межсессионного
