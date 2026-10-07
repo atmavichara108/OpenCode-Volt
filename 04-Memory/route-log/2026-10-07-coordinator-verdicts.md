@@ -156,7 +156,7 @@ freed.py к шаблонной детекции: templates recursive + untracked
 - Урок для Дирижёра: перед выдачей бага проверять ВСЕХ затронутых, не один
   случай (симптом в одной сессии ≠ механизм). Ретракт отправлен до старта работ.
 
-## Фазы 1"": МЕРДЖ ВЫПОЛНЕН (2026-10-07, решение Рудры «мержи и пуш»)
+## Фазы 1–3: МЕРДЖ ВЫПОЛНЕН (2026-10-07, решение Рудры «мержи и пуш»)
 - Vault: task/coverage-scanner-incr (91 коммитов, включал git-freed-common-field,
   branch-policy-vault, coverage-scanner) → main fast-forward e549c7f,
   push origin/main 8ac742a..e549c7f.
@@ -164,3 +164,16 @@ freed.py к шаблонной детекции: templates recursive + untracked
   main ff 43b5258, push 8981298..43b5258.
 - Метод: изолированный worktree .merge-wt (общее дерево и чужие правки не тронуты),
   worktree удалён после пуша.
+
+## Предпороговая выкладка (2026-10-07, решение Рудры)
+- Vault: task/igraphv2-memory-1007 (2↑/2↓) смержена в main (merge commit 21d4b30,
+  push 27a1301..21d4b30). Append-only конфликты разрулены ort чисто.
+- dotfiles: main=43b5258 == task/maya-lint-handshake, рабочее дерево B10 ещё не
+  коммитилось sysop (3 файла M/?? — его зона, не трогал).
+- ХВОСТ НА РАЗБОР ПОСЛЕ ПОРОГА (не мержить вслепую; чerry-pick по одному с
+  проверкой актуальности против миграции .mcode):
+  vault: deepseek-bridge(3), agent-infra(3), lit-project-bootstrap(2),
+  main-protector(2), v2-config, modelhub, specs-migration, promo-provider,
+  dotfiles-agent-v3, vault-runtime, snapshots(x2 — слепки дерева, вероятно dead).
+  dotfiles: s2-theme-hub(46+17 — авг, candidate dead), noop-guard-* (likely dead,
+  guard упразднён), opencode-reload(2), main-protector, wip-2026-09-18.

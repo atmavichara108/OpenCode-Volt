@@ -200,7 +200,7 @@ status: seed
    Минимизация участия LLM в механическом сохранении памяти. См.
    [[memory-management]], [[distill-pattern]].
 
-9. **capture как intake-слой апгрейдов.** [[.mcode/command/capture.md|capture]] (скрапинг сигналов
+9. **capture как intake-слой апгрейдов.** `capture` (см. `.mcode/command/capture.md`, вне волта) (скрапинг сигналов
    извне) — не просто сбор ссылок, а первый этап апгрейда проекта.
    **Цепочка intake→upgrade:** (1) signal intake (Telegram/др.) →
    (2) classification → узел карты; (3) relevance scoring; (4) project mapping
@@ -334,7 +334,7 @@ runtime vs planning).
   quality checks, project agents/специализации, project-specific
   plugins/tools/commands, per-project `opencode.json` overrides, локальные
   commit-guard/CI/TS/system-specific плагины.
-- **`tools/ecosystem-map/` и [[.mcode/command/capture.md|capture]]** — координационный/global слой: карта
+- **`tools/ecosystem-map/` и `capture` (см. `.mcode/command/capture.md`, вне волта)** — координационный/global слой: карта
   узлов и intake-сигналов живёт глобально; **реализация project-specific
   upgrade остаётся локальной** (глобальный слой не исполняет апгрейд за
   проект, он координирует).
