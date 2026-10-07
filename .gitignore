@@ -47,3 +47,4 @@ tools/verify-cache/generated/
 
 # Sessions coverage scanner (generated reports, не коммитить)
 tools/idea-graph/generated/
+.bench-justwoker*.log

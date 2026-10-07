@@ -1,0 +1,87 @@
+{
+  "provider_id": "justwoker",
+  "model_id": "claude-opus-4-8",
+  "benchmark_version": "0.2.0",
+  "date": "2026-10-07T16:03:10Z",
+  "gates": {
+    "tools": {
+      "status": "OK",
+      "score": 1.0,
+      "passed_threshold": true,
+      "attempts": 5,
+      "error_count": 0,
+      "cost_tokens": 52308,
+      "tokens_estimated": 7647,
+      "cost_usd_est": null,
+      "latency_ms_median": 3075,
+      "notes": "",
+      "truncated_count": 0,
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    "build": {
+      "status": "OK",
+      "score": 1.0,
+      "passed_threshold": true,
+      "attempts": 5,
+      "error_count": 0,
+      "cost_tokens": 52344,
+      "tokens_estimated": 2195,
+      "cost_usd_est": null,
+      "latency_ms_median": 2816,
+      "notes": "",
+      "truncated_count": 0,
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    "reasoning": {
+      "status": "OK",
+      "score": 1.0,
+      "passed_threshold": true,
+      "attempts": 4,
+      "error_count": 0,
+      "cost_tokens": 41698,
+      "tokens_estimated": 1312,
+      "cost_usd_est": null,
+      "latency_ms_median": 3515.0,
+      "notes": "",
+      "truncated_count": 0,
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    "fast": {
+      "status": "ERROR",
+      "score": null,
+      "passed_threshold": null,
+      "attempts": 3,
+      "error_count": 1,
+      "error_rate": 0.3333,
+      "error_kinds": [
+        "http_error"
+      ],
+      "cost_tokens": 20748,
+      "tokens_estimated": 57,
+      "cost_usd_est": null,
+      "latency_ms_median": null,
+      "truncated_count": 0,
+      "finish_reasons": [
+        "stop"
+      ]
+    }
+  },
+  "recommendation": [
+    "tools",
+    "build",
+    "reasoning"
+  ],
+  "advisory": true,
+  "task_set_hash": "2fcf9f19daa3",
+  "k": 1,
+  "budget_usd": 5.0,
+  "spent_usd_est": 0.0,
+  "budget_stop": false,
+  "gates_skipped": []
+}

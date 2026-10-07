@@ -13,3 +13,4 @@
 | anymodel / cx/gpt-6-luna | 1.0 / 1.0 ✓ | 1.0 / 0.75 ✓ | 1.0 / 0.7 ✓ | 1.0 | tools, build, reasoning | 2026-09-25T18:36:44Z | 0.1.0 | acd13ac0c8d9 |
 | anymodel / cx/gpt-6-sol | 1.0 / 1.0 ✓ | 1.0 / 0.75 ✓ | 1.0 / 0.7 ✓ | 1.0 | tools, build, reasoning | 2026-09-25T19:20:12Z | 0.1.0 | acd13ac0c8d9 |
 | anymodel / kmc/k3 | 0.6 / 1.0 ✗ | 1.0 / 0.75 ✓ | 1.0 / 0.7 ✓ | 1.0 | build, reasoning | 2026-09-24T13:16:18Z | 0.1.0 | acd13ac0c8d9 |
+| justwoker / claude-opus-4-8 | 1.0 / 1.0 ✓ | 1.0 / 0.75 ✓ | 1.0 / 0.7 ✓ | ERROR | tools, build, reasoning | 2026-10-07T16:03:10Z | 0.2.0 | 2fcf9f19daa3 |
