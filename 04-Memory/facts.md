@@ -831,6 +831,7 @@ timestamp: 2026-08-17
   2026-10-06 фактически (started/finished receipts); librarian принимает как
   контракт: входящий мандат → started, завершение хода → finished.
 
+### 2026-10-07 (head-guard usage)- **T-170. claim/release требуют полный OPENCODE_SESSION_ID из env.**  Усечённый ID создаёт ложный claim и блокирует законного владельца (мой  случай 01:2x). Источник истины: $OPENCODE_SESSION_ID.
 ### 2026-10-07 (B22)
 - **B22 принят (dotfiles main=faaf45b).** head-guard.sh + claim/release в
   hello.sh + гейт-5 pre-commit. Режим soft-block: блок только при свежем
@@ -876,3 +877,25 @@ timestamp: 2026-08-17
   про валидацию куратором). Эталонная точность: граф, не пересказ.
 - **Витрина сцен ПРИНЯТА** (799 строк, 14 сцен): дословность проверена
   Дирижёром поабзапно — промахи только служебных строк, тело пословно.
+
+### 2026-10-07 (шим justwoker: второй фикс — crash-guard стрима; продолжение T-168)
+- **T-168 (фикс 2). Отмена клиента крашила bun-процесс шима.** Symptom: при
+  отмене/ретрае клиента OpenCode шим ронял bun-процесс → окно `ConnectionRefused`
+  (RestartSec=5) — сервис то поднимался, то падал. Root cause: `ReadableStream.cancel`
+  закрывал контроллер потока, но heartbeat-пинги (каждые 8с) и error-обработчики
+  продолжали `enqueue` → `TypeError: Controller is already closed` → необработанное
+  исключение → краш процесса. Fix (justwoker-shim.ts, `~/dotfiles/opencode-global/
+  .config/opencode/shim/justwoker-shim.ts`): все записи в поток идут через
+  `safeEnqueue` + флаг `closed`; `cancel()` останавливает пинги и помечает закрытие,
+  повторный enqueue после закрытия — no-op.
+  Evidence: краш-тест — обрыв клиента на 12с долгой генерации → сервис active,
+  0 крашей, health 200. Коммит dotfiles `dee6f15` (pushed в main).
+
+### 2026-10-07 (шим justwoker: ОТКРЫТАЯ проблема — TimeoutError ~300с)
+- **TimeoutError на больших non-stream запросах Opus — открыто, в работе.**
+  Несмотря на `headersTimeout: 0` / `requestTimeout: 0` в fetch шима,
+  `journalctl --user -u justwoker-shim` показывает `TimeoutError` ровно
+  через ~300с (240–300с) на больших non-stream запросах Opus; пользователь видит
+  `api_error: shim: TimeoutError`. Гипотеза: Bun игнорирует эти опции, дефолтный
+  HeadersTimeout 300с обрывает соединение до ответа апстрима. Диагностику/фикс
+  ведёт отдельный агент (ветка `task/opus-transport-*` в dotfiles). Статус: «в работе».
