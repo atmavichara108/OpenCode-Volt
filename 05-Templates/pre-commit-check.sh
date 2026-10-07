@@ -115,5 +115,32 @@ done < <(git diff --cached --name-only --diff-filter=ACMR | grep -E '\.md$' | wh
 done | rg -o '\[\[([^\]|]+)' --no-filename --no-line-number 2>/dev/null | sed 's/\[\[//' | sort -u)
 
 echo "✅ Все викилинки валидны"
+
+# --- Гейт 5: decode-мусор (garbage-guard, ratified Рудрой 2026-10-07) --------
+# Детектор zero-LLM живёт в dotfiles-ядре; vault вызывает его как хост-инструмент.
+# Обход: GARBAGE_OK=1 (как MOJIBAKE_OK в dotfiles-гейте 6).
+
+if [[ "${GARBAGE_OK:-}" != "1" ]]; then
+  GG="${GARBAGE_GUARD:-$HOME/dotfiles/tools/garbage-guard/guard.py}"
+  if [ -f "$GG" ]; then
+    echo "🔍 Pre-commit check: decode-мусор (garbage-guard)..."
+    # scan --staged привязан к REPO детектора (dotfiles), поэтому контент
+    # проверяем через check-text (stdin) — кросс-репозиторно без правки ядра.
+    bad=0
+    while read -r f; do
+      case "$f" in *.md|*.jsonl|*.json|*.jsonc|*.txt) ;; *) continue ;; esac
+      if ! git show ":$f" 2>/dev/null | python3 "$GG" check-text 2>/dev/null; then
+        echo "❌ Decode-мусор: $f"
+        bad=1
+      fi
+    done < <(git diff --cached --name-only --diff-filter=ACM)
+    if [ "$bad" -eq 1 ]; then
+      echo "❌ Decode-мусор в staged. Обход: GARBAGE_OK=1 git commit (только whitelist-доказанные вхождения)"
+      exit 1
+    fi
+    echo "✅ Decode-мусора нет"
+  fi
+fi
+
 echo "🎉 Все pre-commit гейты пройдены"
 exit 0
