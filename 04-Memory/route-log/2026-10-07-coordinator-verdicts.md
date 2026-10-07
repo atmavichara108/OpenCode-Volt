@@ -155,3 +155,16 @@ freed.py к шаблонной детекции: templates recursive + untracked
   имя/агент. agent-switched previous==agent означает «без изменения».
 - Урок для Дирижёра: перед выдачей бага проверять ВСЕХ затронутых, не один
   случай (симптом в одной сессии ≠ механизм). Ретракт отправлен до старта работ.
+
+## Предпороговая выкладка (2026-10-07, решение Рудры)
+- Vault: task/igraphv2-memory-1007 (2↑/2↓) смержена в main (merge commit 21d4b30,
+  push 27a1301..21d4b30). Append-only конфликты разрулены ort чисто.
+- dotfiles: main=43b5258 == task/maya-lint-handshake, рабочее дерево B10 ещё не
+  коммитилось sysop (3 файла M/?? — его зона, не трогал).
+- ХВОСТ НА РАЗБОР ПОСЛЕ ПОРОГА (не мержить вслепую; чerry-pick по одному с
+  проверкой актуальности против миграции .mcode):
+  vault: deepseek-bridge(3), agent-infra(3), lit-project-bootstrap(2),
+  main-protector(2), v2-config, modelhub, specs-migration, promo-provider,
+  dotfiles-agent-v3, vault-runtime, snapshots(x2 — слепки дерева, вероятно dead).
+  dotfiles: s2-theme-hub(46+17 — авг, candidate dead), noop-guard-* (likely dead,
+  guard упразднён), opencode-reload(2), main-protector, wip-2026-09-18.
