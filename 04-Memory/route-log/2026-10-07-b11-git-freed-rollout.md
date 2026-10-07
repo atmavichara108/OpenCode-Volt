@@ -69,3 +69,23 @@ tools/git-agent/freed.py, паттерн COMMON_DIR/*.jsonl.
 - Пустой-файл тест требует истинно 0-байтный (echo > даёт 1 байт).
 - Волт-хук того же FP не имел лишь потому, что mermaid-файлы не попадали в staged;
   эталон тоже пропатчен (known-FP fix v2).
+
+## v3 (ГО Дирижёра, вечер): garbage-guard в продуктовые порты
+
+Причина ГО: rg-скан — ChaT 0 CJK, AndroidOS 0 CJK, dv-hub 1 вендор (dataview →
+whitelist); FP-риск = 0, живой русский контент — то, что guard защищает.
+Хук v3 (+Гейт 4 decode-мусора, sha256 584774743a7e…, blob 59c51af…, 100755) +
+per-repo githooks/garbage-guard.conf (GG_EXCLUDE regex: dv-hub .obsidian/vendor/
+main.js; ChaT/AndroidOS build/.gradle/node_modules). Обход GARBAGE_OK=1.
+Песочница до раскатки: чистый 0 / дефект 1 / vendor-конфиг 0.
+
+| Репо | Amend v3 SHA | Конфиг sha256 | Приёмка чисто/дефект |
+|---|---|---|---|
+| dv-hub | ab97c3a | 398c1668… | 0 / 1 («decode-мусор: .b11v3-bad.md») |
+| ChaT | da499c2 | 50503436… | 0 / 1 |
+| AndroidOS | bf3c887 | 4ef4af5f… | 0 / 1 |
+
+Коммит = ровно 2 файла; blob хука идентичен во всех трёх (git rev-parse
+HEAD:githooks/pre-commit = 59c51af…); main не тронут (e803d02/c206360/dd48ede);
+WIP 25/20/11 цел; тест-остатков 0; игровая лексика в хуке/коммитах отсутствует
+(граница v2). Независимая сверка координатором PASS. Мерж — за хозяевами продуктов.
