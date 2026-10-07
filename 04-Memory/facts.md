@@ -48,7 +48,16 @@ timestamp: 2026-08-17
 
 ## OpenCode
 
-- **2026-10-07 JustDoWork (justwoker) FIXED:** Anthropic-style `/messages` с `x-api-key` работает, OpenAI-style `/chat/completions` блокируется Cloudflare. Баланс $300+ (referral/promotional). Решение: использовать Anthropic-транспорт (TUI + M Code уже работают через `@ai-sdk/anthropic`). Обновлены карточки провайдеров, добавлен justwoker-openai в конфиг (OpenAI-style заблокирован).
+- **2026-10-07 JustDoWork (justwoker) DEGRADED (non-stream-only):** anthropic-путь
+  `/v1/messages` работает **только без стрима** (HTTP 200, корректный JSON).
+  Со `stream: true` шлюз отдаёт только `message_start/delta/stop` — события
+  `content_block_*` с текстом отсутствуют (3/3). OpenAI-путь `/chat/completions`
+  закрыт Cloudflare 403. OpenCode всегда стримит (AI SDK streamText), опции
+  non-stream в конфиге OpenCode нет → прямой провайдер отвечает пустотой.
+  Root cause: регрессия New API-шлюза justwoker (в памяти с 2026-10-03).
+  Временный фикс (решение оператора): локальный стриминг-шим — форвардит
+  non-stream upstream и сам генерирует корректный SSE. Целевое — канал New API
+  ([[docs/specs/newapi-gateway-layer]]). Баланс $300+.
 
 ### Агенты
 - **librarian** — агент командного центра. Режим: primary (default в opencode.json). Запускается без `/agent`. Области: мониторинг проектов, аудит, управление знаниями.

@@ -177,3 +177,10 @@ freed.py к шаблонной детекции: templates recursive + untracked
   dotfiles-agent-v3, vault-runtime, snapshots(x2 — слепки дерева, вероятно dead).
   dotfiles: s2-theme-hub(46+17 — авг, candidate dead), noop-guard-* (likely dead,
   guard упразднён), opencode-reload(2), main-protector, wip-2026-09-18.
+
+## B7 ПРИНЯТ + инцидент EXPOSURE (2026-10-07)
+- Отчёт igraphv2 8/8 принят (артефакты c25826a, детерминизм, read-only — всё
+  совпало с моей проверкой). FP-корзина на 2-недельный дайджест — открыта.
+- KEY-НАХОДКА подтверждена Дирижёром лично (GitHub API): 6 репо PUBLIC.
+  Инцидент зафиксирован: 06-Audits/b7-maya-boundary/INCIDENT-exposure.md.
+- Ждёт решения Рудры: приватизация (gh repo edit --visibility private, откатываемо).

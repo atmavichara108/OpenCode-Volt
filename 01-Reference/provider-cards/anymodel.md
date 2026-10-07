@@ -1,9 +1,9 @@
 ---
 type: Provider Card
 title: AnyModel — provider card
-description: Операционная карточка провайдера AnyModel. OpenAI-compatible шлюз с реферальным оффером 5M токенов за привязку Telegram. Status ACTIVE: probe пройден, 9 моделей подключено.
+description: Операционная карточка провайдера AnyModel. OpenAI-compatible шлюз с реферальным оффером 5M токенов за привязку Telegram. Status EMPTY: баланс скрыт (только estimated), фактическое использование не подтверждено.
 tags: [reference, provider-card, providers, anymodel]
-timestamp: 2026-09-23
+timestamp: 2026-10-07
 ---
 
 # AnyModel — provider card
@@ -11,14 +11,21 @@ timestamp: 2026-09-23
 > Каноническая операционная запись по провайдеру. Schema и lifecycle:
 > [[02-Methods/promo-provider-protocol]]. Ключей API здесь нет.
 
+## Probe evidence (2026-10-07)
+
+- **Status:** EMPTY — баланс скрыт (только estimated), фактическое использование не подтверждено.
+- **Models:** 90 в `/v1/models`; конфигурировано 9: `am/free`, `am/nemotron-3-ultra-550b-a55b`, `cc/claude-opus-5`, `cc/claude-sonnet-5`, `cx/gpt-6-astra`, `cx/gpt-5.6-sol`, `cx/gpt-6-luna`, `cx/gpt-6-sol`, `kmc/k3`. Вендорные префиксы: `cx/` (xAI/Cerebras), `cc/` (Claude), `kmc/` (Kimi), `am/` (Anymodel free)
+- **Proxy:** не нужен
+- **Risks:** reasoning-раздувание smoke-запросов; free-роутер `am/free` сжигает ~2K токенов на минимальный запрос (учитывать в лимитах); баланс скрыт (только estimated)
+
 | Поле | Значение |
 |------|----------|
 | `display_name` | AnyModel |
 | `provider_id` | `anymodel` |
 | `endpoint` | `https://anymodel.org/v1` |
 | `compatibility` | OpenAI-compatible |
-| `status` | ✅ `ACTIVE` |
-| `checked_at` | 2026-09-25 |
+| `status` | ⚪ `EMPTY` (баланс скрыт, estimated) |
+| `checked_at` | 2026-10-07 |
 | `source` | реферальный оффер 5M токенов за привязку Telegram (post 831) |
 | `account_kind` | `promotional` |
 | `initial_balance` | 5,000,000 tokens (kind: `promotional`, observed_at 2026-09-23, dashboard + подтверждено пользователем) |

@@ -1,9 +1,9 @@
 ---
 type: Reference
 title: OpenCode Providers — Провайдеры и бесплатные лимиты
-description: Полный обзор провайдеров OpenCode с бесплатными лимитами. Проверено: 2026-09-06 (+LinaliAPI custom)
+description: Полный обзор провайдеров OpenCode с бесплатными лимитами. Проверено: 2026-10-07 (+LinaliAPI, AnyModel, JustDoWork updates)
 tags: [opencode, providers, free-tier, models]
-timestamp: 2026-09-06
+timestamp: 2026-10-07
 ---
 
 # OpenCode Providers — Исследование бесплатных лимитов
@@ -20,6 +20,9 @@ timestamp: 2026-09-06
 | **OpenRouter** | `openrouter` | Gateway | Доступ к 100+ провайдерам через единый API. Много бесплатных моделей. |
 | **Mistral AI** | `mistral` | Direct | Прямой доступ к моделям Mistral (Codestral, Magistral, Ministral). |
 | **LinaliAPI** | `linaliapi` | Gateway (custom) | OpenAI/Anthropic-совместимый шлюз (linaliapi.com). Кастомный провайдер: config-блок + ключ в auth.json. Подключён 2026-09-06. |
+| **JustDoWork** | `justwoker` | Gateway (custom) | Реферальный провайдер с Claude Opus 4.8. Anthropic-style /messages с x-api-key работает. Баланс $300+ (referral/promotional). |
+| **AnyModel** | `anymodel` | Gateway (custom) | OpenAI-compatible шлюз с реферальным оффером 5M токенов за привязку Telegram. Баланс скрыт (estimated). |
+| **Apinex** | `apinex` | Gateway (custom) | Free Claude Opus 4.6. Статус: EMPTY — баланс неизвестен. |
 
 ---
 
@@ -31,9 +34,9 @@ timestamp: 2026-09-06
 
 | Provider ID | Карточка | Статус | Endpoint |
 |-------------|----------|--------|----------|
-| `linaliapi` | [[01-Reference/provider-cards/linaliapi]] | ✅ ACTIVE | `https://api.linaliapi.com/v1` |
-| `justwoker` | [[01-Reference/provider-cards/justwoker]] | ❌ BLOCKED/NO_MODELS | `https://api.justwoker.icu/v1` |
-| `anymodel` | [[01-Reference/provider-cards/anymodel]] | ✅ ACTIVE | `https://anymodel.org/v1` |
+| `linaliapi` | [[01-Reference/provider-cards/linaliapi]] | ⚪ EMPTY | `https://api.linaliapi.com/v1` |
+| `justwoker` | [[01-Reference/provider-cards/justwoker]] | 🟡 DEGRADED (non-stream-only) | `https://api.justwoker.icu/v1` |
+| `anymodel` | [[01-Reference/provider-cards/anymodel]] | ⚪ EMPTY | `https://anymodel.org/v1` |
 
 Метод приёмки промо/реферальных провайдеров и контракт balance hook:
 [[02-Methods/promo-provider-protocol]].

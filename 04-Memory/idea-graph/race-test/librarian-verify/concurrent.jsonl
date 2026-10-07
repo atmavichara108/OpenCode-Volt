@@ -1,0 +1,10 @@
+{"id":"cc-a-1","graph":"proto","kind":"test-node","label":"cc A 1","status":"raw","provenance":{"source":"cc:A","observed_at":"2026-10-07","scope":"sandbox","basis":"synthetic"},"projection":["compact"]}
+{"id":"cc-a-2","graph":"proto","kind":"test-node","label":"cc A 2","status":"raw","provenance":{"source":"cc:A","observed_at":"2026-10-07","scope":"sandbox","basis":"synthetic"},"projection":["compact"]}
+{"id":"cc-a-3","graph":"proto","kind":"test-node","label":"cc A 3","status":"raw","provenance":{"source":"cc:A","observed_at":"2026-10-07","scope":"sandbox","basis":"synthetic"},"projection":["compact"]}
+{"id":"cc-a-4","graph":"proto","kind":"test-node","label":"cc A 4","status":"raw","provenance":{"source":"cc:A","observed_at":"2026-10-07","scope":"sandbox","basis":"synthetic"},"projection":["compact"]}
+{"id":"cc-a-5","graph":"proto","kind":"test-node","label":"cc A 5","status":"raw","provenance":{"source":"cc:A","observed_at":"2026-10-07","scope":"sandbox","basis":"synthetic"},"projection":["compact"]}
+{"id":"cc-b-1","graph":"proto","kind":"test-node","label":"cc B 1","status":"raw","provenance":{"source":"cc:B","observed_at":"2026-10-07","scope":"sandbox","basis":"synthetic"},"projection":["compact"]}
+{"id":"cc-b-2","graph":"proto","kind":"test-node","label":"cc B 2","status":"raw","provenance":{"source":"cc:B","observed_at":"2026-10-07","scope":"sandbox","basis":"synthetic"},"projection":["compact"]}
+{"id":"cc-b-3","graph":"proto","kind":"test-node","label":"cc B 3","status":"raw","provenance":{"source":"cc:B","observed_at":"2026-10-07","scope":"sandbox","basis":"synthetic"},"projection":["compact"]}
+{"id":"cc-b-4","graph":"proto","kind":"test-node","label":"cc B 4","status":"raw","provenance":{"source":"cc:B","observed_at":"2026-10-07","scope":"sandbox","basis":"synthetic"},"projection":["compact"]}
+{"id":"cc-b-5","graph":"proto","kind":"test-node","label":"cc B 5","status":"raw","provenance":{"source":"cc:B","observed_at":"2026-10-07","scope":"sandbox","basis":"synthetic"},"projection":["compact"]}

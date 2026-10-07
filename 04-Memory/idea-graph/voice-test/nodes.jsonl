@@ -1,0 +1,4 @@
+{"id":"vt-1","graph":"event","kind":"event","label":"доказанное объявление","status":"accepted","provenance":{"source":"voice-test","observed_at":"2026-10-07"},"projection":"voice","announcement":true}
+{"id":"vt-2","graph":"event","kind":"event","label":"обещание без доказательств","status":"candidate","provenance":{"source":"voice-test","observed_at":"2026-10-07"},"projection":"voice","announcement":true}
+{"id":"vt-3","graph":"event","kind":"event","label":"молчаливое событие","status":"candidate","provenance":{"source":"voice-test","observed_at":"2026-10-07"},"projection":"voice"}
+{"id":"vt-4","graph":"world","kind":"entity","label":"обычный узел без объявления","status":"raw","provenance":{"source":"voice-test","observed_at":"2026-10-07"},"projection":"voice"}

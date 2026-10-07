@@ -1,0 +1,3 @@
+{"id":"lv-a-001","graph":"proto","kind":"test-node","label":"librarian verify node A","status":"raw","provenance":{"source":"lv:writer-A","observed_at":"2026-10-07","scope":"sandbox","basis":"synthetic"},"projection":["compact"]}
+{"id":"lv-b-001","graph":"proto","kind":"test-node","label":"librarian verify node B","status":"raw","provenance":{"source":"lv:writer-B","observed_at":"2026-10-07","scope":"sandbox","basis":"synthetic"},"projection":["compact"]}
+{"id":"lv-a-001","graph":"proto","kind":"test-node","label":"librarian verify DUPLICATE A","status":"raw","provenance":{"source":"lv:writer-B-conflict","observed_at":"2026-10-07","scope":"sandbox","basis":"synthetic"},"projection":["compact"]}

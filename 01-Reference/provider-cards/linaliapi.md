@@ -1,9 +1,9 @@
 ---
 type: Provider Card
 title: LinaliAPI — provider card
-description: Операционная карточка провайдера LinaliAPI (OpenAI-compatible шлюз). Источник правды по состоянию провайдера; факты отделены от [проверить].
+description: Операционная карточка провайдера LinaliAPI (OpenAI-compatible шлюз). Источник правды по состоянию провайдера; факты отделены от [проверить]. Статус EMPTY: баланс неизвестен, использование ограничено.
 tags: [reference, provider-card, providers, linaliapi]
-timestamp: 2026-09-06
+timestamp: 2026-10-07
 ---
 
 # LinaliAPI — provider card
@@ -11,13 +11,20 @@ timestamp: 2026-09-06
 > Каноническая операционная запись по провайдеру. Schema и lifecycle:
 > [[02-Methods/promo-provider-protocol]]. Ключей API здесь нет.
 
+## Probe evidence (2026-10-07)
+
+- **Status:** EMPTY — баланс неизвестен, фактическое использование не подтверждено.
+- **Models:** 6 известных моделей (см. ниже).
+- **Proxy:** нет (TUI работает напрямую); M Code — см. `probe_evidence`.
+- **Next action:** balance hook (spec: /home/rudra/dotfiles/docs/specs/promo-provider-probe-balance-hook.md).
+
 | Поле | Значение |
 |------|----------|
 | `provider_id` | `linaliapi` |
 | `endpoint` | `https://api.linaliapi.com/v1` |
 | `compatibility` | OpenAI-compatible (также Anthropic-совместимый шлюз) |
-| `status` | ✅ `ACTIVE` |
-| `checked_at` | 2026-09-06 |
+| `status` | ⚪ `EMPTY` (баланс неизвестен) |
+| `checked_at` | 2026-10-07 |
 | `source` | linaliapi.com (кастомный шлюз; история: [[04-Memory/session-log/2026-09-06]]) |
 | `account_kind` | `promotional/provider account` `[проверить]` — точный вид аккаунта не доказан |
 | `initial_balance` | неизвестен `[проверить]` |

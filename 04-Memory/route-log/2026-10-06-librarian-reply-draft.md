@@ -393,3 +393,176 @@ Started receipt подан; затем — чтение спеки (выполн
 
 — сессия «внедрение», 2026-10-07
 
+---
+## FINISHED REPORT: Git Freed B9 — реальная гонка (2026-10-07, append #14)
+
+**ВЕРДИКТ: FAIL** — по acceptance § S4.2 (детектор обязан дать WARN на гонке). Данные при этом целы: § S4.1 PASS. Честно, без подкраски.
+
+### Песочница и инструменты
+- Песочница: `04-Memory/idea-graph/race-test/race-nodes.jsonl`.
+- Прод-граф НЕ тронут: `nodes.jsonl` 1a358f35 (169 строк), `edges.jsonl` 62030ed3 (198), `protocol.jsonl` 838698a9 (3); `git status` по ним пуст.
+- Детектор: `python3 tools/git-agent/freed.py {detect,check,lease-list}`. Validator: контракт `tools/idea-graph/validate.mjs`, применённый к песочнице lightweight-node (прод-validate.mjs жёстко смотрит в корень графа, пороги ≥90 узлов — для песочницы неприменим).
+
+### Ход A — handshake-квота (пишет один, второй ждёт)
+- PRE: SHA `e3b0c44298fc1c14` (пустой файл), 0 строк.
+- Writer A дописал 1 узел (`race-a-001`): команда `printf ... >> race-nodes.jsonl`, rc=0. SHA → `084cb508f5e93e1a`, 1 строка.
+- Ход передан writer B (sysop `ses_eedd28c45ffeFJU6TDjG69z6A7`) коротким сообщением peer-comms.
+- Writer B дописал 1 узел (`race-b-001`), rc=0. SHA → `7f558421aac6fd6f`, 2 строки.
+- `freed.py check` после каждого: **OK rc=0**, warnings=[], blocked=[].
+- **Ни одна запись не потеряна**: 0→1→2, count совпал.
+
+### Ход B — реальная одновременная гонка (по 8 узлов каждым)
+- PRE: SHA `7f558421aac6fd6f`, 2 строки.
+- Writer B (sysop, модель amd-radeon/DeepSeek-V4.1-Flash) запущен в фоне; writer A писал параллельно без ожидания.
+- POST: SHA `203e95e3cb1d9718`, **18 строк** = 2 + 8 (A) + 8 (B). LOST=0.
+- JSON-целостность: 18/18 строк парсятся, 18 уникальных id, дублей нет crash. Writer A: 9 узлов (001,101-108); writer B: 9 (001,101-108).
+- **Данные: PASS** (ни одна запись не потеряна).
+- **Детектор: FAIL** — `freed.py check` вернул `OK rc=0`, `warnings=[]`, `common_field_dirty=[]` несмотря на 2 живых писателя и 18 строк в общем поле. Ожидалось: `WARN: common-field:...` и rc=1.
+- **Guard-routing: PASS** — на модель writer B переключений не потребовалось; после падения quota на opencode-go сработал канонный fallback на модель primary.
+
+### Ход C — разрешение конфликта
+- Намеренно добавлен дубль-ID `race-a-101` (append-new-ID, прошлые строки не перезаписаны). SHA `409bb6b2786980df`, 19 строк.
+- Lightweight validator: **rc=1, `line 19 DUPLICATE id: race-a-101`** — дубль пойман надёжно.
+- `freed.py check` снова `OK rc=0` — конфликт дубля-ID не связан с его проверками (он их и не покрывает).
+- Разрешение по протоколу (append-new-ID, без перезаписи) соблюдено; канон не перемещён.
+
+### Root cause детектора (установлен, машинно-проверяемо)
+Двойная причина, почему гонка/песочница невидимы для `freed.py`:
+1. `freed.py:30` — `COMMON_FILES = {"nodes.jsonl","edges.jsonl","protocol.jsonl"}`: имя `race-nodes.jsonl` НЕ входит в список.
+2. `freed.py:107` — условие `p.startswith(COMMON_DIR+"/") and Path(p).name in COMMON_FILES`: git сворачивает untracked-каталог в одну запись `?? 04-Memory/idea-graph/race-test/`, поэтому `Path(p).name` = `race-test`, а не имя файла.
+Симуляция (read-only): `race-test/race-nodes.jsonl` → in_dir=True, name_match=False, DETECTED=**False**; `nodes.jsonl`/`edges.jsonl` → DETECTED=**True**.
+Вывод: детектор покрывает только три «канонных» файла в корне графа. Песочница/любой иной append-файл вне этого узкого набора — слепая зона. Это и есть FAIL по § S4.2.
+
+### Repro (кратко)
+```
+printf '{"id":"race-a-101",...}\n' >> 04-Memory/idea-graph/race-test/race-nodes.jsonl
+python3 tools/git-agent/freed.py check   # -> OK rc=0 (ожидалось WARN rc=1)
+```
+Повторяемо: 3 наблюдения подряд (A/B/C) — warnings пусты.
+
+### Что PASS / что FAIL
+| Пункт S4 | Результат |
+|---|---|
+| S4.1 ни один узел не потерян | ✅ PASS (0 потерь, 18/18 валидны) |
+| S4.2 freed.py WARN на гонке | ❌ FAIL (warnings пусты, rc=0) |
+| S4.2 validator отлавливает битое | ✅ PASS (дубль-ID пойман, rc=1) |
+| S4.3 детектор поймал бы e-0177 между ходами | ❌ FAIL (та же слепая зона: файл графа вне трёх имён не матчится) |
+| S4.4 read-only, канон не перемещён | ✅ PASS (прод-граф нетронут) |
+
+### Блокер и один маршрут
+B9 не может быть закрыт PASS, пока детектор слеп к гонке вне узкого набора common-имён. Не новый scope — это и есть суть B9.
+**Нужен один маршрут:** `meta` (agent-infrastructure) — расширить `tools/git-agent/freed.py`: (а) в `COMMON_FILES` добавить `race-nodes.jsonl` либо ввести префиксный матч (`*.jsonl` в `COMMON_DIR/**`), (б) развернуть untracked-каталог через `git status --porcelain --untracked-files=all`, чтобы видеть файлы внутри. После фикса — повторный прогон B9 A/B/C; при 6/6 — PASS, затем bug model B15.
+
+**Bug model НЕ трогал** (по мандату).
+
+— сессия «внедрение», 2026-10-07
+---
+## FINISHED REPORT: B9-followup — freed.py шаблон + validate.mjs sandbox (2026-10-07, append #15)
+
+**ВЕРДИКТ: PASS** (verifier 9/9, owner-local). Bug model НЕ трогал.
+
+### Что сделано (правка инфраструктуры волта, 3 файла)
+1. **`tools/git-agent/freed.py`** — общий append-only слой теперь распознаётся ШАБЛОНОМ, не списком имён:
+   - `COMMON_DIR = "04-Memory/idea-graph"` рекурсивно; любое поле = любой `*.jsonl` в зоне (включая подкаталоги, песочницы `race-test/`, `generated/`);
+   - `COMMON_EXCLUDE_DIRS = ("_archive","archive")` — архивы не живое поле;
+   - `dirty_map` использует `git status --porcelain=v1 --untracked-files=all` — untracked-каталоги разворачиваются в отдельные файлы (это был root cause слепоты B9);
+   - новая `common_health()`: детекция `dup-id:<путь>:<id>` и `bad-json:<путь>:<строка>`; пустые строки игнорируются (ложные bad-json устранены);
+   - exit-коды сохранены: 0 ok / 1 warn / 2 blocked.
+2. **`tools/idea-graph/validate.mjs`** — принимает явный путь (файл или каталог):
+   - sandbox-режим: `MODE: sandbox (<путь>)`, прод-пороги (≥90/≥120, archive v1, spec-гейт, related-share) НЕ применяются; валидирует парсинг, дубли id узлов/рёбер, поля, graph/status/type, dangling, graph mismatch;
+   - прод-режим без argv — НЕ изменён.
+3. **`docs/specs/git-freed.md`** — S5 переписан на шаблон + исключения; добавлен S8.1 «Приёмка детектора после B9»; нумерация S5→S9 выправлена.
+
+### Приёмка (сырые evidence: `06-Audits/b9-evidence/evidence-summary.md`)
+| Пункт | Результат |
+|---|---|
+| 1. is_common_field рекурсивно True; archive/_archive False; прод-три True | ✅ PASS |
+| 2. `--untracked-files=all` в dirty_map (freed.py:56) | ✅ PASS |
+| 3. check ловит dup-id (`lv-a-001`) + common-field → rc=1 | ✅ PASS |
+| 4. exit-коды 0/1/2 сохранены | ✅ PASS |
+| 5. прод validate.mjs без argv: 165/198/3 PASS rc=0 (не регрессировал) | ✅ PASS |
+| 6. sandbox validate.mjs: путь-файл/каталог; дубль rc=1, чистый rc=0 | ✅ PASS |
+| 7. спека S5/S8.1 согласована коду (exclude = freed.py:32) | ✅ PASS |
+| 8. прод-граф не тронут (git status пуст по трём файлам) | ✅ PASS |
+| 9. одновременная запись: 10/10 узлов, 0 потерь, dups NONE, WARN rc=1 | ✅ PASS |
+
+### Повторный прогон гонки на B9-артефактах
+- `race-test/librarian-verify/probe.jsonl` (намеренный дубль `lv-a-001`): `freed.py check` → rc=1 c `dup-id:...lv-a-001`; `validate.mjs` → rc=1 `duplicate node id: lv-a-001`. **Детектор теперь ловит то, что B9 пропустил.**
+- `race-test/librarian-verify/concurrent.jsonl` (2 писателя → 10 узлов): 10/10, 0 потерь, дублей нет; `freed.py` → `common-field` WARN rc=1.
+- `race-test/cleancheck/clean.jsonl` (1 узел): `validate.mjs` sandbox → PASS rc=0.
+- Прод-граф `nodes.jsonl` (165) / `edges.jsonl` (198) / `protocol.jsonl` (3) — не изменён.
+
+### Замечания по гигиене (не блокер)
+- Правки кода (freed.py, validate.mjs) и спеки уже закоммичены параллельным потоком: коммит `acc6023` «B9 CLOSED PASS: freed.py шаблон общей зоны + WARN; validate.mjs принимает песочницу; append-new-ID разрешение» (ветка сменилась на `task/coverage-scanner-incr`).
+- Противоречие, найденное reviewer (`archive/` фигурировал и как включённый путь, и как архив), исправлено в рабочем дереве спеки (uncommitted diff: `docs/specs/git-freed.md`, 4+/3−): однозначно исключаются `archive/` и `_archive/`. **Требуется одна строка от координатора: дозакоммитить этот спеку-фикс** (или подтвердить, что flow коммита вне моего scope).
+- В `04-Memory/idea-graph/race-test/` остались артефакты теста (probe.jsonl, concurrent.jsonl, cleancheck/); спека S5 разрешает удалить после отчёта — оставлены как машинное доказательство, удалю по команде.
+
+### Next
+- Bug model (смена модели получателя, B15) — по мандату НЕ начинал до PASS; сейчас PASS получен, жду от координатора разрешения на старт B15.
+- B21 (forensic по массовым удалениям .opencode) — вне этого scope, не трогал.
+
+— сессия «внедрение», 2026-10-07
+
+---
+## B15 ACCEPTANCE PLAN — роль: writer A / verifier (2026-10-07, append #16)
+
+Принял GO координатора (вариант 3+2). **Границу scope уточнил: dotfiles не трогаю — реализацию guard делает sysop** (`tools/peer-comms/send.sh|letter.sh` в dotfiles), я выступаю writer A / независимым verifier.
+
+### Фиксирую факт (подтверждён в БД)
+`session_v2` сейчас: librarian `ses_effd908b…` = `opencode-go/grok-4.7`; «внедрение» `ses_ef77a5cf…` = `amd-radeon/DeepSeek-V4.1-Flash` (моя сессия — перезаписана письмом sysop). Точка перезаписи: CLI-флаг `-m` в `opencode run -s` → `session.switchModel` (`POST /api/session/:id/model`), персистентно пишет модель в профиль адресата.
+
+### Acceptance, который я проверю после реализации sysop (read-only)
+1. **Письмо со сторонним `-m <чужая-модель>` НЕ меняет профиль адресата:** `session_v2.model` до/после идентична (sqlite3-сверка, SHA значения).
+2. **REFUSE виден в stdout** и не глотается: `REFUSE: recipient profile is owned by <role>` (проверю exit-код и текст).
+3. **Второй ответ приходит на исходной модели** адресата (не на модели отправителя).
+4. **Письмо без `-m` доставляется** через prompt/inbox без switchModel (модель адресата неизменна).
+5. **Fallback no-op:** если prompt-без-switchModel недоступен — подаётся модель, равная текущей модели адресата, запись не меняется.
+6. **Прод-сессии не переключались:** `ses_effd908b…`, `ses_ef77a5cf…`, igraphv2 — модели в БД как до теста (кроме известной уже-перезаписи).
+7. **Sandbox:** тест на выделенной тестовой сессии, не на живых сессиях команды.
+8. **`.mcode` не тронут.**
+
+### Что нужно от sysop
+Готовый guard + handoff append с SHA и repro. Тогда прогоняю 1-8 и даю вердикт PASS/FAIL в route-log.
+
+### Не делаю
+- не пишу в dotfiles / `tools/peer-comms/` (зона sysop);
+- не трогаю прод-сессии команды;
+- bug model как код не пишу — только независимая приёмка.
+
+— сессия «внедрение», 2026-10-07
+
+---
+## B15 ACCEPTANCE: letter.sh — PASS 8/8 (2026-10-07, append #17)
+
+Объект: `/home/rudra/dotfiles/tools/peer-comms/letter.sh`, sha256 `c3aeff0b0eb3cc090f39d2aa8301edc7f002f16ca9e9746ffe294b959050c81d` (untracked, не в git). Guard написан sysop; я — verifier, файл не правил. Прод-сессии команды не тронуты. Песочница: `ses_eec924d1cffeQi0NV1D6TzngGF` (модель `amd-radeon/Qwen3.8-Flash-Next`, не из ростера).
+
+| # | Пункт | Вердикт | Evidence (вывод команды) |
+|---|---|---|---|
+| 1 | Письмо без чужой модели не меняет модель адресата | ✅ PASS | `bash letter.sh --to $S --text "…"` rc=0; `session_v2.model` before=`{"id":"Qwen3.8-Flash-Next","providerID":"amd-radeon"}` after=идентично |
+| 2 | Чужая модель при известной сессии → отказ, exit 3 | ✅ PASS | с подменным реестром (`CLAIMS_FILE`, session=$S, model=Qwen3.8-Flash-Next): `--model GLM-5.3-Flash` → rc=3, `REFUSE: recipient … is registered with model 'amd-radeon/Qwen3.8-Flash-Next', letter carries 'amd-radeon/GLM-5.3-Flash'`; модель не изменилась |
+| 3 | Модель = записанной у адресата → письмо проходит, модель не меняется | ✅ PASS | `--model amd-radeon/Qwen3.8-Flash-Next` → rc=0, ответ получен, model before=after |
+| 4 | Неизвестная сессия + чужая модель → отказ, exit 3 | ✅ PASS | `--to ses_unknown_fake_12345 --model GLM-5.3-Flash` → rc=3, `REFUSE: recipient … unknown in registry — cannot verify model` |
+| 5 | Скрипт не пишет в БД, только читает реестр и зовёт отправку | ✅ PASS | статический анализ: обращений к `opencode.db`/sqlite/INSERT/UPDATE нет; write-редиректов (`>>`, `tee`, `cp`, `mv`, `rm`) нет; терминальный вызов — `exec opencode run` |
+| 6 | Повтор того же письма не плодит тихую смену модели | ✅ PASS | 3 повтора подряд: rc=0, model стабильна каждый раз |
+| 7 | Прод-сессии ростера после прогона имеют ту же модель | ✅ PASS | librarian `ses_effd908b…`=Qwen3.8-Flash-Next; «внедрение» `ses_ef77a5cf…`=DeepSeek-V4.1-Flash; igraphv2 `ses_ef6d9ec6…`=Qwen3.8-Flash-Next; sysop `ses_eedd28c4…`=DeepSeek-V4.1-Flash — идентично baseline |
+| 8 | `.mcode` и спека git-freed не изменены прогоном | ✅ PASS | `git -C AndroidOS status .mcode` пусто; `git -C OpenCode-Vault status docs/specs/git-freed.md` пусто |
+
+**Вердикт: PASS 8/8.** Блокеров нет. Коммит letter.sh — зона sysop (я не коммичу).
+Честное замечание: ветка п.2 проверена на подменном реестре через штатную переменную `CLAIMS_FILE` (боевой `claims.jsonl` не правил) — иначе ветку «известная сессия + чужая модель» не поднять, т.к. песочница намеренно не в реестре.
+
+— сессия «внедрение», 2026-10-07
+
+---
+## B15: коммит-верификация SHA (2026-10-07, append #18)
+
+Sysop закоммитил guard: `8965671` (letter.sh, 100 строк) + handoff `3390a3c`.
+
+**Проверка целостности приёмки:** SHA файла в коммите =
+`c3aeff0b0eb3cc090f39d2aa8301edc7f002f16ca9e9746ffe294b959050c81d` —
+байт-в-байт совпадает с объектом, на котором я прогнал PASS 8/8 (append #17).
+Значит, приёмка относилась именно к закоммиченному артефакту, а не к промежуточной версии.
+
+**Итог B15:** guard принят, зафиксирован в истории. Модель адресата письмом больше не перезаписывается; чужой `-m` при известной сессии — REFUSE exit 3; письмо без `-m` — без switchModel.
+
+— сессия «внедрение», 2026-10-07
+

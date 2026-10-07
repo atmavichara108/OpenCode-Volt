@@ -1,9 +1,9 @@
 ---
 type: Provider Card
 title: JustDoWork (justwoker) — provider card
-description: Операционная карточка провайдера JustDoWork (justwoker, New API/One API style). Status DEGRADED: 1 модель claude-opus-4-8 в /v1/models, но chat под Cloudflare 403 captcha. Факты отделены от [проверить].
+description: Операционная карточка провайдера JustDoWork (justwoker, New API/One API style). Status DEGRADED (non-stream-only): Anthropic-style /messages работает только без стрима; стриминг шлюза не отдаёт content_block-события. OpenAI-style /chat/completions закрыт Cloudflare. Баланс $300+.
 tags: [reference, provider-card, providers, justwoker]
-timestamp: 2026-09-16
+timestamp: 2026-10-07
 ---
 
 # JustDoWork — provider card
@@ -16,59 +16,74 @@ timestamp: 2026-09-16
 | `display_name` | JustDoWork |
 | `provider_id` | `justwoker` |
 | `endpoint` | `https://api.justwoker.icu/v1` |
-| `compatibility` | New API / One API style (OpenAI-совместимый по контракту) |
-| `status` | ✅ `ACTIVE` (Anthropic-транспорт, с 2026-09-28) |
-| `checked_at` | 2026-09-28 |
+| `compatibility` | Anthropic-style; OpenAI-style заблокирован CF |
+| `status` | 🟡 `DEGRADED` (non-stream-only, 2026-10-07) |
+| `checked_at` | 2026-10-07 |
 | `source` | реферальная программа JustDoWork |
 | `account_kind` | `user/promotional referral` |
-| `initial_balance` | `$121.34` (displayed в dashboard), kind `referral/promotional`; фактическая спендируемость не подтверждена `[проверить]` |
-| `current_balance` | `$121.34` (последнее наблюдение 2026-09-16, источник: dashboard) |
+| `initial_balance` | `$300+` (displayed в dashboard), kind `referral/promotional` |
+| `current_balance` | `$300+` (последнее наблюдение 2026-10-07, пользовательский отчёт) |
 | `models` | 1 модель: `claude-opus-4-8` |
-| `proxy` | Cloudflare challenge перед chat-endpoint (403 captcha на любом UA) |
+| `proxy` | не требуется для anthropic-пути |
 | `expiry` | неизвестен `[проверить]` |
-| `risks` | referral-баланс может быть неспендируем через API; chat под Cloudflare captcha |
-| `next_action` | подключён: TUI + M Code через `@ai-sdk/anthropic`, baseURL `https://api.justwoker.icu/v1`, модель `claude-opus-4-8`; OpenAI-путь остаётся закрыт CF |
-| `config_targets` | TUI `justwoker` + M Code `justwoker` — подключены (auth по id из auth.json, `apiKey` в конфигах нет) |
+| `risks` | **стриминг шлюза сломан** (регрессия New API) — OpenCode всегда стримит, поэтому «напрямую» модель отдаёт пустоту; OpenAI-путь закрыт CF |
+| `next_action` | временный мост: локальный стриминг-шим (см. ниже) до перевода провайдера каналом New API ([[docs/specs/newapi-gateway-layer]]) |
+| `config_targets` | TUI + M Code через `@ai-sdk/anthropic`; в конфиге — шим-baseURL |
 
-## Probe evidence (2026-09-28, победа)
+## Probe evidence (2026-10-07, диагноз)
 
-- **`POST /v1/messages`** (заголовок `x-api-key`, реальная модель
-  `claude-opus-4-8`, `max_tokens: 8`) → **HTTP 200**, ответ `PROBE_OK`,
-  usage `input_tokens: 6655` (скрытая подсказка ~6.6K — учитывать в учёте),
-  `output_tokens: 3`, `cost: 0.000634`.
-- Ключ: Bearer для каталога + x-api-key для chat — один и тот же ключ,
-  разные заголовки. Ранее тестировали `/messages` только с несуществующей
-  моделью (отсюда ложный 403) — с реальной моделью путь открыт.
-- Подключение: провайдер `justwoker` через `aisdk:@ai-sdk/anthropic`
-  (TUI обе секции + M Code), модель `claude-opus-4-8`.
-- **Зависимость рантайма:** пакет `@ai-sdk/anthropic` НЕ встроен в opencode
-  и сам не ставится — без него провайдер молча отсутствует в списке моделей
-  (`opencode models | grep justwoker` пуст при валидном конфиге).
-  Воспроизведение на чистой машине:
-  `cd ~/.config/opencode && bun add @ai-sdk/anthropic`.
-  Рестарт сессий/приложения тут не помогает.
+Проверено вживую (curl напрямую в upstream, ключ из auth.json):
 
-## Probe evidence (2026-09-16)
+- **`POST /v1/messages`, `stream` отсутствует/false** → **HTTP 200**, корректный
+  JSON: `{"content":[{"type":"text","text":"ACK"}], ...}` — non-stream работает.
+- **`POST /v1/messages`, `stream: true`** → HTTP 200, но SSE содержит **только**
+  `message_start` → `message_delta` → `message_stop`. События
+  `content_block_start` / `content_block_delta` / `content_block_stop`
+  (в которых лежит текст) **отсутствуют**. 3/3 попытки, один раз пустое тело.
+  → шлюз проглатывает content-блоки в стриме; текст до клиента не доходит.
+- **`POST /v1/chat/completions`** (Bearer и x-api-keyhop) → **HTTP 403 Cloudflare**,
+  путь закрыт полностью; `/v1/completions` → 401.
+- **`GET /v1/models`** (Bearer) → 200, `["claude-opus-4-8"]`, `supported_endpoint_types: ["anthropic","openai"]`.
 
-- **`GET /v1/models` с auth** вернул `data: []` — пустой список моделей.
-  По правилу метода [[02-Methods/promo-provider-protocol]] это
-  `DEGRADED`/`BLOCKED` даже при ненулевом dashboard-балансе.
-- **Dashboard** показывает баланс `$121.34` (referral/promotional), но
-  секций **Models / Channels / Tokens / Top-up** нет.
-- **Чат-проб** на `gpt-4o-mini` вернул **Cloudflare 403**.
-- **Model IDs отсутствуют** — подключить провайдера нельзя (нет моделей для
-  маршрутизации).
+**Root cause:** регрессия New API-шлюза justwoker на стриминговом
+anthropic-пути. Зафиксирована в памяти ещё 2026-10-03 («SSE-блоки режутся,
+плагин невиновен»).
 
-## Probe evidence (2026-09-24)
+**Почему это блокер для OpenCode:** OpenCode всегда использует стриминг
+(AI SDK `streamText`); опции «отключить стрим» в конфиге OpenCode нет (проверено
+по официальной схеме `https://opencode.ai/config.json`). Поэтому прямой провайдер
+`justwoker` в OpenCode отвечает пустотой.
 
-- **`GET /v1/models` с auth** вернул HTTP 200 и **1 модель `claude-opus-4-8`**
-  (ранее пустой `data: []`) — прогресс относительно прошлого BLOCKED.
-- **`POST /v1/chat/completions`** → HTTP 403 Cloudflare challenge
-  (`Attention Required! | Cloudflare`, captcha, Ray ID, «Please enable cookies»).
-  Пробовали три варианта заголовков (свой UA, браузерный Chrome UA, без UA) —
-  все 403. Cloudflare требует браузерную сессию (cookies/JWT/JS-challenge),
-  одного Bearer-ключа мало.
-- **В конфиги не добавлен** — подключать нечего, пока chat отдаёт капчу.
+## Временный мост: локальный стриминг-шим (2026-10-07)
+
+Решение оператора: до подъёма слоя New API поднять локальный шим-прокси.
+
+- Шим принимает стрим-запрос от OpenCode → форвардит в upstream **non-stream** →
+  сам генерирует корректный SSE (с `content_block_start/delta/stop`, включая
+  tool_use-блоки). Non-stream запросы проксируются прозрачно.
+- provider-блок `justwoker` в `opencode.jsonc` смотрит на шим
+  (`baseURL: http://127.0.0.1:<PORT>/v1`), пакет `@ai-sdk/anthropic` сохранён.
+- **Статус шима:** реализация в работе (meta-субагент). Это **временный** мост:
+  при переводе justwoker каналом New API (гибридная архитектура) шим снимается.
+
+## Связь с гибридной архитектурой New API (2026-09-28)
+
+justwoker — key-based провайдер (`transport: anthropic` в `tools/key-rotator/providers.json`,
+roles coding/general, priority 15). По [[docs/specs/newapi-gateway-layer]]
+целевое состояние — **канал New API** (`newapi/<alias>`), а не отдельный
+provider-блок. Шим — переходное решение; bench-gate (`probe ACTIVE → model-bench
+PASS → канал`) для permanent-варианта сохраняется.
+
+## Probe evidence (2026-09-28, победа до регрессии)
+
+- **`POST /v1/messages`** (заголовок `x-api-key`, модель `claude-opus-4-8`,
+  `max_tokens: 8`) → **HTTP 200**, ответ `PROBE_OK`, usage `input_tokens: 6655`
+  (скрытая подсказка ~6.6K — учитывать в учёте), `output_tokens: 3`, cost `0.000634`.
+- Ключ: Bearer для каталога + x-api-key для chat — один ключ, разные заголовки.
+- **Зависимость рантайма:** пакет `@ai-sdk/anthropic` НЕ встроен в opencode и сам
+  не ставится — без него провайдер молча отсутствует в списке моделей
+  (`opencode models | grep justwoker` пуст при валидном конфиге). Фикс на чистой
+  машине: `cd ~/.config/opencode && bun add @ai-sdk/anthropic`.
 
 ## Probe evidence (2026-09-28)
 
@@ -77,33 +92,36 @@ timestamp: 2026-09-16
 - **`POST /v1/messages`** (x-api-key, напрямую и через прокси) → HTTP 403
   `server: cloudflare`, пустое тело.
 
-**Вывод:** chat недоступен с нашей сети **обоими** транспортами
-(OpenAI-compatible `/chat/completions` и Anthropic-style `/messages`) —
-добавлять нерабочий провайдер в конфиги НЕЛЬЗЯ. Шлюз отчёта ходит со своих
-IP (у них работает, у нас — нет); для снятия блока нужен либо allowlist наших
-IP на их стороне, либо работа через их шлюз.
-
 ## Probe evidence (2026-09-28, мобильная сеть оператора)
 
-- **`GET /v1/models` с телефона** → DNS/TCP/TLS проходят, HTTP 200
-  (сеть чистая, оператор ничего не режет).
+- **`GET /v1/models` с телефона** → DNS/TCP/TLS проходят, HTTP 200.
 - **`POST /v1/chat/completions` с телефона** → та же Cloudflare 403
-  `Attention Required!`. Первый POST дал `000` (обрыв соединения),
-  повтор — стабильный 403.
-- **Итог:** блок глобальный, не IP-специфичный: каталог открыт всем,
-  chat закрыт для API-клиентов везде. Остались только варианты через
-  дашборд (API-режим/allowlist) или поддержку провайдера.
+  `Attention Required!`. Первый POST дал `000`, повтор — стабильный 403.
+- **Итог:** блок chat глобальный, не IP-специфичный.
+
+## Probe evidence (2026-09-24)
+
+- **`GET /v1/models`** → HTTP 200, 1 модель `claude-opus-4-8` (ранее пустой `data: []`).
+- **`POST /v1/chat/completions`** → HTTP 403 Cloudflare challenge (три варианта UA).
+- **В конфиги не добавлен** — подключать нечего, пока chat отдаёт капчу.
+
+## Probe evidence (2026-09-16)
+
+- **`GET /v1/models` с auth** вернул `data: []` — пустой список моделей.
+- **Dashboard** показывает баланс `$121.34` (referral/promotional), секций
+  Models / Channels / Tokens / Top-up нет.
+- **Чат-проб** на `gpt-4o-mini` → Cloudflare 403.
 
 ## Статус
 
-`🟡 DEGRADED`. Каталог ожил (1 модель `claude-opus-4-8` в `/v1/models`, HTTP 200),
-но chat отдаёт Cloudflare 403 captcha при любом UA — браузерной сессии
-(cookies/JWT/JS-challenge) у API-ключа нет. В конфиги не добавлен и
-**не становится default**.
+`🟡 DEGRADED (non-stream-only)`. Anthropic-style `/messages` работает только без
+стрима; стриминг шлюза не отдаёт content_block, поэтому прямой OpenCode-провайдер
+отвечает пустотой. Временный фикс — локальный стриминг-шим; целевое — канал New API.
 
 ## Ссылки
 
 - [[02-Methods/promo-provider-protocol]] — метод приёмки.
+- [[docs/specs/newapi-gateway-layer]] — гибридная архитектура (шим = временный мост).
 - [[01-Reference/providers]] — обзор провайдеров.
-- [[01-Reference/provider-cards/linaliapi]] — первая карточка.
+- `tools/key-rotator/providers.json` — запись провайдера (probe-слой).
 - [[04-Memory/facts]] · [[04-Memory/active-context]]
