@@ -2,9 +2,9 @@
 type: roadmap-draft
 status: draft
 timestamp: 2026-10-06
-mandate: Рудра — «нужно разработать план или дорожную карту эволюции вайбкодинга в новую полноценную версию»
-owner: librarian (Дирижёр) — черновик на апрув Рудры
-related: [[team-protocol]], [[team-director]], [[sustainability-filter]], [[peer-comms]]
+mandate: "Рудра — нужно разработать план или дорожную карту эволюции вайбкодинга в новую полноценную версию"
+owner: "librarian (Дирижёр) — черновик на апрув Рудры"
+related: ["[[team-protocol]]", "[[team-director]]", "[[sustainability-filter]]", "[[peer-comms]]"]
 ---
 
 # Дорожная карта эволюции VibeOS → Pip-Boy Agent's Ecosys (draft)

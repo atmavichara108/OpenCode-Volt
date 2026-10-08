@@ -1,7 +1,7 @@
 ---
 type: Research Snapshot
 title: M Code ↔ OpenCode — bridge-исследование 2026-09-30
-description: Живые проверки API обоих харнессов: есть ли peer-общение M Code→OpenCode, что открывает OpenCode v2 server, асимметрия каналов, итоговый паттерн для совместной работы.
+description: "Живые проверки API обоих харнессов: есть ли peer-общение M Code→OpenCode, что открывает OpenCode v2 server, асимметрия каналов, итоговый паттерн для совместной работы."
 tags: [research, bridge, mcode, opencode, api, orchestration]
 timestamp: 2026-09-30
 status: draft

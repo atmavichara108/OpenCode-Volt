@@ -3,7 +3,7 @@ type: Audit
 title: Vibe-coding layer audit — global nerve + dotfiles
 date: 2026-08-02
 status: open
-scope: Слой вайбкодинга: global nerve (`~/.config/opencode/`), dotfiles-архитектура, T-069 ecosystem-map, capture/routing/memory (п. 19–21).
+scope: "Слой вайбкодинга: global nerve (`~/.config/opencode/`), dotfiles-архитектура, T-069 ecosystem-map, capture/routing/memory (п. 19–21)."
 source: 99-Inbox/vault-upgrade-research-2026-08-02.md
 tags: [audit, vibe-coding, global-nerve, dotfiles, ecosystem-map]
 ---
@@ -169,7 +169,7 @@ tags: [audit, vibe-coding, global-nerve, dotfiles, ecosystem-map]
    sysop / researcher / meta / prompt-engineer / guardian). Предложение, не
    действующая политика волта.
 10. **`researcher` vs `sysop` vs `meta` vs `guardian` — два луча сенсорного
-    слоя + два управителя (предложение по精进ению разделения).** `researcher`
+    слоя + два управителя (предложение по улучшению разделения).** `researcher`
     → артефакты проекта (код, git, docs, конфиги, история, связи); `sysop` →
     исполнительная среда (Manjaro, процессы, пакеты, сервисы, порты, system
     state) — два луча одного сенсорного слоя (внутрь / наружу), не дублё.

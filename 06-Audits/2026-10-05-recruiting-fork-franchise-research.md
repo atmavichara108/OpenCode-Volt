@@ -1,7 +1,7 @@
 ---
 type: Research
 title: EspoCRM → свой Recruiting Pack → франшиза — исследование платного контура и лицензий
-description: Разбор платного контура EspoCRM (Advanced Pack и прочие расширения), лицензионного соглашения платных расширений и товарного знака, прецедентов бесплатных расширений (MCP Server, Real Estate). Вывод — путь «свой Recruiting Pack + франшиза»: вердикты по компонентам (relay-handler, Workflows/BPM, Recruiting Pack, форк ядра), лицензионные уточнения (не правовой совет), коммерческая модель и франшиза в два слоя, эволюционный порядок.
+description: "Разбор платного контура EspoCRM (Advanced Pack и прочие расширения), лицензионного соглашения платных расширений и товарного знака, прецедентов бесплатных расширений (MCP Server, Real Estate). Вывод — путь «свой Recruiting Pack + франшиза»: вердикты по компонентам (relay-handler, Workflows/BPM, Recruiting Pack, форк ядра), лицензионные уточнения (не правовой совет), коммерческая модель и франшиза в два слоя, эволюционный порядок."
 tags: [research, espocrm, recruiting-hr, franchise, mcp, advanced-pack, licensing]
 timestamp: 2026-10-05
 status: research

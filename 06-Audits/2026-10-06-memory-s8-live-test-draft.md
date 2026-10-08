@@ -2,9 +2,9 @@
 type: audit
 title: Живой тест графовой памяти S8 — полный повторный прогон
 date: 2026-10-06
-spec: [[docs/specs/pae-phase1-readiness]] (S8), поручение Рудры через старшего
-status: draft — до приёмки (старший координирует, Рудра наблюдает)
-role: компаньон-специалист graph memory (владелец протокола и evidence)
+spec: "[[docs/specs/pae-phase1-readiness]] (S8), поручение Рудры через старшего"
+status: draft
+role: "компаньон-специалист graph memory (владелец протокола и evidence)"
 team: librarian + igraphv2
 branch: task/branch-policy-vault
 ---
