@@ -341,3 +341,10 @@ freed.py к шаблонной детекции: templates recursive + untracked
   meta ADR в dotfiles/docs/decisions.md → реализация shadow. Ждёт слова Рудры.
 - Бонус-находка: 4 pending-карточки от 2026-09-05 устарели de facto (meta
   и verifier уже живут) — инвентаризировать при случае.
+
+## Теневой режим GO (2026-10-07 02:4x)
+- Слово Рудры через посредника: «даю добро на теневой режим», диапазон ровно
+  a03f128 (маршрутизация решений, без авто-разрешения, без обхода deny).
+- Dispatch: researcher (read-only, возможности permission-хуков плагина +
+  разбор decision-queue-hook.ts) → meta ADR в dotfiles/docs/decisions.md →
+  shadow-реализация meta. Evidence research предшествует ADR.
