@@ -142,5 +142,16 @@ if [[ "${GARBAGE_OK:-}" != "1" ]]; then
   fi
 fi
 
+# 6. model-watch: снапшот каталога моделей должен быть свежее 7 дней (T-178)
+if [ -z "$MODEL_OK" ] && [ -x "$HOME/dotfiles/tools/model-watch/gate-check.py" ]; then
+  echo "🔍 Pre-commit check: свежесть каталога моделей..."
+  if ! python3 "$HOME/dotfiles/tools/model-watch/gate-check.py" 2>&1 | tail -1; then
+    echo "⚠️  model-watch FAILED: обход MODEL_OK=1 с обоснованием (например: оффлайн-сессия)"
+    exit 1
+  fi
+else
+  echo "🔍 Pre-commit check: свежесть каталога моделей... пропущен"
+fi
+
 echo "🎉 Все pre-commit гейты пройдены"
 exit 0
