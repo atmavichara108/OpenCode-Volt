@@ -1,8 +1,8 @@
 {
   "id": "2026-09-05-meta-agent-creation",
   "created": "2026-09-05T12:10:00Z",
-  "updated": "2026-09-05T12:10:00Z",
-  "status": "pending",
+  "updated": "2026-10-08T00:00:00Z",
+  "status": "resolved-de-facto",
   "risk": "medium",
   "source": {
     "agent": "meta",
@@ -16,24 +16,34 @@
       {
         "id": "A",
         "label": "Create meta agent with scoped edit/bash",
-        "pros": ["Clear separation: meta for infra, builder for app code", "Explicit permissions"],
-        "cons": ["Another agent to maintain"]
+        "pros": [
+          "Clear separation: meta for infra, builder for app code",
+          "Explicit permissions"
+        ],
+        "cons": [
+          "Another agent to maintain"
+        ]
       },
       {
         "id": "B",
         "label": "Use builder for meta tasks",
-        "pros": ["No new agent"],
-        "cons": ["Builder has broad permissions", "No separation of concerns"]
+        "pros": [
+          "No new agent"
+        ],
+        "cons": [
+          "Builder has broad permissions",
+          "No separation of concerns"
+        ]
       }
     ],
     "recommendation": "A",
     "reason": "Clear separation: meta for infra, builder for app code"
   },
   "resolution": {
-    "choice": null,
-    "approved_by": null,
-    "approved_at": null,
-    "evidence": null
+    "choice": "A",
+    "approved_by": "de facto (T-131 verifier PASS 2026-09-05)",
+    "approved_at": "2026-10-08",
+    "evidence": "meta существует: dotfiles opencode-global/.config/opencode/agent/meta.md + стов в ~/.config/opencode; inv 2026-10-08 (librarian): all four de facto resolved by T-131 permission audit (verifier PASS 2026-09-05, active-context.md) + direct config check 2026-10-08; no human decision needed, cards closed as stale-by-implementation"
   },
   "stop_condition": "after user decision"
 }

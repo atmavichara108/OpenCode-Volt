@@ -63,3 +63,19 @@ Append-only log of decision cards. Readable projection from `control-plane/decis
 - **Resolution:** —
 
 ---
+
+---
+
+## 2026-10-08 00:30 — Инвентаризация 4 pending-карточек (слово Дирижёра)
+
+Все четыре карточки от 05.09 закрыты как **resolved-de-facto**: разрешены тем же
+аудитом T-131 (verifier PASS 2026-09-05) и проверены direct-чтением конфига 08.10.
+
+| Карточка | Резолюшн | Evidence |
+|---|---|---|
+| decision-queue-storage | B (vault control-plane) | 4 карточки живут здесь; XDG — future, не блок |
+| git-push-permission | строже A | force push deny (opencode.jsonc:52-53), plain push — штатный ADR-009 |
+| meta-agent-creation | A | meta.md в dotfiles opencode-global + стов в ~/.config |
+| verifier-mutation | A | verifier.md: systemctl stop/disable/mask deny |
+
+Human decision не требуется ни по одной. Очередь решений пуста.

@@ -1,8 +1,8 @@
 {
   "id": "2026-09-05-decision-queue-storage",
   "created": "2026-09-05T12:15:00Z",
-  "updated": "2026-09-05T12:15:00Z",
-  "status": "pending",
+  "updated": "2026-10-08T00:00:00Z",
+  "status": "resolved-de-facto",
   "risk": "low",
   "source": {
     "agent": "meta",
@@ -16,30 +16,47 @@
       {
         "id": "A",
         "label": "Use ~/.local/state/opencode/decision-queue/",
-        "pros": ["XDG-compliant user state path", "Separate from config/vault"],
-        "cons": ["Blocked by external_directory permissions", "Requires explicit allow"]
+        "pros": [
+          "XDG-compliant user state path",
+          "Separate from config/vault"
+        ],
+        "cons": [
+          "Blocked by external_directory permissions",
+          "Requires explicit allow"
+        ]
       },
       {
         "id": "B",
         "label": "Use OpenCode-Vault/control-plane/decision-queue/",
-        "pros": ["Already in vault, no permission issues", "Version controlled with vault"],
-        "cons": ["Not XDG-compliant", "Mixed with other specs"]
+        "pros": [
+          "Already in vault, no permission issues",
+          "Version controlled with vault"
+        ],
+        "cons": [
+          "Not XDG-compliant",
+          "Mixed with other specs"
+        ]
       },
       {
         "id": "C",
         "label": "Use ~/.config/opencode/decision-queue/",
-        "pros": ["XDG-compliant config path"],
-        "cons": ["Config vs state confusion", "May need permission allow"]
+        "pros": [
+          "XDG-compliant config path"
+        ],
+        "cons": [
+          "Config vs state confusion",
+          "May need permission allow"
+        ]
       }
     ],
     "recommendation": "B",
     "reason": "Currently using Vault path (option B) as it works without permission changes; XDG path (option A) is future goal"
   },
   "resolution": {
-    "choice": null,
-    "approved_by": null,
-    "approved_at": null,
-    "evidence": null
+    "choice": "B",
+    "approved_by": "de facto (T-131 verifier PASS 2026-09-05)",
+    "approved_at": "2026-10-08",
+    "evidence": "vault control-plane/decision-queue живёт и используется (4 карточки здесь); XDG-переезд остаётся future, не блок; inv 2026-10-08 (librarian): all four de facto resolved by T-131 permission audit (verifier PASS 2026-09-05, active-context.md) + direct config check 2026-10-08; no human decision needed, cards closed as stale-by-implementation"
   },
   "stop_condition": "after user decision"
 }
