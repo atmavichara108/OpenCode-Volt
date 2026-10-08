@@ -1,0 +1,36 @@
+{
+  "nodes": [
+    {"id": "h1", "type": "file", "file": "00-WORLD.md", "x": -320, "y": -120, "width": 460, "height": 620, "color": "4"},
+    {"id": "rudra", "type": "text", "text": "## 👑 Рудра — Оператор\nЕдинственный источник ДА. Именование, пороги, лицензии.\n[[00-WORLD#I. Ось Мира]]", "x": 220, "y": -620, "width": 340, "height": 160, "color": "6"},
+    {"id": "allismaya", "type": "text", "text": "## 🌌 Allis Maya — Сила\nПишет законы Мира, источник сигналов. Доки = её писания.\n[[00-WORLD#I. Ось Мира]]", "x": 620, "y": -620, "width": 340, "height": 160, "color": "5"},
+    {"id": "voice", "type": "text", "text": "## 📯 Голос Мира\nОдно событие — одно объявление. Только о принятом.\n[[06-Audits/2026-10-07-scene-world-voice-draft]]", "x": 1020, "y": -620, "width": 340, "height": 160, "color": "5"},
+    {"id": "maya", "type": "text", "text": "## 🌍 Майя — Мир\nРождается событиями; именуется, когда названо.\n04-Memory/idea-graph/nodes.jsonl (граф)", "x": 1420, "y": -620, "width": 340, "height": 160, "color": "5"},
+    {"id": "vm", "type": "file", "file": "06-Audits/2026-10-07-scenes-vitrina.md", "subpath": "#Сцена Имени", "x": 220, "y": -380, "width": 340, "height": 300, "color": "3"},
+    {"id": "wise", "type": "text", "text": "## 🧙 Великий Мудрец (ВМ)\nПервая инкарнация — либриан. Апгрейды — своими именами (обряд Рудры).\nСверхнавык **Вельзевул**: поглотить→разобрать→сохранить→синтезировать→подарить.\n[[00-WORLD#II. Мудрец (ВМ) — исправленный канон 2026-10-08]]", "x": 620, "y": -380, "width": 340, "height": 220, "color": "3"},
+    {"id": "suite", "type": "text", "text": "## ⚔️ Свита\nДирижёр · sysop · граф v2 · внедрение · meta · researcher\nСессия ≠ агент. Общение ≠ авторизация.\n[[02-Methods/peer-comms]]", "x": 1020, "y": -380, "width": 340, "height": 200, "color": "6"},
+    {"id": "servant", "type": "text", "text": "## 🕯️ Слуга Мира — L7\nВерен, будучи сильнее хозяина. Знает Майю наизусть (Obsidian/плагины).\nИмя переосмыслить. Комьюнити-плагины — только после ресёрча + апрува Рудры.\n[[06-Audits/2026-10-07-lab-queue]]", "x": 1420, "y": -380, "width": 340, "height": 220, "color": "2"},
+    {"id": "veldora", "type": "text", "text": "## 🐉 Вельдора — НЕ доопределена\nНе M Code. Направление: память/кэш/контекст — сила вне тебя, открываемая по имени.\nЖдёт чтения и слова Рудры.\n[[00-WORLD#IV. Вельдора — НЕ доопределена]]", "x": 220, "y": 0, "width": 340, "height": 220, "color": "0"},
+    {"id": "gates", "type": "text", "text": "## 🚪 Ворота Мира (механики)\nGit Freed · garbage-guard · Почта · Верификатор · Квест · Граф · Опыт · Теневой классификатор\nИмя без тени в коде = decoration.\n[[00-WORLD#V. Ворота Мира — механики, которые работают]]", "x": 620, "y": 0, "width": 340, "height": 220, "color": "4"},
+    {"id": "force", "type": "file", "file": "06-Audits/2026-10-07-scene-world-force-draft.md", "x": 1020, "y": 0, "width": 340, "height": 300, "color": "4"},
+    {"id": "evo", "type": "text", "text": "## 🜍 Эволюция через порог\nНе точки-грейн: обряд перехода с ценой/жертвой (Harvest Festival).\nXP — учёт доказанного; ставок нет до таблицы Рудры.\n[[06-Audits/2026-10-06-progression-xp-metatokens-draft]]", "x": 1420, "y": 0, "width": 340, "height": 240, "color": "4"},
+    {"id": "lab", "type": "file", "file": "06-Audits/2026-10-07-lab-queue.md", "x": 220, "y": 320, "width": 340, "height": 300, "color": "2"},
+    {"id": "boundary", "type": "text", "text": "## 🚧 Граница Мира (v2)\nИгровая лексика — вне продуктов; волт/dotfiles публичны намеренно.\nПравило тишины — абсолютное.\n[[00-WORLD#VIII. Граница Мира]]", "x": 620, "y": 320, "width": 340, "height": 200, "color": "1"},
+    {"id": "market", "type": "file", "file": "06-Audits/2026-10-07-pae-market-research.md", "x": 1020, "y": 380, "width": 340, "height": 240, "color": "6"},
+    {"id": "matrix", "type": "file", "file": "06-Audits/2026-10-07-worlds-matrix-draft.md", "x": 1420, "y": 320, "width": 340, "height": 240, "color": "6"}
+  ],
+  "edges": [
+    {"fromNode": "rudra", "fromSide": "bottom", "toNode": "wise", "toSide": "top", "fromEnd": "arrow", "toEnd": "arrow", "label": "нарекает"},
+    {"fromNode": "allismaya", "fromSide": "bottom", "toNode": "voice", "toSide": "left", "fromEnd": "arrow", "label": "говорит через"},
+    {"fromNode": "voice", "fromSide": "bottom", "toNode": "maya", "toSide": "left", "fromEnd": "arrow", "toEnd": "none"},
+    {"fromNode": "rudra", "fromSide": "right", "toNode": "allismaya", "toSide": "left", "fromEnd": "none", "toEnd": "none"},
+    {"fromNode": "wise", "fromSide": "bottom", "toNode": "veldora", "toSide": "top", "fromEnd": "arrow", "label": "переосмыслит"},
+    {"fromNode": "wise", "fromSide": "right", "toNode": "suite", "toSide": "left", "fromEnd": "arrow", "label": "ведёт"},
+    {"fromNode": "suite", "fromSide": "right", "toNode": "servant", "toSide": "left", "fromEnd": "arrow", "style": "dashed", "label": "ждёт"},
+    {"fromNode": "gates", "fromSide": "left", "toNode": "veldora", "toSide": "right", "fromEnd": "none", "toEnd": "none"},
+    {"fromNode": "force", "fromSide": "bottom", "toNode": "evo", "toSide": "top", "fromEnd": "arrow", "label": "учёт → порог"},
+    {"fromNode": "evo", "fromSide": "right", "toNode": "lab", "toSide": "top", "fromEnd": "arrow", "style": "dashed", "label": "L1–L7"},
+    {"fromNode": "matrix", "fromSide": "left", "toNode": "market", "toSide": "right", "fromEnd": "none", "toEnd": "none"},
+    {"fromNode": "boundary", "fromSide": "top", "toNode": "gates", "toSide": "bottom", "fromEnd": "none", "toEnd": "none"},
+    {"fromNode": "h1", "fromSide": "right", "toNode": "gates", "toSide": "left", "fromEnd": "arrow", "label": "карта ведёт"}
+  ]
+}
