@@ -45,6 +45,9 @@ ALIASES = {
     "free-vision": "vision",
 }
 
+# Единая группа каналов шлюза: токен пользователя в ней видит все алиасы.
+GATE_GROUP = "free"
+
 GATE_BY_ROLE = {
     "coding": ("tools", "build"),
     "general": ("tools", "reasoning"),
@@ -165,8 +168,11 @@ def build_channel(provider_id: str, provider_cfg: dict, model_id: str,
                   alias: str, key_value: str = "") -> dict:
     """Тело канала New API (type 1 = OpenAI-compatible).
 
-    base_url из каталога провайдера; models — [model_id]; group — алиас;
-    priority из каталога. Секрет подставляется только при apply (--apply),
+    base_url из каталога провайдера. Канал обслуживает ИМЯ АЛИАСА
+    (free-code/…): models = алиас, model_mapping переводит его в реальную
+    модель для апстрима — тогда агент зовёт `newapi/free-code`, а дистрибутор
+    делает failover между каналами одной роли. Группа — единая GATE_GROUP
+    (токен видит все алиасы). Секрет подставляется только при apply,
     никогда в dry-run/вывод.
     """
     urls = provider_cfg.get("endpoints") or [provider_cfg.get("endpoint")]
@@ -181,10 +187,11 @@ def build_channel(provider_id: str, provider_cfg: dict, model_id: str,
         "name": channel_name(provider_id, model_id, alias),
         "base_url": base_url,
         "key": key_value,
-        "models": model_id,
-        "group": [alias],
+        "models": alias,
+        "model_mapping": json.dumps({alias: model_id}, ensure_ascii=False),
+        "group": [GATE_GROUP],
         "priority": priority,
-        "weight": 0,
+        "weight": 100,
     }
 
 
@@ -208,6 +215,24 @@ class NewApiClient:
     def _connect(self):
         import sqlite3
         return sqlite3.connect(self.db_path)
+
+    @staticmethod
+    def _sync_abilities(cur, channel_id, group, models, priority, weight, status):
+        """Держать таблицу abilities в согласии с каналом.
+
+        Distributor (и /v1/models) читают именно abilities — канал, вставленный
+        в channels в обход admin API, без этой таблицы невидим для запросов.
+        """
+        cur.execute("DELETE FROM abilities WHERE channel_id=?", (channel_id,))
+        if not status:
+            return
+        for m in [x.strip() for x in (models or "").replace(",", "\n").split("\n") if x.strip()]:
+            cur.execute(
+                "INSERT OR REPLACE INTO abilities "
+                "(\"group\", model, channel_id, enabled, priority, weight, tag) "
+                "VALUES (?, ?, ?, 1, ?, ?, '')",
+                (group, m, channel_id, priority or 0, weight or 0),
+            )
 
     def list_channels(self):
         con = self._connect()
@@ -235,19 +260,27 @@ class NewApiClient:
             cur = con.cursor()
             now = int(time.time())
             cur.execute("""
-                INSERT INTO channels (type, key, name, base_url, models, "group", priority, weight, status, created_time, auto_ban)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO channels (type, key, name, base_url, models, model_mapping, "group", priority, weight, status, created_time, auto_ban, test_model)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 channel.get("type", 1),
                 channel.get("key", ""),
                 channel["name"],
                 channel.get("base_url", ""),
                 channel.get("models", ""),
+                channel.get("model_mapping", ""),
                 channel.get("group", ["default"]) if isinstance(channel.get("group"), list) else channel.get("group", "default"),
                 channel.get("priority", 0),
                 channel.get("weight", 0),
                 1, now, 1,
+                channel.get("models", ""),
             ))
+            con.commit()
+            self._sync_abilities(cur, cur.lastrowid,
+                                 channel.get("group") if not isinstance(channel.get("group"), list)
+                                 else (channel.get("group") or ["default"])[0],
+                                 channel.get("models", ""), channel.get("priority", 0),
+                                 channel.get("weight", 0), 1)
             con.commit()
             return {"id": cur.lastrowid}, None
         except Exception as e:
@@ -263,7 +296,7 @@ class NewApiClient:
             if isinstance(group_val, list):
                 group_val = group_val[0] if group_val else "default"
             cur.execute("""
-                UPDATE channels SET type=?, key=?, name=?, base_url=?, models=?, "group"=?, priority=?, weight=?, status=?
+                UPDATE channels SET type=?, key=?, name=?, base_url=?, models=?, model_mapping=?, "group"=?, priority=?, weight=?, status=?, test_model=?
                 WHERE id=?
             """, (
                 channel.get("type", 1),
@@ -271,12 +304,18 @@ class NewApiClient:
                 channel.get("name", ""),
                 channel.get("base_url", ""),
                 channel.get("models", ""),
+                channel.get("model_mapping", ""),
                 group_val,
                 channel.get("priority", 0),
                 channel.get("weight", 0),
                 1,
+                channel.get("models", ""),
                 channel_id,
             ))
+            con.commit()
+            self._sync_abilities(cur, channel_id, group_val,
+                                 channel.get("models", ""), channel.get("priority", 0),
+                                 channel.get("weight", 0), 1)
             con.commit()
             return {"id": channel_id}, None
         except Exception as e:
@@ -289,6 +328,7 @@ class NewApiClient:
         try:
             cur = con.cursor()
             cur.execute("DELETE FROM channels WHERE id=?", (channel_id,))
+            cur.execute("DELETE FROM abilities WHERE channel_id=?", (channel_id,))
             con.commit()
             return {"deleted": channel_id}, None
         except Exception as e:
@@ -417,9 +457,8 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     base = args.base_url or os.getenv(NEWAPI_BASE_URL_ENV) or DEFAULT_BASE_URL
+    # Клиент работает напрямую с БД — токен admin API не требуется.
     token = args.admin_token or os.getenv(NEWAPI_ADMIN_TOKEN_ENV) or ""
-    if not token:
-        return fail(f"нет токена admin New API (--admin-token или env {NEWAPI_ADMIN_TOKEN_ENV})", 2)
 
     client = NewApiClient(base, token)
     existing, err = client.list_channels()
