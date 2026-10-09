@@ -188,94 +188,113 @@ def build_channel(provider_id: str, provider_cfg: dict, model_id: str,
     }
 
 
-# --- клиент admin API New API ------------------------------------------------
+# --- прямой доступ к БД New API ---------------------------------------------
+
+NEWAPI_DB_PATH = os.path.expanduser("~/.local/share/newapi/one-api.db")
+
 
 class NewApiClient:
-    """Минимальный клиент admin REST New API.
+    """Прямой доступ к каналам New API через SQLite.
 
-    Эндпоинты (конвенция QuantumNous/new-api, v1):
-      GET    /api/channel      -> список каналов  {success, message, data}
-      POST   /api/channel      -> создать канал   (тело канала в body)
-      PUT    /api/channel/{id} -> обновить канал
-      DELETE /api/channel/{id} -> удалить канал
-
-    Аутентификация: System Access Token в `Authorization: Bearer <token>`.
-    Транспорт: subprocess curl (обходит отпечаток urllib, см. http_client).
+    Admin API этой сборки не принимает POST-запросы (307 redirect + body loss),
+    поэтому каналы создаются/обновляются/удаляются напрямую в БД.
     """
 
     def __init__(self, base_url: str, token: str):
         self.base_url = base_url.rstrip("/")
         self.token = token
+        self.db_path = NEWAPI_DB_PATH
 
-    def _headers(self) -> dict:
-        return {
-            "Authorization": f"Bearer {self.token}",
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-        }
-
-    def _request(self, method: str, path: str, body: dict | None = None):
-        import subprocess
-        cmd = ["curl", "-sS", "-X", method, "-m", "20", "-w", "\n%{http_code}"]
-        for name, value in self._headers().items():
-            cmd += ["-H", f"{name}: {value}"]
-        if body is not None:
-            cmd += ["--data-binary", json.dumps(body, ensure_ascii=False)]
-        cmd.append(self.base_url + path)
-        try:
-            proc = subprocess.run(cmd, capture_output=True, text=True, timeout=35)
-        except (OSError, subprocess.TimeoutExpired) as exc:
-            return None, f"newapi: {type(exc).__name__}: {exc}"
-        outp = proc.stdout or ""
-        status_line = outp.rsplit("\n", 1)[-1].strip()
-        payload_text = outp.rsplit("\n", 1)[0] if "\n" in outp else outp
-        try:
-            status = int(status_line)
-        except ValueError:
-            status = 0
-        try:
-            payload = json.loads(payload_text) if payload_text else {}
-        except json.JSONDecodeError:
-            payload = {"raw": payload_text[:500]}
-        if proc.returncode != 0 and status == 0:
-            return None, f"newapi: exit {proc.returncode}: {(proc.stderr or '')[:300]}"
-        return {"status": status, "payload": payload}, None
+    def _connect(self):
+        import sqlite3
+        return sqlite3.connect(self.db_path)
 
     def list_channels(self):
-        data, err = self._request("GET", "/api/channel")
-        if err:
-            return None, err
-        assert data is not None
-        if data["status"] >= 400:
-            return None, f"list_channels HTTP {data['status']}: {str(data['payload'])[:200]}"
-        return data["payload"].get("data") or [], None
+        con = self._connect()
+        try:
+            cur = con.cursor()
+            cur.execute("SELECT id, name, type, key, base_url, models, \"group\", priority, weight, status FROM channels")
+            rows = cur.fetchall()
+            result = []
+            for r in rows:
+                result.append({
+                    "id": r[0], "name": r[1], "type": r[2], "key": r[3],
+                    "base_url": r[4], "models": r[5], "group": r[6],
+                    "priority": r[7], "weight": r[8], "status": r[9],
+                })
+            return result, None
+        except Exception as e:
+            return None, f"DB error: {e}"
+        finally:
+            con.close()
 
     def create_channel(self, channel: dict):
-        data, err = self._request("POST", "/api/channel", channel)
-        if err:
-            return None, err
-        assert data is not None
-        if data["status"] >= 400:
-            return None, f"create_channel HTTP {data['status']}: {str(data['payload'])[:200]}"
-        return data["payload"], None
+        import time
+        con = self._connect()
+        try:
+            cur = con.cursor()
+            now = int(time.time())
+            cur.execute("""
+                INSERT INTO channels (type, key, name, base_url, models, "group", priority, weight, status, created_time, auto_ban)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (
+                channel.get("type", 1),
+                channel.get("key", ""),
+                channel["name"],
+                channel.get("base_url", ""),
+                channel.get("models", ""),
+                channel.get("group", ["default"]) if isinstance(channel.get("group"), list) else channel.get("group", "default"),
+                channel.get("priority", 0),
+                channel.get("weight", 0),
+                1, now, 1,
+            ))
+            con.commit()
+            return {"id": cur.lastrowid}, None
+        except Exception as e:
+            return None, f"DB error: {e}"
+        finally:
+            con.close()
 
     def update_channel(self, channel_id: int, channel: dict):
-        data, err = self._request("PUT", f"/api/channel/{channel_id}", channel)
-        if err:
-            return None, err
-        assert data is not None
-        if data["status"] >= 400:
-            return None, f"update_channel HTTP {data['status']}: {str(data['payload'])[:200]}"
-        return data["payload"], None
+        con = self._connect()
+        try:
+            cur = con.cursor()
+            group_val = channel.get("group", ["default"])
+            if isinstance(group_val, list):
+                group_val = group_val[0] if group_val else "default"
+            cur.execute("""
+                UPDATE channels SET type=?, key=?, name=?, base_url=?, models=?, "group"=?, priority=?, weight=?, status=?
+                WHERE id=?
+            """, (
+                channel.get("type", 1),
+                channel.get("key", ""),
+                channel.get("name", ""),
+                channel.get("base_url", ""),
+                channel.get("models", ""),
+                group_val,
+                channel.get("priority", 0),
+                channel.get("weight", 0),
+                1,
+                channel_id,
+            ))
+            con.commit()
+            return {"id": channel_id}, None
+        except Exception as e:
+            return None, f"DB error: {e}"
+        finally:
+            con.close()
 
     def delete_channel(self, channel_id: int):
-        data, err = self._request("DELETE", f"/api/channel/{channel_id}")
-        if err:
-            return None, err
-        assert data is not None
-        if data["status"] >= 400:
-            return None, f"delete_channel HTTP {data['status']}: {str(data['payload'])[:200]}"
-        return data["payload"], None
+        con = self._connect()
+        try:
+            cur = con.cursor()
+            cur.execute("DELETE FROM channels WHERE id=?", (channel_id,))
+            con.commit()
+            return {"deleted": channel_id}, None
+        except Exception as e:
+            return None, f"DB error: {e}"
+        finally:
+            con.close()
 
 
 # --- план синка -------------------------------------------------------------
