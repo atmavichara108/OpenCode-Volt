@@ -1,9 +1,9 @@
 ---
 type: Provider Card
 title: JustDoWork (justwoker) — provider card
-description: Операционная карточка провайдера JustDoWork (justwoker, New API/One API style). Status DEGRADED (non-stream-only): Anthropic-style /messages работает только без стрима; стриминг шлюза не отдаёт content_block-события. OpenAI-style /chat/completions закрыт Cloudflare. Баланс $300+.
+description: Операционная карточка провайдера JustDoWork (justwoker, New API/One API style). Status WORKING (через шим): стрим-регрессия шлюза ушла 2026-10-09, апстрим снова отдаёт полный Anthropic SSE; шим стал опциональным мостом. OpenAI-style /chat/completions закрыт Cloudflare. Баланс $300+.
 tags: [reference, provider-card, providers, justwoker]
-timestamp: 2026-10-07
+timestamp: 2026-10-09
 ---
 
 # JustDoWork — provider card
@@ -17,8 +17,8 @@ timestamp: 2026-10-07
 | `provider_id` | `justwoker` |
 | `endpoint` | `https://api.justwoker.icu/v1` |
 | `compatibility` | Anthropic-style; OpenAI-style заблокирован CF |
-| `status` | 🟡 `DEGRADED` (non-stream-only, 2026-10-07); шим стабилен по крашам (crash-guard `dee6f15`), но открыт TimeoutError ~300с на больших non-stream — расследуется |
-| `checked_at` | 2026-10-07 |
+| `status` | 🟢 `WORKING` (через шим, 2026-10-09); стрим-регрессия шлюза ушла — апстрим снова отдаёт полный Anthropic SSE; шим стал опциональным мостом. Инцидент TimeoutError закрыт (три слоя, см. ниже) |
+| `checked_at` | 2026-10-09 |
 | `source` | реферальная программа JustDoWork |
 | `account_kind` | `user/promotional referral` |
 | `initial_balance` | `$300+` (displayed в dashboard), kind `referral/promotional` |
@@ -26,11 +26,24 @@ timestamp: 2026-10-07
 | `models` | 1 модель: `claude-opus-4-8` |
 | `proxy` | не требуется для anthropic-пути |
 | `expiry` | неизвестен `[проверить]` |
-| `risks` | **стриминг шлюза сломан** (регрессия New API) — OpenCode всегда стримит, поэтому «напрямую» модель отдаёт пустоту; OpenAI-путь закрыт CF |
-| `next_action` | временный мост: локальный стриминг-шим (см. ниже) до перевода провайдера каналом New API ([[docs/specs/newapi-gateway-layer]]) |
+| `risks` | **стрим-регрессия шлюза ушла (2026-10-09)** — апстрим снова отдаёт полный Anthropic SSE; остаточный риск нормальный для промо-провайдера (внешний канал дистрибьютора, баланс/квота). OpenAI-путь по-прежнему закрыт CF |
+| `next_action` | держать шим как **опциональный** мост; перевод провайдера каналом New API ([[docs/specs/newapi-gateway-layer]]) — по-прежнему целевое, но больше не срочность |
 | `config_targets` | TUI + M Code через `@ai-sdk/anthropic`; в конфиге — шим-baseURL |
 
-## Probe evidence (2026-10-07, диагноз)
+## Probe evidence (2026-10-09, РАЗРЕШЕНИЕ)
+
+- **Прямой curl к апстриму** `POST /v1/messages`, модель `claude-opus-4-8` →
+  **HTTP 200 за ~28с**, реальный ответ.
+- **End-to-end через шим** (`127.0.0.1:8787`, `stream:true`) → **3/3 успешных**,
+  реальный контент; журнал шима: циклы ~27–30с, строки
+  «200 (synthesized SSE, blocks=1..2)».
+- **Стрим-регрессия ушла:** апстрим на `stream:true` снова отдаёт **полный**
+  Anthropic SSE — `message_start → ping → content_block_start → content_block_delta
+  → content_block_stop → message_delta → message_stop`.
+- **amd-radeon:** 503 «no_available_workers (all circuits open or unhealthy)» —
+  провайдерский предохранитель, сам восстановился; к правкам конфига не относится.
+
+## Probe evidence (2026-10-07, диагноз; статус регрессии снят 2026-10-09)
 
 Проверено вживую (curl напрямую в upstream, ключ из auth.json):
 
@@ -54,7 +67,7 @@ anthropic-пути. Зафиксирована в памяти ещё 2026-10-03
 по официальной схеме `https://opencode.ai/config.json`). Поэтому прямой провайдер
 `justwoker` в OpenCode отвечает пустотой.
 
-## Временный мост: локальный стриминг-шим (2026-10-07)
+## Временный мост: локальный стриминг-шим (2026-10-07) → опционален (2026-10-09)
 
 Решение оператора: до подъёма слоя New API поднять локальный шим-прокси.
 
@@ -63,8 +76,9 @@ anthropic-пути. Зафиксирована в памяти ещё 2026-10-03
   tool_use-блоки). Non-stream запросы проксируются прозрачно.
 - provider-блок `justwoker` в `opencode.jsonc` смотрит на шим
   (`baseURL: http://127.0.0.1:<PORT>/v1`), пакет `@ai-sdk/anthropic` сохранён.
-- **Статус шима:** реализация в работе (meta-субагент). Это **временный** мост:
-  при переводе justwoker каналом New API (гибридная архитектура) шим снимается.
+- **2026-10-09:** стрим-регрессия апстрима ушла → шим больше не обязателен,
+  стал **опциональным мостом**. Решение о снятии/сохранении — за оператором;
+  целевое — канал New API.
 
 ## Связь с гибридной архитектурой New API (2026-09-28)
 
@@ -114,17 +128,24 @@ PASS → канал`) для permanent-варианта сохраняется.
 
 ## Статус
 
-`🟡 DEGRADED (non-stream-only)`. Anthropic-style `/messages` работает только без
-стрима; стриминг шлюза не отдаёт content_block, поэтому прямой OpenCode-провайдер
-отвечает пустотой. Временный фикс — локальный стриминг-шим; целевое — канал New API.
+`🟢 WORKING (через шим, 2026-10-09)`. Прямой curl к апстриму `claude-opus-4-8` →
+HTTP 200 за ~28с с реальным ответом; end-to-end через шим (`stream:true`) — 3/3
+успешных, циклы ~27–30с вместо прежних 15-минутных висняков. **Стрим-регрессия
+апстрима ушла:** гейт снова отдаёт полный Anthropic SSE (`message_start → ping →
+content_block_* → message_delta → message_stop`) — первопричина шима исчезла.
+Временный фикс (шим) остаётся как **опциональный** мост; целевое — канал New API.
 
-**Шим (2026-10-07, вечер):** стабилен по крашам — второй фикс (crash-guard стрима,
-`dee6f15`) закрыл краш bun-процесса при отмене клиента. **Открыто:** `TimeoutError`
-ровно через ~300с (240–300с) на больших non-stream запросах Opus — пользователь
-видит `api_error: shim: TimeoutError`; гипотеза — Bun игнорирует `headersTimeout: 0`/
-`requestTimeout: 0` и рвёт по дефолтному HeadersTimeout 300с. Расследуется отдельным
-агентом (`task/opus-transport-*` в dotfiles). См. [[04-Memory/facts]] (T-168, фикс 2
-и открытая проблема).
+**Инцидент TimeoutError — ЗАКРЫТ (три слоя):** (а) краш шима при отмене клиента —
+crash-guard `dee6f15`; (б) фантомный фикс `headersTimeout:0` — Bun fetch
+игнорирует эти опции (серверные), реальный лимит — клиентский socket-idle
+`BUN_CONFIG_HTTP_IDLE_TIMEOUT`=300с (bun #16682), фикс — `timeout: false` в fetch,
+коммит `49d8d74`, потолок 600→900с; (в) висняки ровно 900с (08:44/08:59/09:14
+2026-10-09) — мёртвый канал у дистрибьютора провайдера (внешнее), канал ожил ~09:2x.
+См. [[04-Memory/facts]] (T-168, раздел 2026-10-09 — РАЗРЕШЕНИЕ).
+
+**Шим (2026-10-07, вечер):** стабилен по крашам — crash-guard стрима `dee6f15`
+закрыл краш bun-процесса при отмене клиента. Ранее открытый `TimeoutError`
+закрыт 2026-10-09 (см. выше).
 
 ## Ссылки
 
