@@ -10,10 +10,12 @@
     "external_directory": {
       "*": "deny",
       "/home/rudra/Projects/OpenCode-Vault/**": "allow",
+      "/home/rudra/Projects/OpenCode-Vault-tasks/**": "allow",
       "/home/rudra/Projects/AndroidOS/**": "allow",
       "/home/rudra/Projects/serp/**": "allow",
       "/home/rudra/Projects/recruiting-hr/**": "allow",
       "/home/rudra/dotfiles/**": "allow",
+      "/home/rudra/dotfiles-tasks/**": "allow",
       "/home/rudra/.config/opencode/**": "allow",
       "/home/rudra/.local/share/m-code-data/**": "allow",
       "**/.env*": "deny",
