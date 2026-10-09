@@ -960,3 +960,35 @@ timestamp: 2026-08-17
   в нашем конфиге не найдено.
 - **Карточка провайдера обновлена:** [[01-Reference/provider-cards/justwoker]] —
   status 🟢 WORKING (через шим), стрим-регрессия ушла, шим опционален.
+
+### 2026-10-09 (шим justwoker: большой payload 796KB виснет — MTU-blackhole + фикс curl-транспортом)
+
+- **T-168 (финальный фикс, v4/curl-транспорт). Корень висняков больших payload —
+  прямое соединение с Cloudflare, НЕ шим и НЕ Bun.** Symptom: тело 796KB
+  (~50K токенов) через шим виснет (http=000, >180с), малый запрос работает,
+  апстрим напрямую «проходит за 5.3с» (артефакт: тот curl шёл через прокси).
+  Root cause матрицей 2026-10-09: **прямой TCP к CF на больших upload'ах —
+  MTU/mss blackhole** (796KB: http=000 >45с; малое тело: 200 за 4.6с), через
+  локальный прокси `127.0.0.1:10809` — **200 за ~26с**. Дополнительно доказано:
+  **Bun-овый сетевой стек сломан на больших upload'ах независимо от варианта** —
+  репро 796KB: `node:https` HANG во всех вариантах записи (write+end / end(body) /
+  chunks+drain / keepAlive:false Agent), `bun fetch` TimeoutError; curl с тем же
+  телом — 200 за ~9с.
+- **Фикс (commits dotfiles `3e291c4` + `026213a`, main=026213a):**
+  (1) транспорт `openRaw` — `node:https` → **curl subprocess** (spawn; тело в
+  stdin; заголовки ответа парсятся из stdout `-i`, блоки CONNECT-туннеля прокси
+  и 1xx пропускаются; тело — PassThrough); (2) `SHIM_PROXY` env (default
+  `http://127.0.0.1:10809`, пусто = напрямую), `--noproxy localhost`;
+  (3) юнит: `HANG_MS=30000`, `FORWARD_RETRIES=1`; прокси локальный —
+  совместим с `IPAddressAllow=localhost`.
+- **Логика fallback усилена:** исчерпание stream-ретраев по hang теперь
+  ведёт на non-stream fallback (вместо ошибки клиенту) — stream:true у
+  апстрима периодически висит без байтов, non-stream стабильно работает.
+- **Проверено end-to-end (production 8787):** 796KB → **200 за 12с**;
+  stream:true → **200 за 4.7с живые content_block-дельты**; бенч против
+  заглушек: (a) live 39мс, (c) hang-retry 6.5с (watchdog + ретрай),
+  (d) fallback на non-stream — всё зелёное. Bun build exit 0.
+- **Вывод для будущего:** на этой машине большие upload'ы к внешним хостам
+  надо гнать через локальный прокси (10809) или curl — прямое соединение
+  ненадёжно (проверять `--noproxy '*'` vs env-прокси). Шим остаётся мостом
+  до слоя New API (см. [[01-Reference/provider-cards/justwoker]]).

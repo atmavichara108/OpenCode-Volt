@@ -1,7 +1,7 @@
 ---
 type: Provider Card
 title: JustDoWork (justwoker) — provider card
-description: Операционная карточка провайдера JustDoWork (justwoker, New API/One API style). Status WORKING (через шим): стрим-регрессия шлюза ушла 2026-10-09, апстрим снова отдаёт полный Anthropic SSE; шим стал опциональным мостом. OpenAI-style /chat/completions закрыт Cloudflare. Баланс $300+.
+description: Операционная карточка провайдера JustDoWork (justwoker, New API/One API style). Status WORKING (через шим v4 curl-транспорт): прямое соединение с CF виснет на больших upload'ах (MTU-blackhole), шим гонит через локальный прокси. Стрим-регрессия шлюза ушла 2026-10-09. OpenAI-style /chat/completions закрыт Cloudflare. Баланс $300+.
 tags: [reference, provider-card, providers, justwoker]
 timestamp: 2026-10-09
 ---
@@ -17,18 +17,29 @@ timestamp: 2026-10-09
 | `provider_id` | `justwoker` |
 | `endpoint` | `https://api.justwoker.icu/v1` |
 | `compatibility` | Anthropic-style; OpenAI-style заблокирован CF |
-| `status` | 🟢 `WORKING` (через шим, 2026-10-09); стрим-регрессия шлюза ушла — апстрим снова отдаёт полный Anthropic SSE; шим стал опциональным мостом. Инцидент TimeoutError закрыт (три слоя, см. ниже) |
+| `status` | 🟢 `WORKING` (через шим v4/curl-транспорт, 2026-10-09); шим обязателен для больших payload — прямое соединение с CF виснет на больших upload'ах (MTU-blackhole) |
 | `checked_at` | 2026-10-09 |
 | `source` | реферальная программа JustDoWork |
 | `account_kind` | `user/promotional referral` |
 | `initial_balance` | `$300+` (displayed в dashboard), kind `referral/promotional` |
 | `current_balance` | `$300+` (последнее наблюдение 2026-10-07, пользовательский отчёт) |
 | `models` | 1 модель: `claude-opus-4-8` |
-| `proxy` | не требуется для anthropic-пути |
+| `proxy` | обязателен для больших payload: `SHIM_PROXY=http://127.0.0.1:10809` (прямое соединение виснет на больших upload'ах) |
 | `expiry` | неизвестен `[проверить]` |
-| `risks` | **стрим-регрессия шлюза ушла (2026-10-09)** — апстрим снова отдаёт полный Anthropic SSE; остаточный риск нормальный для промо-провайдера (внешний канал дистрибьютора, баланс/квота). OpenAI-путь по-прежнему закрыт CF |
-| `next_action` | держать шим как **опциональный** мост; перевод провайдера каналом New API ([[docs/specs/newapi-gateway-layer]]) — по-прежнему целевое, но больше не срочность |
+| `risks` | **прямое соединение с CF виснет на больших upload'ах** (MTU-blackhole: 796KB → http=000 >45с напрямую, через прокси — 200 за ~26с; матрица 2026-10-09) — шим с curl-транспортом через прокси обязателен для больших контекстов. stream:true у апстрима периодически висит без байтов — шим фолбэчит на non-stream. OpenAI-путь закрыт CF |
+| `next_action` | шим (v4, curl-транспорт + SHIM_PROXY) — рабочий мост; перевод провайдера каналом New API ([[docs/specs/newapi-gateway-layer]]) — при подъёме слоя снять шим |
 | `config_targets` | TUI + M Code через `@ai-sdk/anthropic`; в конфиге — шим-baseURL |
+
+## Probe evidence (2026-10-09, MTU-blackhole + curl-транспорт; вечерний фикс)
+
+- **Матрица соединений (тело 796KB):** напрямую к CF — http=000 >45с; через
+  прокси `127.0.0.1:10809` — 200 за ~26с; малое тело напрямую — 200 за 4.6с.
+  Классический MTU/mss blackhole: большие сегменты не доходят.
+- **Bun-сетевой стек сломан на больших upload'ах** (репро 796KB): `node:https`
+  HANG во всех вариантах записи, `bun fetch` TimeoutError; curl — 200 за ~9с.
+- **Шим v4 (curl-транспорт, `3e291c4`+`026213a`):** production 8787 →
+  796KB **200 за 12с**, stream:true **200 за 4.7с живые дельты**;
+  бенч (a)/(c)/(d) зелёный.
 
 ## Probe evidence (2026-10-09, РАЗРЕШЕНИЕ)
 
@@ -37,9 +48,10 @@ timestamp: 2026-10-09
 - **End-to-end через шим** (`127.0.0.1:8787`, `stream:true`) → **3/3 успешных**,
   реальный контент; журнал шима: циклы ~27–30с, строки
   «200 (synthesized SSE, blocks=1..2)».
-- **Стрим-регрессия ушла:** апстрим на `stream:true` снова отдаёт **полный**
-  Anthropic SSE — `message_start → ping → content_block_start → content_block_delta
-  → content_block_stop → message_delta → message_stop`.
+- **Стрим-регрессия (SSE без content_block) ушла,** но `stream:true` у апстрима
+  периодически висит без байтов (2026-10-09 вечер: прямой curl stream:true —
+  0 байтов за 60с, потом ожил) — шим держит hang-детектор (30с) и фолбэчит
+  на non-stream.
 - **amd-radeon:** 503 «no_available_workers (all circuits open or unhealthy)» —
   провайдерский предохранитель, сам восстановился; к правкам конфига не относится.
 
