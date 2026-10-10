@@ -16,16 +16,6 @@ Read-only срез на 2026-10-06. Каждый ряд — один объек�
 
 | Имя | Категория | Owner | Path | Статус now | История | Evidence |
 |---|---|---|---|---|---|---|
-
-Переходы статусов:
-
-| Статус | Допустимый переход |
-|---|---|
-| ✅ | остаётся ✅ после проверки; при проблеме → ⚠️/defect-open |
-| 🟡 | → ✅ после закрытия acceptance; при блокере → BLOCKED |
-| BLOCKED | → 🟡 после снятия блокера; → retired по отдельному решению |
-| retired | остаётся retired; возврат возможен только новым решением |
-| ⚠️/defect-open | → ✅ после исправления и проверки; иначе остаётся ⚠️ |
 | OKF v0.1 | архитектура | librarian | `AGENTS.md`, `00-INDEX.md` | ✅ draft | 2026-10-05 readiness | `06-Audits/2026-10-05-pae-phase1-readiness-audit.md` §§1–4 (2026-10-05) |
 | librarian | агент | Vault | `AGENTS.md` | ✅ primary | active 2026-10-06 | `/home/rudra/Projects/OpenCode-Vault/AGENTS.md` (2026-10-06) |
 | tree-cop | агент | global | `~/.config/opencode/agent/tree-cop.md` | ✅ subagent | git isolation | `/home/rudra/dotfiles/opencode-global/.config/opencode/agent/tree-cop.md`, `tools/tree-cop/tree-cop.py` (2026-10-06) |
@@ -62,6 +52,16 @@ Read-only срез на 2026-10-06. Каждый ряд — один объек�
 | noop-guard | archived plugin | — | historical only | ❌ retired | removed 2026-09-23 after restart loop | `04-Memory/session-log/2026-09-23.md` (2026-09-23) |
 | claude-mem | archived tool | — | historical only | ❌ retired | replaced by file memory 2026-07-02 | `04-Memory/session-log/2026-07-02.md` (2026-07-02) |
 | Aider | archived tool | — | historical only | ❌ retired | retired; no live path | `06-Audits/2026-10-05-pae-phase1-readiness-audit.md` §3 (2026-10-05) |
+
+Переходы статусов:
+
+| Статус | Допустимый переход |
+|---|---|
+| ✅ | остаётся ✅ после проверки; при проблеме → ⚠️/defect-open |
+| 🟡 | → ✅ после закрытия acceptance; при блокере → BLOCKED |
+| BLOCKED | → 🟡 после снятия блокера; → retired по отдельному решению |
+| retired | остаётся retired; возврат возможен только новым решением |
+| ⚠️/defect-open | → ✅ после исправления и проверки; иначе остаётся ⚠️ |
 
 ## 2. Противоречия и честные границы
 

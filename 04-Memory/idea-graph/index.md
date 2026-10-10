@@ -1,4 +1,4 @@
-# idea-graph — индекс (проекция v2, 2026-10-05)
+# idea-graph — индекс (проекция v2, 2026-10-08)
 
 Эпоха v2: мультиграф. Полный контракт — `README.md`, спека —
 `docs/specs/idea-graph-v2.md`, архив v1 — `archive/v1-2026-10-04/`.
@@ -20,6 +20,9 @@
 - **Терминал / Pip-Boy** (`world-entity-terminal-pipboy`) — шлюз-хранитель-
   транслятор состояния мира; наружу — «терминал», внутри — версии Pip-Boy;
   blessed 2026-10-07, первая ступень VibeOS 1.0 Eco-Sys alfa.
+- **Email (Gmail)** (`world-source-email-gmail`) — источник сигналов (capture-инструмент
+  в разработке): чтение папок Gmail (Inbox, Important, Promotions), классификация,
+  маркировка реакций, синхронизация с idea-graph.
 - Категории: бестиарий, свита, королевства, хроники, Кодекс; квесты: Эко-Линия,
   security-квесты.
 
@@ -73,8 +76,10 @@ peer-comms (канон «на связи»):
 
 ## stream — поток
 
-Дистиллированные интенты `stream-intent-001..024`: essence + resolution
+Дистиллированные интенты `stream-intent-001..025`: essence + resolution
 (accepted / deferred / implemented) + emitted. Ключевые:
+- **025 Email capture** — автоматическая классификация и реакция на письма Gmail
+  (capture-инструмент как источник сигналов, OAuth2 через Gmail API).
 - 001 ось (эволюция + приближение + RPG) → Вельзевул
 - 013 эволюция через жертвование (killers) → mech-sacrifice-evolution
 - 016 матрица миров → deferred, 021 канон общения → RESERVED за форком
