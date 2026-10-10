@@ -354,3 +354,10 @@ freed.py к шаблонной детекции: templates recursive + untracked
 - «Точки» разъяснены Рудре: анти-grind, развитие = порог с ценой.
 - Мелочь: md-таблицы — детектор tools/md-table-check (D1/D2/D3, без LLM);
   исправлен 1 реальный дефект (разрыв таблицы в объектном аудите B12).
+
+## Теневой режим GO (2026-10-07 02:4x)
+- Слово Рудры через посредника: «даю добро на теневой режим», диапазон ровно
+  a03f128 (маршрутизация решений, без авто-разрешения, без обхода deny).
+- Dispatch: researcher (read-only, возможности permission-хуков плагина +
+  разбор decision-queue-hook.ts) → meta ADR в dotfiles/docs/decisions.md →
+  shadow-реализация meta. Evidence research предшествует ADR.
