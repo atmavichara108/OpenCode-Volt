@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-214304-shell",
+  "created": "2026-10-09T18:43:04.224Z",
+  "updated": "2026-10-09T18:43:04.224Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "set -eu test \"$(git diff --cached | sha256sum | cut -d' ' -f1)\" = \"807207e338a14908e60b858562b0e0944bec62e58643b448693961f8b3c296f2\" git diff --cached sha256sum cut -d' ' -f1 echo HASH_OK echo HASH_DRIFT exit 1 git commit -q -m \"chore(opencode): reviewer/verifier read-anywhere + meta task-root edit; процессные гейты и правило уточнений\n\nreviewer/verifier: read + external_directory allow (edit/task deny сохранены);\nmeta: edit-allow для dotfiles-tasks/** и OpenCode-Vault-tasks/**;\nglobal AGENTS.md: правило уточнять неоднозначность до действия;\nagent/meta.md: hash-bound порядок staged-gate → reviewer → verifier;\njsonc: external_directory широкий allow с секретными deny поверх.\nreviewer PASS; детерминированные гейты PASS; verifier BLOCKED дефектом харнеса (tool_choice).\" git log --oneline -1 git push -u origin task/meta-gates-global-20261009 2>&1 tail -3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_121f99e55001eUgcyw3OVNQtTs",
+  "callID": "toolu_bdrk_01BRnELf7bgqQ9jXCvnWXAYQ",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

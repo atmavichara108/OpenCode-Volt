@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-144103-shell",
+  "created": "2026-10-10T11:41:03.016Z",
+  "updated": "2026-10-10T11:41:03.016Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== /home/rudra/Projects/SSA exists? ===\" test -e /home/rudra/Projects/SSA echo \"SSA dir EXISTS\" echo \"SSA dir ABSENT\" echo \"=== control ===\" test -e /home/rudra/Projects/SSA/control echo \"control EXISTS\" echo \"control ABSENT\" echo \"=== seo-outreach product ===\" test -e /home/rudra/Projects/SSA/products/seo-outreach echo \"product EXISTS\" echo \"product ABSENT\" echo \"=== seo-outreach docs/specs ===\" test -e /home/rudra/Projects/SSA/products/seo-outreach/docs/specs echo \"specs dir EXISTS\" echo \"specs dir ABSENT\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda6315feffe6AABxCxYe55DZ6",
+  "messageID": "msg_1259db84d001207egX83byef9g",
+  "callID": "call_02_8lW3xndX5QWYPBg9Hndl3504",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

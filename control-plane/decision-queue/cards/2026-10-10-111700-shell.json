@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-111700-shell",
+  "created": "2026-10-10T08:17:00.926Z",
+  "updated": "2026-10-10T08:17:00.926Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "cat > /home/rudra/Projects/SSA/control/docs/specs/README.md <<'EOF'\n# docs/specs — spec-home контрольного слоя\n\nЗдесь будут жить execution-спеки контрольного слоя SSA.\n\n**Сейчас пусто намеренно.** Канонический execution-spec для продукта НЕ создаётся,\nпока не создана/не проверена карточка Vault с полем `spec-home`. Промежуточный\nматериал продукта — в его репозитории `docs/bootstrap/` со статусом `draft`.\n\nПравило write-routing (из scope):\n\n- execution-spec пишется в `spec-home` агента, который его исполняет;\n- для продукта seo-outreach spec-home ещё не определён → спеки не создаём;\n- старые Vault drafts не переписываем.\nEOF echo \"wrote specs/README.md\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_edb224328ffe25LVKYhUyR6XG7",
+  "messageID": "msg_124e2a611001gqPFbF7Za6A5N8",
+  "callID": "call_04_8vdqhcxZ8pjhrmzaCyr50605",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

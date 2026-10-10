@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-211215-shell",
+  "created": "2026-10-09T18:12:15.913Z",
+  "updated": "2026-10-09T18:12:15.913Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git status --short git diff --stat git diff --name-only git diff --cached --name-only grep -n '^| T-184 |' TASKS.md grep -nF 'python3 tools/peers/peer_lease.py run --file F --timeout 10 -- <cmd>' 02-Methods/git-worktree-isolation.md git diff --check",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede254d97ffexQ6Ga6G6VO27Ox",
+  "messageID": "msg_121dd9054001r3krvEjGP7Keza",
+  "callID": "call_QSGeioeSg8zI5ID3FKIYHmDG",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

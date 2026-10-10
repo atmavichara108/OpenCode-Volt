@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164338-shell",
+  "created": "2026-10-10T13:43:38.069Z",
+  "updated": "2026-10-10T13:43:38.069Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "set -e echo \"=== status моего worktree ===\" git status --short --branch echo \"=== стейжу ТОЛЬКО свой файл ===\" git add 04-Memory/agent-frustration-log.md git commit -q -m \"docs(memory): журнал раздражения пользователя — сигнал качества агента (INC-001..003)\" echo \"=== итог ===\" git log --oneline -1 git status --short --branch head -1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_1260df013001gR21tV1V9Lyaz7",
+  "callID": "toolu_bdrk_013bR9RyxW2gwfFgsHVUFRxn",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

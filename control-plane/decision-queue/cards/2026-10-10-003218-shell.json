@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-003218-shell",
+  "created": "2026-10-10T21:32:18.951Z",
+  "updated": "2026-10-10T21:32:18.951Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== Д: cross-domain (полностью) ===\" git show main:06-Audits/2026-10-09-agent-counteragent-cross-domain.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127bb08b9001hKfJuR6lc0Bjpy",
+  "callID": "call_00_vnouz42i70hz7arjbuqbfcfb",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

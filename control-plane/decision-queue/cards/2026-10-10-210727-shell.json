@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-210727-shell",
+  "created": "2026-10-10T18:07:27.238Z",
+  "updated": "2026-10-10T18:07:27.238Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "echo \"=== is opencode.json dirty? ===\" git -C $V status --short -- opencode.json echo \"(empty = clean)\" echo \"=== origin/main vs current branch: opencode.json diverged? ===\" git -C $V log --oneline -1 origin/main -- opencode.json git -C $V log --oneline -1 HEAD -- opencode.json echo \"=== diff origin/main vs HEAD on opencode.json ===\" git -C $V diff origin/main HEAD -- opencode.json head -30 echo \"=== main checkout file vs HEAD ===\" git -C $V show origin/main:opencode.json sed -n '6,26p'",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_126ff2c540013DblYofIttbBB4",
+  "callID": "call_938d52ec93ca4842b03c558a",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

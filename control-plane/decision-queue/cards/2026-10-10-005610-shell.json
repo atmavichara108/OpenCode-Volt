@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-005610-shell",
+  "created": "2026-10-10T21:56:10.858Z",
+  "updated": "2026-10-10T21:56:10.858Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git status --short wc -l git status --short tail -30 echo \"=== shiny-wolf full ===\" git -C /home/rudra/.local/share/m-code-data/mcode/worktree/475a3538f27ce2d090d8bedd14b2c6889fdb0850/shiny-wolf status --short wc -l git -C /home/rudra/.local/share/m-code-data/mcode/worktree/475a3538f27ce2d090d8bedd14b2c6889fdb0850/shiny-wolf status --short tail -30",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed830296bffeF3iz7Xxi5cWMOP",
+  "messageID": "msg_127d0daed001pd2loOktLx9aIk",
+  "callID": "call_7b9f90c889f7484eaf613d2c",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

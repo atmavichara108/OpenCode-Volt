@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-215626-shell",
+  "created": "2026-10-09T18:56:26.696Z",
+  "updated": "2026-10-09T18:56:26.696Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "grep -rn -i -l 'зеркал' --include='*.md' 04-Memory 06-Audits 00-WORLD.md head echo --- grep -rn -i 'зеркал' 06-Audits --include='*.md' 2>/dev/null cut -c1-180 head -20",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eddfaf9b3ffeAmNLEfJcMC3hta",
+  "messageID": "msg_12205fb070013QPFCQwWFhbrhV",
+  "callID": "toolu_8d530f3096014bb19294525c",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

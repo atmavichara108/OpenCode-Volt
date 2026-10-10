@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-10-164623-edit",
+  "created": "2026-10-10T13:46:23.523Z",
+  "updated": "2026-10-10T13:46:23.523Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/tmp/opencode-symlink-src.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9f0a108ffeyfZZYysnsEkvRP",
+  "messageID": "msg_126108556001CUUfEINlGb1FUE",
+  "callID": "call_01a12610942e75c5b6ab8c075bbc9912",
+  "metadata": {
+    "files": [
+      {
+        "file": "/tmp/opencode-symlink-src.md",
+        "patch": "Index: /tmp/opencode-symlink-src.md\n===================================================================\n--- /tmp/opencode-symlink-src.md\n+++ /tmp/opencode-symlink-src.md\n@@ -1,5 +1,4 @@\n----\n-description: probe\n+description: symlink-probe-marker\n mode: primary\n----\n-probe\n+\n+symlink body marker\n",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 4
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "builder",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-220235-shell",
+  "created": "2026-10-09T19:02:35.665Z",
+  "updated": "2026-10-09T19:02:35.665Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "set -e git -C ~/Projects/OpenCode-Vault worktree add /home/rudra/Projects/OpenCode-Vault-tasks/merge-vault-20261009 -b merge/meta-gates-vault origin/main 2>&1 tail -3 echo \"=== merge ===\" MODEL_OK=1 git merge --no-ff origin/task/meta-gates-vault-20261009 -m \"merge: процессные гейты + T-184 permission-долг\" 2>&1 tail -20",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eddf6e3dbffey7o825pEQ1vAJu",
+  "messageID": "msg_1220b29f6001HCWY9yV8g5CKIv",
+  "callID": "toolu_bdrk_01Gc1tYThVowsnS7e4whPDnx",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

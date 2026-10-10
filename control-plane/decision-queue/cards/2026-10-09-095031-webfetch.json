@@ -1,0 +1,28 @@
+{
+  "id": "2026-10-09-095031-webfetch",
+  "created": "2026-10-09T06:50:31.967Z",
+  "updated": "2026-10-09T06:50:31.967Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "webfetch",
+  "pattern": "https://opencode.ai/v2/docs/cli/keybinds/",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eedd28c45ffeFJU6TDjG69z6A7",
+  "messageID": "msg_11f6d60450019PkdMTlHKOnOH6",
+  "callID": "call_c2afa64b366d4f988a586b97",
+  "metadata": {
+    "url": "https://opencode.ai/v2/docs/cli/keybinds/",
+    "format": "markdown",
+    "timeout": 30
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

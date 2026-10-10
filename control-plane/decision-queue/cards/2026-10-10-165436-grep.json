@@ -1,0 +1,29 @@
+{
+  "id": "2026-10-10-165436-grep",
+  "created": "2026-10-10T13:54:36.897Z",
+  "updated": "2026-10-10T13:54:36.897Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "grep",
+  "pattern": "external_directory|permission\\.rejected|incident-fix|bugfix|БагФикс",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_12617f4870017i6xt72AWoO3RK",
+  "callID": "call_RQ1HikhPqEp2H1RYSLPJuIET",
+  "metadata": {
+    "root": ".",
+    "path": "/home/rudra/dotfiles",
+    "include": "*.{md,json,jsonc,ts,js,sh}",
+    "limit": 120
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

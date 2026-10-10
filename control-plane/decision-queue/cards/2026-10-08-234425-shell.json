@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-234425-shell",
+  "created": "2026-10-08T20:44:25.080Z",
+  "updated": "2026-10-08T20:44:25.080Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git worktree add .wc -b task/collector-idea-1008 origin/main cat python3 - <<'PYEOF'\nfrom pathlib import Path\np=Path(\"04-Memory/facts.md\")\nt=p.read_text(encoding=\"utf-8\")\nt += \"\"\"\n## F-коллектор и дефект теневых карточек (2026-10-08, Дирижёр)\n\n- **Теневой классификатор — дефект записи (подтверждён замером):** 217 файлов карточек\n  в `control-plane/decision-queue/cards/`, из них 13 битые (`Extra data` — склейка двух\n  JSON-объектов в одном файле). Класс: высокий риск, зафиксировано. Классификация в\n  норме: 196 номенклатурных / 6 сущностных, `effect=allow` у всех, `replied`-подписок 0.\n- **Карточки создаются под все типы инструментов** (shell 125, external_directory 39,\n  edit 15, read 13, subagent 5, grep 3, question 1, websearch 1) — при этом ловятся\n  в основном рутинные allow-события, что даёт шум в очереди.\n- **Слова силы:** `world-word-metaconstruction`, `world-word-overcoding` — статус raw.\n- **Закон потока:** `world-law-allis-maya-stream` (accepted) — входящий поток Рудры\n  есть материал Мира.\n\"\"\"\np.write_text(t,encoding=\"utf-8\")\nprint(\"facts дополнены\")\nPYEOF node tools/idea-graph/validate.mjs 2>&1 tail -1 MODEL_OK=1 git add 04-Memory/idea-graph/nodes.jsonl 04-Memory/facts.md MODEL_OK=1 git commit -q -m \"поток: идея коллектора агентной активности (raw) + замер дефекта теневых карточек (13 битых из 217)\" MODEL_OK=1 git push -q origin task/collector-idea-1008:main git branch -f main origin/main git worktree remove .wc --force echo \"main=$(git rev-parse --short main)\" git rev-parse --short main",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d3d79d5001GlxT1sbuItv5AV",
+  "callID": "call_bbe840e4227e4563a2e452ff",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

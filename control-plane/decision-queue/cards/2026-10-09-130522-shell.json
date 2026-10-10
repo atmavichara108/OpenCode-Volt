@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-130522-shell",
+  "created": "2026-10-09T10:05:22.636Z",
+  "updated": "2026-10-09T10:05:22.636Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "shell",
+  "pattern": "mkdir -p /home/rudra/dotfiles-task-t179/tools/activity-collector echo ok",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_edfe38cfbffexvTYca0PDK2OQS",
+  "messageID": "msg_1201f8076001wl78KXR1Ml0ByQ",
+  "callID": "shell:0",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

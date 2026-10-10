@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-002231-external-directory",
+  "created": "2026-10-10T21:22:31.167Z",
+  "updated": "2026-10-10T21:22:31.167Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "external_directory",
+  "pattern": "/home/rudra/Projects/OpenCode-Vault/04-Memory/idea-graph/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_127b1d326001dLgJ5PM8no2U2x",
+  "callID": "toolu_bdrk_01KJru2Cg6cCQktUxzsa2VJ7",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-223302-shell",
+  "created": "2026-10-08T19:33:02.550Z",
+  "updated": "2026-10-08T19:33:02.550Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "readlink .git/hooks/pre-commit ls -la .git/hooks/pre-commit git status --short head -3 head -1 05-Templates/pre-commit-check.sh grep -c \"model-watch\" 05-Templates/pre-commit-check.sh .git/hooks/pre-commit 2>/dev/null",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d00e697001XINmPTLncGMOeu",
+  "callID": "call_5f9a1fc7391f4c57aad80ce6",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

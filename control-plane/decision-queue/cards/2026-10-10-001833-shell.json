@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-001833-shell",
+  "created": "2026-10-10T21:18:33.403Z",
+  "updated": "2026-10-10T21:18:33.403Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== branch ===\" git branch --show-current echo \"=== status ===\" git status --short echo \"=== institutions file tracked anywhere? ===\" git log --oneline --all -- 06-Audits/2026-10-09-institutions-mirrors-research.md head",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_127ae4c17001f5jfee8756gwsb",
+  "callID": "toolu_bdrk_01LsdxyNDgJH6hhyAWh98P6g",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

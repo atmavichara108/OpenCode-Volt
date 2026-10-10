@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-092952-shell",
+  "created": "2026-10-09T06:29:52.712Z",
+  "updated": "2026-10-09T06:29:52.712Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git stash push -u -m \"tree-cop justwoker-20261009: foreign WIP before task/justwoker-resolution\" -- 02-Methods/incident-fix.md 04-Memory/idea-graph/edges.jsonl 04-Memory/idea-graph/index.md 04-Memory/idea-graph/nodes.jsonl 06-Audits/2026-10-06-vibecoding-layer-object-audit-draft.md README.md TASKS.md control-plane/audit-log.jsonl tools/key-rotator/newapi_sync.py 2>&1 tail -3 echo \"---\" git stash list head -3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee0a97b4fffeX15Yix6yTUvFr2",
+  "messageID": "msg_11f5a65c8001W684giosu3Q2KU",
+  "callID": "call_4a599185ce1442cbb2a24f78",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-122723-external-directory",
+  "created": "2026-10-09T09:27:23.747Z",
+  "updated": "2026-10-09T09:27:23.747Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "external_directory",
+  "pattern": "/home/rudra/dotfiles/opencode-global/.config/opencode/shim/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_11ffcd81c001lzO195djTuNroh",
+  "callID": "call_a76bece7bc184711b67582a6",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

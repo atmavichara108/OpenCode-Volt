@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-005216-shell",
+  "created": "2026-10-10T21:52:16.457Z",
+  "updated": "2026-10-10T21:52:16.457Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== глобальные агенты ===\" ls ~/.config/opencode/agent/ 2>/dev/null echo echo \"=== профиль primary (librarian)? ===\" echo \"--- $f ---\" grep -l -iE 'librarian|дирижёр|primary' \"$f\" 2>/dev/null head echo echo \"=== где в opencode.json external_directory ===\" grep -n 'external_directory' ~/.config/opencode/opencode.jsonc 2>/dev/null head",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_127cd39f7001qyrfZN1mhgCWwY",
+  "callID": "call_75464fc0dd2645d9859ea2ef",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

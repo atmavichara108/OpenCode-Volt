@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-112703-shell",
+  "created": "2026-10-10T08:27:03.001Z",
+  "updated": "2026-10-10T08:27:03.001Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C /home/rudra/Projects/SSA/control log --oneline -20 2>&1 echo '=== status ===' git -C /home/rudra/Projects/SSA/control status --porcelain 2>&1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_edb148aa5ffeTlSiHSxl4J71pS",
+  "messageID": "msg_124ec1787001F6Dmg97nN4aIr1",
+  "callID": "b6b90db1-195e-4b18-8c76-677c57eed38a",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

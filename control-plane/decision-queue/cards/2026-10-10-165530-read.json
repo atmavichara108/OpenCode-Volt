@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-165530-read",
+  "created": "2026-10-10T13:55:30.232Z",
+  "updated": "2026-10-10T13:55:30.232Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": ".opencode/skills/tree-hygiene/SKILL.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_12618954d001UylkSv2D6t6vj2",
+  "callID": "call_XcgKZyLCwhaGiFMqq6Ukj1LP",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

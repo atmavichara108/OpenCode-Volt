@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-192123-read",
+  "created": "2026-10-10T16:21:23.579Z",
+  "updated": "2026-10-10T16:21:23.579Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "docs/roadmap.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9619763ffeVC3GE5q2o2HY5j",
+  "messageID": "msg_1269e744d001n8PUkHL66udvUE",
+  "callID": "call_03_lqevr1wiab3mzovvwaa0tqy0",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "top",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-111434-shell",
+  "created": "2026-10-10T08:14:34.859Z",
+  "updated": "2026-10-10T08:14:34.859Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C /home/rudra/Projects/SSA/control init -b task/ssa-bootstrap",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_edb224328ffe25LVKYhUyR6XG7",
+  "messageID": "msg_124e0930f001TT8Ux4wj0GdKBK",
+  "callID": "call_01_bwBkAxWA0e3sL73Sslop7716",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

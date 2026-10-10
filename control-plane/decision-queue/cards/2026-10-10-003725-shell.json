@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-003725-shell",
+  "created": "2026-10-10T21:37:25.488Z",
+  "updated": "2026-10-10T21:37:25.488Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== VAULT: worktrees ===\" git -C /home/rudra/Projects/OpenCode-Vault worktree list 2>/dev/null echo echo \"=== DOTFILES: worktrees ===\" git -C /home/rudra/dotfiles worktree list 2>/dev/null",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_127bf83a9001Vpow8oXi91QVBC",
+  "callID": "call_70f29327c72d4443af54cad4",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

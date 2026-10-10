@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-151829-shell",
+  "created": "2026-10-09T12:18:29.484Z",
+  "updated": "2026-10-09T12:18:29.484Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git fetch origin --quiet echo \"origin/main=$(git rev-parse --short origin/main)\" git rev-parse --short origin/main echo \"mybranch=$(git rev-parse --short HEAD)\" git rev-parse --short HEAD git log --oneline origin/main -1 echo \"--- rebase onto origin/main ---\" git rebase origin/main 2>&1 tail -3 echo \"after rebase: $(git rev-parse --short HEAD) branch=$(git branch --show-current)\" git rev-parse --short HEAD git branch --show-current",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_120991bdc001NEBb02C2EAToUt",
+  "callID": "call_ea5d727bd6ee40c0b09bd6bb",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

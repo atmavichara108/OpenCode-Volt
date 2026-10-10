@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-001913-shell",
+  "created": "2026-10-10T21:19:13.087Z",
+  "updated": "2026-10-10T21:19:13.087Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== мои коммиты / файлы в ветке, которых нет в main ===\" git log --oneline main..HEAD head -20 echo echo \"=== файлы, различающиеся между main и HEAD ===\" git diff --name-status main...HEAD head -30",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127af0f3b001JsJzc5u3yFyeOA",
+  "callID": "call_00_gtkam1gfkis9lwxz0xed4t1j",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

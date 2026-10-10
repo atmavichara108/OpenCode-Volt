@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-134127-shell",
+  "created": "2026-10-09T10:41:27.726Z",
+  "updated": "2026-10-09T10:41:27.726Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ss -ltnp 2>/dev/null grep ':8784' grep -oP 'pid=\\K[0-9]+' head -1 echo \"pid8784=$P\" kill \"$P\" sleep 1 nohup env HOST=127.0.0.1 PORT=8784 UPSTREAM_BASE=http://127.0.0.1:8791/v1 HANG_MS=5000 FORWARD_RETRIES=3 FORWARD_RETRY_MS=500 bun run /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts > /tmp/opencode/shimtest/shim3b.log 2>&1 sleep 2 cat /tmp/opencode/shimtest/shim3b.log",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_1204030a5001ZaZkU9tLw2n1fJ",
+  "callID": "call_20afdc3cc2834d5486e47cd0",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

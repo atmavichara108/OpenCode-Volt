@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-204031-shell",
+  "created": "2026-10-09T17:40:31.858Z",
+  "updated": "2026-10-09T17:40:31.858Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C ~/Projects/OpenCode-Vault/.meta-worktrees/permission-worktree-20261009 branch -vv --no-abbrev grep -E 'task/meta-permission|main ' cut -c1-180 git -C ~/Projects/OpenCode-Vault worktree list --porcelain grep -A3 -B1 'meta-worktrees/permission-worktree'",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_121c04201001C7lg7Oi78eP3JY",
+  "callID": "call_bjzkGwutil6lcT8rSAUySDoH",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

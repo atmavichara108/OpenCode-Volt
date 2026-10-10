@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-230500-shell",
+  "created": "2026-10-08T20:05:00.840Z",
+  "updated": "2026-10-08T20:05:00.840Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "shell",
+  "pattern": "ls 04-Memory/ head echo --- wc -l TASKS.md 04-Memory/facts.md 04-Memory/active-context.md 2>/dev/null echo --- grep -n \"^## \\|^### \" TASKS.md head -30",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d1de637001rqml3ROuTZtGDq",
+  "callID": "call_cc46f8517bb8448ba6f049ec",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

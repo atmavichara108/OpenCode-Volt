@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-003159-shell",
+  "created": "2026-10-10T21:31:59.867Z",
+  "updated": "2026-10-10T21:31:59.867Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== файлы в коммите (ещё раз) ===\" git show --stat --oneline 2d6f483 tail -6 echo \"=== проверка: нет ли уже в main ===\" printf \"%-60s \" \"$f\" git cat-file -e main:\"$f\" 2>/dev/null echo \"УЖЕ в main\" echo \"нет в main\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127bac599001d6fHPvGuNel0pJ",
+  "callID": "call_00_jldengjg3n8bp991oq7p5a7t",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

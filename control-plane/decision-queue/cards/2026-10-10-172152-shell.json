@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-172152-shell",
+  "created": "2026-10-10T14:21:52.372Z",
+  "updated": "2026-10-10T14:21:52.372Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git add 98-Temporary/ssa-bootstrap/ git commit -q -m \"docs(ssa): сохранить bootstrap-черновики (бизнес-модель, интервью, вопросы созвона, эскиз агент-слоя)\" 2>&1 tail -1 git add 04-Memory/session-log/2026-10-10.md git commit -q -m \"docs(memory): финальный апдейт session-log 2026-10-10 (/ship)\" 2>&1 tail -1 echo \"=== лог ===\" git log --oneline -4 echo \"=== FF main + push из корня workspace ===\" git push . task/ssa-bootstrap-20261010:main 2>&1 tail -2 git push origin main 2>&1 tail -2 echo \"=== финал: main == origin/main? ===\" git rev-parse main origin/main task/ssa-bootstrap-20261010 sort -u wc -l",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_12630ee1f001X9knO2CFy3By34",
+  "callID": "toolu_bdrk_014yGPjChuh8pNxDyTVbJy4b",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

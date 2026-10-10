@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-003342-shell",
+  "created": "2026-10-10T21:33:42.564Z",
+  "updated": "2026-10-10T21:33:42.564Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "printf '%-70s' \"$f\" test -f \"$f\" echo \"OK $(wc -l <\"$f\")l\" wc -l <\"$f\" echo \"MISSING\" echo \"--- link alive? ---\" grep -l 'agent-counteragent-cross-domain' 06-Audits/2026-10-09-agency-counteragency-brainstorm.md 2>/dev/null echo \"ref present\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_127bc22d1001qxqQmYL3JlXfgR",
+  "callID": "toolu_bdrk_01GhbC7zMoKUc4mADwQkeNXa",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

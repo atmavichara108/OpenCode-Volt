@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-112930-shell",
+  "created": "2026-10-09T08:29:30.691Z",
+  "updated": "2026-10-09T08:29:30.691Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "shell",
+  "pattern": "python3 -c \"\nfrom pathlib import Path\np=Path('TASKS.md'); L=p.read_text(encoding='utf-8').splitlines(True)\nmine=L[51:56]; assert all(x.startswith('| T-18') for x in mine)\nrest=L[:51]+L[56:]\nout=[]\nfor x in rest:\n    out.append(x)\n    if x.startswith('|----|--------|-----------|---------|'):\n        out.extend(mine); mine=[]\nassert not mine, 'separator not found'\np.write_text(''.join(out), encoding='utf-8')\nprint('ok')\n\" python3 tools/md-table-check/check.py TASKS.md tail -1 sed -n '50,64p' TASKS.md cut -c1-70",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11fc7d4f0001kxqQZlsYvffNs6",
+  "callID": "call_c97eda2ceacb4292aa4b27de",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

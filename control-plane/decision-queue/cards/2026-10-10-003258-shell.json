@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-003258-shell",
+  "created": "2026-10-10T21:32:58.685Z",
+  "updated": "2026-10-10T21:32:58.685Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"строк: $(wc -l <$F)\" wc -l <$F echo \"=== guard ===\" python3 /home/rudra/dotfiles/tools/garbage-guard/guard.py scan --path \"$F\" echo \"rc=$?\" echo \"=== мусор ===\" grep -oE '[А-Яа-я]{2,}[A-Za-z]{2,}[А-Яа-я]{2,}' $F sort -u echo \"(пусто=чисто)\" echo \"=== ссылки в индексе на реальные файлы ===\" printf \"%-60s \" \"$p\" git cat-file -e main:\"$p\" 2>/dev/null echo \"✓ в main\" echo \"✗\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127bba62a001HBJiSbjcHG3jlH",
+  "callID": "call_00_5t0tqigpjb00e9dj8wbuxor2",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

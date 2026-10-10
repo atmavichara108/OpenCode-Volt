@@ -1,0 +1,27 @@
+{
+  "id": "2026-10-10-192126-glob",
+  "created": "2026-10-10T16:21:26.284Z",
+  "updated": "2026-10-10T16:21:26.284Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "glob",
+  "pattern": ".opencode/**/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9619763ffeVC3GE5q2o2HY5j",
+  "messageID": "msg_1269e7e30001PNaeqFJfSXvfqA",
+  "callID": "call_03_metl2adko5s7depvxjhr5gua",
+  "metadata": {
+    "root": ".",
+    "hidden": true
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "top",
+  "model": null
+}

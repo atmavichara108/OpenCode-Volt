@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-204511-shell",
+  "created": "2026-10-10T17:45:11.743Z",
+  "updated": "2026-10-10T17:45:11.743Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git switch -c task/bagfix-letter-20261010 2>&1 tail -1 git apply --index <(git stash show -p \"stash@{0}\") 2>&1 git stash show -p \"stash@{0}\" echo \"APPLIED(staged)\" echo \"apply failed\" git status --short",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_126eb0ffe001N7GGSeT7fsTYhP",
+  "callID": "call_77c88570cb25460ab1ffae71",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-220515-shell",
+  "created": "2026-10-09T19:05:15.087Z",
+  "updated": "2026-10-09T19:05:15.087Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== $id ===\" grep -F '\"stream-intent-048\"' 04-Memory/idea-graph/nodes.jsonl 2>/dev/null grep -F '\"id\": \"'$id'\"' 04-Memory/idea-graph/nodes.jsonl cut -c1-520 echo echo \"=== 026/028 exact ===\" grep -F '\"id\":\"stream-intent-026\"' 04-Memory/idea-graph/nodes.jsonl cut -c1-380 grep -F '\"id\":\"stream-intent-028\"' 04-Memory/idea-graph/nodes.jsonl cut -c1-380",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_1220d7826001HT2XpxBFMl3Xyy",
+  "callID": "call_4aae0714d70348c4a92a3faa",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

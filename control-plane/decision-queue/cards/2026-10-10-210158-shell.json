@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-210158-shell",
+  "created": "2026-10-10T18:01:58.448Z",
+  "updated": "2026-10-10T18:01:58.448Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git reset -q git add docs/handoffs/2026-10-10-external-directory-vault-handoff.md git commit -q -m \"docs(handoffs): external_directory Vault SSA-worktree — handoff куратору Vault, blocked\" git reset -q git add .opencode/memory/session-reports/2026-10-10-bugfix-workshop.md git commit -q -m \"docs(memory): мастерская БагФикс — INC-5 external_directory, INC-6 skill-сигнатура, BF-20261010-01\" git log --oneline -4 echo \"=== status ===\" git status --short --branch",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_126fa5e250013DbkpD0Rq6IkJC",
+  "callID": "call_2b20fd3e303841c4ba60e185",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

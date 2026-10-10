@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-003316-shell",
+  "created": "2026-10-10T21:33:16.213Z",
+  "updated": "2026-10-10T21:33:16.213Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== ВСЕ файлы по контрагенту в main ===\" printf \"%-62s \" \"$f\" git cat-file -e main:\"$f\" 2>/dev/null echo \"✓\" echo \"✗ НЕТ\" echo echo \"=== ссылка в brainstorm (строка про cross-domain) ===\" git show main:06-Audits/2026-10-09-agency-counteragency-brainstorm.md grep -o \"agent-counteragent-cross-domain.md\" head -1 echo \"=== main ===\" git log --oneline main -4",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127bbef7f001EN7nvnbtrpIopq",
+  "callID": "call_00_p9d2f4z3plq0iutgevi8f42h",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

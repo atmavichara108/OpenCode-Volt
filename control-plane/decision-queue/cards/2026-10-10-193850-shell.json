@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-193850-shell",
+  "created": "2026-10-10T16:38:50.369Z",
+  "updated": "2026-10-10T16:38:50.369Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git rev-parse HEAD git rev-parse 'HEAD^{tree}' git branch --show-current git status --porcelain=v1 wc -l git status --porcelain=v1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed951f17fffesiAlzWdmRkgWN3",
+  "messageID": "msg_126ae0eb3001IoIW3MrMeyC1D8",
+  "callID": "3e070336-3886-4f04-84db-3c8edf75466c",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

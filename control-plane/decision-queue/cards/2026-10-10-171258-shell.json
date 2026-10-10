@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-171258-shell",
+  "created": "2026-10-10T14:12:58.285Z",
+  "updated": "2026-10-10T14:12:58.285Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "sed -n '1,80p' docs/specs/mailing-protocol-proto.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9d84e82ffeRMSHfFyjz1ujak",
+  "messageID": "msg_12628829c001G1RuUcGqLLlGex",
+  "callID": "call_6e960d15a5c642d0a63d52de",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

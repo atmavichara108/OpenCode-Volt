@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-092556-read",
+  "created": "2026-10-09T06:25:56.461Z",
+  "updated": "2026-10-09T06:25:56.461Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "01-Reference/provider-cards/justwoker.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee0a97b4fffeX15Yix6yTUvFr2",
+  "messageID": "msg_11f5684eb001wYxZ07ZRAxLaM4",
+  "callID": "call_3c40e44a1abf4b46b02f8512",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-10-001549-websearch",
+  "created": "2026-10-10T21:15:49.282Z",
+  "updated": "2026-10-10T21:15:49.282Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "websearch",
+  "pattern": "Tensura That Time I Got Reincarnated as a Slime Great Sage Raphael Veldora demon lord evolution",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127abf7470018l7mNea8jSEvuP",
+  "callID": "call_03_y1x90mu8lj6ahzlrwgo3nb8q",
+  "metadata": {
+    "query": "Tensura That Time I Got Reincarnated as a Slime Great Sage Raphael Veldora demon lord evolution"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

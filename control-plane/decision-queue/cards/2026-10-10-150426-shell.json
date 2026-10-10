@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-150426-shell",
+  "created": "2026-10-10T12:04:26.049Z",
+  "updated": "2026-10-10T12:04:26.049Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "strings \"$BIN\" grep -o '.\\{120\\}Load a specialized skill.\\{300\\}' head -3 echo ---A--- strings \"$BIN\" grep -o '.\\{80\\}matching skill from.\\{250\\}' head -5 echo ---B--- python3 -c \"\nimport subprocess,re\nout=subprocess.run(['strings','/home/rudra/.opencode/bin/opencode'],capture_output=True,text=True).stdout\n# find skill tool schema neighbourhood: look for 'skill' with properties id/name\nfor m in re.finditer(r'.{80}skill.{0,80}propert.{400}', out):\n    print(m.group(0)[:600]); print('===='); break\nelse: print('no-prop-match')\n\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_125b330c5001T1REGLl5xlu5m3",
+  "callID": "call_01a125b3381075c1badcb5253e69dacc",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-104651-shell",
+  "created": "2026-10-09T07:46:51.076Z",
+  "updated": "2026-10-09T07:46:51.076Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "sed -i 's/new соединение на запрос contestants/new соединение на запрос/; s/const bodynever: string, signal/const body: string, signal/' opencode-global/.config/opencode/shim/justwoker-shim.ts grep -nP '[\\x{4e00}-\\x{9fff}\\x{3040}-\\x{30ff}\\x{ac00}-\\x{d7af}\\x{0e00}-\\x{0e7f}\\x{fffd}]' opencode-global/.config/opencode/shim/justwoker-shim.ts echo \"CJK CLEAN\" grep -n 'contestants\\|bodynever' opencode-global/.config/opencode/shim/justwoker-shim.ts echo \"stray CLEAN\" bun build --target=bun opencode-global/.config/opencode/shim/justwoker-shim.ts --outfile /dev/null 2>&1 tail -6",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_11f9fcabb001gqmN0E3ealufKs",
+  "callID": "call_51796ad5d3104b0b905d04d2",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

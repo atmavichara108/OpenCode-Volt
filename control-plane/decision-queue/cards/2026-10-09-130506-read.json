@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-130506-read",
+  "created": "2026-10-09T10:05:06.153Z",
+  "updated": "2026-10-09T10:05:06.153Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "02-Methods/team-director.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_1201f4419001h7uCO0ugsTCDfG",
+  "callID": "read:0",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

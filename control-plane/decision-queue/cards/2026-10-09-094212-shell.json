@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-094212-shell",
+  "created": "2026-10-09T06:42:12.044Z",
+  "updated": "2026-10-09T06:42:12.044Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git add 04-Memory/idea-graph/edges.jsonl 04-Memory/idea-graph/nodes.jsonl echo \"--- status ---\" git status --short grep -E 'UU|AA|^M|^ M' head -20",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee0a97b4fffeX15Yix6yTUvFr2",
+  "messageID": "msg_11f65adb9001zKMiefZT6javYY",
+  "callID": "call_0737265a9ded47ffa73fcfe5",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

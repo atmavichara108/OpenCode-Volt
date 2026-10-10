@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-122545-shell",
+  "created": "2026-10-09T09:25:45.634Z",
+  "updated": "2026-10-09T09:25:45.634Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "sed -i \\\n -e 's/content_block天空中/content_block/g' \\\n -e 's/^主机        \\/\\/ true/        \\/\\/ true/' \\\n -e 's/^metro              const why/              const why/' \\\n -e 's/if cielo (closed)/if (closed)/' \\\n -e 's/if phase (flushed)/if (flushed)/' \\\n -e 's/no content_blockuchi (fallback/no content_block (fallback/' \\\n \"$F\" echo \"--- residual stray scan ---\" grep -nP '[\\x{4e00}-\\x{9fff}\\x{3040}-\\x{30ff}\\x{ac00}-\\x{d7af}\\x{0e00}-\\x{0e7f}\\x{fffd}]' \"$F\" echo \"CJK CLEAN\" grep -nE 'cielo|metro|phase \\(|uchi|主机|天空中|upper|contestants|upunion|bodynever' \"$F\" echo \"STRAY CLEAN\" echo \"--- dead refs in live paths ---\" grep -n 'filterResponseHeaders\\|\\.body\\b\\|res\\.ok\\|res\\.json' \"$F\" echo \"NO DEAD REFS\" echo \"--- build ---\" bun build --target=bun \"$F\" --outfile /dev/null 2>&1 tail -6",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_11ff9a2b2001D6oSHEY94x3H3U",
+  "callID": "call_cb6cd1b7f2154baab16ed7cc",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

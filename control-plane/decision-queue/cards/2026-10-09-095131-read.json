@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-095131-read",
+  "created": "2026-10-09T06:51:31.801Z",
+  "updated": "2026-10-09T06:51:31.801Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "opencode-global/.config/opencode/plugins/telemetry.ts",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee091abbbffevJcwutfbPFdoSk",
+  "messageID": "msg_11f6e60b90014UZBywJ1o2KNci",
+  "callID": "call_01a11f6e654b73f2bfb6120f2f1167aa",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

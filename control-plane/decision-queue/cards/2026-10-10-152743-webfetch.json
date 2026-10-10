@@ -1,0 +1,27 @@
+{
+  "id": "2026-10-10-152743-webfetch",
+  "created": "2026-10-10T12:27:43.822Z",
+  "updated": "2026-10-10T12:27:43.822Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "webfetch",
+  "pattern": "https://opencode.ai/v2/docs/agents",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_125c7a5c4001YFCx6wRbalDJGp",
+  "callID": "call_FzUHpdTV2SLU5ldNkm2X01ke",
+  "metadata": {
+    "url": "https://opencode.ai/v2/docs/agents",
+    "format": "markdown"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-230937-shell",
+  "created": "2026-10-08T20:09:37.427Z",
+  "updated": "2026-10-08T20:09:37.427Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "grep -rn \"фаз[аеы] [45]\\|Фаз[аеы] [45]\\|фаза os\\|Фаза 5\\|фазу 5\" --include=*.md . head -20",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d221804001PYxb60KF5DUeJB",
+  "callID": "call_ae1c40d4295646e9840df572",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

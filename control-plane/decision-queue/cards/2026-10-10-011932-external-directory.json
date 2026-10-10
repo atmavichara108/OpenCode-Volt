@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-011932-external-directory",
+  "created": "2026-10-10T22:19:32.080Z",
+  "updated": "2026-10-10T22:19:32.080Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "external_directory",
+  "pattern": "/home/rudra/Projects/OpenCode-Vault/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed830296bffeF3iz7Xxi5cWMOP",
+  "messageID": "msg_127e634b6001CFlEithiYOiBhk",
+  "callID": "call_67b0fb9ea4524ad3a04afe05",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

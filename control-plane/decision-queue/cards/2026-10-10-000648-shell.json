@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-000648-shell",
+  "created": "2026-10-10T21:06:48.251Z",
+  "updated": "2026-10-10T21:06:48.251Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== последние коммиты main ===\" git log --oneline main -8 echo echo \"=== есть ли коммит с файлом где-то ===\" git log --all --oneline -- 06-Audits/2026-10-09-agency-counteragency-brainstorm.md head echo echo \"=== где HEAD main ===\" git rev-parse --short main HEAD",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127a39d89001jdm1DfX0LcqYn2",
+  "callID": "call_fa2ed4763266494b9215932e",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

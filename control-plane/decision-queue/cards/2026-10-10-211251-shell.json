@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-211251-shell",
+  "created": "2026-10-10T18:12:51.852Z",
+  "updated": "2026-10-10T18:12:51.852Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git status --short --branch head -6 git add docs/handoffs/2026-10-10-external-directory-vault-handoff.md git commit -q -m \"docs(handoffs): INC-5 уточнён — корень отставший checkout Vault, фикс применён из origin/main\" git reset -q git add .opencode/memory/session-reports/2026-10-10-bugfix-workshop.md git commit -q -m \"docs(memory): INC-5 fixed — восстановлен opencode.json Vault из origin/main (cac2a00)\" git reset -q git add docs/specs/bugfix-failure-rule.md git commit -q -m \"docs(specs): BF-20261010-01 — INC-5 снят с blockers, apply выполнен\" git log --oneline -4 echo \"=== status ===\" git status --short --branch head -5",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_1270413d2001IahWB7fUwpqwEI",
+  "callID": "call_dee15ec647964277a0ea752b",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

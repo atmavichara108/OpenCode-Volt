@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-215017-shell",
+  "created": "2026-10-08T18:50:17.891Z",
+  "updated": "2026-10-08T18:50:17.891Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git show main:tools/md-table-check/check-fm.py echo \"check-fm в main ✓\" echo \"check-fm НЕ в main\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cd9f8c0001S7bkaExJ63CuhP",
+  "callID": "call_c4bc3999394641dfa24d75e9",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

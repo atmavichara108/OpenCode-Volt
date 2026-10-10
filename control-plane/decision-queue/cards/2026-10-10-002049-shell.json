@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-002049-shell",
+  "created": "2026-10-10T21:20:49.367Z",
+  "updated": "2026-10-10T21:20:49.367Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"строк: $(wc -l <$F)\" wc -l <$F echo \"=== структура ===\" grep -n \"^## \" $F echo \"=== мусор ===\" grep -oE '[А-Яа-я]{2,}[A-Za-z]{2,}[А-Яа-я]{2,}' $F sort -u echo \"(пусто=чисто)\" echo \"=== часть 3 присутствует ===\" grep -c \"синтез Дирижёра\" $F",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127b093a8001xjwfhyll96ayE6",
+  "callID": "call_00_g9sngqblnqaz9bzubpz595iu",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

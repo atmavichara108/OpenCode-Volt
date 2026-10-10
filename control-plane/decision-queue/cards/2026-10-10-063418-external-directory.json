@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-063418-external-directory",
+  "created": "2026-10-10T03:34:18.786Z",
+  "updated": "2026-10-10T03:34:18.786Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "external_directory",
+  "pattern": "/home/rudra/Projects/OpenCode-Vault/06-Audits/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_123ddbc30001aGn28rLVJzTdjj",
+  "callID": "toolu_bdrk_012n4DK3LBAqoLshJ3uk8emL",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

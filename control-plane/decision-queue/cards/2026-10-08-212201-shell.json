@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-212201-shell",
+  "created": "2026-10-08T18:22:01.923Z",
+  "updated": "2026-10-08T18:22:01.923Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git worktree add .potokwt task/potok-1008 tail -1 python3 python3 ~/dotfiles/tools/garbage-guard/guard.py call 2>/dev/null python3 ~/dotfiles/tools/garbage-guard/guard.py check-text < \"$f\" 2>&1 grep MOJIBAKE sed \"s|^|$f: |\" head -2 echo \"=== гейт-скан закончен\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cbe4941001PTFTKphlk9EG48",
+  "callID": "call_9aa268d9a7b1449c8d37a6aa",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

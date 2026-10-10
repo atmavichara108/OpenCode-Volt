@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-102219-shell",
+  "created": "2026-10-09T07:22:19.325Z",
+  "updated": "2026-10-09T07:22:19.325Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "python3 mk_inv.py head -30 STREAM-DUMP.md echo \"...\" wc -l STREAM-DUMP.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11f844327001LHlckGMGJywGU6",
+  "callID": "call_a589aa26cf1645679223dd02",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

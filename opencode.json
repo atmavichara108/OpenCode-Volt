@@ -8,18 +8,13 @@
     "glob": "allow",
     "grep": "allow",
     "external_directory": {
-      "*": "deny",
-      "/home/rudra/Projects/OpenCode-Vault/**": "allow",
-      "/home/rudra/Projects/AndroidOS/**": "allow",
-      "/home/rudra/Projects/serp/**": "allow",
-      "/home/rudra/Projects/recruiting-hr/**": "allow",
-      "/home/rudra/dotfiles/**": "allow",
-      "/home/rudra/.config/opencode/**": "allow",
-      "/home/rudra/.local/share/m-code-data/**": "allow",
+      "*": "allow",
       "**/.env*": "deny",
       "**/credentials.json": "deny",
       "**/*.pem": "deny",
-      "**/*.key": "deny"
+      "**/*.key": "deny",
+      "**/id_rsa*": "deny",
+      "**/id_ed25519*": "deny"
     },
     "bash": {
       "*": "allow",

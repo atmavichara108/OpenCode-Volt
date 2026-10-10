@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-215436-shell",
+  "created": "2026-10-08T18:54:36.238Z",
+  "updated": "2026-10-08T18:54:36.238Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "grep -n \"Алисса\\|алис майя\\|Алиса\" 04-Memory/facts.md 00-WORLD.md cut -c1-80 git show main:04-Memory/idea-graph/nodes.jsonl grep -o '\"id\": \"world-entity-allis-maya\", \"graph\": \"[^\"]*\", \"kind\": \"[^\"]*\", \"label\": \"[^\"]*\"' cut -c1-140",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cdd8a70001VTl2PAnNEjjNU1",
+  "callID": "call_9fcf3adf61ac411096faf532",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

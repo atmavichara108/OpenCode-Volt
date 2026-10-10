@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-211514-shell",
+  "created": "2026-10-08T18:15:14.147Z",
+  "updated": "2026-10-08T18:15:14.147Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git status --short awk '{print $2}' git diff -q origin/main -- \"$f\" >/dev/null 2>&1 git diff origin/main -- \"$f\" echo \"РАВЕН main: $f\" echo \"ОТЛИЧАЕТСЯ: $f\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cb8d25e001xYMEzmFh3o59r0",
+  "callID": "call_fcc80bf9c3f847878c664e0a",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

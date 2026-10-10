@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-163803-shell",
+  "created": "2026-10-10T13:38:03.891Z",
+  "updated": "2026-10-10T13:38:03.891Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "set -e git switch main 2>&1 tail -2 git merge --ff-only origin/main 2>&1 tail -3 echo \"=== main now ===\" git log --oneline -1 echo \"=== merge skill-id-fix (ff) ===\" git merge --ff-only task/skill-id-fix 2>&1 tail -3 git log --oneline -1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_12608aebc001DIy8JGhwmpAj1h",
+  "callID": "toolu_bdrk_01QjjSm2XciyEBv1EH9kuUze",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

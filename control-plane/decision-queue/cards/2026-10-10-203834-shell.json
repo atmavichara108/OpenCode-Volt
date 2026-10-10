@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-203834-shell",
+  "created": "2026-10-10T17:38:34.498Z",
+  "updated": "2026-10-10T17:38:34.498Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"== stash@{1} files\" git stash show --name-only 'stash@{1}' 2>/dev/null echo \"== stash@{0} files\" git stash show --name-only 'stash@{0}' 2>/dev/null echo \"== does stash@{1} contain INC-6 final wording\" git show 'stash@{1}' 2>/dev/null rg -c \"корреляция INC-1|bugfix-extdir-and-rule\" echo \"== attachment head\" head -12 /tmp/opencode/bugfix-extdir-and-rule-20261010.txt echo \"== proactive spec frontmatter\" sed -n 1,10p docs/specs/bugfix-proactive-plugin.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed921cb70ffeX0qdtO9CnEsj5C",
+  "messageID": "msg_126e3c9e0001frzV2VJcXP6i49",
+  "callID": "call_8fa925d8ea42463193d0c3d0",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

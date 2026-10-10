@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-213347-external-directory",
+  "created": "2026-10-09T18:33:47.141Z",
+  "updated": "2026-10-09T18:33:47.141Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "external_directory",
+  "pattern": "/home/rudra/Projects/OpenCode-Vault-tasks/meta-gates-20261009/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede106e10ffeMUVbvaXrKuH0ls",
+  "messageID": "msg_121f0458e0016D4712fLejRpbr",
+  "callID": "call_4a005797fbb3440897c9cf86",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

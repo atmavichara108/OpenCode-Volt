@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-10-001534-websearch",
+  "created": "2026-10-10T21:15:34.798Z",
+  "updated": "2026-10-10T21:15:34.798Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "websearch",
+  "pattern": "agency and counteragency actor-network theory Latour nonhuman actants",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127ab76a8001f9VIkIdQyGoqfe",
+  "callID": "call_01_dsd36ezz5zoqztyk9lpw1v6n",
+  "metadata": {
+    "query": "agency and counteragency actor-network theory Latour nonhuman actants"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

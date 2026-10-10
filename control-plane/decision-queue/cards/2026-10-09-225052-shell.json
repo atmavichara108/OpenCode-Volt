@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-225052-shell",
+  "created": "2026-10-09T19:50:52.576Z",
+  "updated": "2026-10-09T19:50:52.576Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== conflict markers / secrets scan (dotfiles @33fb471, changed files) ===\" git -C /home/rudra/dotfiles show 33fb471:$f grep -nE '^(<{7}|>{7}|={7}$)|api[_-]?key[\\\"'\"'\"' ]*[:=]|sk-[A-Za-z0-9]{8,}|ghp_[A-Za-z0-9]|AKIA[0-9A-Z]{8,}|password|passwd' echo \"  ^^ IN $f\" echo \"(пусто = чисто)\" echo \"=== same scan (Vault @19aa02e, changed files) ===\" git -C /home/rudra/Projects/OpenCode-Vault show 19aa02e:$f grep -nE '^(<{7}|>{7}|={7}$)|api[_-]?key[\\\"'\"'\"' ]*[:=]|sk-[A-Za-z0-9]{8,}|ghp_[A-Za-z0-9]|AKIA[0-9A-Z]{8,}|password|passwd' echo \"  ^^ IN $f\" echo \"(пусто = чисто)\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eddf66964ffeRYPpVyEX7u7yhE",
+  "messageID": "msg_1222e0e0f001Poo8CxrKp9oGbe",
+  "callID": "fa6d01c0-50d4-461a-8dc4-1b0c4c7f22ae",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «secret-path»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

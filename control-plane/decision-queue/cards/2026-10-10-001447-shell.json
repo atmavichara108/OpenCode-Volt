@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-001447-shell",
+  "created": "2026-10-10T21:14:47.705Z",
+  "updated": "2026-10-10T21:14:47.705Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== С1/С2/С3 в графе/аудитах ===\" grep -rniE \"С1[^а-я]|С2[^а-я]|сценари.*С|Сценарий С\" 06-Audits/ 04-Memory/ 2>/dev/null grep -iE \"С1|\\bС2\\b|\\bС3\\b\" head -15 echo echo \"=== ищем 'сценарист'/'scenario' ===\" grep -rlniE \"scenario|сценарист\" 06-Audits/ 04-Memory/ docs/ 2>/dev/null head echo echo \"=== свежие файлы в 06-Audits ===\" ls -t 06-Audits/ head -12",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127ab0da7001D2jyX6oHkQyKv5",
+  "callID": "call_00_uhbyrz1gv71wb19cq578d18a",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

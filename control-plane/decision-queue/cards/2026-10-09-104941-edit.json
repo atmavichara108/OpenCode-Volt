@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-104941-edit",
+  "created": "2026-10-09T07:49:41.608Z",
+  "updated": "2026-10-09T07:49:41.608Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_11fa2e63a001KXr2oBnaPTTBDu",
+  "callID": "call_2c038227d4a946759513b478",
+  "metadata": {
+    "files": [
+      {
+        "file": "/home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts",
+        "patch": "Index: /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n===================================================================\n--- /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n+++ /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n@@ -122,10 +122,9 @@\n   });\n }\n \n /** Форвард апстрима через node:https с прозрачным ретраем 403/503. */\n-async function forward(req: Request, bodynever: string, signal: AbortSignal): Promise<RawUpstream> {\n-  const body = bodynever;\n+async function forward(req: Request, body: string, signal: AbortSignal): Promise<RawUpstream> {\n   for (let attempt = 0; attempt <= FORWARD_RETRIES; attempt++) {\n     const up = await openUpstream(req, body, signal);\n     // Быстрые отказы балансировщика (CF rate-limit 403, New API «No available\n     // channel» 503): прозрачный ретрай с паузой — OpenCode их не видит.\n",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 2
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

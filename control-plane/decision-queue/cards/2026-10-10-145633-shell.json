@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-145633-shell",
+  "created": "2026-10-10T11:56:33.958Z",
+  "updated": "2026-10-10T11:56:33.958Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "shell",
+  "pattern": "python3 /home/rudra/Projects/OpenCode-Vault-tasks/ssa-bootstrap-20261010/tools/peers/peer_lease.py run --file 00-INDEX.md --timeout 10 -- python3 /tmp/opencode/apply_ssa_findings.py 2>&1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda5dbbf7ffewLYXf5pN0cVzSh",
+  "messageID": "msg_125abec1e001oh8Cm82OKAuJbH",
+  "callID": "call_2av649v9heo55xlb3kp9igi7",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

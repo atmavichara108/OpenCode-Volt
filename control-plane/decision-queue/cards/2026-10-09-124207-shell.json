@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-124207-shell",
+  "created": "2026-10-09T09:42:07.418Z",
+  "updated": "2026-10-09T09:42:07.418Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "cat .gitignore head -60 echo \"=== telemetry tracked? ===\" git ls-files control-plane/telemetry/ echo \"=== status of telemetry ===\" git status --short control-plane/",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee01c79a5ffeuKufDEOIYCNam9",
+  "messageID": "msg_1200348d8001bB2PB9KH1UC2GD",
+  "callID": "call_9eca940c526a4a25bb1ad0c2",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

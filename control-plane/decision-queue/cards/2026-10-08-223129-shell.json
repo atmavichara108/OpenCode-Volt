@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-223129-shell",
+  "created": "2026-10-08T19:31:29.232Z",
+  "updated": "2026-10-08T19:31:29.232Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git merge -q --no-edit origin/task/model-watch-1008 -X ours git merge -q --no-edit task/model-watch-1008 git push -q origin main echo \"dotfiles main=$(git rev-parse --short main)\" git rev-parse --short main ls tools/model-watch/ mkdir -p ~/.config/systemd/user cp tools/model-watch/model-watch.service tools/model-watch/model-watch.timer ~/.config/systemd/user/ systemctl --user daemon-reload systemctl --user enable --now model-watch.timer systemctl --user list-timers model-watch.timer --no-pager tail -2",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cffa527001gv3EaSFZI5lnlq",
+  "callID": "call_35e6a02ed1104285a26fecb9",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «systemctl»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-195157-shell",
+  "created": "2026-10-09T16:51:57.266Z",
+  "updated": "2026-10-09T16:51:57.266Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "kill 3357101 3361768 2>/dev/null echo \"убито: 3357101 stub3, 3361768 bench-shim\" sleep 1 ss -tlnp 2>/dev/null grep -E \"8784|8791\" echo \"свободно\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_1219354830010V3JRutsafaCJI",
+  "callID": "call_a3c03f6d9a8f4e9d853e908e",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

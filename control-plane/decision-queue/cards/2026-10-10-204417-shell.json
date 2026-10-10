@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-204417-shell",
+  "created": "2026-10-10T17:44:17.925Z",
+  "updated": "2026-10-10T17:44:17.925Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== stash@{0} files ===\" git stash show --name-only \"stash@{0}\" echo \"=== stash@{1} files ===\" git stash show --name-only \"stash@{1}\" echo \"=== is my spec in stash@{0}? ===\" git show \"stash@{0}:docs/specs/bugfix-failure-rule.md\" 2>/dev/null head -8 echo \"no\" echo \"=== is my spec in stash@{1}? ===\" git show \"stash@{1}:docs/specs/bugfix-failure-rule.md\" 2>/dev/null head -8 echo \"no\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_126ea28d90017jUEx3WhEHesIZ",
+  "callID": "call_bb93c797c11144eeb43ea4ae",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

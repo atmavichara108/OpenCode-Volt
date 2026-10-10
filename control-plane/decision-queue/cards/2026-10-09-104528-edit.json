@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-104528-edit",
+  "created": "2026-10-09T07:45:28.172Z",
+  "updated": "2026-10-09T07:45:28.172Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_11f92620a001O7BTU3V84sIRQA",
+  "callID": "call_e5ea252035d34ffba7004b8b",
+  "metadata": {
+    "files": [
+      {
+        "file": "/home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts",
+        "patch": "Index: /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n===================================================================\n--- /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n+++ /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n@@ -74,42 +74,91 @@\n const HANG_MS = Number(process.env.HANG_MS ?? 90_000);\n \n const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));\n \n-async function forward(req: Request, body: string): Promise<Response> {\n-  const headers = buildUpstreamHeaders(req, Buffer.byteLength(body));\n-  const noBody = req.method === \"GET\" || req.method === \"HEAD\";\n-  const url = upstreamUrl(req.url);\n-  let res: Response | null = null;\n-  for (let attempt = 0; attempt <= FORWARD_RETRIES; attempt++) {\n-    res = await fetch(url, {\n+/** Плоская запись заголовков (Headers → Record) для node:http(s).request. */\n+function headersRecord(h: Headers): Record<string, string> {\n+  const out: Record<string, string> = {};\n+  for (const [k, v] of h) out[k] = v;\n+  return out;\n+}\n+\n+type RawUpstream = {\n+  status: number;\n+  headers: Record<string, string | string[] | undefined>;\n+  stream: IncomingMessage;\n+};\n+\n+/**\n+ * Свежее TCP+TLS-соединение на КАЖДЫЙ запрос (agent:false, keep-alive off).\n+ * Bun fetch-пул в долгоживущем процессе реюзает мёртвый сокет (Cloudflare\n+ * убивает idle-соединение), тело застревает в Send-Q и запрос висит до\n+ * потолка AbortSignal. node:https с agent:false регрессии не имеет\n+ * (proven: выживает 340c hold, тест T3).\n+ */\n+function openUpstream(req: Request, body: string | undefined, signal: AbortSignal): Promise<RawUpstream> {\n+  const u = new URL(upstreamUrl(req.url));\n+  const isHttps = u.protocol === \"https:\";\n+  const reqFn = isHttps ? nodeHttpsRequest : nodeHttpRequest;\n+  const headers = headersRecord(buildUpstreamHeaders(req, body ? Buffer.byteLength(body) : 0));\n+  return new Promise((resolve, reject) => {\n+    const options: any = {\n+      protocol: u.protocol,\n+      hostname: u.hostname,\n+      port: u.port || (isHttps ? 443 : 80),\n+      path: u.pathname + u.search,\n       method: req.method,\n       headers,\n-      body: noBody ? undefined : body,\n-      redirect: \"manual\",\n-      signal: AbortSignal.timeout(UPSTREAM_TIMEOUT_MS),\n-      // Bun fetch НЕ знает опций headersTimeout/requestTimeout (они серверные,\n-      // Bun.serve/node:http). Клиентский socket-idle в Bun = 300c\n-      // (BUN_CONFIG_HTTP_IDLE_TIMEOUT) и рвёт долгий non-stream с TimeoutError.\n-      // Единственный рабочий escape-hatch — `timeout: false` (issue #16682).\n-      // Контрольный тест (hold=340c): fetch default → TimeoutError@300.0c;\n-      // fetch timeout:false → 200@340.1c. Потолок держит AbortSignal выше.\n-      timeout: false,\n-    } as RequestInit);\n-    // Быстрые отказы балансировщика up stream (CF rate-limit 403 ~0.5c,\n-    // New API «No available channel, distributor» 503): прозрачный ретрай\n-    // с паузой — OpenCode не должен их видеть.\n-    if ((res.status === 403 || res.status === 503) && attempt < FORWARD_RETRIES) {\n-      console.log(`[shim] upstream ${res.status} retry ${attempt + 1}/${FORWARD_RETRIES}`);\n-      await res.body?.cancel().catch(() => {});\n+    };\n+    if (isHttps) options.agent = false; // без пула: новое соединение на запрос contestants\n+    const r = reqFn(options, (res: IncomingMessage) => {\n+      resolve({ status: res.statusCode ?? 0, headers: res.headers, stream: res });\n+    });\n+    const onAbort = () => r.destroy(new Error(\"shim: aborted\"));\n+    if (signal.aborted) onAbort();\n+    else signal.addEventListener(\"abort\", onAbort, { once: true });\n+    r.on(\"error\", reject);\n+    if (body !== undefined) r.write(body);\n+    r.end();\n+  });\n+}\n+\n+/** Форвард апстрима через node:https с прозрачным ретраем 403/503. */\n+async function forward(req: Request, bodynever: string, signal: AbortSignal): Promise<RawUpstream> {\n+  const body = bodynever;\n+  for (let attempt = 0; attempt <= FORWARD_RETRIES; attempt++) {\n+    const up = await openUpstream(req, body, signal);\n+    // Быстрые отказы балансировщика (CF rate-limit 403, New API «No available\n+    // channel» 503): прозрачный ретрай с паузой — OpenCode их не видит.\n+    if ((up.status === 403 || up.status === 503) && attempt < FORWARD_RETRIES) {\n+      console.log(`[shim] upstream ${up.status} retry ${attempt + 1}/${FORWARD_RETRIES}`);\n+      up.stream.destroy();\n       await sleep(FORWARD_RETRY_MS * (attempt + 1));\n       continue;\n     }\n-    return res;\n+    return up;\n   }\n-  return res;\n+  throw new Error(\"shim: forward retries exhausted\");\n }\n \n+/** Заголовки ответа апстрима без hop-by-hop. */\n+function filteredHeaders(rec: Record<string, string | string[] | undefined>): Headers {\n+  const h = new Headers();\n+  for (const [k, v] of Object.entries(rec)) {\n+    if (v === undefined) continue;\n+    if (RES_HOP_BY_HOP.has(k.toLowerCase())) continue;\n+    h.set(k, Array.isArray(v) ? v.join(\", \") : v);\n+  }\n+  return h;\n+}\n+\n+/** Полное чтение node-стрима в строку (для non-stream/facade). */\n+async function readAll(stream: IncomingMessage): Promise<string> {\n+  const chunks: Buffer[] = [];\n+  for await (const c of stream) chunks.push(Buffer.isBuffer(c) ? c : Buffer.from(c));\n+  return Buffer.concat(chunks).toString(\"utf8\");\n+}\n+\n /** Чистый ответ-ошибка JSON (не бросаем наружу, не валим процесс). */\n function jsonError(status: number, message: string): Response {\n   return new Response(\n     JSON.stringify({ type: \"error\", error: { type: \"upstream_error\", message } }),\n",
+        "status": "modified",
+        "additions": 75,
+        "deletions": 26
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

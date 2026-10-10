@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-194017-read",
+  "created": "2026-10-09T16:40:17.194Z",
+  "updated": "2026-10-09T16:40:17.194Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "02-Methods/peer-comms.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede7711abffevuXblgLjnHmsuT",
+  "messageID": "msg_121896743001EggGcmbyYK45n9",
+  "callID": "chatcmpl-tool-b803011cc04e1aaa",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

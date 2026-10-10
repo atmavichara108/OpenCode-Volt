@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-002052-shell",
+  "created": "2026-10-10T21:20:52.960Z",
+  "updated": "2026-10-10T21:20:52.960Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git add \"$F\" git commit -m \"research: часть 3-сверка Дирижёра (таблица осей, узел 052/053, долг) — якорь полный\" tail -3 echo \"HEAD=$(git rev-parse --short HEAD)\" git rev-parse --short HEAD",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127b0a145001uBjbUOKE6twUlW",
+  "callID": "call_00_zsrv47tp8opne1l87zop2oai",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

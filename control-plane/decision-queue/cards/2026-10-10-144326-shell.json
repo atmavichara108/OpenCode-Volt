@@ -1,0 +1,22 @@
+{
+  "id": "2026-10-10-144326-shell",
+  "created": "2026-10-10T11:43:26.974Z",
+  "updated": "2026-10-10T11:43:26.974Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== docs/specs/ dir ===\" ls -la docs/specs/ 2>&1 echo \"=== docs/specs/README.md ===\" cat docs/specs/README.md 2>&1 head -80",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda6315feffe6AABxCxYe55DZ6",
+  "messageID": "msg_1259fe833001XKv35hmra67lOP",
+  "callID": "call_00_K1PHICpxXlYJdaVtpGI91412",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "so

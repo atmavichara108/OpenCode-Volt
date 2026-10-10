@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-193254-shell",
+  "created": "2026-10-09T16:32:54.132Z",
+  "updated": "2026-10-09T16:32:54.132Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "sha256sum AGENTS.md git status --short -- AGENTS.md git worktree list --porcelain grep -A2 -B1 'clarify-ambiguity'",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede7e1e5efferm3OQHnJDIMspr",
+  "messageID": "msg_12182952c001jtGeFeJdjVm2Ze",
+  "callID": "call_Fw0OT9IkJbYMnPBEqnj0j7pX",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

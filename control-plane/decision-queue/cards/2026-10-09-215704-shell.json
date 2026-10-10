@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-215704-shell",
+  "created": "2026-10-09T18:57:04.769Z",
+  "updated": "2026-10-09T18:57:04.769Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "grep -n -E 'tenensuro-veldora|tardis|tech-analogs|jarvis|hev|smith-comp|culture-drone' edges.jsonl cut -c1-260",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eddfaf9b3ffeAmNLEfJcMC3hta",
+  "messageID": "msg_122068852001GXQaqaEw4Ylell",
+  "callID": "toolu_989f66d3272b463cab1a857e",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

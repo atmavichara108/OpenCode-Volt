@@ -1,0 +1,24 @@
+{
+  "id": "evt_126ad21170015qJksJgO3BaVIp",
+  "created": "2026-10-10T16:37:22.843Z",
+  "updated": "2026-10-10T16:37:22.843Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== run top-sync-check on product copy ===\" ./tools/top-sync-check /home/rudra/Projects/SSA/products/seo-outreach/.opencode/agent/top.md echo \"exit=$?\" echo \"=== canon schema-version line ===\" grep -nE 'schema-version' .opencode/agent/top.md echo \"=== diff normalized bodies (canon vs copy) ===\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed953a081ffeUbaKFfQXYrK26X",
+  "messageID": "msg_126ad0d03001AZ9BXwfXx4idkr",
+  "callID": "call_01_3iryni0li55bbyf8e803fr6h",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": "echo *"
+  },
+  "effect": null,
+  "source_directory": null,
+  "source_agent": null,
+  "model": null
+}

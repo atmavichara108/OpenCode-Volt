@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-194510-read",
+  "created": "2026-10-10T16:45:10.577Z",
+  "updated": "2026-10-10T16:45:10.577Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "docs/hooks-map.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed94c7c0cffeu1k0numOfED3ER",
+  "messageID": "msg_126b41484001LJkHR1yJz9NxP3",
+  "callID": "call_03_vgt56slj56qaua3dk72mmdbt",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

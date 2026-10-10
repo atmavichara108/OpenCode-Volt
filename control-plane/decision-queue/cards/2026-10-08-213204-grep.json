@@ -1,0 +1,28 @@
+{
+  "id": "2026-10-08-213204-grep",
+  "created": "2026-10-08T18:32:04.721Z",
+  "updated": "2026-10-08T18:32:04.721Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "grep",
+  "pattern": "SSA|Soft Automatization|SERP.?[Ff]actory|фабрик",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_11cc4241e001zG6L85FbQAR7Zy",
+  "callID": "call_dfdc264dcda34bdfbfcd6045",
+  "metadata": {
+    "root": ".",
+    "path": "/home/rudra/Projects/OpenCode-Vault",
+    "limit": 40
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

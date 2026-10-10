@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-163742-shell",
+  "created": "2026-10-10T13:37:42.709Z",
+  "updated": "2026-10-10T13:37:42.709Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "fd -a \"ssa-control-agent-harness-bootstrap.md|seo-outreach-agent-runtime-bootstrap.md\" /home/rudra 2>/dev/null echo \"===\" fd -a \"ssa-control|seo-outreach\" /home/rudra --max-depth 8 2>/dev/null head -30 echo \"===\" ls /home/rudra/Projects/OpenCode-Vault/ 2>/dev/null",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fa0279ffeALoBlPtaFyVci4",
+  "messageID": "msg_126089a15001XCGlxPusZZM7Vf",
+  "callID": "call_01a126089fac7047a2525ab9056f15ac",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

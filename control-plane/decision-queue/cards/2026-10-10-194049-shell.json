@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-194049-shell",
+  "created": "2026-10-10T16:40:49.702Z",
+  "updated": "2026-10-10T16:40:49.702Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "/home/rudra/Projects/SSA/control/tools/top-sync-check /home/rudra/Projects/SSA/products/seo-outreach/.opencode/agent/top.md git -C /home/rudra/Projects/SSA/control commit -m \"fix(control): top — широкие полномочия: bash allow всё, ask только разрушительное\n\nБыло: bash *: ask + узкий allowlist — дёргал approval на echo/sort/git.\nСтало: *: allow; ask — sudo/rm/chmod/chown/dd/mkfs/shutdown/reboot,\nsystemctl stop/disable/mask, git force-push/reset-hard/clean/branch-D/tag-d.\nОбычный git и штатные команды больше не спрашивают.\nOverride спеки (deny→ask) — по явному указанию владельца.\" -q -- .opencode/agent/top.md git -C /home/rudra/Projects/SSA/products/seo-outreach commit -m \"fix(product): top — широкие полномочия: bash allow всё, ask только разрушительное\n\nПлюс external_directory ask→allow (кросс-чтение доков — штатная работа,\nграница записи держится текстом роли). Остальное как в control.\" -q -- .opencode/agent/top.md git -C /home/rudra/Projects/SSA/control log --oneline -1 git -C /home/rudra/Projects/SSA/products/seo-outreach log --oneline -1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fa0279ffeALoBlPtaFyVci4",
+  "messageID": "msg_126b036ce001lSp5IF3UJJf7jg",
+  "callID": "call_01a126b0401077fda6a1c14b1558e177",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «rm»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

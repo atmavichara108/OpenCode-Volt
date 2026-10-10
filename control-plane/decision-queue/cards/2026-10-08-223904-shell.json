@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-223904-shell",
+  "created": "2026-10-08T19:39:04.159Z",
+  "updated": "2026-10-08T19:39:04.159Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git worktree add .tk task/t177-178-1008 python3 grep -n \"Done\" TASKS.md head -2 MODEL_OK=1 git add TASKS.md MODEL_OK=1 git commit -q -m \"T-178 выполнен: model-watch живой, таймер активен, гейт в хуке проверен\" MODEL_OK=1 git push -q origin task/t177-178-1008:main git branch -f main origin/main git worktree remove .tk --force echo \"main=$(git rev-parse --short main)\" git rev-parse --short main",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d065197001YyYBH37GgD1o1n",
+  "callID": "call_153e62541b4143efacbb2168",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

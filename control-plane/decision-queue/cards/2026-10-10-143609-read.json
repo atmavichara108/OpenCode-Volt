@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-143609-read",
+  "created": "2026-10-10T11:36:09.993Z",
+  "updated": "2026-10-10T11:36:09.993Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "read",
+  "pattern": "tools/git-agent/freed.py",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_1259949ad001NiirJNIAl1t2Ik",
+  "callID": "call_DvhIpQImCc4Tq8PyuhJHnnlq",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-095303-shell",
+  "created": "2026-10-09T06:53:03.841Z",
+  "updated": "2026-10-09T06:53:03.841Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== судьба висящего запроса 09:33:10 ===\" journalctl --user -u justwoker-shim --since \"09:33\" --no-pager 2>/dev/null tail -5 echo \"=== шим на диске: meta правит? ===\" git status --short -- opencode-global/.config/opencode/shim/justwoker-shim.ts git log --oneline -1 echo \"=== тестовый экземпляр на 8790 ===\" jq -r '.justwoker.key' ~/.local/share/opencode/auth.json PORT=8790 nohup bun run ~/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts > /tmp/opencode/jw/shim8790.log 2>&1 sleep 3 curl -s -o /dev/null -w \"health8790=%{http_code}\\n\" --max-time 5 http://127.0.0.1:8790/health echo \"--- запрос 1 (свежий процесс) ---\" curl -sN -o /tmp/opencode/jw/t1.txt -w \"http=%{http_code} t=%{time_total}s\\n\" --max-time 240 -X POST http://127.0.0.1:8790/v1/messages -H \"x-api-key: $KEY\" -H \"anthropic-version: 2023-06-01\" -H \"content-type: application/json\" -d @/tmp/opencode/jw/big.json grep -c content_block_delta /tmp/opencode/jw/t1.txt 2>/dev/null echo \"--- запрос 2 (тот же процесс, пул) ---\" curl -sN -o /tmp/opencode/jw/t2.txt -w \"http=%{http_code} t=%{time_total}s\\n\" --max-time 240 -X POST http://127.0.0.1:8790/v1/messages -H \"x-api-key: $KEY\" -H \"anthropic-version: 2023-06-01\" -H \"content-type: application/json\" -d @/tmp/opencode/jw/big.json grep -c content_block_delta /tmp/opencode/jw/t2.txt 2>/dev/null",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_11f6f537c001LXjIeqJnlT0DQH",
+  "callID": "call_f052e575b7f74d0a9374f783",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «curl»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

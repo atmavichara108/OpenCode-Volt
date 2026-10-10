@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-122249-shell",
+  "created": "2026-10-09T09:22:49.301Z",
+  "updated": "2026-10-09T09:22:49.301Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git log --oneline -3 -- control-plane/decision-queue/cards/ echo \"---ls-files---\" git ls-files control-plane/decision-queue/ head echo \"---tracked cards---\" git ls-files control-plane/decision-queue/cards/ wc -l echo \"---procs---\" ps aux grep -i opencode grep -v grep head -20",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee01c79a4ffeix1rQE1KFzS5UM",
+  "messageID": "msg_11ff844a8001sn7er0HPyaIBVE",
+  "callID": "call_67373ade59154ab8b36f90e6",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

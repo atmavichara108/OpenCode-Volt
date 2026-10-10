@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-204237-shell",
+  "created": "2026-10-09T17:42:37.970Z",
+  "updated": "2026-10-09T17:42:37.970Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "python3 -m json.tool opencode.json >/dev/null git diff --cached --check bash 05-Templates/pre-commit-check.sh",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede3e31edffeJFAcYzZu5Vpy8w",
+  "messageID": "msg_121c2728d001m5RXrDN27o5LMx",
+  "callID": "call_n3OjZwcBuveHEgfHEpgZVKsM",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

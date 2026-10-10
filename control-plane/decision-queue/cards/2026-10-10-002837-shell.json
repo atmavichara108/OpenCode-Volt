@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-002837-shell",
+  "created": "2026-10-10T21:28:37.879Z",
+  "updated": "2026-10-10T21:28:37.879Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "grep '\"stream-intent-053\"' nodes.jsonl echo \"---TAIL---\" tail -1 nodes.jsonl cut -c1-80",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_127b75b220011G9Gs5irkhmmqh",
+  "callID": "toolu_bdrk_01W5SADvR5UENbqeE1QXFz3T",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

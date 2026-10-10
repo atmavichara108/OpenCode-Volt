@@ -1,0 +1,28 @@
+{
+  "id": "2026-10-10-150135-grep",
+  "created": "2026-10-10T12:01:35.684Z",
+  "updated": "2026-10-10T12:01:35.684Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "grep",
+  "pattern": "skill",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_125b086560013SAN2SDWaR0xdV",
+  "callID": "call_01a125b0938676888ca3c19799e60f09",
+  "metadata": {
+    "root": ".",
+    "path": "/home/rudra/dotfiles",
+    "limit": 50
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

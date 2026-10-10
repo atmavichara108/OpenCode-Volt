@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-134321-shell",
+  "created": "2026-10-09T10:43:21.061Z",
+  "updated": "2026-10-09T10:43:21.061Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== (c) hang-retry ===\" curl -sS --max-time 40 -N -X POST $B -H 'content-type: application/json' --data-binary '{\"model\":\"hang\",\"stream\":true,\"max_tokens\":8,\"messages\":[{\"role\":\"user\",\"content\":\"hi\"}]}' -o /tmp/opencode/shimtest/c.txt -w \"http=%{http_code} t=%{time_total}\\n\" grep -o '^event: [a-z_]*' /tmp/opencode/shimtest/c.txt sort uniq -c echo \"LIVE/DELTA:\" grep -o 'LIVE_\\|DELTA\\|FALLBACK_TEXT' /tmp/opencode/shimtest/c.txt tr '\\n' ' ' echo echo \"=== (a) live stream ===\" curl -sS --max-time 30 -N -X POST $B -H 'content-type: application/json' --data-binary '{\"model\":\"ok\",\"stream\":true,\"max_tokens\":8,\"messages\":[{\"role\":\"user\",\"content\":\"hi\"}]}' -o /tmp/opencode/shimtest/a2.txt -w \"http=%{http_code} t=%{time_total}\\n\" grep -o '^event: [a-z_]*' /tmp/opencode/shimtest/a2.txt sort uniq -c echo \"=== (d) fallback ===\" curl -sS --max-time 30 -N -X POST $B -H 'content-type: application/json' --data-binary '{\"model\":\"regress\",\"stream\":true,\"max_tokens\":8,\"messages\":[{\"role\":\"user\",\"content\":\"hi\"}]}' -o /tmp/opencode/shimtest/d2.txt -w \"http=%{http_code} t=%{time_total}\\n\" grep -c FALLBACK_TEXT /tmp/opencode/shimtest/d2.txt echo \"--- shim3b journal ---\" cat /tmp/opencode/shimtest/shim3b.log",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_12040f6c40010ARMD2D1NB1irw",
+  "callID": "call_6d6c0a6226ae46469f5c037b",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «curl»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-193309-shell",
+  "created": "2026-10-09T16:33:09.894Z",
+  "updated": "2026-10-09T16:33:09.894Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "grep -n \"stream-intent-05[0-9]\" 04-Memory/idea-graph/nodes.jsonl cut -c1-400 echo --- sed -n 1,40p 04-Memory/route-log/2026-10-06-igraphv2-service-mechanics.md 2>/dev/null ls 04-Memory/route-log/ tail -20",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede7e1e5dffeftxJtSRFz5EfBJ",
+  "messageID": "msg_12182d66a001OkRwS6H2iWrQ4J",
+  "callID": "chatcmpl-tool-9155bd514a375468",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

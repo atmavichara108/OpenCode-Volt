@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164515-shell",
+  "created": "2026-10-10T13:45:15.169Z",
+  "updated": "2026-10-10T13:45:15.169Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "cat ~/.config/opencode/agent/verifier.md 2>&1 head -60 echo === cat ~/dotfiles/.opencode/agent/verifier.md 2>&1 head -60 echo === ls ~/dotfiles/.opencode/ 2>&1 echo === cat ~/dotfiles/.opencode/opencode.json 2>&1 head -60 echo === ls ~/dotfiles/opencode/ 2>&1 head",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9f0a108ffeyfZZYysnsEkvRP",
+  "messageID": "msg_1260f82f2001WZM2E8mcc2V7I1",
+  "callID": "call_01a1260f87b7771196981b0af388d032",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "builder",
+  "model": null
+}

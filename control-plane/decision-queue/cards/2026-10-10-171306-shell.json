@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-171306-shell",
+  "created": "2026-10-10T14:13:06.508Z",
+  "updated": "2026-10-10T14:13:06.508Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C /home/rudra/Projects/SSA/control rev-parse --show-toplevel 2>&1 echo --- git -C /home/rudra/Projects/SSA/products/seo-outreach rev-parse --show-toplevel 2>&1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9d77707ffecevgx2hSjI94QE",
+  "messageID": "msg_12628892e00115nFx34u98gdUf",
+  "callID": "adf974ea-9139-4ba8-a108-bdbe82ad3190",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

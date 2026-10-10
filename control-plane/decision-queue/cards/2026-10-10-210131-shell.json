@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-210131-shell",
+  "created": "2026-10-10T18:01:31.329Z",
+  "updated": "2026-10-10T18:01:31.329Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git add docs/specs/bugfix-failure-rule.md git commit -q -m \"docs(specs): BF-20261010-01 спека «сбой→багфикс» — proposed до approval Рудры\n\nПрограммное enforcement-правило по поручению Rudra (вложение\nbugfix-extdir-and-rule-20261010.txt): metadata-only capture классов\npermission/tool/plugin/model-quota, incident record по incident-fix,\nканон letter.sh/B18 с fail-visible BLOCKED при отсутствии активной\nроли bugfix, cost/false-positive gates. Status proposed — runtime\nкод запрещён до отдельного approval. Reviewer PASS (6 замечаний\nзакрыты), verifier PASS.\" git add .opencode/memory/session-reports/2026-10-10-bugfix-workshop.md git commit -q -m \"docs(memory): мастерская БагФикс — INC-5 external_directory, INC-6 skill-сигнатура, BF-20261010-01\" git add docs/handoffs/2026-10-10-external-directory-vault-handoff.md git commit -q -m \"docs(handoffs): external_directory Vault SSA-worktree — handoff куратору Vault, статус blocked\" git log --oneline -4 echo \"=== status ===\" git status --short --branch",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_126f9b9660013kp5Vv6xzQ56DH",
+  "callID": "call_4fb68265534a48a2b1dd24ae",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

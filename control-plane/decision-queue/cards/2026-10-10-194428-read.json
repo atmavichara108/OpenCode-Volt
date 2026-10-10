@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-194428-read",
+  "created": "2026-10-10T16:44:28.525Z",
+  "updated": "2026-10-10T16:44:28.525Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "/home/rudra/Projects/SSA/control/.opencode/agent/top.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed94c7c0cffeu1k0numOfED3ER",
+  "messageID": "msg_126b392dd001SQGXQ2igUuUjE1",
+  "callID": "call_02_w3e5ebp6wbq2v1dpro782qbr",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-165205-shell",
+  "created": "2026-10-10T13:52:05.566Z",
+  "updated": "2026-10-10T13:52:05.566Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git log --oneline -5 head echo \"=== files tracked:\" git ls-files head -20 echo \"=== PRODUCT ===\" git log --oneline -5 head echo \"=== files tracked:\" git ls-files head -20",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9ec7dcdffe1a2jNEQJ0PFTt4",
+  "messageID": "msg_12615a172001v362ydqOao89NJ",
+  "callID": "call_677243c8c04b43779d4ded57",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

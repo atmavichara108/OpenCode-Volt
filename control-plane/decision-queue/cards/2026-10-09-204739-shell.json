@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-204739-shell",
+  "created": "2026-10-09T17:47:39.086Z",
+  "updated": "2026-10-09T17:47:39.086Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git status --short --branch printf '\\n-- staged paths --\\n' git diff --cached --name-only printf '\\n-- diff check --\\n' git diff --cached --check printf '\\n-- precommit --\\n' bash 05-Templates/pre-commit-check.sh",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede3c52edffeqQpR7DlMbTAESC",
+  "messageID": "msg_121c707a7001twAcrdJOBKdMf4",
+  "callID": "call_KlrXO0JsAqbNJsYuWSy6MOOY",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

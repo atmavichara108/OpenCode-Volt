@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-210045-shell",
+  "created": "2026-10-09T18:00:45.382Z",
+  "updated": "2026-10-09T18:00:45.382Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "zsh /home/rudra/.config/opencode/.bench/test-stream-real.sh",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121d2f6d8001xGkik24tv2kgr5",
+  "callID": "call_98c7670c1d104aba84b7f614",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

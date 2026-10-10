@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-115052-shell",
+  "created": "2026-10-09T08:50:52.586Z",
+  "updated": "2026-10-09T08:50:52.586Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== production ===\" systemctl --user is-active justwoker-shim systemctl --user show justwoker-shim -p MainPID -p ActiveEnterTimestamp -p NRestarts --value curl -s -o /dev/null -w \"health=%{http_code} t=%{time_total}s\\n\" --max-time 5 http://127.0.0.1:8787/health echo \"=== dotfiles: ветка/файл ===\" git branch --show-current git status --short -- opencode-global/.config/opencode/shim/justwoker-shim.ts git log --oneline -2 echo \"=== валидность файла на диске ===\" timeout 10 bun build --target=bun opencode-global/.config/opencode/shim/justwoker-shim.ts --outfile /dev/null 2>&1 tail -3 echo \"build-exit=$?\" grep -nP '[\\x{4e00}-\\x{9fff}\\x{3040}-\\x{30ff}\\x{ac00}-\\x{d7af}\\x{0e00}-\\x{0e7f}\\x{fffd}]' opencode-global/.config/opencode/shim/justwoker-shim.ts head -5 echo \"cjk-scan-done\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_11fdadae200109W2u80Gh8iycE",
+  "callID": "call_0405f5642dae42fda3791c04",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «curl»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

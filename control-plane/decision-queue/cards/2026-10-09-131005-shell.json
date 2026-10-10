@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-131005-shell",
+  "created": "2026-10-09T10:10:05.107Z",
+  "updated": "2026-10-09T10:10:05.107Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "python3 - <<'EOF'\nimport json, os, glob\nd='/home/rudra/Projects/OpenCode-Vault/control-plane/decision-queue/cards'\nfixed=0\nfor p in sorted(glob.glob(d+'/*.json')):\n    raw=open(p,encoding='utf-8').read()\n    try: json.loads(raw); continue\n    except json.JSONDecodeError: pass\n    dec=json.JSONDecoder(); objs=[]; i=0; n=len(raw); bad=False\n    while i<n:\n        while i<n and raw[i].isspace(): i+=1\n        if i>=n: break\n        try: o,j=dec.raw_decode(raw,i); objs.append(o); i=j\n        except json.JSONDecodeError: bad=True; break\n    if objs and not bad:\n        tmp=p+'.tmp'\n        with open(tmp,'w',encoding='utf-8') as f: json.dump(objs[0],f,ensure_ascii=False,indent=2); f.write('\\n')\n        os.rename(tmp,p); fixed+=1\nprint(\"fixed:\",fixed)\nEOF python3 -c \"import json; json.load(open('$f'))\" 2>/dev/null echo \"total=$total broken=$broken\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_edfe1d5c6ffeLW6EAnZWSzVGI5",
+  "messageID": "msg_12023e6b90012hVKoIdiNqMf7H",
+  "callID": "shell:0",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

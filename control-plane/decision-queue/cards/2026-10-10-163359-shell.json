@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-163359-shell",
+  "created": "2026-10-10T13:33:59.393Z",
+  "updated": "2026-10-10T13:33:59.393Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "python3 /home/rudra/dotfiles/opencode-global/.config/opencode/tools/tree-cop/tree-cop.py stash-foreign --mine .opencode/agent/verifier.md --mine opencode-global/.config/opencode/agent/verifier.md --mine opencode.json -m \"tree-cop: verifier-unrestricted ship — убрать чужое с дерева\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_126049d30001Garv4A0Y1b0AP4",
+  "callID": "toolu_bdrk_01QE7ZuHTytecGgq8mB5osPP",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

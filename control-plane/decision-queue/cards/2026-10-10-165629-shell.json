@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-165629-shell",
+  "created": "2026-10-10T13:56:29.043Z",
+  "updated": "2026-10-10T13:56:29.043Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls -la /home/rudra/Projects/SSA/products/seo-outreach/.opencode/agent/top.md 2>&1 echo --- bash tools/top-sync-check 2>&1 echo \"rc=$?\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9e675bcffesrjm1eblmJLl20",
+  "messageID": "msg_12619cba2001FE8UuiWAFed9GX",
+  "callID": "call_01a12619d09a762f94babb94b0f72cfc",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "builder",
+  "model": null
+}

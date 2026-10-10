@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-214028-shell",
+  "created": "2026-10-09T18:40:28.943Z",
+  "updated": "2026-10-09T18:40:28.943Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git diff --cached --stat echo \"---FULL opencode.json diff---\" git diff --cached -- opencode.json grep -E '^[+-]' grep -v '^[+-][+-]'",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede08f182ffezaSaP6jyT22AYu",
+  "messageID": "msg_121f770a1001JFUjICR0mn5VAs",
+  "callID": "call_01a121f776be74baa28fa3b79bcf4331",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

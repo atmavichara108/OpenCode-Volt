@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-180058-shell",
+  "created": "2026-10-09T15:00:58.309Z",
+  "updated": "2026-10-09T15:00:58.309Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git log --follow --oneline -- opencode-global/.config/opencode/plugins/fix-tool-schema.ts head -20 git status --short",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eded22d79ffe9kenpeEzA52RK5",
+  "messageID": "msg_1212e6ae6001Xzf2t6jau0AOld",
+  "callID": "call_yaE4KLyIiV2eVVrhJ9zdz65R",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

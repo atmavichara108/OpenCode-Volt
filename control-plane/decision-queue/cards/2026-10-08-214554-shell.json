@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-214554-shell",
+  "created": "2026-10-08T18:45:54.849Z",
+  "updated": "2026-10-08T18:45:54.849Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "sed -n '1,10p' 06-Audits/2026-10-06-pae-evolution-roadmap-draft.md python3 - <<'PYEOF'\np=\"06-Audits/2026-10-06-memory-s8-live-test-draft.md\"\nc=open(p).read()\nc=c.replace(\"spec: [[docs/specs/pae-phase1-readiness]] (S8), поручение Рудры через старшего\",'spec: \"[[docs/specs/pae-phase1-readiness]] (S8), поручение Рудры через старшего\"')\nc=c.replace(\"status: draft — до приёмки (старший координирует, Рудра наблюдает)\",\"status: draft\")\nc=c.replace(\"role: компаньон-специалист graph memory (владелец протокола и evidence)\",'role: \"компаньон-специалист graph memory (владелец протокола и evidence)\"')\nopen(p,\"w\").write(c)\nprint(\"s8 починен\")\nPYEOF",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cd5d933001yPA0FTaYQ1rABf",
+  "callID": "call_619200e4e3f5480897ce3413",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

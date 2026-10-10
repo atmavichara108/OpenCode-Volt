@@ -1,0 +1,27 @@
+{
+  "id": "2026-10-09-204430-glob",
+  "created": "2026-10-09T17:44:30.068Z",
+  "updated": "2026-10-09T17:44:30.068Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "glob",
+  "pattern": "04-Memory/route-log/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede3c52edffeqQpR7DlMbTAESC",
+  "messageID": "msg_121c421bc0019f9VEadu3JvDhP",
+  "callID": "call_0zzjkAmWsT85n2bTeskIqje8",
+  "metadata": {
+    "root": "/home/rudra/Projects/OpenCode-Vault-tasks/meta-gates-20261009",
+    "path": "/home/rudra/Projects/OpenCode-Vault-tasks/meta-gates-20261009"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

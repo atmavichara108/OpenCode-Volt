@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-144053-shell",
+  "created": "2026-10-10T11:40:53.663Z",
+  "updated": "2026-10-10T11:40:53.663Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "python3 tools/tree-cop/tree-cop.py status --mine 03-Projects/SSA.md --mine 03-Projects/seo-outreach.md --mine 00-INDEX.md 2>&1 tail -40 echo \"EXIT=${PIPESTATUS[0]}\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda6315feffe6AABxCxYe55DZ6",
+  "messageID": "msg_1259d9cda0016H2TaYtE4O7v10",
+  "callID": "call_02_9g8sweVEF5BVEhOeebXf8854",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

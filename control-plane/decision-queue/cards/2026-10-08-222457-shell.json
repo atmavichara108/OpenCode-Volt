@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-222457-shell",
+  "created": "2026-10-08T19:24:57.371Z",
+  "updated": "2026-10-08T19:24:57.371Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "python3 tools/garbage-guard/guard.py check-text head -2 sed -i 's/[бB]раузерский/пользовательский/' tools/model-watch/model-watch.py grep -n \"User-Agent\" tools/model-watch/model-watch.py head -2 python3 tools/garbage-guard/guard.py check-text echo \"чист\" python3 tools/model-watch/model-watch.py tail -4 python3 tools/model-watch/gate-check.py echo \"гейт PASS\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cf949f2001Hj8wlSISXFij4r",
+  "callID": "call_b8d28d39f2f3493a86395ec2",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

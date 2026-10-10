@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-171054-shell",
+  "created": "2026-10-10T14:10:54.562Z",
+  "updated": "2026-10-10T14:10:54.562Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "python3 /home/rudra/dotfiles/opencode-global/.config/opencode/tools/tree-cop/tree-cop.py stash-foreign --mine .opencode/memory/session-reports/2026-10-10-bugfix-workshop.md --mine docs/specs/bugfix-failure-rule.md --mine docs/handoffs/2026-10-10-external-directory-vault-handoff.md -m \"tree-cop: external_directory + failure-to-bugfix — убрать чужое\" python3 /home/rudra/dotfiles/opencode-global/.config/opencode/tools/tree-cop/tree-cop.py status",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_12626e2fb0010xVSx3CuTC6Bsz",
+  "callID": "call_DkKwPVJEJaEYjomweUg1gbCN",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

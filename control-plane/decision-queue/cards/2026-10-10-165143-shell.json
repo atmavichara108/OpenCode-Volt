@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-165143-shell",
+  "created": "2026-10-10T13:51:43.592Z",
+  "updated": "2026-10-10T13:51:43.592Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== bugfix command/skill files (no node_modules) ===\" find /home/rudra/dotfiles/.opencode/command /home/rudra/dotfiles/.opencode/skills /home/rudra/dotfiles/opencode-global/.config/opencode/command /home/rudra/dotfiles/opencode-global/.config/opencode/skills -type f 2>/dev/null grep -i 'bugfix\\|incident\\|fix' echo \"=== все command-файлы dotfiles ===\" find /home/rudra/dotfiles/.opencode/command -maxdepth 1 -type f 2>/dev/null sort echo \"=== bugfix session-report (шаблон/инструкция?) ===\" sed -n '1,40p' /home/rudra/dotfiles/.opencode/memory/session-reports/2026-10-10-bugfix-workshop.md 2>/dev/null",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_126154711001Zn04FIKwsNgh8B",
+  "callID": "toolu_bdrk_013aPVQnaXPZHoTm2ceMFaHW",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-220945-shell",
+  "created": "2026-10-09T19:09:45.575Z",
+  "updated": "2026-10-09T19:09:45.575Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C /home/rudra/Projects/OpenCode-Vault-tasks/meta-gates-20261009 rev-parse --git-dir --show-toplevel 2>&1 echo \"---\" ls /home/rudra/Projects/OpenCode-Vault-tasks/ 2>&1 echo \"---\" cat /home/rudra/Projects/OpenCode-Vault-tasks/meta-gates-20261009/.git 2>&1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eddf66964ffeRYPpVyEX7u7yhE",
+  "messageID": "msg_12210653b001WDh0V0TChqLhGJ",
+  "callID": "0245bfd9-a94f-4f45-a705-a10a070f027c",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

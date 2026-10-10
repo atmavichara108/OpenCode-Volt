@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-095145-shell",
+  "created": "2026-10-09T06:51:45.341Z",
+  "updated": "2026-10-09T06:51:45.341Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "opencode --version 2>&1 which opencode 2>&1 ls ~/.local/share/opencode 2>&1 head npm ls -g --depth=0 2>&1 head -20",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee091abbbffevJcwutfbPFdoSk",
+  "messageID": "msg_11f6e8d05001TLey48Ew9hWc5S",
+  "callID": "call_01a11f6e9b1671a5902dfc3fd6b6e304",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

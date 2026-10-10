@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-194319-shell",
+  "created": "2026-10-09T16:43:19.417Z",
+  "updated": "2026-10-09T16:43:19.417Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git status --short --branch git diff --stat git diff -- opencode.json 02-Methods/git-worktree-isolation.md git diff --cached -- opencode.json 02-Methods/git-worktree-isolation.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede740fc7ffe2ulQdcRAl51sOd",
+  "messageID": "msg_1218c0726001uVXAiycWjeYn9Q",
+  "callID": "call_L8xwcFDxy7t67Ub4tantLDsR",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

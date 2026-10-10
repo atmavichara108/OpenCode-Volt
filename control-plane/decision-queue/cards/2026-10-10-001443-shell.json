@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-001443-shell",
+  "created": "2026-10-10T21:14:43.893Z",
+  "updated": "2026-10-10T21:14:43.893Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== ищем С1/С2/С3 ===\" grep -rniE \"С1|С2|С3|scenario|сценари\" 04-Memory/route-log/2026-10-*.md 2>/dev/null grep -iE \"С1|С2|С3\" head -15 echo \"=== свежий route-log ===\" ls -t 04-Memory/route-log/ head -5",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127aae5fa001mPgDexBiJ2wc18",
+  "callID": "call_00_sdv5g6qcjzi333pao2vcaphw",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

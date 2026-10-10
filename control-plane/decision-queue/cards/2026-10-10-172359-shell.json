@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-172359-shell",
+  "created": "2026-10-10T14:23:59.394Z",
+  "updated": "2026-10-10T14:23:59.394Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C /home/rudra/dotfiles mv docs/specs/ssa-control-agent-harness-bootstrap.md docs/specs/done/ssa-control-agent-harness-bootstrap.md git -C /home/rudra/dotfiles mv docs/specs/seo-outreach-agent-runtime-bootstrap.md docs/specs/done/seo-outreach-agent-runtime-bootstrap.md git -C /home/rudra/dotfiles status --short -- docs/specs/ git -C /home/rudra/dotfiles commit -m \"docs(specs): ssa-control-harness + seo-outreach-overlay исполнены — спеки в done\n\nverifier PASS x2 (control staged 967c2e7f, product e3620522).\nАртефакты: control 59aeb45 (26 файлов), product 5d71faa (30 файлов).\nПеренос — lifecycle после PASS, не доказательство.\" git -C /home/rudra/dotfiles log --oneline -1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fa0279ffeALoBlPtaFyVci4",
+  "messageID": "msg_12632e9d9001fSj253gs8kGy3L",
+  "callID": "call_01a12632fb94747f8321cfd0d95a8634",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

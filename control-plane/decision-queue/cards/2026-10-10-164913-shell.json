@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164913-shell",
+  "created": "2026-10-10T13:49:13.173Z",
+  "updated": "2026-10-10T13:49:13.173Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"== п.1: primary ==\" grep -l \"mode: primary\" .opencode/agent/*.md echo \"файлов agent: $(ls .opencode/agent/*.md | wc -l)\" ls .opencode/agent/*.md wc -l echo \"== п.2: скилы/команды ==\" ls .opencode/skills/ ls .opencode/command/ head -1 \"$f\" >/dev/null echo \"EMPTY: $f\" grep -h \"^name:\" .opencode/skills/*/SKILL.md echo \"== п.3: гейты/отправка ==\" grep -rin \"smtp\\|imap\\|отправ\" .opencode/ head -20 echo \"== п.4: source/schema ==\" grep -n \"source:\\|schema-version:\" .opencode/agent/top.md echo \"== границы §8 ==\" find . -name \"*.py\" -not -path \"./.git/*\" head find . -name \"*.gs\" -not -path \"./.git/*\" head echo \"(пусто выше = ок)\" git status --short",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9edd299ffeVSsn5dYS15NYJz",
+  "messageID": "msg_126131e38001MZpkUg1TrfnSaV",
+  "callID": "call_01a126132505779fb130085987e3c18a",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "builder",
+  "model": null
+}

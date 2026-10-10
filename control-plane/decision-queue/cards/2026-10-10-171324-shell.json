@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-171324-shell",
+  "created": "2026-10-10T14:13:24.974Z",
+  "updated": "2026-10-10T14:13:24.974Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls /home/rudra/Projects/SSA/ 2>&1 echo --- fd -HI 'bootstrap' /home/rudra/Projects/SSA 2>&1 head echo --- fd -HI -e md . /home/rudra/Projects/SSA --max-depth 3 2>&1 head -40",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9d77707ffecevgx2hSjI94QE",
+  "messageID": "msg_126294279001pPx6F0AP2QL16c",
+  "callID": "43f0db06-de57-4f1e-99d0-c36d12819632",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

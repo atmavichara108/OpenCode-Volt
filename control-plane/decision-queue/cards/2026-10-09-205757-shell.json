@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-205757-shell",
+  "created": "2026-10-09T17:57:57.961Z",
+  "updated": "2026-10-09T17:57:57.961Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git status --short --branch git diff --cached --name-only git diff --name-only sed -n '1,240p' opencode-global/.config/opencode/agent/reviewer.md printf '\\n--- VERIFIER ---\\n' sed -n '1,260p' opencode-global/.config/opencode/agent/verifier.md printf '\\n--- permission examples ---\\n' rg -n 'external_directory|read:.*deny|\"read\"' opencode-global/.config/opencode/agent .opencode/agent head -100",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede3c52edffeqQpR7DlMbTAESC",
+  "messageID": "msg_121d071f1001BJu05iYcPvY1mv",
+  "callID": "call_2rxC022U6f49eVBiHlNJiP8W",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

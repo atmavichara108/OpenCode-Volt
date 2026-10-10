@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-162506-read",
+  "created": "2026-10-10T13:25:06.764Z",
+  "updated": "2026-10-10T13:25:06.764Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "/home/rudra/dotfiles/AGENTS.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda030a9effe3rmznNc03BV4g1",
+  "messageID": "msg_125fcf5b0001cHCFIBWFNAq1IG",
+  "callID": "toolu_bdrk_01TBgCgniJnGwmSYv8U79CRv",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

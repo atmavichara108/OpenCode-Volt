@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-230538-shell",
+  "created": "2026-10-09T20:05:38.091Z",
+  "updated": "2026-10-09T20:05:38.091Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "echo \"=== Cyrillic внутри backticks в добавленных строках ===\" git -C /home/rudra/dotfiles show 33fb471 git -C /home/rudra/Projects/OpenCode-Vault show 19aa02e grep '^+' grep -P '`[^`\\n]*\\p{Cyrillic}[^`\\n]*`' echo \"чисто\" echo \"=== конфл.-маркеры в добавленных строках ===\" git -C /home/rudra/dotfiles show 33fb471 git -C /home/rudra/Projects/OpenCode-Vault show 19aa02e grep -E '^\\+({7}<|{7}>|={7}$)' echo \"чисто\" echo \"=== ветки и push-статус ===\" git -C /home/rudra/dotfiles rev-parse task/meta-gates-global-20261009 2>&1 git -C /home/rudra/dotfiles branch -r --contains 33fb471 2>&1 head -5 echo \"---\" git -C /home/rudra/Projects/OpenCode-Vault rev-parse task/meta-gates-vault-20261009 2>&1 git -C /home/rudra/Projects/OpenCode-Vault branch -r --contains 19aa02e 2>&1 head -5",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eddf66964ffeRYPpVyEX7u7yhE",
+  "messageID": "msg_12243dc03001YJVIDm25yT0uPh",
+  "callID": "028be545-a275-483b-a0a4-3c710201db00",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

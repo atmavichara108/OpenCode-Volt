@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-101523-edit",
+  "created": "2026-10-09T07:15:23.990Z",
+  "updated": "2026-10-09T07:15:23.990Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": ".inv/mk_inv.py",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11f8401a5001ZSFouX4lQ1AUHZ",
+  "callID": "call_8e49b8accea14503917d0b78",
+  "metadata": {
+    "files": [
+      {
+        "file": ".inv/mk_inv.py",
+        "patch": "Index: .inv/mk_inv.py\n===================================================================\n--- .inv/mk_inv.py\n+++ .inv/mk_inv.py\n@@ -24,7 +24,6 @@\n         f.write(\"- label: %s\\n\" % r.get(\"label\"))\n         ess = (r.get(\"essence\") or \"\").replace(\"\\n\", \" \")\n         if ess:\n             f.write(\"- essence: %s\\n\" % ess)\n-点在 = 0\n         f.write(\"\\n\")\n print(\"узлов в дампе:\", len(rows))\n\\ No newline at end of file\n",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 1
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

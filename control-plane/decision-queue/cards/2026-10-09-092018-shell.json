@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-092018-shell",
+  "created": "2026-10-09T06:20:18.721Z",
+  "updated": "2026-10-09T06:20:18.721Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "ls add_nodes.py wc -l add_nodes.py git worktree list tail -2",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11f503550001EplzkjjPGMQ6SQ",
+  "callID": "call_67e77d73769f4f8b9f67f39f",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

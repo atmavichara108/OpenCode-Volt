@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-152122-shell",
+  "created": "2026-10-09T12:21:22.891Z",
+  "updated": "2026-10-09T12:21:22.891Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== production ===\" systemctl --user is-active justwoker-shim curl -s -o /dev/null -w \"health=%{http_code}\\n\" --max-time 5 http://127.0.0.1:8787/health echo \"=== dotfiles: ветка/сташ/файл ===\" git branch --show-current git stash list head -5 git status --short -- opencode-global/.config/opencode/shim/justwoker-shim.ts echo \"=== файл валиден? ===\" timeout 10 bun build --target=bun opencode-global/.config/opencode/shim/justwoker-shim.ts --outfile /dev/null 2>&1 tail -2 echo \"build-exit=$?\" grep -c \"agent: false\" opencode-global/.config/opencode/shim/justwoker-shim.ts grep -c \"HANG_MS\" opencode-global/.config/opencode/shim/justwoker-shim.ts echo \"=== CJK-скан ===\" grep -nP '[\\x{4e00}-\\x{9fff}\\x{3040}-\\x{30ff}\\x{ac00}-\\x{d7af}\\x{0e00}-\\x{0e7f}\\x{fffd}]' opencode-global/.config/opencode/shim/justwoker-shim.ts head -3 echo cjk-done echo \"=== висячие заглушки ===\" ss -tlnp 2>/dev/null grep -E \"8784|8790|8798|8799\" echo \"нет\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_1209b832d001VPrUxNcEobpc0s",
+  "callID": "call_8a3c6af0341d4a78b89ae446",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «curl»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

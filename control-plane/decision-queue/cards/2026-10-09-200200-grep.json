@@ -1,0 +1,28 @@
+{
+  "id": "2026-10-09-200200-grep",
+  "created": "2026-10-09T17:02:00.117Z",
+  "updated": "2026-10-09T17:02:00.117Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "grep",
+  "pattern": "rsync-snap",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede62cc2cffepW3Rj8biSmnu7d",
+  "messageID": "msg_1219d3f260015wFeZk56diyQP8",
+  "callID": "call_LXtG3KMm79j4FXPAI9qqcuuA",
+  "metadata": {
+    "root": ".",
+    "path": "/home/rudra/Projects/OpenCode-Vault/.meta-worktrees/permission-worktree-20261009/02-Methods/git-worktree-isolation.md",
+    "literal": true
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

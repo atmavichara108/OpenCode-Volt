@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-203207-shell",
+  "created": "2026-10-10T17:32:07.547Z",
+  "updated": "2026-10-10T17:32:07.547Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"== report tracked?\" git ls-files --error-unmatch .opencode/memory/session-reports/2026-10-10-bugfix-workshop.md 2>&1 echo \"== history of missing files (all branches)\" git log --all --oneline --name-status -- '*bugfix-failure-rule*' '*external-directory-vault*' head -40 echo \"== INC-6 mentions\" rg -n --hidden -g '!.git' \"INC-6\" . head -30 echo \"== filename mentions\" rg -n --hidden -g '!.git' \"bugfix-failure-rule|external-directory-vault\" . head -30",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed921cb70ffeX0qdtO9CnEsj5C",
+  "messageID": "msg_126defbe0001HM8NUF51Ez5vjv",
+  "callID": "call_761398e224074c68b361fa04",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-093725-shell",
+  "created": "2026-10-09T06:37:25.776Z",
+  "updated": "2026-10-09T06:37:25.776Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "cat 05-Templates/pre-commit-check.sh head -60",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee0a97b4fffeX15Yix6yTUvFr2",
+  "messageID": "msg_11f61562c001FDabhxOXbzRi7N",
+  "callID": "call_23ae4cddeb534b4a9c49ad58",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

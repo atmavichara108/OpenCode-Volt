@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-144110-shell",
+  "created": "2026-10-10T11:41:10.677Z",
+  "updated": "2026-10-10T11:41:10.677Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== seo-outreach product ===\" ls -la /home/rudra/Projects/SSA/products/seo-outreach 2>&1 head -40 echo \"=== product AGENTS? ===\" test -e /home/rudra/Projects/SSA/products/seo-outreach/AGENTS.md echo \"AGENTS.md EXISTS\" echo \"AGENTS.md ABSENT\" echo \"=== SSA root ===\" ls -la /home/rudra/Projects/SSA 2>&1 head -40",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda6315feffe6AABxCxYe55DZ6",
+  "messageID": "msg_1259dd4f2001no8DCcD6f2vXco",
+  "callID": "call_03_EVNpnzW494V04sX7BWTY8194",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

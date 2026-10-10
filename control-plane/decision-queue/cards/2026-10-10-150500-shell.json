@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-150500-shell",
+  "created": "2026-10-10T12:05:00.035Z",
+  "updated": "2026-10-10T12:05:00.035Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "python3 /home/rudra/dotfiles/opencode-global/.config/opencode/tools/tree-cop/tree-cop.py --help 2>&1 head -20 echo --- python3 /home/rudra/dotfiles/opencode-global/.config/opencode/tools/tree-cop/tree-cop.py status --mine opencode-global/.config/opencode/plugins/fix-tool-schema.ts 2>&1 head -20",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_125b3bb50001CQC1rA7GOnZqtG",
+  "callID": "call_01a125b3bf747212b43a5e883f755594",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

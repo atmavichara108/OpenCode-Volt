@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-212617-shell",
+  "created": "2026-10-09T18:26:17.473Z",
+  "updated": "2026-10-09T18:26:17.473Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "sed -n '115,145p' .git/hooks/pre-commit",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121ea62800013Z5a9qCTgwMKrU",
+  "callID": "call_8f5e37c35183488d91277217",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

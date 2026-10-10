@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-195124-shell",
+  "created": "2026-10-10T16:51:24.985Z",
+  "updated": "2026-10-10T16:51:24.985Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "grep -n -e 'детерминированный' -e 'human_owned' -e 'suppression' -e 'технически недоступна' .opencode/skills/pre-send-gate/SKILL.md echo '---' grep -n 'Emergency Stop' docs/runbook.md .opencode/skills/monitor/SKILL.md .opencode/command/stop.md head -5 echo '---' grep -n -e 'dry_run' -e 'dry-run' .opencode/agent/top.md head -3 echo '---' grep -n 'schema-version' /home/rudra/Projects/SSA/control/.opencode/agent/top.md .opencode/agent/top.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed94c7c0cffdKO1SP7guVk9s2q",
+  "messageID": "msg_126b7d3560018UwxMEz4vzsUYN",
+  "callID": "c062ee8d-0e9b-4838-b365-dc9cc5103e85",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-165245-shell",
+  "created": "2026-10-10T13:52:45.560Z",
+  "updated": "2026-10-10T13:52:45.560Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "find . -path ./.git -prune -o \\( -name '*.ts' -o -name 'pre-commit' \\) -print head -30 echo \"=== .opencode contents:\" ls -la .opencode/ 2>/dev/null",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9ec7dcdffe1a2jNEQJ0PFTt4",
+  "messageID": "msg_126164e37001TeEHR3brL4B1gr",
+  "callID": "call_e86bf13234c44e67a3b3dce6",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

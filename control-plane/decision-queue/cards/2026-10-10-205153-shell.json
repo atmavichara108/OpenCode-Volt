@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-205153-shell",
+  "created": "2026-10-10T17:51:53.392Z",
+  "updated": "2026-10-10T17:51:53.392Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "rg -n 'S4|status' docs/specs/bugfix-proactive-plugin.md head -20 echo '---S4 block---' rg -n -A3 'S4' docs/specs/bugfix-proactive-plugin.md head -20",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed911bc43ffe0b653M39oAMZtp",
+  "messageID": "msg_126f07f92001hNUAErn8I81FvL",
+  "callID": "call_2c2b5b5f127542e1ba73e378",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

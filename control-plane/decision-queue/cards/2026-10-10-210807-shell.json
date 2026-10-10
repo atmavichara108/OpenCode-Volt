@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-210807-shell",
+  "created": "2026-10-10T18:08:07.813Z",
+  "updated": "2026-10-10T18:08:07.813Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== какие ветки вообще чисто содержат правильный файл ===\" git -C $V log --oneline --all -S '\"/home/rudra/Projects/OpenCode-Vault-tasks/**\"' -- opencode.json head echo \"=== кто убрал строку (blame по origin/main нельзя, смотрим diff HEAD~..HEAD) ===\" git -C $V log --oneline -3 origin/main -- opencode.json echo \"=== рабочее дерево = какая реальная версия файла сейчас ===\" diff <(git -C $V show HEAD:opencode.json) $V/opencode.json >/dev/null git -C $V show HEAD:opencode.json echo \"файл == HEAD (task-ветка, без строки)\" echo \"файл != HEAD\" echo \"=== где сейчас сессия vault? проверим через список сессий opencode ===\" ls -la $V/.git/worktrees/ 2>/dev/null head",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_126ff9860001qmbjvGE1RRq1YP",
+  "callID": "call_a35fabb2d6174857b744d996",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

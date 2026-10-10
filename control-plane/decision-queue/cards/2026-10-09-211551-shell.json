@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-211551-shell",
+  "created": "2026-10-09T18:15:51.074Z",
+  "updated": "2026-10-09T18:15:51.074Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git add systemd/.config/systemd/user/justwoker-shim.service git commit -m \"shim unit: SHIM_PROXY + тюнинг hang-детектора\n\n- SHIM_PROXY=http://127.0.0.1:10809 (прямое соединение с CF виснет на\n  больших upload'ах; прокси локальный, совместим с IPAddressAllow=localhost)\n- HANG_MS=30000 (вместо 90с): быстрее abort зависшего stream-канала\n- FORWARD_RETRIES=1: один ретрай стрима, затем fallback на non-stream\" tail -3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121e043df001vhlCdGkvryQWa6",
+  "callID": "call_830e89a56a9e4eb2bc3b8836",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

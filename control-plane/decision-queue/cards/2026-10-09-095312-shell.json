@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-095312-shell",
+  "created": "2026-10-09T06:53:12.679Z",
+  "updated": "2026-10-09T06:53:12.679Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "wc -l /home/rudra/dotfiles/opencode-global/.config/opencode/AGENTS.md /home/rudra/dotfiles/.opencode/memory/decisions.md echo --- rg -n \"^## \" /home/rudra/dotfiles/opencode-global/.config/opencode/AGENTS.md echo ---TAIL-DEC--- tail -15 /home/rudra/dotfiles/.opencode/memory/decisions.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee091abbbffevJcwutfbPFdoSk",
+  "messageID": "msg_11f6fdfaa001OFjpfc5h2jQSJw",
+  "callID": "call_01a11f6fef7872049af8615fcbbb809e",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

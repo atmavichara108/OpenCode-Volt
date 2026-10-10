@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-215507-shell",
+  "created": "2026-10-08T18:55:07.105Z",
+  "updated": "2026-10-08T18:55:07.105Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git worktree add .amwt -b task/allis-maya-1008 origin/main tail -1 python3 python3 ~/dotfiles/tools/garbage-guard/guard.py check-text < 00-WORLD.md >/dev/null 2>&1 python3 ~/dotfiles/tools/garbage-guard/guard.py check-text python3 ~/dotfiles/tools/garbage-guard/guard.py check-text echo \"гейт чист\" node tools/idea-graph/validate.mjs echo \"граф ок\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cde0b23001BW3MioSZYOjc2m",
+  "callID": "call_9272b4379c8542c7b1c575fd",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

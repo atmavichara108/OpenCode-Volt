@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-002207-shell",
+  "created": "2026-10-10T21:22:07.702Z",
+  "updated": "2026-10-10T21:22:07.702Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== nodes 039-053 + ключевые сущности ===\" grep -nE '\"(stream-intent-(039|04[0-9]|05[0-3]))\"|institute-adv-tech|veldora|organ-ability-lab|obsidian-keeper|servant-rethink|agent-characters' nodes.jsonl sed 's/\\(.\\{230\\}\\).*/\\1…/' echo echo \"=== домены исследования контрагента: квант/биология/политика/экономика/шпионаж ===\" grep -niE 'квант|физик|биолог|микробиолог|шпион|геополит|политик|экономик|нейроинтерфейс|ээг|айтрекинг|eeg' nodes.jsonl sed 's/\\(.\\{160\\}\\).*/\\1…/'",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_127b156b8001d0rIqXv0N6yOEG",
+  "callID": "toolu_bdrk_01FhJxERDfGi2amCU857d4wR",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

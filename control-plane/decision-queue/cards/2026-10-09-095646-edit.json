@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-095646-edit",
+  "created": "2026-10-09T06:56:46.015Z",
+  "updated": "2026-10-09T06:56:46.015Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_11f6dd243001XiIMJ21f7wYnmZ",
+  "callID": "call_b3905287a73a4da18d7fd017",
+  "metadata": {
+    "files": [
+      {
+        "file": "/home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts",
+        "patch": "Index: /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n===================================================================\n--- /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n+++ /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n@@ -62,9 +62,13 @@\n // контрольным тестом: hold=340c → 200; см. ниже). 900c с запасом на полный\n // контекст Opus.\n const UPSTREAM_TIMEOUT_MS = Number(process.env.UPSTREAM_TIMEOUT_MS ?? 900_000);\n const FORWARD_RETRIES = Number(process.env.FORWARD_RETRIES ?? 3);\n-const FORWARD_RETRY_MS = Number(process.env.FORWARD_RETRY_MS ?? 1500);\n+const FORWARD_RETRY_MS = Number(process.env.FORWARD_RETRY_MS ?? 1500upper);\n+// Детектор висняка: если от upstream нет ни байта дольше HANG_MS — аборт\n+// попытки и ретрай форварда. Даёт дистрибьютору шанс перевыделить живой\n+// канал (симптом «висит 15 минут»). Клиента держат пинги.\n+const HANG_MS = Number(process.env.HANG_MS ?? 90_000);\n \n const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));\n \n async function forward(req: Request, body: string): Promise<Response> {\n",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 1
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

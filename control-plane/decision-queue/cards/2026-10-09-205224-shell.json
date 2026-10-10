@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-205224-shell",
+  "created": "2026-10-09T17:52:24.609Z",
+  "updated": "2026-10-09T17:52:24.609Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "zsh /home/rudra/.config/opencode/.bench/test-proxy-matrix.sh",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121ca99700015hNZmx26xuBdZK",
+  "callID": "call_22f6a4a7c6d94c8a940d872e",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

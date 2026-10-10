@@ -1,0 +1,28 @@
+{
+  "id": "2026-10-10-160758-glob",
+  "created": "2026-10-10T13:07:58.780Z",
+  "updated": "2026-10-10T13:07:58.780Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "glob",
+  "pattern": "docs/specs/**/*.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_125ed554e001xiwggy5MZM4HJ4",
+  "callID": "call_ZZC407YFgLpoyacFdR1V8TiE",
+  "metadata": {
+    "root": "/home/rudra/dotfiles",
+    "path": "/home/rudra/dotfiles",
+    "limit": 200
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

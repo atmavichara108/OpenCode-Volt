@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-10-172744-edit",
+  "created": "2026-10-10T14:27:44.331Z",
+  "updated": "2026-10-10T14:27:44.331Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/home/rudra/Projects/OpenCode-Vault/04-Memory/session-log/2026-10-10.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fa0279ffeALoBlPtaFyVci4",
+  "messageID": "msg_12636623c001MH0bJIqIAivf0S",
+  "callID": "call_01a126366b5076d2bd955b2995a82b97",
+  "metadata": {
+    "files": [
+      {
+        "file": "/home/rudra/Projects/OpenCode-Vault/04-Memory/session-log/2026-10-10.md",
+        "patch": "Index: /home/rudra/Projects/OpenCode-Vault/04-Memory/session-log/2026-10-10.md\n===================================================================\n--- /home/rudra/Projects/OpenCode-Vault/04-Memory/session-log/2026-10-10.md\n+++ /home/rudra/Projects/OpenCode-Vault/04-Memory/session-log/2026-10-10.md\n@@ -0,0 +1,6 @@\n+# Session log — 2026-10-10\n+\n+- `[ship:dotfiles]` task/spec-done-ssa-bootstrap → main: `05e7c67` (ssa-спеки в done),\n+  `71cae18` (handoff tool_choice-инцидента), `8a5e1a6` (рапорт сессии).\n+  Исполнение: SSA control `59aeb45`, product `5d71faa`; verifier PASS ×2.\n+  (Строка оставлена незакоммиченной намеренно — ветка чужая.)\n",
+        "status": "added",
+        "additions": 6,
+        "deletions": 0
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

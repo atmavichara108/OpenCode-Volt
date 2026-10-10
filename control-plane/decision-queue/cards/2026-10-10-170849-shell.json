@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-170849-shell",
+  "created": "2026-10-10T14:08:49.972Z",
+  "updated": "2026-10-10T14:08:49.972Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "grep -n \"O3\\|O2\\|D1\\|live-read\\|Live-read\" /home/rudra/dotfiles/docs/specs/seo-outreach-agent-runtime-bootstrap.md head -20 echo \"---control-spec O:\" grep -n \"O[0-9]\\|D[0-9]\" /home/rudra/dotfiles/docs/specs/ssa-control-agent-harness-bootstrap.md head -20",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9dc5bb8ffeneLBY28vDdLi7O",
+  "messageID": "msg_126250789001pQIcRCXGHRSK3a",
+  "callID": "0566a415-50bd-43ae-9ff7-a24fa0d224c2",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

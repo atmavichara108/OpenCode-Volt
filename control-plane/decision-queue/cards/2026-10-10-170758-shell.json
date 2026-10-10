@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-170758-shell",
+  "created": "2026-10-10T14:07:58.560Z",
+  "updated": "2026-10-10T14:07:58.560Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "ls /home/rudra/Projects/SSA/products/ echo \"---\" find /home/rudra/Projects/SSA/products -maxdepth 4 -name \"top.md\" head echo \"---\" git -C /home/rudra/Projects/SSA/control status --porcelain head -40 echo \"---\" git -C /home/rudra/Projects/SSA/control branch --show-current",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9dc5bb8ffeneLBY28vDdLi7O",
+  "messageID": "msg_126242b7e001V8zijZqmlEWOqS",
+  "callID": "b7ef27e1-e19f-46d5-9af1-7dfe8654896a",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-230354-shell",
+  "created": "2026-10-09T20:03:54.950Z",
+  "updated": "2026-10-09T20:03:54.950Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"-- pattern: $p\" printf '%s\\n' \"$LINE\" grep -nE \"$p\" echo \"   no match\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eddf66964ffeRYPpVyEX7u7yhE",
+  "messageID": "msg_12237ec3f001oVjc8b0wi8XSlw",
+  "callID": "dd80ea49-ed84-4a5a-9d25-a18aa9ca368f",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

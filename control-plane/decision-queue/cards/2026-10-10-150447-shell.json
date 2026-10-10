@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-150447-shell",
+  "created": "2026-10-10T12:04:47.468Z",
+  "updated": "2026-10-10T12:04:47.468Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "grep -i \"fix-tool-schema\\|plugin.*fail\\|Plugin failed\\|skill\" ~/.local/share/opencode/log/opencode.log 2>/dev/null tail -15 echo --- ls -la /home/rudra/dotfiles/opencode-global/.config/opencode/plugins/fix-tool-schema.ts echo --- git -C /home/rudra/dotfiles stash list head -5",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_125b37bb1001qhDzQQH11UkgDh",
+  "callID": "call_01a125b38da37538a3aa265256513fd1",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

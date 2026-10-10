@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-095318-shell",
+  "created": "2026-10-09T06:53:18.079Z",
+  "updated": "2026-10-09T06:53:18.079Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git -C /home/rudra/dotfiles switch -c task/skill-args-fix git -C /home/rudra/dotfiles branch --show-current git -C /home/rudra/dotfiles status --short echo CLEAN-OK",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee091abbbffevJcwutfbPFdoSk",
+  "messageID": "msg_11f6ff91a001O3SUr51VJUqu5j",
+  "callID": "call_01a11f7004717464941e288959916af1",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-161237-shell",
+  "created": "2026-10-10T13:12:37.608Z",
+  "updated": "2026-10-10T13:12:37.608Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "python3 /home/rudra/Projects/OpenCode-Vault/tools/tree-cop/tree-cop.py status --mine docs/specs/ssa-control-agent-harness-bootstrap.md --mine docs/specs/seo-outreach-agent-runtime-bootstrap.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_125f18613001YHA7flqxtJJ07D",
+  "callID": "call_ZzFsr4VTZFQcG06Kv2J8MLwe",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

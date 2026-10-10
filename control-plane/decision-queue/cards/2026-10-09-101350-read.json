@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-101350-read",
+  "created": "2026-10-09T07:13:50.656Z",
+  "updated": "2026-10-09T07:13:50.656Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "02-Methods/multi-agent-pipeline.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_11f80f60a001XnWY9T7skystYt",
+  "callID": "call_67f0afcf50a34c6fbd9c6dc1",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

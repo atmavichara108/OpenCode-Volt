@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-214812-shell",
+  "created": "2026-10-08T18:48:12.443Z",
+  "updated": "2026-10-08T18:48:12.443Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git worktree add .fmwt task/frontmatter-fix-1008 tail -1 ls tools/md-table-check/ git status --short head -3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cd76841001WKdaWoZSpdsVM1",
+  "callID": "call_c606a32aee8b4160a2e97974",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-170745-shell",
+  "created": "2026-10-10T14:07:45.314Z",
+  "updated": "2026-10-10T14:07:45.314Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls /home/rudra/Projects/SSA/ echo --- find /home/rudra/Projects/SSA -maxdepth 3 -name \"top.md\" 2>/dev/null echo --- find /home/rudra/Projects/SSA -maxdepth 3 -name \"portfolio-registry.md\" -o -maxdepth 3 -name \"runbook.md\" 2>/dev/null head",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9dc5bb8ffeneLBY28vDdLi7O",
+  "messageID": "msg_1262415a5001TzYhKebc0qK7P5",
+  "callID": "8564accc-9c70-4cd6-939a-1edfe14d498a",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

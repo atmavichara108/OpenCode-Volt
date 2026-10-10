@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-173139-shell",
+  "created": "2026-10-10T14:31:39.707Z",
+  "updated": "2026-10-10T14:31:39.707Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"== claims.jsonl ==\" cat tools/peer-comms/claims.jsonl tail -20 echo \"== bugfix role in claims ==\" rg -ci \"bugfix\" tools/peer-comms/claims.jsonl 2>/dev/null echo \"== receipts ==\" ls ~/.local/state/opencode/mail/ 2>/dev/null tail -5 ~/.local/state/opencode/mail/receipts-out.jsonl echo \"== receipts-in ==\" tail -5 ~/.local/state/opencode/mail/receipts-in.jsonl 2>/dev/null echo \"(no receipts-in)\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9cd0bffffeyyWa51Kq2VFBz6",
+  "messageID": "msg_126387549001Q6ddgeYvFhGEpu",
+  "callID": "call_6ea9613c8daf4ad587f8f2cd",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

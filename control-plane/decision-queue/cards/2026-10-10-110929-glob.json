@@ -1,0 +1,29 @@
+{
+  "id": "2026-10-10-110929-glob",
+  "created": "2026-10-10T08:09:29.948Z",
+  "updated": "2026-10-10T08:09:29.948Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "glob",
+  "pattern": "**/*lease*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_edb240948ffe5GB6r8FvP9jFiU",
+  "messageID": "msg_124dc0800001Uogv4kyC3b6Lkx",
+  "callID": "call_HBM1WRI29wxQQbaracWKMj8K",
+  "metadata": {
+    "root": "/home/rudra/Projects/OpenCode-Vault",
+    "path": "/home/rudra/Projects/OpenCode-Vault",
+    "hidden": true,
+    "limit": 60
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "tree-cop",
+  "model": null
+}

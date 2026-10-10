@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-203400-shell",
+  "created": "2026-10-10T17:34:00.855Z",
+  "updated": "2026-10-10T17:34:00.855Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "python3 -c \"\nimport json\nfor f in ['2026-10-10-171133-edit.json','2026-10-10-172349-edit.json']:\n    d=json.load(open(f))\n    print('='*20, f, '| status:', d['status'], '| created:', d['created'], '| updated:', d['updated'])\n    print(d['metadata']['diff'])\n\" head -400",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed921cb70ffeX0qdtO9CnEsj5C",
+  "messageID": "msg_126e088e5001DdoW0ULF8PPb38",
+  "callID": "call_61a0866a9d304667ad0960e3",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}
