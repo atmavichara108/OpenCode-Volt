@@ -37,6 +37,8 @@ timestamp: 2026-09-01
 | rudra-ai | mobile/ai | Kotlin/Jetpack Compose | — | [[rudra-ai]] | 🟢 planning |
 | AndroidOS | umbrella mobile/ecosystem | Android / OpenCode / offline-first | planned | [[AndroidOS]] | 🟢 planning |
 | recruiting-hr | коммерция | Python / mammoth / markdownify | — | [[recruiting-hr]] | 🟡 bootstrap |
+| SSA (control) | портфель / control plane | markdown / git | — | [[SSA]] | 🟡 bootstrap |
+| seo-outreach | коммерция | Sheets / SQLite | `top` (назначен; runtime-конфиг не создан) | [[seo-outreach]] | 🟡 bootstrap |
 
 > 📊 **Сводка:** `/audit` — проверить все проекты · Таблица статусов методов ниже · Новые проекты в planning
 
@@ -94,14 +96,17 @@ timestamp: 2026-09-01
 > **Runbooks** = live usage and operator workflows.
 
 ## Execution specs
-[[docs/specs/README]] · [[docs/specs/ecosystem-registry]] · [[docs/specs/mcp-readonly]] · SERPlux local specs:
-`file:///home/rudra/Projects/serp/docs/specs/`
+[[docs/specs/README]] · [[docs/specs/ecosystem-registry]] · [[docs/specs/mcp-readonly]]
 
-> Для всех проектов, кроме SERPlux, canonical execution specs находятся в Vault.
-> Approved exception SERPlux: authoritative specs находятся только в
-> `/home/rudra/Projects/serp/docs/specs/` и читаются project-local `/spec`.
-> Vault SERPlux files выше сохранены как archived legacy artifacts. Specs не
-> являются evidence выполнения.
+> Канонический `spec-home` каждого проекта задаётся в его карточке
+> (`03-Projects/<name>.md`, поле `spec-home`), а не списком здесь. `docs/specs/`
+> в этом Vault — spec-home только для Vault-owned specs.
+> Проекты с repo-local spec-home (задано карточкой, вне Vault):
+> - **SERPlux** — `/home/rudra/Projects/serp/docs/specs/` (authoritative;
+>   Vault SERPlux files — archived legacy artifacts).
+> - **seo-outreach** — `/home/rudra/Projects/SSA/products/seo-outreach/docs/specs/`
+>   (execution-spec `seo-outreach-mvp-v0.1.md`, статус `proposed`).
+> Specs не являются evidence выполнения.
 > **Ecosystem registry spec (2026-08-31):** canonical schema Layers × Facets,
 > lifecycle IDEA→RETIRED, card schema, one-source/multiple-projections;
 > canonical данные — `tools/ecosystem-map/registry.json`.
