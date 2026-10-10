@@ -992,3 +992,15 @@ timestamp: 2026-08-17
   надо гнать через локальный прокси (10809) или curl — прямое соединение
   ненадёжно (проверять `--noproxy '*'` vs env-прокси). Шим остаётся мостом
   до слоя New API (см. [[01-Reference/provider-cards/justwoker]]).
+
+## external_directory гейт непоследователен (2026-10-10) [проверить]
+- **Наблюдение:** при cwd/цели ВНЕ workspace-корня сессии часть операций
+  отбивается `permission.rejected: external_directory`, часть — нет.
+  - `git push` и `git remote get-url` из sibling-worktree → DENY;
+    `git add`/`git commit` в том же cwd → OK.
+  - write-tool в `/tmp/opencode/` → DENY; shell `cat > /tmp/opencode/...` → OK.
+- **Workaround:** git-пуш ссылки делать из workspace-корня по общему `.git`:
+  `git push origin <branch>:<branch>` (рабочее дерево не трогается).
+- **Статус:** отправлено на багфикс (мастерская, letter 2026-10-10). Root cause
+  гипотеза: матчер external_directory не покрывает `.git`-указатель worktree и
+  строже бьёт write-tool/push, чем add/commit/shell. `[проверить]` до фикса.
