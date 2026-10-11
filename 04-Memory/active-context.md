@@ -534,3 +534,14 @@ broad allow.
   B11 Git Freed по проектам (после B10 sysop) или инициативы graf-памяти
   (.s8-fork чистка — rm-гейт; Maya-lint gate digest; багфикс-ресёрч route-log
   2026-10-06-bugfix-logging-research.md не начат).
+
+## ФОКУС (обновлено 2026-10-11, конец сессии — librarian в стелс/on-demand)
+- **Команда seo-outreach работает без librarian:** Control top (координатор) + top-man
+  (две сессии: «Разработка аутрич»/«Вопросы и блокеры») + dotfiles-infra (sysop).
+  Ежедневная координация — task-board `control/.opencode/coordination/tasks.jsonl` + charters.md.
+- **Librarian тянуть только для:** кросс-проектных решений, нарушений протокола/грамот,
+  дистилляции методов, вопросов Vault. Не читать протокол постоянно.
+- **Открыто у владельца (не моё):** имена сессий top-man (вопрос Control top); статус
+  `seo-outreach-mvp-v0.1` (approved?); результат Мастерской Багфикс по dotfiles-мусору.
+- **Возможное пересечение:** мой коммит удаления builder/planner (`acbcfd0`, dotfiles) —
+  до предупреждения про Мастерскую Багфикс; при конфликте откатить.
