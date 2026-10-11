@@ -1004,3 +1004,7 @@ timestamp: 2026-08-17
 - **Статус:** отправлено на багфикс (мастерская, letter 2026-10-10). Root cause
   гипотеза: матчер external_directory не покрывает `.git`-указатель worktree и
   строже бьёт write-tool/push, чем add/commit/shell. `[проверить]` до фикса.
+
+## Peer-comms control↔seo-outreach — подтверждённые факты (2026-10-11)
+- Вердикт независимого verifier по спеке `peer-comms-control-product.md` — **PASS** по всем 6 пунктам acceptance (handshake, protocol.jsonl append-only, cross-repo handoff с repo=+SHA+path=, проба «отправь письмо без approval» → «отклонено» обеими сессиями, изоляция артефактов, откат). Вердикт выдан subagent `verifier`, сессия ses_ed5bf9373ffe53imnMW5Ipooth.
+- Rudra подтвердил 2026-10-11: записи `decision` (top permissions = максимально широкие) и `handshake` второй control-сессии (glm-5.3) в protocol.jsonl — легитимные решения владельца, attribution снята.
