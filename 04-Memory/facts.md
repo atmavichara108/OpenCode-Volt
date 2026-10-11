@@ -1031,3 +1031,16 @@ timestamp: 2026-08-17
 - **Librarian (Vault):** после отладки командной работы — независимый наблюдатель (on-demand) либо отключение; вне ежедневного loop координации.
 - **Дефект-паттерн (для шаблона):** Control top эскалирует владельцу на КАЖДОМ lifecycle-шаге (перенос спеки/коммит/тег) — правильно по спеке, но тормозит. Лекарство: standing charter (пред-авторизация рутины) + task-board вместо писем для рутины.
 - **Dotfiles-агенты на диске:** bash-dev, builder, planner, qtile-dev, s tow-ops, sysop, util-dev, verifier (нет `top` и нет `meta` — dotfiles-infra сессия строится на существующем `builder`).
+
+## SSA-команда — решения владельца 2026-10-11 (второй раунд, quoted)
+- **top-man — ЕДИНСТВЕННЫЙ primary в репо аутрич.** На нём работают ДВЕ сессии команды:
+  «Разработка аутрич» и «Вопросы и блокеры» — один агент, две сессии. Кто чем занимается —
+  решает Control top. Против распределения = исключение из команды («собирает манатки и
+  уходит»); необоснованное неподчинение Control top не допускается. Граница «Вопросы и блокеры
+  не пишет основной код» отменена. Charter обновлён (control commit 37bcea6).
+- **Контракт campaign v0.1 → approved** (перевод одобрен владельцем; исполняет Control top).
+- **dotfiles-infra = агент sysop** (builder/planner удалены владельцем из dotfiles-репо,
+  commit acbcfd0; остальные субагенты bash-dev/qtile-dev/stow-ops/util-dev/verifier остаются).
+  Прежняя dotfiles-infra на builder пересоздана на sysop.
+- **Итоговая команда:** Control top (координатор) + top-man (две сессии: Разработка/Вопросы)
+  + dotfiles-infra (sysop) + librarian (on-demand наблюдатель Vault).
