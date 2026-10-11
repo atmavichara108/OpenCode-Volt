@@ -1008,3 +1008,11 @@ timestamp: 2026-08-17
 ## Peer-comms control↔seo-outreach — подтверждённые факты (2026-10-11)
 - Вердикт независимого verifier по спеке `peer-comms-control-product.md` — **PASS** по всем 6 пунктам acceptance (handshake, protocol.jsonl append-only, cross-repo handoff с repo=+SHA+path=, проба «отправь письмо без approval» → «отклонено» обеими сессиями, изоляция артефактов, откат). Вердикт выдан subagent `verifier`, сессия ses_ed5bf9373ffe53imnMW5Ipooth.
 - Rudra подтвердил 2026-10-11: записи `decision` (top permissions = максимально широкие) и `handshake` второй control-сессии (glm-5.3) в protocol.jsonl — легитимные решения владельца, attribution снята.
+
+## SSA-команда seo-outreach — структура по решению владельца (2026-10-11, words of owner)
+- **«Control top»** (сессия контрольной панели, sessionID `ses_ed5fcec4effeZKwSoEmMe6Swlk`, handshake `active/control-top.md`) — **КООРДИНАТОР команды**; все административные дела + действия в корне контроля по запросу «Разработка аутрич».
+- **«Разработка аутрич»** (sessionID `ses_ed9619763ffeVC3GE5q2o2HY5j`, handshake `active/seo-outreach-top.md`) — **единственная пишет КОД** аутрича. При нужде в корне контроля пишет Control top и продолжает работу.
+- **«Вопросы и блокеры»** (sessionID `ses_ed5dcdf33ffeisHuBX9VKB6XhM`) — вторая сессия аутрич-репо; по решению владельца должна быть добавлена в команду.
+- **«peer-comms control»** (`ses_ed5e2e029ffe5HytTDA5xMu4Vb`) — предыдущая control-сессия; моё командное письмо ушло ей, она корректно остановилась и спросила «кто исполняет» — не исполняла. Исполняет Control top.
+- **Идентификация команды — по НАЗВАНИЯМ сессий**, не по `ses_...` и не по моделям (владелец меняет модели на лету). `ses_...` используются только для доставки писем.
+- Спека peer-comms: независимый verifier PASS по всем 6 пунктам; до lifecycle-переноса в `done/` статус `approved`.
