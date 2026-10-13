@@ -30,7 +30,6 @@ related:
 | 6 | `dotfiles/.opencode/memory/research/2026-10-14-machine-tracks-analysis.md` | И-38: 7706 карточек decision-queue, 96.8% шума | draft | 2026-10-14 | смежная (Мастерская) | реестр не требует |
 | 7 | `dotfiles/docs/specs/agent-lifecycle-v1.md` + И-22/И-23 | Эволюция агентов: классификатор, обкатка, правило 3/5 | proposed | — | прямая/смежная (агентский контур) | в реестр как агент-контур |
 | 8 | узлы tech-jev/laya/openjev/open-alternative-jev (idea-graph:83–86) | Внешние находки: TypeSafe Jev, on-device аналоги, vLLM | candidate | research 2026-10-04 | прямая (внешний кейс → годное) | сверить с текстом (не найден); в реестр |
-| 9 | узел tech-tradingmind (idea-graph:90) | TradingMind — typed-edge epistemology, «первый кейс idea-stream» | accepted | research 2026-10-05 | прямая | реестр + сквозной кейс пайплайна |
 | 10 | узлы tech-gepa/obra-knowledge-graph/obsidian-stack (idea-graph:87–89) | GEPA, knowledge-graph, Obsidian-стек | candidate/accepted | research 2026-10-04 | прямая | реестр |
 | 11 | узлы tech-analogs/tenensuro/comp/tardis/jarvis/hev/drone (idea-graph:171–181) | Библиотека теоретических аналогов (Pip-Boy) | candidate, часть blessed | session 2026-10-07 | прямая | Lab-queue L2–L6 назначены; связь зафиксировать |
 | 12 | `06-Audits/2026-10-11-counteragent-cross-domain-research.md` + sources-index | Кросс-доменный ресёрч контрагента | draft-research | 2026-10-11 | не Институт — агентский контур (К-А в2) | в реестре (строка 29) |
@@ -50,13 +49,12 @@ related:
 2. **world-entity-veldora-two-layers** — исход 040 связан словом Rudra с появлением Института.
 3. **Кластер аналогов + вердикт 043** — готовый прецедент «внешние находки → вердикт Рудры → Lab (L2–L6)».
 4. **vault-upgrade-research-2026-08-02** — прототипный образец институтского формата (проверяемые факты, [проверить]); есть нереализованный хвост (semantic-retrieval, observability).
-5. **tech-tradingmind** — единственный внешний кейс, доведённый до accepted-метода; образец поставки Института.
 
 ## Пробелы (слово есть — артефакта нет)
 
 - Исследование 040 не имеет отдельного артефакта — только узел и упоминания (facts.md:871, lab-queue:22).
 - Узел «представитель Института» не заведён (brainstorm:246); сессия-носитель не создана (institute-location spec).
 - У Института нет тени/сотрудников (нарушение закона тени, brainstorm:202/246).
-- Журналы `research:2026-10-04:jev-classifier-audit / evolution-applications / graph-technologies / tradingmind-audit` — пути к первоисточникам не найдены в волте/dotfiles (возможная потеря, требуют probe).
+- Журналы `research:2026-10-04:jev-classifier-audit / evolution-applications / graph-technologies` — пути к первоисточникам не найдены в волте/dotfiles (возможная потеря, требуют probe).
 - NotebookLM — research-артефакта в волте нет (кроме строки реестра и спеки library-location).
 - G-Star+/маскированная диффузия (ICML 2026, arxiv 2510.08369) — сырье в `tools/telegram-capture/captures_all.json:3451`, не классифицировано как внешний кейс.
