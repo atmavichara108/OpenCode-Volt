@@ -52,7 +52,7 @@
 - эволюционные: `inspires`, `evolves_into`, `devours`, `synthesizes`, `names`
 - событийные: `announces`, `gates`
 
-Дисциплина (TradingMind): тип обязателен; `related` — только когда точнее
+Дисциплина : тип обязателен; `related` — только когда точнее
 подобрать нельзя. Таблица миграции типов v1→v2 — в спеке (S4).
 
 ## Графы (namespaces)
@@ -62,7 +62,7 @@
 | `world` | сущности и структура Майя: Рудра, Allis Maya, Вельзевул, Голос Мира, Вельдора, категории, квесты |
 | `organ` | органы Вельзевула: Perception, Appraisal, Independent Counsel, Emergency Defense, Information is power, Ability Lab, Skill ladder |
 | `mech` | механики: Naming=канонизация, эволюция через жертвование, Harvest Festival, двойная прогрессия, диалектика, research versions, сверхкодировка |
-| `tech` | технологические референсы: JEV, Laya, open-jev, GEPA, knowledge-graph, Obsidian-стек, TradingMind |
+| `tech` | технологические референсы: JEV, Laya, open-jev, GEPA, knowledge-graph, Obsidian-стек |
 | `proto` | протоколы: черновики, без потерь, typed edges, версионирование, idea-stream, peer-comms (RESERVED за первым форком) |
 | `event` | события-гейты: именования → `announcement:true`, `render:["pipboy-gate","toast"]` |
 | `quest` | отложенные темы: git-слой, версионирование экосистемы |
