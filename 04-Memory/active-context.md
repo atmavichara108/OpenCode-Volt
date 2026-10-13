@@ -1,9 +1,9 @@
 ---
 type: Active Context
 title: Активный контекст
-description: Сессия 2026-10-09 — T-168 финально закрыт: Opus работает, шим v4 (curl-транспорт + прокси) в production; следующее — New API layer.
+description: Сессия 2026-10-05 — канон мира Вельзевула (layer v1.2-альфа) зафиксирован; жду письмо форка о графе v2.
 tags: [memory]
-timestamp: 2026-10-09
+timestamp: 2026-10-05
 ---
 
 # Активный контекст
@@ -11,21 +11,7 @@ timestamp: 2026-10-09
 > Автоматически обновляется librarian. Читается при старте каждой сессии.
 
 ## Текущий фокус
-- **2026-10-09 (вечер) T-168 ФИНАЛЬНО ЗАКРЫТ — Opus работает, шим v4
-  (curl-транспорт) в production.** Корень висняков больших payload найден
-  матрицей: прямое соединение с Cloudflare виснет на больших upload'ах
-  (796KB: http=000 >45с; MTU/mss blackhole), через локальный прокси
-  `127.0.0.1:10809` — 200 за ~26с; Bun-сетевой стек (fetch и node:https)
-  сломан на больших телах независимо от варианта. Фикс: `openRaw` на curl
-  subprocess + `SHIM_PROXY` env; юнит `HANG_MS=30000`, `FORWARD_RETRIES=1`;
-  stream-hang после ретраев → fallback на non-stream. Dotfiles main=`026213a`
-  (`3e291c4` + `026213a`, запушено). Evidence: 796KB → 200 за 12с,
-  stream:true → 200 за 4.7с живые дельты, бенч (a)/(c)/(d) зелёный.
-  Память: facts T-168 (финальный фикс), карточка justwoker, session-log
-  2026-10-09. **Следующее:** New API layer (оператор `systemctl --user
-  enable --now new-api`), затем снять шим и вернуть baseURL на upstream.
-  Subagent meta недоступен (4 падения) — операционно доводил сам дирижёр
-  по явному слову Рудры; юнит/шим — не код приложений, scope инфры.
+- **2026-10-13 Ship-research-network contract (dotfiles):** спека «Сеть исследований Корабля — локации, маршрутизация и порядок» (`docs/specs/ship-research-network.md`, kind: contract, status: proposed, 6 разделов) — reviewer `clear` + verifier `PASS` → коммит `bb95db9` + cherry-pick `b1fa70e` + merge `a99da24` в локальный `main` (без push). Открытый вопрос: изоляция записи M Code от общего checkout/ветки не подтверждена; следующий шаг — реестр исследований по локациям (черновик в session-log 2026-10-13).
 - **2026-10-07 (вечер) B11 Git Freed rollout — ИСПОЛНЕН И ПРИНЯТ Дирижёром лично.
   dv-hub `287e887` / ChaT `ce60502` / AndroidOS `c1f2569` на task/git-freed-b11
   (хук sha256 0fc28143382dc391…, 100755, 1 файл/коммит, main не тронут, WIP цел).
@@ -290,6 +276,8 @@ timestamp: 2026-10-09
   незакоммичены. Отдельно сохраняются pre-existing bootstrap/WIP-изменения в
   ChaT, dotfiles и SERPlux; они не откатываются и не объявляются частью этой
   сессии.
+- **2026-10-13 (финал сессии) ship-research-network:** контракт сети + спека Инженерного Центра в main (`dfc3055` — последняя правка: Институт сам исследует, годное → Лаборатория). Реестр исследований `06-Audits/2026-10-13-ship-research-registry.md` дополнен кандидатами Мастерская БагФикс и Библиотека (NotebookLM). **Следующий шаг (выбран Rudra): implementation spec Ability Lab / Лаборатория** по образцу Инженерного Центра — очередь L1–L6, критерии passing, пайплайн «Институт → Лаборатория → доказанное», статус кандидат/не runtime. Рукопожатие с «Инженерным центром и параллельными лабораториями Корабля» (sysop/dotfiles) работает; freeze моста соблюдён.
+- **2026-10-13 (пост-компакт):** пуш сделан (dotfiles `dfc3055` → origin). Решение Rudra: В2 → имя «К-А в2», очередной эксперимент (определение В2 — stream-intent-049). Ability Lab spec `eaf3b1d` в dotfiles; reviewer: issues (1 обязательная правка) — «пермишен-блокер» не подтвердился (shadow-шум decision-queue-hook); живая проверка перенаправления пройдена (sysop → Лаборатория). Тест-письмо перенаправления отправлено в «Инженерный центр».
 
 ## Активная задача
  - **Текущий шаг:** AndroidOS PA MVP planning через `/android-plan`; bridge и
@@ -534,14 +522,3 @@ broad allow.
   B11 Git Freed по проектам (после B10 sysop) или инициативы graf-памяти
   (.s8-fork чистка — rm-гейт; Maya-lint gate digest; багфикс-ресёрч route-log
   2026-10-06-bugfix-logging-research.md не начат).
-
-## ФОКУС (обновлено 2026-10-11, конец сессии — librarian в стелс/on-demand)
-- **Команда seo-outreach работает без librarian:** Control top (координатор) + top-man
-  (две сессии: «Разработка аутрич»/«Вопросы и блокеры») + dotfiles-infra (sysop).
-  Ежедневная координация — task-board `control/.opencode/coordination/tasks.jsonl` + charters.md.
-- **Librarian тянуть только для:** кросс-проектных решений, нарушений протокола/грамот,
-  дистилляции методов, вопросов Vault. Не читать протокол постоянно.
-- **Открыто у владельца (не моё):** имена сессий top-man (вопрос Control top); статус
-  `seo-outreach-mvp-v0.1` (approved?); результат Мастерской Багфикс по dotfiles-мусору.
-- **Возможное пересечение:** мой коммит удаления builder/planner (`acbcfd0`, dotfiles) —
-  до предупреждения про Мастерскую Багфикс; при конфликте откатить.
