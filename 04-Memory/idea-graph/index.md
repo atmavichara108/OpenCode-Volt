@@ -42,7 +42,6 @@ Degenerate), Harvest Festival (safe-mode апгрейд), двойная про�
 
 JEV / Laya / open-jev / open-alternative-jev (ветка классификатора),
 GEPA (Evolution Lab), obra/knowledge-graph и Obsidian-стек (проекции),
-TradingMind (typed-edge эпистемология → `proto-typed-edges`).
 
 Кластер аналогов Терминала (`tech-analogs-terminal-hub`, candidate): линия
 Тенсуро (мудрецы/обжорство/Вельдора-внутри/мысленная связь) + внешние
@@ -94,8 +93,8 @@ peer-comms (канон «на связи»):
 - 036 согласование соседа: ДА спеке v2, протокол 5 гейтов (фразовый словарь, whitelist per-repo, JSON-словарь с provenance, сухой прогон ~2 недели до гейта, dry-run baseline); гейт = механика main-protector
 
 Misfit/objection-узлы PAE-аудита (`stream-misfit-*`, `stream-objection-verifier-coverage`,
-`stream-*` tradingmind-stalled): git-policy-bypass, verifier-coverage, state-fragmentation,
-decision-queue-noise, chat-parked, tradingmind-stalled → все привязаны к `quest-pae-rhizome`
+  ): git-policy-bypass, verifier-coverage, state-fragmentation,
+decision-queue-noise, chat-parked → все привязаны к `quest-pae-rhizome`
 (рёбра e-0170..e-0180). Отчёт: `06-Audits/2026-10-05-pae-phase1-readiness-audit.md`.
 
 Старые атомы `n-0001..n-0054` сохранены (темы, протоколы, ограничения,

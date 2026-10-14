@@ -76,7 +76,6 @@ timestamp: 2026-10-09
 | `stream-intent-011` | Вельдора = M Code | accepted | accepted |
 | `stream-intent-012` | Harvest Festival = safe-mode апгрейд | accepted | accepted |
 | `stream-intent-013` | Эволюция через жертвование — киллер-фича | accepted | accepted |
-| `stream-intent-014` | TradingMind одобрен | accepted | accepted |
 | `stream-intent-015` | Графовые технологии одобрены | accepted | accepted |
 | `stream-intent-016` | Составить матрицу миров | candidate | deferred |
 | `stream-intent-017` | Именования и эволюции = гейты + toast | accepted | accepted |
@@ -127,7 +126,6 @@ timestamp: 2026-10-09
 | `stream-misfit-decision-queue-noise` | Шум в канале: 3836 карточек decision-queue (shell/edit автоматы с 2026-09-27) без prune-политики — сигнал тонет в автоматике | raw | - |
 | `stream-misfit-git-policy-bypass` | Contradiction: вне волта веточная политика PAE не соблюдена — AndroidOS/serp/dv-hub/ChaT коммитят в main поверх грязного дерева; git-isolation живёт только в волте | candidate | - |
 | `stream-misfit-state-fragmentation` | Misfit: состояние вайбкодинга рассыпано по TASKS/карточкам/VibeOS(814 строк)/README/сессиям — версии и статусы расходятся, живой тест памяти нужен чтобы измерить стоимость | candidate | - |
-| `stream-misfit-tradingmind-stalled` | Misfit: TradingMind (типизированные рёбра) одобрена, но bootstrap стоит — 1 коммит за 3 недели;идея утверждена, исполнение нет | raw | - |
 | `stream-objection-verifier-coverage` | Misfit: verifier-дисциплина wired в волт и dotfiles (Dream-фиксы bash deny→ask 2026-10-05); вне их acceptance без независимой проверки — риск silent-сбоев | candidate | - |
 
 ## Канон Мира (сущности, законы, источники) — 22
@@ -191,7 +189,6 @@ timestamp: 2026-10-09
 | `proto-no-loss` | Без потерь: raw + append-only; граф переживает compact/handoff/смену агентов; фиксируются количество и суть идей | accepted | - |
 | `proto-pipboy-retrospective` | Ретроспектива как компиляция и тест Pip-Boy | raw | - |
 | `proto-sustainability-canon` | Канон «Устойчивое развитие» — будущая сверхспособность Рафаила | raw | - |
-| `proto-typed-edges` | Канон типов рёбер (слияние TradingMind): тип обязателен; related — только когда точнее подобрать нельзя | accepted | - |
 | `proto-versioning` | Версионирование слоя: minor++ за принятую дельту; alpha до спеки, beta = спека + прототип, stable после verifier PASS | accepted | - |
 | `proto-world-matrix` | Матрица миров: концепция / что даёт / что есть / что собрать / риск (pending deliverable) | candidate | - |
 
@@ -217,7 +214,6 @@ timestamp: 2026-10-09
 | `tech-tenensuro-sage-line` | Тенсуро: Великий мудрец → Рафаэль → Чиль — линия эволюции внутреннего ОС-короля | candidate | - |
 | `tech-tenensuro-thought-link` | Тенсуро: мысленная связь/Голос через Рафаэля — сеть управления свитой | candidate | - |
 | `tech-tenensuro-veldora-inside` | Тенсуро: Вельдора в утробе Римуру — библиотека бога внутри корпуса | candidate | - |
-| `tech-tradingmind` | TradingMind — typed-edge epistemology, 7 типов рёбер, «связь без типа не ставится»; королевство на bootstrap; первый кейс idea-stream | accepted | - |
 
 ## Механики — 8
 

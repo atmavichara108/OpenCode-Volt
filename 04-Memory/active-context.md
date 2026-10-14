@@ -1,9 +1,9 @@
 ---
 type: Active Context
 title: Активный контекст
-description: Сессия 2026-10-09 — T-168 финально закрыт: Opus работает, шим v4 (curl-транспорт + прокси) в production; следующее — New API layer.
+description: Сессия 2026-10-14 — flush: Храм PASS (ждёт approval Rudra → done/), Lab на линии (L8/L9 протоколы), И-35 у Института.
 tags: [memory]
-timestamp: 2026-10-09
+timestamp: 2026-10-14
 ---
 
 # Активный контекст
@@ -11,21 +11,14 @@ timestamp: 2026-10-09
 > Автоматически обновляется librarian. Читается при старте каждой сессии.
 
 ## Текущий фокус
-- **2026-10-09 (вечер) T-168 ФИНАЛЬНО ЗАКРЫТ — Opus работает, шим v4
-  (curl-транспорт) в production.** Корень висняков больших payload найден
-  матрицей: прямое соединение с Cloudflare виснет на больших upload'ах
-  (796KB: http=000 >45с; MTU/mss blackhole), через локальный прокси
-  `127.0.0.1:10809` — 200 за ~26с; Bun-сетевой стек (fetch и node:https)
-  сломан на больших телах независимо от варианта. Фикс: `openRaw` на curl
-  subprocess + `SHIM_PROXY` env; юнит `HANG_MS=30000`, `FORWARD_RETRIES=1`;
-  stream-hang после ретраев → fallback на non-stream. Dotfiles main=`026213a`
-  (`3e291c4` + `026213a`, запушено). Evidence: 796KB → 200 за 12с,
-  stream:true → 200 за 4.7с живые дельты, бенч (a)/(c)/(d) зелёный.
-  Память: facts T-168 (финальный фикс), карточка justwoker, session-log
-  2026-10-09. **Следующее:** New API layer (оператор `systemctl --user
-  enable --now new-api`), затем снять шим и вернуть baseURL на upstream.
-  Subagent meta недоступен (4 падения) — операционно доводил сам дирижёр
-  по явному слову Рудры; юнит/шим — не код приложений, scope инфры.
+- **2026-10-14 фокус:**
+  (а) **Храм (Temple)** — на линии: рукопожатие ЦУ доставлено (receipt a4b32189523e8949, 2026-10-14), ждём ack; сессия Rudra ses_ec84b638fffenmF4JQj5a8a2a9; спека верифицирована (reviewer `26b5ff1`, merged в dotfiles main `1ac56d3`, verifier PASS 8/8); ждёт approval Rudra → перенос в done/.
+  (б) **Ability Lab** — на линии, готовит протоколы `lab-protocol-l8/l9` черновиками в dotfiles docs/specs (пакеты L8/L9 приняты).
+  (в) **Пилот-аккаунт NotebookLM** — ждёт слова Rudra (жёсткий гейт: аккаунт/ноутбук только после его слова).
+  (г) **Старт «К-А в2»** — ждёт слова Rudra.
+  (д) **И-35** у Института (анализ классификации телеграм-капчуров) — отчёт придёт.
+  (е) **Архитектура ЦУ/УАС** — решения Р-001…Р-008 приняты ([[01-Policies/decisions-registry]]); П2 SDK-исследование у Института (ждёт артефакт); далее цепочка: П2 → ministry-manifest.yaml → УАС-спека → спека Лабы.
+  (ж) **И-50 Pip-Boy** — в бэклоге Инженерного Центра.
 - **2026-10-07 (вечер) B11 Git Freed rollout — ИСПОЛНЕН И ПРИНЯТ Дирижёром лично.
   dv-hub `287e887` / ChaT `ce60502` / AndroidOS `c1f2569` на task/git-freed-b11
   (хук sha256 0fc28143382dc391…, 100755, 1 файл/коммит, main не тронут, WIP цел).
@@ -534,14 +527,3 @@ broad allow.
   B11 Git Freed по проектам (после B10 sysop) или инициативы graf-памяти
   (.s8-fork чистка — rm-гейт; Maya-lint gate digest; багфикс-ресёрч route-log
   2026-10-06-bugfix-logging-research.md не начат).
-
-## ФОКУС (обновлено 2026-10-11, конец сессии — librarian в стелс/on-demand)
-- **Команда seo-outreach работает без librarian:** Control top (координатор) + top-man
-  (две сессии: «Разработка аутрич»/«Вопросы и блокеры») + dotfiles-infra (sysop).
-  Ежедневная координация — task-board `control/.opencode/coordination/tasks.jsonl` + charters.md.
-- **Librarian тянуть только для:** кросс-проектных решений, нарушений протокола/грамот,
-  дистилляции методов, вопросов Vault. Не читать протокол постоянно.
-- **Открыто у владельца (не моё):** имена сессий top-man (вопрос Control top); статус
-  `seo-outreach-mvp-v0.1` (approved?); результат Мастерской Багфикс по dotfiles-мусору.
-- **Возможное пересечение:** мой коммит удаления builder/planner (`acbcfd0`, dotfiles) —
-  до предупреждения про Мастерскую Багфикс; при конфликте откатить.
