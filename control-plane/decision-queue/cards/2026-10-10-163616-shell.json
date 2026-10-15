@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-163616-shell",
+  "created": "2026-10-10T13:36:16.424Z",
+  "updated": "2026-10-10T13:36:16.424Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== tracked under .opencode/memory ===\" git ls-files .opencode/memory head -30 echo \"=== .gitignore hits for memory ===\" git check-ignore -v .opencode/memory/session-reports/active/x.md .opencode/memory/decisions.md 2>/dev/null",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_1260728e8001YSXJKjvvJt6zJE",
+  "callID": "toolu_bdrk_017htGnZGsXJRPMsqSPS3KLw",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

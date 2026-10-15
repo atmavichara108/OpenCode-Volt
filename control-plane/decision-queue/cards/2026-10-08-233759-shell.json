@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-233759-shell",
+  "created": "2026-10-08T20:37:59.161Z",
+  "updated": "2026-10-08T20:37:59.161Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git worktree add .wf -b task/world-flow-law-1008 origin/main cat python3 - <<'PYEOF'\nfrom pathlib import Path\np=Path(\"00-WORLD.md\"); t=p.read_text(encoding=\"utf-8\")\nold=\"\"\"| **Вельдора** | \"\"\"\nnew=\"\"\"| **Поток Аллис Майя** | Всё, что Рудра выгружает системе потоком, — материал Мира: формирует направление и качества. Входящее = сырьё Майи, не «запросы» | канал потока: `99-Inbox`, граф `stream` | Мир творится из себя и собой; Рудра выгружает — АМ оформляет ([[04-Memory/idea-graph/nodes.jsonl\\\\|закон]]) |\n\n| **Вельдора** | \"\"\"\nt=t.replace(old,new,1) if old in仍未 else t\nif \"Поток Аллис Майя\" not in t:\n    t=t.replace(\"## VI. Эволюция и Сила\",\"\"\"## V.6 Поток Аллис Майя\n\n> [!important] Закон потока (слово Рудры 2026-10-08)\n> Всё, что приходит к Рудре потоком и он **выгружает системе**, есть **поток Аллис Майя** — материал, формирующий Мир: он придаёт Миру направление и качества. Входящее — не «запросы пользователя», а сырьё творения. Отсюда: поток не фильтруется на входе, но канонизируется с provenance (`basis: quoted`), а его отложения живут в графе (`stream`).\n> Практика: `99-Inbox` — приёмный чан; граф `stream` — русло; порог канона — твоё слово.\n\n---\n\n## VI. Эволюция и Сила\"\"\",1)\np.write_text(t,encoding=\"utf-8\"); print(\"карта: закон потока записан\")\nPYEOF grep -c \"Аллис Майя\" 00-WORLD.md node tools/idea-graph/validate.mjs 2>&1 tail -1 python3 tools/md-table-check/check.py 00-WORLD.md 2>/dev/null tail -1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d3685e7001jrZ6EKTfVL4mm0",
+  "callID": "call_ff5388033de243be809607aa",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-093840-shell",
+  "created": "2026-10-09T06:38:40.972Z",
+  "updated": "2026-10-09T06:38:40.972Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"---STASH LIST---\" git stash list echo \"---STATUS---\" git status --short echo \"---BRANCH---\" git branch --show-current echo \"---FOREIGN FILES PRESENT---\" echo \"OK $f\" echo \"MISSING $f\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee0a97b4fffeX15Yix6yTUvFr2",
+  "messageID": "msg_11f626b0c0017DdGIlnwe8xoi2",
+  "callID": "call_93f0e1c3ad4c4919ab76f93a",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

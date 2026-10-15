@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-194220-shell",
+  "created": "2026-10-09T16:42:20.139Z",
+  "updated": "2026-10-09T16:42:20.139Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git worktree add .meta-worktrees/permission-worktree-20261009 -b task/meta-permission-worktree-20261009 HEAD",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede74f62bffe66CT04CTuBQszP",
+  "messageID": "msg_1218b3e95001YMSNhmjIqBNZsA",
+  "callID": "call_mhJLXP7QRLWfj1ifKsGBWXo3",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

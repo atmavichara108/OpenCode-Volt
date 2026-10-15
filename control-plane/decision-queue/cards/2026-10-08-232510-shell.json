@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-232510-shell",
+  "created": "2026-10-08T20:25:10.308Z",
+  "updated": "2026-10-08T20:25:10.308Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "tail -3 04-Memory/idea-graph/edges.jsonl echo \"=== protocol ===\" tail -2 04-Memory/idea-graph/protocol.jsonl echo \"=== README ===\" head -40 04-Memory/idea-graph/README.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d2d6c84001Md4O0E2csq43PQ",
+  "callID": "call_8f31f8ec8961455aaa5de8c1",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -21,7 +21,9 @@
       "**/.env*": "deny",
       "**/credentials.json": "deny",
       "**/*.pem": "deny",
-      "**/*.key": "deny"
+      "**/*.key": "deny",
+      "**/id_rsa*": "deny",
+      "**/id_ed25519*": "deny"
     },
     "bash": {
       "*": "allow",

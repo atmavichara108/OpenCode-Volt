@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-194424-read",
+  "created": "2026-10-09T16:44:24.826Z",
+  "updated": "2026-10-09T16:44:24.826Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "04-Memory/idea-graph/protocol.jsonl",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede747528ffeHlisOgYlOGW7Oi",
+  "messageID": "msg_1218c8fb700142em20wpevNcNs",
+  "callID": "toolu_f97559ff4d8d4fe48a1c4e54",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

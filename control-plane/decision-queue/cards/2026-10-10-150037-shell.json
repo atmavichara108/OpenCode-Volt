@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-150037-shell",
+  "created": "2026-10-10T12:00:37.357Z",
+  "updated": "2026-10-10T12:00:37.357Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "shell",
+  "pattern": "nl -ba /home/rudra/Projects/SSA/products/seo-outreach/docs/specs/seo-outreach-mvp-v0.1.md sed -n '1,30p;60,105p;130,170p' printf '\\n--- brief ---\\n' nl -ba /home/rudra/Projects/SSA/products/seo-outreach/docs/bootstrap/implementation-approval-brief.md sed -n '1,18p;20,40p' printf '\\n--- registry ---\\n' nl -ba /home/rudra/Projects/SSA/control/docs/portfolio-registry.md sed -n '1,24p' printf '\\n--- index refs ---\\n' nl -ba /home/rudra/Projects/OpenCode-Vault-tasks/ssa-bootstrap-20261010/00-INDEX.md sed -n '38,57p'",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda507522ffeaVCGhliQyoLiR5",
+  "messageID": "msg_125afac6f001Orap78d7umQoX7",
+  "callID": "call_Cvw5SunvIQSIZSnMUwlmZbEF",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

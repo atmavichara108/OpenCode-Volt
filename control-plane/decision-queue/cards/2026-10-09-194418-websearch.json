@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-09-194418-websearch",
+  "created": "2026-10-09T16:44:18.261Z",
+  "updated": "2026-10-09T16:44:18.261Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "websearch",
+  "pattern": "Hehl von der Heyde Kerlick Nitsch 1976 \"General relativity with spin and torsion\" Reviews of Modern Physics volume 48",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede74752effez1rLupWWvC1elB",
+  "messageID": "msg_1218c669e001d3GBpEWyLaJPEu",
+  "callID": "toolu_35ae26266a584646aa098407",
+  "metadata": {
+    "query": "Hehl von der Heyde Kerlick Nitsch 1976 \"General relativity with spin and torsion\" Reviews of Modern Physics volume 48"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

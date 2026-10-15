@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-165515-shell",
+  "created": "2026-10-10T13:55:15.475Z",
+  "updated": "2026-10-10T13:55:15.475Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git add 04-Memory/facts.md 04-Memory/session-log/2026-10-10.md git commit -q -m \"docs(memory): инцидент external_directory + session-log 2026-10-10\" 2>&1 tail -2 echo \"=== push из корня workspace (workaround по общему .git) ===\" git push origin task/ssa-bootstrap-20261010:task/ssa-bootstrap-20261010 2>&1 tail -3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_12618829a001ISHVY6ZEeNw2Ve",
+  "callID": "toolu_bdrk_01XCWbUMn1j8XsxYnqyrqFRZ",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

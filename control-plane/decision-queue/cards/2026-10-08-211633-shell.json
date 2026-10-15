@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-211633-shell",
+  "created": "2026-10-08T18:16:33.005Z",
+  "updated": "2026-10-08T18:16:33.005Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git show origin/main:00-WORLD.md git show origin/main:00-WORLD.canvas ls -la 00-WORLD.* awk '{print $NF, $5\"Б\"}' grep -c \"stream-intent-048\\|stream-intent-053\" 04-Memory/idea-graph/nodes.jsonl grep -c \"T-171\" TASKS.md 2>/dev/null grep -c \"Рудра ↔ АМ\" 04-Memory/facts.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cba0055001HkY4Eub5uSQ26K",
+  "callID": "call_c659a86aaaa445899672025c",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

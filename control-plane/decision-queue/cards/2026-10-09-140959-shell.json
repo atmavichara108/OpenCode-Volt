@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-140959-shell",
+  "created": "2026-10-09T11:09:59.557Z",
+  "updated": "2026-10-09T11:09:59.557Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "python3 - \"$F\" <<'PY'\nimport sys,restar\np=sys.argv[1]\ns=open(p).read()\nold='    if (mode === \"hang\") { hangCount++; if (hangCount === 1) { setTimeout(start, HANG); return; } }\\n    else start();'\nnew='    if (mode === \"hang\") { hangCount++; if (hangCount === 1) { setTimeout(start, HANG); return; } start(); return; }\\n    start();'\nassert old in s, \"pattern not found\"\ns=s.replace(old,new)\nopen(p,\"w\").write(s)\nprint(\"patched\")\nPY node --check \"$F\" echo OK sed -n '42,46p' \"$F\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_12059b984001qvhuvzRPu4J5QW",
+  "callID": "call_a8aaee0b08bc43f8ba74da5a",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

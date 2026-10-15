@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-094439-shell",
+  "created": "2026-10-09T06:44:39.887Z",
+  "updated": "2026-10-09T06:44:39.887Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "opencode --version 2>/dev/null echo \"---\" cat ~/.config/alacritty/alacritty.toml 2>/dev/null head -40 echo \"--- конфиг opencode: leader? ---\" python3 - <<'EOF'\nimport json,re\nraw=open('/home/rudra/dotfiles/opencode-global/.config/opencode/opencode.jsonc').read()\nm=re.search(r'\"tui\"[^}]*\\}?',raw)\nprint('tui-блок:' , m.group(0)[:300] if m else 'нет')\nprint('ключи верхнего уровня:', re.findall(r'^\\s{2}\"([^\"]+)\":', raw, re.M)[:25])\nEOF",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eedd28c45ffeFJU6TDjG69z6A7",
+  "messageID": "msg_11f64dcd3001lYY1ejS1MhACOq",
+  "callID": "call_40849f2b1461414486718f14",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

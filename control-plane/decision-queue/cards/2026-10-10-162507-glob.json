@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-10-162507-glob",
+  "created": "2026-10-10T13:25:07.150Z",
+  "updated": "2026-10-10T13:25:07.150Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "glob",
+  "pattern": "/home/rudra/dotfiles/docs/specs/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda030a9effe3rmznNc03BV4g1",
+  "messageID": "msg_125fcf5b0001cHCFIBWFNAq1IG",
+  "callID": "toolu_bdrk_01VAghmzqurc3VsiPEe36BDA",
+  "metadata": {
+    "root": "."
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

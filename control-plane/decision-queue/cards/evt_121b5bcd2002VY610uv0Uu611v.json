@@ -1,0 +1,24 @@
+{
+  "id": "evt_121b5bcd2002VY610uv0Uu611v",
+  "created": "2026-10-09T17:28:40.915Z",
+  "updated": "2026-10-09T17:28:40.915Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git rev-parse HEAD git rev-parse main echo 'no-main-ref' echo '---COMMITS-BEYOND-BASE---' git log --oneline --all --not $(git merge-base HEAD main 2>/dev/null || echo HEAD~1) --branches 2>/dev/null git merge-base HEAD main 2>/dev/null echo HEAD~1 head -20 echo '(end)'",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede618235ffePEjGgfqNisGnUV",
+  "messageID": "msg_121b3c23a001kYmuwBLqe6dUOj",
+  "callID": "6ff84c1a-8df7-4afd-8b74-8806f8c6fd85",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": "git rev-parse *"
+  },
+  "effect": "ask",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-204049-shell",
+  "created": "2026-10-09T17:40:49.748Z",
+  "updated": "2026-10-09T17:40:49.748Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"merge-base=$(git merge-base HEAD origin/main)\" git merge-base HEAD origin/main echo \"head=$(git rev-parse --short HEAD) origin=$(git rev-parse --short origin/main)\" git rev-parse --short HEAD git rev-parse --short origin/main git log --oneline --graph --decorate --boundary --max-count=12 HEAD...origin/main echo '--- changed-path history on remote since base ---' git log --oneline HEAD..origin/main -- opencode.json 02-Methods/git-worktree-isolation.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_121c097e3001wr4AGqYKrncJM4",
+  "callID": "call_jrazMsHlrIzSx49384QaKOxm",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

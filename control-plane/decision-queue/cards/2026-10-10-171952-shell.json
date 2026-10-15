@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-171952-shell",
+  "created": "2026-10-10T14:19:52.033Z",
+  "updated": "2026-10-10T14:19:52.033Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "sed -n '8,18p' /tmp/opencode/prod.diff echo \"---\" sed -n '340,346p' /tmp/opencode/prod.diff",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9d412b4ffeCygxEFz33JeRAH",
+  "messageID": "msg_1262efc9b001hFp6icWjFu69X8",
+  "callID": "e66ba3ff-70ad-4467-b028-9f446d3e0299",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

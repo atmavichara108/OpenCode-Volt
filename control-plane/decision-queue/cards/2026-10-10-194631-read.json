@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-194631-read",
+  "created": "2026-10-10T16:46:31.176Z",
+  "updated": "2026-10-10T16:46:31.176Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "/home/rudra/Projects/SSA/control/tools/top-sync-check",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed94c7c0cffdKO1SP7guVk9s2q",
+  "messageID": "msg_126b41ca4001ZpRInylV0eqPJm",
+  "callID": "0519bf16-7b9a-41a2-8702-4b354e06d9fb",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-215103-shell",
+  "created": "2026-10-08T18:51:03.691Z",
+  "updated": "2026-10-08T18:51:03.691Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git worktree add .fm2wt -b task/fm2-1008 origin/main tail -1 mkdir -p .fm2wt/tools/md-table-check cp tools/md-table-check/check-fm.py .fm2wt/tools/md-table-check/ git add tools/md-table-check/check-fm.py git commit -q -m \"валидатор дешёвых YAML-шапок check-fm (класс дефекта, который Obsidian краснит)\" git push -q origin task/fm2-1008:main git branch -f main origin/main git worktree remove .fm2wt --force echo \"main=$(git rev-parse --short main)\" git rev-parse --short main",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cda7c77001Z2deba10b1XfBt",
+  "callID": "call_cb5bc902b0d74132844369cc",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

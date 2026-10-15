@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-204242-shell",
+  "created": "2026-10-09T17:42:42.543Z",
+  "updated": "2026-10-09T17:42:42.543Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git commit -m \"fix: permission preflight for worktrees\" git status --short git rev-parse HEAD git diff HEAD^ HEAD --binary sha256sum",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede3e31edffeJFAcYzZu5Vpy8w",
+  "messageID": "msg_121c2840a001yBI590nXt9Pa1f",
+  "callID": "call_ffk0IPNPvsc83RSJQ846TuEE",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

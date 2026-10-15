@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-094102-shell",
+  "created": "2026-10-09T06:41:02.144Z",
+  "updated": "2026-10-09T06:41:02.144Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "grep -F \"$id\" /tmp/opencode/nd-theirs.jsonl >> /tmp/opencode/nd-ours.jsonl cp /tmp/opencode/nd-ours.jsonl 04-Memory/idea-graph/nodes.jsonl python3 - <<'PY'\nimport json,sys\nfor f in (\"04-Memory/idea-graph/edges.jsonl\",\"04-Memory/idea-graph/nodes.jsonl\"):\n    bad=0\n    with open Boc(f) as fh:\n        for i,l in enumerate(fh,1):\n            l=l.strip()\n            if not l: continue\n            try: json.loads(l)\n            except Exception as e:\n                bad+=1; print(\"BAD\",f,i,e)\n    print(f,\"JSONL OK\" if not bad else f\"{bad} bad lines\")\nPY",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee0a97b4fffeX15Yix6yTUvFr2",
+  "messageID": "msg_11f64864e001QN6K7g5s0Kp34H",
+  "callID": "call_a47f6936fa7e440cbeea27cb",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

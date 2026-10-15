@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-204212-shell",
+  "created": "2026-10-09T17:42:12.913Z",
+  "updated": "2026-10-09T17:42:12.913Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C .meta-worktrees/permission-worktree-20261009 status --short git -C .meta-worktrees/permission-worktree-20261009 diff --cached --stat git -C .meta-worktrees/permission-worktree-20261009 diff --cached --name-only git -C .meta-worktrees/permission-worktree-20261009 log --oneline -5 git rev-parse origin/main",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede3e31edffeJFAcYzZu5Vpy8w",
+  "messageID": "msg_121c20f22001XtlXi5009U72bb",
+  "callID": "call_69i0P7OFt2rDb5Ma0OO3GbcU",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

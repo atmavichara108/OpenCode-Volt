@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-220131-shell",
+  "created": "2026-10-08T19:01:31.585Z",
+  "updated": "2026-10-08T19:01:31.585Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls -la /home/rudra/Projects/OpenCode-Vault/98-Temporary/ssa-bootstrap/ wc -l -c /home/rudra/Projects/OpenCode-Vault/98-Temporary/ssa-bootstrap/*.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee322f261ffeHhsrMLutMZ76V6",
+  "messageID": "msg_11ce4346e001BG38qnxgxiSBLN",
+  "callID": "call_68a6bf8b505b4a658e119860",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

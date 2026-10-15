@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-10-001604-websearch",
+  "created": "2026-10-10T21:16:04.338Z",
+  "updated": "2026-10-10T21:16:04.338Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "websearch",
+  "pattern": "second-order cybernetics von Foerster observer autonomy conversation",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127ac14ab001x8VzKwdWCvQI94",
+  "callID": "call_02_xlgfzf18dzi2jjsqszqpwpgs",
+  "metadata": {
+    "query": "second-order cybernetics von Foerster observer autonomy conversation"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

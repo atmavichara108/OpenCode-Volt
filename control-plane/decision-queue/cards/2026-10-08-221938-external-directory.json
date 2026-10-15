@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-221938-external-directory",
+  "created": "2026-10-08T19:19:38.498Z",
+  "updated": "2026-10-08T19:19:38.498Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "external_directory",
+  "pattern": "/home/rudra/dotfiles/tools/model-watch/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee30e41daffezCgBczKdPQJlr8",
+  "messageID": "msg_11cf4ad23001jKdcVpGpogRR1p",
+  "callID": "call_dcc73bf0b4c746c483ce60ff",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

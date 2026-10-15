@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-165600-shell",
+  "created": "2026-10-10T13:56:00.173Z",
+  "updated": "2026-10-10T13:56:00.173Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "printf '\\n--- %s (HEAD) ---\\n' \"$f\" git show \"HEAD:$f\" sed -n '1,24p' grep -n -A8 -B2 'external_directory\\|^mode:\\|^description:' printf '\\n=== worktree git metadata ===\\n' git -C /home/rudra/Projects/OpenCode-Vault-tasks/ssa-bootstrap-20261010 rev-parse --show-toplevel --git-dir --git-common-dir",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_12618edd300125jmHokbXs21KP",
+  "callID": "call_s0ua9nilROAK5cW0DYXxZ2MD",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

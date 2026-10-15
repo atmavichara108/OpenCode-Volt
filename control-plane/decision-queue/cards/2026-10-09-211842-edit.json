@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-211842-edit",
+  "created": "2026-10-09T18:18:42.158Z",
+  "updated": "2026-10-09T18:18:42.158Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "01-Reference/provider-cards/justwoker.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121e369f50013f6nhKJdmXeTt4",
+  "callID": "call_4557c8cc8d0b442783b01667",
+  "metadata": {
+    "files": [
+      {
+        "file": "01-Reference/provider-cards/justwoker.md",
+        "patch": "Index: 01-Reference/provider-cards/justwoker.md\n===================================================================\n--- 01-Reference/provider-cards/justwoker.md\n+++ 01-Reference/provider-cards/justwoker.md\n@@ -23,9 +23,9 @@\n | `account_kind` | `user/promotional referral` |\n | `initial_balance` | `$300+` (displayed в dashboard), kind `referral/promotional` |\n | `current_balance` | `$300+` (последнее наблюдение 2026-10-07, пользовательский отчёт) |\n | `models` | 1 модель: `claude-opus-4-8` |\n-| `proxy` | не требуется для anthropic-пути |\n+| `proxy` | обязателен для больших payload: `SHIM_PROXY=http://127.0.0.1:10809` (прямое соединение виснет на больших upload'ах) |\n | `expiry` | неизвестен `[проверить]` |\n | `risks` | **прямое соединение с CF виснет на больших upload'ах** (MTU-blackhole: 796KB → http=000 >45с напрямую, через прокси — 200 за ~26с; матрица 2026-10-09) — шим с curl-транспортом через прокси обязателен для больших контекстов. stream:true у апстрима периодически висит без байтов — шим фолбэчит на non-stream. OpenAI-путь закрыт CF |\n | `next_action` | шим (v4, curl-транспорт + SHIM_PROXY) — рабочий мост; перевод провайдера каналом New API ([[docs/specs/newapi-gateway-layer]]) — при подъёме слоя снять шим |\n | `config_targets` | TUI + M Code через `@ai-sdk/anthropic`; в конфиге — шим-baseURL |\n",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

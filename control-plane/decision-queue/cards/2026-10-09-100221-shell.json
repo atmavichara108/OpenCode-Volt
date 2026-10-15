@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-100221-shell",
+  "created": "2026-10-09T07:02:21.842Z",
+  "updated": "2026-10-09T07:02:21.842Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "echo \"=== mojibake scan ===\" grep -nP '[\\x{4e00}-\\x{9fff}\\x{3040}-\\x{30ff}\\x{ac00}-\\x{d7af}\\x{0e00}-\\x{0e7f}\\x{fffd}]' opencode-global/.config/opencode/shim/justwoker-shim.ts echo \"CLEAN: no CJK/replacement chars\" echo \"=== 'upper' scan ===\" grep -n 'upper' opencode-global/.config/opencode/shim/justwoker-shim.ts echo \"CLEAN: no 'upper'\" echo \"=== build check ===\" bun build --target=bun opencode-global/.config/opencode/shim/justwoker-shim.ts --outfile /dev/null tail -5",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_11f78041b001WgZ139gqjH2MSE",
+  "callID": "call_dc744624d64d44a49128e3e6",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

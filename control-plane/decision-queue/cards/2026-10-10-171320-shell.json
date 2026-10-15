@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-171320-shell",
+  "created": "2026-10-10T14:13:20.472Z",
+  "updated": "2026-10-10T14:13:20.472Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls /home/rudra/dotfiles/docs/specs/ 2>&1 head -30 echo --- fd -HI -e md 'harness' /home/rudra/Projects /home/rudra/dotfiles 2>&1 head -20",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9d77707ffecevgx2hSjI94QE",
+  "messageID": "msg_126292a7f001mSr2HqNfCsE1MG",
+  "callID": "92edeb1b-4161-47c0-a2ee-8304bb796fda",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

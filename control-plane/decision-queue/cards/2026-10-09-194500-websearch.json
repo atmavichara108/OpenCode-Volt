@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-09-194500-websearch",
+  "created": "2026-10-09T16:45:00.568Z",
+  "updated": "2026-10-09T16:45:00.568Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "websearch",
+  "pattern": "\"principle of cartography\" \"principle of decalcomania\" \"asignifying rupture\" \"A Thousand Plateaus\" 1987 page 13 page 15 numbered principles rhizome",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede747528ffeHlisOgYlOGW7Oi",
+  "messageID": "msg_1218d43d8001oO2AghJFkAYPVr",
+  "callID": "toolu_f513121093614e0a8d015912",
+  "metadata": {
+    "query": "\"principle of cartography\" \"principle of decalcomania\" \"asignifying rupture\" \"A Thousand Plateaus\" 1987 page 13 page 15 numbered principles rhizome"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

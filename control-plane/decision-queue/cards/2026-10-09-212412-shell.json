@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-212412-shell",
+  "created": "2026-10-09T18:24:12.259Z",
+  "updated": "2026-10-09T18:24:12.259Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git checkout -b task/justwoker-v4-memory-20261009 tail -1 python3 tools/peers/peer_lease.py run -- git add 04-Memory/active-context.md 04-Memory/facts.md 04-Memory/session-log/2026-10-09.md 01-Reference/provider-cards/justwoker.md tail -2",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121e86b2a001vR8DhlreJsfws9",
+  "callID": "call_87c732ab69b0497dbd64ab8a",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

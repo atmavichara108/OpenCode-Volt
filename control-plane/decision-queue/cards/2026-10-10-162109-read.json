@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-162109-read",
+  "created": "2026-10-10T13:21:09.543Z",
+  "updated": "2026-10-10T13:21:09.543Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "/home/rudra/dotfiles/docs/specs/linaliapi-provider-canon.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda0760a7ffeAJSEIXssSh77Bd",
+  "messageID": "msg_125f94eee001HqX6wzvpr2tYop",
+  "callID": "toolu_bdrk_01CAsq95ehWiv3VAA6nyusoe",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

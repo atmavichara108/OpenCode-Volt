@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164924-shell",
+  "created": "2026-10-10T13:49:24.525Z",
+  "updated": "2026-10-10T13:49:24.525Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== find shim everywhere (dotfiles + ~/.config/opencode) ===\" rg -rl --hidden -g '!**/.git/**' \"SHIM_PROXY|justwoker|switchModel|headersTimeout|SHIM\" /home/rudra/dotfiles /home/rudra/.config/opencode 2>/dev/null head -20 echo \"=== fd shim scripts ===\" fd -t f -a -H 'shim' /home/rudra/dotfiles /home/rudra/.config/opencode 2>/dev/null head -20 echo \"=== provider config for justwoker ===\" rg -n \"justwoker\" /home/rudra/dotfiles/opencode.json /home/rudra/dotfiles/opencode-global/.config/opencode/opencode.jsonc 2>/dev/null head",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_1261303bd0015G11r7lqkgduOz",
+  "callID": "toolu_bdrk_015TMq9nqDgwNJmXoySfYPi5",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-205315-shell",
+  "created": "2026-10-10T17:53:15.607Z",
+  "updated": "2026-10-10T17:53:15.607Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git log --oneline -1 00e2910 git log --all --oneline rg -i '00e2910|d6446f5|8f6e8c7' head -5",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed911bc43ffe0b653M39oAMZtp",
+  "messageID": "msg_126f15881001thRbFIa1drfAXV",
+  "callID": "call_459a3eeac8124df3998a9f64",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

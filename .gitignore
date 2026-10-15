@@ -51,3 +51,5 @@ tools/idea-graph/generated/
 
 # Локальный семантический индекс L9 (runtime, не коммитить)
 .cache/
+# живые worktrees того же репо — embedded gitlinks, НЕ добавлять (не удалять)
+.meta-worktrees/

@@ -1,0 +1,29 @@
+{
+  "id": "2026-10-09-193752-grep",
+  "created": "2026-10-09T16:37:52.643Z",
+  "updated": "2026-10-09T16:37:52.643Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "grep",
+  "pattern": "external_directory|\"meta\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_12186efb10017hDmpg74XDAX1A",
+  "callID": "call_Z9FAO00k74fmaSvz7Qo8K3GH",
+  "metadata": {
+    "root": ".",
+    "path": "/home/rudra/Projects/OpenCode-Vault",
+    "include": "*.jsonc",
+    "limit": 60
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

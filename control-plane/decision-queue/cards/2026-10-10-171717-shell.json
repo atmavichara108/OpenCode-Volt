@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-171717-shell",
+  "created": "2026-10-10T14:17:17.026Z",
+  "updated": "2026-10-10T14:17:17.026Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== полный статус ===\" git -C \"$R\" status --short echo \"=== статус именно спека ===\" git -C \"$R\" status --short -- docs/specs/seo-outreach-mvp-v0.1.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_1262c5851001Tx4igOSK7O5MM5",
+  "callID": "toolu_bdrk_01WfcvUckqKVxTkKi3YmPcyn",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

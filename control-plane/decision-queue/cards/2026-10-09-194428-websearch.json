@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-09-194428-websearch",
+  "created": "2026-10-09T16:44:28.913Z",
+  "updated": "2026-10-09T16:44:28.913Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "websearch",
+  "pattern": "Albert de Bary 1879 \"Die Erscheinung der Symbiose\" term symbiosis definition co-occupation",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede74752effez1rLupWWvC1elB",
+  "messageID": "msg_1218d2147001Oj6CzXvfrgu8Zw",
+  "callID": "toolu_3eb13643f84c461f9dec33fa",
+  "metadata": {
+    "query": "Albert de Bary 1879 \"Die Erscheinung der Symbiose\" term symbiosis definition co-occupation"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

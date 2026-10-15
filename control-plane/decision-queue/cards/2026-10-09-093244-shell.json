@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-093244-shell",
+  "created": "2026-10-09T06:32:44.306Z",
+  "updated": "2026-10-09T06:32:44.306Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "printf '\\n' tail -c 60 opencode-global/.config/opencode/AGENTS.md cat -A tail -2 cut -c1-100 git diff --stat -- opencode-global/.config/opencode/AGENTS.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11f5cbae2001CUsj4tT5zkW88D",
+  "callID": "call_8ce91daffc1948858a26ab80",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

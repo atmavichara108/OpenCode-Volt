@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-163838-shell",
+  "created": "2026-10-10T13:38:38.683Z",
+  "updated": "2026-10-10T13:38:38.683Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git branch -d task/verifier-unrestricted task/skill-id-fix 2>&1 tail -4 echo \"=== new session branch ===\" git switch -c task/next-$(date +%Y%m%d-%H%M) 2>&1 date +%Y%m%d-%H%M tail -2 echo \"=== pop foreign stash@{0} ===\" git stash pop 2>&1 tail -20 echo \"=== final status ===\" git status --short --branch",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_12609461a001BMmntCZFq7k7Zx",
+  "callID": "toolu_bdrk_01GUor7WtWyoA3pCE7kMnYYY",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

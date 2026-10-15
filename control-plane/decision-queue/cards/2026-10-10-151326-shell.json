@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-151326-shell",
+  "created": "2026-10-10T12:13:26.588Z",
+  "updated": "2026-10-10T12:13:26.588Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "date +%s%3N opencode session list -n 100 --format json python3 -c 'import json,sys; data=json.load(sys.stdin); print(\"now_ms\",sys.argv[1]); [print(x.get(\"id\"),x.get(\"title\"),x.get(\"updated\"),x.get(\"directory\")) for x in data if x.get(\"id\")==\"ses_eda56e1d3ffeyC6AIk1mwgxw1L\"]' \"$now\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_125bb4e0d001Cc4WPoz40crx2D",
+  "callID": "call_7YbUTyhF9U6gSDzz5XbCAlvF",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

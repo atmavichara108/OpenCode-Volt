@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-094601-shell",
+  "created": "2026-10-09T06:46:01.753Z",
+  "updated": "2026-10-09T06:46:01.753Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git stash push -q -m \"dupe-agents-1009\" opencode-global/.config/opencode/AGENTS.md git merge --ff-only origin/main tail -1 echo \"dotfiles main=$(git rev-parse --short main)\" git rev-parse --short main git stash drop -q git status --short head -3 tail -2 opencode-global/.config/opencode/AGENTS.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11f68ca37001sTJD9I1pIIagdn",
+  "callID": "call_d3c576fc3314475fa81de500",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

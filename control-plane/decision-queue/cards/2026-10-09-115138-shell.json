@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-115138-shell",
+  "created": "2026-10-09T08:51:38.600Z",
+  "updated": "2026-10-09T08:51:38.600Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "jq -r '.justwoker.key' ~/.local/share/opencode/auth.json echo \"=== малый запрос через шим (реальный Anthropic-путь) ===\" curl -sN -o /tmp/opencode/jw/live-small.txt -w \"http=%{http_code} t=%{time_total}s\\n\" --max-time 120 -X POST http://127.0.0.1:8787/v1/messages -H \"x-api-key: $KEY\" -H \"anthropic-version: 2023-06-01\" -H \"content-type: application/json\" -d '{\"model\":\"claude-opus-4-8\",\"max_tokens\":32,\"stream\":true,\"messages\":[{\"role\":\"user\",\"content\":\"скажи: шим жив\"}]}' echo \"--- ответ ---\" head -c 350 /tmp/opencode/jw/live-small.txt echo echo \"=== journal с 10:03 ===\" journalctl --user -u justwoker-shim --since \"10:03\" --no-pager 2>/dev/null tail -8",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_11fdbac92001QNX3wpd3M3nnJB",
+  "callID": "call_3243413577e54389882ab765",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «curl»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

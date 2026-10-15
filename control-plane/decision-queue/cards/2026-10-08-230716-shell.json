@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-230716-shell",
+  "created": "2026-10-08T20:07:16.590Z",
+  "updated": "2026-10-08T20:07:16.590Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git show main:04-Memory/idea-graph/nodes.jsonl grep -o '\"id\": \"stream-intent-0[45][0-9]\"' sort -u echo \"=== TASKS main ===\" git show main:TASKS.md grep -n \"T-16[6-9]\\|T-17[0-9]\" cut -c1-200",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d2049ff001E3bggIrbTkeKvH",
+  "callID": "call_f59d491653774adfbdfb0efb",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

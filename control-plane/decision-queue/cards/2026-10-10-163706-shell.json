@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-163706-shell",
+  "created": "2026-10-10T13:37:06.133Z",
+  "updated": "2026-10-10T13:37:06.133Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git status --short --branch echo \"=== branches ===\" git branch -vv sed 's/^/  /' echo \"=== stash@{0} ===\" git stash list head -3 echo \"=== main vs branches ===\" git log --oneline -1 main 2>/dev/null git log --oneline -1 task/verifier-unrestricted git log --oneline -1 task/skill-id-fix",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_12607ee46001PAnAcqAx8r4opg",
+  "callID": "toolu_bdrk_017JXyJyhZJaqteMzy5ZVUUV",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

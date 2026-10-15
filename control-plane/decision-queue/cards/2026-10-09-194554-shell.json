@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-194554-shell",
+  "created": "2026-10-09T16:45:54.959Z",
+  "updated": "2026-10-09T16:45:54.959Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C /home/rudra/Projects/OpenCode-Vault/.meta-worktrees/permission-worktree-20261009 merge-base HEAD task/meta-permission-worktree-20261009 2>/dev/null echo \"---WORKTREE-LIST---\" git -C /home/rudra/Projects/OpenCode-Vault worktree list",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede736a38ffeggYKM6f3pPV58k",
+  "messageID": "msg_1218c95ec001HwAQUfSihpcwV7",
+  "callID": "21b2f669-3793-4356-bb1e-6974d89a3bd4",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-193722-shell",
+  "created": "2026-10-10T16:37:22.838Z",
+  "updated": "2026-10-10T16:37:22.838Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== decisions.md ===\" nl -ba docs/decisions.md echo \"=== architecture.md (head) ===\" nl -ba docs/architecture.md head -60",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed953a081ffeUbaKFfQXYrK26X",
+  "messageID": "msg_126ad0d03001AZ9BXwfXx4idkr",
+  "callID": "call_00_blnbggpauhxrt68mgfncsr5c",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

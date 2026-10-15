@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-173748-shell",
+  "created": "2026-10-10T14:37:48.305Z",
+  "updated": "2026-10-10T14:37:48.305Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"== ls-files again ==\" git ls-files -v docs/specs/bugfix-failure-rule.md docs/handoffs/ echo \"== status all ==\" git status --porcelain -uall -- docs/specs docs/handoffs echo \"== log spec ==\" git log --oneline -2 -- docs/specs/bugfix-failure-rule.md echo \"== log handoff ==\" git log --oneline -2 -- docs/handoffs/2026-10-10-external-directory-vault-handoff.md echo \"== grep gitignore ==\" rg -n \"spec|handoff|docs\" .gitignore .git/info/exclude head",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9cd0bffffeyyWa51Kq2VFBz6",
+  "messageID": "msg_1263de77d001M3HhQvTv7VZAPU",
+  "callID": "call_4bb9278e970446d5bc6ce470",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

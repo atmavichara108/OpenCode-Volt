@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-165154-external-directory",
+  "created": "2026-10-10T13:51:54.139Z",
+  "updated": "2026-10-10T13:51:54.139Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "external_directory",
+  "pattern": "/home/rudra/Projects/SSA/control/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9ec7dcdffe1a2jNEQJ0PFTt4",
+  "messageID": "msg_126152b12001CcVQI5EbFu42hW",
+  "callID": "call_c6067af4b8f04a668437380f",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

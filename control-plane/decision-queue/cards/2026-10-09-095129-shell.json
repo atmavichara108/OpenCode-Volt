@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-095129-shell",
+  "created": "2026-10-09T06:51:29.738Z",
+  "updated": "2026-10-09T06:51:29.738Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C /home/rudra/dotfiles status --short echo ---BRANCH--- git -C /home/rudra/dotfiles branch --show-current echo ---LOG3--- git -C /home/rudra/dotfiles log --oneline -5 echo ---STOW-LINK--- ls -l ~/.config/opencode/plugins/ 2>&1 head -30 echo ---GLOBAL-PLUGINS--- ls -l /home/rudra/dotfiles/opencode-global/.config/opencode/plugins/ 2>&1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee091abbbffevJcwutfbPFdoSk",
+  "messageID": "msg_11f6e5488001rYdOLBbZ1IzJZO",
+  "callID": "call_01a11f6e5d0374b3856024ceafa62566",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

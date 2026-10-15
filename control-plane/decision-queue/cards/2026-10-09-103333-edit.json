@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-103333-edit",
+  "created": "2026-10-09T07:33:33.133Z",
+  "updated": "2026-10-09T07:33:33.133Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": ".inv/gen_registry.py",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11f9494f8001RaXarKXCHSbYmc",
+  "callID": "call_a323b6c2978847a88998a8fa",
+  "metadata": {
+    "files": [
+      {
+        "file": ".inv/gen_registry.py",
+        "patch": "Index: .inv/gen_registry.py\n===================================================================\n--- .inv/gen_registry.py\n+++ .inv/gen_registry.py\n@@ -12,9 +12,9 @@\n         rows.append(json.loads(line))\n     except Exception:\n         pass\n \n-bi = defaultdict(listhex := None if False else defaultdict(list))\n+bi = defaultdict(list)\n for r in rows:\n     g = r.get(\"graph\")\n     if g in (\"stream\", \"world\", \"quest\", \"proto\", \"tech\", \"mech\", \"organ\", \"event\"):\n         bi[g].append(r)\n",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-10-211200-edit",
+  "created": "2026-10-10T18:12:00.641Z",
+  "updated": "2026-10-10T18:12:00.641Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": ".opencode/memory/session-reports/2026-10-10-bugfix-workshop.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_127033fe8001YB3Dzv7zhKthlU",
+  "callID": "call_c045582ce29044d69a4b8e4f",
+  "metadata": {
+    "files": [
+      {
+        "file": ".opencode/memory/session-reports/2026-10-10-bugfix-workshop.md",
+        "patch": "Index: .opencode/memory/session-reports/2026-10-10-bugfix-workshop.md\n===================================================================\n--- .opencode/memory/session-reports/2026-10-10-bugfix-workshop.md\n+++ .opencode/memory/session-reports/2026-10-10-bugfix-workshop.md\n@@ -135,28 +135,30 @@\n   worktree `git add`/`git commit` прошли; push из workspace-root с refspec\n   прошёл. Shell-запись в `/tmp/opencode` также проходит.\n - **Repro:** BAGFIX-LETTER, 2026-10-10, repro A/B; сообщение об ошибке дано\n   дословно в поручении.\n-- **Root cause (ведущая, runtime-привязка `[проверить]`):** конфиг активного\n-  корня Vault содержит `external_directory: {\"*\":\"deny\", ...allowlist...}`.\n-  В allowlist есть основной `OpenCode-Vault/**`, но нет sibling\n-  `OpenCode-Vault-tasks/**` и `/tmp/opencode/**`. Конфиг task-worktree включает\n-  `OpenCode-Vault-tasks/**`, но сессия была открыта из основного Vault —\n-  подтверждение, какой project config применён при обоих вызовах, требует live\n-  repro. `git rev-parse --git-common-dir` worktree разрешается под основным\n-  Vault (`.git/worktrees/...`), который allowlisted; гипотеза «common `.git`\n-  вне allow-scope» этим не подтверждается. Ранее записанный Vault-метод также\n-  отмечает возможный отказ `write` на внешних temp-путях.\n-- **Fix:** для активного сбоя нужен change в Vault-owned `opencode.json`:\n-  согласовать allowlist sibling worktrees и требуемого temp-каталога при\n-  сохранении deny секретов. В dotfiles не менял permission-конфиги вслепую:\n-  глобальный dotfiles-конфиг уже `allow` + secret-deny. Изменение Vault вне\n-  разрешённого scope dotfiles; создан handoff владельцу Vault.\n+- **Root cause (уточнено после apply):** не «нет правила», а **отставший\n+  checkout**. Нужные allow-строки уже есть в `origin/main` Vault (коммит\n+  `cac2a00` «permission preflight for worktrees»: `OpenCode-Vault-tasks/**`,\n+  `dotfiles-tasks/**`), но основной рабочий checkout Vault стоял на отошедшей\n+  от main task-ветке `task/pipboy-rebuild-20261009`, чья версия `opencode.json`\n+  эти строки не содержит. Сессия librarian открыта из основного корня →\n+  применялась отставшая версия файла. Отказ `external_directory` — прямое\n+  следствие. Гипотеза «common `.git` вне allow-scope» опровергнута:\n+  `git-common-dir` лежит в allowlisted основном Vault.\n+- **Fix (применён 2026-10-10, мандат Рудры):** `git checkout origin/main --\n+  opencode.json` в чужом checkout Vault; JSON валиден, обе allow-строки на\n+  месте, секретные `deny` сохранены. Оставлено uncommitted в чужой task-ветке —\n+  коммит в неё бессмыслен (строки уже в main), переключение/merge чужой dirty\n+  ветки не моя зона.\n - **Evidence:** прочитаны оба Vault `opencode.json`, librarian frontmatter,\n-  Vault `02-Methods/incident-fix.md`; установлен фактический git common-dir.\n-  Live permission-repro не запускался из этой сессии.\n-- **Status:** root cause вероятна, подтверждение runtime `[проверить]`;\n-  исправление ждёт Vault-owned change. Не объявлять fixed.\n+  Vault `02-Methods/incident-fix.md`; установлен git common-dir; сверка\n+  HEAD↔origin/main показала регрессию файла именно в отошедшей ветке.\n+  Live permission-repro после apply не запускался.\n+- **Status:** fixed (apply выполнен, файл рабочего дерева == origin/main).\n+  Residual `[проверить]`: (1) live-прогон `git push`/`write` из корня Vault;\n+  (2) при будущем merge `pipboy-rebuild` в main — conflict-check по\n+  `opencode.json`, чтобы не откатить `cac2a00`.\n \n ---\n \n ## INC-6 — повтор сигнатуры skill tool `id: Missing key` (корреляция INC-1)\n",
+        "status": "modified",
+        "additions": 21,
+        "deletions": 19
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

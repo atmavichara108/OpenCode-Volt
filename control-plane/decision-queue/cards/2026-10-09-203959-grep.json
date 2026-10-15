@@ -1,0 +1,29 @@
+{
+  "id": "2026-10-09-203959-grep",
+  "created": "2026-10-09T17:39:59.287Z",
+  "updated": "2026-10-09T17:39:59.287Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "grep",
+  "pattern": "git commit|verify|reviewer|verifier|tool.execute.before|commit-guard",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_121bfd9bc001kW0b5JoJ4cWQsH",
+  "callID": "call_gi2db714MUrRhHoOrw1VXSJD",
+  "metadata": {
+    "root": ".",
+    "path": "/home/rudra/dotfiles/opencode-global/.config/opencode",
+    "include": "*.ts",
+    "limit": 100
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

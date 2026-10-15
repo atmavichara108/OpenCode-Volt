@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-111020-edit",
+  "created": "2026-10-09T08:10:20.840Z",
+  "updated": "2026-10-09T08:10:20.840Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_11faf31fa001s2JjIOnsysiiGB",
+  "callID": "call_0568bfa739794f3cbcb6b136",
+  "metadata": {
+    "files": [
+      {
+        "file": "/home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts",
+        "patch": "Index: /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n===================================================================\n--- /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n+++ /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n@@ -374,25 +374,32 @@\n     // ── OpenAI-фасад для бенчера: /v1/chat/completions → /v1 messages ──\n     if (url.pathname === \"/v1/chat/completions\" && req.method === \"POST\" && parsed) {\n       const anthBody = openaiToAnthropic(parsed);\n       const key = extractBearer(req) || req.headers.get(\"x-api-key\") || \"\";\n-      const res = await fetch(UPSTREAM_BASE + \"/messages\", {\n-        method: \"POST\",\n-        headers: {\n-          \"content-type\": \"application/json\",\n-          \"anthropic-version\": \"2023-06-01\",\n-          \"x-api-key\": key,\n-        },\n-        body: JSON.stringify(anthBody),\n-      });\n-      if (!res.ok) {\n-        console.log(`[shim] POST /v1/chat/completions -> ${res.status} (upstream error, facade)`);\n-        return new Response(\n-          JSON.stringify({ error: { message: `shim: upstream ${res.status}`, type: \"upstream_error\" } }),\n-          { status: res.status, headers: { \"content-type\": \"application/json\" } },\n+      const ac = new AbortController();\n+      const hardTimer = setTimeout(() => ac.abort(), UPSTREAM_TIMEOUT_MS);\n+      let up: RawUpstream;\n+      try {\n+        up = await openRaw(\n+          UPSTREAM_BASE + \"/messages\",\n+          \"POST\",\n+          { \"content-type\": \"application/json\", \"anthropic-version\": \"2023-06-01\", \"x-api-key\": key },\n+          JSON.stringify(anthBody),\n+          ac.signal,\n         );\n-      }\n-      const j = await res.json().catch(() => null);\n+        var facadeStatus = up.status;\n+        if (facadeStatus < 200 || facadeStatus >= 300) {\n+          clearTimeout(hardTimer);\n+          up.stream.destroy();\n+          console.log(`[shim] POST /v1/chat/completions -> ${facadeStatus} (upstream error, facade)`);\n+          return new Response(\n+            JSON.stringify({ error: { message: `shim: upstream ${facadeStatus}`, type: \"upstream_error\" } }),\n+            { status: facadeStatus || 502, headers: { \"content-type\": \"application/json\" } },\n+          );\n+        }\n+        const text = await readAll(up.stream);\n+        clearTimeout(hardTimer);\n+        const j = (() => { try { return JSON.parse(text); } catch { return null; } })();\n       if (!j) {\n         return new Response(\n           JSON.stringify({ error: { message: \"shim: upstream non-JSON (facade)\", type: \"api_error\" } }),\n           { status: 502, headers: { \"content-type\": \"application/json\" } },\n",
+        "status": "modified",
+        "additions": 23,
+        "deletions": 16
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

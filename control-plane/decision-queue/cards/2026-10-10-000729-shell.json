@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-000729-shell",
+  "created": "2026-10-10T21:07:29.306Z",
+  "updated": "2026-10-10T21:07:29.306Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== файл в каких-либо worktree Д ===\" echo \"ЕСТЬ: $w\" echo \"(только моё дерево, если пусто)\" echo echo \"=== главный worktree ===\" ls /home/rudra/Projects/OpenCode-Vault/06-Audits/2026-10-09-*.md echo echo \"=== ветки где файл есть ===\" git for-each-ref refs/heads --format='%(refname:short)' git cat-file -e \"$b:06-Audits/2026-10-09-agency-counteragency-brainstorm.md\" 2>/dev/null echo \"в ветке: $b\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127a3f8840011lrTte2Cps8Sw4",
+  "callID": "call_35928c7acb03426ca7442c80",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

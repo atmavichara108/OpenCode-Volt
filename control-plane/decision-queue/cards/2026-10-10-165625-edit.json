@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-10-165625-edit",
+  "created": "2026-10-10T13:56:25.230Z",
+  "updated": "2026-10-10T13:56:25.230Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/home/rudra/Projects/SSA/control/docs/acceptance/checklist.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9e675bcffesrjm1eblmJLl20",
+  "messageID": "msg_12619bd8f001ZGXtMSm9GPYNRu",
+  "callID": "call_01a12619c0837287a79da41958792103",
+  "metadata": {
+    "files": [
+      {
+        "file": "/home/rudra/Projects/SSA/control/docs/acceptance/checklist.md",
+        "patch": "Index: /home/rudra/Projects/SSA/control/docs/acceptance/checklist.md\n===================================================================\n--- /home/rudra/Projects/SSA/control/docs/acceptance/checklist.md\n+++ /home/rudra/Projects/SSA/control/docs/acceptance/checklist.md\n@@ -10,8 +10,11 @@\n - [ ] 3. Доки и границы репо корректны; код продукта не читается/не меняется\n       без явной ссылки (`docs/access-model.md`, красные линии в `top.md`).\n - [ ] 4. Дрейфа копий `top` нет — `tools/top-sync-check` зелёный\n       (копий пока ноль — только канон schema-version 1).\n+      Оговорка: ограничение записи `top` только внутри `control/` enforced\n+      текстом роли, permission-блок (`external_directory: allow`) этого не\n+      гарантирует — известный остаточный риск.\n \n ## 9.2. Verifier\n \n - Verifier строго read-only, без секретов/ПД; handoff — точные пути, DoD,\n",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 0
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "builder",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-160321-shell",
+  "created": "2026-10-10T13:03:21.203Z",
+  "updated": "2026-10-10T13:03:21.203Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git status --short --branch printf '\\n-- worktrees --\\n' git worktree list printf '\\n-- specs --\\n' find docs/specs -maxdepth 2 -type f -printf '%P\\n' sort head -100 printf '\\n-- remote --\\n' git branch -vv head -20",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_125e8af290019mrbtfSFG6ZjxT",
+  "callID": "call_RgkSFvjduh6OE8pMKKydiLDo",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

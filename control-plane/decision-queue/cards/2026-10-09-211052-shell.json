@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-211052-shell",
+  "created": "2026-10-09T18:10:52.933Z",
+  "updated": "2026-10-09T18:10:52.933Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls /tmp/opencode/jw/ echo \"---\" grep -n \"hang\\|state\" /tmp/opencode/jw/stub.mjs head -20 echo \"--- состояние ---\" cat /tmp/opencode/jw/stub-state.json 2>/dev/null",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121dc2271001oZDSVw0sodvzyM",
+  "callID": "call_701bc30d5c98455e905112a3",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

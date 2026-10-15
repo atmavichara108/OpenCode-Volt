@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-161107-shell",
+  "created": "2026-10-10T13:11:07.059Z",
+  "updated": "2026-10-10T13:11:07.059Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "opencode session export --sanitize ses_eda56e1d3ffeyC6AIk1mwgxw1L python3 -c 'import json,sys; d=json.load(sys.stdin); ms=d.get(\"messages\",[]); print(\"outcome\",d.get(\"info\",{}).get(\"outcome\")); print([(m.get(\"type\"),m.get(\"id\"),m.get(\"finish\"),[(p.get(\"type\"),p.get(\"state\"),p.get(\"tool\"),bool(p.get(\"error\"))) for p in m.get(\"content\",[]) if isinstance(p,dict)] if isinstance(m.get(\"content\"),list) else []) for m in ms[-15:] if isinstance(m,dict)])'",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_125f0241a001hZtZaSevqIlLTt",
+  "callID": "call_uszea1WCXyWMl6GuqQBMqSki",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

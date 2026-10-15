@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-130926-shell",
+  "created": "2026-10-09T10:09:26.144Z",
+  "updated": "2026-10-09T10:09:26.144Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls node_modules/@opencode head -3 which bun bun build plugins/decision-queue-hook.ts --outfile /tmp/opencode/t180-hook-check.js 2>&1 tail -3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_edfe1d5c6ffeLW6EAnZWSzVGI5",
+  "messageID": "msg_12023512a001LAiSvcoujGDEHo",
+  "callID": "shell:1",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

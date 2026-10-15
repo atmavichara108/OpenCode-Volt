@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-005343-shell",
+  "created": "2026-10-10T21:53:43.063Z",
+  "updated": "2026-10-10T21:53:43.063Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"===== словарь-образов.md (шапка) =====\" head -50 \"Канон/словарь-образов.md\" 2>/dev/null echo echo \"===== структура каталогов =====\" ls -d */ 2>/dev/null echo echo \"===== Картотека/README =====\" head -30 \"Картотека/README.md\" 2>/dev/null",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_127ce90fc001xsXI4v7kLKuepJ",
+  "callID": "call_d6eef808dee5494fb7fe4e3a",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

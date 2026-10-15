@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-170817-shell",
+  "created": "2026-10-10T14:08:17.397Z",
+  "updated": "2026-10-10T14:08:17.397Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "grep -n \"^#\\|^## \" /home/rudra/dotfiles/docs/specs/ssa-control-agent-harness-bootstrap.md head -40",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9dc5bb8ffeneLBY28vDdLi7O",
+  "messageID": "msg_126246a25001m6J4Av68Ns9TLF",
+  "callID": "edbd3a31-4f57-4f10-a63a-2df64ea5311d",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

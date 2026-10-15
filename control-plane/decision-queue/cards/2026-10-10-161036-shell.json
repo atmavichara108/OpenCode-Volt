@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-161036-shell",
+  "created": "2026-10-10T13:10:36.942Z",
+  "updated": "2026-10-10T13:10:36.942Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git add opencode-global/.config/opencode/plugins/fix-tool-schema.ts git commit -q -m \"fix(opencode): skill tool schema uses id (plateau Missing key)\" git log --oneline -1 echo --- git fetch -q origin main git switch -c task/verifier-unrestricted origin/main git status --short --branch",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_125ee4a30001M9Rfy7YddFDaoY",
+  "callID": "toolu_bdrk_0158gLEZa11JJ2tzHrgJh1Vo",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

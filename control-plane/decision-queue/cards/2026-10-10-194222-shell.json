@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-194222-shell",
+  "created": "2026-10-10T16:42:22.617Z",
+  "updated": "2026-10-10T16:42:22.617Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C /home/rudra/Projects/SSA/control branch -d task/top-wide-perms git -C /home/rudra/Projects/SSA/products/seo-outreach branch -d task/top-wide-perms git -C /home/rudra/Projects/SSA/control branch git -C /home/rudra/Projects/SSA/products/seo-outreach branch",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fa0279ffeALoBlPtaFyVci4",
+  "messageID": "msg_126b1a8ff001yZyTz5jaWCXsVk",
+  "callID": "call_01a126b1b120727b86a0a3d569f87a8e",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

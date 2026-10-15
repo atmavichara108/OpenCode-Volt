@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-214036-shell",
+  "created": "2026-10-09T18:40:36.279Z",
+  "updated": "2026-10-09T18:40:36.279Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== $f ===\" git show \":$f\" python3 -c \"import sys,yaml; txt=sys.stdin.read(); fm=txt.split('---')[1]; yaml.safe_load(fm); print('YAML VALID')\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede08f182ffezaSaP6jyT22AYu",
+  "messageID": "msg_121f789890017G6kCasjaBU6uN",
+  "callID": "call_01a121f7928d753fb36ef8fc54e015e8",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

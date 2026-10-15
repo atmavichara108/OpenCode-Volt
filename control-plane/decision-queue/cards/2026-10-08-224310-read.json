@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-224310-read",
+  "created": "2026-10-08T19:43:10.522Z",
+  "updated": "2026-10-08T19:43:10.522Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": ".pipe/tools/md-table-check/check.py",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d0a3ec1001Zncu6yHjKs7K8w",
+  "callID": "call_6e48924f99f64098b26f37cf",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-003305-shell",
+  "created": "2026-10-10T21:33:05.325Z",
+  "updated": "2026-10-10T21:33:05.325Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git add \"$F\" git commit -m \"research: единый индекс источников по контрагенту (свод двух cross-domain карт)\" tail -3 echo \"HEAD=$(git rev-parse --short HEAD)\" git rev-parse --short HEAD",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127bbc276001Ged8aTo07C8mnl",
+  "callID": "call_00_fkd4nxsi56lpcvbx7rmzbfpw",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

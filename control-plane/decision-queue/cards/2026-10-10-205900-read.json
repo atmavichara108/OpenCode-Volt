@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-205900-read",
+  "created": "2026-10-10T17:59:00.493Z",
+  "updated": "2026-10-10T17:59:00.493Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "docs/specs/bugfix-failure-rule.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9086ce3ffeBbeL6bF903uUYc",
+  "messageID": "msg_126f7b454001OktO2wsNUF2Zqf",
+  "callID": "7dd97738-3271-4d73-927f-ff3f66561894",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

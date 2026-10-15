@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-130442-read",
+  "created": "2026-10-09T10:04:42.325Z",
+  "updated": "2026-10-09T10:04:42.325Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "06-Audits/2026-10-06-team-letter-protocol-and-bugfix-research-draft.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_1201ea317001KhJvaw6Dj7wl9G",
+  "callID": "read:1",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

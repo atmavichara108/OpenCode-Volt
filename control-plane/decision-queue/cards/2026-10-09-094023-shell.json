@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-094023-shell",
+  "created": "2026-10-09T06:40:23.949Z",
+  "updated": "2026-10-09T06:40:23.949Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git show ':2:04-Memory/idea-graph/edges.jsonl' > /tmp/opencode/ed-ours.jsonl git show ':3:04-Memory/idea-graph/edges.jsonl' > /tmp/opencode/ed-theirs.jsonl echo \"ours=$(wc -l < /tmp/opencode/ed-ours.jsonl) theirs=$(wc -l < /tmp/opencode/ed-theirs.jsonl)\" wc -l < /tmp/opencode/ed-ours.jsonl wc -l < /tmp/opencode/ed-theirs.jsonl comm -23 <(grep -o '\"id\": *\"[^\"]*\"' /tmp/opencode/ed-theirs.jsonl | sed 's/ //g' | sort -u) <(grep -o '\"id\": *\"[^\"]*\"' /tmp/opencode/ed-ours.jsonl | sed 's/ //g' | sort -u) grep -o '\"id\": *\"[^\"]*\"' /tmp/opencode/ed-theirs.jsonl sed 's/ //g' sort -u grep -o '\"id\": *\"[^\"]*\"' /tmp/opencode/ed-ours.jsonl sed 's/ //g' sort -u",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee0a97b4fffeX15Yix6yTUvFr2",
+  "messageID": "msg_11f63e474001Iu5SHCQw1ggay7",
+  "callID": "call_a6187300b040458ea33d6a79",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

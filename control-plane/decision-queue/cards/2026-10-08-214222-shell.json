@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-214222-shell",
+  "created": "2026-10-08T18:42:22.828Z",
+  "updated": "2026-10-08T18:42:22.828Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== v1: первые 20 строк (cat -A, первые 60 симв) ===\" head -20 2026-08-03-ecosystem-upgrade-plan-v1.md cat -A cut -c1-72 echo echo \"=== bridge: первые 20 строк ===\" head -20 2026-09-30-mcode-opencode-bridge.md cat -A cut -c1-72",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cd2a7a8001rzokxjIhbohmpa",
+  "callID": "call_aa1dce3baaba46b394e7abd8",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

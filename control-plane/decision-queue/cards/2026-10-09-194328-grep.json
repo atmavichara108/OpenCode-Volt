@@ -1,0 +1,27 @@
+{
+  "id": "2026-10-09-194328-grep",
+  "created": "2026-10-09T16:43:28.013Z",
+  "updated": "2026-10-09T16:43:28.013Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "grep",
+  "pattern": "stream-intent-051|institute|overcoding-hpf|veldora-two-layers|stream-intent-047",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede747513ffeqCi7YfHFnKYxJq",
+  "messageID": "msg_1218c2723001AzoGSNuG8gHkyg",
+  "callID": "toolu_6215e7db6ef149ca80c51b7b",
+  "metadata": {
+    "root": ".",
+    "path": "/home/rudra/Projects/OpenCode-Vault/04-Memory/idea-graph/nodes.jsonl"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

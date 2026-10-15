@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-08-221909-edit",
+  "created": "2026-10-08T19:19:09.181Z",
+  "updated": "2026-10-08T19:19:09.181Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/home/rudra/dotfiles/tools/model-watch/gate-check.py",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee30e41daffezCgBczKdPQJlr8",
+  "messageID": "msg_11cf31c530013E0dH4EdVWnQnL",
+  "callID": "call_899aeca639554de4b4123208",
+  "metadata": {
+    "files": [
+      {
+        "file": "/home/rudra/dotfiles/tools/model-watch/gate-check.py",
+        "patch": "Index: /home/rudra/dotfiles/tools/model-watch/gate-check.py\n===================================================================\n--- /home/rudra/dotfiles/tools/model-watch/gate-check.py\n+++ /home/rudra/dotfiles/tools/model-watch/gate-check.py\n@@ -0,0 +1,42 @@\n+#!/usr/bin/env python3\n+\"\"\"Гейт свежести каталога моделей: exit 1 если снапшот отсутствует или старше N дней.\n+\n+Обход: MODEL_OK=1 python3 gate-check.py\n+Хук в волт подключается ОТДЕЛЬНЫМ шагом (этот скрипт — только проверка).\n+\"\"\"\n+import json\n+import os\n+import sys\n+import time\n+from pathlib import Path\n+\n+SNAP = Path(os.environ.get(\n+    \"MODEL_WATCH_SNAPSHOT\",\n+    Path.home() / \"Projects/OpenCode-Vault/control-plane/model-catalog.json\",\n+))\n+MAX_AGE_DAYS = int(os.environ.get(\"MODEL_WATCH_MAX_AGE_DAYS\", \"7\"))\n+\n+\n+def main() -> int:\n+    if os.environ.get(\"MODEL_OK\") == \"1\":\n+        print(\"gate: PASS (MODEL_OK=1 bypass)\")\n+        return 0\n+    if not SNAP.exists():\n+        print(f\"gate: FAIL — снапшот отсутствует: {SNAP}\")\n+        return 1\n+    try:\n+        gen = json.loads(SNAP.read_text()).get(\"generated_at\", \"\")\n+        ts = time.mktime(time.strptime(gen[:19], \"%Y-%m-%dT%H:%M:%S\"))\n+    except (ValueError, KeyError, json.JSONDecodeError):\n+        print(f\"gate: FAIL — не читается generated_at в {SNAP}\")\n+        return 1\n+    age_days = (time.time() - ts) / 86400\n+    if age_days > MAX_AGE_DAYS:\n+        print(f\"gate: FAIL — снапшот устарел: {age_days:.1f} дн > {MAX_AGE_DAYS} дн\")\n+        return 1\n+    print(f\"gate: PASS — снапшот свежий ({age_days:.1f} дн)\")\n+    return 0\n+\n+\n+if __name__ == \"__main__\":\n+    sys.exit(main())\n",
+        "status": "added",
+        "additions": 42,
+        "deletions": 0
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

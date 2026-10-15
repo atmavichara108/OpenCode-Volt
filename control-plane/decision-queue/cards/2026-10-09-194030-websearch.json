@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-09-194030-websearch",
+  "created": "2026-10-09T16:40:30.837Z",
+  "updated": "2026-10-09T16:40:30.837Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "websearch",
+  "pattern": "Epley Ways Wegner \"On seeing human\" 2007 Psychological Science anthropomorphism doi",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede7711abffevuXblgLjnHmsuT",
+  "messageID": "msg_121897603001wGGQfbMklvdn7n",
+  "callID": "chatcmpl-tool-90b1c17c7c5686a6",
+  "metadata": {
+    "query": "Epley Ways Wegner \"On seeing human\" 2007 Psychological Science anthropomorphism doi"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

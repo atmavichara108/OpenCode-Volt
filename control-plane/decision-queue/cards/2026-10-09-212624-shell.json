@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-212624-shell",
+  "created": "2026-10-09T18:26:24.182Z",
+  "updated": "2026-10-09T18:26:24.182Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git show \":$f\" python3 /home/rudra/dotfiles/tools/garbage-guard/guard.py check-text echo \"$f rc=$? out=$(head -c 200 /tmp/chk.out) err=$(head -c 100 /tmp/chk.err)\" head -c 200 /tmp/chk.out head -c 100 /tmp/chk.err",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121ea7b6200167xyB4u79yT6x0",
+  "callID": "call_b624d39816f34980bd538969",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

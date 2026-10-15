@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-212349-shell",
+  "created": "2026-10-09T18:23:49.241Z",
+  "updated": "2026-10-09T18:23:49.241Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "find . -name \"*lease*\" -not -path \"./.git/*\" head -5 grep -rn \"flock\" AGENTS.md head -3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121e81804001Il3t8uR2X3ZCrk",
+  "callID": "call_fd480a39e031429791b46c2a",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

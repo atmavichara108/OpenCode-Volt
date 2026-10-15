@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-204834-shell",
+  "created": "2026-10-09T17:48:34.909Z",
+  "updated": "2026-10-09T17:48:34.909Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git add -- opencode-global/.config/opencode/AGENTS.md opencode-global/.config/opencode/agent/meta.md printf '\\n-- staged inventory --\\n' git diff --cached --name-only printf '\\n-- status --\\n' git status --short --branch printf '\\n-- whitespace check --\\n' git diff --cached --check",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede3c52edffeqQpR7DlMbTAESC",
+  "messageID": "msg_121c7de1e001qIw0KJRv8K4W5k",
+  "callID": "call_vtxDr3UBCs3SbsinhU7ERLra",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

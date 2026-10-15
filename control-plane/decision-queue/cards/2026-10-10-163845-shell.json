@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-163845-shell",
+  "created": "2026-10-10T13:38:45.649Z",
+  "updated": "2026-10-10T13:38:45.649Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== stashes in dotfiles ===\" git -C /home/rudra/dotfiles stash list 2>/dev/null echo \"=== stash contents mentioning specs ===\" git -C /home/rudra/dotfiles stash list 2>/dev/null cut -d: -f1 echo \"-- $s --\" git -C /home/rudra/dotfiles stash show -p \"$s\" --include-untracked 2>/dev/null grep -i \"harness\\|seo-outreach-agent\\|ssa-control\" head echo \"=== docs/specs across worktrees ===\" echo \"-- $w --\" ls \"$w/docs/specs/\" 2>/dev/null grep -i \"harness\\|ssa\\|seo-outreach-agent\" echo \"=== reflog head ===\" git -C /home/rudra/dotfiles reflog -8 2>/dev/null echo \"=== whole fs quick ===\" find /tmp /home/rudra -maxdepth 6 -type f -iname '*harness-bootstrap.md' 2>/dev/null",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_126095853001Yk4SslLypUPI7P",
+  "callID": "toolu_bdrk_016NSxEE7umomka7HnKGipiK",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

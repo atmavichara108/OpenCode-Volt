@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-154040-shell",
+  "created": "2026-10-10T12:40:40.366Z",
+  "updated": "2026-10-10T12:40:40.366Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C /home/rudra/Projects/SSA/products/seo-outreach ls-files echo \"---UNTRACKED docs---\" find /home/rudra/Projects/SSA/products/seo-outreach/docs -type f",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda2c3a80ffedHxsEW5t3RiHnU",
+  "messageID": "msg_125d454dd0014SYOERh7IhUtST",
+  "callID": "call_8b4713k71s4njph98zezw2ga",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

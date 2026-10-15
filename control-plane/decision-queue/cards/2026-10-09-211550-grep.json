@@ -1,0 +1,29 @@
+{
+  "id": "2026-10-09-211550-grep",
+  "created": "2026-10-09T18:15:50.116Z",
+  "updated": "2026-10-09T18:15:50.116Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "grep",
+  "pattern": "\"reviewer\"\\s*:\\s*\\{|\"agents\"\\s*:|\"external_directory\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede282b06ffegFEjAXWgvbgKSO",
+  "messageID": "msg_121e0d29f001X9do1tLk9CZyZ5",
+  "callID": "call_kX3hvgpr20t0MVWzxqatEQzS",
+  "metadata": {
+    "root": ".",
+    "path": "/home/rudra/dotfiles-tasks/meta-gates-20261009",
+    "include": "*.jsonc",
+    "limit": 30
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

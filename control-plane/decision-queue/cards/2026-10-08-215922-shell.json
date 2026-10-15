@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-215922-shell",
+  "created": "2026-10-08T18:59:22.319Z",
+  "updated": "2026-10-08T18:59:22.319Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "curl -s --max-time 20 https://models.dev/api.json -o /tmp/opencode/models.dev.json python3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11ce1e124001er0Qxwqb3ReeH5",
+  "callID": "call_1801417d4a244fff8d4d6fe8",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «curl»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

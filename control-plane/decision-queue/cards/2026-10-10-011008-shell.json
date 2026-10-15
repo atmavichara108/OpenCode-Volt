@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-011008-shell",
+  "created": "2026-10-10T22:10:08.695Z",
+  "updated": "2026-10-10T22:10:08.695Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== диагностика мусора в active-context.md (хвост) ===\" tail -25 04-Memory/active-context.md python3 -c \"\nimport sys\nfor i,l in enumerate(sys.stdin,1):\n    bad=[c for c in l if ord(c)>0x2fff or (0x400>ord(c)>0x7f)]\n    # ищем явные артефакты: заменяющие символы, mojibake\n    flags=[c for c in l if c in '\\ufffd�' or 0x80<=ord(c)<0xa0]\n    if flags or '\\\\x' in l:\n        print('SUSPECT', i, repr(l[:120]))\nprint('scan done')\n\" echo \"=== пробую ревалидировать файл через garbage-guard ===\" find tools -iname '*garbage*' -o -iname '*decode*' 2>/dev/null head",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_127dda4a4001kfp02BZ3IMHvhq",
+  "callID": "call_de0c2e61a2934a13a64588bb",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

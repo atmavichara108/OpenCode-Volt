@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164605-read",
+  "created": "2026-10-10T13:46:05.140Z",
+  "updated": "2026-10-10T13:46:05.140Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "/tmp/dbg2.json",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9f0a108ffeyfZZYysnsEkvRP",
+  "messageID": "msg_1261048fb001O7tlpTWkAuVLyM",
+  "callID": "call_01a126104c8f7070afd45371006df23d",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "builder",
+  "model": null
+}

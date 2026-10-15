@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-210657-shell",
+  "created": "2026-10-10T18:06:57.546Z",
+  "updated": "2026-10-10T18:06:57.546Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== branch/status ===\" git -C $V status --short --branch head -20 echo \"=== head ===\" git -C $V log --oneline -3 echo \"=== remote sync ===\" git -C $V fetch -q origin main 2>&1 tail -2 git -C $V log --oneline -1 origin/main 2>/dev/null",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_126fed6f80012qtvFSILYkhgsx",
+  "callID": "call_348f8795024b4555b189d9d7",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-145114-shell",
+  "created": "2026-10-10T11:51:14.137Z",
+  "updated": "2026-10-10T11:51:14.137Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls -la /home/rudra/Projects/OpenCode-Vault/.venv/bin/python 2>/dev/null echo \"MAIN-HAS-VENV\" echo \"MAIN-NO-VENV\" echo \"---\" which python3 python3 --version 2>&1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda5dbbf7ffewLYXf5pN0cVzSh",
+  "messageID": "msg_125a6a0c1001i84P1Q6RpjQCu8",
+  "callID": "call_hrdrtvoyt4tixf1n8bb2se2s",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

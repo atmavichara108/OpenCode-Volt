@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-165253-read",
+  "created": "2026-10-10T13:52:53.534Z",
+  "updated": "2026-10-10T13:52:53.534Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": ".opencode/memory/session-reports/2026-10-10-bugfix-workshop.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_126164c070019gEf8Xz2I1ytYL",
+  "callID": "toolu_bdrk_0146XYHWSCDzWKghcqm8gf9T",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

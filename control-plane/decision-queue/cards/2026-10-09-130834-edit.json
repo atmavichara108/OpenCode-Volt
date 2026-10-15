@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-130834-edit",
+  "created": "2026-10-09T10:08:34.228Z",
+  "updated": "2026-10-09T10:08:34.228Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": ".t180-dotfiles-wt/opencode-global/.config/opencode/plugins/decision-queue-hook.ts",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_edfe1d5c6ffeLW6EAnZWSzVGI5",
+  "messageID": "msg_120227783001Hc7A9CrAuCQj3v",
+  "callID": "edit:0",
+  "metadata": {
+    "files": [
+      {
+        "file": ".t180-dotfiles-wt/opencode-global/.config/opencode/plugins/decision-queue-hook.ts",
+        "patch": "Index: .t180-dotfiles-wt/opencode-global/.config/opencode/plugins/decision-queue-hook.ts\n===================================================================\n--- .t180-dotfiles-wt/opencode-global/.config/opencode/plugins/decision-queue-hook.ts\n+++ .t180-dotfiles-wt/opencode-global/.config/opencode/plugins/decision-queue-hook.ts\n@@ -18,9 +18,9 @@\n // Карточки: <VAULT_PATH>/cards/<requestID>.json — durable-запись (ephemeral\n // состояние плагина не является доказательством; своя durable-запись обязательна).\n \n import { Plugin } from \"@opencode/plugin\"\n-import { appendFile, mkdir, readFile } from \"fs/promises\"\n+import { mkdir, readFile, rename, writeFile } from \"fs/promises\"\n import { join } from \"path\"\n import { existsSync } from \"fs\"\n import {\n   inferRisk,\n",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

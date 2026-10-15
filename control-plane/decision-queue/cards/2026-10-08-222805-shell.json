@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-222805-shell",
+  "created": "2026-10-08T19:28:05.740Z",
+  "updated": "2026-10-08T19:28:05.740Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "python3 python3 tools/garbage-guard/guard.py check-text < tools/model-watch/model-watch.py >/dev/null 2>&1 echo \"гейт: скрипт чист\" python3 tools/garbage-guard/guard.py check-text head -2 python3 -m py_compile tools/model-watch/model-watch.py echo \"py_compile OK\" python3 tools/model-watch/model-watch.py tail -4 python3 tools/model-watch/gate-check.py echo \"гейт rc=$?\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cfc6691001XrXudwSDdpFAcA",
+  "callID": "call_76dbaf9fc86349f08b08580b",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

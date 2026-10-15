@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-000636-shell",
+  "created": "2026-10-10T21:06:36.427Z",
+  "updated": "2026-10-10T21:06:36.427Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== файл в main? ===\" git cat-file -e main:06-Audits/2026-10-09-agency-counteragency-brainstorm.md 2>&1 echo \"есть в main ✓\" echo \"НЕТ в main\" echo \"=== моя ветка ===\" git branch --show-current echo \"=== коммит e8c2968 ===\" git show --stat --oneline e8c2968 head echo \"=== расхождение main vs моя ветка ===\" git rev-list --left-right --count main...HEAD",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127a27008001V1bUHTFppMIz4w",
+  "callID": "call_54037f3643424d608c2656ee",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

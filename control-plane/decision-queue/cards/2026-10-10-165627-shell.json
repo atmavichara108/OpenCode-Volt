@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-165627-shell",
+  "created": "2026-10-10T13:56:27.041Z",
+  "updated": "2026-10-10T13:56:27.041Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "bash tools/top-sync-check /home/rudra/Projects/SSA/products/seo-outreach/.opencode/agent/top.md 2>&1 echo \"rc=$?\" echo --- grep -rniE 'sk-|ghp_|xox|api[_-]?key|token|password|secret' docs/hooks-map.md docs/decisions/0002-top-loading.md docs/acceptance/checklist.md echo \"no-secrets-found\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9e675bcffesrjm1eblmJLl20",
+  "messageID": "msg_12619c457001VwN5tKptYZWsRu",
+  "callID": "call_01a12619c6dc7585b2a737105a637d9e",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «secret-path»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "builder",
+  "model": null
+}

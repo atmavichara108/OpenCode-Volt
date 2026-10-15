@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-194513-read",
+  "created": "2026-10-10T16:45:13.841Z",
+  "updated": "2026-10-10T16:45:13.841Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "read",
+  "pattern": ".gitignore",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed94c7c0cffeu1k0numOfED3ER",
+  "messageID": "msg_126b44463001HBQ5I0kss5gAJk",
+  "callID": "call_01_lix8bfcm5av8abeatzobr8oh",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

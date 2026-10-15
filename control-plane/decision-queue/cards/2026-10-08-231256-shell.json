@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-231256-shell",
+  "created": "2026-10-08T20:12:56.132Z",
+  "updated": "2026-10-08T20:12:56.132Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls control-plane/decision-queue/cards/*.json wc -l grep -l '\"replied\"' control-plane/decision-queue/cards/*.json 2>/dev/null wc -l python3 -c \"\nimport json,glob,collections\nc=collections.Counter(); cls=collections.Counter(); eff=collections.Counter(); dates=collections.Counter()\nfor f in glob.glob('control-plane/decision-queue/cards/*.json'):\n    try: d=json.load(open之父:=f))\n    except Exception: continue\n\" 2>/dev/null python3 - <<'PY'\nimport json,glob,collections\ntypes=collections.Counter(); cls=collections.Counter(); eff=collections.Counter(); replies=0; sess=collections.Counter()\nfor f in glob.glob('control-plane/decision-queue/cards/*.json'):\n    try: d=json.load(open(f,encoding='utf-8'))\n    except Exception: continue\n    types[d.get('type')]+=1\n    cls[(d.get('recommendation') or {}).get('class')]+=1\n    eff[d.get('effect')]+=1\n    sess[d.get('sessionID')]+=1\n    if 'replied' in d or d.get('status')!='pending': replies+=1\nprint('всего карточек:',sum(types.values()))\nprint('по типам:',dict(types))\nprint('класс:',dict(cls))\nprint('effect:',dict(eff))\nprint('не-pending (replied-контур):',replies)\nprint('по сессиям:',dict(sess))\nPY",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d24ce41001l6C75J5l5npRPq",
+  "callID": "call_619ce0f9c85941ceafb75fc6",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

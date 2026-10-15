@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-172521-shell",
+  "created": "2026-10-10T14:25:21.566Z",
+  "updated": "2026-10-10T14:25:21.566Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git -C /home/rudra/dotfiles reset -q -- docs/specs/ssa-control-agent-harness-bootstrap.md docs/specs/seo-outreach-agent-runtime-bootstrap.md git -C /home/rudra/dotfiles status --short head echo \"===\" git -C /home/rudra/dotfiles show d6446f5 --stat head -20",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fa0279ffeALoBlPtaFyVci4",
+  "messageID": "msg_12633c4a5001lcWaQI5rtbytE7",
+  "callID": "call_01a126343fc570a2b748f869a825dbdb",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

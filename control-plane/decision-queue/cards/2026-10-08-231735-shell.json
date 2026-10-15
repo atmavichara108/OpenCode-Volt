@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-231735-shell",
+  "created": "2026-10-08T20:17:35.179Z",
+  "updated": "2026-10-08T20:17:35.179Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls control-plane/decision-queue/cards/*.json wc -l python3 - <<'PY'\nimport json,glob\nok=0; bad=[]\nfor f in glob.glob('control-plane/decision-queue/cards/*.json'):\n    try:\n        json.load(open(f,encoding='utf-8')); ok+=1\n    except Exception as e: bad.append((f,str(e)[:60]))\nprint('ок:',ok,'| битых:',len(bad))\nfor f,e in bad[:5]: print(' ',f.split('/')[-1],'->',e)\nPY",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d27c107001t3W15UmLNvr3rG",
+  "callID": "call_032bf40bfa57402d80b4a933",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

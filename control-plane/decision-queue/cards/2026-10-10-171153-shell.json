@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-171153-shell",
+  "created": "2026-10-10T14:11:53.471Z",
+  "updated": "2026-10-10T14:11:53.471Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git diff -- .opencode/memory/session-reports/2026-10-10-bugfix-workshop.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9d84e82ffeRMSHfFyjz1ujak",
+  "messageID": "msg_12627cf58001U4CmzKrXVvRRlt",
+  "callID": "call_000844d903d844c987abcd32",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

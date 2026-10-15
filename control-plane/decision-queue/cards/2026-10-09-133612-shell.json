@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-133612-shell",
+  "created": "2026-10-09T10:36:12.874Z",
+  "updated": "2026-10-09T10:36:12.874Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "systemctl --user is-active justwoker-shim curl -s -o /dev/null -w \"health=%{http_code} t=%{time_total}s\\n\" --max-time 5 http://127.0.0.1:8787/health journalctl --user -u justwoker-shim --since \"10 min ago\" --no-pager 2>/dev/null tail -3 ls /tmp/opencode/jw/ 2>/dev/null",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_1203aec0d001sHkv7vILL5LIj1",
+  "callID": "call_8d8d50ab0deb4dd5b5ecabe1",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «curl»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

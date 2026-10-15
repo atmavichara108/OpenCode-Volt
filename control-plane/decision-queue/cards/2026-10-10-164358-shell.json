@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164358-shell",
+  "created": "2026-10-10T13:43:58.888Z",
+  "updated": "2026-10-10T13:43:58.888Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "set -e echo \"=== что ещё моё, незакоммиченное ===\" git status --short echo \"=== коммит 2: SSA-карточки + индекс + route-log (одна зона: SSA bootstrap) ===\" git add 03-Projects/SSA.md 03-Projects/seo-outreach.md 04-Memory/route-log/2026-10-10-ssa-bootstrap.md 00-INDEX.md git commit -q -m \"docs(ssa): карточки SSA/seo-outreach, индекс, route-log bootstrap\" echo \"=== итог веток/статуса ===\" git log --oneline -3 git status --short --branch head -1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_1260e102b001YDl4I3kKR7x2NT",
+  "callID": "toolu_bdrk_014CZEHd4tXqV9BGRMif9TbT",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

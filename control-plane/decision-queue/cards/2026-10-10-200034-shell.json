@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-200034-shell",
+  "created": "2026-10-10T17:00:34.631Z",
+  "updated": "2026-10-10T17:00:34.631Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git add -A git commit -m \"docs(product): evidence приёмки bootstrap + устранение дрейфа доков/контрактов\" -m \"W1: docs/acceptance/evidence-2026-10-10-bootstrap.md (reviewer PASS-with-findings, verifier FAIL, открытые пункты, якорь).\nW2: docs/decisions.md п.7 — owner-override прав top (basis: quoted).\nW3: README/AGENTS/tasks/roadmap/checklist приведены к факту; явный dry_run-default в контрактах contacts/export/handoff/inbox/monitor/pre-send-gate; scoring — дом порогов выровнен.\" 2>&1 tail -5 echo \"=== after commit ===\" git log --oneline -3 git status --short echo \"=== verify top-sync-check (product copy) ===\" bash /home/rudra/Projects/SSA/control/tools/top-sync-check .opencode/agent/top.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9619763ffeVC3GE5q2o2HY5j",
+  "messageID": "msg_126c2372b001CPBjW7h3NU6HvO",
+  "callID": "call_00_wy0o32jkajx4effcfbsiqbsu",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "top",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-084354-shell",
+  "created": "2026-10-09T05:43:54.106Z",
+  "updated": "2026-10-09T05:43:54.106Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== доставлено ли добро? ===\" grep -c \"теневой режим\" /home/rudra/.local/state/opencode/mail/receipts-out.jsonl 2>/dev/null tail -3 /home/rudra/.local/state/opencode/mail/receipts-out.jsonl 2>/dev/null grep -o '\"to\":\"[^\"]*\"' tail -3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_11f2f86c3001aAFKUgBc8GrScQ",
+  "callID": "call_d249d7a8d9d745359998f931",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

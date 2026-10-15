@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-172111-shell",
+  "created": "2026-10-10T14:21:11.717Z",
+  "updated": "2026-10-10T14:21:11.717Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== содержимое моих черновиков в чужом worktree ===\" ls -la /home/rudra/Projects/OpenCode-Vault/98-Temporary/ssa-bootstrap/ 2>&1 echo \"=== есть ли уже в моём worktree? ===\" ls /home/rudra/Projects/OpenCode-Vault-tasks/ssa-bootstrap-20261010/98-Temporary/ssa-bootstrap/ 2>&1 echo \"(в моём worktree нет)\" echo \"=== на main эти файлы отслеживаются? ===\" git -C /home/rudra/Projects/OpenCode-Vault ls-files 98-Temporary/ssa-bootstrap/ head",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_1262fea64001zYYRPUsGBEH7O7",
+  "callID": "toolu_bdrk_01YSQjDbziFszFvp431VLeus",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164710-shell",
+  "created": "2026-10-10T13:47:10.866Z",
+  "updated": "2026-10-10T13:47:10.866Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== session_move log records (full lines) ===\" grep -F \"Unable to move session\" ~/.local/share/opencode/log/opencode.log 2>/dev/null tail -10 echo \"=== any Move/Destination errors in log ===\" grep -iE \"DestinationNotFound|DestinationNotDirectory|DestinationUnavailable|session.*move|SessionMove\" ~/.local/share/opencode/log/opencode.log 2>/dev/null tail -15",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_12610cd7f001kkgPKe5x6tBBUU",
+  "callID": "toolu_bdrk_01Pum37EK2WeiFbRCE9qgkP7",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

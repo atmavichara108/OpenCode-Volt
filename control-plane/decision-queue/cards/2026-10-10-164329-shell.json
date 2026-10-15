@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164329-shell",
+  "created": "2026-10-10T13:43:29.967Z",
+  "updated": "2026-10-10T13:43:29.967Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "set -e echo \"=== моя ветка в worktree ===\" git -C \"$WT\" branch --show-current echo \"=== переношу свой untracked-файл из чужого pip-boy worktree в свой ===\" mv \"$SRC\" \"$WT/04-Memory/agent-frustration-log.md\" echo \"moved -> $WT/04-Memory/agent-frustration-log.md\" echo \"=== чужой pip-boy worktree: мой файл ушёл, их 31 правка не тронута ===\" git -C /home/rudra/Projects/OpenCode-Vault status --short grep -c '' git -C /home/rudra/Projects/OpenCode-Vault status --short -- 04-Memory/agent-frustration-log.md echo \"(моего файла там больше нет — верно)\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_1260d90b4001m2YEby9hM9uZnT",
+  "callID": "toolu_bdrk_01B82fZFz1zRsdKPbrm8A56X",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

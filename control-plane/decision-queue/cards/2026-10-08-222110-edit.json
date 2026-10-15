@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-08-222110-edit",
+  "created": "2026-10-08T19:21:10.977Z",
+  "updated": "2026-10-08T19:21:10.977Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/home/rudra/dotfiles/opencode-global/.config/opencode/opencode.jsonc",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee30e41daffezCgBczKdPQJlr8",
+  "messageID": "msg_11cf63e9b001maIszYV3O1Ml8S",
+  "callID": "call_13770896b62f45f481c101fe",
+  "metadata": {
+    "files": [
+      {
+        "file": "/home/rudra/dotfiles/opencode-global/.config/opencode/opencode.jsonc",
+        "patch": "Index: /home/rudra/dotfiles/opencode-global/.config/opencode/opencode.jsonc\n===================================================================\n--- /home/rudra/dotfiles/opencode-global/.config/opencode/opencode.jsonc\n+++ /home/rudra/dotfiles/opencode-global/.config/opencode/opencode.jsonc\n@@ -196,10 +196,9 @@\n       \"options\": { \"baseURL\": \"https://ai-gateway.vercel.sh/v1\" },\n       \"models\": {\n         \"google/gemini-2.5-flash-lite\": { \"name\": \"Gemini 2.5 Flash Lite\", \"attachment\": true, \"reasoning\": true, \"tool_call\": true, \"temperature\": true }\n       }\n-    }\n-,\n+    },\n     // NOTE 2026-10-08: jev-1.13/jev-1.13-free включены Рудрой в консоли opencode.ai (org SERP),\n     // в models.dev их нет. Декларация ждёт propagated каталога Zen; runtime может резолвить\n     // встроенный opencode-go и без конфига — проверено smoke (см. README tools/model-watch).\n     \"opencode-go\": {\n",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 2
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

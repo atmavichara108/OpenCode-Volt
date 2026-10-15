@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-144401-shell",
+  "created": "2026-10-10T11:44:01.594Z",
+  "updated": "2026-10-10T11:44:01.594Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== spec exists ===\" test -f /home/rudra/Projects/SSA/products/seo-outreach/docs/specs/seo-outreach-mvp-v0.1.md echo \"SPEC OK\" echo \"SPEC MISSING\" echo \"=== product repo git status (should be UNTOUCHED branch, only my spec as untracked) ===\" git -C /home/rudra/Projects/SSA/products/seo-outreach status --short --branch 2>&1 head -20",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda6315feffe6AABxCxYe55DZ6",
+  "messageID": "msg_125a06ae7001xQwRPn1TVljT84",
+  "callID": "call_02_CNVS9dpJbrcd9HM9yQ4N9887",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

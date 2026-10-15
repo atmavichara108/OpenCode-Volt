@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-151254-shell",
+  "created": "2026-10-10T12:12:54.765Z",
+  "updated": "2026-10-10T12:12:54.765Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "bun build /home/rudra/dotfiles/opencode-global/.config/opencode/plugins/fix-tool-schema.ts --target=bun --external '@opencode/plugin' --outfile /tmp/opencode/fix-tool-schema.check.js echo \"bun-build-rc=$?\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda4bd7bfffe6fR0b4fKOMNX7R",
+  "messageID": "msg_125b9e360001zhiWgFKy3uCjOk",
+  "callID": "776ef8ff-2e63-4b8c-a1ff-6b9c9b5e0b60",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

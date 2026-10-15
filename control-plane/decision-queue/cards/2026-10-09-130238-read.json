@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-130238-read",
+  "created": "2026-10-09T10:02:38.386Z",
+  "updated": "2026-10-09T10:02:38.386Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "/home/rudra/dotfiles/opencode-global/.config/opencode/plugins/telemetry.ts",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_edfe38cfbffexvTYca0PDK2OQS",
+  "messageID": "msg_1201cfd00001d6ydJiH9w6Xe72",
+  "callID": "read:0",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

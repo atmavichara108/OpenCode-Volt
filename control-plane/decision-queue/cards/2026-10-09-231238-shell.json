@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-231238-shell",
+  "created": "2026-10-09T20:12:38.878Z",
+  "updated": "2026-10-09T20:12:38.878Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "python3 -c \"\nimport subprocess, re\ndef added_lines(repo, sha):\n    out = subprocess.run(['git','-C',repo,'show',sha], capture_output=True, text=True).stdout\n    return [l[1:] for l in out.splitlines() if l.startswith('+') and not l.startswith('+++')]\nlines = added_lines('/home/rudra/dotfiles','33fb471') + added_lines('/home/rudra/Projects/OpenCode-Vault','19aa02e')\ncyr = re.compile(r'[\\u0400-\\u04FF]')\nbad = []\nfor l in lines:\n    # пары backtick слева направо: содержимое каждой code-span должно быть без кириллицы\n    spans = re.findall(r'\\x60([^\\x60\\n]*)\\x60', l)\n    for s in spans:\n        if cyr.search(s):\n            bad.append(('CODESPAN', l.strip()[:160])); break\n    # кириллица в путях/флагах вида /path или --flag\n    for m in re.findall(r'(/[\\w./-]*| --[\\w-]+)', l):\n        if cyr.search(m):\n            bad.append(('PATH', l.strip()[:160])); break\nprint('Проверено добавленных строк:', len(lines))\nprint('Нарушений (кириллица в code-span/путях):', len(bad))\nfor b in bad[:10]: print(b)\n\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eddf66964ffeRYPpVyEX7u7yhE",
+  "messageID": "msg_122456f05001XqQmM5jlT7ozaf",
+  "callID": "e90a5b2a-2135-47a9-b706-235ad82e7c97",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

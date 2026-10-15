@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-005353-external-directory",
+  "created": "2026-10-10T21:53:53.033Z",
+  "updated": "2026-10-10T21:53:53.033Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "external_directory",
+  "pattern": "/home/rudra/Projects/Ekstasis/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_127cebefb00108I4FcjAYxtmbQ",
+  "callID": "call_b0bb7db9e6c7433384d96d84",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

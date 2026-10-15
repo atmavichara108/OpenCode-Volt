@@ -38,13 +38,16 @@ Projects → Memory → Templates), YAML frontmatter, викилинки вме�
 
 ### 🎯 Методы — переиспользуемые протоколы
 Каждый повторяющийся паттерн дистиллируется в метод с чётким описанием,
-статусом внедрения и привязкой к проектам. Девять методов описано, каждый
-с реальным статусом (✅ внедрён / 🟡 частично / ❌ не внедрён).
+статусом внедрения и привязкой к проектам. Тринадцать методов описано
+(10 stable + parallel-sessions/peer-comms proposed + promo-provider-protocol 🟡),
+каждый с реальным статусом (✅ внедрён / 🟡 частично / ❌ не внедрён).
 
 ### 🤖 Мульти-агентная архитектура
 Агенты — не рабы, а инструменты. Разделение ролей: `plan` думает, `build` пишет,
 `reviewer` проверяет, `sysop` инспектирует систему. Каждый агент со своей моделью,
-правами и зоной ответственности. В системе — 20 агентов в 4 проектах.
+правами и зоной ответственности. В системе — 29+ агентов в 10 проектах
+(librarian + tree-cop в волте, 6 в SERPlux, 5 в dv-hub, 8 в dotfiles,
+8 в ChaT; recruiting-hr — [проверить]).
 
 ### 💾 Файловая память вместо внешних сервисов
 Контекст, факты и логи сессий хранятся в git-версионируемых файлах.
@@ -68,7 +71,7 @@ Projects → Memory → Templates), YAML frontmatter, викилинки вме�
 │ SERPlux │ │ dv-hub  │ │ dotfiles │ │ (новые…) │
 │ Python  │ │ TS/Hono │ │ Manjaro  │ │          │
 │ SEO     │ │ comm.   │ │ sysop    │ │          │
-│ 4 агента│ │ 5 агентов│ │ 8 агентов│ │          │
+│ 6 агентов│ │ 5 агентов│ │ 8 агентов│ │          │
 └─────────┘ └─────────┘ └──────────┘ └──────────┘
 ```
 
@@ -88,37 +91,50 @@ Projects → Memory → Templates), YAML frontmatter, викилинки вме�
 
 | Проект | Тип | Стек | Агентов | Статус методов |
 |--------|-----|------|---------|----------------|
-| [SERPlux](03-Projects/SERPlux.md) | Продукт SERP Factory | Python / FastAPI / Tailwind / Docker | 6 | 5/7 🟡 |
-| [dv-hub](03-Projects/dv-hub.md) | Волонтёрский | TypeScript / Hono | 5 | 4/7 ✅ |
-| [dotfiles](03-Projects/dotfiles.md) | Система | Shell / Manjaro | 8 | 5/7 ✅ |
-| [vault](03-Projects/vault.md) | Справочник | Markdown / OpenCode | 1 (librarian) | — |
+| [SERPlux](03-Projects/SERPlux.md) | Продукт SERP Factory | Python / FastAPI / SQLite / Docker | 6 | core ✅ deploy ✅ |
+| [dv-hub](03-Projects/dv-hub.md) | Волонтёрский | TypeScript / Hono | 5 | активная разработка |
+| [dotfiles](03-Projects/dotfiles.md) | Система | Shell / Manjaro | 8 | мульти-агент v3 + verifier + loop + flush |
+| [vault](03-Projects/vault.md) | Справочник | Markdown / OpenCode | 2 (librarian + tree-cop) | командный центр |
+| [recruiting-hr](03-Projects/recruiting-hr.md) | Коммерция / рекрутинг | Python / docx→md | [проверить] | 🟡 Bootstrap (2026-10-01) |
+| [AndroidOS](03-Projects/AndroidOS.md) | Umbrella / mobile | [проверить] | [проверить] | 🟢 Planning |
+| [ChaT](03-Projects/ChaT.md) | Knowledge-operations | Markdown / Obsidian / OpenCode | 8 | активная территория |
+| [rudra-ai](03-Projects/rudra-ai.md) / [rudra-phone](03-Projects/rudra-phone.md) | Mobile / AI | [проверить] | [проверить] | 🟢 Planning |
+| [prod-monitor](03-Projects/prod-monitor.md) | Инфраструктура / monitoring | [проверить] | [проверить] | 🟢 Planning (заглушки) |
 
-### 9 методов вайбкодинга
+### 13 методов вайбкодинга
 
 | Метод | Что даёт | Статус |
 |-------|----------|--------|
-| [context-as-docs](02-Methods/context-as-docs.md) | Документация как инфраструктура | 🟡 3/4 проектах |
-| [distill-pattern](02-Methods/distill-pattern.md) | Команды вместо промптов | ✅ в 3/4 проектах · 🟡 в SERPlux |
-| [model-routing](02-Methods/model-routing.md) | Модель под каждую роль | ✅ в 2/4 проектах |
-| [memory-management](02-Methods/memory-management.md) | Файловая память с протоколом | 🟡 2/4 проектах |
-| [multi-agent-pipeline](02-Methods/multi-agent-pipeline.md) | Мульти-агент с ролями | ✅ в dotfiles · 🟡 SERPlux Factory |
-| [closed-loop](02-Methods/closed-loop.md) | Авто-итерация build→verify→fix | ❌ не внедрён |
-| [verifier-pattern](02-Methods/verifier-pattern.md) | Независимая проверка кода | 🟡 в SERPlux + dotfiles |
-| [capability-routing](02-Methods/capability-routing.md) | Маршрутизация по capability + named role | design-contract |
-| [tool-integration-pattern](02-Methods/tool-integration-pattern.md) | Внешние API как детерминированные инструменты | ✅ в vault |
+| [context-as-docs](02-Methods/context-as-docs.md) | Документация как инфраструктура | ✅ stable |
+| [distill-pattern](02-Methods/distill-pattern.md) | Команды вместо промптов | ✅ stable |
+| [model-routing](02-Methods/model-routing.md) | Модель под каждую роль | ✅ stable |
+| [memory-management](02-Methods/memory-management.md) | Файловая память с протоколом | ✅ stable |
+| [multi-agent-pipeline](02-Methods/multi-agent-pipeline.md) | Мульти-агент с ролями | ✅ stable |
+| [closed-loop](02-Methods/closed-loop.md) | Авто-итерация build→verify→fix | ✅ stable |
+| [verifier-pattern](02-Methods/verifier-pattern.md) | Независимая проверка кода | ✅ stable |
+| [capability-routing](02-Methods/capability-routing.md) | Маршрутизация по capability + named role | ✅ stable |
+| [tool-integration-pattern](02-Methods/tool-integration-pattern.md) | Внешние API как детерминированные инструменты | ✅ stable |
+| [git-worktree-isolation](02-Methods/git-worktree-isolation.md) | Изоляция потоков через worktree/ветки | ✅ stable |
+| [parallel-sessions](02-Methods/parallel-sessions.md) | Параллельные сессии | proposed |
+| [peer-comms](02-Methods/peer-comms.md) | Координация параллельных сессий | proposed |
+| [promo-provider-protocol](02-Methods/promo-provider-protocol.md) | Промо-провайдер протокол | 🟡 |
 
 > Полная карта с раскладкой по каждому проекту → [VibeOS.md](VibeOS.md#Методы)
 
-### 20 агентов в экосистеме
+### 29+ агентов в экосистеме
 
 | Агент | Проект | Роль | Модель |
 |-------|--------|------|--------|
-| **librarian** | vault | Командный центр знаний | GLM 5.3 Luna (gpt-5.6-luna) |
-| **architect / builder + ux-dev / infra-dev / collector-dev / reviewer** | SERPlux | Фабрика продуктов: архитектура, разработка, UI, Docker, сбор, ревью | kimi-k2.7-code / glm-5.2 / qwen3.7-plus |
+| **librarian** | vault | Командный центр знаний (primary) | opencode-go/gpt-5.6-luna |
+| **tree-cop** | vault | Чистота дерева и выкладка ветки (subagent) | [проверить] |
+| **build / plan + collector-dev / reviewer / ui-dev / infra-dev** | SERPlux | Фабрика продуктов: разработка, планирование, сбор, ревью, UI, Docker | kimi-k2.7-code / glm-5.2 / qwen3.7-plus |
 | **plan / build / reviewer / researcher / infra** | dv-hub | Архитектор, разработчик, ревьюер, исследователь, DevOps | Qwen / DeepSeek |
 | **sysop / planner / builder + 5 subagent** | dotfiles | Полная мульти-агентная система | DeepSeek v4-flash-free |
+| **8 агентов** | ChaT | Knowledge-operations (состав — [проверить]) | [проверить] |
 
-### 27 команд-пайплайнов
+Глобальная модель по умолчанию — `opencode-go/glm-5.3-flash` (opencode.json).
+
+### 34 команды-пайплайна
 
 | Проект | Команд |
 |--------|--------|
@@ -172,8 +188,9 @@ opencode .
 | P2: Справочник OpenCode | ✅ Завершено | Все разделы Reference: agents, commands, config, memory, permissions, plugins |
 | P3: Проекты | ✅ Завершено | Карточки синхронизированы, статусы реконсилированы, VibeOS v0.2.3 |
 | P4: CI волта | ✅ Завершено | Pre-commit hook, валидация викилинков, авто-архивация логов |
-| P5: Будущее | 🟡 В планах | Telegram-бот · классификация фич · `/project-upgrade` · closed-loop |
+| P5: Будущее | 🟡 В планах | Telegram-бот · классификация фич · `/project-upgrade` · closed-loop в dv-hub |
 | P6: Порт M Code → TUI | ✅ Завершено (итерация 1) | replay budget · doom-loop · санитизация · Playwright · verify-кэш · peers |
+| P7: Параллельность (2026-10-05) | 🟡 В работе | parallel-sessions / peer-comms (proposed) · idea-graph (146/168/2) · decision-queue · tree-cop · TASKS 11 active / 1 blocked / 69 planned / 87 done |
 
 Подробнее → [DEVELOPMENT-ROADMAP.md](DEVELOPMENT-ROADMAP.md)
 
@@ -195,15 +212,18 @@ opencode-vault/
 │   ├── agents.md · commands.md · config.md · memory.md
 │   ├── permissions.md · plugins.md
 │
-├── 02-Methods/            # Методы вайбкодинга (9 файлов)
+├── 02-Methods/            # Методы вайбкодинга (13 файлов)
 │   ├── context-as-docs.md · distill-pattern.md
 │   ├── memory-management.md · model-routing.md
 │   ├── closed-loop.md · verifier-pattern.md
 │   ├── multi-agent-pipeline.md · capability-routing.md
-│   ├── tool-integration-pattern.md
+│   ├── tool-integration-pattern.md · git-worktree-isolation.md
+│   ├── parallel-sessions.md · peer-comms.md · promo-provider-protocol.md
 │
 ├── 03-Projects/           # Карточки проектов
 │   ├── SERPlux.md · dv-hub.md · dotfiles.md · vault.md
+│   ├── recruiting-hr.md · AndroidOS.md · ChaT.md
+│   ├── rudra-ai.md · rudra-phone.md · prod-monitor.md
 │
 ├── 04-Memory/             # Память сессий (OKF-подбандл)
 │   ├── active-context.md · facts.md · session-log/
@@ -266,4 +286,4 @@ VibeOS — свободный софт. Это значит:
 
 ---
 
-**VibeOS** — версия [v0.3.1](VibeOS.md#v032-2026-09-07) · Лицензия: [GPL-3.0](LICENSE)
+**VibeOS** — версия [v0.4](VibeOS.md#v04-2026-10-05) · Лицензия: [GPL-3.0](LICENSE)

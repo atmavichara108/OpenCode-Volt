@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-211001-shell",
+  "created": "2026-10-09T18:10:01.022Z",
+  "updated": "2026-10-09T18:10:01.022Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "pwd git branch --show-current git status --short grep -nE '^## .*Planned|T-184|^\\|.*Planned' TASKS.md head -80",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede254d97ffexQ6Ga6G6VO27Ox",
+  "messageID": "msg_121db78ef001o4qRKWn8VeBbEI",
+  "callID": "call_3Rd35xj8yAn0NdrHPAbaagj6",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

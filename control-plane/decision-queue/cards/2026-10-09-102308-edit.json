@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-102308-edit",
+  "created": "2026-10-09T07:23:08.764Z",
+  "updated": "2026-10-09T07:23:08.764Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/tmp/opencode/alacritty-layout-test.toml",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eedd28c45ffeFJU6TDjG69z6A7",
+  "messageID": "msg_11f883743001HMkdUxSererIsK",
+  "callID": "call_b7665ace3ccc49fbbd319c8d",
+  "metadata": {
+    "files": [
+      {
+        "file": "/tmp/opencode/alacritty-layout-test.toml",
+        "patch": "Index: /tmp/opencode/alacritty-layout-test.toml\n===================================================================\n--- /tmp/opencode/alacritty-layout-test.toml\n+++ /tmp/opencode/alacritty-layout-test.toml\n@@ -0,0 +1,15 @@\n+[window]\n+width = 60\n+height = 10\n+\n+# Проверка 1: логический key (зависит от раскладки?)\n+[[keyboard.bindings]]\n+key = \"A\"\n+mods = \"Control\"\n+chars = \"LOGIC\"\n+\n+# Проверка 2: physical_key (layout-independent?)\n+[[keyboard.bindings]]\n+physical_key = \"A\"\n+mods = \"Control\"\n+chars = \"PHYS\"\n",
+        "status": "added",
+        "additions": 15,
+        "deletions": 0
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

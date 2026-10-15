@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-220109-shell",
+  "created": "2026-10-09T19:01:09.291Z",
+  "updated": "2026-10-09T19:01:09.291Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git push origin HEAD:main 2>&1 tail -8 echo \"=== after push, origin/main ===\" git -C ~/dotfiles rev-parse origin/main",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eddf6e3dbffey7o825pEQ1vAJu",
+  "messageID": "msg_122097373001u6e5djjNcmoE1M",
+  "callID": "toolu_bdrk_01Ua99AccEK3xiUtr3sMTSRx",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

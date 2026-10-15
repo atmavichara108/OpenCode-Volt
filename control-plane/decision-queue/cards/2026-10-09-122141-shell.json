@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-122141-shell",
+  "created": "2026-10-09T09:21:41.003Z",
+  "updated": "2026-10-09T09:21:41.003Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "cat package.json echo \"=== node_modules? ===\" ls node_modules 2>/dev/null head echo \"=== find plugin types ===\" find / -path /proc -prune -o -type d -name \"*opencode*plugin*\" -print 2>/dev/null head echo \"=== main-protector ===\" sed -n '1,80p' plugins/main-protector.ts",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee01c79a5ffeuKufDEOIYCNam9",
+  "messageID": "msg_11ff74cbd0017Y0ShQ094CFwHF",
+  "callID": "call_bbf77c9273e94df5a015071f",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-212807-shell",
+  "created": "2026-10-09T18:28:07.616Z",
+  "updated": "2026-10-09T18:28:07.616Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git worktree list git branch --list \"task/justwoker-v4-memory-main*\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121ebe128001uheQuTfM4ZjaJ6",
+  "callID": "call_597060208322450cbc3542a2",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-002135-shell",
+  "created": "2026-10-10T21:21:35.870Z",
+  "updated": "2026-10-10T21:21:35.870Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== main guard in hook ===\" grep -n -iE 'main|master|ALLOW_MAIN|exit 1' .git/hooks/pre-commit head -20 echo \"=== where is this repo's hooks (worktree) ===\" git rev-parse --git-common-dir",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_127b0ddd4001fpovPBB97HBi2w",
+  "callID": "toolu_bdrk_01W5zZGFWXjFcZdTbyXCzqBt",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-200108-read",
+  "created": "2026-10-09T17:01:08.192Z",
+  "updated": "2026-10-09T17:01:08.192Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": ".meta-worktrees/permission-worktree-20261009/05-Templates/pre-commit-check.sh",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede74f62bffe66CT04CTuBQszP",
+  "messageID": "msg_1219c6530001YjOsUCrKDWtNlD",
+  "callID": "call_AccP98k09enb0ZagOYBTjDFU",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

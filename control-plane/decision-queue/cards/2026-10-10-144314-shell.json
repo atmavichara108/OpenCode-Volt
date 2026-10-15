@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-144314-shell",
+  "created": "2026-10-10T11:43:14.979Z",
+  "updated": "2026-10-10T11:43:14.979Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "python3 tools/peers/peer_lease.py run --file 00-INDEX.md --timeout 10 -- sh -c 'cp /tmp/opencode/new-index.md 00-INDEX.md' echo \"EXIT=$?\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda6315feffe6AABxCxYe55DZ6",
+  "messageID": "msg_1259fca8f0014JuRGxlDp9nVz2",
+  "callID": "call_00_IC10APM9RmNboD4JwGEd7611",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

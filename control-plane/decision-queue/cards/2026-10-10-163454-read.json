@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-163454-read",
+  "created": "2026-10-10T13:34:54.674Z",
+  "updated": "2026-10-10T13:34:54.674Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "/home/rudra/Projects/OpenCode-Vault/03-Projects/dotfiles.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fa0279ffeALoBlPtaFyVci4",
+  "messageID": "msg_12605fe39001fRINq1CSGTp3nC",
+  "callID": "call_01a12606113276999d58f92ed63ed7df",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

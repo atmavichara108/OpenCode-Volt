@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-10-172522-glob",
+  "created": "2026-10-10T14:25:22.692Z",
+  "updated": "2026-10-10T14:25:22.692Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "glob",
+  "pattern": "**/bugfix-extdir-and-rule*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9cd0bffffeyyWa51Kq2VFBz6",
+  "messageID": "msg_12633197a001SxObgs3hBh1oxz",
+  "callID": "call_bbad583b2320498da55c9a94",
+  "metadata": {
+    "root": "."
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

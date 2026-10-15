@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-005303-shell",
+  "created": "2026-10-10T21:53:03.047Z",
+  "updated": "2026-10-10T21:53:03.047Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "cat \"/home/rudra/Projects/Ekstasis/Канон/README.md\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed8341a5affedt7tK5NNHfxoJl",
+  "messageID": "msg_127ce1829001lv3waPvqLN1jAp",
+  "callID": "chatcmpl-tool-852d4784a56bc81a",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

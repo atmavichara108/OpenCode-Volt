@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-005950-shell",
+  "created": "2026-10-10T21:59:50.048Z",
+  "updated": "2026-10-10T21:59:50.048Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== .meta-worktrees ===\" ls -la .meta-worktrees/ 2>/dev/null echo \"-- $d: $(du -sh \"$d\" 2>/dev/null | cut -f1), files: $(find \"$d\" -type f 2>/dev/null | wc -l)\" du -sh \"$d\" 2>/dev/null cut -f1 find \"$d\" -type f 2>/dev/null wc -l echo \"=== .mw-tmp ===\" ls -la .mw-tmp/ head du -sh .mw-tmp/ echo \"=== .s8-fork ===\" ls -la .s8-fork/ head du -sh .s8-fork/ echo \"=== .b11-staging ===\" ls -la .b11-staging/ head du -sh .b11-staging/",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed830296bffeF3iz7Xxi5cWMOP",
+  "messageID": "msg_127d1002d0018WGKLd9EhYh37d",
+  "callID": "call_4397574f69834bdbbce4e3a4",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

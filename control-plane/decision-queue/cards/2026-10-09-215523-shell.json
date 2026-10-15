@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-215523-shell",
+  "created": "2026-10-09T18:55:23.448Z",
+  "updated": "2026-10-09T18:55:23.448Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "wc -l nodes.jsonl edges.jsonl ls -la",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eddfaf9b3ffeAmNLEfJcMC3hta",
+  "messageID": "msg_12205068c001yHKC03qU0DTclq",
+  "callID": "toolu_ae5127fbe160431ebcbd5769",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

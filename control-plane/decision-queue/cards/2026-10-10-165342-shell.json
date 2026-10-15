@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-165342-shell",
+  "created": "2026-10-10T13:53:42.836Z",
+  "updated": "2026-10-10T13:53:42.836Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "python3 /home/rudra/dotfiles/opencode-global/.config/opencode/tools/tree-cop/tree-cop.py stash-foreign --mine .opencode/memory/session-reports/2026-10-10-bugfix-workshop.md -m \"tree-cop: memory INC-3/INC-4 — убрать чужое\" 2>&1 tail -2 git add .opencode/memory/session-reports/2026-10-10-bugfix-workshop.md git commit -q -m \"docs(memory): INC-3 session_move root-cause (agent-not-resolved в каталоге назначения) + INC-4 tool_choice shim-fix\" git log --oneline -2 echo \"=== pop ===\" git stash pop 2>&1 tail -3 echo \"=== final ===\" git status --short --branch",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_1261725d1001NZ3jzEoiHmk3Lx",
+  "callID": "toolu_bdrk_01Y44Cqua1vBSBuMGmjjndDZ",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

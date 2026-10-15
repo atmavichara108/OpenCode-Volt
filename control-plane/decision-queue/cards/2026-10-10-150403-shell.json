@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-150403-shell",
+  "created": "2026-10-10T12:04:03.488Z",
+  "updated": "2026-10-10T12:04:03.488Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C /home/rudra/dotfiles status --short echo ---STATUS-END--- git -C /home/rudra/dotfiles log --oneline -3 echo --- git -C /home/rudra/dotfiles config --get-regexp 'branch\\.task/shim.*' 2>&1 echo --- opencode --version 2>&1 head -3 echo --- grep -rn '\"skill\"\\|skill.*input\\|tool.*skill' ~/.local/share/opencode/log/opencode.log 2>/dev/null tail -20 echo ---LOG-DONE---",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_125b2ca810016uaNZKM8zfR8dx",
+  "callID": "call_01a125b2df7b77568ecb078ced5430b7",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-160933-shell",
+  "created": "2026-10-10T13:09:33.788Z",
+  "updated": "2026-10-10T13:09:33.788Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "sed -n '35,58p' AGENTS.md printf '\\n-- tree hygiene commands --\\n' grep -R -n -E 'stash-foreign|tree-cop|tree-hygiene|Git Freed|freed.py' .opencode/command .opencode/agent scripts 2>/dev/null head -60",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_125eebe81001YPdh7GCWwl6wez",
+  "callID": "call_ouT2q4pbwsu479UZ8a6tP3F9",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

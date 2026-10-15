@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-220109-external-directory",
+  "created": "2026-10-09T19:01:09.288Z",
+  "updated": "2026-10-09T19:01:09.288Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "external_directory",
+  "pattern": "/home/rudra/dotfiles-tasks/merge-global-20261009/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eddf6e3dbffey7o825pEQ1vAJu",
+  "messageID": "msg_122097373001u6e5djjNcmoE1M",
+  "callID": "toolu_bdrk_01Ua99AccEK3xiUtr3sMTSRx",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

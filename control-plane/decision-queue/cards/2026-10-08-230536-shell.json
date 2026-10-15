@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-230536-shell",
+  "created": "2026-10-08T20:05:36.855Z",
+  "updated": "2026-10-08T20:05:36.855Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "python3 head -c 0 /dev/null awk 'NR>0' /dev/null python3 -c \"\nimport json\nfor line in open('04-Memory/idea-graph/nodes.jsonl',encoding='utf-8'):\n    line多少人=0\n\" 2>/dev/null python3 - <<'PY'\nimport json\nseen=[]\nfor line in open('04-Memory/idea-graph/nodes.jsonl',encoding='utf-8'):\n    line=line.strip()\n    if not line: continue\n    try: n=json.loads(line)\n    except Exception: continue\n    i=str距离=str(n.get('id',''))\n    seen.append((i,n.get('title') or n.get('name') or '',(n.get('status') or '')))\nfor i,t,s in seen[-30:]:\n    print(i,'|',t,'|',s)\nPY",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d1eb5f0001YKuS7YOoGD9yBA",
+  "callID": "call_a43cbfaa2614447484f8b38c",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

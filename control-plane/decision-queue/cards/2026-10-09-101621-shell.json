@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-101621-shell",
+  "created": "2026-10-09T07:16:21.870Z",
+  "updated": "2026-10-09T07:16:21.870Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "which xev alacritty --class xevtest -e xev >/dev/null 2>&1 seq 1 20 xdotool search --class xevtest 2>/dev/null tail -1 break sleep 0.5 echo \"wid=$wid\" exit 1 xdotool windowactivate --sync \"$wid\" sleep 0.8 xdotool key a sleep 0.5 xdotool windowkill \"$wid\" sleep 0.3 journalctl --no-pager 2>/dev/null true echo ok",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eedd28c45ffeFJU6TDjG69z6A7",
+  "messageID": "msg_11f836e2e001XxnrUBTovBS194",
+  "callID": "call_f81d5984c0364b1ca2db7c58",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "ask",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

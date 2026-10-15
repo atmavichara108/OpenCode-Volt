@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-211151-shell",
+  "created": "2026-10-09T18:11:51.295Z",
+  "updated": "2026-10-09T18:11:51.295Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "find tools -maxdepth 3 -type f grep -E 'garbage|pre-commit|verify' sort ls -l .git/hooks/pre-commit tools/verify-cache/verify.py 2>/dev/null grep -RIn 'garbage.guard\\|garbage-guard' .opencode tools 2>/dev/null head -30",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede254d97ffexQ6Ga6G6VO27Ox",
+  "messageID": "msg_121dd2c4a001I4Wgsnyo2cypkO",
+  "callID": "call_J1KF5M3Bbkbt2745bHeixcvm",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

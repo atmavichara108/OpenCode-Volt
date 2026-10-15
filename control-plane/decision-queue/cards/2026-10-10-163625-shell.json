@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-163625-shell",
+  "created": "2026-10-10T13:36:25.297Z",
+  "updated": "2026-10-10T13:36:25.297Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git mv --help >/dev/null 2>&1 mv .opencode/memory/session-reports/active/2026-10-10-bugfix-workshop.md .opencode/memory/session-reports/2026-10-10-bugfix-workshop.md git check-ignore .opencode/memory/session-reports/2026-10-10-bugfix-workshop.md echo \"STILL IGNORED\" echo \"trackable\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_12607526c001Q9cHOlXO7woiwH",
+  "callID": "toolu_bdrk_018SfjfLTGE6wewFgxezwVEd",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-212255-shell",
+  "created": "2026-10-09T18:22:55.782Z",
+  "updated": "2026-10-09T18:22:55.782Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git log --oneline -1 main git log --oneline -1 git merge-base --is-ancestor main HEAD echo \"main — предок HEAD (ff возможен)\" echo \"ветки разошлись\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121e7155c0014Te9isXHCeHbVT",
+  "callID": "call_d41379c2c55943f6a819a44c",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

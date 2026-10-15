@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-093543-edit",
+  "created": "2026-10-09T06:35:43.905Z",
+  "updated": "2026-10-09T06:35:43.905Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "01-Reference/provider-cards/justwoker.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee0a97b4fffeX15Yix6yTUvFr2",
+  "messageID": "msg_11f5f406b001Odu0eXGpy73F4d",
+  "callID": "call_873092fcc4c54e139b776874",
+  "metadata": {
+    "files": [
+      {
+        "file": "01-Reference/provider-cards/justwoker.md",
+        "patch": "Index: 01-Reference/provider-cards/justwoker.md\n===================================================================\n--- 01-Reference/provider-cards/justwoker.md\n+++ 01-Reference/provider-cards/justwoker.md\n@@ -114,20 +114,27 @@\n - **Чат-проб** на `gpt-4o-mini` → Cloudflare 403.\n \n ## Статус\n \n-`🟡 DEGRADED (non-stream-only)`. Anthropic-style `/messages` работает только без\n-стрима; стриминг шлюза не отдаёт content_block, поэтому прямой OpenCode-провайдер\n-отвечает пустотой. Временный фикс — локальный стриминг-шим; целевое — канал New API.\n+`🟢 WORKING (через шим, 2026-10-09)`. Прямой curl к апстриму `claude-opus-4-8` →\n+HTTP 200 за ~28с с реальным ответом; end-to-end через шим (`stream:true`) — 3/3\n+успешных, циклы ~27–30с вместо 15-минутных висняков Prelude. **Стрим-регрессия\n+апстрима ушла:** гейт снова отдаёт полный Anthropic SSE (`message_start → ping →\n+content_block_* → message_delta → message_stop`) — первопричина шима исчезла_dec.\n+Временный фикс (шим) остаётся как **опциональный** мост; целевое — канал New API.\n \n-**Шим (2026-10-07, вечер):** стабилен по крашам — второй фикс (crash-guard стрима,\n-`dee6f15`) закрыл краш bun-процесса при отмене клиента. **Открыто:** `TimeoutError`\n-ровно через ~300с (240–300с) на больших non-stream запросах Opus — пользователь\n-видит `api_error: shim: TimeoutError`; гипотеза — Bun игнорирует `headersTimeout: 0`/\n-`requestTimeout: 0` и рвёт по дефолтному HeadersTimeout 300с. Расследуется отдельным\n-агентом (`task/opus-transport-*` в dotfiles). См. [[04-Memory/facts]] (T-168, фикс 2\n-и открытая проблема).\n+**Инцидент TimeoutError — ЗАКРЫТ (три слоя):** (а) краш шима при отмене клиента —\n+crash-guard `dee6f15`; (б) фантомный фикс `headersTimeout:0` — Bun fetch\n+игнорирует эти опции (серверные), реальный лимит — клиентский socket-idle\n+`BUN_CONFIG_HTTP_IDLE_TIMEOUT`=300с (bun #16682), фикс — `timeout: false` в fetch,\n+коммит `49d8d74`, потолок 600→900с; (в) висняки ровно 900с (08:44/08:59/09:14\n+2026-10-09) — мёртвый канал у дистрибьютора провайдера (внешнее), канал ожил ~09:2x.\n+См. [[04-Memory/facts]] (T-168, раздел 2026-10-09 — РАЗРЕШЕНИЕ).\n \n+**Шим (2026-10-07, вечер):** стабилен по крашам — crash-guard стрима `dee6f15`\n+закрыл краш bun-процесса при отмене клиента. Ранее открытый `TimeoutError`\n+закрыт 2026-10-09 (см. выше).\n+\n ## Ссылки\n \n - [[02-Methods/promo-provider-protocol]] — метод приёмки.\n - [[docs/specs/newapi-gateway-layer]] — гибридная архитектура (шим = временный мост).\n",
+        "status": "modified",
+        "additions": 17,
+        "deletions": 10
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

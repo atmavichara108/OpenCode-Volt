@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-205940-shell",
+  "created": "2026-10-09T17:59:40.081Z",
+  "updated": "2026-10-09T17:59:40.081Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "/home/rudra/.bun/bin/bun build justwoker-shim.ts --target=bun --outdir=/tmp/opencode/jw/build-check tail -3 echo \"exit=$?\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121d20496001vEjIVy0C77tJcI",
+  "callID": "call_511831fbfc0142e7902d1786",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

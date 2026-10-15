@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-005328-shell",
+  "created": "2026-10-10T21:53:28.885Z",
+  "updated": "2026-10-10T21:53:28.885Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "grep -rln 'Тенсуро' /home/rudra/Projects/Ekstasis 2>/dev/null grep -v node_modules grep -v '\\.png'",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed8341a5affedt7tK5NNHfxoJl",
+  "messageID": "msg_127ce7dc60016ExR2Sou00OwX0",
+  "callID": "chatcmpl-tool-939b03ba6ce5fd95",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

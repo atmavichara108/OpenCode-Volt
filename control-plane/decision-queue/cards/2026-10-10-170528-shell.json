@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-170528-shell",
+  "created": "2026-10-10T14:05:28.414Z",
+  "updated": "2026-10-10T14:05:28.414Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "opencode debug agents 2>/dev/null python3 -c \"\nimport json,sys\ndata=json.load(sys.stdin)\nprint('TOTAL:', len(data))\nprint('IDS/MODES:')\nfor a in data:\n    print(' ', a.get('id'), '|', a.get('mode'), '| hidden=', a.get('hidden'))\nprint('HARNESS PRIMARY (non-hidden, non-builtin):', [a.get('id') for a in data if a.get('mode')=='primary' and not a.get('hidden') and a.get('id') not in ('build','plan','compaction','summary','title')])\n\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9e561edffef3mrvrLt7u8s07",
+  "messageID": "msg_126216bf3001bugRGec4KgaKBz",
+  "callID": "9c1a7ccd-ca24-45ca-801f-e45ad3d2d3a9",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

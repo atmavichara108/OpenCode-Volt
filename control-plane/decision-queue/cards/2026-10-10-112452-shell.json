@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-112452-shell",
+  "created": "2026-10-10T08:24:52.064Z",
+  "updated": "2026-10-10T08:24:52.064Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "python3 - <<'PYEOF'\nimport pathlib\n\nreadme = \"\"\"# seo-outreach — SEO-аутрич-конвейер\n\nПервый продукт SSA: полный конвейер SEO-аутрича (полный продуктовый охват).\n\n> SSA — временное имя; продукт работает без игровой терминологии и пока без\n> интеграции с Maya.\n\n## Конвейер (этапы)\n\n> Этапы включаются по фазам; часть действий остаётся human-owned. Список не\n> расширяет scope за пределы пакета.\n\nпараметры/создание кампании → discovery/search → dedup/filters/scoring →\ncontact/conditions → pre-send approval → outbound email/follow-up (только в approved\nlimits) → incoming inbox → classification/extraction → human handoff →\nexport/package → monitoring/incident stop.\n\n## Статус\n\n**Bootstrap.** Репозиторий инициализирован, ветка `task/seo-outreach-bootstrap`,\nничего не закоммичено. Реализация ещё не одобрена — ждёт ответов заказчика и\napproval пользователя (см. `docs/bootstrap/implementation-approval-brief.md`).\n\n## Ключевые свойства (принятые решения)\n\n- **Две фазы:** фаза 1 — обработка под контролем человека (human-supervised\n  processing), фаза 2 — автоматизация обработки. Approval gate сохраняется: внешние\n  письма/сообщения не отправляются без человеческого approval; переговоры, принятие\n  условий и финансовые обязательства всегда остаются за человеком в текущем scope.\n- **Лёгкий стек сейчас:** Sheets/SQLite. Тяжёлый web/PostgreSQL/queues — только\n  задокументированная будущая опция.\n- **Изоляция клиентов:** данные и инстансы клиентов изолированы.\n- **Владение:** код и переиспользуемые модули — за SSA/Максом; клиентские данные\n  и настроенная БД — за клиентом. Тесты — до передачи. Возможность последующей\n  модификации сохраняется.\n\n## Структура\n\n```\nREADME.md\nAGENTS.md               # один primary-агент `top`, кандидаты в subagent-способности\n.gitignore              # без секретов и клиентских БД\ndocs/\n├── decisions.md        # журнал решений\n├── architecture.md     # архитектура / бутстрап-бриф\n└── bootstrap/\n    └── implementation-approval-brief.md  # draft, НЕ execution-spec\n```\n\n## Источник наработок (не копировать сюда)\n\nИсходные наработки лежат в `~/Projects/SSA/seo_project_pack/pack/` (v0.1) и\nостаются архивом. В этот репозиторий архивные артефакты целиком **не копируются**.\n\"\"\"\n\npathlib.Path(\"/home/rudra/Projects/SSA/products/seo-outreach/README.md\").write_text(readme)\nprint(\"WROTE README.md\")\nPYEOF",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_edb1ac0a6ffenQfcZsqm5NB80x",
+  "messageID": "msg_124ea1326001Xx6Zm9hxA22TNH",
+  "callID": "call_00_ET_3Wfxca2zZ5BZ83seDpGh5810",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

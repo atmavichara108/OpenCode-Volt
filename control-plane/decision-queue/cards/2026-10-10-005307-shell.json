@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-005307-shell",
+  "created": "2026-10-10T21:53:07.570Z",
+  "updated": "2026-10-10T21:53:07.570Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "wc -l \"/home/rudra/Projects/Ekstasis/Канон/манифест.md\" \"/home/rudra/Projects/Ekstasis/Канон/словарь-образов.md\" \"/home/rudra/Projects/Ekstasis/Картотека/оглавление.md\" \"/home/rudra/Projects/Ekstasis/Картотека/README.md\" \"/home/rudra/Projects/Ekstasis/Память/README.md\" \"/home/rudra/Projects/Ekstasis/Память/active-context.md\" \"/home/rudra/Projects/Ekstasis/Память/facts.md\" \"/home/rudra/Projects/Ekstasis/Тетрадь правок/README.md\" ls \"/home/rudra/Projects/Ekstasis/Картотека/Вселенная\" \"/home/rudra/Projects/Ekstasis/Память/session-log\" \"/home/rudra/Projects/Ekstasis/Отзывы\" \"/home/rudra/Projects/Ekstasis/docs\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed8341a5affedt7tK5NNHfxoJl",
+  "messageID": "msg_127ce226a001GyvWUhD3qazSA9",
+  "callID": "chatcmpl-tool-bf6b788094b28856",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

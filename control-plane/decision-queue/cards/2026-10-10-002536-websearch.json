@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-10-002536-websearch",
+  "created": "2026-10-10T21:25:36.270Z",
+  "updated": "2026-10-10T21:25:36.270Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "websearch",
+  "pattern": "immune system self non-self recognition friend foe discrimination immunology",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127b4e85c001Me5Llp0quBQcwA",
+  "callID": "call_03_40pyj48jdnjz5wgqzxd1s77g",
+  "metadata": {
+    "query": "immune system self non-self recognition friend foe discrimination immunology"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

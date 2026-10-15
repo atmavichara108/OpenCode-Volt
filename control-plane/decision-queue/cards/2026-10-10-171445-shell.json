@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-171445-shell",
+  "created": "2026-10-10T14:14:45.921Z",
+  "updated": "2026-10-10T14:14:45.921Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "shell",
+  "pattern": "fd -HI 'ssa-control-agent-harness-bootstrap.md' /home/rudra/Projects/OpenCode-Vault /home/rudra/Projects/OpenCode-Vault-tasks 2>/dev/null head echo --- ls /home/rudra/Projects/ 2>/dev/null echo --- ls /home/rudra/Projects/OpenCode-Vault-tasks/ssa-bootstrap-20261010 2>/dev/null head",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9d77707ffecevgx2hSjI94QE",
+  "messageID": "msg_1262a7f06001GpGe9z0WMk8S2F",
+  "callID": "22725c87-a3a9-4598-ba2f-1a87543ace41",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

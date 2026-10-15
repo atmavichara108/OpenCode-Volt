@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-122721-shell",
+  "created": "2026-10-09T09:27:21.930Z",
+  "updated": "2026-10-09T09:27:21.930Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "which python3 node bun python3 --version echo \"=== dotfiles venv ===\" ls /home/rudra/dotfiles/.venv 2>/dev/null head echo \"=== vault venv pytest ===\" /home/rudra/Projects/OpenCode-Vault/.venv/bin/python --version 2>/dev/null /home/rudra/Projects/OpenCode-Vault/.venv/bin/pytest --version 2>/dev/null echo \"=== git-agent head-guard usage ===\" head -40 /home/rudra/dotfiles/tools/git-agent/head-guard.sh",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee01c79a5ffeuKufDEOIYCNam9",
+  "messageID": "msg_11ff919c5001xse2XhnOrIgZMf",
+  "callID": "call_db8d4d9934cd4dc0a53ae37b",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

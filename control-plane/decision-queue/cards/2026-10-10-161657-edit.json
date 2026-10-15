@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-10-161657-edit",
+  "created": "2026-10-10T13:16:57.066Z",
+  "updated": "2026-10-10T13:16:57.066Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "opencode.json",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_125f4e4c4001C4T5NEQ2CeDyad",
+  "callID": "toolu_bdrk_01Czc5feZwwuR8yTPKkWgrU7",
+  "metadata": {
+    "files": [
+      {
+        "file": "opencode.json",
+        "patch": "Index: opencode.json\n===================================================================\n--- opencode.json\n+++ opencode.json\n@@ -695,38 +695,28 @@\n         { \"action\": \"subagent\", \"resource\": \"*\", \"effect\": \"deny\" },\n         { \"action\": \"read\", \"resource\": \"*\", \"effect\": \"allow\" },\n         { \"action\": \"glob\", \"resource\": \"*\", \"effect\": \"allow\" },\n         { \"action\": \"grep\", \"resource\": \"*\", \"effect\": \"allow\" },\n-        { \"action\": \"webfetch\", \"resource\": \"*\", \"effect\": \"deny\" },\n-        { \"action\": \"shell\", \"resource\": \"ls*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"cat*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"grep*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"find*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"git status*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"git diff*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"git log*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"git show*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"git rev-parse*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"git ls-files*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"git branch*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"python3 -m py_compile*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"python -m py_compile*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"python3 -m json.tool*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"python -m json.tool*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"node --check*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"npm test*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"npm run lint*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"npm run build*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"pytest --collect-only*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"systemctl --user status*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"journalctl --user*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"stow -n*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"stow --adopt -n*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"which*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"stat*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"file*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"ps*\", \"effect\": \"allow\" },\n-        { \"action\": \"shell\", \"resource\": \"jq*\", \"effect\": \"allow\" }\n+        { \"action\": \"webfetch\", \"resource\": \"*\", \"effect\": \"allow\" },\n+        { \"action\": \"external_directory\", \"resource\": \"*\", \"effect\": \"allow\" },\n+        { \"action\": \"shell\", \"resource\": \"*\", \"effect\": \"allow\" },\n+        { \"action\": \"shell\", \"resource\": \"sudo *\", \"effect\": \"deny\" },\n+        { \"action\": \"shell\", \"resource\": \"chown *\", \"effect\": \"deny\" },\n+        { \"action\": \"shell\", \"resource\": \"chmod *\", \"effect\": \"deny\" },\n+        { \"action\": \"shell\", \"resource\": \"mkfs*\", \"effect\": \"deny\" },\n+        { \"action\": \"shell\", \"resource\": \"shutdown*\", \"effect\": \"deny\" },\n+        { \"action\": \"shell\", \"resource\": \"reboot*\", \"effect\": \"deny\" },\n+        { \"action\": \"shell\", \"resource\": \"systemctl stop*\", \"effect\": \"deny\" },\n+        { \"action\": \"shell\", \"resource\": \"systemctl disable*\", \"effect\": \"deny\" },\n+        { \"action\": \"shell\", \"resource\": \"systemctl mask*\", \"effect\": \"deny\" },\n+        { \"action\": \"shell\", \"resource\": \"git push --force*\", \"effect\": \"deny\" },\n+        { \"action\": \"shell\", \"resource\": \"git push -f*\", \"effect\": \"deny\" },\n+        { \"action\": \"shell\", \"resource\": \"git branch -D*\", \"effect\": \"deny\" },\n+        { \"action\": \"shell\", \"resource\": \"git tag -d*\", \"effect\": \"deny\" },\n+        { \"action\": \"shell\", \"resource\": \"git reset --hard*\", \"effect\": \"deny\" },\n+        { \"action\": \"shell\", \"resource\": \"git clean*\", \"effect\": \"deny\" },\n+        { \"action\": \"shell\", \"resource\": \"rm -rf*\", \"effect\": \"deny\" },\n+        { \"action\": \"shell\", \"resource\": \"rm -fr*\", \"effect\": \"deny\" }\n       ]\n     },\n     \"researcher\": {\n       \"mode\": \"subagent\",\n",
+        "status": "modified",
+        "additions": 20,
+        "deletions": 30
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

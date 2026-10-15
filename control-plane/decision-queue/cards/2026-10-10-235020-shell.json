@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-235020-shell",
+  "created": "2026-10-10T20:50:20.035Z",
+  "updated": "2026-10-10T20:50:20.035Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "echo \"=== число элементов в текущей вкладке ===\" copyq eval -- 'size()' 2>&1 echo echo \"=== история: индекс | длина | маскированный вид ===\" copyq eval -- '\nvar n = size(); var out = [];\nfor (var i = 0; i < n; ++i) {\n  var s = String(data(i));\n  var m = s.length > 10 ? (s.substr(0,2) + \"…(\" + (s.length) + \")…\" + s.substr(-1)) : s;\n  m = m.replace(/\\n/g, \"\\\\n\");\n  var secretish = (s.length>=8 && s.length<=64 && !/\\s/.test(s) && /[A-Za-z]/.test(s) && /[0-9]/.test(s)) ? \"  <-- похоже на токен/пароль\" : \"\";\n  out.push(i + \" | len=\" + s.length + \" | \" + m + secretish);\n}\nprint(out.join(\"\\n\") + \"\\n\");\n' 2>&1 echo echo \"=== список вкладок и их размеры ===\" copyq eval -- 'print(tabNames().map(function(t){return t+\":\"+size();}).join(\"  \"))' 2>&1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed8739b6fffehp9xYGiS2A3O1i",
+  "messageID": "msg_127947835001c6gvXdkbcF6hO7",
+  "callID": "call_00_2oo7805zfsgdb0m2886k9bgj",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «secret-path»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

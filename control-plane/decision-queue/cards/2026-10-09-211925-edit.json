@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-211925-edit",
+  "created": "2026-10-09T18:19:25.519Z",
+  "updated": "2026-10-09T18:19:25.519Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "01-Reference/provider-cards/justwoker.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121e3cbc10010FU9r7o1WBM5FQ",
+  "callID": "call_0ff6544cd3844517b7dc8057",
+  "metadata": {
+    "files": [
+      {
+        "file": "01-Reference/provider-cards/justwoker.md",
+        "patch": "Index: 01-Reference/provider-cards/justwoker.md\n===================================================================\n--- 01-Reference/provider-cards/justwoker.md\n+++ 01-Reference/provider-cards/justwoker.md\n@@ -47,11 +47,12 @@\n   **HTTP 200 за ~28с**, реальный ответ.\n - **End-to-end через шим** (`127.0.0.1:8787`, `stream:true`) → **3/3 успешных**,\n   реальный контент; журнал шима: циклы ~27–30с, строки\n   «200 (synthesized SSE, blocks=1..2)».\n-- **Стрим-регрессия ушла:** апстрим на `stream:true` снова отдаёт **полный**\n-  Anthropic SSE — `message_start → ping → content_block_start → content_block_delta\n-  → content_block_stop → message_delta → message_stop`.\n+- **Стрим-регрессия (SSE без content_block) ушла,** но `stream:true` у апстрима\n+  периодически висит без байтов (2026-10-09 вечер: прямой curl stream:true —\n+  0 байтов за 60с, потом ожил) — шим держит hang-детектор (30с) и фолбэчит\n+  на non-stream.\n - **amd-radeon:** 503 «no_available_workers (all circuits open or unhealthy)» —\n   провайдерский предохранитель, сам восстановился; к правкам конфига не относится.\n \n ## Probe evidence (2026-10-07, диагноз; статус регрессии снят 2026-10-09)\n",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 3
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

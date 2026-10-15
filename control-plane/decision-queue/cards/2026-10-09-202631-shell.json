@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-202631-shell",
+  "created": "2026-10-09T17:26:31.027Z",
+  "updated": "2026-10-09T17:26:31.027Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "python3 -m json.tool opencode.json echo \"JSON_VALID\" git diff --cached --check echo \"diffcheck_exit=$?\" echo '---UNSTAGED---' git diff --stat echo '(end-unstaged)' echo '---UNMERGED---' git ls-files -u echo '(end-unmerged)' echo '---FILELIST---' git diff --cached --name-only",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede618235ffePEjGgfqNisGnUV",
+  "messageID": "msg_121aef652001Kbn3EcuwVlKs9t",
+  "callID": "5e118069-2df2-4d60-a4f6-40be4c816d02",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

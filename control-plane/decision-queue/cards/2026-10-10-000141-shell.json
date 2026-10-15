@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-000141-shell",
+  "created": "2026-10-10T21:01:41.765Z",
+  "updated": "2026-10-10T21:01:41.765Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== 1) copyq_tabs.ini (менялся 23:46) ===\" cat ~/dotfiles/copyq/.config/copyq/copyq_tabs.ini 2>/dev/null echo \"---\" cat ~/.config/copyq/copyq_tabs.ini 2>/dev/null echo echo \"=== 2) кто вообще вызывает copyq из скриптов/команд ===\" timeout 60 grep -rn 'copyq' ~/dotfiles --include='*.sh' --include='*.py' --include='*.ts' --include='*.md' --include='*.ini' --include='*.json*' 2>/dev/null grep -viE 'node_modules|\\.git/|copyq-commands\\.ini' head -25 echo echo \"=== 3) правила заголовков/окон в qtile ===\" timeout 60 grep -rnE 'set_?title|wmctrl|xdotool|window_title|WM_NAME|setWindowTitle|match\\(.*title' ~/dotfiles/qtile ~/.config/qtile 2>/dev/null head -15 echo echo \"=== 4) opencode-команды, замешанные на clipboard/copyq ===\" echo \"-- $(basename $f) --\" basename $f grep -nE 'copyq|clipboard|xclip|xsel|window|title' \"$f\" 2>/dev/null head -6",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed8739b6fffehp9xYGiS2A3O1i",
+  "messageID": "msg_1279ee22a001f1MNQmlfT0bhcm",
+  "callID": "call_00_gd605h1zgdzon5of7d8uv7k5",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

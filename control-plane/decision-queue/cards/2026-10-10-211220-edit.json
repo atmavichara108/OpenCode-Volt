@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-10-211220-edit",
+  "created": "2026-10-10T18:12:20.989Z",
+  "updated": "2026-10-10T18:12:20.989Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "docs/specs/bugfix-failure-rule.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_12703c462001xXdX8sCrQdk3o7",
+  "callID": "call_45a46a06e5cf44baad740cd8",
+  "metadata": {
+    "files": [
+      {
+        "file": "docs/specs/bugfix-failure-rule.md",
+        "patch": "Index: docs/specs/bugfix-failure-rule.md\n===================================================================\n--- docs/specs/bugfix-failure-rule.md\n+++ docs/specs/bugfix-failure-rule.md\n@@ -129,10 +129,11 @@\n \n ## 9. Вне scope и blockers\n \n - Изменение Vault `opencode.json` не входит в dotfiles edit scope. INC-5\n-  передаётся Vault owner отдельным handoff; до его применения external-directory\n-  инцидент остаётся blocked/unverified.\n+  исправлен apply'ем рабочего дерева по отдельному мандату Рудры (2026-10-10,\n+  восстановление из `origin/main`); residual — conflict-check при merge\n+  отошедшей task-ветки Vault, чтобы не откатить `cac2a00`.\n - Источник — вложение `bugfix-extdir-and-rule-20261010.txt`; полный текст не\n   копируется в runtime logs. Точные требования процитированы в §1.\n - OpenCode core/tool API не патчить; runtime недоступность описывать как\n   `[проверить]` с workaround.\n",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 2
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

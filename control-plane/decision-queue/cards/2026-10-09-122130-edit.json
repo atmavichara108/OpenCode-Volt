@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-122130-edit",
+  "created": "2026-10-09T09:21:30.950Z",
+  "updated": "2026-10-09T09:21:30.950Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": ".dq-scan.py",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee01c79a4ffeix1rQE1KFzS5UM",
+  "messageID": "msg_11ff7432e00151kl5rwLjnpKdc",
+  "callID": "call_4031354e336141289b443f47",
+  "metadata": {
+    "files": [
+      {
+        "file": ".dq-scan.py",
+        "patch": "Index: .dq-scan.py\n===================================================================\n--- .dq-scan.py\n+++ .dq-scan.py\n@@ -0,0 +1,30 @@\n+import json, glob, sys\n+\n+files = sorted(glob.glob(\"*.json\"))\n+dec = json.JSONDecoder()\n+bad = []\n+ok = 0\n+for f in files:\n+    raw = open(f, encoding=\"utf-8\").read()\n+    idx = 0\n+    n = 0\n+    while idx < len(raw) and raw[idx] in \" \\t\\r\\n\":\n+        idx += 1\n+    try:\n+        while idx < len(raw):\n+            obj, end = dec.raw_decode(raw, idx)\n+            n += 1\n+            idx = end\n+            while idx < len(raw) and raw[idx] in \" \\t\\r\\n\":\n+                idx += 1\n+    except Exception as e:\n+        bad.append((f, \"decode-error objects=%d: %s\" % (n, e)))\n+        continue\n+    if n != 1:\n+        bad.append((f, \"objects=%d\" % n))\n+    else:\n+        ok += 1\n+\n+print(\"total=%d ok=%d bad=%d\" % (len(files), ok, len(bad)))\n+for f, why in bad:\n+    print(\"BAD\", f, \"|\", why)\n\\ No newline at end of file\n",
+        "status": "added",
+        "additions": 30,
+        "deletions": 0
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

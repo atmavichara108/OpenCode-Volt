@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-171158-shell",
+  "created": "2026-10-10T14:11:58.021Z",
+  "updated": "2026-10-10T14:11:58.021Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "echo \"=== FF local main → мой HEAD (main нигде не checked out) ===\" git push . task/ssa-bootstrap-20261010:main 2>&1 tail -4 echo \"=== публикую main на origin ===\" git push origin main 2>&1 tail -4 echo \"=== проверка ===\" git log --oneline -1 main git rev-parse main origin/main task/ssa-bootstrap-20261010 sort -u wc -l",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_126276d7d001nkH9F5CzwbOx7P",
+  "callID": "toolu_bdrk_01NcZnMcdmU4wzLtZin3FyzQ",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

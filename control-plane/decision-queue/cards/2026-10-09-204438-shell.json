@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-204438-shell",
+  "created": "2026-10-09T17:44:38.400Z",
+  "updated": "2026-10-09T17:44:38.400Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo PATH=$p git -C ~/Projects/OpenCode-Vault worktree list --porcelain grep -A3 -B1 'OpenCode-Vault-tasks/clarify-ambiguity-20261009' true git -C \"$p\" status --short --untracked-files=all git -C \"$p\" rev-parse --abbrev-ref HEAD git -C \"$p\" rev-parse --short HEAD git -C \"$p\" diff --stat git -C \"$p\" diff --cached --stat",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_121c40fc8001eZCfKNdM0XFidV",
+  "callID": "call_2MD8ICQNzEHIhZNXoeECtyEz",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

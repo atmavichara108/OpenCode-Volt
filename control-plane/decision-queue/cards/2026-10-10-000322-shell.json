@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-000322-shell",
+  "created": "2026-10-10T21:03:22.418Z",
+  "updated": "2026-10-10T21:03:22.418Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== worktree ===\" git worktree list echo echo \"=== все ветки ===\" git branch -a head -20 echo echo \"=== свежие ветки ===\" git for-each-ref --sort=-committerdate refs/heads --format='%(refname:short) %(committerdate:short)' head -8",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127a059bd001rQCgPPFRCwNLx7",
+  "callID": "call_ce57bfe931164863848ee974",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}
