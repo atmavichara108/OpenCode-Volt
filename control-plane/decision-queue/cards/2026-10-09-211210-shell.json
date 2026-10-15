@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-211210-shell",
+  "created": "2026-10-09T18:12:10.215Z",
+  "updated": "2026-10-09T18:12:10.215Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "python3 -c 'from pathlib import Path; p=Path(\"02-Methods/git-worktree-isolation.md\"); b=p.read_bytes(); p.write_bytes(b.rstrip(b\"\\n\"))' python3 -c 'from pathlib import Path; s=Path(\"TASKS.md\").read_text(); rows=[x for x in s.splitlines() if x.startswith(\"| T-184 |\")]; assert len(rows)==1; assert rows[0].count(\"|\")==5; assert rows[0].split(\"|\")[3].strip()==\"P1\"; assert s.index(rows[0]) < s.index(\"## 🟤 Backlog\"); print(\"T-184 table/status/placement: PASS\")' git diff --name-only git diff --cached --name-only git diff -- \"$f\" sed -n '/^+[^+]/s/^+//p' python3 \"$HOME/dotfiles/tools/garbage-guard/guard.py\" check-text echo 'garbage-guard unavailable' bash 05-Templates/pre-commit-check.sh",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede254d97ffexQ6Ga6G6VO27Ox",
+  "messageID": "msg_121dd679d001jiTKVOR1FRwcMW",
+  "callID": "call_RpG8peBSiyoJNwsltFFgRTmo",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

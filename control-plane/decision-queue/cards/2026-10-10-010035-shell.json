@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-010035-shell",
+  "created": "2026-10-10T22:00:35.536Z",
+  "updated": "2026-10-10T22:00:35.536Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== 6 local-only commits on main ===\" git log --oneline origin/main..main echo echo \"=== merge candidates vs main ===\" echo \"-- $b: $(git rev-list --left-right --count main...$b) (main...branch, left=main-only right=branch-only)\" git rev-list --left-right --count main...$b echo echo \"=== hooks ===\" ls .git/hooks/ grep -v sample git config core.hooksPath echo echo \"--- pre-commit-check head ---\" sed -n '1,40p' 05-Templates/pre-commit-check.sh 2>/dev/null",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed830296bffeF3iz7Xxi5cWMOP",
+  "messageID": "msg_127d4684b001jNxxvvAMxBFKot",
+  "callID": "call_05add8f595e241a0a8b78079",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-111109-shell",
+  "created": "2026-10-09T08:11:09.726Z",
+  "updated": "2026-10-09T08:11:09.726Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "shell",
+  "pattern": "python3 add_tasks.py node tools/idea-graph/validate.mjs tail -3 python3 tools/md-table-check/check.py TASKS.md tail -1 grep -n \"T-179\\|T-183\" TASKS.md cut -c1-90",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11fb683a60010Wi53PnfMykLRG",
+  "callID": "call_2edb861140af4a508f4db608",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

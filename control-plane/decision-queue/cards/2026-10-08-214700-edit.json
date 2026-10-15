@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-08-214700-edit",
+  "created": "2026-10-08T18:47:00.245Z",
+  "updated": "2026-10-08T18:47:00.245Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": ".fmwt/tools/md-table-check/check-fm.py",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cd691fd001Anous9EnjGl94A",
+  "callID": "call_7d164b71e3e24bb187fa9b49",
+  "metadata": {
+    "files": [
+      {
+        "file": ".fmwt/tools/md-table-check/check-fm.py",
+        "patch": "Index: .fmwt/tools/md-table-check/check-fm.py\n===================================================================\n--- .fmwt/tools/md-table-check/check-fm.py\n+++ .fmwt/tools/md-table-check/check-fm.py\n@@ -0,0 +1,39 @@\n+#!/usr/bin/env python3\n+\"\"\"Дешёвая валидация YAML-шапок (frontmatter) markdown: значения со\n+«: » или «#» без кавычек и строки без двоеточия ломают YAML — Obsidian\n+красит такое в свойствах. Выход 0/1. Использование: check-fm.py файл...\"\"\"\n+import sys\n+\n+def extract(text):\n+    if not text.startswith(\"---\\n\"):\n+        return None\n+    end = text.find(\"\\n---\", 4)\n+    return None if end == -1 else text[4:end]\n+\n+def check(path):\n+    text = open(path, encoding=\"utf-8\").read()\n+    fm = extract(text)\n+    if fm is None:\n+        return 0\n+    bad = 0\n+    for i, line in enumerate(fm.splitlines(), 2):\n+        s = line.strip()\n+        if not s or s.startswith((\"#\", \"- \", \"  \")) or s in (\"---\",):\n+            continue\n+        if \":\" not in s:\n+            print(f\"{path}:{i}: строка frontmatter без двоеточия: {s[:50]}\")\n+            bad += 1\n+            continue\n+        val = s.split(\":\", 1)[1].strip()\n+        if (\": \" in val or val.endswith(\":\")) and not val.startswith(('\"', \"'\", \"[\", \"{\", \"|\", \">\")):\n+            print(f\"{path}:{i}: значение со «: » без кавычек: {val[:50]}\")\n+            bad += 1\n+        elif \"#\" in val and not val.startswith(('\"', \"'\")):\n+            print(f\"{path}:{i}: «#» в значении без кавычек: {val[:50]}\")\n+            bad += 1\n+    return bad\n+\n+if __name__ == \"__main__\":\n+    total = sum(check(p) for p in sys.argv[1:])\n+    print(f\"дефектов шапок: {total}\")\n+    sys.exit(1 if total else 0)\n",
+        "status": "added",
+        "additions": 39,
+        "deletions": 0
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

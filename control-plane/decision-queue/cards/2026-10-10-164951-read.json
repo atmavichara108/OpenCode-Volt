@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164951-read",
+  "created": "2026-10-10T13:49:51.302Z",
+  "updated": "2026-10-10T13:49:51.302Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "opencode-global/.config/opencode/shim/justwoker-shim.ts",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_126135908001EfhFkVLpWMPySO",
+  "callID": "toolu_bdrk_01RGgmEgRimv1jqAqbcbKQYN",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

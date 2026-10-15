@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-212713-shell",
+  "created": "2026-10-09T18:27:13.375Z",
+  "updated": "2026-10-09T18:27:13.375Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "python3 tools/peers/peer_lease.py run --file 04-Memory/active-context.md -- git add 04-Memory/active-context.md tail -1 git commit -m \"memory: T-168 финально закрыт — шим v4 (curl-транспорт + прокси)\n\nКорень висняков больших payload: прямое соединение с CF виснет на\nбольших upload'ах (MTU-blackhole, матрица 2026-10-09), Bun-сетевой стек\nсломан на больших телах. Фикс: openRaw на curl subprocess + SHIM_PROXY;\ndotfiles main=026213a. Evidence: 796KB → 200 за 12с, stream → 4.7с\nживые дельты, бенч (a)/(c)/(d) зелёный.\n\n- facts.md: раздел «большой payload 796KB — MTU-blackhole + curl-фикс»\n- active-context: новый фокус (следующее — New API layer) + фикс\n  decode-мусора taилwind→tailwind (пойман garbage-guard гейтом)\n- session-log 2026-10-09: вечерняя часть\n- карточка justwoker: шим v4 обязателен для больших контекстов\" tail -3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121eb2bee001rxXzgrxtL5fpb6",
+  "callID": "call_5e581048ffc44a629e4229b5",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «curl»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

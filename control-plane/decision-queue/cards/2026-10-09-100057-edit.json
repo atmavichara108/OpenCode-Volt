@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-100057-edit",
+  "created": "2026-10-09T07:00:57.539Z",
+  "updated": "2026-10-09T07:00:57.539Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/tmp/opencode/kbtest.sh",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eedd28c45ffeFJU6TDjG69z6A7",
+  "messageID": "msg_11f765ff3001jGfTrzFixslM9e",
+  "callID": "call_f986f9e31860408eb2bcc369",
+  "metadata": {
+    "files": [
+      {
+        "file": "/tmp/opencode/kbtest.sh",
+        "patch": "Index: /tmp/opencode/kbtest.sh\n===================================================================\n--- /tmp/opencode/kbtest.sh\n+++ /tmp/opencode/kbtest.sh\n@@ -1,24 +1,25 @@\n #!/bin/bash\n # Замер: какие байты доходят до pty от Ctrl+буква в US vs RU (Alacritty, X11)\n OUT=/tmp/opencode/keytest.out\n rm -f \"$OUT\"\n-alacritty --class keytest -e timeout 14 sh -c 'stty -icanon -isig -echo min 0; cat -v' >\"$OUT\" 2>/dev/null &\n-sleep 2\n-wid=$(xdotool search --class keytest 2>/dev/null | tail -1)\n+pre=$(xdotool search --class Alacritty 2>/dev/null | sort)\n+nohup alacritty --class keytest -T keytest -e sh -c 'stty -icanon -isig -echo min 0; timeout 12 cat -v' >\"$OUT\" 2>/dev/null &\n+sleep 3\n+post=$(xdotool search --class Alacritty 2>/dev/null | sort)\n+wid=$(comm -13 <(echo \"$pre\") <(echo \"$post\") | head -1)\n [ -z \"$wid\" ] && { echo \"NO_WINDOW\"; exit 1; }\n-xdotool windowactivate \"$wid\"; sleep 1\n+echo \"wid=$wid\"\n+xdotool windowactivate --sync \"$wid\"; sleep 1\n setxkbmap us\n-echo \"US: ctrl+a ctrl+x\"\n-xdotool key --window \"$wid\" ctrl+a;  sleep 0.4\n-xdotool key --window \"$wid\" ctrl+x;  sleep 0.4\n-setxkbmap ru\n-echo \"RU: ctrl+a(fy) ctrl+x(che) ctrl+n(tya) plain-a(ф)\"\n-xdotool key --window \"$wid\" ctrl+a;  sleep 0.4\n-xdotool key --window \"$wid\" ctrl+x;  sleep 0.4\n-xdotool key --window \"$wid\" ctrl+n;  sleep 0.4\n-xdotool key --window \"$wid\" a;       sleep 0.4\n-setxkbmap us,ru -option grp:alt_shift_toggle\n+xdotool key ctrl+a;  sleep 0.4   # US: ожидаем ^A\n+xdotool key ctrl+x;  sleep 0.4   # US: ожидаем ^X\n+setxkbmap ru-only 2>/dev/null || setxkbmap -layout ru\n+xdotool key ctrl+a;  sleep 0.4   # RU физ.А(ф): что шлёт?\n+xdotool key ctrl+x;  sleep 0.4   # RU физ.X(ч): что шлёт?\n+xdotool key ctrl+n;  sleep 0.4   # RU физ.N(т): что шлёт?\n+xdotool key a;       sleep 0.4   # RU plain: ожидаем юникод ф (d1 84) -> в cat -v как M-sM-^Д\n+setxkbmap -layout us,ru -option grp:alt_shift_toggle\n sleep 0.5\n xdotool windowkill \"$wid\" 2>/dev/null\n-echo \"=== RAW ===\"\n-cat \"$OUT\" 2>/dev/null | xxd | head -12\n+echo \"=== hexdump ===\"\n+xxd \"$OUT\" 2>/dev/null | head -12\n",
+        "status": "modified",
+        "additions": 17,
+        "deletions": 16
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

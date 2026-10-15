@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-180036-shell",
+  "created": "2026-10-09T15:00:36.139Z",
+  "updated": "2026-10-09T15:00:36.139Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git show-ref --verify refs/heads/task/skill-args-fix true git log --oneline --all -- .config/opencode/plugins/fix-tool-schema.ts head -20 git status --porcelain=v1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eded22d79ffe9kenpeEzA52RK5",
+  "messageID": "msg_1212e1872001S2LT75k79n0fzE",
+  "callID": "call_btBgovBrXrLc82t1VKyVlX92",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

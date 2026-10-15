@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-111545-shell",
+  "created": "2026-10-09T08:15:45.433Z",
+  "updated": "2026-10-09T08:15:45.433Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "sed -i 's/upunion/up/g' opencode-global/.config/opencode/shim/justwoker-shim.ts grep -n 'upunion\\|facadeStatus' opencode-global/.config/opencode/shim/justwoker-shim.ts echo \"CLEAN\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_11fbadd11001E8QSUJNvjaemL5",
+  "callID": "call_2f5185930f01401ca31bb457",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

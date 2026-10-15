@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-005321-shell",
+  "created": "2026-10-10T21:53:21.823Z",
+  "updated": "2026-10-10T21:53:21.823Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "shell",
+  "pattern": "python3 -m json.tool /home/rudra/Projects/OpenCode-Vault-tasks/meta-gates-20261009/opencode.json >/dev/null echo \"worktree json: OK\" python3 -m json.tool /home/rudra/Projects/OpenCode-Vault/opencode.json >/dev/null echo \"main json: OK\" echo \"=== пробую доступ к Ekstasis сейчас ===\" ls ~/Projects/Ekstasis/Канон/ 2>&1 head",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_127ce4d49001okAW9aPbPme4G0",
+  "callID": "call_249ce361bdfd46c0958631a3",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-170920-read",
+  "created": "2026-10-10T14:09:20.425Z",
+  "updated": "2026-10-10T14:09:20.425Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "/home/rudra/Projects/SSA/products/seo-outreach/docs/hooks-map.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9dc5bb8ffeneLBY28vDdLi7O",
+  "messageID": "msg_126258136001PEqNlSFYWy3ZD7",
+  "callID": "0632d1d6-50bf-4905-b8e7-634dcd9b3831",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

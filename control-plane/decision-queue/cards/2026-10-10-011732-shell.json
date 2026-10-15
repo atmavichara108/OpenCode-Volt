@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-011732-shell",
+  "created": "2026-10-10T22:17:32.780Z",
+  "updated": "2026-10-10T22:17:32.780Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== файл 9 и Без имени ===\" file 9 \"Без имени 1.base\" \"Без имени 2.base\" \"Без имени 3.base\" \"Без имени.base\" 2>/dev/null ls -la 9 \"Без имени\"*.base 2>/dev/null echo \"=== пустые md ===\" find 02-Methods 05-Templates -name \"*.md\" -empty 2>/dev/null echo \"=== guard.py ===\" ls ~/dotfiles/tools/garbage-guard/guard.py 2>/dev/null echo \"=== ssa-bootstrap ===\" find 98-Temporary/ssa-bootstrap -type f head echo \"=== tools ===\" find tools/mem-index tools/email-capture -type f head -20 git --version",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed830296bffeF3iz7Xxi5cWMOP",
+  "messageID": "msg_127e46e37001yKvAiXE4etXi3M",
+  "callID": "call_65b98548dc7b4516b3569955",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

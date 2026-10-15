@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-093628-edit",
+  "created": "2026-10-09T06:36:28.619Z",
+  "updated": "2026-10-09T06:36:28.619Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "01-Reference/provider-cards/justwoker.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee0a97b4fffeX15Yix6yTUvFr2",
+  "messageID": "msg_11f6053ce001aA6AgZFDbh5b1F",
+  "callID": "call_ae3ef35d389740a58b05c9f0",
+  "metadata": {
+    "files": [
+      {
+        "file": "01-Reference/provider-cards/justwoker.md",
+        "patch": "Index: 01-Reference/provider-cards/justwoker.md\n===================================================================\n--- 01-Reference/provider-cards/justwoker.md\n+++ 01-Reference/provider-cards/justwoker.md\n@@ -29,10 +29,23 @@\n | `risks` | **стрим-регрессия шлюза ушла (2026-10-09)** — апстрим снова отдаёт полный Anthropic SSE; остаточный риск нормальный для промо-провайдера (внешний канал дистрибьютора, баланс/квота). OpenAI-путь по-прежнему закрыт CF |\n | `next_action` | держать шим как **опциональный** мост; перевод провайдера каналом New API ([[docs/specs/newapi-gateway-layer]]) — по-прежнему целевое, но больше не срочность |\n | `config_targets` | TUI + M Code через `@ai-sdk/anthropic`; в конфиге — шим-baseURL |\n \n-## Probe evidence (2026-10-07, диагноз)\n+## Probe evidence (2026-10-09, РАЗРЕШЕНИЕ)\n \n+- **Прямой curl к апстриму** `POST /v1/messages`, модель `claude-opus-4-8` →\n+  **HTTP 200 за ~28с**, реальный ответ.\n+- **End-to-end через шим** (`127.0.0.1:8787`, `stream:true`) → **3/3 успешных**,\n+  реальный контент; журнал шима: циклы ~27–30с, строки\n+  «200 (synthesized SSE, blocks=1..2)».\n+- **Стрим-регрессия ушла:** апстрим на `stream:true Banc` снова отдаёт **полный**\n+  Anthropic SSE — `message_start → ping → content_block_start → content_block_delta\n+  → content_block_stop → message_delta → message_stop`.\n+- **amd-radeon:** 503 «no_available_workers (all circuits open or unhealthy)» —\n+  провайдерский предохранитель, сам восстановился; к правкам конфига не относится.\n+\n+## Probe evidence (2026-10-07, диагноз; статус регрессии снят 2026-10-09)\n+\n Проверено вживую (curl напрямую в upstream, ключ из auth.json):\n \n - **`POST /v1/messages`, `stream` отсутствует/false** → **HTTP 200**, корректный\n   JSON: `{\"content\":[{\"type\":\"text\",\"text\":\"ACK\"}], ...}` — non-stream работает.\n",
+        "status": "modified",
+        "additions": 14,
+        "deletions": 1
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

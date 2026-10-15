@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-212529-read",
+  "created": "2026-10-09T18:25:29.836Z",
+  "updated": "2026-10-09T18:25:29.836Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "/home/rudra/dotfiles/opencode.json",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_121e9af49001wNbZIm84IeHVXy",
+  "callID": "call_a0c74fbf510b4a949d511321",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

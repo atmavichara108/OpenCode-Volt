@@ -1,0 +1,27 @@
+{
+  "id": "2026-10-09-194259-grep",
+  "created": "2026-10-09T16:42:59.206Z",
+  "updated": "2026-10-09T16:42:59.206Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "grep",
+  "pattern": "^#+.*7|§7",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede747513ffeqCi7YfHFnKYxJq",
+  "messageID": "msg_1218bd663001ZmxIDyQehmdxyd",
+  "callID": "toolu_147ed668f8cc4c01a7a5f12c",
+  "metadata": {
+    "root": ".",
+    "path": "/home/rudra/Projects/OpenCode-Vault/06-Audits/2026-10-07-world-atlas-reading-guide.md"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

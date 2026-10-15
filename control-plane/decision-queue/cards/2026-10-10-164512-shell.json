@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164512-shell",
+  "created": "2026-10-10T13:45:12.997Z",
+  "updated": "2026-10-10T13:45:12.997Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls -la ~/Projects/SSA/products/seo-outreach/ ~/Projects/SSA/products/seo-outreach/.opencode 2>&1 echo --- cat ~/Projects/SSA/products/seo-outreach/AGENTS.md 2>&1 head -50 echo --- ls ~/.config/opencode/agent/ 2>&1 echo --- cat ~/.config/opencode/opencode.json 2>&1 head -80 echo --- opencode --version 2>&1 which opencode",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9f0a108ffeyfZZYysnsEkvRP",
+  "messageID": "msg_1260f749f001JSPquuo2Lle2mu",
+  "callID": "call_01a1260f7e8f77d1b62960f50b3a9de8",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "builder",
+  "model": null
+}

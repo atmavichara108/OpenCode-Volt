@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-005254-shell",
+  "created": "2026-10-10T21:52:54.577Z",
+  "updated": "2026-10-10T21:52:54.577Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "shell",
+  "pattern": "echo \"=== vault worktree opencode.json (блок permissions) ===\" sed -n '1,40p' /home/rudra/Projects/OpenCode-Vault-tasks/meta-gates-20261009/opencode.json",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_127cdef6f001UbDFxkv1WxafdV",
+  "callID": "call_50b9a01e51624e65bfb602a4",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

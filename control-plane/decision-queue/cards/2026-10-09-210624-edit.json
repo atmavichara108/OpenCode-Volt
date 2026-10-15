@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-210624-edit",
+  "created": "2026-10-09T18:06:24.144Z",
+  "updated": "2026-10-09T18:06:24.144Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121d81ed6001B3YRh8WRWIE0vg",
+  "callID": "call_d84373dafcb84099ab644fb7",
+  "metadata": {
+    "files": [
+      {
+        "file": "/home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts",
+        "patch": "Index: /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n===================================================================\n--- /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n+++ /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n@@ -627,11 +627,12 @@\n               fail(reason === \"hard\" ? \"shim: upstream timeout\" : \"shim: upstream hang\");\n               return true;\n             }\n           }\n-          // Попытки исчерпаны на hang.\n-          fail(\"shim: upstream hang\");\n-          return true;\n+          // Попытки исчерпаны на hang — отдаём шанс fallback на non-stream\n+          // (stream:true у upstream сейчас висит без байтов, non-stream работает).\n+          console.log(`[shim] ${req.method} ${url.pathname} -> stream attempts exhausted (fallback to non-stream)`);\n+          return false;\n         };\n \n         (async () => {\n           try {\n",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 3
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

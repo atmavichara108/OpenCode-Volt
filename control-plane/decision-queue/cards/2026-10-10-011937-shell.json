@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-011937-shell",
+  "created": "2026-10-10T22:19:37.169Z",
+  "updated": "2026-10-10T22:19:37.169Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git add opencode.json tools control-plane docs/specs git status --short grep '^[MA]' MODEL_OK=1 git commit -m \"tools+control-plane: email-capture, mem-index, md-table-check, model-catalog, telemetry, decision-queue cards, opencode.json\n\ngit-гигиена 2026-10-11: инструменты и control-plane из грязи главного worktree\nв текущую ветку (сохранено как есть).\" tail -12",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed830296bffeF3iz7Xxi5cWMOP",
+  "messageID": "msg_127e6621c001pEiFClb1pM147G",
+  "callID": "call_c0e4f1e7a8e74897b0706be7",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-151141-shell",
+  "created": "2026-10-10T12:11:41.671Z",
+  "updated": "2026-10-10T12:11:41.671Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "which bun bunx 2>&1 echo '---' ls /home/rudra/dotfiles/node_modules/@opencode 2>/dev/null ls /home/rudra/dotfiles/package.json /home/rudra/dotfiles/node_modules 2>&1 head -5 echo '--- global opencode lib:' ls /home/rudra/.config/opencode/node_modules/@opencode 2>/dev/null echo 'no node_modules in ~/.config/opencode'",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda4bd7bfffe6fR0b4fKOMNX7R",
+  "messageID": "msg_125b9b768001u1Msi2dN4uGEh2",
+  "callID": "3a57567d-573d-4b39-9b97-841190d528af",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

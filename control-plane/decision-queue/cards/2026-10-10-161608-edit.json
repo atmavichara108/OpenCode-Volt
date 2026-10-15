@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-10-161608-edit",
+  "created": "2026-10-10T13:16:08.665Z",
+  "updated": "2026-10-10T13:16:08.665Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "opencode.json",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_125f3a43d001FJrzQa7avlkQl3",
+  "callID": "toolu_bdrk_01VvZzuGGaJ47e2jXwq4k8Ng",
+  "metadata": {
+    "files": [
+      {
+        "file": "opencode.json",
+        "patch": "Index: opencode.json\n===================================================================\n--- opencode.json\n+++ opencode.json\n@@ -324,40 +324,29 @@\n         \"task\": \"deny\",\n         \"read\": \"allow\",\n         \"glob\": \"allow\",\n         \"grep\": \"allow\",\n-        \"webfetch\": \"deny\",\n+        \"webfetch\": \"allow\",\n+        \"external_directory\": \"allow\",\n         \"bash\": {\n-          \"*\": \"deny\",\n-          \"ls*\": \"allow\",\n-          \"cat*\": \"allow\",\n-          \"grep*\": \"allow\",\n-          \"find*\": \"allow\",\n-          \"git status*\": \"allow\",\n-          \"git diff*\": \"allow\",\n-          \"git log*\": \"allow\",\n-          \"git show*\": \"allow\",\n-          \"git rev-parse*\": \"allow\",\n-          \"git ls-files*\": \"allow\",\n-          \"git branch*\": \"allow\",\n-          \"python3 -m py_compile*\": \"allow\",\n-          \"python -m py_compile*\": \"allow\",\n-          \"python3 -m json.tool*\": \"allow\",\n-          \"python -m json.tool*\": \"allow\",\n-          \"node --check*\": \"allow\",\n-          \"npm test*\": \"allow\",\n-          \"npm run lint*\": \"allow\",\n-          \"npm run build*\": \"allow\",\n-          \"pytest --collect-only*\": \"allow\",\n-          \"systemctl --user status*\": \"allow\",\n-          \"journalctl --user*\": \"allow\",\n-          \"stow -n*\": \"allow\",\n-          \"stow --adopt -n*\": \"allow\",\n-          \"which*\": \"allow\",\n-          \"stat*\": \"allow\",\n-          \"file*\": \"allow\",\n-          \"ps*\": \"allow\",\n-          \"jq*\": \"allow\"\n+          \"*\": \"allow\",\n+          \"sudo *\": \"deny\",\n+          \"chown *\": \"deny\",\n+          \"chmod *\": \"deny\",\n+          \"mkfs*\": \"deny\",\n+          \"shutdown*\": \"deny\",\n+          \"reboot*\": \"deny\",\n+          \"systemctl stop*\": \"deny\",\n+          \"systemctl disable*\": \"deny\",\n+          \"systemctl mask*\": \"deny\",\n+          \"git push --force*\": \"deny\",\n+          \"git push -f*\": \"deny\",\n+          \"git branch -D*\": \"deny\",\n+          \"git tag -d*\": \"deny\",\n+          \"git reset --hard*\": \"deny\",\n+          \"git clean*\": \"deny\",\n+          \"rm -rf*\": \"deny\",\n+          \"rm -fr*\": \"deny\"\n         }\n       }\n     },\n     \"researcher\": {\n",
+        "status": "modified",
+        "additions": 20,
+        "deletions": 31
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

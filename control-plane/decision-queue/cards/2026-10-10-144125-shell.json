@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-144125-shell",
+  "created": "2026-10-10T11:41:25.614Z",
+  "updated": "2026-10-10T11:41:25.614Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"########## control/docs/portfolio-registry.md ##########\" cat /home/rudra/Projects/SSA/control/docs/portfolio-registry.md 2>&1 echo echo \"########## control/docs/decisions/0001-bootstrap.md ##########\" cat /home/rudra/Projects/SSA/control/docs/decisions/0001-bootstrap.md 2>&1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda6315feffe6AABxCxYe55DZ6",
+  "messageID": "msg_1259e0ed00016aocIohm6lppGd",
+  "callID": "call_02_ZOmxBF3zMtJmRss8Aie34880",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

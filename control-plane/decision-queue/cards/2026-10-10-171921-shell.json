@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-171921-shell",
+  "created": "2026-10-10T14:19:21.155Z",
+  "updated": "2026-10-10T14:19:21.155Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"--- control staged stat ---\" git diff --staged --stat tail -3 echo \"--- control secret scan ---\" git diff --staged grep -niE \"sk-|ghp_|xox|api[_-]?key|password|passwd|secret|token|bearer\" head -40 echo \"grep_rc=$?\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9d412b4ffeCygxEFz33JeRAH",
+  "messageID": "msg_1262eb6a1001ImNES2eCg69gnn",
+  "callID": "8b10fe9d-595f-4ad8-afdf-5d95e10e282a",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «secret-path»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

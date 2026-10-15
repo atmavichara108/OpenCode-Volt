@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-211009-shell",
+  "created": "2026-10-09T18:10:09.945Z",
+  "updated": "2026-10-09T18:10:09.945Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "shell",
+  "pattern": "sed -n '1,65p' TASKS.md sed -n '150,185p' TASKS.md ls -l tools/peers/peer_lease.py",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede254d97ffexQ6Ga6G6VO27Ox",
+  "messageID": "msg_121db9509001nA02gltDylLKrg",
+  "callID": "call_5MCpYhovFvxQGocJcuHrcRQt",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

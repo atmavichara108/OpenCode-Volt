@@ -1,0 +1,24 @@
+{
+  "id": "evt_124ef917d002nkIxmVLKt6S7m6",
+  "created": "2026-10-10T08:30:42.559Z",
+  "updated": "2026-10-10T08:30:42.559Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "grep -A3 'параметры/создание кампании' \"$D/README.md\" head -4 grep -A3 'параметры/создание кампании' \"$f\" head -4 echo \"IDENTICAL: ${f#$D/}\" echo \"DIFF: ${f#$D/}\" diff <(echo \"$base\") <(echo \"$blk\") echo \"$base\" echo \"$blk\" echo \"== стадии ==\" echo \"$base\" tr '→' '\\n' cat -n",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_edb148aa5ffeTlSiHSxl4J71pS",
+  "messageID": "msg_124ee8a84001PMB2BKqSxGAmCJ",
+  "callID": "12828e8c-b988-4d7a-a070-9913c8613246",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": "grep *"
+  },
+  "effect": "ask",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

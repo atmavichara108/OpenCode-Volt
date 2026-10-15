@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-163906-shell",
+  "created": "2026-10-10T13:39:06.626Z",
+  "updated": "2026-10-10T13:39:06.626Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== is docs a symlink? ===\" ls -ld /home/rudra/dotfiles/docs /home/rudra/dotfiles/docs/specs echo \"=== real resolved paths ===\" readlink -f ssa-control-agent-harness-bootstrap.md readlink -f seo-outreach-agent-runtime-bootstrap.md echo \"=== stat + head ===\" echo \"--- $f ---\" stat -c '%s bytes  %n  -> %N' \"$f\" 2>&1 head -3 \"$f\" 2>&1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_126099c5b001EsQ8Y4SQc6NW6g",
+  "callID": "toolu_bdrk_01C98hNCNAJXrtjyW8X1GvZd",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

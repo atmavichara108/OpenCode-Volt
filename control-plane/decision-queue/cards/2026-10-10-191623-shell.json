@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-191623-shell",
+  "created": "2026-10-10T16:16:23.102Z",
+  "updated": "2026-10-10T16:16:23.102Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== control git hooks:\" ls /home/rudra/Projects/SSA/control/.git/hooks/ grep -v sample echo \"(только sample)\" echo \"=== tree-cop/githooks/plugins в SSA:\" fd -a \"tree-cop|pre-commit|plugins\" /home/rudra/Projects/SSA/control /home/rudra/Projects/SSA/products/seo-outreach --max-depth 3 2>/dev/null head echo \"(пусто = нет)\" echo \"=== глобальные плагины машины:\" ls ~/.config/opencode/plugins/ 2>/dev/null echo \"=== remote SSA:\" git -C /home/rudra/Projects/SSA/control remote -v git -C /home/rudra/Projects/SSA/products/seo-outreach remote -v echo \"(пусто = нет remote)\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fa0279ffeALoBlPtaFyVci4",
+  "messageID": "msg_12699a73a001XTRv0buZSrWJdT",
+  "callID": "call_01a12699e02c70ecb98a36a139805b29",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-123539-shell",
+  "created": "2026-10-09T09:35:39.188Z",
+  "updated": "2026-10-09T09:35:39.188Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls -la /home/rudra/.config/opencode 2>/dev/null head -5 echo \"---is symlink?---\" readlink -f /home/rudra/.config/opencode 2>/dev/null echo \"---plugins live---\" ls -la /home/rudra/.config/opencode/plugins/ 2>/dev/null head -20",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee01c79a4ffeix1rQE1KFzS5UM",
+  "messageID": "msg_12002ecf400174PYw11hV9Dyqk",
+  "callID": "call_587789965a104b678044ade6",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

@@ -1,0 +1,28 @@
+{
+  "id": "2026-10-09-180031-grep",
+  "created": "2026-10-09T15:00:31.364Z",
+  "updated": "2026-10-09T15:00:31.364Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "grep",
+  "pattern": "skill|arguments|Invalid arguments|id: Missing key",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eded22d79ffe9kenpeEzA52RK5",
+  "messageID": "msg_1212dea89001x1wEr3iRtBbWGZ",
+  "callID": "call_EHeuBYzh72Mh0kyahzQ59O7L",
+  "metadata": {
+    "root": ".",
+    "path": "/home/rudra/dotfiles/opencode-global",
+    "limit": 150
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

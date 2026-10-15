@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-193957-shell",
+  "created": "2026-10-09T16:39:57.856Z",
+  "updated": "2026-10-09T16:39:57.856Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "shell",
+  "pattern": "grep -n \"Phase 4\\|фаза 4\\|Phase-4\" /home/rudra/Projects/OpenCode-Vault/TASKS.md head grep -rn \"stream-intent-050\\|node-051\\|узел 051\\|узел 052\" /home/rudra/Projects/OpenCode-Vault/04-Memory/idea-graph/nodes.jsonl head -5",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede77119bffe6xoc4UpkBsy0F8",
+  "messageID": "msg_121891176001As0ii2u5ZEuYqe",
+  "callID": "chatcmpl-tool-b37cadd263e3caea",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

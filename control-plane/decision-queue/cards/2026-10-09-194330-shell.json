@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-194330-shell",
+  "created": "2026-10-09T16:43:30.689Z",
+  "updated": "2026-10-09T16:43:30.689Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "shell",
+  "pattern": "grep -n '\"id\": \"stream-intent-050\"\\|\"id\":\"stream-intent-050\"' 04-Memory/idea-graph/nodes.jsonl echo --- ls 06-Audits/ grep -i \"voluntary\\|alliance\\|lab\" echo --- grep -rn \"банк данных\\|data-bank\\|lab-queue\" TASKS.md 06-Audits/2026-10-07-lab-queue.md 2>/dev/null head -10",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede74752effez1rLupWWvC1elB",
+  "messageID": "msg_1218c359f001yysw0wXBeCcMhM",
+  "callID": "toolu_abd7244ae8304464b0eaad24",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

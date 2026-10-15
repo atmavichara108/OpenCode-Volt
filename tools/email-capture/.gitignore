@@ -1,0 +1,14 @@
+# credentials — никогда в git
+.env
+
+# venv (direnv-конвенция волта)
+.venv/
+
+# state-файл идемпотентности (processed ids) — runtime, не коммитить
+.state/
+
+# python / pytest runtime
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/

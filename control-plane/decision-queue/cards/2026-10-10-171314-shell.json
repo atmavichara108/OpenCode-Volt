@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-171314-shell",
+  "created": "2026-10-10T14:13:14.411Z",
+  "updated": "2026-10-10T14:13:14.411Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "fd -HI 'ssa-control-agent-harness-bootstrap.md' /home/rudra/Projects/SSA /home/rudra/dotfiles 2>&1 echo --- ls /home/rudra/Projects/SSA/control/docs/specs/ 2>&1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9d77707ffecevgx2hSjI94QE",
+  "messageID": "msg_126291d51001ZDBnsDVJ865xfS",
+  "callID": "de084a36-d94b-4c52-aae9-3dde90403890",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

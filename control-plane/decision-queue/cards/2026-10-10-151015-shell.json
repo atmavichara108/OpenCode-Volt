@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-151015-shell",
+  "created": "2026-10-10T12:10:15.133Z",
+  "updated": "2026-10-10T12:10:15.133Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "find /home/rudra/dotfiles -maxdepth 3 -type f \\( -iname '*peer*' -o -iname '*session*' \\) head -40",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_125b879a0001N7pafJmjz7CYfq",
+  "callID": "call_f9Hxf37XuvGhzTkIcJrUMSrX",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-172353-shell",
+  "created": "2026-10-10T14:23:53.066Z",
+  "updated": "2026-10-10T14:23:53.066Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git -C /home/rudra/dotfiles stash push -m \"tree-cop: stash-foreign — чужой session-report bugfix-мастерской на время переноса ssa-спек в done\" -- .opencode/memory/session-reports/2026-10-10-bugfix-workshop.md git -C /home/rudra/dotfiles status --short git -C /home/rudra/dotfiles switch -c \"task/spec-done-ssa-bootstrap\" git -C /home/rudra/dotfiles status --short",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fa0279ffeALoBlPtaFyVci4",
+  "messageID": "msg_12632d8e8001T85v22KnanLpOV",
+  "callID": "call_01a12632e5f877b89f2216ef9c55ef79",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

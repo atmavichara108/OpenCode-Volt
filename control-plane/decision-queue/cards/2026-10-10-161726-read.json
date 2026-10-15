@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-161726-read",
+  "created": "2026-10-10T13:17:26.286Z",
+  "updated": "2026-10-10T13:17:26.286Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "docs/specs/done/peer-comms-handshake.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_125f5a1c1001L3B06rg2qZr83q",
+  "callID": "toolu_bdrk_01VBZUfa6LzNoTUN3kUEp4Dd",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

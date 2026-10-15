@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-122652-read",
+  "created": "2026-10-09T09:26:52.028Z",
+  "updated": "2026-10-09T09:26:52.028Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "/home/rudra/dotfiles/opencode-global/.config/opencode/lib/decision-queue-helpers.js",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee01c79a4ffeix1rQE1KFzS5UM",
+  "messageID": "msg_11ff8ebc300162TvxrKpZ2lVsW",
+  "callID": "call_72727b23b96d460691295c22",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

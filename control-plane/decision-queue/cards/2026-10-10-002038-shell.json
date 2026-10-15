@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-002038-shell",
+  "created": "2026-10-10T21:20:38.706Z",
+  "updated": "2026-10-10T21:20:38.706Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "sed -n '233,258p' 06-Audits/2026-10-09-agency-counteragency-brainstorm.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127b066d8001qY315SoYecuNWW",
+  "callID": "call_00_3hwipu7idt1tw2ye9ldv6d6l",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

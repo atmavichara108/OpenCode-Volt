@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-232013-shell",
+  "created": "2026-10-08T20:20:13.834Z",
+  "updated": "2026-10-08T20:20:13.834Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls opencode-global/.config/opencode/plugins/ echo \"=== tools ===\" ls tools/ 2>/dev/null head -20 echo \"=== xp? ===\" ls tools/xp 2>/dev/null echo \"=== telemetry ===\" ls ~/Projects/OpenCode-Vault/control-plane/telemetry/ 2>/dev/null head echo \"=== audit-log entries ===\" wc -l ~/Projects/OpenCode-Vault/control-plane/telemetry/*.jsonl 2>/dev/null tail -3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d2a529f0014TxEGOpCd5Vy9G",
+  "callID": "call_524396087295482582231710",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-092001-shell",
+  "created": "2026-10-09T06:20:01.184Z",
+  "updated": "2026-10-09T06:20:01.184Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "jq -r '.justwoker.key' ~/.local/share/opencode/auth.json echo \"=== витрина моделей justwoker ===\" curl -s --max-time 20 https://api.justwoker.icu/v1/models -H \"x-api-key: $KEY\" head -c 600 echo echo \"=== малая модель (проверка провайдера вообще) ===\" curl -s -o /tmp/opencode/jw/small.json -w \"http=%{http_code} t=%{time_total}s\\n\" --max-time 90 -X POST https://api.justwoker.icu/v1/messages -H \"x-api-key: $KEY\" -H \"anthropic-version: 2023-06-01\" -H \"content-type: application/json\" -d '{\"model\":\"claude-sonnet-4-5\",\"max_tokens\":16,\"messages\":[{\"role\":\"user\",\"content\":\"say ok\"}]}' head -c 300 /tmp/opencode/jw/small.json echo echo \"=== opus: висит? (bounded 120s) ===\" curl -s -o /tmp/opencode/jw/opus.json -w \"http=%{http_code} t=%{time_total}s\\n\" --max-time 120 -X POST https://api.justwoker.icu/v1/messages -H \"x-api-key: $KEY\" -H \"anthropic-version: 2023-06-01\" -H \"content-type: application/json\" -d '{\"model\":\"claude-opus-4-8\",\"max_tokens\":16,\"messages\":[{\"role\":\"user\",\"content\":\"say ok\"}]}' head -c 300 /tmp/opencode/jw/opus.json",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_11f503c69001KbxQe3h5U43105",
+  "callID": "call_2c9407ea14e24cc6852b53bb",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «curl»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

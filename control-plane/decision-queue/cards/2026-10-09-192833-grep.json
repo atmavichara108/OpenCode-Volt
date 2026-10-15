@@ -1,0 +1,29 @@
+{
+  "id": "2026-10-09-192833-grep",
+  "created": "2026-10-09T16:28:33.217Z",
+  "updated": "2026-10-09T16:28:33.217Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "grep",
+  "pattern": "VibeOS 0\\.|VibeOS 1\\.0|драфт|драфты|перехода в 1\\.0|финальн.*верси",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_1217e85840018TM26zLFV09FSO",
+  "callID": "call_uhqo6ItifhHY9fcFj6fK3GSy",
+  "metadata": {
+    "root": ".",
+    "path": "/home/rudra/Projects/OpenCode-Vault",
+    "include": "*.md",
+    "limit": 100
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

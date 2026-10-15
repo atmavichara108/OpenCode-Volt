@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-194011-shell",
+  "created": "2026-10-09T16:40:11.837Z",
+  "updated": "2026-10-09T16:40:11.837Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "grep -ril \"stream-intent-048\" . 2>/dev/null head ls 04-Memory/idea-graph 04-Memory/route-log 2>/dev/null ls 02-Methods head -40 ls 06-Audits head",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede7711abffevuXblgLjnHmsuT",
+  "messageID": "msg_12189448c001Q4FPIoVjmq4vN7",
+  "callID": "chatcmpl-tool-a753bf6e797555b8",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

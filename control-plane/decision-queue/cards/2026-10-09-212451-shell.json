@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-212451-shell",
+  "created": "2026-10-09T18:24:51.000Z",
+  "updated": "2026-10-09T18:24:51.000Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "python3 /home/rudra/dotfiles/tools/garbage-guard/guard.py scan --path 04-Memory/active-context.md head -20",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121e8cdcf001YrbleaJSB0ANfD",
+  "callID": "call_74033d1e9a1e40168a1c5c75",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-094527-shell",
+  "created": "2026-10-09T06:45:27.141Z",
+  "updated": "2026-10-09T06:45:27.141Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "jq -r '.justwoker.key' ~/.local/share/opencode/auth.json echo \"=== большой payload ЧЕРЕЗ ШИМ (bounded 240s) ===\" curl -sN -o /tmp/opencode/jw/big-shim.txt -w \"http=%{http_code} t=%{time_total}s\\n\" --max-time 240 -X POST http://127.0.0.1:8787/v1/messages -H \"x-api-key: $KEY\" -H \"anthropic-version: 2023-06-01\" -H \"content-type: application/json\" -d @/tmp/opencode/jw/big.json echo \"--- первые 200 байт ответа ---\" head -c 200 /tmp/opencode/jw/big-shim.txt echo echo \"=== все коннекты bun (внешние) ===\" ss -tnp 2>/dev/null grep bun head -12",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_11f67f518001neu4s6kwGnFy3j",
+  "callID": "call_2d421cdefac746f0b96bd896",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «curl»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

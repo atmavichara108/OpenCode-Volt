@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-122556-read",
+  "created": "2026-10-09T09:25:56.910Z",
+  "updated": "2026-10-09T09:25:56.910Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "/home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_11ffb9c87001BCofFQ4On160D8",
+  "callID": "call_71f5bb19220a4b1ba4697aa7",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

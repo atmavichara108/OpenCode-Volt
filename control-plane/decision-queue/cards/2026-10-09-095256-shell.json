@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-095256-shell",
+  "created": "2026-10-09T06:52:56.988Z",
+  "updated": "2026-10-09T06:52:56.988Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "rg -n -i \"skill\" /home/rudra/Projects/OpenCode-Vault/04-Memory/facts.md 2>&1 head -20 echo ---TAIL-FACTS--- tail -30 /home/rudra/Projects/OpenCode-Vault/04-Memory/facts.md 2>&1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee091abbbffevJcwutfbPFdoSk",
+  "messageID": "msg_11f6fab35001ONdW7voh0muzyg",
+  "callID": "call_01a11f6fb214769ea196b65ceb00b1f3",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

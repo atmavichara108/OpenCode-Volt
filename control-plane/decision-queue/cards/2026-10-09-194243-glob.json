@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-09-194243-glob",
+  "created": "2026-10-09T16:42:43.828Z",
+  "updated": "2026-10-09T16:42:43.828Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "glob",
+  "pattern": "**/*world-atlas-reading-guide*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede747513ffeqCi7YfHFnKYxJq",
+  "messageID": "msg_1218b8b7e0013PWC5GHxrLGFHp",
+  "callID": "toolu_fdd7a93edb764967b7c133a5",
+  "metadata": {
+    "root": "."
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

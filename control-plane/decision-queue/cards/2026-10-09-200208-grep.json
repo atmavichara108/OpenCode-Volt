@@ -1,0 +1,29 @@
+{
+  "id": "2026-10-09-200208-grep",
+  "created": "2026-10-09T17:02:08.699Z",
+  "updated": "2026-10-09T17:02:08.699Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "grep",
+  "pattern": "garbage-guard|pre-commit|precommit",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede62cc2cffepW3Rj8biSmnu7d",
+  "messageID": "msg_1219d5e5a00158Nr248ezngPWF",
+  "callID": "call_WioEVNGlVoXOW7tMCmq6KxGb",
+  "metadata": {
+    "root": ".",
+    "path": "/home/rudra/Projects/OpenCode-Vault/.meta-worktrees/permission-worktree-20261009",
+    "include": "*",
+    "limit": 80
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

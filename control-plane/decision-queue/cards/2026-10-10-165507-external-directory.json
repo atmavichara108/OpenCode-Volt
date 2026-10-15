@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-165507-external-directory",
+  "created": "2026-10-10T13:55:07.615Z",
+  "updated": "2026-10-10T13:55:07.615Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "external_directory",
+  "pattern": "/home/rudra/Projects/OpenCode-Vault-tasks/ssa-bootstrap-20261010/.opencode/agent/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_1261881eb001Rf7rzs7excaqp7",
+  "callID": "call_SZx2WF0b2DagP74mD3JkDSo9",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

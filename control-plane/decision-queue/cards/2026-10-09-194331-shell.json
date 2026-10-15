@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-194331-shell",
+  "created": "2026-10-09T16:43:31.804Z",
+  "updated": "2026-10-09T16:43:31.804Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "shell",
+  "pattern": "head -60 06-Audits/2026-10-07-lab-queue.md echo ===T171=== grep -rn \"T-171\\|T-170\" TASKS.md 04-Memory/active-context.md head",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede74752effez1rLupWWvC1elB",
+  "messageID": "msg_1218c359f001yysw0wXBeCcMhM",
+  "callID": "toolu_fa79882280b04b36ac9fc391",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

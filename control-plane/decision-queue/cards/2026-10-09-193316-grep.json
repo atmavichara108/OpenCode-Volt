@@ -1,0 +1,29 @@
+{
+  "id": "2026-10-09-193316-grep",
+  "created": "2026-10-09T16:33:16.029Z",
+  "updated": "2026-10-09T16:33:16.029Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "grep",
+  "pattern": "flock|lease",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_12182cbb7001iyyN9XICgtBkoD",
+  "callID": "call_eoU0MiJGHpjmk515Aaddz51t",
+  "metadata": {
+    "root": ".",
+    "path": "/home/rudra/dotfiles/tools",
+    "include": "*.py",
+    "limit": 30
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

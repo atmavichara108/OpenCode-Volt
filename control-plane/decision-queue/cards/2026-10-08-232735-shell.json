@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-232735-shell",
+  "created": "2026-10-08T20:27:35.017Z",
+  "updated": "2026-10-08T20:27:35.017Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git diff -- 04-Memory/idea-graph/nodes.jsonl tail -4 cut -c1-100 echo \"=== worktree add ===\" git worktree add .ww -b task/world-words-1008 origin/main 2>&1 tail -2",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d3260cb001meTFRFnT0Fym6K",
+  "callID": "call_61ab93dc097b413680a2ada7",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

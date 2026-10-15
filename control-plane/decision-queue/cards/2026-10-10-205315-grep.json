@@ -1,0 +1,27 @@
+{
+  "id": "2026-10-10-205315-grep",
+  "created": "2026-10-10T17:53:15.609Z",
+  "updated": "2026-10-10T17:53:15.609Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "grep",
+  "pattern": "BAGFIX|bugfix-extdir",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed911bc43ffe0b653M39oAMZtp",
+  "messageID": "msg_126f15881001thRbFIa1drfAXV",
+  "callID": "call_754e6658d6a848f6af5cc101",
+  "metadata": {
+    "root": ".",
+    "path": "/home/rudra/dotfiles/.opencode/memory/session-reports/2026-10-10-bugfix-workshop.md"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-095419-shell",
+  "created": "2026-10-09T06:54:19.352Z",
+  "updated": "2026-10-09T06:54:19.352Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "which xdotool wmctrl setxkbmap -query grep layout",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eedd28c45ffeFJU6TDjG69z6A7",
+  "messageID": "msg_11f6e54c8001MbrmuW7Hy2U1Mg",
+  "callID": "call_775312a6f2d74668a5bff6f4",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

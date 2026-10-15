@@ -1,0 +1,28 @@
+{
+  "id": "2026-10-08-213237-grep",
+  "created": "2026-10-08T18:32:37.450Z",
+  "updated": "2026-10-08T18:32:37.450Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "grep",
+  "pattern": "ssa|SSA|soft-automat|Michalych|Ratibor|agency",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_11cc96bd50011K8dC3I7h3Y46A",
+  "callID": "call_0f6381d0fd004460afe8b85d",
+  "metadata": {
+    "root": ".",
+    "path": "/home/rudra/Projects/OpenCode-Vault/04-Memory/idea-graph",
+    "limit": 40
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

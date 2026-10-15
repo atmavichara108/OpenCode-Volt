@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-141051-shell",
+  "created": "2026-10-10T11:10:51.115Z",
+  "updated": "2026-10-10T11:10:51.115Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "stat -c '%y %n' /home/rudra/Projects/OpenCode-Vault/98-Temporary/ssa-bootstrap 2>&1 find /home/rudra/Projects/OpenCode-Vault/98-Temporary/ssa-bootstrap -type f 2>/dev/null head -10 echo '== agents_rules.md в pack ==' ls /home/rudra/Projects/SSA/seo_project_pack/pack/01_seo_outreach/artifacts/ 2>&1 head -20",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_edb148aa5ffeTlSiHSxl4J71pS",
+  "messageID": "msg_1258162220016N7DZCmbBKbCTO",
+  "callID": "d220f53d-be33-4be7-8990-67111ca3188a",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

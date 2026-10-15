@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-171120-shell",
+  "created": "2026-10-10T14:11:20.469Z",
+  "updated": "2026-10-10T14:11:20.469Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== worktrees Vault ===\" git worktree list echo \"=== кто на main ===\" git branch -a grep -E '(^| )main' head echo \"=== my branch vs main ===\" git rev-list --left-right --count origin/main...task/ssa-bootstrap-20261010 2>/dev/null awk '{print \"behind_main=\"$1\" ahead=\"$2}' echo \"=== product spec существует? ===\" ls -la /home/rudra/Projects/SSA/products/seo-outreach/docs/specs/seo-outreach-mvp-v0.1.md 2>&1 head -1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_12626e0e50013qTtmh2cn0Cc5g",
+  "callID": "toolu_bdrk_01GaZeepSsdZTT3diARfaGQd",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

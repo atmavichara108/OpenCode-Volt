@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-210806-edit",
+  "created": "2026-10-09T18:08:06.144Z",
+  "updated": "2026-10-09T18:08:06.144Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/home/rudra/dotfiles/systemd/.config/systemd/user/justwoker-shim.service",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121d8b924001m11XY0KBFi0PxI",
+  "callID": "call_1f1881a4f48c45f08ff4934f",
+  "metadata": {
+    "files": [
+      {
+        "file": "/home/rudra/dotfiles/systemd/.config/systemd/user/justwoker-shim.service",
+        "patch": "Index: /home/rudra/dotfiles/systemd/.config/systemd/user/justwoker-shim.service\n===================================================================\n--- /home/rudra/dotfiles/systemd/.config/systemd/user/justwoker-shim.service\n+++ /home/rudra/dotfiles/systemd/.config/systemd/user/justwoker-shim.service\n@@ -10,8 +10,17 @@\n Type=simple\n ExecStart=/home/rudra/.bun/bin/bun run /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n Environment=HOST=127.0.0.1\n Environment=PORT=8787\n+# Транспорт — curl через локальный прокси: прямое соединение с Cloudflare\n+# виснет на больших upload'ах (MTU-blackhole, матрица 2026-10-09). Прокси\n+# локальный (127.0.0.1:10809) — совместим с IPAddressAllow=localhost.\n+Environment=SHIM_PROXY=http://127.0.0.1:10809\n+# Stream hang: 30с молчания апстрима → аборт попытки; 1 ретрай, затем\n+# fallback на non-stream (сейчас stream:true у upstream часто висит,\n+# non-stream стабильно работает).\n+Environment=HANG_MS=30000\n+Environment=FORWARD_RETRIES=1\n Restart=always\n RestartSec=5\n IPAddressDeny=any\n IPAddressAllow=localhost\n",
+        "status": "modified",
+        "additions": 9,
+        "deletions": 0
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

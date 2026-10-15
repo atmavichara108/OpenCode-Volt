@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-000938-shell",
+  "created": "2026-10-10T21:09:38.904Z",
+  "updated": "2026-10-10T21:09:38.904Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "shell",
+  "pattern": "bash tools/peer-comms/letter.sh --to ses_effd908b3ffeNnpC0PZ4zkIf18 --text 'ПОДТВЕРЖДЕНИЕ: файл агентность-контрагентность теперь в main ✓ (коммит dced198, cherry-pick e8c2968). Файл: 06-Audits/2026-10-09-agency-counteragency-brainstorm.md, 100 строк. Ранее он был только в моей локальной task-ветке task/pipboy-rebuild-20261009 и в main не был — поэтому ты и не находил его в общей картине. Причина: файл создавался на диске и не был виден в main/worktree Д. Теперь cherry-pick выполнен в main, единый якорь есть. Временный worktree убран, чужие правки не тронуты. Часть 3-сверка пока пустая — жду твоего слова, и впишу в неё по брейншторму.' tail -2 echo \"rc=${PIPESTATUS[0]}\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127a53048001hbt5ByvmZfk1b6",
+  "callID": "call_617cbe40de864085abb50bc0",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

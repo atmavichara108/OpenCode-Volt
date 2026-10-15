@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-212602-shell",
+  "created": "2026-10-09T18:26:02.359Z",
+  "updated": "2026-10-09T18:26:02.359Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "grep -cP \"\\x{fffd}\" 04-Memory/active-context.md grep -nP \"[^\\x00-\\x7F]\" 04-Memory/active-context.md grep -vP \"[\\x{4e00}-\\x{9fff} cyrillic]\" grep -oP \".{0,30}$\" grep -vP \"^[а-яёА-ЯЁ\\d\\.\\-\\(\\)/№:,\\s]*$\" head -8",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121e9f9680013VlBA2TD9NQ5OP",
+  "callID": "call_1fd338a2bfde419f95cd1ec2",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

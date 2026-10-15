@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-152935-shell",
+  "created": "2026-10-09T12:29:35.989Z",
+  "updated": "2026-10-09T12:29:35.989Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ss -tlnp 2>/dev/null grep -E \"8791|8784|8785\" echo \"---\" pgrep -af \"stub\" head -5",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_120a293e4001DRoSinCGyRqwCF",
+  "callID": "call_8604014b137842dda4140a6c",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164841-external-directory",
+  "created": "2026-10-10T13:48:41.140Z",
+  "updated": "2026-10-10T13:48:41.140Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "external_directory",
+  "pattern": "/home/rudra/Projects/SSA/products/seo-outreach/.opencode/skills/monitor/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9edd299ffeVSsn5dYS15NYJz",
+  "messageID": "msg_12612856d001CuJVXmA6548v99",
+  "callID": "call_01a12612aafb762599112386307d918a",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "builder",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-215823-shell",
+  "created": "2026-10-09T18:58:23.486Z",
+  "updated": "2026-10-09T18:58:23.486Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== $id ===\" grep -o '\"id\":\"'\"$id\"'\"[^}]*}' 04-Memory/idea-graph/nodes.jsonl cut -c1-700 echo",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_12207a6ef001J4TaiUKKL8te5x",
+  "callID": "call_6346e7cad58e4580ba6cb006",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

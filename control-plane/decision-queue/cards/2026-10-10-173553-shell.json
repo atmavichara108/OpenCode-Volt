@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-173553-shell",
+  "created": "2026-10-10T14:35:53.402Z",
+  "updated": "2026-10-10T14:35:53.402Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "rg -n \"S2\\.|не шлёт|handoff-файл\" docs/specs/bugfix-proactive-plugin.md head echo \"== attachment anywhere ==\" find /home/rudra/dotfiles /home/rudra/.local/state/opencode -maxdepth 4 -iname \"*bugfix-extdir*\" 2>/dev/null find /home/rudra/dotfiles -iname \"*BAGFIX*\" 2>/dev/null echo \"(end)\" echo \"== plugin spec footer approval ==\" sed -n '288,296p' docs/specs/bugfix-proactive-plugin.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9cd0bffffeyyWa51Kq2VFBz6",
+  "messageID": "msg_1263b65c1001yVUqMWJrLNw3jX",
+  "callID": "call_d288112316eb467e9f169b02",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

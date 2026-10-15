@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-123749-shell",
+  "created": "2026-10-09T09:37:49.138Z",
+  "updated": "2026-10-09T09:37:49.138Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "readlink /home/rudra/.config/opencode/plugins /home/rudra/.config/opencode/lib /home/rudra/.config/opencode/command 2>&1 echo \"---diff live vs dotfiles---\" diff /home/rudra/.config/opencode/plugins/decision-queue-hook.ts /home/rudra/dotfiles/opencode-global/.config/opencode/plugins/decision-queue-hook.ts echo IDENTICAL",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee01c79a4ffeix1rQE1KFzS5UM",
+  "messageID": "msg_12004ae0b0018oIJtk6PUpNl2F",
+  "callID": "call_91ecf0b578164ef3bd07aa4a",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

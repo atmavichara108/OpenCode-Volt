@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-211014-shell",
+  "created": "2026-10-10T18:10:14.952Z",
+  "updated": "2026-10-10T18:10:14.952Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C $V restore --staged opencode.json git -C $V status --short -- opencode.json echo \"=== итог: рабочее дерево vault ===\" git -C $V status --short --branch head -3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_127018a3f001D9JPd2e4hiPuUo",
+  "callID": "call_1e2e5852fbec449289f36c29",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

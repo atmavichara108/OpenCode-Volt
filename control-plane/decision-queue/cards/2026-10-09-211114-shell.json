@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-211114-shell",
+  "created": "2026-10-09T18:11:14.959Z",
+  "updated": "2026-10-09T18:11:14.959Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git diff --cached -- 02-Methods/git-worktree-isolation.md grep -n -C 4 -E 'lease|flock|TASKS.md' 02-Methods/git-worktree-isolation.md head -100 grep -n '^| T-184 |' TASKS.md true grep -n '^| T-18[0-9] |' TASKS.md tail -12",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede254d97ffexQ6Ga6G6VO27Ox",
+  "messageID": "msg_121dca533001rUSfbl5pLSvuez",
+  "callID": "call_mcTqiaOUyhb8Q4h1lDXcDLKp",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

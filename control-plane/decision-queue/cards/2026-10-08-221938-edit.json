@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-08-221938-edit",
+  "created": "2026-10-08T19:19:38.499Z",
+  "updated": "2026-10-08T19:19:38.499Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/home/rudra/dotfiles/tools/model-watch/README.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee30e41daffezCgBczKdPQJlr8",
+  "messageID": "msg_11cf4ad23001jKdcVpGpogRR1p",
+  "callID": "call_dcc73bf0b4c746c483ce60ff",
+  "metadata": {
+    "files": [
+      {
+        "file": "/home/rudra/dotfiles/tools/model-watch/README.md",
+        "patch": "Index: /home/rudra/dotfiles/tools/model-watch/README.md\n===================================================================\n--- /home/rudra/dotfiles/tools/model-watch/README.md\n+++ /home/rudra/dotfiles/tools/model-watch/README.md\n@@ -0,0 +1,46 @@\n+# model-watch\n+\n+Zero-LLM монитор списков моделей провайдеров. Тянет апстрим-каталог\n+https://models.dev/api.json (226 провайдеров), сверяет с provider-блоком\n+`opencode-global/.config/opencode/opencode.jsonc` и встроенными провайдерами\n+`opencode` / `opencode-go`, пишет снапшот\n+`~/Projects/OpenCode-Vault/control-plane/model-catalog.json`\n+(формат: `{generated_at, providers:{id:{models:{id:{in,cost_in,cost_out,free}}}}}`)\n+и печатает дельту к предыдущему снапшоту.\n+\n+## Запуск вручную\n+\n+    python3 tools/model-watch/model-watch.py            # сеть + запись снапшота\n+    python3 tools/model-watch/model-watch.py --offline api.json\n+\n+## Дельта\n+\n+Печатается после строки `delta к предыдущему снапшоту: N изменений`:\n+`+` прибыло модели, `-` убыло, `~ ... стало бесплатным` / `~ ... цена ...` /\n+`~ ... в каталоге:` — изменения статуса и цен. Первый запуск: N = всё, что\n+есть (сравнение с пустым снапшотом).\n+\n+## Активация таймера (отдельный шаг, вручную)\n+\n+Unit-файлы в этом каталоге, активация не выполнена. Включить:\n+\n+    cp tools/model-watch/model-watch.{service,timer} ~/.config/systemd/user/\n+    systemctl --user daemon-reload\n+    systemctl --user enable --now model-watch.timer   # перезапуск каждые 24h\n+    systemctl --user list-timers 'model-watch*'\n+\n+Выключить: `systemctl --user disable --now model-watch.timer`.\n+\n+## Гейт свежести\n+\n+    python3 tools/model-watch/gate-check.py   # exit 1: снапшота нет или >7 дней\n+\n+Обход: `MODEL_OK=1 ...`. Хук в волт подключается отдельным шагом (не здесь).\n+\n+## Связь с T-177 (фаза 5)\n+\n+Снапшот — источник кандидатов 3 классификаторов на бесплатных моделях к\n+фазе 5: `jev-1.13-free`, `ling-3.1-flash-free`, `nemotron-3.5-lightning-free`.\n+jev-моделей в models.dev нет — они включены Рудрой в консоли opencode.ai\n+(org SERP, платный jev-1.13 $0.04/$0.00); в снапшоте они значатся `in:false`\n+из декларации конфига,待到 propagated каталога Zen.\n",
+        "status": "added",
+        "additions": 46,
+        "deletions": 0
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

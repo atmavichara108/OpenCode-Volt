@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164650-shell",
+  "created": "2026-10-10T13:46:50.781Z",
+  "updated": "2026-10-10T13:46:50.781Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "opencode --help 2>&1 head -60 echo === opencode agent --help 2>&1 head -20 echo === cat /home/rudra/dotfiles/.opencode/agent/verifier.md 2>&1 head -50",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9ef4d23ffeOuZIrFCqMo0LML",
+  "messageID": "msg_12610dc12001toqxgN49DivUaA",
+  "callID": "call_01a12610fe1a738ab8b51d702ba78135",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "builder",
+  "model": null
+}

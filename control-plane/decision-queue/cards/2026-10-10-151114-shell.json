@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-151114-shell",
+  "created": "2026-10-10T12:11:14.545Z",
+  "updated": "2026-10-10T12:11:14.545Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "cat > /tmp/opencode/incident-session-move-ssa-20261010.txt <<'MSG'\nИнцидент: OpenCode `session_move` возвращает ошибку при попытке переместить verifier-сессию в существующие каталоги. Просьба расследовать в пределах dotfiles-конфигурации/обвязки; не предполагать заранее, что это баг dotfiles.\n\nЦелевой verifier session: `ses_eda4fec81ffeiK3jbuTpKwEx2m2`.\nДва вызова из API `opencode.session_move`:\n1) `directory: /home/rudra/Projects` → `Unable to move session to /home/rudra/Projects`\n2) `directory: /home/rudra/Projects/OpenCode-Vault-tasks/ssa-bootstrap-20261010` → `Unable to move session to /home/rudra/Projects/OpenCode-Vault-tasks/ssa-bootstrap-20261010`\nСессия не переместилась; verifier остался ограничен чтением в текущей директории, поэтому не смог принять внешние SSA/Vault-worktree артефакты.\n\nРепро: `session_move(sessionID=<указанный verifier session>, directory=<один из двух существующих абсолютных путей>)`. Эти два результата наблюдались напрямую; точная причина неизвестна.\n\nГипотезы (не факты): ограничение/валидация назначения на сервере; особенности переноса child/subagent session; effective permissions или dotfiles-managed runtime configuration; различие между session directory и project directory. Проверь, что именно применимо, по установленной версии/докам/конфигу/логам. Не повторяй move на рабочих сессиях без безопасной изолированной репродукции.\n\nЗапрошенное действие: проверить, влияет ли dotfiles-конфигурация или harness на отказ. Если найдёшь точечную причину в dotfiles — исправить только её в своей `task/*` ветке, добавить безопасную проверку, затем reviewer → verifier; коммит — точечный по incident-fix в scope запроса, push не делать. Если причина в ядре OpenCode или доказательств для dotfiles-фикса нет — не патчить чужой harness; подготовить workaround + sourced evidence и явно пометить оставшееся `[проверить]`.\n\nОграничения: никаких изменений в OpenCode-Vault или SSA repos; никаких secrets, пользовательских prompts, клиентских данных, `reset/clean/force-push`; сохранять чужую грязь dotfiles. В отчёте отделить symptom/repro/root-cause evidence/fix or workaround/tests/status. Пользователь прямо поручил расследование и bugfix в dotfiles-сессии «БагФикс».\nMSG opencode run -s ses_eda56e1d3ffeyC6AIk1mwgxw1L -m opencode-go/gpt-6-luna \"$(cat /tmp/opencode/incident-session-move-ssa-20261010.txt)\" cat /tmp/opencode/incident-session-move-ssa-20261010.txt",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_125b91b98001tc4Q7RcBEohuNb",
+  "callID": "call_AnRb0MmhXQW51wsDhMGP3Rst",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «secret-path»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

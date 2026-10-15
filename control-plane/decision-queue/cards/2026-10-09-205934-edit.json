@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-205934-edit",
+  "created": "2026-10-09T17:59:34.221Z",
+  "updated": "2026-10-09T17:59:34.221Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121d1e411001AzCW3r8AIbGkFQ",
+  "callID": "call_e4a18c4ab0e3485da7002b28",
+  "metadata": {
+    "files": [
+      {
+        "file": "/home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts",
+        "patch": "Index: /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n===================================================================\n--- /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n+++ /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n@@ -1,8 +1,7 @@\n #!/usr/bin/env bun\n import { spawn } from \"node:child_process\";\n import { PassThrough, Readable } from \"node:stream\";\n-import type { Readable as ReadableType } from \"node:stream\";\n /**\n  * justwoker-shim — локальный HTTP-шим для провайдера `justwoker`.\n  *\n  * Зачем: upstream api.justwoker.icu регрессировал SSE — на stream:true он\n",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 1
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

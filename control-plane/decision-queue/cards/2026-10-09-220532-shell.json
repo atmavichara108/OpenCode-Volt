@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-220532-shell",
+  "created": "2026-10-09T19:05:32.561Z",
+  "updated": "2026-10-09T19:05:32.561Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== все рёбра вокруг ключевых узлов ===\" grep -E '\"(stream-intent-048|stream-intent-049|stream-intent-051|stream-intent-025|world-entity-obsidian-keeper)\"' 04-Memory/idea-graph/edges.jsonl python3 -c \"\nimport json,sys\nfor l in sys.stdin:\n    try: o=json.loads(l)\n    except: continue\n    print(o.get('id'),o.get('from'),'->',o.get('to'),'[',o.get('type'),']',o.get('status'))\n\" echo \"=== obsidian-keeper узел ===\" grep -F '\"world-entity-obsidian-keeper\"' 04-Memory/idea-graph/nodes.jsonl cut -c1-300",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_1220e26b7001H6ECeKlqKVttWX",
+  "callID": "call_930b1b3b95ab454990c01cb8",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

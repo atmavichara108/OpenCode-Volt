@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-093347-edit",
+  "created": "2026-10-09T06:33:47.313Z",
+  "updated": "2026-10-09T06:33:47.313Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "01-Reference/provider-cards/justwoker.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee0a97b4fffeX15Yix6yTUvFr2",
+  "messageID": "msg_11f5de3ee001k7HGTYsRe4KEpy",
+  "callID": "call_f3bfb7aff7744ffa94d502e8",
+  "metadata": {
+    "files": [
+      {
+        "file": "01-Reference/provider-cards/justwoker.md",
+        "patch": "Index: 01-Reference/provider-cards/justwoker.md\n===================================================================\n--- 01-Reference/provider-cards/justwoker.md\n+++ 01-Reference/provider-cards/justwoker.md\n@@ -25,10 +25,10 @@\n | `current_balance` | `$300+` (последнее наблюдение 2026-10-07, пользовательский отчёт) |\n | `models` | 1 модель: `claude-opus-4-8` |\n | `proxy` | не требуется для anthropic-пути |\n | `expiry` | неизвестен `[проверить]` |\n-| `risks` | **стриминг шлюза сломан** (регрессия New API) — OpenCode всегда стримит, поэтому «напрямую» модель отдаёт пустоту; OpenAI-путь закрыт CF |\n-| `next_action` | временный мост: локальный стриминг-шим (см. ниже) до перевода провайдера каналом New API ([[docs/specs/newapi-gateway-layer]]) |\n+| `risks` | **стрим-регрессия шлюза ушла (2026-10-09)** — апстрим снова отдаёт полный Anthropic SSE; остаточный риск нормальный для промо-провайдера (внешний канал дистрибьютора, баланс/квота). OpenAI-путь по-прежнему закрыт CF |\n+| `next_action` | держать шим как **опциональный** мост; перевод провайдера каналом New API ([[docs/specs/newapi-gateway-layer]]) — по-прежнему целевое, но больше не срочность |\n | `config_targets` | TUI + M Code через `@ai-sdk/anthropic`; в конфиге — шим-baseURL |\n \n ## Probe evidence (2026-10-07, диагноз)\n \n",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

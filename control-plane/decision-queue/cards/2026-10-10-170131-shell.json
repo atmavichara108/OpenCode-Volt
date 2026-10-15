@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-170131-shell",
+  "created": "2026-10-10T14:01:31.514Z",
+  "updated": "2026-10-10T14:01:31.514Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "opencode debug agents 2>&1 python3 -c \"\nimport json,sys\ndata=json.load(sys.stdin)\nfor a in data:\n    print(a.get('id'), '| mode=', a.get('mode'), '| hidden=', a.get('hidden'), '| model=', (a.get('model') or {}).get('id'))\nprint('---TOTAL:', len(data))\nprint('---PRIMARY IDS:', [a.get('id') for a in data if a.get('mode')=='primary'])\n\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9e561edffef3mrvrLt7u8s07",
+  "messageID": "msg_1261e3a8b0018Xp9omDqhAwnMj",
+  "callID": "934725ec-5fb5-47cb-b46c-649a53a3aae8",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

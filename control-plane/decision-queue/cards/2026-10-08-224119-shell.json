@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-224119-shell",
+  "created": "2026-10-08T19:41:19.924Z",
+  "updated": "2026-10-08T19:41:19.924Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "sed -n '34,44p' tools/md-table-check/check.py",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d08577e001p2Ilq8p6d7BdIS",
+  "callID": "call_9f20b4cea4d4468aa65848a9",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

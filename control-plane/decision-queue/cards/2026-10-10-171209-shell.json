@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-171209-shell",
+  "created": "2026-10-10T14:12:09.079Z",
+  "updated": "2026-10-10T14:12:09.079Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls tools/peer-comms/ echo \"---\" ls docs/specs/ docs/specs/done/ 2>/dev/null echo \"---\" ls .opencode/skills/tree-hygiene/ 2>/dev/null",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9d84e82ffeRMSHfFyjz1ujak",
+  "messageID": "msg_12627f087001lI0o6DHzXaQQoI",
+  "callID": "call_093319b429824f98a6ffb355",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

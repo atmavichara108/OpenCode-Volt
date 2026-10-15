@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-195908-shell",
+  "created": "2026-10-10T16:59:08.472Z",
+  "updated": "2026-10-10T16:59:08.472Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== branch ===\" git branch --show-current echo \"=== status ===\" git status --short echo \"=== diff --stat ===\" git diff --stat echo \"=== новые файлы ===\" git status --short grep '^??' echo \"=== decisions.md (фрагмент п.7) ===\" sed -n '36,62p' docs/decisions.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9619763ffeVC3GE5q2o2HY5j",
+  "messageID": "msg_126c0ee48001pEO5q6946t43Hp",
+  "callID": "call_00_t2bw4f5nqbwkzvw946u2axd8",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "top",
+  "model": null
+}

@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-08-222409-edit",
+  "created": "2026-10-08T19:24:09.351Z",
+  "updated": "2026-10-08T19:24:09.351Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/home/rudra/dotfiles/tools/model-watch/model-watch.py",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cf88190001MNv1P1QkfjY4gd",
+  "callID": "call_a53898d24ff84522a694401b",
+  "metadata": {
+    "files": [
+      {
+        "file": "/home/rudra/dotfiles/tools/model-watch/model-watch.py",
+        "patch": "Index: /home/rudra/dotfiles/tools/model-watch/model-watch.py\n===================================================================\n--- /home/rudra/dotfiles/tools/model-watch/model-watch.py\n+++ /home/rudra/dotfiles/tools/model-watch/model-watch.py\n@@ -47,9 +47,11 @@\n \n def fetch_api(offline: str | None) -> dict:\n     if offline:\n         return json.loads(Path(offline).read_text(encoding=\"utf-8\"))\n-    with urllib.request.urlopen(API_URL, timeout=60) as r:\n+    # models.dev отдаёт 403 дефолтному Python-urllib — нужен浏览器ский User-Agent\n+    req = urllib.request.Request(API_URL, headers={\"User-Agent\": \"model-watch/1.0 (ecosys refresh daemon)\"})\n+    with urllib.request.urlopen(req, timeout=60) as r:\n         return json.loads(r.read().decode(\"utf-8\"))\n \n \n def build_snapshot(api: dict, declared: dict) -> dict:\n",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 1
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-212905-shell",
+  "created": "2026-10-09T18:29:05.106Z",
+  "updated": "2026-10-09T18:29:05.106Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git log --oneline -3 git fetch tail -1 git log --oneline -2 origin/main git merge-base --is-ancestor task/justwoker-v4-mem-main-20261009 origin/main echo \"уже в origin/main\" echo \"не влит\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121ecf291001gsDyKo3gQWKjB2",
+  "callID": "call_a5136f8611a742d38eb79e71",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

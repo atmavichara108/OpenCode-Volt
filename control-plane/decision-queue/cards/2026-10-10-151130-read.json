@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-151130-read",
+  "created": "2026-10-10T12:11:30.427Z",
+  "updated": "2026-10-10T12:11:30.427Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "opencode-global/.config/opencode/plugins/fix-tool-schema.ts",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda4bd7bfffe6fR0b4fKOMNX7R",
+  "messageID": "msg_125b4286e001RJjjEomiMjGpy6",
+  "callID": "62c8ba0a-8e6e-4434-b109-cbe6693bae8c",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

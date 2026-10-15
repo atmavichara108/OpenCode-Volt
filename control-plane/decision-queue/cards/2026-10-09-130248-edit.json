@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-130248-edit",
+  "created": "2026-10-09T10:02:48.234Z",
+  "updated": "2026-10-09T10:02:48.234Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": ".w5/add_decisions.py",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_1201c73c10019Z8Ru0qrDUHKZf",
+  "callID": "write:0",
+  "metadata": {
+    "files": [
+      {
+        "file": ".w5/add_decisions.py",
+        "patch": "Index: .w5/add_decisions.py\n===================================================================\n--- .w5/add_decisions.py\n+++ .w5/add_decisions.py\n@@ -0,0 +1,38 @@\n+#!/usr/bin/env python3\n+\"\"\"Институт передовых технологий = воплощение Вельдоры (слой 2); подтверждение связи слова силы.\"\"\"\n+import json\n+from pathlib import Path\n+\n+D = \"2026-10-09\"\n+nodes = [\n+    {\"id\": \"world-entity-institute-adv-tech\", \"graph\": \"world\", \"kind\": \"entity\",\n+     \"label\": \"Институт передовых технологий\",\n+     \"essence\": \"Слово Рудры 2026-10-09: институт называется Институт передовых технологий. По решению Б3-Б это будущее воплощение Вельдоры (слой 2) - появление института после исследования 040 или в его результате. Слой 1 (наш гибрид памяти и кэша) остаётся тенью Вельдоры - знакомство и дружба.\",\n+     \"status\": \"accepted\",\n+     \"provenance\": {\"source\": \"rudra-directive:\" + D + \":institute-name\", \"observed_at\": D,\n+                    \"scope\": \"institute-name\", \"basis\": \"quoted\"},\n+     \"projection\": [\"index\", \"compact\", \"handoff\"]},\n+    {\"id\": \"world-note-overcoding-hpf\", \"graph\": \"world\", \"kind\": \"note\",\n+     \"label\": \"Сверхкодирование = узел 007; раскрыть в Храме практической философии\",\n+     \"essence\": \"Слово Рудры 2026-10-09: правильно, что понятие сверхкодирования связано с существующим узлом stream-intent-007 (Сверхкодировка). Раскроем позже в Храме практической философии (ХПФ). До раскрытия смысл не истолковывать.\",\n+     \"status\": \"accepted\",\n+     \"provenance\": {\"source\": \"rudra-directive:\" + D + \":overcoding-hpf\", \"observed_at\": D,\n+                    \"scope\": \"overcoding-hpf\", \"basis\": \"quoted\"},\n+     \"projection\": [\"index\", \"compact\"]},\n+]\n+edges = [\n+    {\"id\": \"e-institute-veldora\", \"graph\": \"world\", \"from\": \"world-entity-institute-adv-tech\",\n+     \"to\": \"world-entity-veldora-two-layers\", \"type\": \"names\", \"status\": \"accepted\",\n+     \"provenance\": {\"source\": \"rudra-directive:\" + D + \":institute-name\", \"observed_at\": D,\n+                    \"scope\": \"institute-name\", \"basis\": \"quoted\"},\n+     \"projection\": [\"index\"]},\n+]\n+nd = Path(\"04-Memory/idea-graph/nodes.jsonl\")\n+ed = Path(\"04-Memory/idea-graph/edges.jsonl\")\n+with nd.open(\"a\", encoding=\"utf-8\") as f:\n+    for n in nodes:\n+        f.write(json.dumps(n, ensure_ascii=False) + \"\\n\")\n+with ed.open(\"a\", encoding=\"utf-8\") as f:\n+    for e in edges:\n+        f.write(json.dumps(e, ensure_ascii=False) + \"\\n\")\n+print(\"записано узлов:\", len(nodes), \"рёбер:\", len(edges))\n",
+        "status": "added",
+        "additions": 38,
+        "deletions": 0
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-205900-shell",
+  "created": "2026-10-10T17:59:00.491Z",
+  "updated": "2026-10-10T17:59:00.491Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git diff HEAD --stat echo \"=== DIFF ===\" git diff HEAD -- .opencode/memory/session-reports/2026-10-10-bugfix-workshop.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9086ce3ffeBbeL6bF903uUYc",
+  "messageID": "msg_126f7b454001OktO2wsNUF2Zqf",
+  "callID": "9cc097e0-851b-45c9-a152-60727f617e44",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

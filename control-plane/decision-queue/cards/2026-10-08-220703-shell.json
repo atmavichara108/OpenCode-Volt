@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-220703-shell",
+  "created": "2026-10-08T19:07:03.175Z",
+  "updated": "2026-10-08T19:07:03.175Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git worktree add .phrwt task/world-wikilinks-1008 python3 git add -A git commit -q -m \"00-WORLD: переформулирована ось Рудры по его запросу (яснее)\" git push -q origin task/world-wikilinks-1008:main git branch -f main origin/main git worktree remove .phrwt --force git show main:00-WORLD.md echo \"main=$(git rev-parse --short main)\" git rev-parse --short main",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11ce8e929001z3ciohwPTOOJxr",
+  "callID": "call_0dbf3c42fd654581ab1345fd",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

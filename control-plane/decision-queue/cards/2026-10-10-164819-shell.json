@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164819-shell",
+  "created": "2026-10-10T13:48:19.193Z",
+  "updated": "2026-10-10T13:48:19.193Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls -R /home/rudra/Projects/SSA/control/.opencode/ head -40 echo ==== cat /home/rudra/Projects/SSA/control/.opencode/skills/portfolio-registry/SKILL.md 2>/dev/null head -40",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9edd299ffeVSsn5dYS15NYJz",
+  "messageID": "msg_1261254b5001RKgmd5XDO6UsD9",
+  "callID": "call_01a12612578f7183a5a9afc7c8fbbd14",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "builder",
+  "model": null
+}

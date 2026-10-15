@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-215955-shell",
+  "created": "2026-10-09T18:59:55.692Z",
+  "updated": "2026-10-09T18:59:55.692Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C ~/Projects/OpenCode-Vault rev-parse origin/main 2>/dev/null echo \"---\" git -C ~/Projects/OpenCode-Vault fetch origin 2>&1 tail -3 echo \"=== after fetch ===\" git -C ~/Projects/OpenCode-Vault rev-parse origin/main",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eddf6e3dbffey7o825pEQ1vAJu",
+  "messageID": "msg_122091c7b001AeyNrI6Fwrrsc5",
+  "callID": "toolu_bdrk_015u5Q6xH7qG79JPHi7VxRS2",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

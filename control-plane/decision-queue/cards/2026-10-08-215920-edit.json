@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-08-215920-edit",
+  "created": "2026-10-08T18:59:20.996Z",
+  "updated": "2026-10-08T18:59:20.996Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "98-Temporary/ssa-bootstrap/ssa-team-call-questions-v0.1.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee322f261ffeHhsrMLutMZ76V6",
+  "messageID": "msg_11ce24b43001utchOcNVMXvyGc",
+  "callID": "call_c6f72807c6a34cd19f4aa11c",
+  "metadata": {
+    "files": [
+      {
+        "file": "98-Temporary/ssa-bootstrap/ssa-team-call-questions-v0.1.md",
+        "patch": "Index: 98-Temporary/ssa-bootstrap/ssa-team-call-questions-v0.1.md\n===================================================================\n--- 98-Temporary/ssa-bootstrap/ssa-team-call-questions-v0.1.md\n+++ 98-Temporary/ssa-bootstrap/ssa-team-call-questions-v0.1.md\n@@ -40,9 +40,9 @@\n |---|---|---|\n | 3.1 | Сроки перед клиентом: финально отвечает Ратибор. Согласны? Что нужно, чтобы он мог обещать сроки достоверно? | Все |\n | 3.2 | Техническое качество: финально отвечает Макс. Где граница его ответственности и что он не берёт на себя? | Все |\n | 3.3 | Отношения с клиентом: финально отвечает Михалыч. Где предел его полномочий в обещаниях клиенту? | Михалыч, Ратибор |\n-| 3.4 | Как разрешаем ситуацию «продали одно — исполнить можем другое»? Кто останавливает процесс и в какой момент? Defence: до подписи или после? | Все |\n+| 3.4 | Как разрешаем ситуацию «продали одно — исполнить можем другое»? Кто останавливает процесс и в какой момент: до подписи или после? | Все |\n | 3.5 | Кто ведёт приёмку от лица клиента и как фиксируется, что результат принят? | Михалыч, Ратибор |\n \n ## 4. Права на продукт и интеллектуальную собственность\n \n",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

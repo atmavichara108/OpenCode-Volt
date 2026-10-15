@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-194307-read",
+  "created": "2026-10-09T16:43:07.709Z",
+  "updated": "2026-10-09T16:43:07.709Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "04-Memory/route-log/2026-10-06-igraphv2-service-mechanics.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede74752effez1rLupWWvC1elB",
+  "messageID": "msg_1218becfc001rlKnTrTVeZB7CU",
+  "callID": "toolu_fe2549b268f14a0d8a25b7ea",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

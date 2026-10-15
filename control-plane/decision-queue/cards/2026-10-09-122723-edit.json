@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-122723-edit",
+  "created": "2026-10-09T09:27:23.752Z",
+  "updated": "2026-10-09T09:27:23.752Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_11ffcd81c001lzO195djTuNroh",
+  "callID": "call_a76bece7bc184711b67582a6",
+  "metadata": {
+    "files": [
+      {
+        "file": "/home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts",
+        "patch": "Index: /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n===================================================================\n--- /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n+++ /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n@@ -59,8 +59,10 @@\n     h.set(k, v);\n   }\n   return h;\n }\n+// eslint-disable-next-line @typescript-eslint/no-unused-vars\n+void filterResponseHeaders;\n \n // Потолок времени апстрим-запроса. Держит AbortSignal; дефолтный Bun-овый\n // socket-idle (300c) отключён через fetch-опцию `timeout: false` (доказано\n // контрольным тестом: hold=340c → 200; см. ниже). 900c с запасом на полный\n",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 0
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-233044-shell",
+  "created": "2026-10-08T20:30:44.014Z",
+  "updated": "2026-10-08T20:30:44.014Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "MODEL_OK=1 git add 00-WORLD.md 04-Memory/idea-graph/nodes.jsonl MODEL_OK=1 git commit -q -mbudget MODEL_OK=1 git commit -q -m \"мир: два слова силы наречены Рудрой (метаконструирование, сверхкодирование) — raw, без истолкования\" git log --oneline -1 MODEL_OK=1 git push -q origin task/world-words-1008:main git branch -f main origin/main echo \"main=$(git rev-parse --short main)\" git rev-parse --short main",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d34a3ec001XKAG0qiBzq2e3l",
+  "callID": "call_81475859c41e418c92a8db2c",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

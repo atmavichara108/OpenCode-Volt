@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-171601-shell",
+  "created": "2026-10-10T14:16:01.271Z",
+  "updated": "2026-10-10T14:16:01.271Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "ls -l /home/rudra/dotfiles/docs/specs/ head -20 echo \"=== branch:\" git -C /home/rudra/dotfiles branch --show-current echo \"=== status specs:\" git -C /home/rudra/dotfiles status --short -- docs/specs/ echo \"=== stash list:\" git -C /home/rudra/dotfiles stash list head",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fa0279ffeALoBlPtaFyVci4",
+  "messageID": "msg_1262ba8c4001ZpiGkcq57638sB",
+  "callID": "call_01a1262bb3257415b3952453765ceaea",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

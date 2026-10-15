@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-204204-shell",
+  "created": "2026-10-09T17:42:04.293Z",
+  "updated": "2026-10-09T17:42:04.293Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C /home/rudra/Projects/OpenCode-Vault/task/meta-permission-worktree-20261009 status --short git -C /home/rudra/Projects/OpenCode-Vault/task/meta-permission-worktree-20261009 diff --cached --stat git -C /home/rudra/Projects/OpenCode-Vault/task/meta-permission-worktree-20261009 diff --cached --name-only git -C /home/rudra/Projects/OpenCode-Vault/task/meta-permission-worktree-20261009 rev-parse --show-toplevel git -C /home/rudra/Projects/OpenCode-Vault/task/meta-permission-worktree-20261009 branch --show-current git -C /home/rudra/Projects/OpenCode-Vault/task/meta-permission-worktree-20261009 log --oneline -5",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede3e31edffeJFAcYzZu5Vpy8w",
+  "messageID": "msg_121c1ed6b001ZrARvHmf44QoTi",
+  "callID": "call_6j9RBKNeHKMdKkBHJkqMYDl9",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

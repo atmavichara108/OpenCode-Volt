@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-221648-shell",
+  "created": "2026-10-08T19:16:48.152Z",
+  "updated": "2026-10-08T19:16:48.152Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git worktree add .tkwt -b task/t177-178-1008 origin/main tail -1 python3 git add TASKS.md git commit -q -m \"план подтверждён Рудрой: T-177 (3 классификатора на бесплатных моделях, фаза 5), T-178 (model-watch + Jev)\" git push -q origin task/t177-178-1008:main git branch -f main origin/main git worktree remove .tkwt --force echo \"main=$(git rev-parse --short main)\" git rev-parse --short main",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cf1bf24001lfD7D675Wjd2mE",
+  "callID": "call_4d9f821d90854ba0a9eb2004",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

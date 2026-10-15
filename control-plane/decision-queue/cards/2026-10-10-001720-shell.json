@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-001720-shell",
+  "created": "2026-10-10T21:17:20.932Z",
+  "updated": "2026-10-10T21:17:20.932Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== worktree main ===\" git worktree add .tmp-main-ct2 main 2>&1 tail -1 git cherry-pick a185618 tail -4 echo \"=== проверка ===\" git show HEAD:06-Audits/2026-10-09-agency-counteragency-brainstorm.md 2>/dev/null wc -l git rev-parse --short HEAD",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127ad611a001da4KVGn7mEla95",
+  "callID": "call_00_o66p2e24ktjrw80yh92yyl07",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

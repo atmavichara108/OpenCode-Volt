@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-223825-shell",
+  "created": "2026-10-08T19:38:25.406Z",
+  "updated": "2026-10-08T19:38:25.406Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "python3 MODEL_OK=1 git add 05-Templates/pre-commit-check.sh MODEL_OK=1 git commit -q -m \"pre-commit: гейт-переменная с дефолтом и проверка файла вместо исполняемости (set -u, без chmod)\" MODEL_OK=1 git push -q origin task/t177-178-1008:main git branch -f main origin/main echo \"main=$(git rev-parse --short main)\" git rev-parse --short main",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d05ac4f001W9syBkVxpht450",
+  "callID": "call_a9d1abe237ee4f32ababd2cb",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «chmod»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

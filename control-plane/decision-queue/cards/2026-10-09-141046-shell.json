@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-141046-shell",
+  "created": "2026-10-09T11:10:46.995Z",
+  "updated": "2026-10-09T11:10:46.995Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ss -ltnp 2>/dev/null grep ':8791' grep -oP 'pid=\\K[0-9]+' head -1 kill \"$P9\" sleep 1 nohup node /tmp/opencode/shimtest/stub3.mjs 8791 20000 > /tmp/opencode/shimtest/stub3d.log 2>&1 sleep 1.2 echo \"=== (c) hang-retry ===\" curl -sS --max-time 40 -N -X POST http://127.0.0.1:8784/v1/messages -H 'content-type: application/json' --data-binary '{\"model\":\"hang\",\"stream\":true,\"max_tokens\":8,\"messages\":[{\"role\":\"user\",\"content\":\"hi\"}]}' -o /tmp/opencode/shimtest/c4.txt -w \"http=%{http_code} t=%{time_total}\\n\" grep -o '^event: [a-z_]*' /tmp/opencode/shimtest/c4.txt sort uniq -c echo \"content:\" grep -o 'LIVE_\\|DELTA' /tmp/opencode/shimtest/c4.txt tr '\\n' ' ' echo echo \"--- shim journal ---\" cat /tmp/opencode/shimtest/shim3d.log echo \"--- stub log ---\" cat /tmp/opencode/shimtest/stub3d.log",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_1205b6522001fCc3Hd757FDJue",
+  "callID": "call_98fc597b4d8746ad9c4eb34e",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «curl»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

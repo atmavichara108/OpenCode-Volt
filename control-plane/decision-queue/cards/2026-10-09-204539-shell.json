@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-204539-shell",
+  "created": "2026-10-09T17:45:39.770Z",
+  "updated": "2026-10-09T17:45:39.770Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "find . -maxdepth 4 \\( -iname '*garbage*' -o -iname '*pre-commit*' \\) -print sort git config core.hooksPath",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede3c52edffeqQpR7DlMbTAESC",
+  "messageID": "msg_121c5369d001fjGkdMLox7hTUt",
+  "callID": "call_t6dkxZXAwO1wO9iPHh5tj1y0",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

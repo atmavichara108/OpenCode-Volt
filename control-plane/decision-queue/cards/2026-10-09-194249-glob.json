@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-09-194249-glob",
+  "created": "2026-10-09T16:42:49.848Z",
+  "updated": "2026-10-09T16:42:49.848Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "glob",
+  "pattern": "**/idea-graph/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede747528ffeHlisOgYlOGW7Oi",
+  "messageID": "msg_1218bb2310018G7hl5E4evFV1z",
+  "callID": "toolu_69241f1e012a4179b8cc0e24",
+  "metadata": {
+    "root": "."
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-144117-shell",
+  "created": "2026-10-10T11:41:17.841Z",
+  "updated": "2026-10-10T11:41:17.841Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== seo-outreach .opencode ===\" ls -la /home/rudra/Projects/SSA/products/seo-outreach/.opencode 2>&1 head echo \"=== docs tree ===\" find /home/rudra/Projects/SSA/products/seo-outreach/docs -type f 2>&1 head -40 echo \"=== control docs tree ===\" find /home/rudra/Projects/SSA/control/docs -type f 2>&1 head -40",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda6315feffe6AABxCxYe55DZ6",
+  "messageID": "msg_1259df2df001zitjpqPzR3FXwT",
+  "callID": "call_04_3mMhDxdooIM1IEsup7AH7613",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

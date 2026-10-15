@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-194309-shell",
+  "created": "2026-10-09T16:43:09.636Z",
+  "updated": "2026-10-09T16:43:09.636Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "grep -rli \"principal-agent\\|principal–agent\\|anthropomorph\\|гомеостаз\\|симбиоз\\|делегирован\\|тарсион\\|Делёз\\|counteragent\\|контрагент\" --include=\"*.md\" --include=\"*.jsonl\" . grep -v \".meta-worktrees\\|.s8-fork\\|node_modules\" head -30",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede74752effez1rLupWWvC1elB",
+  "messageID": "msg_1218becfc001rlKnTrTVeZB7CU",
+  "callID": "toolu_fda33e6e2d68428e888c2ba7",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

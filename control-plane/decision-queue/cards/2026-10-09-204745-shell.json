@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-204745-shell",
+  "created": "2026-10-09T17:47:45.003Z",
+  "updated": "2026-10-09T17:47:45.003Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "printf '%s\\n' '-- staged patch SHA-256 --' git diff --cached --binary sha256sum printf '%s\\n' '-- tracked/untracked status --' git status --short printf '%s\\n' '-- staged stat --' git diff --cached --stat",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede3c52edffeqQpR7DlMbTAESC",
+  "messageID": "msg_121c71c9f001ErEP1Pea30TE4a",
+  "callID": "call_EUH0awdMXWrngNE5mqaTqX9y",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

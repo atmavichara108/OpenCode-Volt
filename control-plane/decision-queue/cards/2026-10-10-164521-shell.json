@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164521-shell",
+  "created": "2026-10-10T13:45:21.433Z",
+  "updated": "2026-10-10T13:45:21.433Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls /home/rudra/dotfiles/.opencode/skills/tree-hygiene/ cat /home/rudra/dotfiles/.opencode/skills/tree-hygiene/SKILL.md head -40",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9f0a108ffeyfZZYysnsEkvRP",
+  "messageID": "msg_1260f9d3d0012JZTzqFCnhJN36",
+  "callID": "call_01a1260f9fbd7572ba4b4a57984937ae",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "builder",
+  "model": null
+}

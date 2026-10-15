@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-214730-edit",
+  "created": "2026-10-09T18:47:30.897Z",
+  "updated": "2026-10-09T18:47:30.897Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/home/rudra/Projects/OpenCode-Vault-tasks/meta-gates-20261009/docs/handoffs/2026-10-09-meta-gates-permissions.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_121fa5277001uCiWwDO2dDdVbO",
+  "callID": "toolu_bdrk_01PEdFUfbfFVGSMizy9ADAfr",
+  "metadata": {
+    "files": [
+      {
+        "file": "/home/rudra/Projects/OpenCode-Vault-tasks/meta-gates-20261009/docs/handoffs/2026-10-09-meta-gates-permissions.md",
+        "patch": "Index: /home/rudra/Projects/OpenCode-Vault-tasks/meta-gates-20261009/docs/handoffs/2026-10-09-meta-gates-permissions.md\n===================================================================\n--- /home/rudra/Projects/OpenCode-Vault-tasks/meta-gates-20261009/docs/handoffs/2026-10-09-meta-gates-permissions.md\n+++ /home/rudra/Projects/OpenCode-Vault-tasks/meta-gates-20261009/docs/handoffs/2026-10-09-meta-gates-permissions.md\n@@ -0,0 +1,31 @@\n+# Хендофф: meta-gates — permissions + процессные гейты (2026-10-09)\n+\n+Статус: **ветки запушены, ждут merge в main куратором/либрианом.**\n+\n+## Артефакты\n+- dotfiles `task/meta-gates-global-20261009` → push, commit `33fb471`.\n+  - reviewer/verifier: `read` + `external_directory: allow` (edit/task deny сохранены, bash не расширен).\n+  - `opencode.json` (meta): два новых edit-allow корня — `dotfiles-tasks/**`, `OpenCode-Vault-tasks/**`; головной `edit \"*\": deny` и deny-блоки нетронуты.\n+  - `opencode.jsonc`: `external_directory` широкий allow с секретными deny поверх (last-match-wins).\n+  - global `AGENTS.md`: правило «спроси при неоднозначности до действия» (правило полного чтения не тронуто).\n+  - `agent/meta.md`: hash-bound порядок staged-gate → reviewer → verifier.\n+- Vault `task/meta-gates-vault-20261009` → push, commit `19aa02e`.\n+  - `AGENTS.md`, `02-Methods/team-director.md`: детерминированные гейты ДО reviewer→verifier, verdict привязан к SHA staged diff, мутация обнуляет; риск-соразмерные дешёвые проверки.\n+  - `02-Methods/git-worktree-isolation.md`: ветка явно от fetched `origin/main`; lease через `python3 tools/peers/peer_lease.py`.\n+  - `04-Memory/route-log/2026-10-09-staged-gates-and-worktree-isolation.md`: инцидент (runtime gate НЕ внедрён).\n+  - `TASKS.md`: T-184 (P1, Planned) — permission-routing mismatch.\n+- Ранее: этап-1 allowlist-fix уже в Vault main `cac2a00`.\n+\n+## Проверки\n+- reviewer: **PASS** по обоим diff, хеши сверены (`807207e3…`, `f47ca60e…`).\n+- Детерминированные гейты: PASS в обоих (pre-commit, garbage-guard, JSON/YAML, diff-check).\n+- verifier: **BLOCKED** дефектом харнеса — обе попытки (модели `glm-5.3-flash` и `muse-spark-1.3`) упали с `only \"auto\" is supported for tool_choice`. Чужой харнес, не чиним; факт зафиксирован. Приёмка по verifier по этому diff не получена — требуется повтор после починки канала.\n+\n+## Открытые вопросы / долг\n+- T-184: системно диагностировать permission-routing mismatch (meta не мог править профили из task-worktree до этих правок; reviewer/verifier не читали внешние worktrees; tree-cop не мог инспектировать внешние каталоги).\n+- Verifier tool_choice-дефект: нужен повторный прогон приёмки после рестарта/починки.\n+- Runtime commit-гейт (блок коммита без записанных проверок) — согласован, НЕ реализован, отдельный дизайн-этап.\n+- Два старых пустых worktree (`clarify-ambiguity-20261009` в обоих репо) оставлены по решению Рудры, уборку не делаем.\n+\n+## Канал ответа\n+Куратор/либриан подхватывает ветки из git-дерева, мёржит в main после приёмки.\n",
+        "status": "added",
+        "additions": 31,
+        "deletions": 0
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

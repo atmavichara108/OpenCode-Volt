@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-223240-shell",
+  "created": "2026-10-08T19:32:40.538Z",
+  "updated": "2026-10-08T19:32:40.538Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git show main:05-Templates/pre-commit-check.sh echo \"хук обновлён (режим сохранён: $(stat -c %A .git/hooks/pre-commit))\" stat -c %A .git/hooks/pre-commit .git/hooks/pre-commit grep -E \"каталог|🎉\" head -3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d009bbc001zPcYzvnG9OUjn2",
+  "callID": "call_330380bb3a254dcf869d504c",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

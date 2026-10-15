@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-001724-shell",
+  "created": "2026-10-10T21:17:24.963Z",
+  "updated": "2026-10-10T21:17:24.963Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git worktree remove .tmp-main-ct2 tail -1 git worktree list grep -c tmp-main echo \"=== финал: файл в main ===\" git show main:06-Audits/2026-10-09-agency-counteragency-brainstorm.md wc -l git log --oneline main -2",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127ad73640013KlLgq5zRS0Csg",
+  "callID": "call_00_05ru5289rrjcb2qho7v44u5n",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

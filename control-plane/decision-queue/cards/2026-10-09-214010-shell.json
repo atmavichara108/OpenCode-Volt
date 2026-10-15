@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-214010-shell",
+  "created": "2026-10-09T18:40:10.691Z",
+  "updated": "2026-10-09T18:40:10.691Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"---UNSTAGED---\" git diff --name-only echo \"---UNTRACKED---\" git ls-files --others --exclude-standard echo \"---CHECK-DOTFILES---\" git diff --cached --check echo \"rc=$?\" echo \"---CHECK-VAULT---\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede08f182ffezaSaP6jyT22AYu",
+  "messageID": "msg_121f72a45001PI5R745kqAEA8N",
+  "callID": "call_01a121f72de17364a27609293e8f955d",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

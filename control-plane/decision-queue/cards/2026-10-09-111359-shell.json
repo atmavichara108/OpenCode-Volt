@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-111359-shell",
+  "created": "2026-10-09T08:13:59.989Z",
+  "updated": "2026-10-09T08:13:59.989Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "shell",
+  "pattern": "python3 awk 'NR>=24 && NR<=25 || NR>=42 && NR<=48 || NR==103 {n=gsub(/\\|/,\"|\"); print NR\": pipes=\"n\" | \"substr($0,1,70)}' TASKS.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11fb8e8e6001ImOI18XQjDvb3k",
+  "callID": "call_c60e6fd981e04b9aaea54c14",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

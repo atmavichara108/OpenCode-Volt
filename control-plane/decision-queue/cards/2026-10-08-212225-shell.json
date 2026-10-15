@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-212225-shell",
+  "created": "2026-10-08T18:22:25.701Z",
+  "updated": "2026-10-08T18:22:25.701Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "sed -i 's/фacet/фасет/' TASKS.md git add 04-Memory/idea-graph/nodes.jsonl 04-Memory/idea-graph/edges.jsonl TASKS.md 04-Memory/facts.md git commit -q -m \"поток 2026-10-08: граф 048-053 (диада Рудра/АМ, контрагент В1/В2, лаба-банк, храм философии, ССР+нейро, коммерция SSA/SERP); АМ revised; задачи T-171..174; факт стиля; докидка фасет\" git push -q origin task/potok-1008:main git branch -f main origin/main git worktree remove .potokwt --force echo \"main=$(git rev-parse --short main)\" git rev-parse --short main git show main:04-Memory/idea-graph/nodes.jsonl grep -c \"stream-intent-04[89]\\|stream-intent-05[0-3]\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cc03b18001KocNlyGfXKxjZt",
+  "callID": "call_7bf20e9264ef4a5094b85f2e",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-212535-shell",
+  "created": "2026-10-09T18:25:35.894Z",
+  "updated": "2026-10-09T18:25:35.894Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git diff --cached 04-Memory/active-context.md grep -cP \"[\\x{4e00}-\\x{9fff}]\" git diff --cached 04-Memory/active-context.md grep -P \"[\\x{4e00}-\\x{9fff}]\" head -3 cat -A head -6",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121e9aad1001lnHstUyc0vsO8y",
+  "callID": "call_4c0df2dfd36947b7b37b0001",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-204457-shell",
+  "created": "2026-10-09T17:44:57.047Z",
+  "updated": "2026-10-09T17:44:57.047Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "shell",
+  "pattern": ".venv/bin/python tools/tree-cop/tree-cop.py status --mine /home/rudra/dotfiles-tasks/clarify-ambiguity-20261009 --mine /home/rudra/Projects/OpenCode-Vault-tasks/clarify-ambiguity-20261009",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede3b7214ffeHDQcq6s9poB6dr",
+  "messageID": "msg_121c48e13001JtHImMUk6QWjq1",
+  "callID": "call_DHEJiKJO17GNV4xIyadUbZvm",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "tree-cop",
+  "model": null
+}

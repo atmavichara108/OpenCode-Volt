@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-10-205759-edit",
+  "created": "2026-10-10T17:57:59.684Z",
+  "updated": "2026-10-10T17:57:59.684Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "docs/specs/bugfix-failure-rule.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_126f660dc001oVZqymK0KvdclA",
+  "callID": "call_203fd4dea8a645cb895ea47c",
+  "metadata": {
+    "files": [
+      {
+        "file": "docs/specs/bugfix-failure-rule.md",
+        "patch": "Index: docs/specs/bugfix-failure-rule.md\n===================================================================\n--- docs/specs/bugfix-failure-rule.md\n+++ docs/specs/bugfix-failure-rule.md\n@@ -72,11 +72,11 @@\n записи — проектный incident registry/handoff; runtime state — только metadata.\n \n ## 5. Каноническая маршрутизация\n \n-1. Получатель обязанства — агент-primary в обязательном workflow gate; capture\n-   listener только создаёт metadata event/сигнал по канону approved plugin spec\n-   S2 и сам ничего не отправляет.\n+1. Обязанность по письму — у агента-primary в обязательном workflow gate; capture\n+   listener только создаёт metadata event/сигнал по канону draft-спеки плагина\n+   (substance approved, S2) и сам ничего не отправляет.\n 2. Когда адресат доступен, primary workflow отправляет письмо только через\n    `tools/peer-comms/letter.sh`, соблюдая B18: один `message_id`, `started` при\n    получении, `finished` с artifact/SHA или один конкретный `cannot`;\n    duplicate-send запрещён.\n",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-204031-read",
+  "created": "2026-10-09T17:40:31.860Z",
+  "updated": "2026-10-09T17:40:31.860Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "docs/specs/pipboy-rebuild-2026-10-09.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_121c04201001C7lg7Oi78eP3JY",
+  "callID": "call_o8f6bue7K7yqlIEy83NTqRZx",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

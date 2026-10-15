@@ -1,0 +1,24 @@
+{
+  "id": "evt_11f74bd95002Nhs70b0B2Sh7Az",
+  "created": "2026-10-09T06:58:26.839Z",
+  "updated": "2026-10-09T06:58:26.839Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "nohup alacritty --class keytest -e sleep 6 >/dev/null 2>&1 sleep 2 xdotool search --name \"\" 2>/dev/null head echo \"---\" xdotool search --class -i keytest echo \"---\" xdotool getmouselocation 2>/dev/null xdotool search --class 2>/dev/null xprop -id $w WM_CLASS 2>/dev/null sort uniq -c sort -rn head",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eedd28c45ffeFJU6TDjG69z6A7",
+  "messageID": "msg_11f747df7001Yus5EBJ6YpC6Th",
+  "callID": "call_3f8cd84d2555498899f1230a",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": "nohup *"
+  },
+  "effect": null,
+  "source_directory": null,
+  "source_agent": null,
+  "model": null
+}

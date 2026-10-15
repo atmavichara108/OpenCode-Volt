@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-151633-shell",
+  "created": "2026-10-10T12:16:33.264Z",
+  "updated": "2026-10-10T12:16:33.264Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "python3 - <<'PY'\nfrom pathlib import Path\nfrom collections import Counter\nimport re\np=Path.home()/'.local/share/opencode/log/opencode.log'\nneedle='ses_eda4fec81ffeiK3jbuTpKwEx2m2'\nrows=[]\nfor line in p.open(errors='replace'):\n    if needle in line:\n        rows.append(line)\nlevels=Counter(re.search(r'level=([A-Z]+)', x).group(1) if re.search(r'level=([A-Z]+)', x) else 'unknown' for x in rows)\nmarkers={\n    'session_move_error_wrapper': 'Unable to move session to' in '\\n'.join(rows),\n    'destination_unavailable_marker': 'session move destination unavailable' in '\\n'.join(rows),\n    'destination_not_found_marker': 'DestinationNotFoundError' in '\\n'.join(rows),\n    'destination_not_directory_marker': 'DestinationNotDirectoryError' in '\\n'.join(rows),\n    'destination_unavailable_error_type': 'DestinationUnavailableError' in '\\n'.join(rows),\n    'generic_error_field': bool(re.search(r'\\berror=', '\\n'.join(rows))),\n    'stack_field': bool(re.search(r'\\bstack=', '\\n'.join(rows))),\n}\nprint({'matching_log_records':len(rows),'levels':dict(levels),'markers':markers})\nPY",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_125be35fd0014SSqbJsnjhdec1",
+  "callID": "call_G4ATVPUM7T2woyRuUWjJuzn8",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

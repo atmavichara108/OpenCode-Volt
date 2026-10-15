@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164558-shell",
+  "created": "2026-10-10T13:45:58.342Z",
+  "updated": "2026-10-10T13:45:58.342Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "python3 -c \"import json; d=json.load(open('/tmp/dbg.json')); t=[a for a in d if a.get('id')=='top']; print(json.dumps(t,indent=1,ensure_ascii=False)[:1500])\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9f0a108ffeyfZZYysnsEkvRP",
+  "messageID": "msg_126102954001l4Pr4y3fBWdg1k",
+  "callID": "call_01a12610313a740f9ec84ea97f0a2698",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "builder",
+  "model": null
+}

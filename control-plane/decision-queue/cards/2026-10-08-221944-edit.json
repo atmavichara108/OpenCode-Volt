@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-08-221944-edit",
+  "created": "2026-10-08T19:19:44.824Z",
+  "updated": "2026-10-08T19:19:44.824Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/home/rudra/dotfiles/tools/model-watch/README.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee30e41daffezCgBczKdPQJlr8",
+  "messageID": "msg_11cf4f7330015JukLam6HoH1w8",
+  "callID": "call_903ce2a0625340f598aa442f",
+  "metadata": {
+    "files": [
+      {
+        "file": "/home/rudra/dotfiles/tools/model-watch/README.md",
+        "patch": "Index: /home/rudra/dotfiles/tools/model-watch/README.md\n===================================================================\n--- /home/rudra/dotfiles/tools/model-watch/README.md\n+++ /home/rudra/dotfiles/tools/model-watch/README.md\n@@ -42,5 +42,5 @@\n Снапшот — источник кандидатов 3 классификаторов на бесплатных моделях к\n фазе 5: `jev-1.13-free`, `ling-3.1-flash-free`, `nemotron-3.5-lightning-free`.\n jev-моделей в models.dev нет — они включены Рудрой в консоли opencode.ai\n (org SERP, платный jev-1.13 $0.04/$0.00); в снапшоте они значатся `in:false`\n-из декларации конфига,待到 propagated каталога Zen.\n+из декларации конфига — ждут propagated каталога Zen.\n",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

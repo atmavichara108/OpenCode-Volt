@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-125841-shell",
+  "created": "2026-10-09T09:58:41.031Z",
+  "updated": "2026-10-09T09:58:41.031Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "grep -h '' 04-Memory/idea-graph/nodes.jsonl grep -o '\"id\": *\"[a-z0-9-]*\"' 04-Memory/idea-graph/nodes.jsonl grep -iE \"institut|agent|peer|letter|protocol|counter\" sort -u",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_120181878001m6H1sOQK007Q3j",
+  "callID": "shell:0",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

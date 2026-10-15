@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-095217-shell",
+  "created": "2026-10-09T06:52:17.508Z",
+  "updated": "2026-10-09T06:52:17.508Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "strings /home/rudra/.opencode/bin/opencode 2>/dev/null grep -o -m 10 \".\\{200\\}The name of the matching skill.\\{200\\}\" echo ---DONE1--- strings /home/rudra/.opencode/bin/opencode 2>/dev/null grep -o -m 10 \".\\{120\\}skill.\\{120\\}\" grep -i -m 10 \"tool\\|input\\|param\\|args\" head -10 echo ---DONE2---",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee091abbbffevJcwutfbPFdoSk",
+  "messageID": "msg_11f6f0d30001AlZGeAoaPcfFMw",
+  "callID": "call_01a11f6f179675e381ce2b23ccfddba2",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-194214-shell",
+  "created": "2026-10-10T16:42:14.945Z",
+  "updated": "2026-10-10T16:42:14.945Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== DIFF 5d71faa..8680c6c ===\" git diff 5d71faa..8680c6c -- .opencode/agent/top.md echo \"=== new frontmatter ===\" sed -n '1,50p' .opencode/agent/top.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9619763ffeVC3GE5q2o2HY5j",
+  "messageID": "msg_126b1544d001kzw7RjZiE63huN",
+  "callID": "call_00_vfvc67k9yxe2wc0f1lif1xll",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "top",
+  "model": null
+}

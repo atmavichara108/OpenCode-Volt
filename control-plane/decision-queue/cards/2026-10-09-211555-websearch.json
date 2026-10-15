@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-09-211555-websearch",
+  "created": "2026-10-09T18:15:55.413Z",
+  "updated": "2026-10-09T18:15:55.413Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "websearch",
+  "pattern": "site:opencode.ai/docs/config agent permission external_directory agent config permission override",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede282b06ffegFEjAXWgvbgKSO",
+  "messageID": "msg_121e0eb7c0013f4JWqljvOJZ3z",
+  "callID": "call_B88Aug9fAvxPj0WXJZ0Bx6Ci",
+  "metadata": {
+    "query": "site:opencode.ai/docs/config agent permission external_directory agent config permission override"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-163743-shell",
+  "created": "2026-10-10T13:37:43.256Z",
+  "updated": "2026-10-10T13:37:43.256Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git fetch -q origin main 2>&1 tail -3 echo \"=== origin/main ===\" git log --oneline -1 origin/main echo \"=== local main ===\" git log --oneline -1 main echo \"=== skill-id-fix base check (is it on origin/main?) ===\" git merge-base --is-ancestor origin/main task/skill-id-fix echo \"skill-id-fix descends from origin/main\" echo \"skill-id-fix DIVERGED from origin/main\" git merge-base --is-ancestor origin/main task/verifier-unrestricted echo \"verifier-unrestricted descends from origin/main\" echo \"verifier-unrestricted DIVERGED from origin/main\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_1260814cb001Eb9Ewil1n7vV8Y",
+  "callID": "toolu_bdrk_01FcgtfhzeE5YmoQemfe2S8D",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

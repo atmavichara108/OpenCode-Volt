@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-211558-shell",
+  "created": "2026-10-09T18:15:58.103Z",
+  "updated": "2026-10-09T18:15:58.103Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git checkout main tail -1 git merge --ff-only task/shim-v3-hybrid-1791528653 tail -1 git push tail -2 git checkout task/shim-v3-hybrid-1791528653 tail -1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121e0ed09001TSOw7npx3oOcaV",
+  "callID": "call_ad55c74c74214ad4afa9ac71",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-141350-shell",
+  "created": "2026-10-10T11:13:50.600Z",
+  "updated": "2026-10-10T11:13:50.600Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "find /home/rudra/Projects/OpenCode-Vault -newermt '2026-10-10 10:50' -not -path '*/.git/*' -type f 2>/dev/null head -20 echo '== конец списка (пусто = Vault не менялся в окне bootstrap) =='",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_edb148aa5ffeTlSiHSxl4J71pS",
+  "messageID": "msg_125831e270012loaMt538a10iM",
+  "callID": "e9393bac-aae2-4787-9831-2e384419b17e",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-001452-shell",
+  "created": "2026-10-10T21:14:52.342Z",
+  "updated": "2026-10-10T21:14:52.342Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== 2026-10-08-coordinator-verdicts tail ===\" tail -80 04-Memory/route-log/2026-10-08-coordinator-verdicts.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127ab1c85001lXRCUljxCb5qJu",
+  "callID": "call_00_2fo9hr1dw44rhf3nppswlkpk",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

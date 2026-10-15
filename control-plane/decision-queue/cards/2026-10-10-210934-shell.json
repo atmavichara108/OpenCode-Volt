@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-210934-shell",
+  "created": "2026-10-10T18:09:34.645Z",
+  "updated": "2026-10-10T18:09:34.645Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C $V checkout origin/main -- opencode.json echo \"=== валидность JSON ===\" python3 -m json.tool $V/opencode.json >/dev/null echo \"valid JSON\" echo \"=== строки на месте ===\" grep -n \"Vault-tasks\\|dotfiles-tasks\\|\\.env\\|credentials.json\" $V/opencode.json echo \"=== статус файла в vault ===\" git -C $V status --short -- opencode.json",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_127010c4c0012W2wms3qRIU3Bd",
+  "callID": "call_7d4c6e345f93487ab2bf1451",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «dotenv»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

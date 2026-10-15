@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-170117-shell",
+  "created": "2026-10-10T14:01:17.487Z",
+  "updated": "2026-10-10T14:01:17.487Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== bash -n top-sync-check ===\" bash -n tools/top-sync-check echo \"SYNTAX OK\" echo \"=== top-sync-check (no args) ===\" ./tools/top-sync-check echo \"rc=$?\" echo \"=== opencode debug agents ===\" opencode debug agents head -40",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9e561edffef3mrvrLt7u8s07",
+  "messageID": "msg_1261dea0f001aWGvY9RJcHfnhs",
+  "callID": "9c286166-1731-44bb-957a-8ee0f8f275db",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

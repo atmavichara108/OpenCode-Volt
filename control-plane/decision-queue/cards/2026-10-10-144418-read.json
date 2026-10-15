@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-144418-read",
+  "created": "2026-10-10T11:44:18.634Z",
+  "updated": "2026-10-10T11:44:18.634Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "03-Projects/SSA.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda6315feffe6AABxCxYe55DZ6",
+  "messageID": "msg_125a096ae001pyj59QJ4FviJE8",
+  "callID": "call_00_x5nvz2ZoSkIGUZVT3zlz6889",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

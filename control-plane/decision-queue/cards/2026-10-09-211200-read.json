@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-211200-read",
+  "created": "2026-10-09T18:12:00.444Z",
+  "updated": "2026-10-09T18:12:00.444Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "05-Templates/pre-commit-check.sh",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede254d97ffexQ6Ga6G6VO27Ox",
+  "messageID": "msg_121dd53d50012WES0zHCHdDnuE",
+  "callID": "call_tcUsWapmai9HtZsZDlKAd6ON",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

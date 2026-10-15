@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-215636-shell",
+  "created": "2026-10-09T18:56:36.382Z",
+  "updated": "2026-10-09T18:56:36.382Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "sed -n '1,60p' 04-Memory/stream-registry.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eddfaf9b3ffeAmNLEfJcMC3hta",
+  "messageID": "msg_12206167f001qLtWWU0pr6jvHU",
+  "callID": "toolu_d1481c230bfe4b6fbdfe2aab",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

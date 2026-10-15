@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-163257-read",
+  "created": "2026-10-10T13:32:57.724Z",
+  "updated": "2026-10-10T13:32:57.724Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "/home/rudra/.config/opencode/agent/tree-cop.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fbd295ffeH0fNgxHRqfA3jc",
+  "messageID": "msg_126042d97001A8P5A3mjQP3IEy",
+  "callID": "toolu_bdrk_01LZ1TVsQ92otKkdzBRPbt5c",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

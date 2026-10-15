@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-011904-shell",
+  "created": "2026-10-10T22:19:04.675Z",
+  "updated": "2026-10-10T22:19:04.675Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git add 00-WORLD.md 02-Methods/incident-fix.md README.md TASKS.md 04-Memory 06-Audits docs/route-log-daily.md git status --short grep '^[MA]' head -20 MODEL_OK=1 git commit -m \"docs(memory+research): незакоммиченное мейн-ворктри — idea-graph, route/session-log 2026-10-08..10, аудит вайбкодинга, email-capture research, README/TASKS\n\ngit-гигиена 2026-10-11: сбор рабочей грязи главного worktree в текущую ветку\n(ничего не удалено, всё сохранено).\" tail -15",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed830296bffeF3iz7Xxi5cWMOP",
+  "messageID": "msg_127e586080013b4os8nLb2kEF0",
+  "callID": "call_7edeff6cb5e44caf8b4ae663",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

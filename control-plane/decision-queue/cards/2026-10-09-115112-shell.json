@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-115112-shell",
+  "created": "2026-10-09T08:51:12.982Z",
+  "updated": "2026-10-09T08:51:12.982Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git fetch -q origin echo \"origin/main=$(git rev-parse --short origin/main)\" git rev-parse --short origin/main cat ~/dotfiles/tools/peers/peers.json 2>/dev/null head -40 ls ~/dotfiles/tools/peers/",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11fdba764001ChYUl8wDUiZUFN",
+  "callID": "call_63a057f9d45d424193cfe151",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

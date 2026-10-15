@@ -1,0 +1,28 @@
+{
+  "id": "2026-10-09-204543-grep",
+  "created": "2026-10-09T17:45:43.821Z",
+  "updated": "2026-10-09T17:45:43.821Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "grep",
+  "pattern": "garbage.guard|garbage-guard|garbage guard",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede3c52edffeqQpR7DlMbTAESC",
+  "messageID": "msg_121c54942001U37irQNiWZeSEi",
+  "callID": "call_ssGZwH9Pc9vRkjwAZv0nnbVZ",
+  "metadata": {
+    "root": ".",
+    "path": "/home/rudra/Projects/OpenCode-Vault-tasks/meta-gates-20261009",
+    "limit": 20
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

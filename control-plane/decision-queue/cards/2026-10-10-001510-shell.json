@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-001510-shell",
+  "created": "2026-10-10T21:15:10.708Z",
+  "updated": "2026-10-10T21:15:10.708Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "python3 -c \"\nimport json,re\nraw=open('/tmp/coord2.jsonl',encoding='utf-8',errors='replace').read()\ni=raw.find('С1 — Ствол')\nprint(raw[i-600:i+2600])\n\" sed 's/\\\\\\\\n/\\n/g' head -80",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127ab63bc001lm2oc4P2wzA5bW",
+  "callID": "call_00_prw8a4hlh0dvfx4al35ef7di",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

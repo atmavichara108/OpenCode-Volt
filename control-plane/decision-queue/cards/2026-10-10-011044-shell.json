@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-011044-shell",
+  "created": "2026-10-10T22:10:44.037Z",
+  "updated": "2026-10-10T22:10:44.037Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== stash@{0} show summary ===\" git stash show --stat stash@{0} 2>/dev/null tail -5 echo \"=== vault pre-commit гейты 2-6 (жадность) ===\" sed -n '40,160p' 05-Templates/pre-commit-check.sh",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed830296bffeF3iz7Xxi5cWMOP",
+  "messageID": "msg_127dab5d2001ELRfnA0I9X0lz6",
+  "callID": "call_44a506ea1634469385c13e43",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

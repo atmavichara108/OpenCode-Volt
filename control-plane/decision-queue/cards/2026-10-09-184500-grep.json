@@ -1,0 +1,29 @@
+{
+  "id": "2026-10-09-184500-grep",
+  "created": "2026-10-09T15:45:00.064Z",
+  "updated": "2026-10-09T15:45:00.064Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "grep",
+  "pattern": "контрагент|именованная сессия|мудрец|служение|COMP|TARDIS|модернизированных сессий",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_12156ad93001N9R6Xfc1d73a8j",
+  "callID": "call_8bsIq6POTzFBh6xKdH7uMy26",
+  "metadata": {
+    "root": ".",
+    "path": "/home/rudra/Projects/OpenCode-Vault/04-Memory/route-log",
+    "include": "*.md",
+    "limit": 100
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-002647-shell",
+  "created": "2026-10-10T21:26:47.168Z",
+  "updated": "2026-10-10T21:26:47.168Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git worktree add .tmp-main-ct4 main tail -1 git cherry-pick 1aa976f tail -3 echo \"=== проверка ===\" ls -la 06-Audits/2026-10-11-counteragent-cross-domain-research.md git rev-parse --short HEAD git worktree remove .tmp-main-ct4 tail -1 echo \"tmp worktrees: $(git worktree list | grep -c tmp-main)\" git worktree list grep -c tmp-main",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127b6034e001POlmv6ol7MhjiZ",
+  "callID": "call_00_cpnzktrl1e5hwo4rpq3320q2",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

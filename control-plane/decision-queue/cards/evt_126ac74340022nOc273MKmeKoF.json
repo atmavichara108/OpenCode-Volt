@@ -1,0 +1,24 @@
+{
+  "id": "evt_126ac74340022nOc273MKmeKoF",
+  "created": "2026-10-10T16:36:38.583Z",
+  "updated": "2026-10-10T16:36:38.583Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== tree .opencode ===\" find .opencode -type f sort echo \"=== git tracked ===\" git ls-files sort echo \"=== status ===\" git status --short",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed953a081ffeUbaKFfQXYrK26X",
+  "messageID": "msg_126ac6a0e001AnGIuUmYSZLdDr",
+  "callID": "call_00_w0xoxjnuy9qi8m0j16fo43q9",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": "echo *"
+  },
+  "effect": null,
+  "source_directory": null,
+  "source_agent": null,
+  "model": null
+}

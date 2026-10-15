@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-222102-shell",
+  "created": "2026-10-08T19:21:02.279Z",
+  "updated": "2026-10-08T19:21:02.279Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "python3 sed -n '196,213p' opencode-global/.config/opencode/opencode.jsonc",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee30e41daffezCgBczKdPQJlr8",
+  "messageID": "msg_11cf5cc6e0015PK3W28KGsZw89",
+  "callID": "call_1adfd02032ef4e98a479e8c3",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

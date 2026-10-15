@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-213320-shell",
+  "created": "2026-10-08T18:33:20.000Z",
+  "updated": "2026-10-08T18:33:20.000Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "grep -in \"SSA\\|Soft Automat\\|автоматизац\\|агентств\\|Михал\\|Ратибор\" 04-Memory/idea-graph/nodes.jsonl head -40 echo \"---GIT---\" git log --oneline -12",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_11cc9eb97001ZLRxvE4JdOzZfA",
+  "callID": "call_fb01db92df714375bf596a48",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

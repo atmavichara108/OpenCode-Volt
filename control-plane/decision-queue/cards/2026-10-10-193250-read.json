@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-193250-read",
+  "created": "2026-10-10T16:32:50.039Z",
+  "updated": "2026-10-10T16:32:50.039Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "docs/techdebt.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9619763ffeVC3GE5q2o2HY5j",
+  "messageID": "msg_126a8e918001BYShS61LmqGeI2",
+  "callID": "call_02_a2xcyeo7d0hx7au6flrn823b",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "top",
+  "model": null
+}

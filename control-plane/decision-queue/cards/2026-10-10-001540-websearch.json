@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-10-001540-websearch",
+  "created": "2026-10-10T21:15:40.651Z",
+  "updated": "2026-10-10T21:15:40.651Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "websearch",
+  "pattern": "distributed cognition extended mind agency Clark Chalmers",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127abdc71001rzD6LRsz4MmWnW",
+  "callID": "call_03_a3ncsdnirzasa6brdgkd1ic1",
+  "metadata": {
+    "query": "distributed cognition extended mind agency Clark Chalmers"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

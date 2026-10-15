@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-214132-shell",
+  "created": "2026-10-09T18:41:32.174Z",
+  "updated": "2026-10-09T18:41:32.174Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git diff --cached grep -n \"<<<<<<<\\|>>>>>>>\\|=======\" echo grep-exit:$?",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede083a6bffeD0nuJjy0f0ksR7",
+  "messageID": "msg_121f85426001wRQhcTX5beg8QR",
+  "callID": "call_01a121f86e07759ca1f9bc1ddaf10589",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

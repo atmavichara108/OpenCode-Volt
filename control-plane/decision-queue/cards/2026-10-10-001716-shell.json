@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-001716-shell",
+  "created": "2026-10-10T21:17:16.177Z",
+  "updated": "2026-10-10T21:17:16.177Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git add \"$F\" git commit -m \"research: агент-контрагентность — междисциплинарный обзор (13 областей + синтез), часть 2½\" tail -4 echo \"=== HEAD ===\" git rev-parse --short HEAD",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127ad53da001hX8rsRV46MF7Zk",
+  "callID": "call_00_6qrf6s2jhhs7xed07e8tieoh",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

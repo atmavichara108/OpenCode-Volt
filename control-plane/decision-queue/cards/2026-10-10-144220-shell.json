@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-144220-shell",
+  "created": "2026-10-10T11:42:20.020Z",
+  "updated": "2026-10-10T11:42:20.020Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls -la 04-Memory/route-log/ 2>&1 echo \"---sample route-log---\" echo \"== $f ==\" head -20 \"$f\" break",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda6315feffe6AABxCxYe55DZ6",
+  "messageID": "msg_1259ee4c6001nZdr0CRrVNWn08",
+  "callID": "call_00_wRO8gWw822SKHc5oDm3i8866",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

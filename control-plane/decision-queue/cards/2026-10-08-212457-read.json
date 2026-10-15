@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-212457-read",
+  "created": "2026-10-08T18:24:57.639Z",
+  "updated": "2026-10-08T18:24:57.639Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "03-Projects/recruiting-hr.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_11cc2b6a8001DxrwRgAluscnOL",
+  "callID": "call_c9539d133d1a40a691092999",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

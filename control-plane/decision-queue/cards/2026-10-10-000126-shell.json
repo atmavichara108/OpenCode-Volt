@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-000126-shell",
+  "created": "2026-10-10T21:01:26.347Z",
+  "updated": "2026-10-10T21:01:26.347Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== 1) все строки 'Unexpected window focus' и заголовки рядом ===\" timeout 60 grep -a -nE 'Unexpected window focus|expected-title|current-title' \"$L\" 2>/dev/null tail -30 echo echo \"=== 2) все заголовки вида '<id> — CopyQ' в логе сессии ===\" timeout 60 grep -a -oE '\\[[A-Za-z0-9_-]{10,20} — [A-Za-z]+\\]' \"$L\" 2>/dev/null sort uniq -c sort -rn head echo echo \"=== 3) любые 14-символьные base62-слова в логе сессии ===\" timeout 60 grep -a -oE '\\b[A-Za-z0-9]{14}\\b' \"$L\" 2>/dev/null sort uniq -c sort -rn head -20 echo echo \"=== 4) что вообще пишет CopyQ в stderr (тип сообщений) ===\" timeout 60 grep -a -oE 'Warning <[^>]*>: [A-Za-z].{0,60}' \"$L\" 2>/dev/null sort uniq -c sort -rn head -15",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed8739b6fffehp9xYGiS2A3O1i",
+  "messageID": "msg_1279e9a8c001bKKuNkvFSaNGSY",
+  "callID": "call_00_0paz5hifeuc7va6uaxhlhjly",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

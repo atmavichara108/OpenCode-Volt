@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-213151-subagent",
+  "created": "2026-10-09T18:31:51.022Z",
+  "updated": "2026-10-09T18:31:51.022Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "subagent",
+  "pattern": "reviewer",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_121ef65fa0017NAj9QflhyNqOq",
+  "callID": "call_9cfa4b8569ba4cabbfdc0707",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

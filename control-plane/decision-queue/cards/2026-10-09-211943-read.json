@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-211943-read",
+  "created": "2026-10-09T18:19:43.138Z",
+  "updated": "2026-10-09T18:19:43.138Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "04-Memory/active-context.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121e449ad001JUjyylleR3Lpzb",
+  "callID": "call_2e6fb6ffd80244fcbb2ddee1",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

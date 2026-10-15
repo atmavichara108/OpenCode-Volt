@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-172752-shell",
+  "created": "2026-10-10T14:27:52.556Z",
+  "updated": "2026-10-10T14:27:52.556Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git -C /home/rudra/dotfiles log --oneline -4 git -C /home/rudra/dotfiles status --short git -C /home/rudra/dotfiles push origin main 2>&1 tail -3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fa0279ffeALoBlPtaFyVci4",
+  "messageID": "msg_1263687db001TUwtrIVup0J3IL",
+  "callID": "call_01a126368e42706f92babcae8e240e45",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

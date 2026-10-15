@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-101313-shell",
+  "created": "2026-10-09T07:13:13.908Z",
+  "updated": "2026-10-09T07:13:13.908Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "bash /tmp/opencode/kbtest.sh echo \"rc=$?\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eedd28c45ffeFJU6TDjG69z6A7",
+  "messageID": "msg_11f813d7b001tf2bNccbr0Vxos",
+  "callID": "call_ad8f8dd5c6504b57851e2057",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

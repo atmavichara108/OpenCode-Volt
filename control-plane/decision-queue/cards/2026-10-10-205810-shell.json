@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-205810-shell",
+  "created": "2026-10-10T17:58:10.354Z",
+  "updated": "2026-10-10T17:58:10.354Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "grep -n \"утвержда\\|approved\" .opencode/memory/session-reports/2026-10-10-bugfix-workshop.md docs/specs/bugfix-failure-rule.md sed -n '1,20p'",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_126f6ef60001pZ2z9eGyGd7E0a",
+  "callID": "call_c9ff31714420483ea232b653",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

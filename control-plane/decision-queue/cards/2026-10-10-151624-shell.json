@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-151624-shell",
+  "created": "2026-10-10T12:16:24.975Z",
+  "updated": "2026-10-10T12:16:24.975Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "rg -n 'verifier' opencode.json head -20 echo '--- local verifier frontmatter ---' sed -n '1,22p' .opencode/agent/verifier.md echo '--- plugin setup entries ---' rg -n 'plugins|@opencode/plugin' opencode.json opencode-global/.config/opencode/opencode.jsonc",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_125be182f0012idJb8P3t0cBPJ",
+  "callID": "call_UIIwZZXJmql1d0UslKgQ9JWe",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

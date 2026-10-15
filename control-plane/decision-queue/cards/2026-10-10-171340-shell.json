@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-171340-shell",
+  "created": "2026-10-10T14:13:40.445Z",
+  "updated": "2026-10-10T14:13:40.445Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git status --short head -20 echo ---STAGED--- git diff --staged --name-only head -30 echo ---LOG--- git log --oneline --all -5 -- 'docs/specs/*harness*' 2>/dev/null echo --- git log --oneline -3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9d77707ffecevgx2hSjI94QE",
+  "messageID": "msg_1262953c1001kpKYfw2kNzgoDr",
+  "callID": "fba61bdc-1f00-4411-a47e-ca7d36729bba",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

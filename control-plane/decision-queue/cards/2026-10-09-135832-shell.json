@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-135832-shell",
+  "created": "2026-10-09T10:58:32.851Z",
+  "updated": "2026-10-09T10:58:32.851Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "sed -n '1,60p' /tmp/opencode/shimtest/stub3.mjs",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_1204c97c30015E8QGrFjpqVltM",
+  "callID": "call_fcf51108ced14d1bafee0d2c",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

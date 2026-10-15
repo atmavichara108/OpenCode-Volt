@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-115158-shell",
+  "created": "2026-10-09T08:51:58.469Z",
+  "updated": "2026-10-09T08:51:58.469Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls -la ~/dotfiles/tools/peers/ 2>/dev/null echo \"---\" head -60 ~/dotfiles/tools/peer-comms/hello.sh 2>/dev/null echo \"=== letter usage ===\" grep -m5 \"usage\\|--to\\|--file\" ~/dotfiles/tools/peer-comms/letter.sh head -10",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11fdc035b001D8m9tNqpFUXHrt",
+  "callID": "call_59be54a3fbcc4763a0513879",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}
