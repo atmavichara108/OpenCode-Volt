@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-204430-external-directory",
+  "created": "2026-10-09T17:44:30.069Z",
+  "updated": "2026-10-09T17:44:30.069Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "external_directory",
+  "pattern": "/home/rudra/dotfiles-tasks/meta-gates-20261009/.config/opencode/agent/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede3c52edffeqQpR7DlMbTAESC",
+  "messageID": "msg_121c421bc0019f9VEadu3JvDhP",
+  "callID": "call_JCG3OaV86kzgQqRtd4n1Hx6v",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-165502-read",
+  "created": "2026-10-10T13:55:02.541Z",
+  "updated": "2026-10-10T13:55:02.541Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": ".opencode/agent/sysop.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_1261836210011qgo9s21VeSvlb",
+  "callID": "call_YUY0TnZbrrhxoLd1EVcqYYxg",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

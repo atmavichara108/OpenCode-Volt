@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-002810-shell",
+  "created": "2026-10-10T21:28:10.232Z",
+  "updated": "2026-10-10T21:28:10.232Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git branch --show-current git branch --show-current echo \"=== does my worktree have 053? ===\" grep -c 'stream-intent-053' 04-Memory/idea-graph/nodes.jsonl echo \"=== 054 exists? ===\" grep -c 'stream-intent-054' 04-Memory/idea-graph/nodes.jsonl",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_127b70c33001npi7Qi0EzW5J5t",
+  "callID": "toolu_bdrk_011k94Y3kVaUyvAtM2Z8Gzvb",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

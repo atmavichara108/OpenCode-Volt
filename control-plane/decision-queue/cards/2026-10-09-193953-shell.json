@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-193953-shell",
+  "created": "2026-10-09T16:39:53.388Z",
+  "updated": "2026-10-09T16:39:53.388Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "shell",
+  "pattern": "grep -n \"§7\\|## 7\\|T-171\\|T-172\\|T-173\" -r /home/rudra/Projects/OpenCode-Vault/06-Audits/2026-10-07-world-atlas-reading-guide.md /home/rudra/Projects/OpenCode-Vault/TASKS.md 2>/dev/null head -20 ls /home/rudra/Projects/OpenCode-Vault/04-Memory/idea-graph/",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede77119bffe6xoc4UpkBsy0F8",
+  "messageID": "msg_12188fd11001rQNBNhNLfYHgSV",
+  "callID": "chatcmpl-tool-a2c74e020cab0e0e",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

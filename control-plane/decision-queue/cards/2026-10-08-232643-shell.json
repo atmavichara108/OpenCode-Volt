@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-232643-shell",
+  "created": "2026-10-08T20:26:43.183Z",
+  "updated": "2026-10-08T20:26:43.183Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git status --short head -8 echo \"=== мой хвост ===\" tail -2 04-Memory/idea-graph/nodes.jsonl cut -c1-120 echo \"=== diff stat ===\" git diff --stat -- 04-Memory/idea-graph/nodes.jsonl git worktree list head -3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d3181930019eHcyeHrn4SLRx",
+  "callID": "call_2f5f19a4b7054ce086a332d9",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

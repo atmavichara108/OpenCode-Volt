@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-214209-shell",
+  "created": "2026-10-08T18:42:09.891Z",
+  "updated": "2026-10-08T18:42:09.891Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== v1 (корректный): fenced-блоки ===\" grep -n '^```' 2026-08-03-ecosystem-upgrade-plan-v1.md head -12 echo echo \"=== bridge (красный): fenced-блоки ===\" grep -n '^```' 2026-09-30-mcode-opencode-bridge.md head -20",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cd13e00001bvQ54lPXFurny8",
+  "callID": "call_06100971430148728c5775e7",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

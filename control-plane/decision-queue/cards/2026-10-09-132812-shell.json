@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-132812-shell",
+  "created": "2026-10-09T10:28:12.623Z",
+  "updated": "2026-10-09T10:28:12.623Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "pkill -f stub3.mjs 2>/dev/null sleep 1 nohup node /tmp/opencode/shimtest/stub3.mjs 8791 20000 > /tmp/opencode/shimtest/stub3b.log 2>&1 sleep 1.5 cat /tmp/opencode/shimtest/stub3b.log",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_1203446c2001lcR7sKox20cIPT",
+  "callID": "call_13cf3379974444ed9ccf068f",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

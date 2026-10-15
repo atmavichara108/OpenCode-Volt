@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-213347-shell",
+  "created": "2026-10-09T18:33:47.150Z",
+  "updated": "2026-10-09T18:33:47.150Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "ls tools/peers/peer_lease.py grep -nE 'add_argument|add_parser|\"run\"|--file|--timeout' tools/peers/peer_lease.py head -20 echo --- git cat-file -t cac2a00 git cat-file -t fcabb01 git cat-file -t c0b99a6",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede106e10ffeMUVbvaXrKuH0ls",
+  "messageID": "msg_121f0458e0016D4712fLejRpbr",
+  "callID": "call_4a005797fbb3440897c9cf86",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

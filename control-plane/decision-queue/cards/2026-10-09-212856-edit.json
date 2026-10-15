@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-212856-edit",
+  "created": "2026-10-09T18:28:56.874Z",
+  "updated": "2026-10-09T18:28:56.874Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "opencode.json",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_121eccfbe001lRg8h5Gb6chHu3",
+  "callID": "call_8fc3d2de63c74deeb50bb85b",
+  "metadata": {
+    "files": [
+      {
+        "file": "opencode.json",
+        "patch": "Index: opencode.json\n===================================================================\n--- opencode.json\n+++ opencode.json\n@@ -811,9 +811,11 @@\n         { \"action\": \"edit\", \"resource\": \"**/.opencode/**\", \"effect\": \"allow\" },\n         { \"action\": \"edit\", \"resource\": \"**/AGENTS.md\", \"effect\": \"allow\" },\n         { \"action\": \"edit\", \"resource\": \"/home/rudra/.config/opencode/**\", \"effect\": \"allow\" },\n         { \"action\": \"edit\", \"resource\": \"/home/rudra/Projects/OpenCode-Vault/**\", \"effect\": \"allow\" },\n+        { \"action\": \"edit\", \"resource\": \"/home/rudra/Projects/OpenCode-Vault-tasks/**\", \"effect\": \"allow\" },\n         { \"action\": \"edit\", \"resource\": \"/home/rudra/dotfiles/**\", \"effect\": \"allow\" },\n+        { \"action\": \"edit\", \"resource\": \"/home/rudra/dotfiles-tasks/**\", \"effect\": \"allow\" },\n         { \"action\": \"subagent\", \"resource\": \"reviewer\", \"effect\": \"allow\" },\n         { \"action\": \"subagent\", \"resource\": \"verifier\", \"effect\": \"allow\" },\n         { \"action\": \"read\", \"resource\": \"*\", \"effect\": \"allow\" },\n         { \"action\": \"glob\", \"resource\": \"*\", \"effect\": \"allow\" },\n",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 0
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

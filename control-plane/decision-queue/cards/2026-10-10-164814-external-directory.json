@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164814-external-directory",
+  "created": "2026-10-10T13:48:14.846Z",
+  "updated": "2026-10-10T13:48:14.846Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "external_directory",
+  "pattern": "/home/rudra/Projects/SSA/products/seo-outreach/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9edd299ffeVSsn5dYS15NYJz",
+  "messageID": "msg_1261240de001ijSZ8LbTHKRvRT",
+  "callID": "call_01a12612465474bc9ab930becb990c37",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "builder",
+  "model": null
+}

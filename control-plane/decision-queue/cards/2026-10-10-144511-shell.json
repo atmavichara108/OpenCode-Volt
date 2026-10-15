@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-144511-shell",
+  "created": "2026-10-10T11:45:11.156Z",
+  "updated": "2026-10-10T11:45:11.156Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "printf '\\n--- %s ---\\n' \"$d\" test -d \"$d\" echo dir-exists echo MISSING git -C \"$d\" rev-parse --show-toplevel 2>&1 git -C \"$d\" status --short --branch 2>&1 printf '\\n--- bootstrap docs inventory ---\\n' find /home/rudra/Projects/SSA -maxdepth 5 -type f \\( -name 'AGENTS.md' -o -name '.gitignore' -o -path '*/docs/decisions/*' -o -name 'portfolio-registry.md' -o -path '*/docs/specs/*' \\) -print 2>/dev/null printf '\\n--- line numbers ---\\n'",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda5e8b83ffeN4DKj7TWSVb0dR",
+  "messageID": "msg_125a18e57001n2V69NiV0msU2N",
+  "callID": "call_GJf99laQPyyJxMSqdFlb9pry",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

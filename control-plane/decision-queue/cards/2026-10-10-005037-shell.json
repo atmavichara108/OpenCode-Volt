@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-005037-shell",
+  "created": "2026-10-10T21:50:37.866Z",
+  "updated": "2026-10-10T21:50:37.866Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "find /home/rudra/Projects/Ekstasis -type f head -100 echo --- ls /home/rudra/Projects/Ekstasis",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed8341a5affedt7tK5NNHfxoJl",
+  "messageID": "msg_127cbe5d4001Iz1k0UZEHZ22KE",
+  "callID": "chatcmpl-tool-b6d48ddcc6b90139",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

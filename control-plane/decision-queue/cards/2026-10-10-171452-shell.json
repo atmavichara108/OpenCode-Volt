@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-171452-shell",
+  "created": "2026-10-10T14:14:52.983Z",
+  "updated": "2026-10-10T14:14:52.983Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "timeout 30 fd -HI --max-depth 8 'ssa-control-agent-harness-bootstrap' /home/rudra 2>/dev/null head echo \"RC=$?\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9d77707ffecevgx2hSjI94QE",
+  "messageID": "msg_1262a900a001XFmedRb1DPKTma",
+  "callID": "bcdf44d8-3a11-41b6-a62c-ae45b041e447",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

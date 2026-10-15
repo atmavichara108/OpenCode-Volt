@@ -8,6 +8,9 @@
                               Related-колонок в секции не попадают)
   - 04-Memory/route-log/*.md — route log entries (frontmatter)
   - tools/ecosystem-map/registry.json — canonical registry (cards/agents)
+- control-plane/decision-queue/cards/*.json — карточки решений (сводка)
+- 04-Memory/idea-graph/nodes.jsonl + edges.jsonl — idea-graph (сводка)
+- control-plane/model-catalog.json — каталог моделей (сводка)
   - git (vault only): rev-parse HEAD, status --porcelain, log -1 (read-only plumbing)
 
 Пишет (единственная мутация — собственный output):
@@ -195,6 +198,136 @@ def read_registry() -> tuple[dict, dict[str, str], list[str]]:
     return registry, hashes, warnings
 
 
+def read_decision_queue() -> tuple[dict, dict[str, str]]:
+    """Decision-queue: counts by status/type + high-risk pending (топ-20).
+
+    Хеш — один sha256 по отсортированным похешам файлов (карточек сотни,
+    каждую в digest не тащим). Детерминизм сохранён: тот же набор файлов
+    -> тот же хеш.
+    """
+    dq_dir = VAULT_ROOT / "control-plane" / "decision-queue" / "cards"
+    by_status: dict[str, int] = {}
+    by_type: dict[str, int] = {}
+    pending_high: list[dict] = []
+    file_hashes: list[str] = []
+    total = 0
+    if dq_dir.is_dir():
+        for path in sorted(dq_dir.glob("*.json")):
+            try:
+                card = json.loads(path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                continue
+            total += 1
+            file_hashes.append(sha256_file(path))
+            st = str(card.get("status", "unknown"))
+            by_status[st] = by_status.get(st, 0) + 1
+            tp = str(card.get("type", "unknown"))
+            by_type[tp] = by_type.get(tp, 0) + 1
+            if st == "pending" and str(card.get("risk", "")) == "high":
+                pending_high.append({
+                    "id": card.get("id", path.stem),
+                    "title": card.get("title", ""),
+                    "type": tp,
+                    "updated": card.get("updated", ""),
+                })
+    pending_high.sort(key=lambda c: c["updated"], reverse=True)
+    digest = hashlib.sha256("\n".join(sorted(file_hashes)).encode("utf-8")).hexdigest()
+    summary = {
+        "total": total,
+        "by_status": dict(sorted(by_status.items())),
+        "by_type": dict(sorted(by_type.items())),
+        "pending_high_risk": pending_high[:20],
+        "pending_high_risk_total": len(pending_high),
+    }
+    return summary, {"control-plane/decision-queue/cards": digest}
+
+
+def read_idea_graph() -> tuple[dict, dict[str, str]]:
+    """Idea-graph: counts узлов по status/graph/kind + рёбра (всего/по графу)."""
+    ig_dir = VAULT_ROOT / "04-Memory" / "idea-graph"
+    nodes_path = ig_dir / "nodes.jsonl"
+    edges_path = ig_dir / "edges.jsonl"
+    hashes = {}
+    by_status: dict[str, int] = {}
+    by_graph: dict[str, int] = {}
+    by_kind: dict[str, int] = {}
+    edge_graphs: dict[str, int] = {}
+    nodes_total = 0
+    edges_total = 0
+    for path, counter in ((nodes_path, "nodes"), (edges_path, "edges")):
+        if not path.is_file():
+            continue
+        hashes[str(path.relative_to(VAULT_ROOT))] = sha256_file(path)
+        try:
+            lines = path.read_text(encoding="utf-8").splitlines()
+        except OSError:
+            continue
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                obj = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if counter == "nodes":
+                nodes_total += 1
+                st = str(obj.get("status", "unknown"))
+                by_status[st] = by_status.get(st, 0) + 1
+                gr = str(obj.get("graph", "unknown"))
+                by_graph[gr] = by_graph.get(gr, 0) + 1
+                kd = str(obj.get("kind", "unknown"))
+                by_kind[kd] = by_kind.get(kd, 0) + 1
+            else:
+                edges_total += 1
+                gr = str(obj.get("graph", "unknown"))
+                edge_graphs[gr] = edge_graphs.get(gr, 0) + 1
+    summary = {
+        "nodes_total": nodes_total,
+        "edges_total": edges_total,
+        "nodes_by_status": dict(sorted(by_status.items())),
+        "nodes_by_graph": dict(sorted(by_graph.items())),
+        "nodes_by_kind": dict(sorted(by_kind.items())),
+        "edges_by_graph": dict(sorted(edge_graphs.items())),
+    }
+    return summary, hashes
+
+
+def read_model_catalog() -> tuple[dict, dict[str, str]]:
+    """Model-catalog: провайдеры, всего моделей, free-модели."""
+    path = VAULT_ROOT / "control-plane" / "model-catalog.json"
+    hashes = {}
+    summary: dict = {"providers": 0, "models_total": 0, "models_free": 0,
+                     "generated_at": "", "by_provider": {}}
+    if not path.is_file():
+        return summary, hashes
+    hashes["control-plane/model-catalog.json"] = sha256_file(path)
+    try:
+        catalog = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return summary, hashes
+    providers = catalog.get("providers", {})
+    by_provider: dict[str, dict] = {}
+    total = 0
+    free = 0
+    for pname, pdata in sorted(providers.items()):
+        models = pdata.get("models", {}) if isinstance(pdata, dict) else {}
+        n = len(models)
+        f = sum(1 for m in models.values()
+                if isinstance(m, dict) and m.get("free") is True)
+        by_provider[pname] = {"models": n, "free": f}
+        total += n
+        free += f
+    summary = {
+        "providers": len(providers),
+        "models_total": total,
+        "models_free": free,
+        "generated_at": catalog.get("generated_at", ""),
+        "by_provider": by_provider,
+    }
+    return summary, hashes
+
+
 def _agent_model_from_frontmatter(text: str) -> str | None:
     """Извлечь `model:` из frontmatter (пропуская ведущие пустые строки)."""
     lines = text.lstrip("\ufeff").splitlines()
@@ -341,8 +474,11 @@ def build_snapshot() -> dict:
     registry, h4, warnings = read_registry()
     git, h5 = git_state()
     agent_models, h6 = read_agent_models()
+    dq, h7 = read_decision_queue()
+    igraph, h8 = read_idea_graph()
+    mcatalog, h9 = read_model_catalog()
 
-    input_hashes = {**h1, **h2, **h3, **h4, **h5, **h6}
+    input_hashes = {**h1, **h2, **h3, **h4, **h5, **h6, **h7, **h8, **h9}
     digest = hashlib.sha256(
         "\n".join(f"{k}:{v}" for k, v in sorted(input_hashes.items())).encode("utf-8")
     ).hexdigest()
@@ -363,7 +499,7 @@ def build_snapshot() -> dict:
 
     return {
         "meta": {
-            "schema": "ecosystem-snapshot/1.0",
+            "schema": "ecosystem-snapshot/1.1",
             "generated": True,
             "deterministic": True,
             "live": False,
@@ -384,6 +520,9 @@ def build_snapshot() -> dict:
             for aid, a in sorted(registry.get("agents", {}).items())
         },
         "git": git,
+        "decision_queue": dq,
+        "idea_graph": igraph,
+        "model_catalog": mcatalog,
         "drift_signals": drift_signals(projects, registry, tasks, all_task_ids, git, warnings),
         "registry_warnings": warnings,
     }

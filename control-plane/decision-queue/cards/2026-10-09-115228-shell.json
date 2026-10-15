@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-115228-shell",
+  "created": "2026-10-09T08:52:28.611Z",
+  "updated": "2026-10-09T08:52:28.611Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "python3 -c \"\nimport json\nseen={}\nfor l in open('tools/peer-comms/claims.jsonl'):\n    l=l.strip()\n    if not l: continue\n    try: d=json.loads(l)\n    except: continue\n    s=d.get('session','')\n    r=d.get('role','-')\n    if s: seen[s]=(r, d.get('scope',''))\nfor s,(r,sc) in seen.items():\n    print(s,'|',r,'|',sc)\n\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11fdcf224001aTYS3gr2tLF4AK",
+  "callID": "call_79234efe2ea64de59a582a07",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

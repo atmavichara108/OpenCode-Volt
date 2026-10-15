@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-212020-edit",
+  "created": "2026-10-09T18:20:20.218Z",
+  "updated": "2026-10-09T18:20:20.218Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "04-Memory/active-context.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121e4bd91001f7NsxQdVkmg6Ey",
+  "callID": "call_0cdf2fa58a3146c7bb40ed91",
+  "metadata": {
+    "files": [
+      {
+        "file": "04-Memory/active-context.md",
+        "patch": "Index: 04-Memory/active-context.md\n===================================================================\n--- 04-Memory/active-context.md\n+++ 04-Memory/active-context.md\n@@ -1,10 +1,10 @@\n ---\n type: Active Context\n title: Активный контекст\n-description: Сессия 2026-10-05 — канон мира Вельзевула (layer v1.2-альфа) зафиксирован; жду письмо форка о графе v2.\n+description: Сессия 2026-10-09 — T-168 финально закрыт: Opus работает, шим v4 (curl-транспорт + прокси) в production; следующее — New API layer.\n tags: [memory]\n-timestamp: 2026-10-05\n+timestamp: 2026-10-09\n ---\n \n # Активный контекст\n \n",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

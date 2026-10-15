@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-111019-read",
+  "created": "2026-10-09T08:10:19.567Z",
+  "updated": "2026-10-09T08:10:19.567Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "98-Temporary/ssa-bootstrap/ssa-agent-layer-architecture-v0.1-draft.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_11fb583c4001iVDIrSvv74XUf4",
+  "callID": "call_f6b26f3d3a6e40c78c384e89",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

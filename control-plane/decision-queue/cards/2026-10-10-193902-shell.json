@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-193902-shell",
+  "created": "2026-10-10T16:39:02.036Z",
+  "updated": "2026-10-10T16:39:02.036Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls -la /home/rudra/Projects/SSA/control/tools/ file /home/rudra/Projects/SSA/control/tools/top-sync-check head -80 /home/rudra/Projects/SSA/control/tools/top-sync-check",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed951f17fffesiAlzWdmRkgWN3",
+  "messageID": "msg_126ae896e001xyLQcJc8Kuokg4",
+  "callID": "d29ad582-aaee-4bb4-84df-a104dbde9550",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

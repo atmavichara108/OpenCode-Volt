@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-10-150517-edit",
+  "created": "2026-10-10T12:05:17.994Z",
+  "updated": "2026-10-10T12:05:17.994Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "opencode-global/.config/opencode/plugins/fix-tool-schema.ts",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_125b3fa64001aqIQIz7TkVIHDn",
+  "callID": "call_01a125b40201756e9d694d262cfd7091",
+  "metadata": {
+    "files": [
+      {
+        "file": "opencode-global/.config/opencode/plugins/fix-tool-schema.ts",
+        "patch": "Index: opencode-global/.config/opencode/plugins/fix-tool-schema.ts\n===================================================================\n--- opencode-global/.config/opencode/plugins/fix-tool-schema.ts\n+++ opencode-global/.config/opencode/plugins/fix-tool-schema.ts\n@@ -10,8 +10,14 @@\n //   event.tools (description + input) и выполняется непосредственно перед\n //   отправкой запроса. Поведение идентично V1: skill → плоская схема,\n //   остальные → сглаживание корневого union без required.\n //\n+//   V2-фикс (2026-10-10): ядро V2 ждёт у тула skill поле `id`\n+//   (доки: вызов {\"id\": \"<skill-id>\"}), а старая SKILL_FLAT слала `name` —\n+//   модель звала тул без id и валидатор отвечал `id Missing key`.\n+//   Новая схема плоская (без oneOf — strict-провайдеры её бы отвергли),\n+//   требует `id`, `name` оставлен deprecated-алиасом.\n+//\n // Глобальное размещение: подхватывается во всех проектах (в отличие от\n // старой копии в Vault, которая грузилась только там и упиралась в V1-форму).\n \n import { Plugin } from \"@opencode/plugin\"\n",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 0
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

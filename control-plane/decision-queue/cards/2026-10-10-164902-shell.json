@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164902-shell",
+  "created": "2026-10-10T13:49:02.613Z",
+  "updated": "2026-10-10T13:49:02.613Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== builder model ===\" sed -n '1,12p' .opencode/agent/builder.md 2>/dev/null echo '---global---' sed -n '1,12p' opencode-global/.config/opencode/agent/builder.md 2>/dev/null echo \"=== shim / proxy that could inject tool_choice ===\" rg -rl --hidden -g '!**/.git/**' \"tool_choice|toolChoice\" /home/rudra/dotfiles 2>/dev/null head echo \"=== justwoker shim location ===\" fd -t f -a 'justwoker|shim' /home/rudra/dotfiles 2>/dev/null grep -iE 'shim|justwoker' head echo \"=== top.md agent (new SSA primary) model ===\" sed -n '1,14p' .opencode/agent/top.md 2>/dev/null head -14",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_126124152001Qy1p4qhwmv9D6j",
+  "callID": "toolu_bdrk_01KMRTKt3aXkFHMy2SaqC1Q4",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

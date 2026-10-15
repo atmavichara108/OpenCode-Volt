@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-091834-shell",
+  "created": "2026-10-09T06:18:34.238Z",
+  "updated": "2026-10-09T06:18:34.238Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== провайдеры в конфиге ===\" grep -n \"self-dploy\\|amd-radeon\\|justwoker\" ~/.config/opencode/opencode.jsonc 2>/dev/null head -20 echo \"=== models gate: поиск по volт ===\" grep -rln \"гейт.*модель\\|моделей по провайдерам\\|models.*refresh\\|refreshModels\\|model.*gate\" ~/Projects/OpenCode-Vault --include=\"*.md\" 2>/dev/null head -8",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_11f4f80fd001QnoKfWbm7pp6Zn",
+  "callID": "call_72f7f5fc16964d92b31de52f",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

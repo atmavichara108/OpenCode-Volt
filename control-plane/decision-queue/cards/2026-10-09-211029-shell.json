@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-211029-shell",
+  "created": "2026-10-09T18:10:29.692Z",
+  "updated": "2026-10-09T18:10:29.692Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "tools/peers/peer_lease.py run --file TASKS.md --timeout 10 -- python3 -c 'from pathlib import Path; p=Path(\"TASKS.md\"); s=p.read_text(); assert \"| T-184 |\" not in s; marker=\"| T-131 |\"; i=s.index(marker); end=s.index(\"\\n\", i); row=\"\\n| T-184 | **Planned:** диагностировать и исправить permission/worktree routing mismatch для subagents между project opencode.json, global config и agent profile. Evidence/repro: meta `edit` denied в reviewer/verifier profiles после `session_move`; reviewer не читал external worktrees; tree-cop не мог target-read/cleanup. Acceptance: effective permissions подтверждены live smoke на каждой роли/профиле; meta scoped infra-write только из стандартного task-worktree; reviewer/verifier читают worktrees across projects read-only; `edit`/`write` deny и secret read/dir deny сохранены; без silent bypass/fallback. **Статус Planned.** | P1 | текущий permission/worktree routing incident; reviewer/verifier/meta profiles |\"; p.write_text(s[:end]+row+s[end:])'",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede254d97ffexQ6Ga6G6VO27Ox",
+  "messageID": "msg_121dbe886001vVXtu7mNsJZ5Wn",
+  "callID": "call_sBcAskB43mMZYX0hoO8K1GXh",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «secret-path»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

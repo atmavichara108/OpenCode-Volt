@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-095326-shell",
+  "created": "2026-10-09T06:53:26.589Z",
+  "updated": "2026-10-09T06:53:26.589Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "sed -n '1,60p' /home/rudra/dotfiles/opencode-global/.config/opencode/agent/meta.md 2>&1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee091abbbffevJcwutfbPFdoSk",
+  "messageID": "msg_11f701aed00136gbRFUtWx5OYE",
+  "callID": "call_01a11f70256473b19c5db9aec273f64c",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

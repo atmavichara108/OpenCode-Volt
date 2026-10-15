@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-000805-shell",
+  "created": "2026-10-10T21:08:05.952Z",
+  "updated": "2026-10-10T21:08:05.952Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== worktree main внутри волта ===\" git worktree add /home/rudra/Projects/OpenCode-Vault/.tmp-main-ct main 2>&1 tail -2 git cherry-pick e8c2968 tail -6 echo \"=== проверить ===\" git cat-file -e HEAD:06-Audits/2026-10-09-agency-counteragency-brainstorm.md 2>&1 echo \"в main ✓\" echo \"нет\" git rev-parse --short HEAD",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127a4b28c001R7BgMEfDeajIx7",
+  "callID": "call_f0e4521e1e714832a0b5e549",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-095200-shell",
+  "created": "2026-10-09T06:52:00.829Z",
+  "updated": "2026-10-09T06:52:00.829Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "strings /home/rudra/.opencode/bin/opencode 2>/dev/null grep -m 30 \"Arguments for the skill\" echo ---SEP2--- strings /home/rudra/.opencode/bin/opencode 2>/dev/null grep -m 30 \"why no skill applies\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee091abbbffevJcwutfbPFdoSk",
+  "messageID": "msg_11f6eced5001XFu9jcDHVO3Trj",
+  "callID": "call_01a11f6ed7d672aa9686a946a49b44ab",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

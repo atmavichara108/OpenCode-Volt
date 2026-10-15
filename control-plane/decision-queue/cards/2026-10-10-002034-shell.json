@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-002034-shell",
+  "created": "2026-10-10T21:20:34.331Z",
+  "updated": "2026-10-10T21:20:34.331Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== cross-domain файл существует? ===\" ls -la 06-Audits/2026-10-09-agent-counteragent-cross-domain.md 2>&1 git cat-file -e main:06-Audits/2026-10-09-agent-counteragent-cross-domain.md 2>&1 echo \"в main ✓\" echo \"не в main\" echo \"=== ищу текст строки-связки ===\" python3 -c \"\nraw=open('/tmp/coord3.jsonl',encoding='utf-8',errors='replace').read()\ni=raw.find('Междоменна')\nprint(raw[i:i+400].replace('\\\\\\\\n','\\n'))\n\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127b0533f0011KBNc5f2HXGyTY",
+  "callID": "call_00_buemvr7sokqkijotbnkfx9r3",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

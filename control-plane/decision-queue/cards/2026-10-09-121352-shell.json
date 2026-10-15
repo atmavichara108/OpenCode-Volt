@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-121352-shell",
+  "created": "2026-10-09T09:13:52.521Z",
+  "updated": "2026-10-09T09:13:52.521Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "shell",
+  "pattern": "grep -n \"179\" TASKS.md head -40",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee01c79a5ffeuKufDEOIYCNam9",
+  "messageID": "msg_11fee0468001E2p354Nib4SVhx",
+  "callID": "call_f6dae38c93af48ee90aac537",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

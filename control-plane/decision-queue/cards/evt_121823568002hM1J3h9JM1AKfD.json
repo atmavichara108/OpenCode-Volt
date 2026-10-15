@@ -1,0 +1,24 @@
+{
+  "id": "evt_121823568002hM1J3h9JM1AKfD",
+  "created": "2026-10-09T16:32:23.914Z",
+  "updated": "2026-10-09T16:32:23.914Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "shell",
+  "pattern": "grep -n \"tech-tenensuro\\|tech-smith-comp\\|tech-tardis\\|tech-jarvis-suit\\|tech-hev-suit\\|tech-culture-drone\" 04-Memory/idea-graph/nodes.jsonl cut -c1-600 echo === grep -n \"T-17[123]\" TASKS.md head -20",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede7e1e5dffeftxJtSRFz5EfBJ",
+  "messageID": "msg_121821a40001co7xHIX7g8wf92",
+  "callID": "chatcmpl-tool-9b75bdee1dd610df",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": "grep *"
+  },
+  "effect": "ask",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

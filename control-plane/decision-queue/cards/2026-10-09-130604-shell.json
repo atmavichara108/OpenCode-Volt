@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-130604-shell",
+  "created": "2026-10-09T10:06:04.543Z",
+  "updated": "2026-10-09T10:06:04.543Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "sed -i 's/^let reqCount = 0;$/let reqCount = 0;\\nlet hangCount = 0;/' /tmp/opencode/shimtest/stub3.mjs sed -i 's/if (mode === \"hang\" \\&\\& reqCount === 1) { console.log(\"\\[stub3\\] holding req#1 for \" + HANG + \"ms\"); setTimeout(start, HANG); }/if (mode === \"hang\") { hangCount++; if (hangCount === 1) { setTimeout(start, HANG); return; } }/' /tmp/opencode/shimtest/stub3.mjs node --check /tmp/opencode/shimtest/stub3.mjs echo OK grep -n 'hangCount' /tmp/opencode/shimtest/stub3.mjs",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_1201c9a10001fLO4tk97lrxKEZ",
+  "callID": "call_896e2df3754441de96aaad74",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

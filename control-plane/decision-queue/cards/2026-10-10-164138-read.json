@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164138-read",
+  "created": "2026-10-10T13:41:38.395Z",
+  "updated": "2026-10-10T13:41:38.395Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "docs/specs/seo-outreach-agent-runtime-bootstrap.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fa0279ffeALoBlPtaFyVci4",
+  "messageID": "msg_1260c2c62001i06NUw18B72IA5",
+  "callID": "call_01a1260c3a97707b8302f9a3b6c92dc5",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

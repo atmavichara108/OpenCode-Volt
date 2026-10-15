@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-09-095152-websearch",
+  "created": "2026-10-09T06:51:52.697Z",
+  "updated": "2026-10-09T06:51:52.697Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "websearch",
+  "pattern": "opencode-ai opencode skill tool \"Missing key\" id name Arguments provided",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee091abbbffevJcwutfbPFdoSk",
+  "messageID": "msg_11f6eb199001ZWxxT2l0kKxNv9",
+  "callID": "call_01a11f6eb60f76cc8d6b3a504ed641a3",
+  "metadata": {
+    "query": "opencode-ai opencode skill tool \"Missing key\" id name Arguments provided"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

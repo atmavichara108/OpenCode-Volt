@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-123807-shell",
+  "created": "2026-10-09T09:38:07.796Z",
+  "updated": "2026-10-09T09:38:07.796Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "ls githooks/ cat githooks/pre-commit 2>/dev/null head -100",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee01c79a4ffeix1rQE1KFzS5UM",
+  "messageID": "msg_12006a6d80017xYGZdBhDeNeoQ",
+  "callID": "call_68affacb7e3d438ead2b6b6b",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

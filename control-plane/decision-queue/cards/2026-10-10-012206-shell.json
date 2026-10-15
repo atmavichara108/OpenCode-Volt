@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-012206-shell",
+  "created": "2026-10-10T22:22:06.963Z",
+  "updated": "2026-10-10T22:22:06.963Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "MODEL_OK=1 GARBAGE_OK=1 git commit -m \"tools+control-plane: email-capture, mem-index, md-table-check, model-catalog, telemetry, decision-queue cards, opencode.json\n\ngit-гигиена 2026-10-11: инструменты и control-plane из грязи главного worktree\nв текущую ветку (сохранено как есть). GARBAGE_OK=1: ~700 машинно-сгенерированных\nJSON-карточек decision-queue — пофайловый скан garbage-guard не укладывается по\nвремени; контент генерируется автоматически.\" tail -4",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed830296bffeF3iz7Xxi5cWMOP",
+  "messageID": "msg_127e89e3a001zCIf0i6UMxTSbE",
+  "callID": "call_b9de31f2b7054372bd5b35c6",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-195822-shell",
+  "created": "2026-10-09T16:58:22.572Z",
+  "updated": "2026-10-09T16:58:22.572Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"--- бенч-шим 8786 ---\" curl -s -o /dev/null -w \"health=%{http_code}\\n\" --max-time 5 http://127.0.0.1:8786/health echo \"--- процесс бенч-шима ---\" pgrep -af \"justwoker-shim\" grep 8786 echo \"--- сокеты 8786/8787 ---\" ss -tlnp 2>/dev/null grep -E \"8786|8787\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121994c15001xNktHjaMIst8IH",
+  "callID": "call_c43be28d54eb467cb542af93",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «curl»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

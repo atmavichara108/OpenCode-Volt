@@ -1,0 +1,27 @@
+{
+  "id": "2026-10-10-164708-webfetch",
+  "created": "2026-10-10T13:47:08.749Z",
+  "updated": "2026-10-10T13:47:08.749Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "webfetch",
+  "pattern": "https://raw.githubusercontent.com/anomalyco/opencode/v2.0.26/packages/core/src/session/move.ts",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_12610cd7f001kkgPKe5x6tBBUU",
+  "callID": "toolu_bdrk_018Jz4uEFXVYmx8eYdcxMQXf",
+  "metadata": {
+    "url": "https://raw.githubusercontent.com/anomalyco/opencode/v2.0.26/packages/core/src/session/move.ts",
+    "format": "text"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

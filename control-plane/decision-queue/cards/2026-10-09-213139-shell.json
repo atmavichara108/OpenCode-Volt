@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-213139-shell",
+  "created": "2026-10-09T18:31:39.167Z",
+  "updated": "2026-10-09T18:31:39.167Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "set -eu git status --short git add AGENTS.md TASKS.md 02-Methods/team-director.md 02-Methods/git-worktree-isolation.md 04-Memory/route-log/2026-10-09-staged-gates-and-worktree-isolation.md echo '--- staged ---' git diff --cached --name-only git diff --cached --check echo DIFF_CHECK_OK bash 05-Templates/pre-commit-check.sh >/tmp/opencode/precommit-vault.log 2>&1 echo PRECOMMIT_OK echo PRECOMMIT_FAIL tail -20 /tmp/opencode/precommit-vault.log exit 1 git diff --cached sha256sum",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_121eeb0a40015S6fyXvaqTEk7n",
+  "callID": "call_27d752f2930e445c9462d5fb",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

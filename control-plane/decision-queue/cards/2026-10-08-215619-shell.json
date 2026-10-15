@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-215619-shell",
+  "created": "2026-10-08T18:56:19.708Z",
+  "updated": "2026-10-08T18:56:19.708Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "grep -oh \"T-1[78][0-9]\" TASKS.md sort -u tail -2 sed -i 's/- \\*\\*T-171. Рудра и АМ.\\*\\*/- **T-175. Рудра и АМ.**/; s/- \\*\\*T-172. Allis Maya (All is Maya).\\*\\*/- **T-176. Allis Maya (All is Maya).**/' 04-Memory/facts.md grep -n \"T-17[56]\" 04-Memory/facts.md cut -c1-60 python3 ~/dotfiles/tools/garbage-guard/guard.py check-text git add -A git commit -q -m \"Allis Maya (All is Maya) — канон написания; Алисса зарезервировано Рудрой за будущей сущностью; факты T-175/T-176; Карта обновлена\" git push -q origin task/allis-maya-1008:main git branch -f main origin/main git worktree remove .amwt --force git show main:00-WORLD.md git show main:00-WORLD.canvas echo \"main=$(git rev-parse --short main)\" git rev-parse --short main",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cdf155f001S8Bf3M4TuBTk1Z",
+  "callID": "call_90f62f8aad6c4cb6be82a4e1",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

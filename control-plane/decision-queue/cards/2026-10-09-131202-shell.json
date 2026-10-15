@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-131202-shell",
+  "created": "2026-10-09T10:12:02.082Z",
+  "updated": "2026-10-09T10:12:02.082Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "python3 -c \"import json; json.load(open('$f'))\" 2>/dev/null echo \"cards total=$total broken=$broken\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_edfe1d5c6ffeLW6EAnZWSzVGI5",
+  "messageID": "msg_12025e0eb001rGWjfh4zZXfD7C",
+  "callID": "shell:0",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

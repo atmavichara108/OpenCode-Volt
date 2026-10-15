@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-140729-shell",
+  "created": "2026-10-09T11:07:29.303Z",
+  "updated": "2026-10-09T11:07:29.303Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "sed -i '/if (isHttps) options.agent = false;.*новое соединение на запрос$/d' \"$F\" grep -n 'options.agent = false' \"$F\" grep -nP '[\\x{4e00}-\\x{9fff}\\x{3040}-\\x{30ff}\\x{ac00}-\\x{d7af}\\x{0e00}-\\x{0e7f}\\x{fffd}]' \"$F\" echo \"CJK CLEAN\" bun build --target=bun \"$F\" --outfile /dev/null 2>&1 tail -3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_12057adbd001g91psvFg6HPVYl",
+  "callID": "call_e85e957293c947dd88a39162",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

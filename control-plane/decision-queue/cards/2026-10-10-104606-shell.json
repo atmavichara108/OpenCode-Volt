@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-104606-shell",
+  "created": "2026-10-10T07:46:06.103Z",
+  "updated": "2026-10-10T07:46:06.103Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "unzip -q -d /home/rudra/Projects/SSA/seo_project_pack/ /home/rudra/Projects/SSA/seo_project_pack.zip echo \"EXTRACT_OK\" find /home/rudra/Projects/SSA/seo_project_pack/ -type f wc -l",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_edb39c2a3ffe3k42D41ykBKKDr",
+  "messageID": "msg_124c697df001pT598WhFlkuTA0",
+  "callID": "call_00_NuxZmCUJjqPSEIx0wGHR7854",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

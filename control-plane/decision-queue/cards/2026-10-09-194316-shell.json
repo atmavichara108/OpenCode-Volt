@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-194316-shell",
+  "created": "2026-10-09T16:43:16.365Z",
+  "updated": "2026-10-09T16:43:16.365Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "wc -l nodes.jsonl edges.jsonl protocol.jsonl echo \"--- node graphs ---\" grep -o '\"graph\": *\"[a-z]*\"' nodes.jsonl sort uniq -c sort -rn echo \"--- edge types ---\" grep -o '\"type\": *\"[a-z_]*\"' edges.jsonl sort uniq -c sort -rn",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede747528ffeHlisOgYlOGW7Oi",
+  "messageID": "msg_1218c0866001xNod5eU903c2f9",
+  "callID": "toolu_75ccd7fd6081459babafad21",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "ask",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

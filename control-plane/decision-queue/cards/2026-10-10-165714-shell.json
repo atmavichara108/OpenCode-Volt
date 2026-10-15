@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-165714-shell",
+  "created": "2026-10-10T13:57:14.299Z",
+  "updated": "2026-10-10T13:57:14.299Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C /home/rudra/Projects/SSA/control add -A git -C /home/rudra/Projects/SSA/control diff --staged --stat tail -5 echo \"=== control staged hash:\" git -C /home/rudra/Projects/SSA/control diff --staged sha256sum echo \"=== product:\" git -C /home/rudra/Projects/SSA/products/seo-outreach add -A git -C /home/rudra/Projects/SSA/products/seo-outreach diff --staged --stat tail -5 echo \"=== product staged hash:\" git -C /home/rudra/Projects/SSA/products/seo-outreach diff --staged sha256sum",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fa0279ffeALoBlPtaFyVci4",
+  "messageID": "msg_1261a7414001t03xs1nIcbA215",
+  "callID": "call_01a1261a7fbe70d2ba0c7d3fde77b3f3",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

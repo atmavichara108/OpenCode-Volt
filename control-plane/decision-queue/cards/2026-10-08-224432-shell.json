@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-224432-shell",
+  "created": "2026-10-08T19:44:32.278Z",
+  "updated": "2026-10-08T19:44:32.278Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "python3 -W error::SyntaxWarning -c \"import py_compile; py_compile.compile('tools/md-table-check/check.py', doraise=True)\" echo \"без предупреждений\" cat echo \"# md-table-check\" > tools/md-table-check/README.md printf 'D4: сырая вики-ссылка с пайпом в строке таблицы — Obsidian рвёт ячейку; экранируй пайп обратным слэшем.\\n' MODEL_OK=1 git commit -q -m \"md-table-check: детектор D4 — сырые вики-ссылки с пайпом в таблицах (класс дефекта карты мира)\" MODEL_OK=1 git push -q origin task/t177-178-1008:main git branch -f main origin/main git worktree remove .pipe --force echo \"main=$(git rev-parse --short main)\" git rev-parse --short main",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d0b9178001cPn1Mn08Zp11UI",
+  "callID": "call_1d4d053a1eb24b53919052a8",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

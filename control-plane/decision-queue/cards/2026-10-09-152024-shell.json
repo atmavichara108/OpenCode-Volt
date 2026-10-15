@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-152024-shell",
+  "created": "2026-10-09T12:20:24.630Z",
+  "updated": "2026-10-09T12:20:24.630Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git stash push -m \"foreign-mcode-$(date +%s)\" -- opencode-global/.config/opencode/mcode.jsonc date +%s git rebase origin/main tail -2 echo \"after rebase: $(git rev-parse --short HEAD) branch=$(git branch --show-current)\" git rev-parse --short HEAD git branch --show-current git stash pop tail -3 git status --short",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_12099c879001gt6UUSiEfIsy2J",
+  "callID": "call_511842abc14c42a398d415f6",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-092722-shell",
+  "created": "2026-10-09T06:27:22.862Z",
+  "updated": "2026-10-09T06:27:22.862Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "node tools/idea-graph/validate.mjs grep -E \"^  x|FAIL|PASS\" head -8",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11f581ac7001pMgGF7MQZUJpkV",
+  "callID": "call_01c5c44e2dd54bada4ee0688",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

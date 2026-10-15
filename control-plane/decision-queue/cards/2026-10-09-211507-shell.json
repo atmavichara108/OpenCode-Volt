@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-211507-shell",
+  "created": "2026-10-09T18:15:07.746Z",
+  "updated": "2026-10-09T18:15:07.746Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git reset git add opencode-global/.config/opencode/shim/justwoker-shim.ts git commit -m \"shim: curl-транспорт — фикс висняков на больших payload\n\nRoot cause (матрица 2026-10-09): прямое соединение с Cloudflare виснет\nна больших upload'ах (796KB: http=000 >45с), через локальный прокси —\n200 за ~26с. Bun-овый стек (fetch и node:https) висит на больших телах.\n\n- openRaw: node:https -> curl subprocess (spawn, stdin=тело, stdout=-i,\n  парсер header-block с пропуском CONNECT-туннеля прокси)\n- SHIM_PROXY env (default http://127.0.0.1:10809), --noproxy localhost\n- stream hang после ретраев -> fallback на non-stream, не ошибка клиенту\n\nПроверено: 796KB -> 200 за 12с; stream:true -> 200 за 4.7с живые дельты;\nбенч (a) 39мс (c) hang-retry 6.5с (d) fallback — зелёные.\" tail -3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121e018b8001Jh6ByrRKgRlatN",
+  "callID": "call_0877f41cccae4f2781b9e8a0",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «curl»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

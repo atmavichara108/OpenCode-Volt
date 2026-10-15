@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-220240-shell",
+  "created": "2026-10-09T19:02:40.167Z",
+  "updated": "2026-10-09T19:02:40.167Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "MODEL_OK=1 git push origin HEAD:main 2>&1 tail -8 echo \"=== after push, origin/main ===\" git -C ~/Projects/OpenCode-Vault rev-parse origin/main",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eddf6e3dbffey7o825pEQ1vAJu",
+  "messageID": "msg_1220bb8290017cp4AjBIUeVCwy",
+  "callID": "toolu_bdrk_01QN2QcuzeC9F2KQ8HLQfisx",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

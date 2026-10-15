@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-104604-edit",
+  "created": "2026-10-09T07:46:04.196Z",
+  "updated": "2026-10-09T07:46:04.196Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/tmp/opencode/kbtest.sh",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eedd28c45ffeFJU6TDjG69z6A7",
+  "messageID": "msg_11f9e2584001ujmxfaucBoyZdy",
+  "callID": "call_2350ec4ae7e847618519408f",
+  "metadata": {
+    "files": [
+      {
+        "file": "/tmp/opencode/kbtest.sh",
+        "patch": "Index: /tmp/opencode/kbtest.sh\n===================================================================\n--- /tmp/opencode/kbtest.sh\n+++ /tmp/opencode/kbtest.sh\n@@ -1,30 +1,32 @@\n #!/bin/bash\n+# Аккуратно: убить только свои тестовые окна\n+pkill -f \"class kbprobe\" 2>/dev/null; pkill -f \"class keytest\" 2>/dev/null; pkill -f \"class kt2\" 2>/dev/null; pkill -f \"class kt3\" 2>/dev/null\n+sleep 0.5\n BIN=/tmp/opencode/keys.bin; rm -f \"$BIN\"\n-pre=$(xdotool search --class Alacritty 2>/dev/null | sort)\n-alacritty --config-file /tmp/opencode/alacritty-layout-test.toml \\\n-  -e sh -c 'stdbuf -o0 -i0 sh -c \"stty -icanon -isig -echo min 0; timeout 25 cat >> /tmp/opencode/keys.bin\"' \\\n-  >/dev/null 2>&1 &\n+alacritty --class kbprobe -e sh -c 'stdbuf -o0 -i0 sh -c \"stty -icanon -isig -echo min 0; timeout 25 cat >> /tmp/opencode/keys.bin\"' >/dev/null 2>&1 &\n wid=\"\"\n for i in $(seq 1 24); do\n-  post=$(xdotool search --class Alacritty 2>/dev/null | sort)\n-  wid=$(comm -13 <(echo \"$pre\") <(echo \"$post\") | head -1)\n+  wid=$(xdotool search --class kbprobe 2>/dev/null | tail -1)\n   [ -n \"$wid\" ] && break\n   sleep 0.5\n done\n [ -z \"$wid\" ] && { echo \"NO_WINDOW\"; exit 1; }\n eval \"$(xdotool getwindowgeometry --shell \"$wid\")\"\n-xdotool mousemove --window \"$wid\" $((X+WIDTH/2)) $((Y+HEIGHT/2))\n+xdotool mousemove $((X+WIDTH/2)) $((Y+HEIGHT/2)); sleep 0.2\n xdotool windowactivate --sync \"$wid\"; sleep 0.8\n-xdotool key --window \"$wid\" a 2>/dev/null; xdotool key a; sleep 0.5\n+f() { local want=$1; local got=$(xdotool getwindowfocus 2>/dev/null); [ \"$got\" = \"$want\" ] || { echo \"FOCUS_LOST ($got != $want)\"; return 1; }; }\n+k() { f \"$wid\" && xdotool key \"$@\" && sleep \"${KDEL:-0.5}\"; }\n+KDEL=0.5\n setxkbmap -layout us; sleep 0.3\n-xdotool key a;             sleep 0.5   # US plain: 61\n+k a                      # US plain: 61\n+grep -q \"61\" /dev/null; :\n setxkbmap -layout ru; sleep 0.3\n-xdotool key Cyrillic_ef;   sleep 0.5   # RU plain ф: d184\n-xdotool key ctrl+a;        sleep 0.6   # binding-кейс RU физ.A: LOGIC/PHYS/сырец\n-xdotool key ctrl+x;        sleep 0.6   # без binding: 18 = ctrl-фолбэк есть\n-xdotool key ctrl+p;        sleep 0.6   # 10 или слом\n+k Cyrillic_ef            # RU plain ф: d1 84\n+k ctrl+Cyrillic_de       # RU физ.A ctrl: 01=фолбэк есть / d187=слон; binding: LOGIC или PHYS\n+k ctrl+Cyrillic_heh      # (RU физ.X — нет, heh=физ.H) — проверю порядок ниже\n+k ctrl+Cyrillic_che      # RU физ.X ctrl (che — это физ.X? да: ru-раскладка: X→che): 18=фолбэк\n setxkbmap -layout us,ru -option grp:alt_shift_toggle\n sleep 0.3\n xdotool windowkill \"$wid\" 2>/dev/null\n-echo \"=== a=61 ф=d184; ctrlA=LOGIC|PHYS|сырец; ctrlX=18|сырец; ctrlP=10|сырец ===\"\n+echo \"=== эталон: a=61 ф=d184 | RU: de(физА)→LOGIC|PHYS|01|слон; che(физX)→18|слон ===\"\n xxd \"$BIN\" 2>/dev/null\n",
+        "status": "modified",
+        "additions": 16,
+        "deletions": 14
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

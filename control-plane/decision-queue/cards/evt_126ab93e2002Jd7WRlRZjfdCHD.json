@@ -1,0 +1,24 @@
+{
+  "id": "evt_126ab93e2002Jd7WRlRZjfdCHD",
+  "created": "2026-10-10T16:35:41.158Z",
+  "updated": "2026-10-10T16:35:41.158Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "external_directory",
+  "pattern": "/home/rudra/Projects/SSA/control/tools/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9619763ffeVC3GE5q2o2HY5j",
+  "messageID": "msg_126ab841c001nMFBFArUpbv8R0",
+  "callID": "call_00_29zuc05qu6cnu96y8ud1hd1d",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": "/home/rudra/Projects/SSA/control/*"
+  },
+  "effect": "ask",
+  "source_directory": null,
+  "source_agent": "top",
+  "model": null
+}

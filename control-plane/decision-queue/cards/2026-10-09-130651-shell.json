@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-130651-shell",
+  "created": "2026-10-09T10:06:51.917Z",
+  "updated": "2026-10-09T10:06:51.917Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git fetch -q origin git log --oneline -3 origin/main ls tools/activity-collector 2>/dev/null echo \"activity-collector: не создан\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_1202106f3001TKB2a0NyPLMxed",
+  "callID": "shell:0",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

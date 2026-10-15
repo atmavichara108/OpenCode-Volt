@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-160149-shell",
+  "created": "2026-10-10T13:01:49.829Z",
+  "updated": "2026-10-10T13:01:49.829Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "opencode session export --sanitize ses_eda56e1d3ffeyC6AIk1mwgxw1L python3 -c 'import json,sys; d=json.load(sys.stdin); info=d.get(\"info\",{}); ms=d.get(\"messages\",[]); print(\"outcome\",info.get(\"outcome\"),\"session_time\",info.get(\"time\")); print([(m.get(\"type\"),m.get(\"id\"),sorted(m.keys()),m.get(\"time\",{}).get(\"created\") if isinstance(m.get(\"time\"),dict) else None) for m in ms[-8:] if isinstance(m,dict)])'",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_125e771db00174mQVw7LaHEfQe",
+  "callID": "call_V7mvCVMuxzoEnyoZSTT0vrK3",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164635-read",
+  "created": "2026-10-10T13:46:35.116Z",
+  "updated": "2026-10-10T13:46:35.116Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "/home/rudra/Projects/SSA/control/docs/specs/README.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9ef4d23ffeOuZIrFCqMo0LML",
+  "messageID": "msg_12610b7f7001PmXNY7wyP5ejnq",
+  "callID": "call_01a12610be2f764fa91789084947144e",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "builder",
+  "model": null
+}

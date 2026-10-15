@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-151355-shell",
+  "created": "2026-10-10T12:13:55.348Z",
+  "updated": "2026-10-10T12:13:55.348Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "opencode session export --sanitize ses_eda56e1d3ffeyC6AIk1mwgxw1L python3 -c 'import json,sys; d=json.load(sys.stdin); ms=d.get(\"messages\",[]); walk=lambda x:[x] if isinstance(x,str) else sum((walk(v) for v in (x.values() if isinstance(x,dict) else x if isinstance(x,list) else [])),[]); texts=[s for m in ms for s in walk(m)]; n=\"Инцидент: OpenCode `session_move` возвращает ошибку\"; print(\"messages\",len(ms),\"handoff_marker_found\",any(n in s for s in texts)); print([(m.get(\"info\",{}).get(\"role\"),m.get(\"info\",{}).get(\"time\",{}).get(\"created\"),len(m.get(\"parts\",[]))) for m in ms[-3:]])'",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_125bbce54001U8c6frMjbMLp55",
+  "callID": "call_nlV8l26cKuSPS3Gk9sGNIRin",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

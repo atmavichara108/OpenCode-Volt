@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-160248-shell",
+  "created": "2026-10-10T13:02:48.498Z",
+  "updated": "2026-10-10T13:02:48.498Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git show --stat --oneline 09ca1c6 echo '--- verifier diff ---' git show 09ca1c6 -- opencode-global/.config/opencode/agent/verifier.md sed -n '1,180p' echo '--- current verifier permissions ---' sed -n '1,75p' opencode-global/.config/opencode/agent/verifier.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_125e880da0018rU82HQ777ffk2",
+  "callID": "call_lHwsTvxPEPg4dl1qwYHFDpT7",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

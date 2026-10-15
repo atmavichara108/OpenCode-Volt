@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-163457-read",
+  "created": "2026-10-10T13:34:57.186Z",
+  "updated": "2026-10-10T13:34:57.186Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "docs/specs/ssa-control-agent-harness-bootstrap.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fa0279ffeALoBlPtaFyVci4",
+  "messageID": "msg_12606130e001D1zfq9ytzMSbP6",
+  "callID": "call_01a126061ae2771e90bf823ea8c1b720",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-223011-shell",
+  "created": "2026-10-08T19:30:11.345Z",
+  "updated": "2026-10-08T19:30:11.345Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git reset -q git add tools/model-watch/ MIXED_OK=1 git commit -q -m \"model-watch: суточный снапшот каталога моделей + дельта + гейт свежести (T-178); фикс 403 через явный User-Agent; статус Jev по живому смоуку\" git add opencode-global/.config/opencode/opencode.jsonc MIXED_OK=1 git commit -q -m \"opencode.jsonc: декларация Jev в opencode-go (ждёт обновления кэша моделей среды)\" git push -q origin task/model-watch-1008 git log --oneline -2 bash tools/harness/hello.sh claim-release --branch task/model-watch-1008 --session ses_ee30e41daffezCgBczKdPQJlr8 head -1 git status --short wc -l",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cfe5be9001tYZR7NoQJGU3sQ",
+  "callID": "call_0da1a7fb548b44999919d166",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

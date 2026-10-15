@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-094002-shell",
+  "created": "2026-10-09T06:40:02.594Z",
+  "updated": "2026-10-09T06:40:02.594Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== does origin/main have e-email-capture-main? ===\" git show origin/main:04-Memory/idea-graph/edges.jsonl grep -c 'e-email-capture-main' echo \"=== nodes conflict check ===\" git show origin/main:04-Memory/idea-graph/nodes.jsonl wc -l echo \"=== stash base (was it based on older main?) ===\" git merge-base origin/main 'stash@{分出点}' 2>/dev/null true echo \"=== unique stashed node ids not in main ===\" comm -23 <(git show 'stash@{0}:04-Memory/idea-graph/nodes.jsonl' | grep -o '\"id\": *\"[^\"]*\"' | sort -u) <(git show origin/main:04-Memory/idea-graph/nodes.jsonl | grep -o '\"id\": *\"[^\"]*\"' | sort -u) git show 'stash@{0}:04-Memory/idea-graph/nodes.jsonl' grep -o '\"id\": *\"[^\"]*\"' sort -u git show origin/main:04-Memory/idea-graph/nodes.jsonl grep -o '\"id\": *\"[^\"]*\"' sort -u",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee0a97b4fffeX15Yix6yTUvFr2",
+  "messageID": "msg_11f635472001wtB6ujkCG7kIDd",
+  "callID": "call_2c92ccf3d81140b7b086ccb3",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

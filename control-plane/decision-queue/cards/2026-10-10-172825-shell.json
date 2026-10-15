@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-172825-shell",
+  "created": "2026-10-10T14:28:25.690Z",
+  "updated": "2026-10-10T14:28:25.690Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C /home/rudra/dotfiles switch task/next-20261010-1638 2>&1 tail -1 python3 /home/rudra/dotfiles/opencode-global/.config/opencode/tools/tree-cop/tree-cop.py stash-foreign --mine docs/specs/seo-outreach-agent-runtime-bootstrap.md --mine docs/specs/ssa-control-agent-harness-bootstrap.md -m \"ship-финал: чужая грязь bugfix-мастерской припаркована, владелец заберёт pop\" git -C /home/rudra/dotfiles switch main git -C /home/rudra/dotfiles status --short echo \"(пусто = main чист)\" git -C /home/rudra/dotfiles branch -D task/next-20261010-1728 2>/dev/null git -C /home/rudra/dotfiles switch -c task/next-20261010-1728 git -C /home/rudra/dotfiles status --short echo \"(пусто = новая ветка чиста)\" git -C /home/rudra/dotfiles log --oneline -1 git -C /home/rudra/dotfiles stash list head -3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fa0279ffeALoBlPtaFyVci4",
+  "messageID": "msg_12636e9ab001tk4Tg35GZdNxPx",
+  "callID": "call_01a126370bfc76ddbab1e747339c1f49",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-10-165701-edit",
+  "created": "2026-10-10T13:57:01.388Z",
+  "updated": "2026-10-10T13:57:01.388Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/home/rudra/Projects/SSA/products/seo-outreach/.opencode/agent/top.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9e60137ffey0uL7EPOlVj0ur",
+  "messageID": "msg_1261a2ecf001cpw61sjhF20P0H",
+  "callID": "call_01a1261a4ebc71b2b7b28a0f610d76a7",
+  "metadata": {
+    "files": [
+      {
+        "file": "/home/rudra/Projects/SSA/products/seo-outreach/.opencode/agent/top.md",
+        "patch": "Index: /home/rudra/Projects/SSA/products/seo-outreach/.opencode/agent/top.md\n===================================================================\n--- /home/rudra/Projects/SSA/products/seo-outreach/.opencode/agent/top.md\n+++ /home/rudra/Projects/SSA/products/seo-outreach/.opencode/agent/top.md\n@@ -47,10 +47,10 @@\n Ты — **top**, единственный primary продукта seo-outreach (без игровой\n терминологии/Maya). Работаешь в корне этого репо. Думай и отвечай на русском.\n Не пиши код в чат.\n \n-Локальная копия control-канона (`source:` во фронтматтере выше,\n-`schema-version: 1`); общие определения не дублируются — расхождения\n+Локальная копия control-канона (`source: control` во фронтматтере выше,\n+`# schema-version: 1`); общие определения не дублируются — расхождения\n синкаются через `top-sync-check`. Решение о стратегии загрузки (вариант A,\n project-local) принято; decision gate `0002-top-loading.md` не заводился.\n \n ## Роль\n",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "builder",
+  "model": null
+}

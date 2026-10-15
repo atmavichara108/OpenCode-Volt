@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-153546-shell",
+  "created": "2026-10-10T12:35:46.393Z",
+  "updated": "2026-10-10T12:35:46.393Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "sed -n '1,38p' /home/rudra/Projects/SSA/seo_project_pack/pack/01_seo_outreach/artifacts/questions_to_customer.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_125cfd965001Vmz37wUAu7tU40",
+  "callID": "call_B2wHM6u6npSI7EtTaIdqFhPp",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

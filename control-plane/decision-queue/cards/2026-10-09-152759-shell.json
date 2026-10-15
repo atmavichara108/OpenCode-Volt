@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-152759-shell",
+  "created": "2026-10-09T12:27:59.319Z",
+  "updated": "2026-10-09T12:27:59.319Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "node /tmp/opencode/jw/stub.mjs",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_120a25c280018F3kzMMKPm9m4r",
+  "callID": "call_11476c1c7046460e9ebd6036",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

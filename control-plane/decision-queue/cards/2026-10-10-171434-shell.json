@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-171434-shell",
+  "created": "2026-10-10T14:14:34.373Z",
+  "updated": "2026-10-10T14:14:34.373Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "grep -nE '^#{1,3} ' /home/rudra/Projects/SSA/dop.md head -30 echo --- wc -l /home/rudra/Projects/SSA/dop.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9d77707ffecevgx2hSjI94QE",
+  "messageID": "msg_1262a16b9001vROZfe8qJTQEWR",
+  "callID": "aad825e2-528a-4cbf-9bd4-e600f18b335c",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

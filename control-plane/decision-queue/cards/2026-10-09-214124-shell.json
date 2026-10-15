@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-214124-shell",
+  "created": "2026-10-09T18:41:24.965Z",
+  "updated": "2026-10-09T18:41:24.965Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git diff --cached -- 02-Methods/team-director.md 02-Methods/git-worktree-isolation.md echo ---NEWFILE--- git diff --cached --stat",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede083a6bffeD0nuJjy0f0ksR7",
+  "messageID": "msg_121f84be2001J2QCxfnPV6tOMq",
+  "callID": "call_01a121f851bb755796196c2af573be7a",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

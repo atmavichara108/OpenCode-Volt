@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164929-shell",
+  "created": "2026-10-10T13:49:29.691Z",
+  "updated": "2026-10-10T13:49:29.691Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== control:\" git -C /home/rudra/Projects/SSA/control status --short echo \"=== product:\" git -C /home/rudra/Projects/SSA/products/seo-outreach status --short",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fa0279ffeALoBlPtaFyVci4",
+  "messageID": "msg_126134ef4001tmbdVwq8oM1qFr",
+  "callID": "call_01a126135b497431960ffa1683b33664",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

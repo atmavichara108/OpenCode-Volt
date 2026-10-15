@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-204549-shell",
+  "created": "2026-10-09T17:45:49.219Z",
+  "updated": "2026-10-09T17:45:49.219Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "sed -n '1,180p' 05-Templates/pre-commit-check.sh git status --porcelain=v1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede3c52edffeqQpR7DlMbTAESC",
+  "messageID": "msg_121c558cb001edbHmwfR6ZrYh1",
+  "callID": "call_itYFgiNV7V8wXYzN4EsW7lvX",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

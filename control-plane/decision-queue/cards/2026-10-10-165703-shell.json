@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-165703-shell",
+  "created": "2026-10-10T13:57:03.542Z",
+  "updated": "2026-10-10T13:57:03.542Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "/home/rudra/Projects/SSA/control/tools/top-sync-check /home/rudra/Projects/SSA/products/seo-outreach/.opencode/agent/top.md echo \"exit=$?\" echo \"---\" echo \"== skills ==\" ls .opencode/skills/ echo \"== commands ==\" ls .opencode/command/ echo \"== *.py/*.gs ==\" find . -name '*.py' -o -name '*.gs' grep -v '.git/' echo \"none\" echo \"== smtp/imap ==\" grep -rilE 'smtp|imap' . --exclude-dir=.git echo \"none\" echo \"== game terms ==\" grep -rilE 'maya|майя|игров|квест|level up|ачив' . --exclude-dir=.git echo \"none\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9e60137ffey0uL7EPOlVj0ur",
+  "messageID": "msg_1261a51970017t7qMuH0G9W2aA",
+  "callID": "call_01a1261a548d771294d0beb1eb482a5e",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "builder",
+  "model": null
+}

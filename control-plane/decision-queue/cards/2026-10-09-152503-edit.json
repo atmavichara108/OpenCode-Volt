@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-152503-edit",
+  "created": "2026-10-09T12:25:03.875Z",
+  "updated": "2026-10-09T12:25:03.875Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/home/rudra/.config/opencode/.bench/run-bench.sh",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_1209f517a001qyfmBUfj2wQP7O",
+  "callID": "call_cc9694af812041c2a6064355",
+  "metadata": {
+    "files": [
+      {
+        "file": "/home/rudra/.config/opencode/.bench/run-bench.sh",
+        "patch": "Index: /home/rudra/.config/opencode/.bench/run-bench.sh\n===================================================================\n--- /home/rudra/.config/opencode/.bench/run-bench.sh\n+++ /home/rudra/.config/opencode/.bench/run-bench.sh\n@@ -0,0 +1,39 @@\n+#!/bin/zsh\n+# Бенч шима v3 против управляемых заглушек (stub.mjs на 8791).\n+cd /home/rudra/dotfiles/opencode-global/.config/opencode/shim\n+LOG=/tmp/opencode/jw/bench-shim.log\n+: > \"$LOG\"\n+PORT=8785 UPSTREAM_BASE=http://127.0.0.1:8791/v1 HANG_MS=5000 UPSTREAM_TIMEOUT_MS=30000 FORWARD_RETRIES=3 \\\n+  bun run justwoker-shim.ts > \"$LOG\" 2>&1 &\n+SHIMPID=$!\n+echo \"bench-shim pid=$SHIMPID\"\n+sleep 3\n+curl -s -o /dev/null -w \"health8785=%{http_code}\\n\" --max-time 5 http://127.0.0.1:8785/health\n+\n+req() { # $1=маркер в теле\n+  curl -sN --max-time 30 -X POST http://127.0.0.1:8785/v1/messages \\\n+    -H \"x-api-key: test\" -H \"anthropic-version: 2023-06-01\" -H \"content-type: application/json\" \\\n+    -d \"{\\\"model\\\":\\\"claude-opus-4-8\\\",\\\"max_tokens\\\":32,\\\"stream\\\":true,\\\"messages\\\":[{\\\"role\\\":\\\"user\\\",\\\"content\\\":\\\"$1\\\"}]}\"\n+}\n+\n+echo \"--- (a) live stream ---\"\n+S=$(date +%s%N)\n+A=$(req \"live test\" | grep -c \"content_block_delta\")\n+E=$(date +%s%N)\n+echo \"content_block_delta=$A время_ms=$(( (E - S) / 1000000 ))\"\n+\n+echo \"--- (c) hang-retry (stub молчит 8s на 1-м запросе, watchdog 5s) ---\"\n+S=$(date +%s%N)\n+C=$(req \"hangtest please\" | grep -c \"content_block_delta\")\n+E=$(date +%s%N)\n+echo \"content_block_delta=$C время_ms=$(( (E - S) / 1000000 )) (ожидаем ~5500)\"\n+\n+echo \"--- (d) fallback (регрессия: стрим без content_block) ---\"\n+S=$(date +%s%N)\n+D=$(req \"regresstest please\" | grep -c \"content_block_delta\")\n+E=$(date +%s%N)\n+echo \"content_block_delta=$D время_ms=$(( (E - S) / 1000000 ))\"\n+\n+echo \"--- логи бенч-шима ---\"\n+grep -E \"hang|fallback|retry\" \"$LOG\" | tail -8\n+kill $SHIMPID 2>/dev/null\n",
+        "status": "added",
+        "additions": 39,
+        "deletions": 0
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

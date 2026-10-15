@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-204841-shell",
+  "created": "2026-10-09T17:48:41.126Z",
+  "updated": "2026-10-09T17:48:41.126Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "test -f \"$gg\" printf 'BLOCKED: garbage-guard missing: %s\\n' \"$gg\" exit 2 IFS= read -r f continue printf 'garbage-guard: %s\\n' \"$f\" git show \":$f\" python3 \"$gg\" check-text exit $? git diff --cached --name-only",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede3c52edffeqQpR7DlMbTAESC",
+  "messageID": "msg_121c7f56a001Sp7H2kc2sz0dTO",
+  "callID": "call_C20EpTyNCfmEa1iPe0yptnuO",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

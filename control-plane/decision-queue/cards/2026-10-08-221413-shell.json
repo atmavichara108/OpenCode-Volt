@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-221413-shell",
+  "created": "2026-10-08T19:14:13.381Z",
+  "updated": "2026-10-08T19:14:13.381Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "grep -n '\"opencode\"' opencode-global/.config/opencode/opencode.jsonc head -2 grep -n '\"models\"' opencode-global/.config/opencode/opencode.jsonc head -6 grep -rn \"models\" opencode-global/.config/opencode/opencode.jsonc grep -i \"zen\\|opencode\\\"\" head -3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cefa2c1001kGdahLouNYaP2o",
+  "callID": "call_1ce8ad54932e475caa325eb3",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

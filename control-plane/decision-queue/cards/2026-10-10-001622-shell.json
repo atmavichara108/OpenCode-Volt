@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-001622-shell",
+  "created": "2026-10-10T21:16:22.110Z",
+  "updated": "2026-10-10T21:16:22.110Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== локальная vs main ===\" diff <(git show main:$F) \"$F\" >/dev/null 2>&1 git show main:$F echo \"identical\" echo \"РАЗЛИЧАЮТСЯ (или нет в main)\" git show main:$F 2>/dev/null wc -l wc -l < $F echo \"=== часть 3 в main-версии? ===\" git show main:$F 2>/dev/null grep -A3 \"Часть 3\" echo \"=== моя ветка ===\" git branch --show-current",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127ac4e93001FGApk6D9C5JlVI",
+  "callID": "call_00_itvgxxxhbygb7rg39adb1tkj",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

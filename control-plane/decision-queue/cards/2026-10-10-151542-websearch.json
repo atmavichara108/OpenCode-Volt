@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-10-151542-websearch",
+  "created": "2026-10-10T12:15:42.018Z",
+  "updated": "2026-10-10T12:15:42.018Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "websearch",
+  "pattern": "site:github.com/anomalyco/opencode \"session.move\" \"Unable to move session\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_125bd6dd4001Ja3E6x2Sap6523",
+  "callID": "call_grtcYoXpvjP5X1iCggWPa5r9",
+  "metadata": {
+    "query": "site:github.com/anomalyco/opencode \"session.move\" \"Unable to move session\""
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

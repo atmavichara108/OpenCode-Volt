@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-111140-shell",
+  "created": "2026-10-09T08:11:40.956Z",
+  "updated": "2026-10-09T08:11:40.956Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== vault commands ===\" ls .opencode/command/ 2>/dev/null echo \"=== global commands ===\" ls ~/.config/opencode/command/ 2>/dev/null echo \"=== dotfiles commands ===\" ls ~/dotfiles/opencode-global/.config/opencode/command/ 2>/dev/null",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_11fb68c75001xYn3xh0ndhtCt1",
+  "callID": "call_f979ec241f5b404ca91bc9c0",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

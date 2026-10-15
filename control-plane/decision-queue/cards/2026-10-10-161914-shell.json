@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-161914-shell",
+  "created": "2026-10-10T13:19:14.230Z",
+  "updated": "2026-10-10T13:19:14.230Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"OPENCODE_SESSION_ID=${OPENCODE_SESSION_ID:-<unset>}\" echo \"=== letters addressed TO this session (any) ===\" grep -F \"\\\"to\\\":\\\"$MYSES\\\"\" ~/.local/state/opencode/mail/receipts-out.jsonl 2>/dev/null tail -10 echo \"(session id unset — cannot match inbound)\" echo \"=== bugfix / verifier / session_move letters in journal ===\" grep -iE 'bugfix|verifier|session.?move|skill' ~/.local/state/opencode/mail/receipts-out.jsonl 2>/dev/null tail -10 echo \"(none by scope)\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_125f7507d001gMdTnERbL5SJAp",
+  "callID": "toolu_bdrk_01VKWUAW2KamZLiXLREZmR9W",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

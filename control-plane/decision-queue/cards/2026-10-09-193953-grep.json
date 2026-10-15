@@ -1,0 +1,27 @@
+{
+  "id": "2026-10-09-193953-grep",
+  "created": "2026-10-09T16:39:53.383Z",
+  "updated": "2026-10-09T16:39:53.383Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "grep",
+  "pattern": "stream-intent-040|stream-intent-041|stream-intent-042|stream-intent-043|stream-intent-044|stream-intent-045|stream-intent-046|stream-intent-047|stream-intent-048|stream-intent-049|stream-intent-050|tech-",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede77119bffe6xoc4UpkBsy0F8",
+  "messageID": "msg_12188fd11001rQNBNhNLfYHgSV",
+  "callID": "chatcmpl-tool-816c05df191ba834",
+  "metadata": {
+    "root": ".",
+    "path": "/home/rudra/Projects/OpenCode-Vault/04-Memory/idea-graph"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

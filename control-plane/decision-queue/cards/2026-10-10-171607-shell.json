@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-171607-shell",
+  "created": "2026-10-10T14:16:07.325Z",
+  "updated": "2026-10-10T14:16:07.325Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C /home/rudra/dotfiles checkout \"stash@{0}\" -- docs/specs/ssa-control-agent-harness-bootstrap.md docs/specs/seo-outreach-agent-runtime-bootstrap.md ls -l /home/rudra/dotfiles/docs/specs/ssa-control-agent-harness-bootstrap.md /home/rudra/dotfiles/docs/specs/seo-outreach-agent-runtime-bootstrap.md git -C /home/rudra/dotfiles status --short -- docs/specs/",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fa0279ffeALoBlPtaFyVci4",
+  "messageID": "msg_1262bbe80001rHp1SasAUvAeQP",
+  "callID": "call_01a1262bcaf370a0a3e760fed9ffd088",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

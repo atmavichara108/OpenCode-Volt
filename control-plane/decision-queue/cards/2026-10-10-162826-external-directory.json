@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-162826-external-directory",
+  "created": "2026-10-10T13:28:26.574Z",
+  "updated": "2026-10-10T13:28:26.574Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "external_directory",
+  "pattern": "/home/rudra/dotfiles/opencode-global/.config/opencode/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_125ffd8f8001gjLWda6ZUcopqo",
+  "callID": "toolu_bdrk_01XWvYCJyzmcvNxFp6byoUoR",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

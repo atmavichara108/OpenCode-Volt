@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-000416-shell",
+  "created": "2026-10-10T21:04:16.313Z",
+  "updated": "2026-10-10T21:04:16.313Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== подтверждаю, что это только мой файл ===\" git status --short head echo echo \"=== коммичу только мой файл ===\" git add 06-Audits/2026-10-09-agency-counteragency-brainstorm.md git commit -m \"research: агентность-контрагентность, ризома — части 1-2, рабочий материал брейншторма (06-Audits)\" tail -6 echo \"=== теперь файл в ветке ===\" git cat-file -e HEAD:06-Audits/2026-10-09-agency-counteragency-brainstorm.md 2>&1 echo \"закоммичен ✓\" echo \"НЕ закоммичен\" echo \"=== HEAD ===\" git rev-parse --short HEAD",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127a0a791001p6zM4t3dUh1QB4",
+  "callID": "call_fc9891d941e74d288e8c78f5",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

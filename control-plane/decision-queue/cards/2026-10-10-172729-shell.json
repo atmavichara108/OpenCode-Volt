@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-172729-shell",
+  "created": "2026-10-10T14:27:29.169Z",
+  "updated": "2026-10-10T14:27:29.169Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls /home/rudra/dotfiles/.opencode/memory/session-reports/ tail -5 echo \"===\" head -30 /home/rudra/dotfiles/.opencode/memory/session-reports/$(ls /home/rudra/dotfiles/.opencode/memory/session-reports/ | tail -1) ls /home/rudra/dotfiles/.opencode/memory/session-reports/ tail -1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fa0279ffeALoBlPtaFyVci4",
+  "messageID": "msg_1263625d5001272Mfw2u6T9yP2",
+  "callID": "call_01a1263632b671b3bc2f6e71cee6f37f",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

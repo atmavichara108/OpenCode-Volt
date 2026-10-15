@@ -1,0 +1,27 @@
+{
+  "id": "2026-10-10-164607-grep",
+  "created": "2026-10-10T13:46:07.664Z",
+  "updated": "2026-10-10T13:46:07.664Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "grep",
+  "pattern": "\"id\": \"[a-z-]+\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9f0a108ffeyfZZYysnsEkvRP",
+  "messageID": "msg_126104e3b0016AKmz7CgU3nFCX",
+  "callID": "call_01a1261055d9762fb409bce4254f51ac",
+  "metadata": {
+    "root": ".",
+    "path": "/tmp/dbg2.json"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "builder",
+  "model": null
+}

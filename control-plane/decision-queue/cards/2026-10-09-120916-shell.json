@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-120916-shell",
+  "created": "2026-10-09T09:09:16.874Z",
+  "updated": "2026-10-09T09:09:16.874Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== dotfiles ===\" ls -la /home/rudra/dotfiles 2>/dev/null head echo echo \"=== tools ===\" ls -la /home/rudra/dotfiles/tools 2>/dev/null head -40 echo echo \"=== control-plane telemetry ===\" ls -la /home/rudra/Projects/OpenCode-Vault/control-plane/telemetry 2>/dev/null head -40",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee01c79a5ffeuKufDEOIYCNam9",
+  "messageID": "msg_11fe386a9001jUBfmWQYO5llGL",
+  "callID": "call_ba758d5978024ab08583a3a5",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-210814-shell",
+  "created": "2026-10-09T18:08:14.474Z",
+  "updated": "2026-10-09T18:08:14.474Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls -la ~/.config/systemd/user/justwoker-shim.service cp /home/rudra/dotfiles/systemd/.config/systemd/user/justwoker-shim.service ~/.config/systemd/user/justwoker-shim.service systemctl --user daemon-reload systemctl --user restart justwoker-shim.service sleep 2 systemctl --user status justwoker-shim.service --no-pager head -8",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121d9d448001fFMoTKf0n8J1gH",
+  "callID": "call_c5ac550d6d7146e9bef50447",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «systemctl»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

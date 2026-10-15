@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-111439-shell",
+  "created": "2026-10-10T08:14:39.248Z",
+  "updated": "2026-10-10T08:14:39.248Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C /home/rudra/Projects/SSA/products/seo-outreach init -b task/seo-outreach-bootstrap",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_edb224328ffe25LVKYhUyR6XG7",
+  "messageID": "msg_124e0cdc4001ANauv0crM15poh",
+  "callID": "call_00_8OXATb97Im0fmORfaXDU6599",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-230743-shell",
+  "created": "2026-10-08T20:07:43.788Z",
+  "updated": "2026-10-08T20:07:43.788Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git show main:04-Memory/idea-graph/nodes.jsonl python3 -c \"\nimport sys,json\nwant={'stream-intent-0'+str(i) for i in range(46,60)}\nfor line in sys.stdin:\n    line=line.strip()\n    if not line: continue\n    n=json.loads(line)\n    if n.get('id') in want:\n        print('='*55); print(n['id'],'|',n.get('label'),'|',n.get('resolution'))\n        print(n.get('essence','')[:900])\n\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d2093bd001qFjhybBLHgQvug",
+  "callID": "call_f989f50c669e4fcab725cb35",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-084424-shell",
+  "created": "2026-10-09T05:44:24.312Z",
+  "updated": "2026-10-09T05:44:24.312Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git show main:04-Memory/idea-graph/nodes.jsonl python3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11f2e9020001OoGT96mRPuYYqY",
+  "callID": "call_96f2bd0e46dc4e45b490d177",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

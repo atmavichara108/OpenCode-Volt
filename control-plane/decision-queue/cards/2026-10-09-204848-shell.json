@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-204848-shell",
+  "created": "2026-10-09T17:48:48.331Z",
+  "updated": "2026-10-09T17:48:48.331Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "printf '%s\\n' '-- available markdown tools --' command -v \"$c\" true printf '%s\\n' '-- repo markdown config candidates --' find . -maxdepth 3 -type f \\( -name '.markdownlint*' -o -name 'markdownlint*' -o -name '.pre-commit-config.yaml' -o -name 'package.json' \\) -print sort head -50 printf '%s\\n' '-- staged patch SHA-256 --' git diff --cached --binary sha256sum printf '%s\\n' '-- final status --' git status --short --branch printf '%s\\n' '-- final staged stat --' git diff --cached --stat",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede3c52edffeqQpR7DlMbTAESC",
+  "messageID": "msg_121c80e0e001XURCWh3RsvifhE",
+  "callID": "call_Eh64pX0uFnVxnptNgptpra4E",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

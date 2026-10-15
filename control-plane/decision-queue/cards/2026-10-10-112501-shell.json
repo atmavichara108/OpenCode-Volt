@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-112501-shell",
+  "created": "2026-10-10T08:25:01.213Z",
+  "updated": "2026-10-10T08:25:01.213Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "cat -n /home/rudra/Projects/SSA/products/seo-outreach/README.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_edb1ac0a6ffenQfcZsqm5NB80x",
+  "messageID": "msg_124ea4aa1001R5xotzO97O1M0q",
+  "callID": "call_02_D7CzDRVGqQcyORxT8tO90149",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

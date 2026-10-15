@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-172655-shell",
+  "created": "2026-10-10T14:26:55.618Z",
+  "updated": "2026-10-10T14:26:55.618Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "python3 /home/rudra/dotfiles/opencode-global/.config/opencode/tools/tree-cop/tree-cop.py stash-foreign --mine docs/specs/ssa-control-agent-harness-bootstrap.md --mine docs/specs/seo-outreach-agent-runtime-bootstrap.md -m \"ship: выкладка task/spec-done-ssa-bootstrap — убрать чужое с дерева\" git -C /home/rudra/dotfiles switch task/spec-done-ssa-bootstrap git -C /home/rudra/dotfiles status --short",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fa0279ffeALoBlPtaFyVci4",
+  "messageID": "msg_12635ab70001x108PUyCJ5gwxx",
+  "callID": "call_01a12635af037090ad70f59e4707d1ca",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

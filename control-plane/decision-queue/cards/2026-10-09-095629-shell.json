@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-095629-shell",
+  "created": "2026-10-09T06:56:29.814Z",
+  "updated": "2026-10-09T06:56:29.814Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== production шим ===\" systemctl --user is-active justwoker-shim systemctl --user show justwoker-shim -p MainPID -p ActiveEnterTimestamp -p NRestarts --value curl -s -o /dev/null -w \"health=%{http_code}\\n\" --max-time 5 http://127.0.0.1:8787/health echo \"=== кто сейчас бегает по justwoker-shim.ts ===\" pgrep -af \"justwoker-shim.ts\" head echo \"=== сокеты 8787/8786/8790 ===\" ss -tlnp 2>/dev/null grep -E \"8787|8786|8790\" echo \"=== journal с 09:48 ===\" journalctl --user -u justwoker-shim --since \"09:48\" --no-pager 2>/dev/null tail -6",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_11f7226790016mYbm87087n1gk",
+  "callID": "call_ccc25dddbc964f0195f1c3b5",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «curl»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

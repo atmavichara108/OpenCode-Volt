@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-234931-shell",
+  "created": "2026-10-10T20:49:31.490Z",
+  "updated": "2026-10-10T20:49:31.490Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== symlink targets целы? ===\" printf '%s -> ' \"$f\" readlink -f \"$f\" 2>/dev/null echo echo \"=== dotfiles copyq module ===\" ls -la ~/dotfiles/copyq/.config/copyq/ 2>/dev/null echo echo \"=== copyq.conf (dotfiles) ===\" sed -n '1,200p' ~/dotfiles/copyq/.config/copyq/copyq.conf 2>/dev/null grep -viE 'password|secret|token' grep -iE 'maxitems|check|ignore|_items|log|clipboard|history|encrypt|tab' echo \"(нет релевантных строк / файл пуст)\" echo echo \"=== фильтры copyq-filter.ini ===\" cat ~/dotfiles/copyq/.config/copyq/copyq-filter.ini 2>/dev/null head -40 echo echo \"=== ~/.local/share/copyq tree (свежие сверху) ===\" find ~/.local/share/copyq -maxdepth 3 -printf '%TY-%Tm-%Td %TH:%TM %s %p\\n' 2>/dev/null sort -r head -40",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed8739b6fffehp9xYGiS2A3O1i",
+  "messageID": "msg_12793cbee001qGWR4EvRJ3DYsf",
+  "callID": "call_00_vkfxljccje6jf1sgdzeeol07",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «secret-path»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

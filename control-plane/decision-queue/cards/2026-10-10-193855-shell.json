@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-193855-shell",
+  "created": "2026-10-10T16:38:55.034Z",
+  "updated": "2026-10-10T16:38:55.034Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git ls-files sort",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed951f17fffesiAlzWdmRkgWN3",
+  "messageID": "msg_126ae7732001ArPP5kW8fzggM3",
+  "callID": "9e315648-f03b-4319-9fce-894c42451b8f",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

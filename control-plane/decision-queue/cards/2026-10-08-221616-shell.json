@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-221616-shell",
+  "created": "2026-10-08T19:16:16.025Z",
+  "updated": "2026-10-08T19:16:16.025Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git fetch origin main --quiet git status --short head git branch --show-current ls tools/ 2>/dev/null head -30 ls scripts/hello.sh hello.sh tools/hello.sh 2>/dev/null",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee30e41daffezCgBczKdPQJlr8",
+  "messageID": "msg_11cf1be5a00190aDPkTs9HHjlv",
+  "callID": "call_b0f66094ea5345afa21cb3ff",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-110724-question",
+  "created": "2026-10-10T08:07:24.194Z",
+  "updated": "2026-10-10T08:07:24.194Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "question",
+  "pattern": "*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_124d9cf15001kavG3ZEV8TpeNm",
+  "callID": "call_CExWsXKfbyv943GbkkyY5af0",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

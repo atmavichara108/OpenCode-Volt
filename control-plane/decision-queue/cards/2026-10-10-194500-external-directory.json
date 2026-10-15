@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-194500-external-directory",
+  "created": "2026-10-10T16:45:00.415Z",
+  "updated": "2026-10-10T16:45:00.415Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "external_directory",
+  "pattern": "/home/rudra/Projects/SSA/control/.opencode/agent/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed94c7c0cffdKO1SP7guVk9s2q",
+  "messageID": "msg_126b3d932001Pwfjtj2ctlZC8w",
+  "callID": "b2347910-7a73-4655-bea9-1ffab6c6d2f1",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

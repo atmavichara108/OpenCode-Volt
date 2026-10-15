@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-204229-shell",
+  "created": "2026-10-09T17:42:29.402Z",
+  "updated": "2026-10-09T17:42:29.402Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C .meta-worktrees/permission-worktree-20261009 diff --cached --binary git -C .meta-worktrees/meta-permission-fix-20261009 apply --index printf 'old=' git -C .meta-worktrees/permission-worktree-20261009 diff --cached --binary sha256sum printf 'new=' git -C .meta-worktrees/meta-permission-fix-20261009 diff --cached --binary sha256sum git -C .meta-worktrees/meta-permission-fix-20261009 diff --cached --name-only git -C .meta-worktrees/meta-permission-fix-20261009 merge-base HEAD origin/main git -C .meta-worktrees/meta-permission-fix-20261009 rev-parse origin/main",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede3e31edffeJFAcYzZu5Vpy8w",
+  "messageID": "msg_121c249e80013ksoRqZAXqTABm",
+  "callID": "call_SsI9wyYB7GV7F85nf4wFoV03",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

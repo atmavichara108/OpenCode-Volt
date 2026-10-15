@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-094304-shell",
+  "created": "2026-10-09T06:43:04.428Z",
+  "updated": "2026-10-09T06:43:04.428Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "echo \"=== pushed commit ===\" git log --oneline origin/main -1 echo \"=== verify origin/main has our files ===\" git show origin/main:04-Memory/session-log/2026-10-09.md head -3 echo \"---\" git show origin/main:01-Reference/provider-cards/justwoker.md grep -m1 'status.*WORKING' echo \"=== current branch ===\" git branch --show-current echo \"=== local main == origin/main? ===\" git rev-parse main git rev-parse origin/main echo \"YES\" echo \"NO\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee0a97b4fffeX15Yix6yTUvFr2",
+  "messageID": "msg_11f660f3f001vb430VNZpw2ba9",
+  "callID": "call_9847d35298ee48c1afe9c1f6",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

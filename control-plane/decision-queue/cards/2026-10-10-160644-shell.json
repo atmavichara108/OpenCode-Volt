@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-160644-shell",
+  "created": "2026-10-10T13:06:44.292Z",
+  "updated": "2026-10-10T13:06:44.292Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "cat > /tmp/opencode/ssa-agent-harness-specs-20261010.txt",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_125eba7dd001syxQgP6UMx93QF",
+  "callID": "call_IA1uXpmUL5RDdLisVxfeNLlF",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

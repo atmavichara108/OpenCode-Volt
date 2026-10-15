@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-003747-shell",
+  "created": "2026-10-10T21:37:47.233Z",
+  "updated": "2026-10-10T21:37:47.233Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "set +e echo \"############ VAULT repo ############\" echo \"---- $wt ----\" git -C \"$wt\" status --porcelain 2>/dev/null head -30 git -C \"$wt\" status --porcelain 2>/dev/null wc -l echo \"   [uncommitted lines: $st]\" echo echo \"############ unmerged branches vs main (vault) ############\" git -C /home/rudra/Projects/OpenCode-Vault branch --no-merged main 2>/dev/null echo echo \"############ DOTFILES repo ############\" echo \"---- $wt ----\" git -C \"$wt\" status --porcelain 2>/dev/null head -20 git -C \"$wt\" status --porcelain 2>/dev/null wc -l echo \"   [uncommitted lines: $st]\" echo echo \"############ unmerged branches vs main (dotfiles) ############\" git -C /home/rudra/dotfiles branch --no-merged main 2>/dev/null",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_127bfd424001oLpUMUo01SwtG5",
+  "callID": "call_9319b761bb0646a19fb52105",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

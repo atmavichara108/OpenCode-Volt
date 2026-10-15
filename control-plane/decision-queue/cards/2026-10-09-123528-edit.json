@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-09-123528-edit",
+  "created": "2026-10-09T09:35:28.576Z",
+  "updated": "2026-10-09T09:35:28.576Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "/home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_12003f9bd001x01BkSZBx0OI8O",
+  "callID": "call_beef1876c41c468b9a5ae819",
+  "metadata": {
+    "files": [
+      {
+        "file": "/home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts",
+        "patch": "Index: /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n===================================================================\n--- /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n+++ /home/rudra/dotfiles/opencode-global/.config/opencode/shim/justwoker-shim.ts\n@@ -51,19 +51,8 @@\n   h.set(\"content-length\", String(bodyLen));\n   return h;\n }\n \n-function filterResponseHeaders(src: Headers): Headers {\n-  const h = new Headers();\n-  for (const [k, v] of src) {\n-    if (RES_HOP_BY_HOP.has(k.toLowerCase())) continue;\n-    h.set(k, v);\n-  }\n-  return h;\n-}\n-// eslint-disable-next-line @typescript-eslint/no-unused-vars\n-void filterResponseHeaders;\n-\n // Потолок времени апстрим-запроса. Держит AbortSignal; дефолтный Bun-овый\n // socket-idle (300c) отключён через fetch-опцию `timeout: false` (доказано\n // контрольным тестом: hold=340c → 200; см. ниже). 900c с запасом на полный\n // контекст Opus.\n",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 11
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

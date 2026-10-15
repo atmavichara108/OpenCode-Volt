@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-165123-shell",
+  "created": "2026-10-10T13:51:23.843Z",
+  "updated": "2026-10-10T13:51:23.843Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "grep -n 'Скилы и команды' .opencode/agent/top.md echo --- awk 'NR>=74 && NR<=76 {printf \"%d:[%s]\\n\", NR, $0}' .opencode/agent/top.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9ec7dcdffe1a2jNEQJ0PFTt4",
+  "messageID": "msg_12614858e001uD6q0ALhn4fj4x",
+  "callID": "call_552f639778404506ab667c33",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

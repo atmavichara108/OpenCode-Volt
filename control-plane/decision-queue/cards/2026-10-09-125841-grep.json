@@ -1,0 +1,29 @@
+{
+  "id": "2026-10-09-125841-grep",
+  "created": "2026-10-09T09:58:41.032Z",
+  "updated": "2026-10-09T09:58:41.032Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "grep",
+  "pattern": "переимен|переопределим|Институт передовых|институт",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_120181878001m6H1sOQK007Q3j",
+  "callID": "grep:1",
+  "metadata": {
+    "root": ".",
+    "path": "/home/rudra/Projects/OpenCode-Vault",
+    "include": "*.md",
+    "limit": 30
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

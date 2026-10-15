@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-222330-shell",
+  "created": "2026-10-08T19:23:30.425Z",
+  "updated": "2026-10-08T19:23:30.425Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "grep -n \"urlopen\\|Request(\" tools/model-watch/model-watch.py head -3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cf856f3001e0F1szd6mStimI",
+  "callID": "call_ede7313d85ec449fa802cc2b",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

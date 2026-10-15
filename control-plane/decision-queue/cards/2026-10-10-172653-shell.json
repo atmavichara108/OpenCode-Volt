@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-172653-shell",
+  "created": "2026-10-10T14:26:53.843Z",
+  "updated": "2026-10-10T14:26:53.843Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "ls /home/rudra/dotfiles/opencode-global/.config/opencode/tools/tree-cop/ git -C /home/rudra/dotfiles branch --show-current",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fa0279ffeALoBlPtaFyVci4",
+  "messageID": "msg_126357bb1001so1ZwzuWThUP1P",
+  "callID": "call_01a12635a8e07181bcff197740100683",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

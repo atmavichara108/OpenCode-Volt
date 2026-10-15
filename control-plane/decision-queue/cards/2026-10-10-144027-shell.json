@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-144027-shell",
+  "created": "2026-10-10T11:40:27.235Z",
+  "updated": "2026-10-10T11:40:27.235Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git worktree add ../OpenCode-Vault-tasks/ssa-bootstrap-20261010 -b task/ssa-bootstrap-20261010 origin/main 2>&1 tail -20",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda6315feffe6AABxCxYe55DZ6",
+  "messageID": "msg_1259d3561001wSnuir74yZ56Bq",
+  "callID": "call_00_yizd4RWalg7hql90CzwC3365",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

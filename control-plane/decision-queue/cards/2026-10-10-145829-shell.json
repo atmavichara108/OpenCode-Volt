@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-145829-shell",
+  "created": "2026-10-10T11:58:29.295Z",
+  "updated": "2026-10-10T11:58:29.295Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== main OpenCode-Vault (my workspace) — should be untouched ===\" git -C /home/rudra/Projects/OpenCode-Vault status --short 2>&1 head -20 echo \"branch: $(git -C /home/rudra/Projects/OpenCode-Vault branch --show-current)\" git -C /home/rudra/Projects/OpenCode-Vault branch --show-current",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda5dbbf7ffewLYXf5pN0cVzSh",
+  "messageID": "msg_125ad39d8001rUbmZGBrldKsEa",
+  "callID": "call_ngwdjchb9xh8s8eza7rm0ni5",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

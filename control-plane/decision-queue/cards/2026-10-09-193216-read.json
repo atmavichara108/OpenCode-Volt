@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-193216-read",
+  "created": "2026-10-09T16:32:16.888Z",
+  "updated": "2026-10-09T16:32:16.888Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "02-Methods/team-director.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede7e1e5dffeftxJtSRFz5EfBJ",
+  "messageID": "msg_1218209f1001a7QD0f6LNyNSvi",
+  "callID": "chatcmpl-tool-b8e761c15f8b9e71",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

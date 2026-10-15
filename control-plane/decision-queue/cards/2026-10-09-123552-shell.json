@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-123552-shell",
+  "created": "2026-10-09T09:35:52.705Z",
+  "updated": "2026-10-09T09:35:52.705Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "echo \"--- dead refs ---\" grep -n 'filterResponseHeaders' \"$F\" echo \"NONE\" echo \"--- CJK ---\" grep -nP '[\\x{4e00}-\\x{9fff}\\x{3040}-\\x{30ff}\\x{ac00}-\\x{d7af}\\x{0e00}-\\x{0e7f}\\x{fffd}]' \"$F\" echo \"CJK CLEAN\" echo \"--- build ---\" bun build --target=bun \"$F\" --outfile /dev/null 2>&1 tail -4 echo \"--- tsc-ish: node --check via bun transpile ---\" bun build --target=bun \"$F\" --outfile /tmp/opencode/shimtest/v3build.js 2>&1 tail -3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_120048183001nG9R4y05OiQfPs",
+  "callID": "call_0c5d091176e0441ebea210b9",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

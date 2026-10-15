@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-100057-external-directory",
+  "created": "2026-10-09T07:00:57.535Z",
+  "updated": "2026-10-09T07:00:57.535Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "external_directory",
+  "pattern": "/tmp/opencode/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eedd28c45ffeFJU6TDjG69z6A7",
+  "messageID": "msg_11f765ff3001jGfTrzFixslM9e",
+  "callID": "call_f986f9e31860408eb2bcc369",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

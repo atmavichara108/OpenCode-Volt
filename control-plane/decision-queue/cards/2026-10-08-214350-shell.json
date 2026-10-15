@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-214350-shell",
+  "created": "2026-10-08T18:43:50.514Z",
+  "updated": "2026-10-08T18:43:50.514Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "shell",
+  "pattern": "ls .venv/bin/python .venv/bin/pip install -q pyyaml tail -1 .venv/bin/python - <<'PYEOF'\nimport yaml, re, glob\nbad=0\nfor f in sorted(glob.glob(\"06-Audits/*.md\")+glob.glob(\"03-Projects/*.md\"))+[\"00-WORLD.md\",\"TASKS.md\",\"04-Memory/facts.md\",\"02-Methods/incident-fix.md\"]:\n    t=open(f).read()\n    m=re.match(r\"^---\\n(.*?)\\n---\",t,re.S)\n    if not m: continue\n    try: yaml.safe_load(m.group(1))\n    except Exception as e:\n        print(f\"{f}: YAML-дефект: {str(e)[:90]}\"); bad+=1\nprint(\"битых frontmatter:\",bad)\nPYEOF",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cd3fe96001IXdolxmJmEiKzP",
+  "callID": "call_36b4d17006f74785b1bea1cf",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

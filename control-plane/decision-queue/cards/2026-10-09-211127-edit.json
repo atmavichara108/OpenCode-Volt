@@ -1,0 +1,36 @@
+{
+  "id": "2026-10-09-211127-edit",
+  "created": "2026-10-09T18:11:27.883Z",
+  "updated": "2026-10-09T18:11:27.883Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "02-Methods/git-worktree-isolation.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede254d97ffexQ6Ga6G6VO27Ox",
+  "messageID": "msg_121dccd52001ai26ik9PC6PL4g",
+  "callID": "call_SJn3r6OXfYOhmg7UAcMKVDPk",
+  "metadata": {
+    "filepath": "02-Methods/git-worktree-isolation.md",
+    "diff": "Index: /home/rudra/Projects/OpenCode-Vault-tasks/meta-gates-20261009/02-Methods/git-worktree-isolation.md\n===================================================================\n--- /home/rudra/Projects/OpenCode-Vault-tasks/meta-gates-20261009/02-Methods/git-worktree-isolation.md\n+++ /home/rudra/Projects/OpenCode-Vault-tasks/meta-gates-20261009/02-Methods/git-worktree-isolation.md\n@@ -25,9 +25,9 @@\n    для новой ветки явно укажи источник: `git switch -c task/<slug> origin/main`.\n    Не создавай task-ветку от случайного текущего `HEAD`.\n 3. **Горячие файлы** (`TASKS.md`, `04-Memory/active-context.md`,\n    `tools/ecosystem-map/registry.json`, `00-INDEX.md`) — править только через\n-   жёсткий flock-lease: `tools/peers/peer_lease.py run --file F --timeout 10 -- <cmd>`.\n+   жёсткий flock-lease: `python3 tools/peers/peer_lease.py run --file F --timeout 10 -- <cmd>`.\n    Прямой `edit` на эти файлы гейтится в `ask` (см. [[#принуждение-edit-гейты]]).\n    Не взял лок за таймаут → НЕ пишешь.\n 4. **Перед слиянием в main** — `tools/verify-cache/verify.py --git` (грязное\n    дерево + защищённая ветка) и разрешённые конфликты.\n@@ -111,5 +111,5 @@\n ## Связанные\n \n - Механизмы: [[05-Templates/pre-commit-check]], `tools/peers/peer_lease.py`,\n   `tools/verify-cache/verify.py`.\n-- Питает: [[multi-agent-pipeline]] (изоляция потока = изоляция агента).\n\\ No newline at end of file\n+- Питает: [[multi-agent-pipeline]] (изоляция потока = изоляция агента).\n\n",
+    "files": [
+      {
+        "file": "02-Methods/git-worktree-isolation.md",
+        "patch": "Index: /home/rudra/Projects/OpenCode-Vault-tasks/meta-gates-20261009/02-Methods/git-worktree-isolation.md\n===================================================================\n--- /home/rudra/Projects/OpenCode-Vault-tasks/meta-gates-20261009/02-Methods/git-worktree-isolation.md\n+++ /home/rudra/Projects/OpenCode-Vault-tasks/meta-gates-20261009/02-Methods/git-worktree-isolation.md\n@@ -25,9 +25,9 @@\n    для новой ветки явно укажи источник: `git switch -c task/<slug> origin/main`.\n    Не создавай task-ветку от случайного текущего `HEAD`.\n 3. **Горячие файлы** (`TASKS.md`, `04-Memory/active-context.md`,\n    `tools/ecosystem-map/registry.json`, `00-INDEX.md`) — править только через\n-   жёсткий flock-lease: `tools/peers/peer_lease.py run --file F --timeout 10 -- <cmd>`.\n+   жёсткий flock-lease: `python3 tools/peers/peer_lease.py run --file F --timeout 10 -- <cmd>`.\n    Прямой `edit` на эти файлы гейтится в `ask` (см. [[#принуждение-edit-гейты]]).\n    Не взял лок за таймаут → НЕ пишешь.\n 4. **Перед слиянием в main** — `tools/verify-cache/verify.py --git` (грязное\n    дерево + защищённая ветка) и разрешённые конфликты.\n@@ -111,5 +111,5 @@\n ## Связанные\n \n - Механизмы: [[05-Templates/pre-commit-check]], `tools/peers/peer_lease.py`,\n   `tools/verify-cache/verify.py`.\n-- Питает: [[multi-agent-pipeline]] (изоляция потока = изоляция агента).\n\\ No newline at end of file\n+- Питает: [[multi-agent-pipeline]] (изоляция потока = изоляция агента).\n",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

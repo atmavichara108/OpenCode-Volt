@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-145751-shell",
+  "created": "2026-10-10T11:57:51.821Z",
+  "updated": "2026-10-10T11:57:51.821Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"===== lease holds (should all be false) =====\" python3 /home/rudra/Projects/OpenCode-Vault-tasks/ssa-bootstrap-20261010/tools/peers/peer_lease.py holds 2>&1 echo echo \"===== diff stat of worktree 00-INDEX =====\" git -C /home/rudra/Projects/OpenCode-Vault-tasks/ssa-bootstrap-20261010 diff --stat -- 00-INDEX.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda5dbbf7ffewLYXf5pN0cVzSh",
+  "messageID": "msg_125ad08cb001XKQoOpAmDSHqEy",
+  "callID": "call_8ogj6o5pt2v0qr7hkw38kpr6",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

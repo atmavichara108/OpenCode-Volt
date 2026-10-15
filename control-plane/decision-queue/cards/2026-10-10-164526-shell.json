@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164526-shell",
+  "created": "2026-10-10T13:45:26.713Z",
+  "updated": "2026-10-10T13:45:26.713Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "opencode --help 2>&1 head -50",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9f0a108ffeyfZZYysnsEkvRP",
+  "messageID": "msg_1260fa35a001jof1IEDhrTcVVV",
+  "callID": "call_01a1260fb67173bc9acb3ac391106bda",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "builder",
+  "model": null
+}

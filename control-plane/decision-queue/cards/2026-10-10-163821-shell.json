@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-163821-shell",
+  "created": "2026-10-10T13:38:21.237Z",
+  "updated": "2026-10-10T13:38:21.237Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git push origin main 2>&1 tail -5 echo \"=== verify ===\" git log --oneline -1 origin/main git log --oneline -1 main",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_12609242d0012YYCqF0VNocJNh",
+  "callID": "toolu_bdrk_01TwsaLZABse8gPUCgA845Yf",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

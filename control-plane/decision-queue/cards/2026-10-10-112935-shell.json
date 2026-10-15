@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-112935-shell",
+  "created": "2026-10-10T08:29:35.146Z",
+  "updated": "2026-10-10T08:29:35.146Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C /home/rudra/Projects/OpenCode-Vault status --porcelain 2>&1 echo '== vault branch ==' git -C /home/rudra/Projects/OpenCode-Vault branch --show-current 2>&1 echo '== vault recent reflog ==' git -C /home/rudra/Projects/OpenCode-Vault reflog -5 2>&1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_edb148aa5ffeTlSiHSxl4J71pS",
+  "messageID": "msg_124edeca6001Fvkc50APL13kmG",
+  "callID": "1942dc63-0b5d-4b29-a37c-e33a426e2d86",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

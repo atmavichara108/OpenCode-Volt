@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-002029-shell",
+  "created": "2026-10-10T21:20:29.327Z",
+  "updated": "2026-10-10T21:20:29.327Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "python3",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127b04006001ZErMwEb1NzjOEE",
+  "callID": "call_00_w8xx015lknub6gnozd9pft0i",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

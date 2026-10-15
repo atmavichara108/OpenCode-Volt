@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-005005-shell",
+  "created": "2026-10-10T21:50:05.016Z",
+  "updated": "2026-10-10T21:50:05.016Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== Ekstasis structure ===\" ls -la ~/Projects/Ekstasis 2>/dev/null head -30 echo echo \"=== README / описание мира ===\" find ~/Projects/Ekstasis -maxdepth 2 -iname 'README*' -o -maxdepth 2 -iname '*мир*' -o -maxdepth 2 -iname '*world*' -o -maxdepth 2 -iname '*экстат*' 2>/dev/null grep -viE 'node_modules|\\.git/' head",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_127cb525c001g7AGFaTm0hm7kS",
+  "callID": "call_b5ba5c3446a0438b9a9bbab4",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

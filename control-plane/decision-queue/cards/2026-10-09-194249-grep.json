@@ -1,0 +1,28 @@
+{
+  "id": "2026-10-09-194249-grep",
+  "created": "2026-10-09T16:42:49.598Z",
+  "updated": "2026-10-09T16:42:49.598Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "grep",
+  "pattern": "stream-intent",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede747528ffeHlisOgYlOGW7Oi",
+  "messageID": "msg_1218bb2310018G7hl5E4evFV1z",
+  "callID": "toolu_9e1d12f5b672403794a81c0f",
+  "metadata": {
+    "root": ".",
+    "include": "*",
+    "limit": 30
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

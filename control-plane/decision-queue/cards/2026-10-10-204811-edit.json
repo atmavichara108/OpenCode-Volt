@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-10-204811-edit",
+  "created": "2026-10-10T17:48:11.335Z",
+  "updated": "2026-10-10T17:48:11.335Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "docs/handoffs/2026-10-10-external-directory-vault-handoff.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_126ed6429001UGUj455BFdpJcH",
+  "callID": "call_58c9daef5f774918a21a2a38",
+  "metadata": {
+    "files": [
+      {
+        "file": "docs/handoffs/2026-10-10-external-directory-vault-handoff.md",
+        "patch": "Index: docs/handoffs/2026-10-10-external-directory-vault-handoff.md\n===================================================================\n--- docs/handoffs/2026-10-10-external-directory-vault-handoff.md\n+++ docs/handoffs/2026-10-10-external-directory-vault-handoff.md\n@@ -0,0 +1,50 @@\n+# Handoff — external_directory в Vault SSA worktree\n+\n+- **Отправитель:** sysop / dotfiles\n+- **Получатель:** куратор/владелец OpenCode-Vault (отдельный от сессии-источника\n+  письма; прямой session ID в BAGFIX-LETTER не указан, поэтому peer-comms-письмо\n+  не отправлялось).\n+- **Статус:** передано как артефакт; runtime причина `[проверить]`, не объявлено fixed.\n+- **Task:** BF-20261010-01 / мастерская INC-5.\n+- **Источник:** вложение Rudra `bugfix-extdir-and-rule-20261010.txt` (текст\n+  подписан librarian/Vault); payload не дублируется в runtime logs.\n+\n+## Symptom / repro\n+\n+По письму от 2026-10-10, в librarian-сессии с workspace\n+`/home/rudra/Projects/OpenCode-Vault`:\n+\n+1. Из `/home/rudra/Projects/OpenCode-Vault-tasks/ssa-bootstrap-20261010`\n+   `git push -u origin task/ssa-bootstrap-20261010` и даже\n+   `git remote get-url origin` завершались\n+   `permission.rejected: Permission denied: external_directory`; `git add` и\n+   `git commit` из того же cwd до этого прошли.\n+2. `write` в `/tmp/opencode/<file>` давал тот же permission rejection; shell\n+   write в этот каталог проходит.\n+3. Push с workspace-root через refspec прошёл.\n+\n+## Sourced evidence / ведущая гипотеза\n+\n+- Vault-root `opencode.json`: `external_directory` default `* deny`; allowlist\n+  содержит `/home/rudra/Projects/OpenCode-Vault/**`, но не sibling\n+  `/home/rudra/Projects/OpenCode-Vault-tasks/**` и не `/tmp/opencode/**`.\n+- SSA worktree `opencode.json` содержит allow для\n+  `/home/rudra/Projects/OpenCode-Vault-tasks/**`; однако сообщённый workspace\n+  root — основной Vault, поэтому ещё нужно подтвердить, какой project config\n+  применился к live-вызовам.\n+- Worktree `git-common-dir` —\n+  `/home/rudra/Projects/OpenCode-Vault/.git`; common-dir лежит в allowlisted\n+  основном Vault. Гипотеза о `.git` target вне allow-scope не подтверждена.\n+- Vault method `02-Methods/incident-fix.md` уже отмечает, что внешние temp-пути\n+  могут быть закрыты для write-tools.\n+\n+## Рекомендуемая проверка владельцем Vault\n+\n+Провести минимальный live repro отдельно для target write, `git remote get-url`\n+и push из workspace-root/worktree; зафиксировать effective workspace/config и\n+конкретный проверяемый path. После этого обновить **Vault-owned** allowlist для\n+необходимого sibling-worktree/temp scope, сохранив deny секретов, затем\n+повторить repro через инструмент, который ранее блокировался.\n+\n+Dotfiles-конфиги уже дают общую внешнюю allow с secret-deny; dotfiles не вносит\n+изменения в Vault. Это handoff, не просьба Максу выполнять команды вручную.\n",
+        "status": "added",
+        "additions": 50,
+        "deletions": 0
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

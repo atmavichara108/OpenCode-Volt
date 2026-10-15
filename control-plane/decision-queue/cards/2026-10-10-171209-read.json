@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-171209-read",
+  "created": "2026-10-10T14:12:09.076Z",
+  "updated": "2026-10-10T14:12:09.076Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "docs/specs/bugfix-proactive-plugin.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9d84e82ffeRMSHfFyjz1ujak",
+  "messageID": "msg_12627f087001lI0o6DHzXaQQoI",
+  "callID": "call_b773adc8260442f6801dfacb",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

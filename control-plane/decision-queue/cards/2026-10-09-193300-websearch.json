@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-09-193300-websearch",
+  "created": "2026-10-09T16:33:00.107Z",
+  "updated": "2026-10-09T16:33:00.107Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "websearch",
+  "pattern": "Taleb Antifragile barbell strategy optionality chapter numbers skin in the game 2018 edition",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede7e1e5dffeftxJtSRFz5EfBJ",
+  "messageID": "msg_12182546a001MWRI7eIb0PJF5q",
+  "callID": "chatcmpl-tool-928e8cc197681552",
+  "metadata": {
+    "query": "Taleb Antifragile barbell strategy optionality chapter numbers skin in the game 2018 edition"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

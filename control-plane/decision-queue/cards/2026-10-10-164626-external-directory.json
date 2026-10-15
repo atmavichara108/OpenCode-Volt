@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-164626-external-directory",
+  "created": "2026-10-10T13:46:26.129Z",
+  "updated": "2026-10-10T13:46:26.129Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "external_directory",
+  "pattern": "/tmp/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9f0a108ffeyfZZYysnsEkvRP",
+  "messageID": "msg_126109b17001v2AMcYmaBQ5zWY",
+  "callID": "call_01a126109e4a77dd8068bbf6ca40e581",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "builder",
+  "model": null
+}

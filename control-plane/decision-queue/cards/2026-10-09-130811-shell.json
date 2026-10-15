@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-130811-shell",
+  "created": "2026-10-09T10:08:11.997Z",
+  "updated": "2026-10-09T10:08:11.997Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git worktree remove --force /tmp/opencode/t180-dotfiles git worktree add /home/rudra/Projects/OpenCode-Vault/.t180-dotfiles-wt task/t-180-dq-atomic 2>&1 tail -1 git worktree add /home/rudra/Projects/OpenCode-Vault/.t180-dotfiles-wt -b task/t-180-dq-atomic origin/main tail -1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_edfe1d5c6ffeLW6EAnZWSzVGI5",
+  "messageID": "msg_120222fb20016SnOkn4xKbkaiJ",
+  "callID": "shell:0",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

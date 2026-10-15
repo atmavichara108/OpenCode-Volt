@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-220451-read",
+  "created": "2026-10-08T19:04:51.524Z",
+  "updated": "2026-10-08T19:04:51.524Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "98-Temporary/ssa-bootstrap/ssa-business-model-v0.1-draft.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee318a34fffemWygb5icMq7nC3",
+  "messageID": "msg_11ce75ce6001pqk3WkUkCoApoC",
+  "callID": "call_531b0d66a38242f2a3011c56",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-131415-shell",
+  "created": "2026-10-09T10:14:15.163Z",
+  "updated": "2026-10-09T10:14:15.163Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "python3 tools/md-table-check/check.py TASKS.md tail -1 git add TASKS.md git commit -q -m \"T-180 done: теневой классификатор — атомарная запись, 61 битая карточка вылечена (проверено: 638/638)\" git push -q origin task/t180-done-1009:main git branch -f main origin/main echo \"main=$(git rev-parse --short main)\" git rev-parse --short main git worktree remove .w6 --force echo ok",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_12027ca72001aIoCm43I0D0vjy",
+  "callID": "shell:0",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-222912-shell",
+  "created": "2026-10-08T19:29:12.863Z",
+  "updated": "2026-10-08T19:29:12.863Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "stat -c '%y %s' ~/.cache/opencode/models.json 2>/dev/null echo \"кэш не пересоздан\" timeout 120 opencode models >/dev/null 2>&1 stat -c '%y %s' ~/.cache/opencode/models.json 2>/dev/null python3 -c \"\nimport json; d=json.load(open('/home/rudra/.cache/opencode/models.json'))\nprint('jev после пересоздания:', 'jev' in json.dumps(d).lower())\" 2>/dev/null echo \"нет файла\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cfd8f3d001HJ5MmFZWKInD6S",
+  "callID": "call_7359be3d65a84d079a3eb73e",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

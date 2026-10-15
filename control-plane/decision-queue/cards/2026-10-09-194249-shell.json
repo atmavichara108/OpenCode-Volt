@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-194249-shell",
+  "created": "2026-10-09T16:42:49.963Z",
+  "updated": "2026-10-09T16:42:49.963Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "find . -path ./.meta-worktrees -prune -o -path ./.s8-fork -prune -o -iname \"*peer-comms*\" -print -o -iname \"*capability-routing*\" -print -o -iname \"*service-mechanics*\" -print -o -iname \"*route-log*\" -print head -30",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede74752effez1rLupWWvC1elB",
+  "messageID": "msg_1218bad06001hGRw1bibd5pjSQ",
+  "callID": "toolu_e5e5f9ee6f324a7aad77cfed",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

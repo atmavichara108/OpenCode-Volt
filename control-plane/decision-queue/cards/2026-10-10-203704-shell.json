@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-203704-shell",
+  "created": "2026-10-10T17:37:04.817Z",
+  "updated": "2026-10-10T17:37:04.817Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"== stash\" git stash list echo \"== report at HEAD (tail)\" git show HEAD:.opencode/memory/session-reports/2026-10-10-bugfix-workshop.md tail -5 echo \"== wc working vs HEAD\" wc -l < .opencode/memory/session-reports/2026-10-10-bugfix-workshop.md git show HEAD:.opencode/memory/session-reports/2026-10-10-bugfix-workshop.md wc -l echo \"== report log\" git log --oneline -5 -- .opencode/memory/session-reports/2026-10-10-bugfix-workshop.md echo \"== attached instruction file anywhere\" find /home/rudra -maxdepth 4 \\( -name \"bugfix-extdir-and-rule*\" \\) 2>/dev/null head find /tmp/opencode -name \"*bugfix*\" 2>/dev/null head echo \"== all recent commits on branch\" git log --oneline -8",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed921cb70ffeX0qdtO9CnEsj5C",
+  "messageID": "msg_126e224ba001YbhbrHwr2X9297",
+  "callID": "call_6090dd85e77f4fe98c6470c3",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

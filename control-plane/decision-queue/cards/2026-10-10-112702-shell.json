@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-112702-shell",
+  "created": "2026-10-10T08:27:02.994Z",
+  "updated": "2026-10-10T08:27:02.994Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "find /home/rudra/Projects/SSA/control -not -path '*/.git/*' -not -name .git sort",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_edb148aa5ffeTlSiHSxl4J71pS",
+  "messageID": "msg_124ec1787001F6Dmg97nN4aIr1",
+  "callID": "51d3a0ba-8987-4d81-9fcd-b79fb4425146",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-205943-shell",
+  "created": "2026-10-10T17:59:43.690Z",
+  "updated": "2026-10-10T17:59:43.690Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git diff HEAD --stat -- opencode-global/ .opencode/agent/ system-ops* '*system-ops*' echo \"rc=$?\" echo \"=== system-ops agent file status ===\" git status --porcelain -- opencode-global/.config/opencode/agent/ echo \"=== INC-1 commit ===\" git show --stat --oneline 00e2910 head -5",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9086ce3ffeBbeL6bF903uUYc",
+  "messageID": "msg_126f7dcee001giPT7vRYf5d10S",
+  "callID": "67977a14-0a3a-410b-ba55-07d0d797ea9e",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "verifier",
+  "model": null
+}

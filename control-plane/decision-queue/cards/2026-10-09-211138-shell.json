@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-211138-shell",
+  "created": "2026-10-09T18:11:38.815Z",
+  "updated": "2026-10-09T18:11:38.815Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "python3 tools/peers/peer_lease.py run --file TASKS.md --timeout 10 -- python3 -c 'from pathlib import Path; import os,tempfile; p=Path(\"TASKS.md\"); s=p.read_text(); assert s.count(\"| T-184 |\") == 0; marker=\"| T-183 | Закон тени\"; start=s.index(marker); end=s.index(\"\\n\", start)+1; row=\"| T-184 | **Planned:** диагностировать и устранить effective permission mismatch между project config и agent-specific `external_directory`/`edit` правами в task worktrees. Repro: meta не может `edit` reviewer/verifier profiles; reviewer/verifier не читают task worktrees; tree-cop не может inspect/remove external worktrees. Root cause merge/reload/agent override ещё не подтверждён полностью. DoD: локализовать причину и решить минимальным allowlist/profile; reviewer/verifier — read-only по запросу пользователя, `edit` deny; meta — только approved agent-infra worktrees; sensitive deny сохранены; live smoke по ролям; никаких bypass. Не объявлять исправленным заранее. | P1 | permission/worktree routing incident; meta/reviewer/verifier profiles |\\n\"; updated=s[:end]+row+s[end:]; fd,tmp=tempfile.mkstemp(dir=str(p.parent),prefix=\".TASKS.\"); f=os.fdopen(fd,\"w\"); f.write(updated); f.flush(); os.fsync(f.fileno()); f.close(); os.replace(tmp,p)'",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ede254d97ffexQ6Ga6G6VO27Ox",
+  "messageID": "msg_121dce847001fKmY13jTgzmUQx",
+  "callID": "call_FlkLNB1l5TsK9P4AEI5oTD7B",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

@@ -1,0 +1,28 @@
+{
+  "id": "2026-10-09-193708-glob",
+  "created": "2026-10-09T16:37:08.859Z",
+  "updated": "2026-10-09T16:37:08.859Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "glob",
+  "pattern": "**/meta.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_121866ea3001tckYkijWT6JtUP",
+  "callID": "call_LvcqIgbWQCCoj5pSZZQmcILf",
+  "metadata": {
+    "root": "/home/rudra/dotfiles/opencode-global/.config/opencode",
+    "path": "/home/rudra/dotfiles/opencode-global/.config/opencode",
+    "limit": 10
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-093802-shell",
+  "created": "2026-10-09T06:38:02.430Z",
+  "updated": "2026-10-09T06:38:02.430Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git checkout main 2>&1 tail -2 git merge --ff-only task/justwoker-resolution-20261009 2>&1 tail -3 echo \"---PUSH---\" git push origin main 2>&1 tail -5 echo \"---SHA---\" git log --oneline -1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee0a97b4fffeX15Yix6yTUvFr2",
+  "messageID": "msg_11f61efe5001f3GfR7hit7whpA",
+  "callID": "call_b4ea616264cc4449a93beda8",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

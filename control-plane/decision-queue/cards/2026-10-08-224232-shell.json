@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-224232-shell",
+  "created": "2026-10-08T19:42:32.655Z",
+  "updated": "2026-10-08T19:42:32.655Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "python3 tools/md-table-check/check.py /tmp/opencode/d4-test.md echo rc=$?",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d091712001i4167G5SNEasSI",
+  "callID": "call_9084e9bb280043d9a107c50b",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-214522-shell",
+  "created": "2026-10-08T18:45:22.455Z",
+  "updated": "2026-10-08T18:45:22.455Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "~/Projects/OpenCode-Vault/.venv/bin/python",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11cd54333001bGoayQMDdvDJQ7",
+  "callID": "call_cf908051869a47ffa1a6efe2",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

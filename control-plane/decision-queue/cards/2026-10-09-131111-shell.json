@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-131111-shell",
+  "created": "2026-10-09T10:11:11.265Z",
+  "updated": "2026-10-09T10:11:11.265Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "mkdir -p /home/rudra/Projects/OpenCode-Vault/.t180-smoke/cards cat bun smoke.ts 2>&1 tail -8",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_edfe1d5c6ffeLW6EAnZWSzVGI5",
+  "messageID": "msg_12024f5ca001m60kLZsGZGDpfo",
+  "callID": "shell:0",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

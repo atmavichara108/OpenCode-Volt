@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-163820-shell",
+  "created": "2026-10-10T13:38:20.708Z",
+  "updated": "2026-10-10T13:38:20.708Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== direct stat ===\" ls -la /home/rudra/dotfiles/docs/specs/ssa-control-agent-harness-bootstrap.md /home/rudra/dotfiles/docs/specs/seo-outreach-agent-runtime-bootstrap.md 2>&1 echo \"=== find by name anywhere under /home/rudra ===\" find /home/rudra -type f \\( -name 'ssa-control-agent-harness-bootstrap.md' -o -name 'seo-outreach-agent-runtime-bootstrap.md' \\) 2>/dev/null echo \"=== all worktrees of dotfiles ===\" git -C /home/rudra/dotfiles worktree list 2>/dev/null echo \"=== git status docs/specs ===\" git -C /home/rudra/dotfiles status --short -- docs/specs 2>/dev/null echo \"=== current branch ===\" git -C /home/rudra/dotfiles branch --show-current",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_12609114a001aDlQhJrJEnriX8",
+  "callID": "toolu_bdrk_013Q4AWNSmWAd7WKE3Da7sUb",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

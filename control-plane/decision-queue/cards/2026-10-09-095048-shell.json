@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-095048-shell",
+  "created": "2026-10-09T06:50:48.556Z",
+  "updated": "2026-10-09T06:50:48.556Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "cat > /tmp/opencode/jw/iso.ts <<'EOF'\n// Изоляция: кто вешает большое тело — Bun fetch (timeout:false) или шим?\nconst KEY = (await Bun.file(process.env.HOME + \"/.local/share/opencode/auth.json\").json()).justwoker.key;\nconst URL = \"https://api.justwoker.icu/v1/messages\";\nconst big = await Bun.file(\"/tmp/opencode/jw/big.json\").text();\nconst H = { \"x-api-key\": KEY, \"anthropic-version\": \"2023-06-01\", \"content-type\": \"application/json\" };\nconst t = () => ((Date.now() - T0) / 1000).toFixed(1);\nconst T0 = Date.now();\n\nasync function run(label: string, init: any) {\n  const s = Date.now();\n  try {\n    const r = await fetch(URL, { method: \"POST\", headers: H, body: big, signal: AbortSignal.timeout(200000), ...init });\n    const j = await r.json().catch(() => null);\n    console.log(`${label} -> HTTP ${r.status} за ${((Date.now() - s) / 1000).toFixed(1)}s (ok=${!!j})`);\n  } catch (e: any) {\n    console.log(`${label} -> ${e?.name ?? \"err\"} за ${((Date.now() - s) / 1000).toFixed(1)}s: ${String(e?.message ?? \"\").slice(0, 80)}`);\n  }\n}\n\nawait run(\"T1 bun-fetch timeout:false\", { timeout: false, redirect: \"manual\" } as any);\nconsole.log(`[clock] T1 done at ${t()}s`);\nawait run(\"T2 bun-fetch default\", { redirect: \"manual\" } as any);\nconsole.log(`[clock] T2 done at ${t()}s`);\nawait run(\"T3 bun-fetch timeout:120000\", { timeout: 120000, redirect: \"manual\" } as any);\nconsole.log(`[clock] T3 done at ${t()}s`);\nEOF grep -nP '[\\x{4e00}-\\x{9fff}\\x{3040}-\\x{30ff}\\x{ac00}-\\x{d7af}\\x{0e00}-\\x{0e7f}\\x{fffd}]' /tmp/opencode/jw/iso.ts echo \"!! МУСОР\" echo \"чисто\" bun /tmp/opencode/jw/iso.ts",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_11f6c81d3001Gduk4zCTUBaXR2",
+  "callID": "call_281aac83e044464aa58a2292",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «dotenv»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-220039-shell",
+  "created": "2026-10-09T19:00:39.340Z",
+  "updated": "2026-10-09T19:00:39.340Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "echo \"=== 2026-10-09.md tail ===\" tail -50 04-Memory/session-log/2026-10-09.md 2>/dev/null echo \"=== 049 provenance полностью ===\" grep -F '\"stream-intent-049\"' 04-Memory/idea-graph/nodes.jsonl grep -o 'provenance\":[^}]*' head -1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_12209cc23001XFUH6xarkjGwZc",
+  "callID": "call_eb1a22312212481e85f896af",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-213001-shell",
+  "created": "2026-10-09T18:30:01.155Z",
+  "updated": "2026-10-09T18:30:01.155Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git checkout task/pipboy-rebuild-20261009 tail -1 git status --short wc -l git log --oneline -1",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_121eda8ab001uushWgVui0kDNb",
+  "callID": "call_8b218692eda94ce693946395",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

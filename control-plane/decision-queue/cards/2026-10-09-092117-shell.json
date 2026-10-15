@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-092117-shell",
+  "created": "2026-10-09T06:21:17.582Z",
+  "updated": "2026-10-09T06:21:17.582Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "jq -r '.justwoker.key' ~/.local/share/opencode/auth.json echo \"=== апстрим stream:true (ищем content_block) ===\" curl -sN --max-time 75 -X POST https://api.justwoker.icu/v1/messages -H \"x-api-key: $KEY\" -H \"anthropic-version: 2023-06-01\" -H \"content-type: application/json\" -d '{\"model\":\"claude-opus-4-8\",\"max_tokens\":64,\"stream\":true,\"messages\":[{\"role\":\"user\",\"content\":\"count 1 2 3\"}]}' head -c 900 echo echo \"=== END-TO-END через шим (как делает OpenCode) ===\" curl -sN --max-time 120 -X POST http://127.0.0.1:8787/v1/messages -H \"x-api-key: $KEY\" -H \"anthropic-version: 2023-06-01\" -H \"content-type: application/json\" -d '{\"model\":\"claude-opus-4-8\",\"max_tokens\":64,\"stream\":true,\"messages\":[{\"role\":\"user\",\"content\":\"say hi\"}]}' head -c 700",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_11f52026f001jRHAMqIgdw2i3j",
+  "callID": "call_f4cd810dfa2543fba0258762",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «curl»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-144618-shell",
+  "created": "2026-10-10T11:46:18.612Z",
+  "updated": "2026-10-10T11:46:18.612Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "pwd echo \"---\" ls -la /home/rudra/Projects/OpenCode-Vault 2>&1 head -30",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda5dbbf7ffewLYXf5pN0cVzSh",
+  "messageID": "msg_125a2738f001CnAefT0V0rJLBo",
+  "callID": "call_st13pp00ip2asynac1jchccp",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "general",
+  "model": null
+}

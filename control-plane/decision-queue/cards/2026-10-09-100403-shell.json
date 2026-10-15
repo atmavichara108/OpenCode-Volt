@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-100403-shell",
+  "created": "2026-10-09T07:04:03.315Z",
+  "updated": "2026-10-09T07:04:03.315Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "sed -E 's/^.*\"id\": \"([^\"]+)\".*\"graph\": \"([^\"]+)\".*\"label\": \"([^\"]+)\".*$/\\2 | \\1 | \\3/' 04-Memory/idea-graph/nodes.jsonl grep -c . /tmp/opencode/inv.txt echo \"=== stream/world (поток Рудры) ===\" grep -E \"^(stream|world|quest|proto)\\b\" /tmp/opencode/inv.txt head -60",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11f72e08c001j9EeIhR3daYU0h",
+  "callID": "call_b110c0303fc44a35920f9069",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

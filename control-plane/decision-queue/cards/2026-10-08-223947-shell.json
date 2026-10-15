@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-08-223947-shell",
+  "created": "2026-10-08T19:39:47.494Z",
+  "updated": "2026-10-08T19:39:47.494Z",
+  "status": "pending",
+  "risk": "critical",
+  "type": "shell",
+  "pattern": "git worktree add .mem task/t177-178-1008 cat python3 - <<'PYEOF'\nfrom pathlib import Path\np=Path(\"04-Memory/active-context.md\")\nt=p.read_text(encoding=\"utf-8\")\nt=t.replace(\"- ⏳ На подтверждении Рудры: план model-watch (T-177/T-178, в Planned) + точное имя модели Jev (в каталоге её нет).\",\n\"- ✅ T-178 model-watch живой (таймер активен, гейт в хуке). Jev: рестарт сервера OpenCode обновит кэш → потом декларить в конфиг (stash в dotfiles).\")\np.write_text(t,encoding=\"utf-8\")\nPYEOF MODEL_OK=1 git add -A 04-Memory/ MODEL_OK=1 git commit -q -m \"память: T-178 выполнен, факт о протухшем кэше моделей, инцидент-фиксы вечернего прогона\" MODEL_OK=1 git push -q origin task/t177-178-1008:main git branch -f main origin/main git worktree remove .mem --force echo \"main=$(git rev-parse --short main)\" git rev-parse --short main",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_11d06ccf6001YcNGsq238b7qsR",
+  "callID": "call_447770d5b196412cb89c26e1",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

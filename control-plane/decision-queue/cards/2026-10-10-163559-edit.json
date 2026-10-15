@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-10-163559-edit",
+  "created": "2026-10-10T13:35:59.235Z",
+  "updated": "2026-10-10T13:35:59.235Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": ".opencode/memory/session-reports/active/2026-10-10-bugfix-workshop.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_1260676cd001IrpQDwl3QdaYZd",
+  "callID": "toolu_bdrk_01HJwfoHzfuLcPyD26jLKSur",
+  "metadata": {
+    "files": [
+      {
+        "file": ".opencode/memory/session-reports/active/2026-10-10-bugfix-workshop.md",
+        "patch": "Index: .opencode/memory/session-reports/active/2026-10-10-bugfix-workshop.md\n===================================================================\n--- .opencode/memory/session-reports/active/2026-10-10-bugfix-workshop.md\n+++ .opencode/memory/session-reports/active/2026-10-10-bugfix-workshop.md\n@@ -0,0 +1,78 @@\n+# Мастерская «БагФикс» — реестр инцидентов (2026-10-10)\n+\n+Сессия-мастерская: агенты/пользователь приносят баги, итоги копятся здесь для\n+будущего спец-агента по отладке. Формат каждого: symptom → repro → root cause →\n+fix/workaround → evidence → status.\n+\n+---\n+\n+## INC-1 — `skill \"\" Invalid arguments, id Missing key`\n+\n+- **Symptom:** вызов тула `skill` падал с `Invalid arguments, id Missing key`.\n+- **Repro:** любой вызов skill через плагин `fix-tool-schema.ts` на OpenCode v2.0.26.\n+- **Root cause:** ядро OpenCode v2 (v2.0.26) ждёт у тула `skill` обязательное\n+  поле `id` (вызов `{\"id\":\"<skill-id>\"}`), а плагин слал старую схему с `name` —\n+  ядро отбивало как `id Missing key`. Подтверждено доками v2 и `src/tool/skill.ts`.\n+- **Fix:** `SKILL_FLAT` переведён на `id` (required `[\"id\"]`, плоская схема без\n+  oneOf/anyOf; `name` оставлен deprecated-алиасом).\n+  Файл: `opencode-global/.config/opencode/plugins/fix-tool-schema.ts`.\n+- **Evidence:** bun build OK, verifier PASS. Коммит `00e2910` (ветка\n+  `task/skill-id-fix`). Живьём подхватывается после рестарта TUI (плагин не hot-reload).\n+- **Status:** fixed, shipped.\n+\n+---\n+\n+## INC-2 — verifier спотыкается: не читает файл / виснет на подтверждении\n+\n+- **Symptom:** verifier (локальный и глобальный) не мог посмотреть выданный файл\n+  или запрашивал подтверждение простой команды; при отсутствии пользователя\n+  вызов висел и verifier падал.\n+- **Repro:** verifier вызывает любую повседневную команду → `bash \"*\": ask` →\n+  запрос подтверждения; нет реакции → зависание → падение.\n+- **Root cause:** в permission-блоках verifier базовое правило было `bash \"*\": ask`.\n+  Падение — именно от `ask` (висит без ответа), не от `deny` (fail-fast).\n+- **Fix:** снят весь `ask` в 4 местах — `.opencode/agent/verifier.md`,\n+  `opencode-global/.config/opencode/agent/verifier.md`, два блока verifier в\n+  `opencode.json` (object-style `permission` и array-style `permissions`).\n+  Стало: `read/glob/grep/webfetch/external_directory = allow`, `bash \"*\": allow`,\n+  `deny` только на разрушительном (rm -rf, push --force, reset --hard, clean,\n+  chmod/chown, systemctl stop/disable/mask, mkfs/shutdown/reboot). `edit=deny`\n+  сохранён как суть роли (fail-fast, не виснет).\n+- **Evidence:** JSON валиден (`python3 -m json.tool`), коммит `8f6e8c7`\n+  (ветка `task/verifier-unrestricted`).\n+- **Status:** fixed, shipped. Acceptance gate — живой прогон verifier без единого\n+  `ask` после рестарта TUI (конфиги не hot-reload).\n+\n+---\n+\n+## INC-3 — `session_move Unable to move session to <path>`\n+\n+- **Symptom:** `session_move` verifier-сессии в существующие каталоги возвращал\n+  `Unable to move session to <path>`; сессия не переносилась.\n+- **Repro:** `session_move(sessionID=<verifier>, directory=<существующий абс. путь>)`;\n+  наблюдалось для `/home/rudra/Projects` и\n+  `/home/rudra/Projects/OpenCode-Vault-tasks/ssa-bootstrap-20261010`.\n+- **Root cause:** ядро OpenCode v2.0.26. Встроенный тул `session_move`\n+  (`packages/core/src/tool/plugin/opencode.ts`) оборачивает разные внутренние\n+  ошибки (`SessionMove`, инициализация контекста назначения) в один общий текст —\n+  конкретную причину по нему не извлечь. В dotfiles перехватчика/обработчика\n+  `session_move` нет; `external_directory` у verifier = allow. Dotfiles-причина\n+  не подтверждена.\n+- **Fix/workaround:** чужой harness (ядро OpenCode) не патчим. Workaround —\n+  открывать verifier-сессию сразу в целевом worktree, а не переносить рабочую.\n+  Прямую правку БД сессий не делать.\n+- **Evidence:** установлена v2.0.26; целевые каталоги существуют и доступны;\n+  живой перенос на рабочей сессии не повторялся. Источники: v2.0.26\n+  `session/move.ts`, `tool/plugin/opencode.ts`.\n+- **Status:** core-bug OpenCode, dotfiles-фикса нет; workaround `[проверить]`.\n+\n+---\n+\n+## Процессный урок (peer-comms)\n+\n+Получив баг-хэндофф, primary обязан по протоколу писем (B18) слать `started`\n+при получении и `finished` при завершении через `tools/peer-comms/letter.sh`\n+(без `-m`, идемпотентно по message_id). В этой сессии баги пришли прямым прометом\n+(не через канонический журнал — в `receipts-out.jsonl` входящего на сессию нет),\n+поэтому формальная квитанция не ушла. Урок: при живом канале закрывать петлю\n+`started/finished`, если известен session_id отправителя и message_id (`--ref`).\n",
+        "status": "added",
+        "additions": 78,
+        "deletions": 0
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

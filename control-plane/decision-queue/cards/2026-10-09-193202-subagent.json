@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-193202-subagent",
+  "created": "2026-10-09T16:32:02.461Z",
+  "updated": "2026-10-09T16:32:02.461Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "subagent",
+  "pattern": "researcher",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_1218175a7001YwSIINocCeGNO5",
+  "callID": "call_a21KG0KkZFYw0BpOQranpgKj",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

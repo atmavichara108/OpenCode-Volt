@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-10-144300-websearch",
+  "created": "2026-10-10T11:43:00.206Z",
+  "updated": "2026-10-10T11:43:00.206Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "websearch",
+  "pattern": "site:opencode.ai/docs project directory git repository AGENTS.md config parent directory OpenCode",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee33e0dcaffe7lIzOxCp5xVFQS",
+  "messageID": "msg_1259f9057001wEc4LDaNuDdPB9",
+  "callID": "call_VbgbtO14bsdriwWuzUR01YEP",
+  "metadata": {
+    "query": "site:opencode.ai/docs project directory git repository AGENTS.md config parent directory OpenCode"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-10-001712-edit",
+  "created": "2026-10-10T21:17:12.964Z",
+  "updated": "2026-10-10T21:17:12.964Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "edit",
+  "pattern": "06-Audits/2026-10-09-agency-counteragency-brainstorm.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ef77a5cfbffeKpXtCXsI6sYL30",
+  "messageID": "msg_127ad40da001aEmmCnjMSZ5bFE",
+  "callID": "call_00_2vv456emxj8nevmywtfcar5p",
+  "metadata": {
+    "files": [
+      {
+        "file": "06-Audits/2026-10-09-agency-counteragency-brainstorm.md",
+        "patch": "Index: 06-Audits/2026-10-09-agency-counteragency-brainstorm.md\n===================================================================\n--- 06-Audits/2026-10-09-agency-counteragency-brainstorm.md\n+++ 06-Audits/2026-10-09-agency-counteragency-brainstorm.md\n@@ -2,8 +2,9 @@\n type: brainstorm-draft\n title: Агентность-контрагентность, ризома — рабочий материал брейншторма\n status: draft-working\n timestamp: 2026-10-09\n+updated: 2026-10-11 — добавлена Часть 2½ (междисциплинарный обзор, 13 областей + синтез)\n source: координатор (Д) — «части 1–2 исследования, напарник», сводка частей 1–3 в брейншторм-материал\n owner: librarian (Дирижёр) + researcher (напарник)\n related: 04-Memory/idea-graph/nodes.jsonl (stream-intent-025/042/046/048/049/051/206/208), edges e-0161/0162/0163/0221/0225/e-obsidian-servant\n ---\n",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      }
+    ]
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

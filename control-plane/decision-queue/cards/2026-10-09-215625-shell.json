@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-215625-shell",
+  "created": "2026-10-09T18:56:25.205Z",
+  "updated": "2026-10-09T18:56:25.205Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "sed -n '140,200p' 00-WORLD.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eddfaf9b3ffeAmNLEfJcMC3hta",
+  "messageID": "msg_12205fb070013QPFCQwWFhbrhV",
+  "callID": "toolu_2793dd8e68c54210b92f9cbb",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}

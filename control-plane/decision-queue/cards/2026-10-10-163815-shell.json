@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-163815-shell",
+  "created": "2026-10-10T13:38:15.599Z",
+  "updated": "2026-10-10T13:38:15.599Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git merge --no-ff task/verifier-unrestricted -m \"merge: мастерская БагФикс — verifier без ask + реестр инцидентов (task/verifier-unrestricted)\" 2>&1 tail -6 echo \"=== main head ===\" git log --oneline -4",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda56e1d3ffeyC6AIk1mwgxw1L",
+  "messageID": "msg_12608f69c001C0Pf4D2Cyp9eQi",
+  "callID": "toolu_bdrk_01Rua5zLB92w99mvEn91onYN",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

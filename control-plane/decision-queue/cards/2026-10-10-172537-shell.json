@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-172537-shell",
+  "created": "2026-10-10T14:25:37.004Z",
+  "updated": "2026-10-10T14:25:37.004Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C /home/rudra/dotfiles switch task/spec-done-ssa-bootstrap git -C /home/rudra/dotfiles add docs/handoffs/2026-10-10-toolchoice-subagent-incident.md git -C /home/rudra/dotfiles commit -m \"docs(handoffs): INCIDENT tool_choice — закрыт существующим шим-фиксом d6446f5\" git -C /home/rudra/dotfiles log --oneline -3 git -C /home/rudra/dotfiles switch task/next-20261010-1638 git -C /home/rudra/dotfiles status --short head",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed9fa0279ffeALoBlPtaFyVci4",
+  "messageID": "msg_126347222001MwjtXUhGt6AnXG",
+  "callID": "call_01a126347b347376a39bfaa2508e9efd",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "sysop",
+  "model": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-095303-external-directory",
+  "created": "2026-10-09T06:53:03.837Z",
+  "updated": "2026-10-09T06:53:03.837Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "external_directory",
+  "pattern": "/home/rudra/dotfiles/*",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eecbdd2a7ffeaWSjX6BQlSTB3F",
+  "messageID": "msg_11f6f537c001LXjIeqJnlT0DQH",
+  "callID": "call_f052e575b7f74d0a9374f783",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

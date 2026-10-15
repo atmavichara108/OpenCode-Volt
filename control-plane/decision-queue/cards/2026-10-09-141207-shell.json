@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-141207-shell",
+  "created": "2026-10-09T11:12:07.387Z",
+  "updated": "2026-10-09T11:12:07.387Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "ls -l /tmp/opencode/jw/big.json 2>&1 head -2 echo \"=== (a) live stream ===\" curl -sS --max-time 30 -N -X POST $B -H 'content-type: application/json' --data-binary '{\"model\":\"ok\",\"stream\":true,\"max_tokens\":8,\"messages\":[{\"role\":\"user\",\"content\":\"hi\"}]}' -o /tmp/opencode/shimtest/a3.txt -w \"http=%{http_code} t=%{time_total}\\n\" grep -c 'content_block_delta' /tmp/opencode/shimtest/a3.txt echo \"=== (d) fallback ===\" curl -sS --max-time 30 -N -X POST $B -H 'content-type: application/json' --data-binary '{\"model\":\"regress\",\"stream\":true,\"max_tokens\":8,\"messages\":[{\"role\":\"user\",\"content\":\"hi\"}]}' -o /tmp/opencode/shimtest/d3.txt -w \"http=%{http_code} t=%{time_total}\\n\" grep -c FALLBACK_TEXT /tmp/opencode/shimtest/d3.txt echo \"=== (b) big 796KB payload, stream via bench ===\" time curl -sS --max-time 120 -N -X POST $B -H 'content-type: application/json' --data-binary @/tmp/opencode/jw/big.json -o /tmp/opencode/shimtest/b.txt -w \"http=%{http_code} bytes=%{size_download} t=%{time_total}\\n\" grep -o '^event: [a-z_]*' /tmp/opencode/shimtest/b.txt sort uniq -c head",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ee7f2804effeoxKy4pZRE7hOcA",
+  "messageID": "msg_1205be162001ZQIAJhkUTOBPSY",
+  "callID": "call_d13bb7017be545c0ad095ffa",
+  "metadata": {},
+  "recommendation": {
+    "class": "substantive",
+    "rationale": "совпал сущностный паттерн «curl»",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": null
+}

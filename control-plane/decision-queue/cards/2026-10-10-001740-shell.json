@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-001740-shell",
+  "created": "2026-10-10T21:17:40.779Z",
+  "updated": "2026-10-10T21:17:40.779Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git log --oneline -3 -- 06-Audits/2026-10-09-agency-counteragency-brainstorm.md echo \"=== lines ===\" wc -l 06-Audits/2026-10-09-agency-counteragency-brainstorm.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_effd908b3ffeNnpC0PZ4zkIf18",
+  "messageID": "msg_127ada0cf001EFXhqLVPKhMv2l",
+  "callID": "toolu_bdrk_015T5r4NMv4aSrm9SdWN7UYe",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "librarian",
+  "model": null
+}

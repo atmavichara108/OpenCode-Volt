@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-10-144515-shell",
+  "created": "2026-10-10T11:45:15.613Z",
+  "updated": "2026-10-10T11:45:15.613Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "printf '\\n--- %s ---\\n' \"$f\" nl -ba \"$f\"",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eda5e8b83ffeN4DKj7TWSVb0dR",
+  "messageID": "msg_125a19e44001HsO9L1JtkxKNL9",
+  "callID": "call_TFQQD3J8XYZdwAV27hUGoeIa",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "reviewer",
+  "model": null
+}

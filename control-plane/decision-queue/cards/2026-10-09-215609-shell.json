@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-215609-shell",
+  "created": "2026-10-09T18:56:09.068Z",
+  "updated": "2026-10-09T18:56:09.068Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "sed -n '202p' 04-Memory/idea-graph/nodes.jsonl echo grep -n -i -E 'институт|учрежден|зеркал|лаборатор|храм' 00-WORLD.md cut -c1-250 echo \"== registry ==\" grep -n -i -E 'институт|учрежден|зеркал|лаборатор|храм|04[89]|05[0-3]' 04-Memory/stream-registry.md cut -c1-250",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eddfaf9b3ffeAmNLEfJcMC3hta",
+  "messageID": "msg_12205b3da0017I6DJxoBePYXIH",
+  "callID": "toolu_dbf1fe8cb1884a5d99fb84e4",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "researcher",
+  "model": null
+}
