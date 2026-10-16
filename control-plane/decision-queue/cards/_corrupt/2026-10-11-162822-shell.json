@@ -1,0 +1,20 @@
+{
+  "id": "2026-10-11-162822-shell",
+  "created": "2026-10-11T13:28:22.805Z",
+  "updated": "2026-10-11T13:28:22.805Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "echo \"=== customer-run.md @ tag: universal/arm64/both-Apple residue ===\" git show 9071b57:docs/customer-run.md grep -n -i \"универсальн\\|arm64\\|оба типа\\|обеих\\|под оба\\|Apple-чип\\|Apple Silicon\" echo \"---rc=$?---\" echo \"=== decisions п.17 raw block ===\" git show 9071b57:docs/decisions.md grep -n \"\" sed -n '226,237p'",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed4e37fd1ffe2InIw0znWVtB6e",
+  "messageID": "msg_12b2338f5001KAM0SBbSDzVnQj",
+  "callID": "e99cb661-459b-4a8a-a193-7606c8d282c1",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effec

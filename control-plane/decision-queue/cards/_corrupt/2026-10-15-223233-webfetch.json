@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-15-223233-webfetch",
+  "created": "2026-10-15T19:32:33.619Z",
+  "updated": "2026-10-15T19:32:33.619Z",
+  "status": "pending",
+  "risk": "medium",
+  "type": "webfetch",
+  "pattern": "https://developers.google.com/custom-search/v1/overview",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed5dcdf33ffeisHuBX9VKB6XhM",
+  "messageID": "msg_1410d27350010JKRju1T4H2dd6",
+  "callID": "call_785f609119d74e45a89c2248",
+  "metadata": {
+    "url": "https://developers.google.com/custom-search/v1/overview",
+    "format": "markdown"
+  },
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": n

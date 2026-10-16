@@ -1,0 +1,13 @@
+{
+  "id": "2026-10-16-160348-shell",
+  "created": "2026-10-16T13:03:48.627Z",
+  "updated": "2026-10-16T13:03:48.627Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "shell",
+  "pattern": "python3 -c \"import xml.etree.ElementTree as ET; print(ET.parse('/home/rudra/.config/syncthing/config.xml').getroot().find('gui').find('apikey').text)\" echo \"== pending devices ==\" curl -s -m 8 -H \"X-API-Key: $KEY\" http://127.0.0.1:8384/rest/cluster/pending/devices 2>/dev/null head -c 200 echo echo \"== pending folders ==\" curl -s -m 8 -H \"X-API-Key: $KEY\" http://127.0.0.1:8384/rest/cluster/pending/folders 2>/dev/null head -c 300 echo echo \"== известные папки у мака? ==\" curl -s -m 8 -H \"X-API-Key: $KEY\" http://127.0.0.1:8384/rest/db/completion?device=4Q5HUQJ-EYDOZEP-PHEYGL3-SUYNBVJ-CF2JNCQ-4GNPIV2-DDCQF56-QTMDKAT 2>/dev/null head -c 200",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed5fcec4effeZKwSoEmMe6Swlk",
+  "messageID": "msg_144c6f3e4001MNO696AFGqm4Iz",
+  "callID"
