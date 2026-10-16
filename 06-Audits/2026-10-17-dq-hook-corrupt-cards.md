@@ -1,0 +1,70 @@
+---
+type: incident-record
+title: "INC-15 — decision-queue-hook: битые карточки (317+→349 шт, trailing-\x00 / utf8-обрыв / invalid control char)"
+status: fixed
+timestamp: 2026-10-17
+source: "письмо ЦУ в ses_ece7b76c8ffeOkYZqZe38QbTVx, ref inc-dq-hook-20261015; прецедент Т-180"
+reporter: "ЦУ (dotfiles-infra разбор) / Мастерская БагФикс"
+---
+
+# INC-15 — decision-queue-hook пишет битые карточки
+
+## Symptom
+`control-plane/decision-queue/cards/*.json` содержат битые/обрезанные записи
+(модельный текст в JSON без границ): обрыв на многобайтовом символе 0xd0 +
+длинный пробельный хвост; склейка двух JSON; сырые управляющие символы.
+garbage-guard не открывает файл (UnicodeDecodeError) → блокирует коммиты
+control-plane (мерж PR #1 прошёл с GARBAGE_OK=1). Скан 2026-10-16: 317 битых
+из 14117 (2.2%), классы (1) UnicodeDecodeError/обрыв, (2) склейка/trailing,
+(3) Invalid control character.
+
+## Repro
+Плагин `decision-queue-hook` пишет карточку на permission-событие. Событие с
+русским текстом → битый файл. Детерминированная пересборка скана тем же
+критерием (python: utf-8 decode + json.raw_decode, trailing-проверка) дала
+317; после догона за сессию разбора — 349 (8 свежих от 16.10 ночных).
+
+## Root cause
+Многофакторная гонка write-path в общий каталог карточек:
+1. **[подтверждено]** Двойной write-path исторически: несколько инстансов хука
+   (main + worktree); worktree `task/t179-activity-collector` — на ветке **до
+   фикса Т-180** (append-версия, `appendFile`) — дописывал append поверх
+   атомарных файлов → склейки и битые байты на границах многобайтовых.
+2. **[подтверждено, live-тест]** В текущем коде (fcabb01) гонки: tmp-имя
+   `<path>.<pid>.<ms>.tmp` коллидирует при двух записях одного id в одну мс;
+   нет fsync; нет per-id блокировки; нет проверки записанного.
+3. **[гипотеза, под наблюдением телеметрии]** NUL-хвосты (41 файл: полный
+   JSON + `\n` + нули) — точный механизм не воспроизведён тривиально;
+   фикс-телеметрия уличит на следующем случае (проверена в live-тесте).
+
+## Fix
+dotfiles, task/next-20261016, commit `deb7ede` (write-path hardening):
+- уникальное tmp-имя (randomUUID) — снимает гонку на общем tmp;
+- fsync перед rename — данные на диске до появления карточки по имени;
+- per-path мьютекс (writeChains) — сериализует записи одного id
+  (asked/evaluate/replied могут писать один файл почти одновременно);
+- read-after-write валидация + авто-репайр из памяти + телеметрия
+  `cards/_corrupt-telemetry.jsonl` (hex-хвост, размер, причина).
+Формат карточек не меняется. Точечный bugfix, без перепроектирования
+write-path протокола (по ограничению ЦУ — комплексное проектирование у них).
+
+## Evidence
+- fix (dotfiles): `deb7ede`, path `opencode-global/.config/opencode/plugins/decision-queue-hook.ts`
+- карантин (Vault): `e50774e6`, `control-plane/decision-queue/cards/_corrupt/` (349 файлов, ничего не удалено)
+- live-тест: `/tmp/opencode/dq-live-test/harness.ts` + `telem.ts` — 200 параллельных
+  записей с русским текстом → 0 битых; провокация внешнего append → телеметрия
+  поймала (hex-хвост), файл восстановлен. PASS.
+- скан после карантина: `cards/` битых **0** (из 15138 на диске).
+
+## Status
+`open → reported → dispatch → fixed`
+
+## Примечания для ЦУ (отдельно)
+- rationale у всех битых карточек — zero-LLM шаблонный, **не** модель-вывод
+  (письмо ЦУ утверждало обратное). Модельный текст в карточках — в title/metadata.
+- `~/.config/opencode/plugins` — симлинк на dotfiles (stow), не физическая
+  копия; живого дубляра хука нет, сервер грузит ту же сущность.
+- Рекомендация: worktree `task/t179-activity-collector` (append-версия хука до
+  Т-180) — обновить ветку на фикс или удалить worktree; иначе исторический
+  append-писатель может вновь дописывать поверх атомарных файлов.
+- Фикс активируется после перезагрузки сервера/плагина (код в памяти сервера).
