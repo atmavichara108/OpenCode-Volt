@@ -43,6 +43,40 @@ from pathlib import Path
 
 VAULT_ROOT = Path(__file__).resolve().parent.parent.parent
 
+
+def _caller_root(explicit: str | None = None) -> tuple[Path, str]:
+    """Корень дерева, в котором работает ВЫЗЫВАЮЩИЙ (worktree-aware, INC 2026-10-17).
+
+    Порядок разрешения:
+      1. --root <path> — явный override, без вопросов;
+      2. CWD — если это git-дерево ТОГО ЖЕ репозитория (общий --git-common-dir
+         с VAULT_ROOT или его worktree) — берём его toplevel. Это чинит случай
+         «сессия живёт в worktree, а lease лочит и исполняет команду в корне
+         основного дерева» (инцидент ЦУ: правки уехали в чужую ветку);
+      3. иначе — VAULT_ROOT (скрипт; прежнее поведение, back-compat).
+
+    Возвращает (root, source), source ∈ {"explicit","cwd","script"}.
+    """
+    if explicit:
+        p = Path(explicit).expanduser().resolve()
+        return p, "explicit"
+    try:
+        out = subprocess.run(["git", "rev-parse", "--show-toplevel"],
+                             capture_output=True, text=True, cwd=os.getcwd())
+        common = subprocess.run(["git", "rev-parse", "--git-common-dir"],
+                                 capture_output=True, text=True, cwd=os.getcwd())
+        vault_common = subprocess.run(["git", "rev-parse", "--git-common-dir"],
+                                      capture_output=True, text=True, cwd=str(VAULT_ROOT))
+        if out.returncode == 0 and common.returncode == 0:
+            cwd_top = Path(out.stdout.strip())
+            cwd_common = Path(common.stdout.strip()).resolve()
+            vlt_common = Path(vault_common.stdout.strip()).resolve()
+            if cwd_top != VAULT_ROOT and cwd_common == vlt_common:
+                return cwd_top, "cwd"
+    except Exception:
+        pass
+    return VAULT_ROOT, "script"
+
 # Горячие файлы, для которых lease обязателен (rel к корню волта).
 HOT_FILES = {
     "TASKS.md": "task tracker",
@@ -53,9 +87,10 @@ HOT_FILES = {
 }
 
 
-def _resolve(rel: str) -> Path:
+def _resolve(rel: str, root: Path | None = None) -> Path:
     p = Path(rel)
-    return p if p.is_absolute() else VAULT_ROOT / p
+    base = root if root is not None else VAULT_ROOT
+    return p if p.is_absolute() else base / p
 
 
 def _acquire(path: Path, timeout: float):
@@ -102,7 +137,16 @@ def _free(path: Path) -> bool:
 
 
 def cmd_run(args) -> int:
-    path = _resolve(args.file)
+    root, source = _caller_root(getattr(args, "root", None))
+    path = _resolve(args.file, root)
+    if not path.exists():
+        print(json.dumps({
+            "acquired": False, "file": args.file, "root": str(root), "root_source": source,
+            "reason": "file_not_found",
+            "message": (f"{args.file} не найден в корне вызывающего ({root}). "
+                        "Если нужен другой корень — передай --root."),
+        }, ensure_ascii=False))
+        return 1
     timeout = float(args.timeout)
 
     f = _acquire(path, timeout)
@@ -110,36 +154,42 @@ def cmd_run(args) -> int:
         print(json.dumps({
             "acquired": False,
             "file": args.file,
+            "root": str(root), "root_source": source,
             "reason": "lock_timeout",
             "message": f"flock не взят за {args.timeout}s — другой агент пишет {args.file}. Не пиши этот файл.",
         }, ensure_ascii=False))
         return 1
 
-    print(json.dumps({"acquired": True, "file": args.file, "pid": os.getpid()},
+    print(json.dumps({"acquired": True, "file": args.file, "pid": os.getpid(),
+                      "root": str(root), "root_source": source},
                      ensure_ascii=False), file=sys.stderr)
     cmd = list(args.cmd)
     if cmd and cmd[0] == "--":
         cmd = cmd[1:]
     try:
-        proc = subprocess.run(cmd, cwd=VAULT_ROOT)
+        proc = subprocess.run(cmd, cwd=str(root))
         return proc.returncode
     finally:
         _release(f)
 
 
 def cmd_holds(args) -> int:
+    root, source = _caller_root(getattr(args, "root", None))
     rows = []
     for rel, why in sorted(HOT_FILES.items()):
-        path = _resolve(rel)
-        rows.append({"file": rel, "what": why, "locked": not _free(path)})
+        path = _resolve(rel, root)
+        rows.append({"file": rel, "what": why, "locked": not _free(path),
+                     "root": str(root), "root_source": source})
     print(json.dumps(rows, ensure_ascii=False, indent=2))
     return 0
 
 
 def cmd_check(args) -> int:
-    path = _resolve(args.file)
+    root, source = _caller_root(getattr(args, "root", None))
+    path = _resolve(args.file, root)
     free = _free(path)
-    print(json.dumps({"file": args.file, "locked": not free}, ensure_ascii=False))
+    print(json.dumps({"file": args.file, "locked": not free,
+                      "root": str(root), "root_source": source}, ensure_ascii=False))
     return 0 if free else 1
 
 
@@ -148,8 +198,9 @@ def build_parser() -> argparse.ArgumentParser:
     sub = p.add_subparsers(dest="cmd", required=True)
 
     r = sub.add_parser("run", help="взять лок и выполнить команду (критическая секция)")
-    r.add_argument("--file", required=True, help="hot-file (rel к корню волта)")
+    r.add_argument("--file", required=True, help="hot-file (rel к корню вызывающего дерева)")
     r.add_argument("--timeout", default=10, help="секунды ждать лока (default 10)")
+    r.add_argument("--root", help="явный корень дерева (override; по умолчанию — CWD, если это git-дерево того же репо, иначе — корень скрипта)")
     r.add_argument("cmd", nargs=argparse.REMAINDER, help="команда записи (после --)")
     r.set_defaults(func=cmd_run)
 
@@ -157,6 +208,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     c = sub.add_parser("check", help="свободен ли файл (не блокируясь)")
     c.add_argument("--file", required=True)
+    c.add_argument("--root", help="явный корень дерева (override)")
     c.set_defaults(func=cmd_check)
 
     return p
