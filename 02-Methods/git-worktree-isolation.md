@@ -20,11 +20,13 @@ tags: [method, git, concurrency, worktree, isolation]
 1. **Один поток = одна ветка `task/<slug>`** (или `feat/<slug>`). Коммит прямо
    в `main`/`master` запрещён хук-ом `05-Templates/pre-commit-check.sh` —
    только merge или явный `ALLOW_MAIN=1`.
-2. **Стартуй не с `main`, а с task-ветки**: `git switch task/<slug>`; если её
-   нет — `git switch -c task/<slug> origin/main`.
+2. **Стартуй от свежего `origin/main`**: сначала `git fetch origin main`, затем
+   `git switch task/<slug>` только если ветка уже создана от актуального base;
+   для новой ветки явно укажи источник: `git switch -c task/<slug> origin/main`.
+   Не создавай task-ветку от случайного текущего `HEAD`.
 3. **Горячие файлы** (`TASKS.md`, `04-Memory/active-context.md`,
    `tools/ecosystem-map/registry.json`, `00-INDEX.md`) — править только через
-   жёсткий flock-lease: `tools/peers/peer_lease.py run --file F --timeout 10 -- <cmd>`.
+   жёсткий flock-lease: `python3 tools/peers/peer_lease.py run --file F --timeout 10 -- <cmd>`.
    Прямой `edit` на эти файлы гейтится в `ask` (см. [[#принуждение-edit-гейты]]).
    Не взял лок за таймаут → НЕ пишешь.
 4. **Перед слиянием в main** — `tools/verify-cache/verify.py --git` (грязное
@@ -40,11 +42,20 @@ tags: [method, git, concurrency, worktree, isolation]
 
 ## Worktree-per-session (сильнейшая форма)
 
+### Обязательный permission preflight
+
+До `git worktree add` вычисли абсолютный путь target и сверь его с эффективным
+`external_directory` allowlist текущего проекта и агента, учитывая порядок
+правил и все последующие deny (в том числе секретные паттерны). Если target не
+разрешён или соответствие неоднозначно — остановись с `BLOCKED`; worktree не
+создавай. Не обходи deny переносом/переименованием target.
+
 Полная изоляция, когда у каждого первичного потока — свой checkout:
 
 ```bash
 # создать изолированный worktree под новую ветку
-git worktree add ../<project>-tasks/<slug> -b task/<slug>
+git fetch origin main
+git worktree add -b task/<slug> ../<project>-tasks/<slug> origin/main
 # работать внутри него — сборка задач идёт в отдельной папке,
 # чужие файлы физически недоступны и затирание невозможно
 cd ../<project>-tasks/<slug>
@@ -94,7 +105,7 @@ M Code умеет это для субагентов нативно: `task { wor
 
 ## Восстановление / спасение
 
-- Грязное дерево каждого проекта застраховано rsync-snapам в
+- Грязное дерево каждого проекта застраховано резервной копией rsync в
   `/tmp/mcode/<project>-backup-<stamp>/tree/` + `git bundle` всей истории.
 
 ## Связанные

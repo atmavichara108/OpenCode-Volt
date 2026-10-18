@@ -49,5 +49,7 @@ tools/verify-cache/generated/
 tools/idea-graph/generated/
 .bench-justwoker*.log
 
+# Локальный семантический индекс L9 (runtime, не коммитить)
+.cache/
 # живые worktrees того же репо — embedded gitlinks, НЕ добавлять (не удалять)
 .meta-worktrees/
