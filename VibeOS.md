@@ -290,6 +290,7 @@ librarian анализирует и раскладывает. Снижение �
 | [[02-Methods/parallel-sessions\|parallel-sessions]] | ➖ | ➖ | ➖ | proposed |
 | [[02-Methods/peer-comms\|peer-comms]] | ➖ | ➖ | ➖ | proposed |
 | [[02-Methods/promo-provider-protocol\|promo-provider-protocol]] | ➖ | ➖ | ➖ | 🟡 |
+| [[02-Methods/ministry-calibration\|ministry-calibration]] | ➖ | ➖ | ➖ | proposed |
 
 ### Легенда
 
