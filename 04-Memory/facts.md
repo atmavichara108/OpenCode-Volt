@@ -1089,3 +1089,6 @@ timestamp: 2026-08-17
 ## 2026-10-18 (вечер)
 - **INC-18 класс (фантомные сессии):** усечённый/чужой sessionID в opencode run -s создаёт фантомную сессию (или уходит в мёртвую), а read-gate letter.sh даёт ложный DELIVERED. Правило канала: только полные sessionID из peer-registry.md; смена адреса — реестр + калибровка. Подтверждено независимо: ИЦ (read-gate), control-top (усечённые -s), ЦУ (смерть ses_ecae229f ~04:52 → все письма 04:55–21:00 в фантом).
 - **Push ветки tg-guard+image-read выполнен** (апрув владельца): origin/task/tg-guard-image-read-20261018, 4 коммита abb493f/45408a6/9cb94d4/5af34b8.
+
+## 2026-10-19
+- **Инцидент «сторож спит» закрыт полностью** (evidence: wake=ok ×3 id 152/158/159 сверены ЦУ по guard-journal.jsonl; NRestarts=1 после kill -9; OCR id 134 принят 10-18). tg-guard — постоянный демон (Restart=always, юнит активирован владельцем 10-19); симлинк ~/.local/bin/tg-guard.py → dotfiles (stow-паттерн) — обязательная зависимость активации юнита.
