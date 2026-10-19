@@ -1,7 +1,7 @@
 ---
 type: research-note
 title: SSA — юридический и бизнес-контуры. Модели монетизации, сценарии, риски масштабирования, рекомендации (структурированная база для юриста)
-status: draft
+status: accepted (приёмка ЦУ 2026-10-19, ref legal-accept-20261019)
 timestamp: 2026-10-19
 project: OpenCode-Vault
 source: прямой апрув владельца 2026-10-18 (basis: quoted, через ЦУ); мандат ЦУ: calib-research-20261018; досье tsu-legal-biz.txt (control-top, 247 записей)
