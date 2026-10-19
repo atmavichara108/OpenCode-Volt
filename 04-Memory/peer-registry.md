@@ -14,7 +14,7 @@ timestamp: 2026-10-18
 |---|---|---|---|---|
 | Инженерный центр (ИЦ) | ses_ece7b76c8ffeOkYZqZe38QbTVx | sysop | ~/dotfiles | инженерный центр, dotfiles |
 | Мастерская Багфикс | ses_eda56e1d3ffeyC6AIk1mwgxw1L | sysop | ~/dotfiles | багфикс-цех |
-| Абилити лаб | ses_ecaf0b603ffezygMvp7QG3Iq8h | sysop | ~/Projects/ability-lab | лаборатория способностей (переезд 2026-10-19, sessionID не менялся) |
+| Абилити лаб | ses_ecaf0b603ffezygMvp7QG3Iq8h | **Dr.Who** | ~/Projects/ability-lab | лаборатория способностей (переезд 2026-10-19, sessionID не менялся; primary Dr.Who — Р-007, слово владельца 10-19; субагент lab-instrument) |
 | Институт Передовых Технологий (ИПТ) | ses_ecb58b307ffeqrigRxoUEWoXZs | librarian | ~/Projects/OpenCode-Vault | исследования |
 | Храм Практической Философии (ХПФ) | ses_ec84b638fffenmF4JQj5a8a2a9 | librarian | ~/Projects/OpenCode-Vault | структурные/философские концепты |
 | Центральный Узел (ЦУ, я) | ses_eceb23a71ffeJO9QnFou8VngZC | librarian | ~/Projects/OpenCode-Vault | координация |
