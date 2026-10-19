@@ -11,6 +11,10 @@
   2. Битые [[wikilink]] — цель ссылки не разрешается в существующий файл
      (по той же логике, что pre-commit hook: суффиксы .md/.json/.jsonc/.js/.sh,
      поиск в контент-каталогах).
+  3. Git merge-conflict маркеры.
+  4. Не-UTF-8 файлы: контент-гейты не падают на битой кодировке (чтение с
+     errors="replace") — не-UTF-8 .md и любые не-UTF-8 файлы вне карантина
+     репортятся как находка (fail), карантинные (`_corrupt/`) — как warning.
 
 Кэш:
   - tree-hash = sha256 по отсортированным (path -> sha256_bytes) всех
@@ -64,6 +68,10 @@ LINK_SUFFIXES = [".md", ".json", ".jsonc", ".js", ".sh"]
 # Ветки, в которые запрещён прямой (не-merge) коммит — как в pre-commit hook.
 PROTECTED_BRANCHES = ("main", "master")
 
+# Каталоги-карантины: битые файлы там хранятся намеренно (улики), поэтому
+# не-UTF-8 в них — warning, а не fail. .md не маскируется даже тут.
+QUARANTINE_PARTS = ("_corrupt",)
+
 
 def sha256_file(path: Path) -> str:
     h = hashlib.sha256()
@@ -75,6 +83,21 @@ def sha256_file(path: Path) -> str:
 
 def sha256_text(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def read_text_tolerant(path: Path) -> tuple[str, bool]:
+    """Прочитать файл как UTF-8. Возвращает (text, clean_utf8).
+
+    При не-UTF-8 байтах декодирует с errors="replace": гейты продолжают
+    работать и видят читаемую часть, а факт битой кодировки отдельно
+    репортится check_encoding(). Не бросает UnicodeDecodeError и не
+    маскирует проблему.
+    """
+    raw = path.read_bytes()
+    try:
+        return raw.decode("utf-8"), True
+    except UnicodeDecodeError:
+        return raw.decode("utf-8", errors="replace"), False
 
 
 def collect_files() -> list[Path]:
@@ -182,7 +205,7 @@ def check_wikilinks() -> list[str]:
         if f.suffix != ".md":
             continue
         try:
-            text = f.read_text(encoding="utf-8")
+            text, _ = read_text_tolerant(f)
         except OSError:
             continue
         text = strip_code_spans(text)
@@ -203,7 +226,7 @@ def check_conflict_markers() -> list[str]:
     problems: list[str] = []
     for f in collect_files():
         try:
-            text = f.read_text(encoding="utf-8")
+            text, _ = read_text_tolerant(f)
         except OSError:
             continue
         for i, line in enumerate(text.splitlines(), start=1):
@@ -213,15 +236,44 @@ def check_conflict_markers() -> list[str]:
     return sorted(problems)
 
 
+def check_encoding() -> dict[str, list[str]]:
+    """Не-UTF-8 файлы контент-слоёв.
+
+    fail — .md (реальный decode-мусор в контенте) и любой файл вне карантина.
+    warn — не-.md внутри карантина (`_corrupt/`): улики хранятся намеренно.
+    """
+    fail: list[str] = []
+    warn: list[str] = []
+    for f in collect_files():
+        try:
+            raw = f.read_bytes()
+        except OSError:
+            continue
+        try:
+            raw.decode("utf-8")
+        except UnicodeDecodeError as e:
+            rel = f.relative_to(VAULT_ROOT)
+            msg = f"не-UTF-8 (битый декод, байт {e.start}): {rel}"
+            quarantined = any(part in QUARANTINE_PARTS for part in rel.parts)
+            if f.suffix == ".md" or not quarantined:
+                fail.append(msg)
+            else:
+                warn.append(msg)
+    return {"fail": sorted(fail), "warn": sorted(warn)}
+
+
 def run_checks() -> dict:
+    encoding = check_encoding()
     return {
         "empty_files": check_empty_files(),
         "broken_wikilinks": check_wikilinks(),
         "conflict_markers": check_conflict_markers(),
+        "non_utf8": encoding["fail"],
+        "encoding_warnings": encoding["warn"],
     }
 
 
-CACHED_KEYS = ("empty_files", "broken_wikilinks", "conflict_markers")
+CACHED_KEYS = ("empty_files", "broken_wikilinks", "conflict_markers", "non_utf8", "encoding_warnings")
 
 
 def _git_live_state() -> dict:
@@ -285,6 +337,8 @@ def build_verdict(force: bool = False) -> dict:
         "empty_files": problems["empty_files"],
         "broken_wikilinks": problems["broken_wikilinks"],
         "conflict_markers": problems["conflict_markers"],
+        "non_utf8": problems["non_utf8"],
+        "encoding_warnings": problems["encoding_warnings"],
     }
 
     # сохранить кэш
@@ -309,7 +363,9 @@ def main() -> int:
     empty = verdict["empty_files"]
     broken = verdict["broken_wikilinks"]
     conflicts = verdict["conflict_markers"]
-    ok = not empty and not broken and not conflicts
+    non_utf8 = verdict.get("non_utf8", [])
+    encoding_warnings = verdict.get("encoding_warnings", [])
+    ok = not empty and not broken and not conflicts and not non_utf8
 
     git_problems: list[str] = []
     if args.git:
@@ -339,8 +395,12 @@ def main() -> int:
                 print(f"❌ {p}")
             for p in conflicts:
                 print(f"❌ {p}")
+            for p in non_utf8:
+                print(f"❌ {p}")
             for p in git_problems:
                 print(f"❌ {p}")
+        for p in encoding_warnings:
+            print(f"⚠️  {p}")
 
     return 0 if ok else 1
 
