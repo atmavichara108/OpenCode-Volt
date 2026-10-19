@@ -1,0 +1,21 @@
+{
+  "id": "2026-10-11-144504-shell",
+  "created": "2026-10-11T11:45:04.001Z",
+  "updated": "2026-10-11T11:45:04.001Z",
+  "status": "pending",
+  "risk": "high",
+  "type": "shell",
+  "pattern": "git -C /tmp/opencode/office rev-parse --short main git -C /tmp/opencode/office rev-parse --short task/office-blockers git -C /tmp/opencode/office merge-base main task/office-blockers",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_ed5392b9affe01X2jkcjSQtJ3f",
+  "messageID": "msg_12ac79dd5001becge9vgI0Bfwd",
+  "callID": "22dddf0b-bb24-4694-90b4-bf5b56c33604",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": 

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-10T09:01:03Z",
+ "generated_at": "2026-10-16T17:53:33Z",
  "providers": {
   "amd-radeon": {
    "models": {
@@ -125,46 +125,6 @@
     }
    }
   },
-  "linaliapi": {
-   "models": {
-    "anthropic/claude-opus-5": {
-     "in": false,
-     "cost_in": null,
-     "cost_out": null,
-     "free": false
-    },
-    "deepseek/deepseek-v4-pro": {
-     "in": false,
-     "cost_in": null,
-     "cost_out": null,
-     "free": false
-    },
-    "google/gemini-3.8-flash": {
-     "in": false,
-     "cost_in": null,
-     "cost_out": null,
-     "free": false
-    },
-    "openai/gpt-5.6-luna": {
-     "in": false,
-     "cost_in": null,
-     "cost_out": null,
-     "free": false
-    },
-    "openai/gpt-5.6-sol": {
-     "in": false,
-     "cost_in": null,
-     "cost_out": null,
-     "free": false
-    },
-    "z-ai/glm-5.3": {
-     "in": false,
-     "cost_in": null,
-     "cost_out": null,
-     "free": false
-    }
-   }
-  },
   "local-deepseek": {
    "models": {
     "deepseek-chat": {
@@ -199,7 +159,19 @@
   },
   "opencode": {
    "models": {
+    "beam-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
     "big-pickle": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "cat-jam-free": {
      "in": true,
      "cost_in": 0,
      "cost_out": 0,
@@ -337,6 +309,12 @@
      "cost_out": 1.2,
      "free": false
     },
+    "deepseek-v4.1-flash-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
     "exo-free": {
      "in": true,
      "cost_in": 0,
@@ -397,6 +375,12 @@
      "cost_out": 7.5,
      "free": false
     },
+    "gemini-4-argon": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 10,
+     "free": false
+    },
     "glm-4.6": {
      "in": true,
      "cost_in": 0.6,
@@ -450,6 +434,12 @@
      "cost_in": 0.15,
      "cost_out": 0.5,
      "free": false
+    },
+    "glm-5.3-flash-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
     },
     "gpt-5": {
      "in": true,
@@ -715,6 +705,12 @@
      "cost_out": 0,
      "free": true
     },
+    "ll-alpha-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
     "longcat-2.0-free": {
      "in": true,
      "cost_in": 0,
@@ -847,6 +843,12 @@
      "cost_out": 0,
      "free": true
     },
+    "nemotron-3.5-super-vl-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
     "north-mini-code-free": {
      "in": true,
      "cost_in": 0,
@@ -923,22 +925,22 @@
   },
   "opencode-go": {
    "models": {
+    "beam-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "cat-jam-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
     "claude-haiku-5-5": {
      "in": true,
      "cost_in": 0.1,
      "cost_out": 0.5,
-     "free": false
-    },
-    "deepseek-v4-flash": {
-     "in": true,
-     "cost_in": 0.15,
-     "cost_out": 0.6,
-     "free": false
-    },
-    "deepseek-v4-flash-vision-exp": {
-     "in": true,
-     "cost_in": 0.15,
-     "cost_out": 0.6,
      "free": false
     },
     "deepseek-v4-pro": {
@@ -951,6 +953,12 @@
      "in": true,
      "cost_in": 0.15,
      "cost_out": 0.6,
+     "free": false
+    },
+    "gemini-4-argon-contributor": {
+     "in": true,
+     "cost_in": 4,
+     "cost_out": 20,
      "free": false
     },
     "glm-5.2": {
@@ -983,18 +991,6 @@
      "cost_out": 0.5,
      "free": false
     },
-    "grok-4.5": {
-     "in": true,
-     "cost_in": 2,
-     "cost_out": 6,
-     "free": false
-    },
-    "grok-4.6": {
-     "in": true,
-     "cost_in": 2,
-     "cost_out": 6,
-     "free": false
-    },
     "grok-4.7": {
      "in": true,
      "cost_in": 2,
@@ -1013,10 +1009,16 @@
      "cost_out": 2.501,
      "free": false
     },
-    "kimi-k2.6": {
-     "in": true,
-     "cost_in": 0.95,
-     "cost_out": 4,
+    "jev-1.13": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "jev-1.13-free": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
      "free": false
     },
     "kimi-k2.7-code": {
@@ -1091,18 +1093,6 @@
      "cost_out": 0.2,
      "free": false
     },
-    "qwen3.6-plus": {
-     "in": true,
-     "cost_in": 0.5,
-     "cost_out": 3,
-     "free": false
-    },
-    "qwen3.7-max": {
-     "in": true,
-     "cost_in": 2.5,
-     "cost_out": 7.5,
-     "free": false
-    },
     "qwen3.7-plus": {
      "in": true,
      "cost_in": 0.4,
@@ -1127,11 +1117,11 @@
      "cost_out": 0.6,
      "free": false
     },
-    "space-bunny-free": {
+    "step-5-preview": {
      "in": true,
-     "cost_in": 0,
-     "cost_out": 0,
-     "free": true
+     "cost_in": 1,
+     "cost_out": 2.7,
+     "free": false
     },
     "step-5-preview-free": {
      "in": true,
@@ -1163,26 +1153,14 @@
     },
     "alibaba/qwen-3-32b": {
      "in": true,
-     "cost_in": 0.16,
-     "cost_out": 0.64,
-     "free": false
-    },
-    "alibaba/qwen-3.6-max-preview": {
-     "in": true,
-     "cost_in": 1.3,
-     "cost_out": 7.8,
-     "free": false
-    },
-    "alibaba/qwen3-235b-a22b-thinking": {
-     "in": true,
-     "cost_in": 0.4,
-     "cost_out": 4,
+     "cost_in": 0.15,
+     "cost_out": 0.6,
      "free": false
     },
     "alibaba/qwen3-coder": {
      "in": true,
-     "cost_in": 1.5,
-     "cost_out": 7.5,
+     "cost_in": 0.22,
+     "cost_out": 1.8,
      "free": false
     },
     "alibaba/qwen3-coder-30b-a3b": {
@@ -1195,12 +1173,6 @@
      "in": true,
      "cost_in": 0.5,
      "cost_out": 1.2,
-     "free": false
-    },
-    "alibaba/qwen3-coder-plus": {
-     "in": true,
-     "cost_in": 1,
-     "cost_out": 5,
      "free": false
     },
     "alibaba/qwen3-embedding-0.6b": {
@@ -1221,18 +1193,6 @@
      "cost_out": null,
      "free": false
     },
-    "alibaba/qwen3-max": {
-     "in": true,
-     "cost_in": 1.2,
-     "cost_out": 6,
-     "free": false
-    },
-    "alibaba/qwen3-max-preview": {
-     "in": true,
-     "cost_in": 1.2,
-     "cost_out": 6,
-     "free": false
-    },
     "alibaba/qwen3-max-thinking": {
      "in": true,
      "cost_in": 1.2,
@@ -1251,22 +1211,10 @@
      "cost_out": 1.2,
      "free": false
     },
-    "alibaba/qwen3-vl-235b-a22b-instruct": {
-     "in": true,
-     "cost_in": 0.4,
-     "cost_out": 1.6,
-     "free": false
-    },
     "alibaba/qwen3-vl-instruct": {
      "in": true,
-     "cost_in": 0.4,
-     "cost_out": 1.6,
-     "free": false
-    },
-    "alibaba/qwen3-vl-thinking": {
-     "in": true,
-     "cost_in": 0.4,
-     "cost_out": 4,
+     "cost_in": 0.2,
+     "cost_out": 0.88,
      "free": false
     },
     "alibaba/qwen3.5-flash": {
@@ -1443,12 +1391,6 @@
      "cost_out": null,
      "free": false
     },
-    "anthropic/claude-3-haiku": {
-     "in": true,
-     "cost_in": 0.25,
-     "cost_out": 1.25,
-     "free": false
-    },
     "anthropic/claude-fable-5": {
      "in": true,
      "cost_in": 10,
@@ -1471,12 +1413,6 @@
      "in": true,
      "cost_in": 0.1,
      "cost_out": 0.5,
-     "free": false
-    },
-    "anthropic/claude-opus-4": {
-     "in": true,
-     "cost_in": 15,
-     "cost_out": 75,
      "free": false
     },
     "anthropic/claude-opus-4.5": {
@@ -1531,12 +1467,6 @@
      "in": true,
      "cost_in": 8,
      "cost_out": 40,
-     "free": false
-    },
-    "anthropic/claude-sonnet-4": {
-     "in": true,
-     "cost_in": 3,
-     "cost_out": 15,
      "free": false
     },
     "anthropic/claude-sonnet-4.5": {
@@ -1833,10 +1763,22 @@
      "cost_out": 1.2,
      "free": false
     },
+    "deepseek/deepseek-v4.1-flash-fast": {
+     "in": true,
+     "cost_in": 0.6,
+     "cost_out": 2.4,
+     "free": false
+    },
     "fireworks/ember-1": {
      "in": true,
      "cost_in": 3,
      "cost_out": 15,
+     "free": false
+    },
+    "fish-audio/drama-3": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
      "free": false
     },
     "fish-audio/s1": {
@@ -1995,6 +1937,12 @@
      "cost_out": 4.5,
      "free": false
     },
+    "google/gemini-4-argon": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 10,
+     "free": false
+    },
     "google/gemini-embedding-001": {
      "in": true,
      "cost_in": null,
@@ -2123,15 +2071,9 @@
     },
     "inclusionai/ling-3.1-flash": {
      "in": true,
-     "cost_in": 0,
-     "cost_out": 0,
-     "free": true
-    },
-    "inclusionai/ling-3.1-flash-free": {
-     "in": true,
-     "cost_in": 0,
-     "cost_out": 0,
-     "free": true
+     "cost_in": 0.3,
+     "cost_out": 0.9,
+     "free": false
     },
     "inference-net/schematron-v2-small": {
      "in": true,
@@ -2197,6 +2139,12 @@
      "in": true,
      "cost_in": null,
      "cost_out": null,
+     "free": false
+    },
+    "liquid/lfm2.5-24b-a2b": {
+     "in": true,
+     "cost_in": 0.05,
+     "cost_out": 0.7,
      "free": false
     },
     "meituan/longcat-2.5-preview": {
@@ -2275,6 +2223,30 @@
      "in": true,
      "cost_in": 0.1,
      "cost_out": 0.2,
+     "free": false
+    },
+    "meta/muse-spark-open": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 4.25,
+     "free": false
+    },
+    "meta/muse-wonder-1.0": {
+     "in": true,
+     "cost_in": 4,
+     "cost_out": 20,
+     "free": false
+    },
+    "microsoft/mai-image-2.6": {
+     "in": true,
+     "cost_in": 5,
+     "cost_out": 38,
+     "free": false
+    },
+    "microsoft/mai-image-2.6-flash": {
+     "in": true,
+     "cost_in": 1.75,
+     "cost_out": 19,
      "free": false
     },
     "microsoft/mai-transcribe-2": {
@@ -2521,6 +2493,18 @@
      "in": true,
      "cost_in": 0.05,
      "cost_out": 0.2,
+     "free": false
+    },
+    "nvidia/nemotron-3.5-lightning-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/nemotron-3.5-super-vl": {
+     "in": true,
+     "cost_in": 0.2,
+     "cost_out": 0.5,
      "free": false
     },
     "nvidia/nemotron-nano-12b-v2-vl": {
@@ -3075,12 +3059,6 @@
      "cost_out": null,
      "free": false
     },
-    "quiverai/arrow-1.1": {
-     "in": true,
-     "cost_in": null,
-     "cost_out": null,
-     "free": false
-    },
     "quiverai/arrow-2": {
      "in": true,
      "cost_in": 4,
@@ -3146,6 +3124,18 @@
      "cost_in": null,
      "cost_out": null,
      "free": false
+    },
+    "reflection/beam": {
+     "in": true,
+     "cost_in": 1.3,
+     "cost_out": 4.3,
+     "free": false
+    },
+    "reflection/beam-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
     },
     "sakana/fugu-max": {
      "in": true,
@@ -3303,6 +3293,12 @@
      "cost_out": null,
      "free": false
     },
+    "stealth/cat-jam": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
     "stealth/glyph-cluster": {
      "in": true,
      "cost_in": 0,
@@ -3317,8 +3313,8 @@
     },
     "stepfun/step-5-preview": {
      "in": true,
-     "cost_in": 1,
-     "cost_out": 2.7,
+     "cost_in": 0.95,
+     "cost_out": 2.565,
      "free": false
     },
     "tencent/hy-mt2-lite": {
@@ -3473,8 +3469,8 @@
     },
     "xiaomi/mimo-v2.5-pro": {
      "in": true,
-     "cost_in": 0.435,
-     "cost_out": 0.87,
+     "cost_in": 0.3045,
+     "cost_out": 0.609,
      "free": false
     },
     "xiaomi/mimo-v2.6-flash": {

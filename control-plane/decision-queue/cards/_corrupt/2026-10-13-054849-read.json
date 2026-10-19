@@ -1,0 +1,23 @@
+{
+  "id": "2026-10-13-054849-read",
+  "created": "2026-10-13T02:48:49.769Z",
+  "updated": "2026-10-13T02:48:49.769Z",
+  "status": "pending",
+  "risk": "low",
+  "type": "read",
+  "pattern": "opencode-global/.config/opencode/agent/system-audit.md",
+  "title": "Permission request",
+  "reason": "Permission event captured",
+  "sessionID": "ses_eccd66ee2ffeDMYkOwIvsExAj3",
+  "messageID": "msg_133299a750019z97uWR0PEd8pQ",
+  "callID": "call_01a13329a17772d788f80c2591b2aee1",
+  "metadata": {},
+  "recommendation": {
+    "class": "nomenclatural",
+    "rationale": "нет совпадений с substantive-паттернами",
+    "proposed_glob": null
+  },
+  "effect": "allow",
+  "source_directory": null,
+  "source_agent": "meta",
+  "model": nul
