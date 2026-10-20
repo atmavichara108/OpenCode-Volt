@@ -1,7 +1,7 @@
 ---
 type: research
 title: Институт — почтовый стек для @re-search.wiki: исследование и выбор под самохост на Fornex
-status: awaiting-tsu-review; v2: переработка под локальный самохост (ref: mail-local-20261020, слово владельца 20-го); v2.1: хендофф хаба (GenSpark, 12:40 MSK live-DNS) — контракт §5.3, композитный вердикт §5.10
+status: accepted (ЦУ 2026-10-20); v2: переработка под локальный самохост (ref: mail-local-20261020, слово владельца 20-го); v2.1: хендофф хаба (GenSpark, 12:40 MSK live-DNS) — контракт §5.3, композитный вердикт §5.10
 timestamp: 2026-10-20
 project: OpenCode-Vault / dv-hub / re-search.wiki
 source: "приоритетный мандат ЦУ ref mail-stack-research-20261020 (слово владельца 2026-10-19/20: «делай!»); бриф /tmp/opencode/brief-mail-stack.md; DNS-факты сверены ЦУ по живому DNS 2026-10-20"
