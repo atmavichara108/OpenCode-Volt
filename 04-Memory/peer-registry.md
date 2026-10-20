@@ -19,6 +19,7 @@ timestamp: 2026-10-18
 | Храм Практической Философии (ХПФ) | ses_ec84b638fffenmF4JQj5a8a2a9 | librarian | ~/Projects/OpenCode-Vault | структурные/философские концепты |
 | Центральный Узел (ЦУ, я) | ses_eceb23a71ffeJO9QnFou8VngZC | librarian | ~/Projects/OpenCode-Vault | координация |
 | Control-top (координатор SSA) | ses_ed5fcec4effeZKwSoEmMe6Swlk | top | ~/Projects/SSA/control | SSA-поток, владелец-панель |
+| ДВ-Хаб (временный шлюз) | ses_ea5bee799ffes5WDriyP61xyB5 | — | ~/Projects/dv-hub | волонтёрский проект, путь к статусу разработчика; кандидат — обрамление ведомства позже (слово владельца 2026-10-20: познакомить, не калибровать) |
 
 ## Правила
 1. **Писать только по этому реестру.** Все сессии живые (сверено по session_v2, 10-18 22:00).
