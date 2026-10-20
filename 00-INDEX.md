@@ -92,6 +92,12 @@ timestamp: 2026-09-01
 ## Runbooks (07-Runbooks/)
 [[07-Runbooks/README]] · [[07-Runbooks/vibecoding-operator-handbook]] · [[07-Runbooks/ecosystem-kanban-runbook]] · [[07-Runbooks/coordination-bridge-operator-guide]] · [[07-Runbooks/vibecoding-changelog]]
 
+## Doctrine (08-Doctrine/)
+Образ корабля и триггеры доктрины: [[08-Doctrine/00-ship-image]] (целиком, один раз), [[08-Doctrine/doctrine-index]] (по интенту).
+
+## Ведомства
+Структура и адреса: [[01-Policies/organ-structure-2026-10-18|organ-structure]] · [[04-Memory/peer-registry]] (канон адресации) · [[02-Methods/ministry-calibration]] (модель калибровки, 6 шагов).
+
 > **Methods** = abstract reusable techniques. **Audits** = dated findings.
 > **Runbooks** = live usage and operator workflows.
 
