@@ -32,12 +32,13 @@ migrations/NNNN__.sql
 
 Таблицы: cells, users, materials, topics, discussion_rooms, messages, publications, sessions.
 
-## Агенты (`.mcode/agents/` + opencode.json)
+## Агенты (`.opencode/agents/` — наш слой, приоритет; Р-020)
 
-> **Миграция 2026-10 (B21):** агенты/команды/плагины переехали из `.opencode/`
-> в `.mcode/`. Каталог `.mcode/` **не отслеживается git** — объекты живут
-> только локально на диске. Evidence: [[04-Memory/facts]],
-> [[06-Audits/2026-10-06-pae-evolution-roadmap-draft]] §B21.
+> **Ревизия 2026-10-21 (Р-020, слово владельца):** наш агентский слой —
+> `.opencode/` (восстановлен из git откатом ДВ-Хаб 10-21, версионируется).
+> `.mcode/` — зона M Code SDK (самостоятельный движок): НЕ трогаем, НЕ
+> версонируем (T-159 в силе). B21 в части «миграции» снят — две зоны двух SDK.
+> Evidence: [[01-Policies/decisions-registry]] Р-020, [[04-Memory/facts]].
 
 | Агент | Mode | Модель | Назначение | Зона |
 |-------|------|--------|-----------|------|
@@ -48,7 +49,7 @@ migrations/NNNN__.sql
 | infra | primary | opencode-go/qwen3.7-max | DevOps Phase 0 | docs/infra-runbook, scripts/deploy, server configs |
 
 Статус расхождения карточка↔диск: **закрыто 2026-10-07** — на диске 5 агентов
-в `.mcode/agents/` (build/infra/plan/reviewer/researcher), совпадает с таблицей.
+в `.opencode/agents/` (build/infra/plan/reviewer/researcher), совпадает с таблицей.
 `.opencode/` пуст.
 
 > Модели разведены по ролям — реализация [[model-routing]] (static routing).
