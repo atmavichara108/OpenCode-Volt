@@ -1,4 +1,139 @@
 {
-	"nodes": [],
-	"edges": []
+	"nodes": [
+		{
+			"id": "deck-root",
+			"type": "file",
+			"file": "10-Deck/decisions-deck.md",
+			"label": "КАПИТАНСКИЙ МОСТИК · deck-v1",
+			"x": -260,
+			"y": -320,
+			"width": 520,
+			"height": 120,
+			"color": "4"
+		},
+		{
+			"id": "d001",
+			"type": "text",
+			"text": "## ДЕЦИЗИЯ-001\n**цифровой образ rudrakshas** (Р-018)\n\nА1 «справка» исполнена, принята, гейт ХПФ «соответствует».\n\n**Ждёт слово:** «канонизирую»\n\n[[#ДЕЦИЗИЯ-001]]",
+			"x": -760,
+			"y": 0,
+			"width": 440,
+			"height": 220,
+			"color": "6"
+		},
+		{
+			"id": "d002",
+			"type": "text",
+			"text": "## ДЕЦИЗИЯ-002\n**запрет немого захвата проектных зон движками**\n\nКанон-кандидат: .mcode молча мигрирует .opencode, ≥5 проектов (T-159/B21).\n\n**Ждёт слово:** канонизация + судьба слоя .opencode в dv-hub\n\n[[#ДЕЦИЗИЯ-002]]",
+			"x": -220,
+			"y": 0,
+			"width": 440,
+			"height": 220,
+			"color": "6"
+		},
+		{
+			"id": "d003",
+			"type": "text",
+			"text": "## ДЕЦИЗИЯ-003\n**mail-hub: 3 шага владельца**\n\nКаркас ИЦ в main (450ff3c). Ждут ручные шаги → потом смоук.\n\n[[#ДЕЦИЗИЯ-003]]",
+			"x": 320,
+			"y": 0,
+			"width": 440,
+			"height": 220,
+			"color": "5"
+		},
+		{
+			"id": "mh-dns",
+			"type": "text",
+			"text": "Шаг 1 · **DNS в Namecheap**\nFE: домен+MX/TXT+alias maks@\nResend: DKIM/SPF (только Add New Record)",
+			"x": 180,
+			"y": 320,
+			"width": 320,
+			"height": 140
+		},
+		{
+			"id": "mh-secrets",
+			"type": "text",
+			"text": "Шаг 2 · **Секреты**\n~/.secrets/mail-hub/ (вне git, 600)",
+			"x": 540,
+			"y": 320,
+			"width": 320,
+			"height": 140
+		},
+		{
+			"id": "mh-smoke",
+			"type": "text",
+			"text": "Смоук приёма/отправки\n(Gmail / Яндекс / Mail.ru)",
+			"x": 360,
+			"y": 520,
+			"width": 320,
+			"height": 110,
+			"color": "2"
+		},
+		{
+			"id": "mh-nvidia",
+			"type": "text",
+			"text": "📨 **Письмо в NVIDIA**\nстатус разработчика, квоты\n(за ним — dv-hub-линия)",
+			"x": 360,
+			"y": 690,
+			"width": 320,
+			"height": 120,
+			"color": "4"
+		}
+	],
+	"edges": [
+		{
+			"id": "e-root-001",
+			"fromNode": "deck-root",
+			"fromSide": "bottom",
+			"toNode": "d001",
+			"toSide": "top"
+		},
+		{
+			"id": "e-root-002",
+			"fromNode": "deck-root",
+			"fromSide": "bottom",
+			"toNode": "d002",
+			"toSide": "top"
+		},
+		{
+			"id": "e-root-003",
+			"fromNode": "deck-root",
+			"fromSide": "bottom",
+			"toNode": "d003",
+			"toSide": "top",
+			"label": "ждёт действие"
+		},
+		{
+			"id": "e-dns-dec",
+			"fromNode": "d003",
+			"fromSide": "bottom",
+			"toNode": "mh-dns",
+			"toSide": "top",
+			"label": "разбивается на"
+		},
+		{
+			"id": "e-dns-smoke",
+			"fromNode": "mh-dns",
+			"fromSide": "bottom",
+			"toNode": "mh-smoke",
+			"toSide": "top",
+			"label": "зависит"
+		},
+		{
+			"id": "e-sec-smoke",
+			"fromNode": "mh-secrets",
+			"fromSide": "bottom",
+			"toNode": "mh-smoke",
+			"toSide": "top",
+			"label": "зависит"
+		},
+		{
+			"id": "e-smoke-nvidia",
+			"fromNode": "mh-smoke",
+			"fromSide": "bottom",
+			"toNode": "mh-nvidia",
+			"toSide": "top",
+			"label": "после PASS"
+		}
+	]
 }
