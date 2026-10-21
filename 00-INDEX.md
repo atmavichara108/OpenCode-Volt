@@ -95,6 +95,9 @@ timestamp: 2026-09-01
 ## Doctrine (08-Doctrine/)
 Образ корабля и триггеры доктрины: [[08-Doctrine/00-ship-image]] (целиком, один раз), [[08-Doctrine/doctrine-index]] (по интенту).
 
+## Deck (10-Deck/) — капитанский мостик
+Решения, ждущие слова владельца, — интерактивно в Obsidian: [[10-Deck/00-README]] (что это), [[10-Deck/decisions-deck]] (карточки), [[10-Deck/deck.canvas]] (ризома). Агент — Служитель Обсидиан (`obsidian-servant`); ssot:false — проекция реестров.
+
 ## Ведомства
 Структура и адреса: [[01-Policies/organ-structure-2026-10-18|organ-structure]] · [[04-Memory/peer-registry]] (канон адресации) · [[02-Methods/ministry-calibration]] (модель калибровки, 6 шагов).
 
