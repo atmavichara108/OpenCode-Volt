@@ -149,6 +149,26 @@
       "width": 420,
       "height": 120,
       "color": "2"
+    },
+    {
+      "id": "d398d2c4",
+      "type": "file",
+      "file": "10-Deck/map-SKILLS-rizoma.canvas",
+      "x": 100,
+      "y": 600,
+      "width": 420,
+      "height": 300,
+      "color": "5"
+    },
+    {
+      "id": "d38ac40e",
+      "type": "file",
+      "file": "10-Deck/map-ROOMS-otseki.canvas",
+      "x": 100,
+      "y": 940,
+      "width": 420,
+      "height": 300,
+      "color": "2"
     }
   ],
   "edges": [
@@ -229,6 +249,18 @@
       "fromNode": "l0",
       "toNode": "sb81280",
       "label": "грань"
+    },
+    {
+      "id": "ed398d2c4",
+      "fromNode": "l0",
+      "toNode": "d398d2c4",
+      "label": "ризома навыков"
+    },
+    {
+      "id": "ed38ac40e",
+      "fromNode": "l0",
+      "toNode": "d38ac40e",
+      "label": "отсеки корабля"
     }
   ]
 }

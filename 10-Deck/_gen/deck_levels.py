@@ -57,8 +57,8 @@ MIN = {
     "tsu":     ("ЦУ — Центральный Узел", "*** · координация / реестры", "peer-registry.md:20"),
     "ct":      ("Control-top", "top · SSA/control · владелец-панель", "peer-registry.md:21"),
     "dvhub":   ("ДВ-Хаб", "временный шлюз · путь к dev-статусу", "peer-registry.md:22"),
-    "servant": ("Служитель Обсидиан", "obsidian-servant · 10-Deck · canvas-карты · Пип-Бой (Deck = прототип)",
-                "peer-registry.md:23"),
+    "servant": ("Служитель Обсидиан — UI|UX ecosys (Р-021)", "obsidian-servant · 10-Deck · canvas-карты · Пип-Бой-тайлы",
+                "peer-registry.md:23 · 01-Policies/decisions-registry.md:39 (Р-021)"),
 }
 
 FACETS = {  # (метка, вид, источник файл:строка)
@@ -102,6 +102,7 @@ FACETS = {  # (метка, вид, источник файл:строка)
         ("путь к NVIDIA-статусу — ждёт письмо", "линия", "04-Memory/session-log/2026-10-20.md:140"),
     ],
     "servant": [
+        ("Р-021: ведомство UI|UX ecosys — primary-агент", "канонизация", "01-Policies/decisions-registry.md:39 (ЦУ, 2026-10-22)"),
         ("мостик: карточки решений", "продукт", "10-Deck/decisions-deck.md"),
         ("ризома решений deck.canvas", "продукт", "10-Deck/deck.canvas"),
         ("карты уровней L0–L3 (Deck v2)", "продукт", f"10-Deck/map-L0-ship.canvas · слово владельца {DAY}"),
@@ -201,6 +202,58 @@ def l1_canvas(proj, card, minis):
         nodes.append(tnode(f"pn{sid(proj)}", "грань без ведомств-обитателей", -320, -160, 400, 90, "2"))
     write_canvas(f"map-L1-{proj}.canvas", nodes, edges)
 
+def skills_rizoma():
+    """Deck v3: ризома навыков — уровни таксономии + сверхнавыки + команды."""
+    nodes = [tnode("sk-root", f"# 🧬 РИЗОМА НАВЫКОВ (Deck v3)\nТаксономия: навык → сверхнавык → метанавык → ультранавык.\nист: 01-Policies/skill-taxonomy.md · слово владельца {DAY} (Deck v3). ssot:false",
+                   -340, -560, 760, 140, "4")]
+    edges = []
+    # уровни таксономии (карточка-источник)
+    nodes.append(fnode("sk-tax", "01-Policies/skill-taxonomy.md", -340, -340, 420, 300, "6"))
+    edges.append(edge("esk-tax", "sk-root", "sk-tax", label="таксономия (канон)"))
+    # сверхнавыки ЦУ
+    nodes.append(tnode("sk-tsu", "**Сверхнавыки ЦУ (tsu-*) ×5**\n*сверхнавык*\ntsu-status · tsu-comms · tsu-synthesis · tsu-coordination · tsu-ministry\nист: ~/dotfiles/opencode-global/.config/opencode/skill/",
+                       120, -340, 460, 220, "5"))
+    edges.append(edge("esk-tsu", "sk-root", "sk-tsu", label="сверхнавыки"))
+    # vault-навыки
+    nodes.append(tnode("sk-vault", "**Навыки волта (.opencode/skills)**\n*навык*\ncapability-routing · capture · decision-queue · spec-write-routing\nист: .opencode/skills/",
+                       620, -340, 460, 220, "5"))
+    edges.append(edge("esk-vault", "sk-root", "sk-vault", label="навыки"))
+    # панели команд
+    nodes.append(tnode("sk-cmd-v", "**Команды волта (/…)**\n*панель*\naccept · ask · audit · calibrate · canonize · capture · commit · decisions · dispatch · handoff · inbox · report · route · verify · distill-pipeline\nист: .opencode/command/",
+                       -340, 40, 460, 220, "3"))
+    nodes.append(tnode("sk-cmd-d", "**Команды dotfiles (/…)**\n*панель*\nbridge · sysaudit · script · qtile · util · notify · macro · plugin · stow · loop · prompt · flush · ship · flow-defects\nист: ~/dotfiles/AGENTS.md «Пайплайны»",
+                       160, 40, 460, 220, "3"))
+    edges.append(edge("esk-cmd1", "sk-root", "sk-cmd-v", label="панели"))
+    edges.append(edge("esk-cmd2", "sk-root", "sk-cmd-d", label="панели"))
+    # предохранители/процедуры
+    nodes.append(tnode("sk-hygiene", "**tree-hygiene (гигиена дерева)**\n*навык-процедура*\nист: ~/dotfiles/.opencode/skills/tree-hygiene · dotfiles AGENTS.md",
+                       660, 40, 420, 160, "5"))
+    edges.append(edge("esk-hyg", "sk-root", "sk-hygiene"))
+    write_canvas("map-SKILLS-rizoma.canvas", nodes, edges)
+
+def rooms():
+    """Deck v3: отсеки корабля — ведомства + каналы + журналы."""
+    nodes = [tnode("rm-root", f"# 🚪 ОТСЕКИ КОРАБЛЯ (Deck v3)\nВедомства = отсеки; каналы связывают, журналы помнят.\nист: 04-Memory/peer-registry.md:15-23 · слово владельца {DAY}. ssot:false",
+                   -340, -600, 760, 130, "4")]
+    edges = []
+    x, y = -340, -380
+    for i, (mid, name, sub, src, col) in enumerate(
+        [(m[0], m[1], m[2], m[3], m[4]) for m in MIN.values()]):
+        nid = f"rm{sid(mid)}"
+        nodes.append(tnode(nid, f"**{name}**\n*{sub}*\nист: {src}", x, y, 340, 130, "5"))
+        edges.append(edge(f"erm{sid(mid)}", "rm-root", nid))
+        x += 380
+        if (i + 1) % 3 == 0:
+            x, y = -340, y + 170
+    # каналы
+    nodes.append(tnode("rm-chan", "**Каналы**\npeer-comms letter.sh (ack B18) · mail-hub (внешнее) · handoff-заметки docs/handoffs/\nист: dotfiles AGENTS.md «Протокол писем/Хендофф»",
+                       -340, y + 60, 520, 140, "2"))
+    nodes.append(tnode("rm-jrn", "**Журналы**\nsession-log · route-log · audit-log (control-plane) · stream-registry\nист: 04-Memory/",
+                       640, y + 60, 480, 140, "3"))
+    edges.append(edge("erm-chan", "rm-root", "rm-chan", label="связь", style="dashed"))
+    edges.append(edge("erm-jrn", "rm-root", "rm-jrn", label="память", style="dashed"))
+    write_canvas("map-ROOMS-otseki.canvas", nodes, edges)
+
 def l0_canvas():
     nodes = [tnode("l0", f"# 🚢 L0 · КОРАБЛЬ — галактика\nТочная вложенность (слово владельца {DAY}): корабль → **грани = проекты (L1)** → **ведомства с гранями: подведомства / навыки / журналы / агенты (L2)** → **пути · роадмапы · артефакты-производные (L3)**.\nОткрой любой узел-карту — она вложена прямо здесь. ssot:false · истина в реестрах.",
                    -360, -660, 880, 170, "4")]
@@ -217,6 +270,12 @@ def l0_canvas():
             x, y = -360, y + 340
     nodes.append(tnode("pnote", "⚠️ замечено: у ведомства «Абилити лаб» нет карточки-грани в 03-Projects (наведено ЦУ).",
                        x, y, 420, 120, "2"))
+    # Deck v3: ризома навыков + отсеки (слово владельца 2026-10-22)
+    for i, (nm, lab, col) in enumerate([("map-SKILLS-rizoma.canvas", "ризома навыков", "5"),
+                                        ("map-ROOMS-otseki.canvas", "отсеки корабля", "2")]):
+        nid = f"d3{sid(nm)}"
+        nodes.append(fnode(nid, f"10-Deck/{nm}", x + 460, y + i * 340, 420, 300, col))
+        edges.append(edge(f"ed3{sid(nm)}", "l0", nid, label=lab))
     write_canvas("map-L0-ship.canvas", nodes, edges)
 
 if __name__ == "__main__":
@@ -227,4 +286,6 @@ if __name__ == "__main__":
     for proj, card, minis in PROJECTS:
         l1_canvas(proj, card, minis)
     l0_canvas()
-    print("Deck v2 собран.")
+    skills_rizoma()
+    rooms()
+    print("Deck v2/v3 собран.")
