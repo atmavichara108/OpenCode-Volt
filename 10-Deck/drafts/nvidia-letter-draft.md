@@ -19,9 +19,13 @@ on real products — with a shared file-based memory, provenance tracking, and
 independent verification. Today the stack runs on GLM and DeepSeek models
 (70-80% of all work over the past month), with Kimi as a supporting endpoint.
 
-What we're doing:
-- A self-hosted community platform (re-search.wiki) for running structured
-  research sessions with human-supervised agent pipelines.
+What we're doing (open source):
+- dv-hub (github.com/atmavichara108/dv-hub) — a community platform for running
+  structured research sessions with human-supervised agent pipelines
+  (self-hosted during development; domain re-search.wiki).
+- OpenCode-Volt (github.com/atmavichara108/OpenCode-Volt) — the open-source
+  agent ecosystem itself: departments-as-sessions with shared file-based
+  memory, provenance tracking, and independent verification.
 - A "digital twin" agent (rudrakshas) that quotes its owner's decisions with
   file:line+SHA references — full provenance, no generation without references.
 - Our next milestone: integrity-testing the ecosystem on NVIDIA NIM endpoints
@@ -54,8 +58,9 @@ GitHub: github.com/atmavichara108
 
 Я строю open-source мультиагентную экосистему («Корабль»), в которой автономные агентские ведомства — инженерия, исследования, испытательная лаборатория, философский гейт — работают над реальными продуктами совместно: с общей файловой памятью, отслеживанием происхождения каждого решения и независимой проверкой результатов. Сегодня стек работает на моделях GLM и DeepSeek (70–80% всей работы за последний месяц), Kimi — как поддерживающий эндпоинт.
 
-Что мы делаем:
-- Самохостинг-платформа сообщества (re-search.wiki) для структурированных исследовательских сессий с агентскими конвейерами под контролем человека.
+Что мы делаем (open source):
+- dv-hub (github.com/atmavichara108/dv-hub) — платформа сообщества для структурированных исследовательских сессий с агентскими конвейерами под контролем человека (самохостинг на время разработки; домен re-search.wiki).
+- OpenCode-Volt (github.com/atmavichara108/OpenCode-Volt) — сама открытая агентская экосистема: ведомства-сессии с общей файловой памятью, отслеживанием происхождения и независимой проверкой.
 - Агент «цифрового образа» (rudrakshas), который цитирует решения своего владельца со ссылками файл:строка+SHA — полная прослеживаемость, никакой генерации без референсов.
 - Наша следующая веха: испытание целостности экосистемы на эндпоинтах NVIDIA NIM (семейство Nemotron, блюпринты build.nvidia.com) — мы хотим, чтобы модели NVIDIA стали первоклассной, безопасно интегрированной частью нашего мультиагентного стека, а nemotron-3.5-content-safety — эндпоинтом guardrails для нашего pre-send гейта (15 автоматических проверок).
 
