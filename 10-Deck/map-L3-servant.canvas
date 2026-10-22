@@ -1,0 +1,91 @@
+{
+  "nodes": [
+    {
+      "id": "l3-servant",
+      "type": "text",
+      "text": "# 📦 L3 · артефакты · Служитель Обсидиан\nПути-производные (роадмапы, реестры, спеки). 2026-10-22 · ssot:false",
+      "x": -300,
+      "y": -340,
+      "width": 620,
+      "height": 110,
+      "color": "4"
+    },
+    {
+      "id": "a343ac2",
+      "type": "file",
+      "file": "10-Deck/decisions-deck.md",
+      "x": -300,
+      "y": -160,
+      "width": 560,
+      "height": 280,
+      "color": "3"
+    },
+    {
+      "id": "a721f02",
+      "type": "file",
+      "file": "10-Deck/deck.canvas",
+      "x": -300,
+      "y": 160,
+      "width": 560,
+      "height": 280,
+      "color": "3"
+    },
+    {
+      "id": "a951604",
+      "type": "file",
+      "file": "10-Deck/PIPELINE.md",
+      "x": -300,
+      "y": 480,
+      "width": 560,
+      "height": 280,
+      "color": "3"
+    },
+    {
+      "id": "aecf0de",
+      "type": "file",
+      "file": "07-Runbooks/pipboy-v11-user-guide.md",
+      "x": -300,
+      "y": 800,
+      "width": 560,
+      "height": 280,
+      "color": "3"
+    },
+    {
+      "id": "af436a9",
+      "type": "text",
+      "text": "📁 `06-Specs/Vault/pipboy-v9-terrarium.md`\n*ветка pipboy-v8-rethink (b30f239d)*",
+      "x": -300,
+      "y": 1120,
+      "width": 560,
+      "height": 90,
+      "color": "3"
+    }
+  ],
+  "edges": [
+    {
+      "id": "ea343ac2",
+      "fromNode": "l3-servant",
+      "toNode": "a343ac2"
+    },
+    {
+      "id": "ea721f02",
+      "fromNode": "l3-servant",
+      "toNode": "a721f02"
+    },
+    {
+      "id": "ea951604",
+      "fromNode": "l3-servant",
+      "toNode": "a951604"
+    },
+    {
+      "id": "eaecf0de",
+      "fromNode": "l3-servant",
+      "toNode": "aecf0de"
+    },
+    {
+      "id": "eaf436a9",
+      "fromNode": "l3-servant",
+      "toNode": "af436a9"
+    }
+  ]
+}

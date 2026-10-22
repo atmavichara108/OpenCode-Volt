@@ -1,0 +1,49 @@
+{
+  "nodes": [
+    {
+      "id": "pf6366a",
+      "type": "text",
+      "text": "# 🪐 L1 · грань «SSA»\nГрань Корабля. Внутри — ведомства-обитатели (L2), у каждого свои грани и артефакты.\nист: 03-Projects/SSA.md",
+      "x": -320,
+      "y": -420,
+      "width": 640,
+      "height": 140,
+      "color": "4"
+    },
+    {
+      "id": "pcf6366a",
+      "type": "file",
+      "file": "03-Projects/SSA.md",
+      "x": -320,
+      "y": -200,
+      "width": 460,
+      "height": 300,
+      "color": "6"
+    },
+    {
+      "id": "ec988fc",
+      "type": "file",
+      "file": "10-Deck/map-L2-ct.canvas",
+      "x": 180,
+      "y": -160,
+      "width": 560,
+      "height": 400,
+      "color": "5"
+    }
+  ],
+  "edges": [
+    {
+      "id": "epf6366a",
+      "fromNode": "pf6366a",
+      "toNode": "pcf6366a",
+      "label": "карточка проекта"
+    },
+    {
+      "id": "emc988fc",
+      "fromNode": "pf6366a",
+      "toNode": "ec988fc",
+      "label": "Control-top",
+      "fromEnd": "arrow"
+    }
+  ]
+}

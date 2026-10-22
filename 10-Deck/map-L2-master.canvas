@@ -1,0 +1,46 @@
+{
+  "nodes": [
+    {
+      "id": "l2-master",
+      "type": "text",
+      "text": "# 🏛️ L2 · Мастерская Багфикс\nsysop · багфикс-цех\nист: peer-registry.md:16",
+      "x": -320,
+      "y": -420,
+      "width": 680,
+      "height": 150,
+      "color": "4"
+    },
+    {
+      "id": "f0fd311",
+      "type": "text",
+      "text": "**поток flow-defects**\n*навык*\nист: ~/dotfiles/AGENTS.md «Пайплайны»",
+      "x": -320,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    },
+    {
+      "id": "fc73d88",
+      "type": "text",
+      "text": "**queued-noise-fix — принят**\n*линия*\nист: 04-Memory/session-log/2026-10-20.md:138",
+      "x": 40,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    }
+  ],
+  "edges": [
+    {
+      "id": "efe81ff4",
+      "fromNode": "l2-master",
+      "toNode": "f0fd311"
+    },
+    {
+      "id": "efb68f15",
+      "fromNode": "l2-master",
+      "toNode": "fc73d88"
+    }
+  ]
+}

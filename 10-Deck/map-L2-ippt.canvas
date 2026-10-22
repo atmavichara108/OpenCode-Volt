@@ -1,0 +1,46 @@
+{
+  "nodes": [
+    {
+      "id": "l2-ippt",
+      "type": "text",
+      "text": "# 🏛️ L2 · ИПТ\nlibrarian · исследования\nист: peer-registry.md:18",
+      "x": -320,
+      "y": -420,
+      "width": 680,
+      "height": 150,
+      "color": "4"
+    },
+    {
+      "id": "fea1b24",
+      "type": "text",
+      "text": "**исследования · внешние стыки как класс**\n*навык*\nист: 04-Memory/peer-registry.md:18 · 01-Policies/organ-structure…:69",
+      "x": -320,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    },
+    {
+      "id": "fec12be",
+      "type": "text",
+      "text": "**методы-дистилляты (исполнение — meta/ИЦ)**\n*правило*\nист: 04-Memory/active-context.md (ИПТ-инцидент)",
+      "x": 40,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    }
+  ],
+  "edges": [
+    {
+      "id": "ef6146fb",
+      "fromNode": "l2-ippt",
+      "toNode": "fea1b24"
+    },
+    {
+      "id": "efca071d",
+      "fromNode": "l2-ippt",
+      "toNode": "fec12be"
+    }
+  ]
+}

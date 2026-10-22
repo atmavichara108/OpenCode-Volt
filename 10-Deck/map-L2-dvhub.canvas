@@ -1,0 +1,77 @@
+{
+  "nodes": [
+    {
+      "id": "l2-dvhub",
+      "type": "text",
+      "text": "# 🏛️ L2 · ДВ-Хаб\nвременный шлюз · путь к dev-статусу\nист: peer-registry.md:22",
+      "x": -320,
+      "y": -420,
+      "width": 680,
+      "height": 150,
+      "color": "4"
+    },
+    {
+      "id": "fbc50c9",
+      "type": "text",
+      "text": "**C1/C2 приняты, merge; сверка карточки после**\n*линия*\nист: 04-Memory/session-log/2026-10-20.md:136",
+      "x": -320,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    },
+    {
+      "id": "f803c48",
+      "type": "text",
+      "text": "**Р-020 две зоны двух SDK (эпизод T-159 закрыт)**\n*решение*\nист: 01-Policies/decisions-registry.md:37",
+      "x": 40,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    },
+    {
+      "id": "f52789b",
+      "type": "text",
+      "text": "**путь к NVIDIA-статусу — ждёт письмо**\n*линия*\nист: 04-Memory/session-log/2026-10-20.md:140",
+      "x": 400,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    },
+    {
+      "id": "e3f4ce8f",
+      "type": "file",
+      "file": "10-Deck/map-L3-dvhub.canvas",
+      "x": -320,
+      "y": 80,
+      "width": 600,
+      "height": 420,
+      "color": "3"
+    }
+  ],
+  "edges": [
+    {
+      "id": "efef5802",
+      "fromNode": "l2-dvhub",
+      "toNode": "fbc50c9"
+    },
+    {
+      "id": "ef25f2b8",
+      "fromNode": "l2-dvhub",
+      "toNode": "f803c48"
+    },
+    {
+      "id": "efe022a7",
+      "fromNode": "l2-dvhub",
+      "toNode": "f52789b"
+    },
+    {
+      "id": "e3ef4ce8f",
+      "fromNode": "l2-dvhub",
+      "toNode": "e3f4ce8f",
+      "label": "L3 артефакты"
+    }
+  ]
+}

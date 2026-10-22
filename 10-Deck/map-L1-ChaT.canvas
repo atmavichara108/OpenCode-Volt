@@ -1,0 +1,42 @@
+{
+  "nodes": [
+    {
+      "id": "pc17d5c",
+      "type": "text",
+      "text": "# 🪐 L1 · грань «ChaT»\nГрань Корабля. Внутри — ведомства-обитатели (L2), у каждого свои грани и артефакты.\nист: 03-Projects/ChaT.md",
+      "x": -320,
+      "y": -420,
+      "width": 640,
+      "height": 140,
+      "color": "4"
+    },
+    {
+      "id": "pcc17d5c",
+      "type": "file",
+      "file": "03-Projects/ChaT.md",
+      "x": -320,
+      "y": -200,
+      "width": 460,
+      "height": 300,
+      "color": "6"
+    },
+    {
+      "id": "pnc17d5c",
+      "type": "text",
+      "text": "грань без ведомств-обитателей",
+      "x": -320,
+      "y": -160,
+      "width": 400,
+      "height": 90,
+      "color": "2"
+    }
+  ],
+  "edges": [
+    {
+      "id": "epc17d5c",
+      "fromNode": "pc17d5c",
+      "toNode": "pcc17d5c",
+      "label": "карточка проекта"
+    }
+  ]
+}

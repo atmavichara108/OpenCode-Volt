@@ -1,0 +1,46 @@
+{
+  "nodes": [
+    {
+      "id": "l2-ct",
+      "type": "text",
+      "text": "# 🏛️ L2 · Control-top\ntop · SSA/control · владелец-панель\nист: peer-registry.md:21",
+      "x": -320,
+      "y": -420,
+      "width": 680,
+      "height": 150,
+      "color": "4"
+    },
+    {
+      "id": "fe5036c",
+      "type": "text",
+      "text": "**SSA-панель владельца**\n*грань*\nист: 04-Memory/peer-registry.md:21",
+      "x": -320,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    },
+    {
+      "id": "f3a6424",
+      "type": "text",
+      "text": "**путь работы: ~/Projects/SSA/control**\n*путь*\nист: 04-Memory/peer-registry.md:21",
+      "x": 40,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    }
+  ],
+  "edges": [
+    {
+      "id": "ef530d41",
+      "fromNode": "l2-ct",
+      "toNode": "fe5036c"
+    },
+    {
+      "id": "ef50c7aa",
+      "fromNode": "l2-ct",
+      "toNode": "f3a6424"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "nodes": [
+    {
+      "id": "l2-hpf",
+      "type": "text",
+      "text": "# 🏛️ L2 · ХПФ\nlibrarian · практическая философия / гейты\nист: peer-registry.md:19",
+      "x": -320,
+      "y": -420,
+      "width": 680,
+      "height": 150,
+      "color": "4"
+    },
+    {
+      "id": "f1d0f1a",
+      "type": "text",
+      "text": "**гейт методов (rudrakshas: «соответствует»)**\n*навык-гейт*\nист: 01-Policies/decisions-registry.md:34",
+      "x": -320,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    },
+    {
+      "id": "fe43cda",
+      "type": "text",
+      "text": "**структурные/философские концепты**\n*навык*\nист: 04-Memory/peer-registry.md:19",
+      "x": 40,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    }
+  ],
+  "edges": [
+    {
+      "id": "ef07ba6b",
+      "fromNode": "l2-hpf",
+      "toNode": "f1d0f1a"
+    },
+    {
+      "id": "efb9fb55",
+      "fromNode": "l2-hpf",
+      "toNode": "fe43cda"
+    }
+  ]
+}

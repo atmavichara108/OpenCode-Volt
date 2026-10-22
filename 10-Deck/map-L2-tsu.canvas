@@ -1,0 +1,109 @@
+{
+  "nodes": [
+    {
+      "id": "l2-tsu",
+      "type": "text",
+      "text": "# 🏛️ L2 · ЦУ — Центральный Узел\n*** · координация / реестры\nист: peer-registry.md:20",
+      "x": -320,
+      "y": -420,
+      "width": 680,
+      "height": 150,
+      "color": "4"
+    },
+    {
+      "id": "f259385",
+      "type": "text",
+      "text": "**сверхнавыки tsu-* ×5**\n*навыки*\nист: ~/dotfiles/opencode-global/.config/opencode/skill/",
+      "x": -320,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    },
+    {
+      "id": "f702b7a",
+      "type": "text",
+      "text": "**Реестр ведомств (адресация)**\n*реестр*\nист: 04-Memory/peer-registry.md",
+      "x": 40,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    },
+    {
+      "id": "f1b5e74",
+      "type": "text",
+      "text": "**Реестр решений (SSOT)**\n*реестр*\nист: 01-Policies/decisions-registry.md",
+      "x": 400,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    },
+    {
+      "id": "fcb8863",
+      "type": "text",
+      "text": "**журналы session-log**\n*журнал*\nист: 04-Memory/session-log/",
+      "x": 760,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    },
+    {
+      "id": "e3c4b618",
+      "type": "file",
+      "file": "10-Deck/map-L3-tsu.canvas",
+      "x": -320,
+      "y": 80,
+      "width": 600,
+      "height": 420,
+      "color": "3"
+    },
+    {
+      "id": "exf502b4",
+      "type": "file",
+      "file": "00-WORLD.canvas",
+      "x": 320,
+      "y": 80,
+      "width": 600,
+      "height": 420,
+      "color": "6"
+    }
+  ],
+  "edges": [
+    {
+      "id": "ef5ba3cb",
+      "fromNode": "l2-tsu",
+      "toNode": "f259385"
+    },
+    {
+      "id": "ef97f7ac",
+      "fromNode": "l2-tsu",
+      "toNode": "f702b7a"
+    },
+    {
+      "id": "ef84035d",
+      "fromNode": "l2-tsu",
+      "toNode": "f1b5e74"
+    },
+    {
+      "id": "efb36b7d",
+      "fromNode": "l2-tsu",
+      "toNode": "fcb8863"
+    },
+    {
+      "id": "e3ec4b618",
+      "fromNode": "l2-tsu",
+      "toNode": "e3c4b618",
+      "label": "L3 артефакты"
+    },
+    {
+      "id": "exe790084",
+      "fromNode": "l2-tsu",
+      "toNode": "exf502b4",
+      "label": "ризома мира",
+      "style": "dashed"
+    }
+  ]
+}

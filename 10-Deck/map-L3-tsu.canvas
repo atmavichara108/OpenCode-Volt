@@ -1,0 +1,121 @@
+{
+  "nodes": [
+    {
+      "id": "l3-tsu",
+      "type": "text",
+      "text": "# 📦 L3 · артефакты · ЦУ — Центральный Узел\nПути-производные (роадмапы, реестры, спеки). 2026-10-22 · ssot:false",
+      "x": -300,
+      "y": -340,
+      "width": 620,
+      "height": 110,
+      "color": "4"
+    },
+    {
+      "id": "ab831d3",
+      "type": "file",
+      "file": "01-Policies/decisions-registry.md",
+      "x": -300,
+      "y": -160,
+      "width": 560,
+      "height": 280,
+      "color": "3"
+    },
+    {
+      "id": "ab89f1e",
+      "type": "file",
+      "file": "04-Memory/peer-registry.md",
+      "x": -300,
+      "y": 160,
+      "width": 560,
+      "height": 280,
+      "color": "3"
+    },
+    {
+      "id": "a1b36d2",
+      "type": "file",
+      "file": "04-Memory/facts.md",
+      "x": -300,
+      "y": 480,
+      "width": 560,
+      "height": 280,
+      "color": "3"
+    },
+    {
+      "id": "a4f38c7",
+      "type": "file",
+      "file": "04-Memory/stream-registry.md",
+      "x": -300,
+      "y": 800,
+      "width": 560,
+      "height": 280,
+      "color": "3"
+    },
+    {
+      "id": "a3db0ef",
+      "type": "file",
+      "file": "DEVELOPMENT-ROADMAP.md",
+      "x": -300,
+      "y": 1120,
+      "width": 560,
+      "height": 280,
+      "color": "3"
+    },
+    {
+      "id": "a95c5a7",
+      "type": "file",
+      "file": "04-Memory/route-log",
+      "x": -300,
+      "y": 1440,
+      "width": 560,
+      "height": 280,
+      "color": "3"
+    },
+    {
+      "id": "aaccc06",
+      "type": "file",
+      "file": "01-Policies",
+      "x": -300,
+      "y": 1760,
+      "width": 560,
+      "height": 280,
+      "color": "3"
+    }
+  ],
+  "edges": [
+    {
+      "id": "eab831d3",
+      "fromNode": "l3-tsu",
+      "toNode": "ab831d3"
+    },
+    {
+      "id": "eab89f1e",
+      "fromNode": "l3-tsu",
+      "toNode": "ab89f1e"
+    },
+    {
+      "id": "ea1b36d2",
+      "fromNode": "l3-tsu",
+      "toNode": "a1b36d2"
+    },
+    {
+      "id": "ea4f38c7",
+      "fromNode": "l3-tsu",
+      "toNode": "a4f38c7"
+    },
+    {
+      "id": "ea3db0ef",
+      "fromNode": "l3-tsu",
+      "toNode": "a3db0ef"
+    },
+    {
+      "id": "ea95c5a7",
+      "fromNode": "l3-tsu",
+      "toNode": "a95c5a7"
+    },
+    {
+      "id": "eaaccc06",
+      "fromNode": "l3-tsu",
+      "toNode": "aaccc06"
+    }
+  ]
+}

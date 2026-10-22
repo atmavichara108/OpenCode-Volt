@@ -1,0 +1,76 @@
+{
+  "nodes": [
+    {
+      "id": "l2-lab",
+      "type": "text",
+      "text": "# 🏛️ L2 · Абилити лаб\nDr.Who · ~/Projects/ability-lab · Р-007\nист: peer-registry.md:17",
+      "x": -320,
+      "y": -420,
+      "width": 680,
+      "height": 150,
+      "color": "4"
+    },
+    {
+      "id": "f59089b",
+      "type": "text",
+      "text": "**Dr.Who — primary (Р-007)**\n*агент*\nист: 04-Memory/peer-registry.md:17",
+      "x": -320,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    },
+    {
+      "id": "f9a0ab5",
+      "type": "text",
+      "text": "**lab-instrument**\n*субагент*\nист: 04-Memory/peer-registry.md:17",
+      "x": 40,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    },
+    {
+      "id": "f0f79fb",
+      "type": "text",
+      "text": "**L9 · итерация 1 ЗАКРЫТА (PASS 6/6)**\n*линия*\nист: 04-Memory/session-log/2026-10-20.md:135",
+      "x": 400,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    },
+    {
+      "id": "fc0e924",
+      "type": "text",
+      "text": "**⚠️ карточка проекта ability-lab отсутствует в 03-Projects**\n*дефект-грань*\nист: ls 03-Projects · 2026-10-22",
+      "x": 760,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    }
+  ],
+  "edges": [
+    {
+      "id": "efe72b0f",
+      "fromNode": "l2-lab",
+      "toNode": "f59089b"
+    },
+    {
+      "id": "ef6b3a89",
+      "fromNode": "l2-lab",
+      "toNode": "f9a0ab5"
+    },
+    {
+      "id": "ef5ff1b3",
+      "fromNode": "l2-lab",
+      "toNode": "f0f79fb"
+    },
+    {
+      "id": "efcd1a39",
+      "fromNode": "l2-lab",
+      "toNode": "fc0e924"
+    }
+  ]
+}

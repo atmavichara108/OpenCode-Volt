@@ -1,0 +1,46 @@
+{
+  "nodes": [
+    {
+      "id": "l3-dvhub",
+      "type": "text",
+      "text": "# 📦 L3 · артефакты · ДВ-Хаб\nПути-производные (роадмапы, реестры, спеки). 2026-10-22 · ssot:false",
+      "x": -300,
+      "y": -340,
+      "width": 620,
+      "height": 110,
+      "color": "4"
+    },
+    {
+      "id": "a8a95a6",
+      "type": "file",
+      "file": "03-Projects/dv-hub.md",
+      "x": -300,
+      "y": -160,
+      "width": 560,
+      "height": 280,
+      "color": "3"
+    },
+    {
+      "id": "a6501c0",
+      "type": "text",
+      "text": "📁 `~/Projects/dv-hub/`\n*вне волта*",
+      "x": -300,
+      "y": 160,
+      "width": 560,
+      "height": 90,
+      "color": "3"
+    }
+  ],
+  "edges": [
+    {
+      "id": "ea8a95a6",
+      "fromNode": "l3-dvhub",
+      "toNode": "a8a95a6"
+    },
+    {
+      "id": "ea6501c0",
+      "fromNode": "l3-dvhub",
+      "toNode": "a6501c0"
+    }
+  ]
+}

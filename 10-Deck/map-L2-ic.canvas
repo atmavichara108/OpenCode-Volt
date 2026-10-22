@@ -1,0 +1,76 @@
+{
+  "nodes": [
+    {
+      "id": "l2-ic",
+      "type": "text",
+      "text": "# 🏛️ L2 · ИЦ — Инженерный центр\nsysop · dotfiles · инженерный центр\nист: peer-registry.md:15",
+      "x": -320,
+      "y": -420,
+      "width": 680,
+      "height": 150,
+      "color": "4"
+    },
+    {
+      "id": "fe832d5",
+      "type": "text",
+      "text": "**Отдел Приложений**\n*подведомство*\nист: 01-Policies/organ-structure…:32",
+      "x": -320,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    },
+    {
+      "id": "fc1255d",
+      "type": "text",
+      "text": "**Отдел Движков**\n*подведомство*\nист: 01-Policies/organ-structure… §2",
+      "x": 40,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    },
+    {
+      "id": "f730470",
+      "type": "text",
+      "text": "**Отдел Реверс-Инженерии · навык Панхарвестинг**\n*подведомство+навык*\nист: 01-Policies/organ-structure… §3",
+      "x": 400,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    },
+    {
+      "id": "fe5e4f3",
+      "type": "text",
+      "text": "**dotfiles: 15 агентов (sysop+субагенты)**\n*агенты*\nист: ~/dotfiles/AGENTS.md «Роли агентов»",
+      "x": 760,
+      "y": -180,
+      "width": 320,
+      "height": 170,
+      "color": "5"
+    }
+  ],
+  "edges": [
+    {
+      "id": "ef31c73e",
+      "fromNode": "l2-ic",
+      "toNode": "fe832d5"
+    },
+    {
+      "id": "ef473ac5",
+      "fromNode": "l2-ic",
+      "toNode": "fc1255d"
+    },
+    {
+      "id": "ef637697",
+      "fromNode": "l2-ic",
+      "toNode": "f730470"
+    },
+    {
+      "id": "ef1fe8f4",
+      "fromNode": "l2-ic",
+      "toNode": "fe5e4f3"
+    }
+  ]
+}
