@@ -9,7 +9,6 @@ sources:
   - 01-Policies/organ-structure-2026-10-18.md (экосистема ведомств)
   - 01-Policies/decisions-registry.md Р-018 (rudrakshas, канонизирован)
 ---
-
 # Subject: Open-source agent ecosystem on Nemotron — developer access & rate-limit request
 
 Dear NVIDIA Developer Relations team,
@@ -17,17 +16,19 @@ Dear NVIDIA Developer Relations team,
 I'm building an open-source multi-agent ecosystem ("Ship") where autonomous
 agent departments (engineering, research, QA-lab, philosophy-gate) collaborate
 on real products — with a shared file-based memory, provenance tracking, and
-independent verification. Our agent "rudrakshas" runs on local Nemotron-family
-models, and we use NVIDIA-hosted Nemotron endpoints (Nemotron 3.5 Lightning /
-Content Safety) as part of our free-tier stack.
+independent verification. Today the stack runs on GLM and DeepSeek models
+(70-80% of all work over the past month), with Kimi as a supporting endpoint.
 
 What we're doing:
 - A self-hosted community platform (re-search.wiki) for running structured
   research sessions with human-supervised agent pipelines.
 - A "digital twin" agent (rudrakshas) that quotes its owner's decisions with
-  file:line+SHA references — built on top of local Nemotron models.
-- Ongoing work on guardrails: our pre-send gate (15 checks) and a safety
-  pipeline we'd like to extend with nemotron-3.5-content-safety.
+  file:line+SHA references — full provenance, no generation without references.
+- Our next milestone: integrity-testing the ecosystem on NVIDIA NIM endpoints
+  (Nemotron family, build.nvidia.com blueprints) — we want NVIDIA models to be
+  a first-class, safely-integrated part of our multi-agent stack, with
+  nemotron-3.5-content-safety as a guardrail endpoint for our pre-send gate
+  (15 automated checks).
 
 What we're asking:
 1. Developer Program access for rudra108@re-search.wiki.
@@ -51,12 +52,12 @@ GitHub: github.com/atmavichara108
 
 Команда NVIDIA Developer Relations,
 
-Я строю open-source мультиагентную экосистему («Корабль»), в которой автономные агентские ведомства — инженерия, исследования, испытательная лаборатория, философский гейт — работают над реальными продуктами совместно: с общей файловой памятью, отслеживанием происхождения каждого решения и независимой проверкой результатов. Наш агент rudrakshas работает на локальных моделях семейства Nemotron, а хостинговые эндпоинты NVIDIA (Nemotron 3.5 Lightning / Content Safety) входят в наш бесплатный стек.
+Я строю open-source мультиагентную экосистему («Корабль»), в которой автономные агентские ведомства — инженерия, исследования, испытательная лаборатория, философский гейт — работают над реальными продуктами совместно: с общей файловой памятью, отслеживанием происхождения каждого решения и независимой проверкой результатов. Сегодня стек работает на моделях GLM и DeepSeek (70–80% всей работы за последний месяц), Kimi — как поддерживающий эндпоинт.
 
 Что мы делаем:
 - Самохостинг-платформа сообщества (re-search.wiki) для структурированных исследовательских сессий с агентскими конвейерами под контролем человека.
-- Агент «цифрового образа» (rudrakshas), который цитирует решения своего владельца со ссылками файл:строка+SHA — построен поверх локальных моделей Nemotron.
-- Развитие guardrails: наш pre-send гейт (15 проверок) и пайплайн безопасности, который хотим расширить моделью nemotron-3.5-content-safety.
+- Агент «цифрового образа» (rudrakshas), который цитирует решения своего владельца со ссылками файл:строка+SHA — полная прослеживаемость, никакой генерации без референсов.
+- Наша следующая веха: испытание целостности экосистемы на эндпоинтах NVIDIA NIM (семейство Nemotron, блюпринты build.nvidia.com) — мы хотим, чтобы модели NVIDIA стали первоклассной, безопасно интегрированной частью нашего мультиагентного стека, а nemotron-3.5-content-safety — эндпоинтом guardrails для нашего pre-send гейта (15 автоматических проверок).
 
 Что мы просим:
 1. Доступ в Developer Program для rudra108@re-search.wiki.
@@ -68,3 +69,7 @@ GitHub: github.com/atmavichara108
 Max Rudra
 re-search.wiki — open-source агентская экосистема
 GitHub: github.com/atmavichara108
+
+
+---
+**Факт (10-22):** аккаунт NVIDIA Atmavichara108 (msivyhin@gmail.com) уже имеет вкладку Developer Program (Members Area / My Developer Profile) — запрос можно вести из этой учётки; письмо связать с ней (профиль → Project Description).
