@@ -1,42 +1,10 @@
 {
-  "nodes": [
-    {
-      "id": "p831d32",
-      "type": "text",
-      "text": "# 🪐 L1 · грань «AndroidOS»\nГрань Корабля. Внутри — ведомства-обитатели (L2), у каждого свои грани и артефакты.\nист: 03-Projects/AndroidOS.md",
-      "x": -320,
-      "y": -420,
-      "width": 640,
-      "height": 140,
-      "color": "4"
-    },
-    {
-      "id": "pc831d32",
-      "type": "file",
-      "file": "03-Projects/AndroidOS.md",
-      "x": -320,
-      "y": -200,
-      "width": 460,
-      "height": 300,
-      "color": "6"
-    },
-    {
-      "id": "pn831d32",
-      "type": "text",
-      "text": "грань без ведомств-обитателей",
-      "x": -320,
-      "y": -160,
-      "width": 400,
-      "height": 90,
-      "color": "2"
-    }
-  ],
-  "edges": [
-    {
-      "id": "ep831d32",
-      "fromNode": "p831d32",
-      "toNode": "pc831d32",
-      "label": "карточка проекта"
-    }
-  ]
+	"nodes":[
+		{"id":"p831d32","type":"text","text":"# 🪐 L1 · грань «AndroidOS»\nГрань Корабля. Внутри — ведомства-обитатели (L2), у каждого свои грани и артефакты.\nист: 03-Projects/AndroidOS.md","x":-320,"y":-420,"width":640,"height":140,"color":"4"},
+		{"id":"pc831d32","type":"file","file":"03-Projects/AndroidOS.md","x":-320,"y":-200,"width":460,"height":300,"color":"6"},
+		{"id":"pn831d32","type":"text","text":"грань без ведомств-обитателей","x":-320,"y":-160,"width":400,"height":90,"color":"2"}
+	],
+	"edges":[
+		{"id":"ep831d32","fromNode":"p831d32","toNode":"pc831d32","label":"карточка проекта","fromSide":"bottom","toSide":"top"}
+	]
 }

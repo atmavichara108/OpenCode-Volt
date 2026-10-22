@@ -2,6 +2,7 @@
 type: Projection
 title: Карточки решений — капитанский мостик
 ssot: false
+status: активен (deck-v2/v3)
 timestamp: 2026-10-22
 ---
 

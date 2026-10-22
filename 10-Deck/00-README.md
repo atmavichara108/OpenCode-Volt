@@ -3,6 +3,7 @@ type: Layer
 title: 10-Deck — капитанский мостик
 description: Важные решения, ждущие слова владельца — карточки в Obsidian + многоуровневые canvas-карты экосистемы
 ssot: false
+status: активен
 timestamp: 2026-10-22
 ---
 
