@@ -116,7 +116,40 @@ done | rg -o '\[\[([^\]|]+)' --no-filename --no-line-number 2>/dev/null | sed 's
 
 echo "✅ Все викилинки валидны"
 
-# --- Гейт 5: decode-мусор (garbage-guard, ratified Рудрой 2026-10-07) --------
+# --- Гейт 5: frontmatter-полнота (слово владельца 2026-10-22, ref frontmatter-gate-20261022)
+# Обязательные поля type/title/timestamp для НОВЫХ .md в контент-директориях.
+# Канон полей — 05-Templates/*.md. Отсутствие = red commit.
+# Обход: FRONTMATTER_OK=1 (осознанно, объясни в сообщении).
+
+FRONTMATTER_DIRS="06-Audits/ 02-Methods/ 10-Deck/ 01-Policies/"
+FRONTMATTER_FIELDS="type title timestamp"
+
+if [ "${FRONTMATTER_OK:-0}" != "1" ]; then
+  for f in $(git diff --cached --name-only --diff-filter=A); do
+    case "$f" in
+      *.md) ;;
+      *) continue ;;
+    esac
+    matched=""
+    for d in $FRONTMATTER_DIRS; do
+      case "$f" in
+        "$d"*) matched=1; break ;;
+      esac
+    done
+    [ -z "$matched" ] && continue
+    [ -f "$f" ] || continue
+    head -1 "$f" | grep -q '^---' || {
+      die "Гейт 5: $f — нет frontmatter (--- в первой строке). Обход: FRONTMATTER_OK=1"
+    }
+    for field in $FRONTMATTER_FIELDS; do
+      if ! sed -n '/^---$/,/^---$/p' "$f" | head -20 | grep -q "^${field}:"; then
+        die "Гейт 5: $f — обязательное поле '${field}' отсутствует. Обход: FRONTMATTER_OK=1"
+      fi
+    done
+  done
+fi
+
+# --- Гейт 6: decode-мусор (garbage-guard, ratified Рудрой 2026-10-07) --------
 # Детектор zero-LLM живёт в dotfiles-ядре; vault вызывает его как хост-инструмент.
 # Обход: GARBAGE_OK=1 (как MOJIBAKE_OK в dotfiles-гейте 6).
 
