@@ -237,10 +237,9 @@ def rooms():
                    -340, -600, 760, 130, "4")]
     edges = []
     x, y = -340, -380
-    for i, (mid, name, sub, src, col) in enumerate(
-        [(m[0], m[1], m[2], m[3], m[4]) for m in MIN.values()]):
+    for i, (mid, (name, sub, src)) in enumerate(MIN.items()):
         nid = f"rm{sid(mid)}"
-        nodes.append(tnode(nid, f"**{name}**\n*{sub}*\nист: {src}", x, y, 340, 130, "5"))
+        nodes.append(tnode(nid, f"**{name}**\n*{sub}*\nист: 04-Memory/{src}", x, y, 340, 130, "5"))
         edges.append(edge(f"erm{sid(mid)}", "rm-root", nid))
         x += 380
         if (i + 1) % 3 == 0:
