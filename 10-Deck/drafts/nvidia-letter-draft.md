@@ -9,7 +9,7 @@ sources:
   - 01-Policies/organ-structure-2026-10-18.md (экосистема ведомств)
   - 01-Policies/decisions-registry.md Р-018 (rudrakshas, канонизирован)
 ---
-# Subject: Open-source agent ecosystem on Nemotron — developer access & rate-limit request
+# Subject: Open-source agent ecosystem on Nemotron — right way to grow inside NVIDIA (not a rate-limit exception request)
 
 Dear NVIDIA Developer Relations team,
 
@@ -42,18 +42,24 @@ we learn from multi-agent provenance and verification, and learning from how
 NVIDIA teams build safety and orchestration at scale.
 
 What we're asking:
-1. Developer Program access for rudra108@re-search.wiki.
-2. A Credit & Rate-Limit Increase Request: our multi-agent pipelines hit the
-   free-tier 1000 credits / 40 RPM ceiling quickly because several agents
-   work in parallel (each with its own session and verification loop).
+We know free-tier credits and RPM are hard-capped, and we're not writing to
+ask for an exception. What we'd value is a conversation about the right
+channel for an open-source agent ecosystem like ours:
 
-Happy to share details of the ecosystem, ADRs, and our agent-memory design —
-and to be listed as an open-source project building on the Nemotron stack.
+1. Which NVIDIA program fits best (Developer Program, Inception, open-source
+   sponsorships) for a project that runs multi-agent pipelines on Nemotron
+   and publishes everything openly?
+2. If our work is relevant to NVIDIA's DevRel or research teams, we'd be glad
+   to share our provenance/verification design and agent-memory architecture —
+   and to be listed as an open-source project building on the Nemotron stack.
+
+We're not asking to bypass limits — we're asking how a project like ours can
+grow inside NVIDIA's ecosystem the right way.
 
 Best regards,
-Max Rudra
+Max Rudra (NVIDIA account: Atmavichara108, msivyhin@gmail.com)
 re-search.wiki — open-source agent ecosystem
-GitHub: github.com/atmavichara108
+GitHub: github.com/atmavichara108 (dv-hub, OpenCode-Volt)
 
 ---
 
@@ -74,8 +80,12 @@ GitHub: github.com/atmavichara108
 Открыто о моих амбициях: я отношусь к развитию агентских экосистем как к дисциплине, которую нужно двигать вперёд, а не только как к инструменту — каждый цикл поднимаю планку («воркаут-кайдзен»: планка существует, чтобы на ней подтягиваться, снова и снова). Результаты публикую открыто и ценю сотрудничество с NVIDIA: делиться тем, что мы узнаём о происхождении и проверке решений в мультиагентных системах, и учиться у команд NVIDIA тому, как строить безопасность и оркестрацию в масштабе.
 
 Что мы просим:
-1. Доступ в Developer Program для rudra108@re-search.wiki.
-2. Рассмотрение запроса на увеличение кредитов и rate-limits: наши мультиагентные конвейеры быстро упираются в потолок free-tier (1000 кредитов / 40 RPM), потому что несколько агентов работают параллельно — у каждого своя сессия и свой цикл проверки.
+Мы знаем, что кредиты и RPM free-tier жёстко ограничены, и не пишем с просьбой об исключении. Нам ценно понять правильный канал для открытой агентской экосистемы вроде нашей:
+
+1. Какая программа NVIDIA подходит лучше (Developer Program, Inception, поддержка open-source) для проекта, который гоняет мультиагентные конвейеры на Nemotron и публикует всё открыто?
+2. Если наша работа релевантна DevRel или исследовательским командам NVIDIA — готовы поделиться нашим дизайном происхождения/проверки и архитектурой агентской памяти, и быть включёнными в список open-source проектов на стеке Nemotron.
+
+Мы не просим обойти лимиты — мы спрашиваем, как проекту вроде нашего расти внутри экосистемы NVIDIA правильным путём.
 
 Готовы поделиться деталями экосистемы, нашими архитектурными решениями (ADR) и дизайном агентской памяти — и были бы рады быть включёнными в список open-source проектов, строящихся на стеке Nemotron.
 
