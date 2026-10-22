@@ -20,7 +20,7 @@ timestamp: 2026-10-18
 | Центральный Узел (ЦУ, я) | ses_eceb23a71ffeJO9QnFou8VngZC | librarian | ~/Projects/OpenCode-Vault | координация |
 | Control-top (координатор SSA) | ses_ed5fcec4effeZKwSoEmMe6Swlk | top | ~/Projects/SSA/control | SSA-поток, владелец-панель |
 | ДВ-Хаб (временный шлюз) | ses_ea5bee799ffes5WDriyP61xyB5 | — | ~/Projects/dv-hub | волонтёрский проект, путь к статусу разработчика; кандидат — обрамление ведомства позже (слово владельца 2026-10-20: познакомить, не калибровать) |
-| Служитель Обсидиан | ses_ea02cc0d8ffeFXUsAX9UeQWs2D | obsidian-servant | ~/Projects/OpenCode-Vault | капитанский мостик 10-Deck: карточки решений + canvas-ризома в Obsidian (слово владельца 2026-10-21; сессия создана владельцем) |
+| Служитель Обсидиан | ses_ea02cc0d8ffeFXUsAX9UeQWs2D | obsidian-servant | ~/Projects/OpenCode-Vault | ведомство UI\|UX ecosys (Р-021): 10-Deck, canvas-карты, Пип-Бой тайлы |
 
 ## Правила
 1. **Писать только по этому реестру.** Все сессии живые (сверено по session_v2, 10-18 22:00).
