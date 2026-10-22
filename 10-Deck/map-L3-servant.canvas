@@ -41,11 +41,21 @@
       "color": "3"
     },
     {
+      "id": "a3fc9dc",
+      "type": "file",
+      "file": "10-Deck/vibe-interactive-research.md",
+      "x": -300,
+      "y": 800,
+      "width": 560,
+      "height": 280,
+      "color": "3"
+    },
+    {
       "id": "aecf0de",
       "type": "file",
       "file": "07-Runbooks/pipboy-v11-user-guide.md",
       "x": -300,
-      "y": 800,
+      "y": 1120,
       "width": 560,
       "height": 280,
       "color": "3"
@@ -55,7 +65,7 @@
       "type": "text",
       "text": "📁 `06-Specs/Vault/pipboy-v9-terrarium.md`\n*ветка pipboy-v8-rethink (b30f239d)*",
       "x": -300,
-      "y": 1120,
+      "y": 1440,
       "width": 560,
       "height": 90,
       "color": "3"
@@ -76,6 +86,11 @@
       "id": "ea951604",
       "fromNode": "l3-servant",
       "toNode": "a951604"
+    },
+    {
+      "id": "ea3fc9dc",
+      "fromNode": "l3-servant",
+      "toNode": "a3fc9dc"
     },
     {
       "id": "eaecf0de",

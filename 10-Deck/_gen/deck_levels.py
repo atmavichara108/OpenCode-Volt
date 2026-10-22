@@ -117,6 +117,7 @@ ARTS = {  # L3: реальные пути; суффикс " ::вне волта"
             "DEVELOPMENT-ROADMAP.md", "04-Memory/route-log/", "01-Policies/"],
     "dvhub": ["03-Projects/dv-hub.md", "~/Projects/dv-hub/ ::вне волта"],
     "servant": ["10-Deck/decisions-deck.md", "10-Deck/deck.canvas", "10-Deck/PIPELINE.md",
+                "10-Deck/vibe-interactive-research.md",
                 "07-Runbooks/pipboy-v11-user-guide.md",
                 "06-Specs/Vault/pipboy-v9-terrarium.md ::ветка pipboy-v8-rethink (b30f239d)"],
 }
