@@ -95,6 +95,10 @@ timestamp: 2026-09-01
 ## Doctrine (08-Doctrine/)
 Образ корабля и триггеры доктрины: [[08-Doctrine/00-ship-image]] (целиком, один раз), [[08-Doctrine/doctrine-index]] (по интенту).
 
+## Quests (11-Quests/) — ризомные квесты
+Замена роадмапам и параллельным индексам: [[11-Quests/00-README]] (механика),
+[[11-Quests/quests]] (реестр). Карта — `11-Quests/quests.canvas` (ведёт Служитель).
+
 ## Deck (10-Deck/) — капитанский мостик
 Решения, ждущие слова владельца, — интерактивно в Obsidian: [[10-Deck/00-README]] (что это), [[10-Deck/decisions-deck]] (карточки), [[10-Deck/deck.canvas]] (ризома). Агент — Служитель Обсидиан (`obsidian-servant`); ssot:false — проекция реестров.
 
