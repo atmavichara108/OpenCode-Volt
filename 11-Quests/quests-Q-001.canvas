@@ -1,0 +1,148 @@
+{
+  "nodes": [
+    {
+      "id": "sqfab5dc",
+      "type": "text",
+      "text": "# 🧩 Q-001 · подквесты\n**путь разработчика NVIDIA**\nстатус родителя: active · 2026-10-23",
+      "x": -320,
+      "y": -480,
+      "width": 700,
+      "height": 130,
+      "color": "4"
+    },
+    {
+      "id": "q86ed03",
+      "type": "text",
+      "text": "## Q-001.1 · READY\n**заявка в NVIDIA Inception (бесплатные cloud credits)**\nвладелец: ЦУ (текст) + владелец (подача)\nждёт: аккаунт NVIDIA ✓",
+      "x": -320,
+      "y": -280,
+      "width": 360,
+      "height": 180,
+      "color": "3"
+    },
+    {
+      "id": "q8fbcb9",
+      "type": "text",
+      "text": "## Q-001.2 · READY\n**курс «Securing Agents With OpenShell and NemoClaw»**\nвладелец: владелец (прохождение) + ЦУ (разбор)",
+      "x": 80,
+      "y": -280,
+      "width": 360,
+      "height": 180,
+      "color": "3"
+    },
+    {
+      "id": "q888c2f",
+      "type": "text",
+      "text": "## Q-001.3 · READY\n**забрать NIM-кредиты и проверить целостность на Nemotron**\nвладелец: ИЦ\nждёт: Q-001.1 или free-кредиты",
+      "x": 480,
+      "y": -280,
+      "width": 360,
+      "height": 180,
+      "color": "3"
+    },
+    {
+      "id": "qec198c",
+      "type": "text",
+      "text": "## Q-001.4 · ACTIVE\n**вытянуть все письма NVIDIA + разобрать анонсы**\nвладелец: ЦУ\nждёт: mail-hub ✓",
+      "x": 880,
+      "y": -280,
+      "width": 360,
+      "height": 180,
+      "color": "4"
+    },
+    {
+      "id": "qeb291a",
+      "type": "text",
+      "text": "## Q-001.5 · LOCKED\n**кейс Корабля для блога/форума NVIDIA**\nвладелец: ИПТ + ЦУ\nждёт: Q-001.2",
+      "x": 1280,
+      "y": -280,
+      "width": 360,
+      "height": 180,
+      "color": "2"
+    },
+    {
+      "id": "qe278a0",
+      "type": "text",
+      "text": "## Q-001.6 · READY\n**NGC/blueprints разведка (NeMo, Dynamo, NIM)**\nвладелец: ИПТ",
+      "x": 1680,
+      "y": -280,
+      "width": 360,
+      "height": 180,
+      "color": "3"
+    },
+    {
+      "id": "qe54836",
+      "type": "text",
+      "text": "## Q-001.7 · PARKED\n**платный dedicated NIM — оценка целесообразности**\nвладелец: ЦУ\nждёт: решение владельца о бюджете",
+      "x": 2080,
+      "y": -280,
+      "width": 360,
+      "height": 180
+    }
+  ],
+  "edges": [
+    {
+      "id": "er86ed03",
+      "fromNode": "sqfab5dc",
+      "toNode": "q86ed03",
+      "label": "открывает",
+      "fromEnd": "arrow"
+    },
+    {
+      "id": "er8fbcb9",
+      "fromNode": "sqfab5dc",
+      "toNode": "q8fbcb9",
+      "label": "открывает",
+      "fromEnd": "arrow"
+    },
+    {
+      "id": "er888c2f",
+      "fromNode": "sqfab5dc",
+      "toNode": "q888c2f",
+      "label": "открывает",
+      "fromEnd": "arrow"
+    },
+    {
+      "id": "erec198c",
+      "fromNode": "sqfab5dc",
+      "toNode": "qec198c",
+      "label": "открывает",
+      "fromEnd": "arrow"
+    },
+    {
+      "id": "ereb291a",
+      "fromNode": "sqfab5dc",
+      "toNode": "qeb291a",
+      "label": "открывает",
+      "fromEnd": "arrow"
+    },
+    {
+      "id": "ere278a0",
+      "fromNode": "sqfab5dc",
+      "toNode": "qe278a0",
+      "label": "открывает",
+      "fromEnd": "arrow"
+    },
+    {
+      "id": "ere54836",
+      "fromNode": "sqfab5dc",
+      "toNode": "qe54836",
+      "label": "открывает",
+      "fromEnd": "arrow"
+    },
+    {
+      "id": "eda4b7ff",
+      "fromNode": "q86ed03",
+      "toNode": "q888c2f",
+      "label": "предусловие",
+      "fromEnd": "arrow"
+    },
+    {
+      "id": "edf0a9c9",
+      "fromNode": "q8fbcb9",
+      "toNode": "qeb291a",
+      "label": "предусловие",
+      "fromEnd": "arrow"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "nodes": [
+    {
+      "id": "sqf3e466",
+      "type": "text",
+      "text": "# 🧩 Q-002 · подквесты\n**метахаб квот: 10 компаний (Mistral, Google, Groq, Cohere, SambaNova, OpenRouter, Cerebras, Together, Cloudflare, HF)**\nстатус родителя: ready · 2026-10-23",
+      "x": -320,
+      "y": -480,
+      "width": 700,
+      "height": 130,
+      "color": "4"
+    },
+    {
+      "id": "qc0535a",
+      "type": "text",
+      "text": "## Q-002.1 · READY\n**рассылка писем по 10 адресатам**\nвладелец: ЦУ\nждёт: шаблон ✓",
+      "x": -320,
+      "y": -280,
+      "width": 360,
+      "height": 180,
+      "color": "3"
+    }
+  ],
+  "edges": [
+    {
+      "id": "erc0535a",
+      "fromNode": "sqf3e466",
+      "toNode": "qc0535a",
+      "label": "открывает",
+      "fromEnd": "arrow"
+    }
+  ]
+}
