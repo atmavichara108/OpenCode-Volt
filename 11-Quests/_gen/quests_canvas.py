@@ -148,7 +148,7 @@ timestamp: {DAY}
 
 ## 🔥 Сейчас (active)"""]
     for q in act:
-        lines.append(f"- **{q['id']}** {q['name']} — {q['owner']}{waits_note(q)}")
+        lines.append(f"- **{q['id']}** {q['name']} — {q['owner']}{waits_note(q).replace(chr(10), ' · ')}")
     if not act:
         lines.append("- (пусто)")
     lines.append("\n## ▶️ Готово к старту (ready)")
