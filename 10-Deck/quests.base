@@ -1,0 +1,34 @@
+filters:
+  and:
+    - file.inFolder("11-Quests")
+    - 'file.ext == "md"'
+properties:
+  note.status:
+    displayName: Статус
+  note.owner:
+    displayName: Владелец
+  note.pre:
+    displayName: Предусловие
+  file.name:
+    displayName: Квест
+views:
+  - type: table
+    name: Чем заняться сейчас
+    filters:
+      or:
+        - 'status == "active"'
+        - 'status == "ready"'
+    order:
+      - file.name
+      - status
+      - owner
+      - pre
+  - type: table
+    name: Все квесты
+    groupBy:
+      property: status
+      direction: ASC
+    order:
+      - file.name
+      - status
+      - owner

@@ -1,0 +1,51 @@
+{
+  "nodes": [
+    {
+      "id": "nf4f95b",
+      "type": "text",
+      "text": "# 🚪 Deck — одна дверь\n\nЖивые виды из frontmatter. Статичных снимков нет: меняется реестр — меняется вид.",
+      "x": -260,
+      "y": -520,
+      "width": 820,
+      "height": 150,
+      "color": "4"
+    },
+    {
+      "id": "n9e5d34",
+      "type": "file",
+      "file": "10-Deck/quests.base",
+      "x": -260,
+      "y": -260,
+      "width": 820,
+      "height": 460,
+      "color": "3"
+    },
+    {
+      "id": "nac3637",
+      "type": "file",
+      "file": "10-Deck/deck.md",
+      "x": -260,
+      "y": 260,
+      "width": 820,
+      "height": 520
+    }
+  ],
+  "edges": [
+    {
+      "id": "n8d8d27",
+      "fromNode": "nf4f95b",
+      "toNode": "n9e5d34",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "открывает"
+    },
+    {
+      "id": "n84dc9d",
+      "fromNode": "nf4f95b",
+      "toNode": "nac3637",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "как это устроено"
+    }
+  ]
+}
