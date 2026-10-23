@@ -23,4 +23,4 @@ git -C /home/rudra/Projects/OpenCode-Vault tag -a ship-YYYY-MM-DD -m "..."
 ## Версии
 | Версия | Дата | Vault SHA | Dotfiles SHA | Фокус | Ключевые события |
 |--------|------|-----------|--------------|-------|------------------|
-| `ship-2026-10-23` | 2026-10-23 | `eb925c4a` | `8087455` | UAS в строю, гомеостаз v1, /ship механизация | Р-023 УАС, Р-024 рамка ротатора, Р-025 гомеостаз, docs/org манифесты, Deck v4, Inception заявка, Q-005 отчёт, tech-debt |
+| `ship-2026-10-23` | 2026-10-23 | `f0d54235` | `8087455` | UAS в строю, гомеостаз v1, /ship механизация | Р-023 УАС, Р-024 рамка ротатора, Р-025 гомеостаз, docs/org манифесты (3), git-freed activated proactive, tech-debt, ship-versions, Deck v4, Inception заявка, Q-005 отчёт |
