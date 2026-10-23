@@ -1113,3 +1113,10 @@ timestamp: 2026-08-17
 
 ## 2026-10-21
 - **B21 ревизия (слово владельца 2026-10-21, basis: quoted через ДВ-Хаб):** «наш агентский слой приоритет; агентский слой mcode не должен пострадать — самостоятельный SDK, встраиваем в нашу экосистему, но не нарушаем его работу и настройки». Две зоны двух SDK: `.opencode/` — наш слой, приоритетный, **версионируется в git**; `.mcode/` — зона M Code, не трогаем/не версионируем (T-159 в силе). B21 в части «удаления .opencode = миграция в .mcode» СНЯТ: наш слой никуда не переезжал (ДВ-Хаб откат 16 файлов — канонический). Карточка dv-hub обновлена.
+
+## 2026-10-23 (УАС в строю — Р-023)
+- **УАС введён в строй:** сессия `ses_e9884e4aeffe7okjn4f7RtavmG` — сессия-носитель Университета Агентских Систем. До 10-23 у УАС сессии не было (спека approved 10-17, `dotfiles/docs/specs/done/university-of-agent-networks-location.md`). Владелец создал сессию и сказал: «принимай на борт и знакомь всех с новым отделом».
+- **Спец-отдел «Ротатор моделей»** учреждён внутри УАС (слово владельца 10-23, basis: quoted: «нам нужно настроить толково ротатор моделей… для этого в уас должен быть отдел»). Карточки: `03-Projects/uas.md`, `03-Projects/uas-special-rotator.md`. Квест Q-005 с 6 подквестами.
+- **База ротации уже существует (факты):** `tools/key-rotator/` — `rotate.py` (Iter-1 failover: flock+backup, пуш), `probe.py` (Iter-0 read-only health), `providers.json` (22 провайдера, без секретов), `rotation.json` (роли coding/general/vision + preferred-модели), `newapi_sync.py`; `control-plane/telemetry/provider-health.jsonl` (append-only); `control-plane/model-catalog.json` — 9 провайдеров (vercel 419 моделей, opencode 130, opencode-go 36, amd-radeon 7, anymodel 9, local-deepseek 2, modelhub 2, apinex 1, justwoker 1).
+- **Граница:** УАС владеет решением и каталогом; правку глобального `opencode.jsonc` исполняет ИЦ (владелец инфраструктурного файла).
+- **Извещены:** УАС (мандат), ИЦ, ИПТ, Лаба, ХПФ, Служитель, Control-top, ДВ-Хаб (scope uas-onboard).
