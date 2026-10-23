@@ -116,15 +116,24 @@ done | rg -o '\[\[([^\]|]+)' --no-filename --no-line-number 2>/dev/null | sed 's
 
 echo "✅ Все викилинки валидны"
 
-# --- Гейт 5: frontmatter-полнота (слово владельца 2026-10-22, ref frontmatter-gate-20261022)
-# Обязательные поля type/title/timestamp для НОВЫХ .md в контент-директориях.
-# Канон полей — 05-Templates/*.md. Отсутствие = red commit.
-# Обход: FRONTMATTER_OK=1 (осознанно, объясни в сообщении).
+# --- Гейт 5: frontmatter — валидность YAML + полнота полей (объединённый, ЦУ одобрила 2026-10-22)
+# Под-проверка (а): YAML-валидность — fm.py lint (инструмент dotfiles tools/vault-frontmatter/)
+# Под-проверка (б): полнота полей type/title/timestamp для новых .md в контент-директориях.
+# Канон полей — 05-Templates/*.md. Отсутствие = red commit. Обход: FRONTMATTER_OK=1.
 
 FRONTMATTER_DIRS="06-Audits/ 02-Methods/ 10-Deck/ 01-Policies/"
 FRONTMATTER_FIELDS="type title timestamp"
+FM_LINT="${FM_LINT:-$HOME/dotfiles/tools/vault-frontmatter/fm.py}"
 
 if [ "${FRONTMATTER_OK:-0}" != "1" ]; then
+  # Под-проверка (а): YAML-валидность всех staged .md (не только новых)
+  for f in $(git diff --cached --name-only --diff-filter=ACM | grep '\.md$'); do
+    [ -f "$f" ] || continue
+    if python3 "$FM_LINT" check "$f" 2>&1 | grep -q 'FAIL\|бит\|error'; then
+      die "Гейт 5(а): $f — невалидный YAML во frontmatter. Обход: FRONTMATTER_OK=1"
+    fi
+  done
+  # Под-проверка (б): полнота полей для НОВЫХ .md в контент-директориях
   for f in $(git diff --cached --name-only --diff-filter=A); do
     case "$f" in
       *.md) ;;

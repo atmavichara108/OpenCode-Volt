@@ -4,7 +4,7 @@ repo: /home/rudra/Projects/SSA/products/seo-outreach
 spec-home: /home/rudra/Projects/SSA/products/seo-outreach/docs/specs/
 kind: коммерция
 status: bootstrap
-stack: Sheets / SQLite (будущее: web / PostgreSQL / queues)
+stack: "Sheets / SQLite (будущее: web / PostgreSQL / queues)"
 timestamp: 2026-10-10
 ---
 

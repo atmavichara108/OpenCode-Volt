@@ -4,7 +4,7 @@ title: Центр стратегического планирования и м�
 status: draft
 timestamp: 2026-10-17
 project: OpenCode-Vault
-source: мандат Rudra 2026-10-15 (ref: triple-mandate-20261015, трек 2, слово «давай!»); диспозиция ЦУ ref: ippt-pace-20261017 (трек — третий в конвейере после Лабы и И-52; отчёт — письмом ЦУ)
+source: "мандат Rudra 2026-10-15 (ref: triple-mandate-20261015, трек 2, слово «давай!»); диспозиция ЦУ ref: ippt-pace-20261017 (трек — третий в конвейере после Лабы и И-52; отчёт — письмом ЦУ)"
 owner: Институт Передовых Технологий
 related:
   - 06-Audits/2026-10-14-institute-research-methodologies-m001.md

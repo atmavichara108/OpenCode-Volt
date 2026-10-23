@@ -1,5 +1,5 @@
 ---
-description: Канонизировать слово владельца: дословная цитата (basis quoted) → политика/факт/метод через named executor
+description: "Канонизировать слово владельца: дословная цитата (basis quoted) → политика/факт/метод через named executor"
 agent: librarian
 ---
 Команда: /canonize $ARGUMENTS

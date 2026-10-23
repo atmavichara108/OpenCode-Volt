@@ -1,6 +1,6 @@
 ---
 type: research
-title: Институт — хвост vault-upgrade-research-2026-08-02: сверка и вердикт
+title: "Институт — хвост vault-upgrade-research-2026-08-02: сверка и вердикт"
 status: draft
 timestamp: 2026-10-13
 project: OpenCode-Vault / dotfiles

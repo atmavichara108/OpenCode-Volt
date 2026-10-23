@@ -1,6 +1,6 @@
 ---
 type: research
-title: Институт — И-35: разбор телеграм-капчуров (качество классификации, GLiClass, persist)
+title: "Институт — И-35: разбор телеграм-капчуров (качество классификации, GLiClass, persist)"
 status: draft
 timestamp: 2026-10-14
 project: OpenCode-Vault / dotfiles

@@ -1,7 +1,7 @@
 ---
 type: Research
 title: Визуальный интерактив вайбкодинга — от Deck к Пип-Бою v11 (терминал 1.0)
-status: черновик для ЦУ (ref: deck-v2)
+status: "черновик для ЦУ (ref: deck-v2)"
 timestamp: 2026-10-22
 ---
 

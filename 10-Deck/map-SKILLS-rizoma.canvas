@@ -1,5 +1,6 @@
 {
 	"nodes":[
+		{"id":"a5f2f6d2933c7fbb","x":159,"y":-1,"width":250,"height":60,"type":"text","text":""},
 		{"id":"sk-root","type":"text","text":"# 🧬 РИЗОМА НАВЫКОВ (Deck v3)\nТаксономия: навык → сверхнавык → метанавык → ультранавык.\nист: 01-Policies/skill-taxonomy.md · слово владельца 2026-10-22 (Deck v3). ssot:false","x":-340,"y":-560,"width":760,"height":140,"color":"4"},
 		{"id":"sk-tax","type":"file","file":"01-Policies/skill-taxonomy.md","x":-340,"y":-340,"width":420,"height":300,"color":"6"},
 		{"id":"sk-tsu","type":"text","text":"**Сверхнавыки ЦУ (tsu-*) ×5**\n*сверхнавык*\ntsu-status · tsu-comms · tsu-synthesis · tsu-coordination · tsu-ministry\nист: ~/dotfiles/opencode-global/.config/opencode/skill/","x":120,"y":-340,"width":460,"height":220,"color":"5"},
@@ -9,11 +10,11 @@
 		{"id":"sk-hygiene","type":"text","text":"**tree-hygiene (гигиена дерева)**\n*навык-процедура*\nист: ~/dotfiles/.opencode/skills/tree-hygiene · dotfiles AGENTS.md","x":660,"y":40,"width":420,"height":160,"color":"5"}
 	],
 	"edges":[
-		{"id":"esk-tax","fromNode":"sk-root","toNode":"sk-tax","label":"таксономия (канон)","fromSide":"bottom","toSide":"top"},
-		{"id":"esk-tsu","fromNode":"sk-root","toNode":"sk-tsu","label":"сверхнавыки","fromSide":"bottom","toSide":"top"},
-		{"id":"esk-vault","fromNode":"sk-root","toNode":"sk-vault","label":"навыки","fromSide":"bottom","toSide":"left"},
-		{"id":"esk-cmd1","fromNode":"sk-root","toNode":"sk-cmd-v","label":"панели","fromSide":"bottom","toSide":"top"},
-		{"id":"esk-cmd2","fromNode":"sk-root","toNode":"sk-cmd-d","label":"панели","fromSide":"bottom","toSide":"top"},
-		{"id":"esk-hyg","fromNode":"sk-root","toNode":"sk-hygiene","fromSide":"bottom","toSide":"top"}
+		{"id":"esk-tax","fromNode":"sk-root","fromSide":"bottom","toNode":"sk-tax","toSide":"top","label":"таксономия (канон)"},
+		{"id":"esk-tsu","fromNode":"sk-root","fromSide":"bottom","toNode":"sk-tsu","toSide":"top","label":"сверхнавыки"},
+		{"id":"esk-vault","fromNode":"sk-root","fromSide":"bottom","toNode":"sk-vault","toSide":"left","label":"навыки"},
+		{"id":"esk-cmd1","fromNode":"sk-root","fromSide":"bottom","toNode":"sk-cmd-v","toSide":"top","label":"панели"},
+		{"id":"esk-cmd2","fromNode":"sk-root","fromSide":"bottom","toNode":"sk-cmd-d","toSide":"top","label":"панели"},
+		{"id":"esk-hyg","fromNode":"sk-root","fromSide":"bottom","toNode":"sk-hygiene","toSide":"top"}
 	]
 }

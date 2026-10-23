@@ -1,7 +1,7 @@
 ---
 type: Spec
 title: Model capability bench — детерминированный capability-probe силы моделей
-description: Execution spec для Vault build-агента: детерминированный прогон 4 auto-verifiable гейтов (tools/build/reasoning/fast) для назначения ролей моделям. Advisory-выход (не блокирует роутинг). Python в tools/model-bench/.
+description: "Execution spec для Vault build-агента: детерминированный прогон 4 auto-verifiable гейтов (tools/build/reasoning/fast) для назначения ролей моделям. Advisory-выход (не блокирует роутинг). Python в tools/model-bench/."
 tags: [spec, vault, model-bench, capability-probe, routing, advisory]
 timestamp: 2026-09-23
 status: implemented

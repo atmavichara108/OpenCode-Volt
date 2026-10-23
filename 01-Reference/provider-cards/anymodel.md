@@ -1,7 +1,7 @@
 ---
 type: Provider Card
 title: AnyModel — provider card
-description: Операционная карточка провайдера AnyModel. OpenAI-compatible шлюз с реферальным оффером 5M токенов за привязку Telegram. Status EMPTY: баланс скрыт (только estimated), фактическое использование не подтверждено.
+description: "Операционная карточка провайдера AnyModel. OpenAI-compatible шлюз с реферальным оффером 5M токенов за привязку Telegram. Status EMPTY: баланс скрыт (только estimated), фактическое использование не подтверждено."
 tags: [reference, provider-card, providers, anymodel]
 timestamp: 2026-10-07
 ---

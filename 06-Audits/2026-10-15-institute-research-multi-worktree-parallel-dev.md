@@ -1,6 +1,6 @@
 ---
 type: research
-title: Институт — исследование: параллельная разработка через несколько git worktree в dotfiles (И-52)
+title: "Институт — исследование: параллельная разработка через несколько git worktree в dotfiles (И-52)"
 status: draft
 timestamp: 2026-10-15
 project: dotfiles / OpenCode-Vault

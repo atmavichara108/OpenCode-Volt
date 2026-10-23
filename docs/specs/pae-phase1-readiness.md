@@ -1,5 +1,3 @@
-# Spec: PAE Phase 1 — Readiness Audit
-
 ---
 spec: pae-phase1-readiness
 kind: task
@@ -10,6 +8,7 @@ mandate: Рудра, 2026-10-05 — «фаза 1 утверждена, деле�
 mandate-graph: idea-graph quest-pae-rhizome / stream-intent-025..026
 verifier: required (независимый verifier перед финальным коммитом отчёта)
 ---
+# Spec: PAE Phase 1 — Readiness Audit
 
 ## S1. Цель
 

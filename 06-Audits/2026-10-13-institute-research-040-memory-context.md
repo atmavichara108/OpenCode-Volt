@@ -1,6 +1,6 @@
 ---
 type: research
-title: Институт — исследование 040: память/кэш/оптимизация контекста (live-журнал)
+title: "Институт — исследование 040: память/кэш/оптимизация контекста (live-журнал)"
 status: active
 timestamp: 2026-10-13
 project: OpenCode-Vault / dotfiles

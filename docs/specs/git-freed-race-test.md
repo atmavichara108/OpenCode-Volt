@@ -1,5 +1,3 @@
-# Spec: Git Freed — тест реальной гонки (B9, шаг 3 роадмепа)
-
 ---
 spec: git-freed-race-test
 kind: task
@@ -10,6 +8,7 @@ mandate: Роадмеп B9; багфикс peer-comms модели (B15) ста�
 sustainability: pass (один追加-файл, zero-LLM в детекторе, 2-3 хода на сессию)
 verifier: owner-local igraphv2 после теста + librarian handoff Рудре
 ---
+# Spec: Git Freed — тест реальной гонки (B9, шаг 3 роадмепа)
 
 ## S1. Цель
 

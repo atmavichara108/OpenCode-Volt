@@ -1,5 +1,5 @@
 ---
-description: Decision queue: list/show/resolve/reject/defer dilemma cards. Write actions require explicit user approval.
+description: "Decision queue: list/show/resolve/reject/defer dilemma cards. Write actions require explicit user approval."
 agent: librarian
 ---
 # Command: /decisions $ARGUMENTS

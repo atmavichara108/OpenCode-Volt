@@ -1,7 +1,7 @@
 ---
 type: Reference
 title: Abuse Providers Inbox — таблица промо-провайдеров из Telegram
-description: Рабочая таблица для triage промо/реферальных провайдеров из темы «Абуз» (@inbox_tools). Lifecycle: [[02-Methods/promo-provider-protocol]].
+description: "Рабочая таблица для triage промо/реферальных провайдеров из темы «Абуз» (@inbox_tools). Lifecycle: [[02-Methods/promo-provider-protocol]]."
 tags: [reference, providers, abuse, promo-provider]
 timestamp: 2026-09-23
 ---

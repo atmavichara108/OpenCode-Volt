@@ -4,7 +4,7 @@ title: Исследование стоимости seo-outreach v3 — рыно�
 status: accepted (приёмка ЦУ 2026-10-19, ref cost-accept-20261019)
 timestamp: 2026-10-18
 project: OpenCode-Vault
-source: прямой апрув владельца 2026-10-18 (basis: quoted, через ЦУ); мандат calib-research-20261018; досье tsu-cost-research.txt (control-top)
+source: "прямой апрув владельца 2026-10-18 (basis: quoted, через ЦУ); мандат calib-research-20261018; досье tsu-cost-research.txt (control-top)"
 owner: Институт Передовых Технологий
 related:
   - 06-Audits/2026-10-17-institute-research-strategy-center.md

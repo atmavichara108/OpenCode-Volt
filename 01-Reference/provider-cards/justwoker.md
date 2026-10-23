@@ -1,7 +1,7 @@
 ---
 type: Provider Card
 title: JustDoWork (justwoker) — provider card
-description: Операционная карточка провайдера JustDoWork (justwoker, New API/One API style). Status WORKING (через шим v4 curl-транспорт): прямое соединение с CF виснет на больших upload'ах (MTU-blackhole), шим гонит через локальный прокси. Стрим-регрессия шлюза ушла 2026-10-09. OpenAI-style /chat/completions закрыт Cloudflare. Баланс $300+.
+description: "Операционная карточка провайдера JustDoWork (justwoker, New API/One API style). Status WORKING (через шим v4 curl-транспорт): прямое соединение с CF виснет на больших upload'ах (MTU-blackhole), шим гонит через локальный прокси. Стрим-регрессия шлюза ушла 2026-10-09. OpenAI-style /chat/completions закрыт Cloudflare. Баланс $300+."
 tags: [reference, provider-card, providers, justwoker]
 timestamp: 2026-10-09
 ---

@@ -1,6 +1,6 @@
 ---
 type: research-case
-title: Институт — внешний кейс: G-Star+ / маскированная диффузия (ICML 2026)
+title: "Институт — внешний кейс: G-Star+ / маскированная диффузия (ICML 2026)"
 status: draft
 timestamp: 2026-10-13
 project: OpenCode-Vault / dotfiles

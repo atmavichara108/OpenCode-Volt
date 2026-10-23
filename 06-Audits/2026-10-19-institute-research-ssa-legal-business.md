@@ -4,7 +4,7 @@ title: SSA — юридический и бизнес-контуры. Модел
 status: accepted (приёмка ЦУ 2026-10-19, ref legal-accept-20261019)
 timestamp: 2026-10-19
 project: OpenCode-Vault
-source: прямой апрув владельца 2026-10-18 (basis: quoted, через ЦУ); мандат ЦУ: calib-research-20261018; досье tsu-legal-biz.txt (control-top, 247 записей)
+source: "прямой апрув владельца 2026-10-18 (basis: quoted, через ЦУ); мандат ЦУ: calib-research-20261018; досье tsu-legal-biz.txt (control-top, 247 записей)"
 owner: Институт Передовых Технологий
 related:
   - 06-Audits/2026-10-18-institute-research-cost-estimation-seo-outreach.md

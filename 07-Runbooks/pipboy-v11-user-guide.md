@@ -1,7 +1,7 @@
 ---
 type: Runbook
 title: Pip-Boy v11 — полное руководство пользователя и оператора
-description: Полный практический гайд по использованию Pip-Boy v11 (tiling multiplexer экосистемы OpenCode-Vault): запуск, профили, раскладки, управление моделью агентов, безопасные горячие клавиши и UX-навигация.
+description: "Полный практический гайд по использованию Pip-Boy v11 (tiling multiplexer экосистемы OpenCode-Vault): запуск, профили, раскладки, управление моделью агентов, безопасные горячие клавиши и UX-навигация."
 tags: [runbooks, pipboy, interface, operator-guide]
 timestamp: 2026-09-25
 ---

@@ -19,6 +19,7 @@ stack: TypeScript strict / Hono / better-sqlite3 / Vanilla JS + Tailwind / Vite
 ## Стек: current vs target
 - Current: Node.js + better-sqlite3 + Hono (миграция с Cloudflare по коду завершена, DV-008)
 - Target (Phase 0): Node.js + PM2 + Nginx + SQLite (better-sqlite3) на Fornex VPS, Ubuntu 24.04
+  - **Корректировка (слово владельца 2026-10-20, basis: quoted): «провайдера я давно не оплачиваю, у меня нет денег»** — бюджет ноль, всё опенсорс/локально. Fornex-линия отменена (признанная ошибка ЦУ); target на текущий момент — локально/опенсорс. Закрывает ребро doctrine-review Р-2 (Fornex × слово владельца).
 - Constant: TS strict, Vanilla JS ES-modules, Tailwind, Vite, Auth = Telegram Login + email magic-link (Resend)
 
 ## Архитектура

@@ -1,6 +1,6 @@
 ---
 type: Design Doc
-title: Pip-Boy v8-BIS — «КОМАНДНЫЙ ЦЕНТР»: интерактивный UX-концепт
+title: "Pip-Boy v8-BIS — «КОМАНДНЫЙ ЦЕНТР»: интерактивный UX-концепт"
 description: Единый концепт UX (один экран = одна работа), выработанный из обратной связи Rudra о v8/B HUD (красив, но пассивен). Прототип-мокап следует.
 tags: [specs, vault, pip-boy, ux, design]
 timestamp: 2026-09-10
