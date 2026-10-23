@@ -1,7 +1,7 @@
 filters:
   and:
     - file.inFolder("11-Quests")
-    - 'file.ext == "md"'
+    - file.ext == "md"
 properties:
   note.status:
     displayName: Статус
@@ -16,8 +16,8 @@ views:
     name: Чем заняться сейчас
     filters:
       or:
-        - 'status == "active"'
-        - 'status == "ready"'
+        - status == "active"
+        - status == "ready"
     order:
       - file.name
       - status

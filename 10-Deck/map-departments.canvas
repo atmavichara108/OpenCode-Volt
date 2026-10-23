@@ -1,0 +1,194 @@
+{
+  "nodes": [
+    {
+      "id": "d63e467",
+      "type": "text",
+      "text": "# Карта ведомств\n\nУзел = ведомство, ребро = отчётность/вхождение.\nИсточники: peer-registry + Р-023.",
+      "x": -260,
+      "y": -640,
+      "width": 760,
+      "height": 120,
+      "color": "1"
+    },
+    {
+      "id": "dac7693",
+      "type": "text",
+      "text": "Центральный Узел (ЦУ)\nкоординация — все линии стекаются сюда",
+      "x": -620,
+      "y": -420,
+      "width": 320,
+      "height": 130,
+      "color": "4"
+    },
+    {
+      "id": "d045e9d",
+      "type": "text",
+      "text": "Инженерный центр (ИЦ)\nразработка, dotfiles",
+      "x": -980,
+      "y": -160,
+      "width": 320,
+      "height": 130
+    },
+    {
+      "id": "d66b290",
+      "type": "text",
+      "text": "Мастерская Багфикс\nремонт, INC",
+      "x": -980,
+      "y": 40,
+      "width": 320,
+      "height": 130
+    },
+    {
+      "id": "d5ecea2",
+      "type": "text",
+      "text": "Абилити Лаб (Dr.Who)\nлаборатория способностей",
+      "x": -980,
+      "y": 240,
+      "width": 320,
+      "height": 130
+    },
+    {
+      "id": "de86b92",
+      "type": "text",
+      "text": "ИПТ\nисследования",
+      "x": -620,
+      "y": -160,
+      "width": 320,
+      "height": 130
+    },
+    {
+      "id": "d9d8b08",
+      "type": "text",
+      "text": "ХПФ\nфилософия/структуры",
+      "x": -620,
+      "y": 40,
+      "width": 320,
+      "height": 130
+    },
+    {
+      "id": "d385624",
+      "type": "text",
+      "text": "Control-top\nSSA-поток",
+      "x": -620,
+      "y": 240,
+      "width": 320,
+      "height": 130
+    },
+    {
+      "id": "db445f3",
+      "type": "text",
+      "text": "ДВ-Хаб\nкандидат (не калибровать)",
+      "x": -260,
+      "y": -160,
+      "width": 320,
+      "height": 130
+    },
+    {
+      "id": "da18a0e",
+      "type": "text",
+      "text": "Служитель Обсидиан\nUI|UX ecosys (Р-021)",
+      "x": -260,
+      "y": 40,
+      "width": 320,
+      "height": 130
+    },
+    {
+      "id": "d4585f4",
+      "type": "text",
+      "text": "УАС\nкуратор агентского контура\nв строю 10-23 (Р-023)",
+      "x": 100,
+      "y": -160,
+      "width": 320,
+      "height": 130,
+      "color": "4"
+    },
+    {
+      "id": "dc324f0",
+      "type": "file",
+      "file": "03-Projects/uas.md",
+      "x": 100,
+      "y": 60,
+      "width": 400,
+      "height": 280,
+      "color": "6"
+    },
+    {
+      "id": "d157078",
+      "type": "file",
+      "file": "03-Projects/uas-special-rotator.md",
+      "x": 540,
+      "y": 60,
+      "width": 400,
+      "height": 280,
+      "color": "6"
+    }
+  ],
+  "edges": [
+    {
+      "id": "d3566c8",
+      "fromNode": "d045e9d",
+      "toNode": "dac7693",
+      "label": "отчитывается"
+    },
+    {
+      "id": "d312e3e",
+      "fromNode": "d66b290",
+      "toNode": "dac7693",
+      "label": "отчитывается"
+    },
+    {
+      "id": "df5a269",
+      "fromNode": "d5ecea2",
+      "toNode": "dac7693",
+      "label": "отчитывается"
+    },
+    {
+      "id": "d7bc7df",
+      "fromNode": "de86b92",
+      "toNode": "dac7693",
+      "label": "отчитывается"
+    },
+    {
+      "id": "dab4aae",
+      "fromNode": "d9d8b08",
+      "toNode": "dac7693",
+      "label": "отчитывается"
+    },
+    {
+      "id": "dc373b1",
+      "fromNode": "d385624",
+      "toNode": "dac7693",
+      "label": "отчитывается"
+    },
+    {
+      "id": "d4e2ca6",
+      "fromNode": "db445f3",
+      "toNode": "dac7693",
+      "label": "отчитывается"
+    },
+    {
+      "id": "da7857e",
+      "fromNode": "da18a0e",
+      "toNode": "dac7693",
+      "label": "отчитывается"
+    },
+    {
+      "id": "de75e96",
+      "fromNode": "d4585f4",
+      "toNode": "dac7693",
+      "label": "отчёты в ЦУ (Р-023)"
+    },
+    {
+      "id": "d85c735",
+      "fromNode": "d157078",
+      "toNode": "d4585f4",
+      "label": "отдел внутри УАС"
+    },
+    {
+      "id": "d82b411",
+      "fromNode": "dc324f0",
+      "toNode": "d4585f4",
+      "label": "карточка"
+    }
+  ]
+}

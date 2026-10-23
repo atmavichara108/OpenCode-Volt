@@ -28,6 +28,16 @@
       "y": 260,
       "width": 820,
       "height": 520
+    },
+    {
+      "id": "nc6d585",
+      "type": "file",
+      "file": "10-Deck/map-departments.canvas",
+      "x": 620,
+      "y": -260,
+      "width": 560,
+      "height": 460,
+      "color": "1"
     }
   ],
   "edges": [
@@ -46,6 +56,14 @@
       "fromSide": "bottom",
       "toSide": "top",
       "label": "как это устроено"
+    },
+    {
+      "id": "n83ec0b",
+      "fromNode": "nf4f95b",
+      "toNode": "nc6d585",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "кто на борту"
     }
   ]
 }

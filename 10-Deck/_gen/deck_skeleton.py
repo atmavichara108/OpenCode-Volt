@@ -30,11 +30,13 @@ nodes = [
     text(nid("root"), "# 🚪 Deck — одна дверь\n\nЖивые виды из frontmatter. Статичных снимков нет: меняется реестр — меняется вид.", -260, -520, 820, 150, "4"),
     file(nid("quests"), "10-Deck/quests.base", -260, -260, 820, 460, "3"),
     file(nid("deck"), "10-Deck/deck.md", -260, 260, 820, 520),
+    file(nid("depts"), "10-Deck/map-departments.canvas", 620, -260, 560, 460, "1"),
 ]
 
 edges = [
     edge(nid("e1"), nid("root"), nid("quests"), "открывает"),
     edge(nid("e2"), nid("root"), nid("deck"), "как это устроено"),
+    edge(nid("e3"), nid("root"), nid("depts"), "кто на борту"),
 ]
 
 (DD / "DECK.canvas").write_text(
