@@ -21,6 +21,7 @@ timestamp: 2026-10-18
 | Control-top (координатор SSA) | ses_ed5fcec4effeZKwSoEmMe6Swlk | top | ~/Projects/SSA/control | SSA-поток, владелец-панель |
 | ДВ-Хаб (временный шлюз) | ses_ea5bee799ffes5WDriyP61xyB5 | — | ~/Projects/dv-hub | волонтёрский проект, путь к статусу разработчика; кандидат — обрамление ведомства позже (слово владельца 2026-10-20: познакомить, не калибровать) |
 | Служитель Обсидиан | ses_ea02cc0d8ffeFXUsAX9UeQWs2D | obsidian-servant | ~/Projects/OpenCode-Vault | ведомство UI\|UX ecosys (Р-021): 10-Deck, canvas-карты, Пип-Бой тайлы |
+| Университет Агентских Систем (УАС) | ses_e9884e4aeffe7okjn4f7RtavmG | librarian | ~/Projects/OpenCode-Vault | ведомство-куратор агентского контура (Р-004/Р-016, в строю с 10-23); спец-отдел «Ротатор моделей» (Р-023) |
 
 ## Правила
 1. **Писать только по этому реестру.** Все сессии живые (сверено по session_v2, 10-18 22:00).

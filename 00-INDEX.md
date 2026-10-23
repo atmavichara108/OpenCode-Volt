@@ -39,6 +39,7 @@ timestamp: 2026-09-01
 | recruiting-hr | коммерция | Python / mammoth / markdownify | — | [[recruiting-hr]] | 🟡 bootstrap |
 | SSA (control) | портфель / control plane | markdown / git | — | [[SSA]] | 🟡 bootstrap |
 | seo-outreach | коммерция | Sheets / SQLite | `top` (назначен; runtime-конфиг не создан) | [[seo-outreach]] | 🟡 bootstrap |
+| УАС | ведомство / агентский контур | models / providers / canvas | librarian (сессия-носитель) | [[uas]] · [[uas-special-rotator]] | ✅ active |
 
 > 📊 **Сводка:** `/audit` — проверить все проекты · Таблица статусов методов ниже · Новые проекты в planning
 
