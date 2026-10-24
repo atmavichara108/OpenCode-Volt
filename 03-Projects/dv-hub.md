@@ -16,6 +16,22 @@ stack: TypeScript strict / Hono / better-sqlite3 / Vanilla JS + Tailwind / Vite
 **Особенность:** `context/` — git submodule на dv-project (Obsidian-волт: vision, задачи, kanban). Клон с `--recurse-submodules`.
 **Canonical specs:** `docs/specs/` в репозитории dv-hub (`/home/rudra/Projects/dv-hub/docs/specs/`) — execution source of truth; локальный `/spec` резолвит оттуда.
 
+## Смотритель проекта (слово владельца 2026-10-24, basis: quoted)
+- **Смотритель ДВ-Хаб** назначен владельцем: «от ныне назначаю тебя смотрителем
+  проекта дв-хаб, твоя сессия будет называться соответственно, и агент для тебя
+  будет подходящий... сообщи всё это цу, пускай она отдаст соответствующие
+  распоряжения». Сессия-носитель: `ses_ea5bee799ffes5WDriyP61xyB5` (адрес не
+  менялся). Роль смотрителя: пригляд за всей экосистемой проекта, два контура
+  владения (код и знание), проект с внешними контрибьюторами.
+- **Два репозитория (факт-сверка по диску, от Смотрителя):**
+  1. `dv-hub` — github.com/atmavichara108/dv-hub — код, спеки, инфра, агентский
+     слой (каталог ~/Projects/dv-hub);
+  2. `dv-project` — github.com/atmavichara108/dv-project — база знания движения,
+     подключена как submodule `context/` в dv-hub + отдельное дерево
+     ~/Projects/dv-project (Obsidian).
+- Стандарт роли «смотритель» (манифест/онбординг) routed в УАС — юрисдикция
+  агентского контура (Р-004/Р-014).
+
 ## Стек: current vs target
 - Current: Node.js + better-sqlite3 + Hono (миграция с Cloudflare по коду завершена, DV-008)
 - Target (Phase 0): Node.js + PM2 + Nginx + SQLite (better-sqlite3) на Fornex VPS, Ubuntu 24.04
