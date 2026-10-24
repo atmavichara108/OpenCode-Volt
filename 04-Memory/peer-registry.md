@@ -22,6 +22,7 @@ timestamp: 2026-10-18
 | Смотритель ДВ-Хаб | ses_ea5bee799ffes5WDriyP61xyB5 | — (агент не назначен) | ~/Projects/dv-hub + ~/Projects/dv-project | смотритель проекта ДВ-Хаб (слово владельца 2026-10-24, basis: quoted: «от ныне назначаю тебя смотрителем проекта дв-хаб»); два репозитория: dv-hub (код/платформа, github.com/atmavichara108/dv-hub) + dv-project (база знания движения, submodule context/ в dv-hub, github.com/atmavichara108/dv-project); тема контрибьюторов — в сессии «командная работа» (создаст владелец) |
 | Служитель Обсидиан | ses_ea02cc0d8ffeFXUsAX9UeQWs2D | obsidian-servant | ~/Projects/OpenCode-Vault | ведомство UI\|UX ecosys (Р-021): 10-Deck, canvas-карты, Пип-Бой тайлы |
 | Университет Агентских Систем (УАС) | ses_e9884e4aeffe7okjn4f7RtavmG | librarian | ~/Projects/OpenCode-Vault | ведомство-куратор агентского контура (Р-004/Р-016, в строю с 10-23); спец-отдел «Ротатор моделей» (Р-023) |
+| Командная работа (dv-hub) | ses_e9299850dffefLof5BwPJ1d0lV | — | ~/Projects/dv-hub | координация совместной работы/контрибьюторов ДВ-Хаб (слово владельца 2026-10-24; id получен от Смотрителя по INC-18, сверен API: projectID dv-hub, создана 10-24; канон только через этот реестр) |
 
 ## Правила
 1. **Писать только по этому реестру.** Все сессии живые (сверено по session_v2, 10-18 22:00).
