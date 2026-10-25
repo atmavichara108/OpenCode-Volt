@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-23T06:38:08Z",
+ "generated_at": "2026-10-25T06:38:32Z",
  "providers": {
   "amd-radeon": {
    "models": {
@@ -973,6 +973,12 @@
      "cost_out": 0.6,
      "free": false
     },
+    "gemini-4-argon": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 10,
+     "free": false
+    },
     "gemini-4-argon-contributor": {
      "in": true,
      "cost_in": 4,
@@ -1027,6 +1033,12 @@
      "cost_out": 2.501,
      "free": false
     },
+    "iceman-contributor-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
     "jev-1.13": {
      "in": false,
      "cost_in": null,
@@ -1049,6 +1061,12 @@
      "in": true,
      "cost_in": 3,
      "cost_out": 15,
+     "free": false
+    },
+    "kimi-k3.1-pro": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 10,
      "free": false
     },
     "longcat-2.0": {
@@ -2555,6 +2573,18 @@
      "cost_out": 22.5,
      "free": false
     },
+    "moonshotai/kimi-k3.1-pro": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 10,
+     "free": false
+    },
+    "moonshotai/kimi-k3.1-pro-highspeed": {
+     "in": true,
+     "cost_in": 4,
+     "cost_out": 20,
+     "free": false
+    },
     "morph/morph-v3-fast": {
      "in": true,
      "cost_in": 0.8,
@@ -2615,18 +2645,6 @@
      "cost_out": 0.23,
      "free": false
     },
-    "openai/gpt-3.5-turbo": {
-     "in": true,
-     "cost_in": 0.5,
-     "cost_out": 1.5,
-     "free": false
-    },
-    "openai/gpt-4-turbo": {
-     "in": true,
-     "cost_in": 10,
-     "cost_out": 30,
-     "free": false
-    },
     "openai/gpt-4.1": {
      "in": true,
      "cost_in": 2,
@@ -2655,12 +2673,6 @@
      "in": true,
      "cost_in": 0.1,
      "cost_out": 0.4,
-     "free": false
-    },
-    "openai/gpt-4.1-nano-fast": {
-     "in": true,
-     "cost_in": 0.2,
-     "cost_out": 0.8,
      "free": false
     },
     "openai/gpt-4o": {
@@ -2945,12 +2957,6 @@
      "cost_out": 20,
      "free": false
     },
-    "openai/gpt-image-1": {
-     "in": true,
-     "cost_in": 5,
-     "cost_out": 40,
-     "free": false
-    },
     "openai/gpt-image-1-mini": {
      "in": true,
      "cost_in": 2,
@@ -3075,12 +3081,6 @@
      "in": true,
      "cost_in": 1.1,
      "cost_out": 4.4,
-     "free": false
-    },
-    "openai/o4-mini-fast": {
-     "in": true,
-     "cost_in": 2,
-     "cost_out": 8,
      "free": false
     },
     "openai/text-embedding-3-large": {
@@ -3649,8 +3649,8 @@
     },
     "zai/glm-5.3": {
      "in": true,
-     "cost_in": 1.4,
-     "cost_out": 4.4,
+     "cost_in": 1.2,
+     "cost_out": 4,
      "free": false
     },
     "zai/glm-5.3-fast": {
