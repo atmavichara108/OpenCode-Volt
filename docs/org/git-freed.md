@@ -16,7 +16,7 @@ mandate-source: >
 report-address: ses_eceb23a71ffeJO9QnFou8VngZC
 peer-address: ses_eceb23a71ffeJO9QnFou8VngZC
 spec-home: /home/rudra/Projects/OpenCode-Vault/docs/specs/
-status: active, 2026-10-23 (активирован проактивно)
+status: proposed, 2026-10-25 (манифест+определение агента есть; сессия-носитель не создана — правило «имя без сущности»; оживает по слову владельца, как УАС)
 boundaries: >
   Push в main — только явным словом владельца. force-push, branch -D, tag -d,
   reset --hard, clean — запрещены без подтверждения. Чужие незакоммиченные
