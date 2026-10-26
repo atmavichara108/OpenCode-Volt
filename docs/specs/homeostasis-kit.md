@@ -1,11 +1,16 @@
 ---
 type: Spec
 kind: task
-project: dotfiles
-spec-home: docs/specs/
-title: Набор гомеостаза: watcher логов + session-cop + зов с preflight (Р-031)
-status: proposed
-timestamp: 2026-10-26
+project: OpenCode-Vault
+title: ИСТОРИЧЕСКАЯ КОПИЯ — канон перенесён в dotfiles
+status: superseded
+timestamp: 2026-10-27
+---
+> **ИСТОРИЧЕСКАЯ КОПИЯ. Канон (по конвенции «спека живёт в репозитории агента»):
+> `/home/rudra/dotfiles/docs/specs/homeostasis-kit.md`.** Исполнитель инструментов —
+> агент dotfiles; перенос совершён ИЦ 2026-10-27, авторство ЦУ сохранено. Этот
+> экземпляр оставлен как след истории; новые правки — только в канон-копии.
+
 ---
 # Набор гомеостаза Корабля (Р-031)
 
