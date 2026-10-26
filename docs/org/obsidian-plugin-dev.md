@@ -10,7 +10,7 @@ jurisdiction: >
   ~/Projects/OpenCode-Vault-plugins-sandbox/**; всё остальное (dotfiles,
   dv-hub, tools, ~/.config) — read-only. Код приложений проектов не трогает.
 carrier-sessions: "субагент без собственной сессии-носителя; вызывается Служителем Обсидиан (primary волта) через task(agent=\"obsidian-plugin-dev\")"
-agent-file: dotfiles/.opencode/agent/obsidian-plugin-dev.md — в main, коммит c2849fd (merge a658005); сверено УАС по origin/main 2026-10-27
+agent-file: dotfiles/.opencode/agent/obsidian-plugin-dev.md — main, зоны подтянуты 6adbd34 (первичная сверка c2849fd; уточнение по запросу УАС — сверено 2026-10-27 по origin/main)
 agent-location: dotfiles (проектный слой)
 mandate-source: >
   Слово владельца 2026-10-25 через Служителя + мандат ЦУ
@@ -19,19 +19,16 @@ mandate-source: >
 report-address: ses_eceb23a71ffeJO9QnFou8VngZC
 peer-address: ses_ea02cc0d8ffeFXUsAX9UeQWs2D
 spec-home: /home/rudra/dotfiles/docs/specs/obsidian-plugin-dev-agent.md
-status: active, 2026-10-27 (вердикт УАС по факту файла в main — с оговоркой)
+status: active, 2026-10-27 (вердикт УАС без оговорки — после сверки 6adbd34)
 boundaries: >
-  ФАКТ по файлу (сверено 2026-10-27 по origin/main): mode subagent; модель-пин
-  amd-radeon/DeepSeek-V4.1-Flash = util-dev — совпадает; task deny — есть;
-  секретные пути deny — есть; опасные команды (sudo/chown/chmod/force-push/
-  reset --hard/clean/rm*/ssh/npm publish/systemctl stop/disable/mask) — deny-list.
-  РАСХОЖДЕНИЕ с реквизитами ИЦ (рапортовано ЦУ, запрос ИЦ): реквизиты обещали
-  машинные зоны правки (.obsidian/plugins/** + песочница, всё прочее —
-  read-only), фактический блок шире — external_directory "*": allow (кроме
-  секретов) и edit: allow глобально; зона удерживается текстом промпта, а не
-  правами. Оговорка вердикта: active по живому файлу; ИЦ подтягивает права до
-  обещанных зон (scoped allow). До тех пор граница — дисциплина текста +
-  deny-list, не машинная; при любом выходе из зоны = инцидент.
+  ФАКТ по файлу (сверено 2026-10-27 по origin/main, 6adbd34): mode subagent;
+  модель-пин amd-radeon/DeepSeek-V4.1-Flash = util-dev; task deny; edit
+  "*": deny + allow только по двум зонам (.obsidian/plugins/**,
+  плагины-песочница), **/AGENTS.md — ask; external_directory scoped (зоны +
+  волт на чтение + dotfiles + .config/opencode + /tmp/opencode), секреты deny;
+  опасные команды deny-list. Оговорка первого вердикта (edit/external_directory
+  глобальны, зона текстом) СНЯТА: ИЦ подтянул права машиной по запросу УАС —
+  обещание реквизитов и факт сошлись.
 ports: манифест-реестр docs/org/manifest-registry.md (куратор УАС)
 capabilities: [obsidian-plugin-typescript, sandbox-build]
 memory-zones: [plugin-dev-sandbox-notes]
