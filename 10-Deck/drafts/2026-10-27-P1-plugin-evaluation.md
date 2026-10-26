@@ -3,7 +3,7 @@ type: Protocol
 id: P-1
 title: "Оценка community-плагина Obsidian до установки"
 ssot: false
-status: черновик — на фиксацию ЦУ + верификацию ИЦ
+status: canon — P-1 v0.2 зафиксирован ЦУ 2026-10-27 (вердикт ИЦ PASS+5 правок внесены дословно; ретро-срок 28.10)
 version: 0.2
 timestamp: 2026-10-27
 owner: Служитель Обсидиан (ведомство UI|UX ecosys, Р-021)
