@@ -9,6 +9,8 @@ permission:
     "*": deny
     "/home/rudra/Projects/OpenCode-Vault/**": allow
     "/home/rudra/Projects/OpenCode-Vault-tasks/**": allow
+    "/home/rudra/.local/bin/**": allow
+    "/home/rudra/.local/share/ship-mail/**": allow
     "/home/rudra/dotfiles/**": allow
     "/home/rudra/dotfiles-tasks/**": allow
     "/home/rudra/.config/opencode/**": allow
@@ -25,25 +27,22 @@ permission:
     "10-Deck/**": allow
     "**/AGENTS.md": ask
   bash:
-    "rg*": allow
-    "ls*": allow
-    "cat*": allow
-    "bat*": allow
-    "eza*": allow
-    "head*": allow
-    "tail*": allow
-    "wc*": allow
-    "jq*": allow
-    "find*": allow
-    "fd*": allow
-    "md5sum*": allow
-    "python3*": allow
-    "git status*": allow
-    "git log*": allow
-    "git diff*": allow
-    "git show*": allow
-    "git branch*": allow
-    "*": deny
+    "*": allow
+    "sudo *": deny
+    "chown *": deny
+    "chmod *": deny
+    "mkfs*": deny
+    "shutdown*": deny
+    "reboot*": deny
+    "git push --force*": deny
+    "git reset --hard*": deny
+    "git clean*": deny
+    "rm -rf*": deny
+    "systemctl stop*": deny
+    "systemctl disable*": deny
+    "systemctl mask*": deny
+    "ssh*": deny
+    "rm*": deny
   task: deny
   glob: allow
   grep: allow
