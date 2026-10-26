@@ -1120,3 +1120,9 @@ timestamp: 2026-08-17
 - **База ротации уже существует (факты):** `tools/key-rotator/` — `rotate.py` (Iter-1 failover: flock+backup, пуш), `probe.py` (Iter-0 read-only health), `providers.json` (22 провайдера, без секретов), `rotation.json` (роли coding/general/vision + preferred-модели), `newapi_sync.py`; `control-plane/telemetry/provider-health.jsonl` (append-only); `control-plane/model-catalog.json` — 9 провайдеров (vercel 419 моделей, opencode 130, opencode-go 36, amd-radeon 7, anymodel 9, local-deepseek 2, modelhub 2, apinex 1, justwoker 1).
 - **Граница:** УАС владеет решением и каталогом; правку глобального `opencode.jsonc` исполняет ИЦ (владелец инфраструктурного файла).
 - **Извещены:** УАС (мандат), ИЦ, ИПТ, Лаба, ХПФ, Служитель, Control-top, ДВ-Хаб (scope uas-onboard).
+
+## 2026-10-27 (канон-адрес и вердикты)
+- **Канон-адрес ещё раз подтверждён на живом**: план ИПТ по GitHub Developer Program содержал maks@re-search.wiki (несуществующий) — останов-правка ЦУ отправлена: канон только rudra108@; корневой документ 01-Reference/mail-hub.md. Класс: старый баг всплывает в новых текстах — правило при-касании (Р-022) + проверка канона перед внешними регистрациями.
+- **obsidian-plugin-dev: файл В main** (a658005) — ИЦ прав, УАС направлен к вердикту → active.
+- **P-1 принят ЦУ** (фиксация): 8 гейтов оценки community-плагинов; верификация отправлена ИЦ по схеме Deck.
+- **ОШ: файл SerO версионирован** (stow-ссылка + коммит f309479 в opencode-global) — TD-59 закрыт, «голого» файла нет.

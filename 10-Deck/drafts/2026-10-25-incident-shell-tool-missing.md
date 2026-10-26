@@ -3,7 +3,7 @@ type: Incident
 title: "Сбой: инструмент shell/bash недоступен после рестарта сессии Служителя"
 description: symptom/repro/root cause/fix/evidence — инцидент инфраструктуры инструментов
 ssot: false
-status: открыт (workaround применён)
+status: закрыт 2026-10-26 00:58 (фикс policies 5a13804/c9e49f2; shell работает, подтверждено эксплуатацией)
 timestamp: 2026-10-25
 ---
 
