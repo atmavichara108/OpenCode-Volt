@@ -4,7 +4,8 @@ id: P-1
 title: "Оценка community-плагина Obsidian до установки"
 ssot: false
 status: черновик — на фиксацию ЦУ + верификацию ИЦ
-version: 0.1 (2026-10-27)
+version: 0.1
+timestamp: 2026-10-27
 owner: Служитель Обсидиан (ведомство UI|UX ecosys, Р-021)
 canon_ref: "слово владельца 2026-10-25 (гуру Obsidian, оценка и применение плагинов); зелёный ЦУ control-deck-protocols; серо-мандат sero-agent-mandate"
 timestamp: 2026-10-27
