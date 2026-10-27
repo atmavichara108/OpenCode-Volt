@@ -752,7 +752,7 @@ forwarding на apex (always-on), машинный приём — вебхук �
    знает слова "домен". Хаб знает аккаунт». Аккаунт = набор
    транспортов; типы: read — `imap` | `webhook` | `mbox`, write —
    `esmtp` | `resend-api`; identity (подпись) — отдельно от ящика.
-   Примеры хендоффа: аккаунт `maks-gmail` (read: imap, write: esmtp,
+   Примеры хендоффа: аккаунт `rudra108-gmail` (read: imap, write: esmtp,
    identity rudra108@re-search.wiki); аккаунт `re-search-wiki` (read:
    webhook, write: resend-api, identity rudra108@ и noreply@re-search.wiki).
    Ядро работает с сырым MIME и метаданными, не с «письмом из
@@ -1057,7 +1057,7 @@ FCrDNS, tarpit — §5.1), и архитектурой хендоффа. ВЫБ�
 - локальный docker-mailserver — ОТЛОЖЕН (улики PBL), остаётся опцией будущего;
 - архитектура mail-hub делегирована ЦУ; основа решения — таблица путей §5.10 настоящего исследования.
 
-Правка при касании (2026-10-27, Р-022): адрес maks@ исключён — канон rudra108@re-search.wiki (01-Reference/mail-hub.md; письмо ЦУ github-dev-program-plan-fix)
+Правка при касании (2026-10-27, Р-022): адрес из прежних хендоффов, не канон, исключён — канон rudra108@re-search.wiki (01-Reference/mail-hub.md; письмо ЦУ github-dev-program-plan-fix)
 
 ### 5.12. Провена v2 (живые проверки и источники; 2026-10-20, ~11:50–14:10 MSK)
 
