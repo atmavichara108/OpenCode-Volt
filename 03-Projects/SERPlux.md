@@ -20,6 +20,11 @@ stack: Python 3.11+ / requests / gspread / FastAPI / OpenCode Go / SQLite / Dock
 **Провайдер:** OpenCode Go; DeepSeek Go используется для дешёвых review/verifier ролей
 **Сервер:** задеплоено, собственный домен
 
+## SSA-витрина и Mac-миграция (2026-10-28)
+
+- **Витрина SSA:** вариант A2 (строка в `docs/portfolio-registry.md` control) — ADR-0006 control-top, ref `serplux-marketplace-plan`; README SSA «SERPlux не переносится» помечена снятой решением владельца 2026-10-28. Полный перенос (A1, `~/Projects/SSA/products/serplux`) — **только по слову владельца после Mac-миграции**.
+- **Mac-миграция (Михалыч):** комплект `deploy/mac/` в репо SERPlux, ветка `task/mac-migration`, коммит `06c8446` (install/smoke/rollback, compose-override для macOS, runbook, клиентский первый прогон; приёмка: 393 теста passed). Статус: **собран, ждёт доступа к маку заказчика** (архитектура, Docker Desktop, секреты через owner-gate, публичный URL туннеля).
+
 ---
 
 ## Что сделано (✅ готово)
