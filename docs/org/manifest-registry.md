@@ -20,6 +20,7 @@ owner: УАС (куратор по Р-014), операционная запис�
 | `dv-hub-custodian` | Агент «Смотритель ДВ» (ДВ-Хаб) | proposed, 2026-10-24 (манифест-чертёж; файл агента ещё не создан ИЦ) | `docs/org/dv-hub-custodian.md` |
 | `sero` | Агент «SerO» — Служитель Обсидиан (глобальный) | active, 2026-10-26 (файл 99c9b00, реконсиляция УАС; расхождение чертежа рапортовано ЦУ) | `docs/org/sero.md` |
 | `obsidian-plugin-dev` | Агент «obsidian-plugin-dev» — разработчик плагинов Обсидиан (субагент Служителя) | active, 2026-10-27 (вердикт УАС: файл в main, зоны машинные 6adbd34 — оговорка снята после подтяжки ИЦ) | `docs/org/obsidian-plugin-dev.md` |
+| `ship-representative-maya` | Представитель Корабля «AllIsMaya» (@AllIsMaya) — единый sender | proposed, 2026-10-29 (чертёж; переобувка sender'а — ИЦ по слову владельца; акк живёт в recruiting-hr) | `docs/org/ship-representative-maya.md` |
 
 ## Правила
 1. Манифест обязателен с момента approval спеки ведомства (Р-014).
