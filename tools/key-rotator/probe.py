@@ -297,6 +297,9 @@ def append_health_log(records: list[dict], path: Path = HEALTH_LOG) -> bool:
                     "warnings": rec["warnings"],
                     "latency_ms": rec["latency_ms"],
                     "redacted": True,
+                    # контракт письма (карточка отдела): обязательная метка
+                    # «кто пишет»; probe.py — всегда "probe"
+                    "source": "probe",
                 }
                 fh.write(json.dumps(line, ensure_ascii=False) + "\n")
         return True
