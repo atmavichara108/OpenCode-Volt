@@ -67,24 +67,39 @@ migrations/NNNN__.sql
 
 Статус расхождения карточка↔диск: **закрыто 2026-10-07** — на диске 5 агентов
 в `.opencode/agents/` (build/infra/plan/reviewer/researcher), совпадает с таблицей.
-`.opencode/` пуст.
 
 > Модели разведены по ролям — реализация [[model-routing]] (static routing).
+> **Сноска (сверка 2026-10-29):** пин моделей живёт в `opencode.json`
+> (секции агентов, строки ~54–104), в `.md`-файлах агентов поля `model:`
+> нет; значения таблицы выше соответствуют `opencode.json`.
 
-## Команды (`.mcode/commands/`) — 7
+## Команды (`.opencode/commands/` — 7, приоритетный слой по Р-020)
 /morning · /spec · /review · /hygiene · /sync-context · /sync-context-self · /sync-task
+Зеркало `.mcode/commands/` — те же 7 (зона M Code SDK, не трогаем).
 
 > 7 дистиллированных команд — реализация [[distill-pattern]].
 
-## Плагины (`.mcode/plugins/` + `.mcode/plugin/`)
-compaction.ts · env-guard.ts · notify.ts — на диске 6 файлов плагинов
-(расхождение: карточка перечисляет 3, на диске больше; сверить при следующем аудите).
+## Плагины (`.opencode/plugins/` — 3, зеркало `.mcode/plugins/`)
+compaction.ts · env-guard.ts · notify.ts. Расхождения нет (сверка 2026-10-29):
+прежний счёт «6 файлов» был двойным подсчётом двух слоёв; каталога
+`.mcode/plugin/` не существует.
 
 ## Скрипты (package.json)
-dev · build · build:server · start · deploy:vps · db:init · db:migrate:local · db:reset · context:init/sync/bump/status/log · task:sync · lint · typecheck · test · format · format:check · ci
+dev · build · build:server · start · deploy · deploy:vps · db:init · db:migrate:local · db:reset · context:init/sync/bump/status/log · task:sync · lint · typecheck · test · format · format:check · ci
 
 ## Docs
-architecture.md (ADR) · product-vision.md · roadmap.md · glossary.md · infra-runbook.md · backend-conventions.md · mirotalk-setup.md · known-issues.md
+architecture.md (ADR) · product-vision.md · roadmap.md · glossary.md · infra-runbook.md · backend-conventions.md · mirotalk-setup.md · known-issues.md · decisions.md
+
+## Наблюдение за git (сверка 2026-10-29)
+- локальный `main` на **6 коммитов впереди `origin/main`** (ship-mail-пилот
+  c811314/a8005a3 и предшественники не запушены);
+- checkout в `task/dvhub-next-20261024`; дерево чистое (кроме `.mcode/`).
+
+## Открытый вопрос (не закрывать молча)
+- **dv-tg-gateway:** ИЦ рапортовал (25.10) «выложен в main, этапы 1+2
+  приняты ЦУ». В dv-hub нет ни файлов, ни коммитов по нему; рядом в
+  `~/Projects/` такого репо нет. Уточнить у ИЦ адрес репо/контекст —
+  в карточку dv-hub не вносить, пока не подтверждено.
 
 > docs/ + AGENTS.md + context/ submodule — реализация [[context-as-docs]] (🟡: контекст есть, формальный DoD для задач не прописан).
 
@@ -111,3 +126,4 @@ architecture.md (ADR) · product-vision.md · roadmap.md · glossary.md · infra
 - 2026-06-30: ревью — исправлены статусы (distill ✅, model-routing ✅, context-as-docs 🟡, memory-mgmt 🟡), infra mode primary, модели агентов добавлены, docs дополнены, команды 7
 - 2026-09-15: dev-loop апгрейд отражён (порт 8787, ci=lint+typecheck+test+build, деплой deploy:vps, Docker dev, миграции идемпотентны, seed.js/db:seed удалены); добавлена ссылка на canonical specs `docs/specs/` (локально в dv-hub).
 - 2026-09-16: specs dv-hub перенесены из `06-Specs/dv-hub/` в `~/Projects/dv-hub/docs/specs/` (правило владения docs/specs/README).
+- 2026-10-29: сверка карточки↔репо (Служитель, по поручению владельца): команды/плагины — слой `.opencode/` приоритетен, `.mcode/` зеркало; снято расхождение «6 плагинов»; убрана строка «`.opencode/` пуст» (противоречила Р-020); сноска про пин моделей в `opencode.json`; скрипты +deploy; docs +decisions.md; добавлены блок наблюдения за git (main +6 к origin) и открытый вопрос dv-tg-gateway.
