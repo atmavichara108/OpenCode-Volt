@@ -20,7 +20,7 @@ owner: УАС (куратор по Р-014), операционная запис�
 | `dv-hub-custodian` | Агент «Смотритель ДВ» (ДВ-Хаб) | proposed, 2026-10-24 (манифест-чертёж; файл агента ещё не создан ИЦ) | `docs/org/dv-hub-custodian.md` |
 | `sero` | Агент «SerO» — Служитель Обсидиан (глобальный) | active, 2026-10-26 (файл 99c9b00, реконсиляция УАС; расхождение чертежа рапортовано ЦУ) | `docs/org/sero.md` |
 | `obsidian-plugin-dev` | Агент «obsidian-plugin-dev» — разработчик плагинов Обсидиан (субагент Служителя) | active, 2026-10-27 (вердикт УАС: файл в main, зоны машинные 6adbd34 — оговорка снята после подтяжки ИЦ) | `docs/org/obsidian-plugin-dev.md` |
-| `ship-representative-maya` | Представитель Корабля «AllIsMaya» (@AllIsMaya) — единый sender | proposed, 2026-10-29 (слово на переобувку получено 10-29; мосты писали с личного акка — переобувка в работе; акк живёт в recruiting-hr) | `docs/org/ship-representative-maya.md` |
+| `ship-representative-maya` | Представитель Корабля «AllIsMaya» (@AllIsMaya) — единый sender | active, 2026-10-29 (слово «активен», реестр Р-Д-002; переобувка 4/4 профилей = AllIsMaya, tg-whoami; recruiting на паузе Р-Д-007) | `docs/org/ship-representative-maya.md` |
 | `office-serplux-primary` | Primary офиса SERPLUX (перенос top-man из аутрича) | proposed, 2026-10-29 (рекомендация УАС; файл агента в serp — ИЦ/ОШ; красные линии top verbatim, cred-line про credentials.json) | `docs/org/office-serplux-primary.md` |
 
 ## Правила

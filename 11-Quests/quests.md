@@ -26,7 +26,7 @@ owner: ЦУ
 | Q-005.1 | сверка каталога: providers.json ↔ model-catalog.json ↔ opencode.jsonc (отчёт расхождений) | active | УАС | база есть (22 провайдера / 9 в каталоге) |
 | Q-005.2 | живой health: probe по расписанию + provider-health.jsonl | ready | УАС | probe.py работает |
 | Q-005.3 | доказать failover на живом прогоне (провайдер выключен → агент переехал → запись в журнале) | ready | УАС + ИЦ | Q-005.1 |
-| Q-005.4 | лимиты и приватность по каждому провайдеру в каталоге (RPM/RPD/кредиты, обучение на данных) | ready | УАС | (Mistral: $10/мес; Google: standing free tier; Groq: 1000 req/день, 200k ток/день; Cohere: 1000 вызовов/мес; SambaNova: standing free tier; OpenRouter: 17 моделей бесплатно; Cerebras: trial, сверхскорость; Together AI: \$25-50 старт; Cloudflare: free tier; HF: ежемесячные кредиты) |
+| Q-005.4 | лимиты и приватность по каждому провайдеру в каталоге (RPM/RPD/кредиты, обучение на данных) | active | УАС | (Mistral: $10/мес; Google: standing free tier; Groq: 1000 req/день, 200k ток/день; Cohere: 1000 вызовов/мес; SambaNova: standing free tier; OpenRouter: 17 моделей бесплатно; Cerebras: trial, сверхскорость; Together AI: \$25-50 старт; Cloudflare: static free tier; HF: ежемесячные кредиты) |
 | Q-005.5 | журнал переключений append-only (кто/когда/почему) | ready | УАС | Q-005.3 |
 | Q-005.6 | публичный отчёт «лучший провайдер по роли» (median/p95) → вход для Q-002 | active | УАС | Q-005.4 (лимиты/приватность заполнены) |
 
