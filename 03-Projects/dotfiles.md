@@ -95,7 +95,7 @@ stack: shell / GNU Stow / конфиги Manjaro (38 пакетов в stow.sh) 
 | `/script` | sysop → bash-dev → reviewer | Bash-скрипты |
 | `/qtile` | sysop → qtile-dev → reviewer | Qtile: конфиги, виджеты, хуки |
 | `/util` | sysop → util-dev → reviewer | Утилиты: btop, wal, neofetch |
-| `/prompt` | sysop → docs/cheatsheets/ | Чит-шиты, подсказки. **БАГ (29.10):** каталог `docs/cheatsheets/` отсутствует — передан на багфикс (письмо УАС 29.10) |
+| `/prompt` | sysop → docs/cheatsheets/ | Чит-шиты, подсказки. Баг 29.10 устранён УАС (коммит 376d241: каталог восстановлен с .gitkeep) |
 | `/notify` | sysop → util-dev → reviewer | Уведомления (dunst) |
 | `/macro` | sysop → util-dev → reviewer | Макросы: sxhkd, rofi-меню |
 | `/plugin` | sysop → builder → reviewer | Плагины: nvim, rofi, btop |
@@ -120,7 +120,7 @@ ship · spec (+ дубли branch/ship в `commands/` — [проверить] �
 - `.opencode/memory/decisions.md` — реестр ADR (до ADR-023, сверка 2026-10-29)
 - `.opencode/memory/` — также: glossary.md · inbox.md · orchestration.md ·
   registry.md · agent-lifecycle.jsonl · session-reports/ · research/
-- ~~`docs/cheatsheets/`~~ — **не существует** (фантом; см. баг `/prompt`)
+- ~~`docs/cheatsheets/`~~ — восстановлен УАС 29.10 (коммит 376d241), снова живой
 - Живые docs в `docs/`: 15 файлов (runbook, runbook-proactive, memory-contract,
   engines, external-interfaces, roadmap, techdebt, deferred, decisions,
   pipelines-phase0, incident-record-template и аудиты)
