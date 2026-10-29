@@ -12,33 +12,50 @@ stack: markdown + OpenCode
 **Запуск:** `opencode` в папке волта.
 **Агент:** librarian (primary) — командный центр проектов: мониторинг, апдейты, управление знаниями.
 
-## Структура (OKF)
+## Структура (OKF + выросшее)
 - `index.md` + `log.md` — OKF bundle root
 - `00-INDEX.md` — дашборд (type: Dashboard)
-- `01-Reference/` — справочник OpenCode (type: Reference)
+- `01-Policies/` · `01-Reference/` — справочник OpenCode (type: Reference)
 - `02-Methods/` — приёмы (type: Method)
 - `03-Projects/` — карточки (type: Project Card)
-- `04-Memory/` — OKF-подбандл памяти
-- `tools/` — скрипты-инструменты VibeOS (внешние API как детерминированные инструменты):
-  telegram-capture (T-062), ecosystem-map (Pip-Boy/Kanban), playwright-browser (T-134),
-  verify-cache (P6 #33), peers (P6 #31)
+- `04-Memory/` — OKF-подбандл памяти (включая `idea-graph/`)
+- `05-Templates/` · `06-Audits/` · `07-Runbooks/`
+- `08-Doctrine/` — канон (доктрина S0 и стандарты)
+- `10-Deck/` — Рубка управления (drafts, протоколы, Deck)
+- `11-Quests/` — квесты экосистемы (Q-001…Q-005.x)
+- `control-plane/` — реестры/телеметрия (model-catalog, provider-health, audit-log, информация)
+- `tools/` — 18 инструментов (см. ниже)
+- `docs/` · `98-Temporary/` · `99-Inbox(.md)`
+- `Каюта капитана/` — **личная зона владельца; в .gitignore, агенты туда не заходят** (слово владельца 2026-10-29)
 - `TASKS.md` — трекер задач (type: Task Tracker)
-- `99-Inbox.md` — буфер (type: Inbox)
 - `AGENTS.md` — правила (type: Agent Instructions)
-- `Architecture.md` — архитектура (type: Architecture)
-- `DEVELOPMENT-ROADMAP.md` — дорожная карта (type: Roadmap)
+- `Architecture.md` · `DEVELOPMENT-ROADMAP.md` — архитектура/дорожная карта
 
-## Агент (.opencode/agent/)
+## Агенты (.opencode/agent/)
 | Агент | Mode | Модель | Назначение |
 |-------|------|--------|-----------|
 | librarian | primary | opencode-go/gpt-5.6-luna | командный центр: мониторинг проектов, апдейты, управление знаниями |
+| obsidian-servant | subagent | — | Служитель Обсидиан (Р-021): оптика UI\|UX, сверка карточек, ретро плагинов, протокольная база Deck |
+| tree-cop | subagent | — | чистота дерева и выкладка ветки в параллельных сессиях |
 
 > Временная модельная политика до capability-routing: GPT-5.6 Luna как fallback и для librarian, DeepSeek Go для дешёвых вспомогательных ролей.
 
-## Команды (.opencode/command/) — 12
-/ask · /capture · /inbox · /project · /commit · /project-add · /audit · /decisions · /distill-pipeline · /handoff · /route · /verify
+## Команды (.opencode/command/) — 17
+/ask · /capture · /inbox · /project · /commit · /project-add · /audit · /decisions · /distill-pipeline · /handoff · /route · /verify · **/accept** · **/calibrate** · **/canonize** · **/dispatch** · **/report**
 
-> 12 дистиллированных команд — реализация [[distill-pattern]] (/done — глобальная, не считается).
+> 17 дистиллированных команд — реализация [[distill-pattern]]. Новые пять — сверхнавыки ЦУ: приёмка пакетов, калибровка ведомств, канонизация слова, постановка мандата, статус Корабля.
+
+## Инструменты (tools/) — 18 (сверка 2026-10-29)
+
+agent-ops · ecosystem-map · email-capture · git-agent · idea-graph ·
+key-rotator · mcp-readonly · md-table-check · mem-index · model-bench ·
+peers · playwright-browser · telegram-capture · tree-cop ·
+verify-cache · version-oracle · vibeos-vitrina · xp
+
+> Ключевые: telegram-capture (T-062), ecosystem-map (Pip-Boy/Kanban),
+> playwright-browser (T-134), verify-cache (P6 #33), peers (P6 #31),
+> key-rotator — физическое место ротатора моделей (карточка Ротатора),
+> tree-cop — коп чистоты дерева для параллельных сессий.
 
 ## Состояние внедрения методов
 | Метод | Статус | Основание |
@@ -50,7 +67,7 @@ stack: markdown + OpenCode
 | [[memory-management]] | ✅ | 04-Memory/ (active-context + facts + session-log) + flush-протокол в librarian.md + session-flush плагин (глобальный) |
 | [[model-routing]] | ✅ | librarian opencode-go/gpt-5.6-luna; oracle route (P6 #37, break-glass) в model-routing.md |
 | [[capability-routing]] | 🟡 | peers-реестр (P6 #31) + route.log; полная маршрутизация — design contract |
-| [[tool-integration-pattern]] | ✅ | 5 инструментов в tools/: telegram-capture, ecosystem-map, playwright-browser, verify-cache, peers |
+| [[tool-integration-pattern]] | ✅ | 18 инструментов в tools/: telegram-capture, ecosystem-map, playwright-browser, verify-cache, peers, key-rotator, tree-cop, git-agent, mem-index и др. |
 
 > Волт — единственный проект, где vault-методы (context-as-docs, distill-pattern) реализованы **по назначению**: волт документирует сам себя.
 
@@ -74,8 +91,8 @@ stack: markdown + OpenCode
 - [x] Команды: `/commit`, `/project-add`, `/audit`
 - [x] VibeOS.md — концептуальный дашборд системы вайбкодинга (v0.3.1)
 - [x] dotfiles — репо создан, путь зафиксирован в карточке
-- [x] tools/ — 5 инструментов: telegram-capture, ecosystem-map, playwright-browser (T-134), verify-cache (P6 #33), peers (P6 #31)
-- [x] tool-integration-pattern — метод VibeOS; внедрён в vault полностью (5 tools)
+- [x] tools/ — 18 инструментов: telegram-capture, ecosystem-map, playwright-browser (T-134), verify-cache (P6 #33), peers (P6 #31), key-rotator, tree-cop, git-agent, mem-index, model-bench, version-oracle, vibeos-vitrina, xp, email-capture, idea-graph, mcp-readonly, md-table-check, agent-ops
+- [x] tool-integration-pattern — метод VibeOS; внедрён в vault полностью (18 tools)
 - [x] P6 — порт органов M Code Desktop в TUI-стек: replay-budget, input-security (плагины в dotfiles), sandbox/serpctl/release pipeline (в serp), parallel /audit, verify-subagent, oracle route. Реф: [[01-Reference/mcode-desktop]]
 - [ ] дорожная карта P5: Telegram-бот, классификация фич, /project-upgrade
 
@@ -93,3 +110,4 @@ stack: markdown + OpenCode
 - 2026-07-07: VibeOS v0.3.0 — новый метод tool-integration-pattern (7-й), директория tools/ + tools/telegram-capture (T-062, в разработке), новое направление R-006 Linux UX Lab, /capture как первый шаг к Telegram-интеграции
 - 2026-07-08: внедрено direnv + .venv (Python окружение, авт активация). Зависимости: telethon, python-dotenv, pytest. 39/39 тестов PASS в venv.
 - 2026-09-07: P6 апгрейд — порт органов M Code → TUI (replay budget, doom-loop, санитизация/redaction, playwright-browser, verify-cache + /verify, peers, parallel /audit, verify-subagent, oracle route); 5 tools; 12 команд; VibeOS v0.3.1. Коммиты 4a16790/cba43c5/bfa6c7e/3437182 (+dotfiles 0e46291, serp 05ef81b/f519328)
+- 2026-10-29: сверка карточки↔репо (Служитель, по поручению владельца): tools/ 5→18 (key-rotator, tree-cop, git-agent, mem-index, model-bench, version-oracle, vibeos-vitrina, xp, email-capture, idea-graph, mcp-readonly, md-table-check, agent-ops); команды 12→17 (+/accept, /calibrate, /canonize, /dispatch, /report); агенты 1→3 (+obsidian-servant, tree-cop); структура — добавлены 08-Doctrine, 10-Deck, 11-Quests, 06-Audits, 07-Runbooks, control-plane, docs; личная зона «Каюта капитана» (в .gitignore).
