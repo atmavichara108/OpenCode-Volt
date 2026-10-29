@@ -23,16 +23,30 @@ timestamp: 2026-10-23
 ## База: что уже есть (факты, не намерения)
 | Артефакт | Что это | Состояние |
 |---|---|---|
-| `tools/key-rotator/rotate.py` | failover-ротация: читает health, выбирает модель под роль, применяет `model-router` (flock+backup), шлёт пуш | Iter-1, работает с 2026-09-27 |
-| `tools/key-rotator/probe.py` | read-only проверка провайдеров: `GET /models` → ACTIVE/DEGRADED/BLOCKED/ERROR/SKIPPED | Iter-0, работает |
-| `tools/key-rotator/providers.json` | каталог **22 провайдеров** (без секретов: `env`/`auth_id`/`transport`) | живой |
-| `tools/key-rotator/rotation.json` | роли агентов (`general`/`coding`/`vision`) + предпочтительные модели по роли/провайдеру | живой |
-| `control-plane/telemetry/provider-health.jsonl` | append-only телеметрия здоровья (события probe/switch) | живой |
-| `control-plane/model-catalog.json` | каталог моделей: **9 провайдеров** — vercel 419, opencode 130, opencode-go 36, amd-radeon 7, anymodel 9, apinex 1, justwoker 1, local-deepseek 2, modelhub 2 | обновляется |
-| `tools/key-rotator/newapi_sync.py` | синхронизация каталога с шлюзом new-api | есть |
+| `OpenCode-Vault/tools/key-rotator/rotate.py` | failover-ротация: читает health, выбирает модель под роль, применяет `model-router` (flock+backup), шлёт пуш | Iter-1, работает с 2026-09-27 |
+| `OpenCode-Vault/tools/key-rotator/probe.py` | read-only проверка провайдеров: `GET /models` → ACTIVE/DEGRADED/BLOCKED/ERROR/SKIPPED | Iter-0, работает |
+| `OpenCode-Vault/tools/key-rotator/providers.json` | каталог **22 провайдеров** (без секретов: `env`/`auth_id`/`transport`) | живой |
+| `OpenCode-Vault/tools/key-rotator/rotation.json` | роли = фактические агенты (general, build, explore, plan, librarian, meta, researcher, reviewer, verifier, system-audit…) + предпочтительные модели и пороги по роли | живой |
+| `OpenCode-Vault/tools/key-rotator/lib/` | библиотека общего кода (резолв секретов, redact) | живой |
+| `OpenCode-Vault/tools/key-rotator/tests/` | тесты ротатора | живой |
+| `OpenCode-Vault/tools/key-rotator/provider-config-snippets.md` | фрагменты конфигов провайдеров | живой |
+| `OpenCode-Vault/tools/key-rotator/newapi_sync.py` | синхронизация каталога со шлюзом new-api | есть |
+| `OpenCode-Vault/control-plane/telemetry/provider-health.jsonl` | append-only телеметрия здоровья (события probe/switch) | живой |
+| `OpenCode-Vault/control-plane/model-catalog.json` | каталог моделей: **10 провайдеров** — vercel, opencode, opencode-go, amd-radeon, anymodel, apinex, justwoker, local-deepseek, modelhub + **nvidia (52 модели)** — SSOT-флаг исследования: 52 ↔ 0 в рантайме | обновляется |
+| `dotfiles/tools/model-watch/` | model-watch.py + gate-check.py + timer (24 ч) — суточная свежесть каталога | живой |
+| `dotfiles/tools/key-rotator/` | только systemd-юниты: `probe.service` + `probe.timer` (код ротатора — в волт, см. выше) | живой |
 
 Секреты нигде не хранятся: резолв `env → vault .env → auth.json`, вывод через
 `redact`.
+
+## Расписание и журнал (сверка 2026-10-29)
+
+- **probe.timer** (dotfiles, Р-Д-004, слово владельца 29.10): суточный прогон
+  проб (`OnUnitActiveSec=24h`, `Persistent=true`) — DoD-2 закрыт не на словах.
+- **model-watch.timer**: суточная проверка свежести каталога (24 ч).
+- Журнал живой: 159 строк; 24 — от канон-писателя `probe-rotator`
+  (статусы по канону: justwoker BLOCKED, linaliapi ACTIVE), 134 — история до
+  канона (append-only, «мигание» невозможно), 1 — `probe`.
 
 ## Что значит «толково» — DoD отдела
 1. **Один SSOT каталога.** `providers.json` ↔ `model-catalog.json` ↔ конфиг
@@ -154,3 +168,9 @@ nullable-поля, никогда — часть статуса.
 ## Отчётность
 - В ЦУ (`ses_eceb23a71ffeJO9QnFou8VngZC`) — по завершении блоков DoD.
 - Квест: [[11-Quests/quests]] → Q-005.
+
+## Лог изменений
+- 2026-10-23: учреждён отдел (Р-023), мандат владельца, база артефактов, DoD 1–8.
+- 2026-10-27: канон формата журнала (source обязателен) и контракт классификации.
+- 2026-10-28: исследование Nemotron/nvidia (0/11 достижимы, приговор подтверждён; EOL-риск nvidia-GLM; находка битого пина verifier.md).
+- 2026-10-29: канон приватности проб (Р-Д-006); сверка карточки (Служитель): пути уточнены (ротатор живёт в волте), roles=агенты, каталог 10 провайдеров (nvidia=SSOT-флаг), model-watch, probe.timer 24 ч (Р-Д-004), журнал 159 строк.
