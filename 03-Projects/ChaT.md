@@ -45,7 +45,7 @@ description: Новая территория, документируемая ч�
 
 | Агент | Mode | Модель | Назначение |
 |-------|------|--------|-----------|
-| chat-librarian | primary | opencode-go/gpt-5.6-luna | Координация знаний, интервью, решения и memory flush |
+| curator | primary | opencode-go/gpt-5.6-luna | Координация знаний, интервью, решения и memory flush |
 | development-manager | subagent | opencode-go/gpt-5.6-luna | Приоритеты, зависимости и delivery |
 | tea-master | subagent | opencode-go/gpt-5.6-luna | Технология чая и качество партий |
 | chat-reviewer | subagent | opencode-go/deepseek-v4-flash | Read-only проверка согласованности |
@@ -55,15 +55,21 @@ description: Новая территория, документируемая ч�
 | velisov-steward | subagent | opencode-go/deepseek-v4-flash | Операции и вопросы Велисова Ковчега |
 | regeneration-designer | subagent | opencode-go/deepseek-v4-flash | Регенеративные инициативы и устойчивость |
 
-`chat-librarian` заменил `curator` в рамках текущей bootstrap-структуры; существующие новые agent-файлы сохраняются.
-
-Статус расхождения карточка↔диск: **закрыто 2026-10-07** — на диске 9 агентов
-в `.mcode/agents/`, что совпадает с таблицей; ранее карточка указывала путь
-`.opencode/agents/` (ныне пусто).
+Статус расхождения карточка↔диск: **переоткрыто 2026-10-29** — на диске те же
+9 агентов, но **`chat-librarian.md` не существует** (ни в `.mcode/`, ни в
+`.opencode/`): primary — **`curator`** (слово владельца 2026-10-29, basis:
+quoted: «чей primary на самом деле: curator»). Прежнее «закрыто 2026-10-07»
+считалось по числу 9, состав разошёлся. Замена `curator → chat-librarian` не
+выполнена и не требуется.
 
 ## Команды (`.mcode/command/` — 9)
-Корпус команд существует на диске (9 `.md`); перечень в карточке не
-перечислялся — сверить при следующем аудите проекта.
+develop · experiment · flush · interview · map · review · science · site · tea
+
+## Наблюдение за git (сверка 2026-10-29)
+- ветка `task/git-freed-b11`, последний коммит `da499c2` (07.10 23:27);
+- миграция агентского слоя в `.mcode/` **не завершена**: в рабочем дереве
+  deletions по `.opencode/agents/*.md`, git ещё отслеживает `.opencode/agents/`,
+  `.mcode/` в git не входит (0 файлов).
 
 ## Плагины
 Плагинов в ChaT нет (`.mcode/` не содержит каталога plugin/plugins).
@@ -80,3 +86,4 @@ description: Новая территория, документируемая ч�
 ## Лог изменений
 - 2026-08-14: bootstrap ChaT и синхронизация карточки проекта в vault.
 - 2026-08-17: roster синхронизирован с bootstrap-структурой; зафиксирована временная модельная политика до capability-routing.
+- 2026-10-29: сверка карточки↔репо (Служитель, по поручению владельца): фантом `chat-librarian` убран — primary подтверждён `curator` (слово владельца); расхождение переоткрыто; команды перечислены (9); миграция в `.mcode/` зафиксирована как незавершённая; добавлено наблюдение за git.
