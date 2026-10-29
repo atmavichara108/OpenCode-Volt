@@ -53,3 +53,6 @@ tools/idea-graph/generated/
 .cache/
 # живые worktrees того же репо — embedded gitlinks, НЕ добавлять (не удалять)
 .meta-worktrees/
+
+# Каюта капитана — личная зона владельца (не коммитить)
+Каюта капитана/
