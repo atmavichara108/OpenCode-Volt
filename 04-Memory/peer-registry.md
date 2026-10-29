@@ -27,6 +27,7 @@ timestamp: 2026-10-29
 | Аутрич · Офис (офис продукта seo-outreach) | ses_ed5dcdf33ffeisHuBX9VKB6XhM | top-man | ~/Projects/SSA/products/seo-outreach | офис/сервисный центр продукта; ID выдан владельцем 2026-10-29 (как образец для Офиса Серплюкс), сверен API (session_v2: сессия жива); роль-модель уточняется перепиской |
 | Оперативный Штаб (ОШ) | ses_e8b9ae95bffeGAoRqZWtPdj2x8 | sysop | ~/dotfiles | нелокализованное место Корабля с локацией-сессией; штаб оперативного реагирования владельца; приоритет 0 по запросам владельца (Р-029); сверка API 10-25: сессия жива, агент sysop |
 | Цех (Аутрич · SEO-outreach) | ses_ed9619763ffeVC3GE5q2o2HY5j | top-man | ~/Projects/SSA/products/seo-outreach | продуктовый цех SSA (заявка control-top; слово владельца 10-29, basis: quoted; сверка API: жива, агент top-man) |
+| Школа концептуальных изысканий (ХПФ) | ses_eQRHoixARq3RNJnKLFTS4IW | librarian | ~/Projects/OpenCode-Vault | исследовательское крыло ХПФ (наречение владельца 2026-10-29: имя + мандат «исследования концептов и адаптация их под наши нужды»; спека docs/specs/school-conceptual-inquiry.md approved 10-30; lead — Храм; регистрация claims 10-30 по чек-листу ЦУ В.1е-ж) |
 
 ## Правила
 1. **Писать только по этому реестру.** Все сессии живые (сверено по session_v2, 10-18 22:00).
