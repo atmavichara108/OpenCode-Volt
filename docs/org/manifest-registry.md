@@ -21,6 +21,7 @@ owner: УАС (куратор по Р-014), операционная запис�
 | `sero` | Агент «SerO» — Служитель Обсидиан (глобальный) | active, 2026-10-26 (файл 99c9b00, реконсиляция УАС; расхождение чертежа рапортовано ЦУ) | `docs/org/sero.md` |
 | `obsidian-plugin-dev` | Агент «obsidian-plugin-dev» — разработчик плагинов Обсидиан (субагент Служителя) | active, 2026-10-27 (вердикт УАС: файл в main, зоны машинные 6adbd34 — оговорка снята после подтяжки ИЦ) | `docs/org/obsidian-plugin-dev.md` |
 | `ship-representative-maya` | Представитель Корабля «AllIsMaya» (@AllIsMaya) — единый sender | active, 2026-10-29 (слово «активен», реестр Р-Д-002; переобувка 4/4 профилей = AllIsMaya, tg-whoami; recruiting на паузе Р-Д-007) | `docs/org/ship-representative-maya.md` |
+| `hpf-school` | Школа концептуальных изысканий (ХПФ, исследовательское крыло) | active, 2026-10-30 (вердикт УАС: 11+4 полей, mandate-source = слово владельца дословно + Р-034; спека approved 10-30, сессия ses_eQRHoixARq3RNJnKLFTS4IW, peer-registry строка на месте) | `docs/org/hpf-school.md` |
 | `office-serplux-primary` | Primary офиса SERPLUX (перенос top-man из аутрича) | proposed, 2026-10-29 (рекомендация УАС; файл агента в serp — ИЦ/ОШ; красные линии top verbatim, cred-line про credentials.json) | `docs/org/office-serplux-primary.md` |
 
 ## Правила
