@@ -23,7 +23,7 @@ stack: Python 3.11+ / requests / gspread / FastAPI / OpenCode Go / SQLite / Dock
 ## SSA-витрина и Mac-миграция (2026-10-28)
 
 - **Витрина SSA:** вариант A2 (строка в `docs/portfolio-registry.md` control) — ADR-0006 control-top, ref `serplux-marketplace-plan`; README SSA «SERPlux не переносится» помечена снятой решением владельца 2026-10-28. Полный перенос (A1, `~/Projects/SSA/products/serplux`) — **только по слову владельца после Mac-миграции**.
-- **Mac-миграция (Михалыч):** комплект `deploy/mac/` в репо SERPlux, ветка `task/mac-migration`, коммит `06c8446` (install/smoke/rollback, compose-override для macOS, runbook, клиентский первый прогон; приёмка: 393 теста passed). Статус: **собран, ждёт доступа к маку заказчика** (архитектура, Docker Desktop, секреты через owner-gate, публичный URL туннеля).
+- **Mac-миграция (Михалыч):** комплект `deploy/mac/` в репо SERPlux, ветка `task/mac-migration`, финальный коммит `caffdbd` (гейт 393 passed). Прод-снимок забран Офисом Серплюкс 2026-10-29 в `_prod-takeaway/` (агенты на прод не ходят): живой `.env`, `credentials.json`, БД 79 МБ (integrity ok: 3 клиента, 60212 позиций). Мак тянет **тот же образ, что прод** (ghcr v1.0.7). Статус: **комплект готов, ждёт физики мака** (топик с Михалычом — владелец; TG-профиль serp — ИС). Открытый вопрос: приватность ghcr-пакета (может понадобиться PAT read:packages).
 
 ---
 
