@@ -30,6 +30,7 @@ timestamp: 2026-10-29
 | Школа концептуальных изысканий (ХПФ) | ses_eQRHoixARq3RNJnKLFTS4IW | librarian | ~/Projects/OpenCode-Vault | исследовательское крыло ХПФ (наречение владельца 2026-10-29: имя + мандат «исследования концептов и адаптация их под наши нужды»; спека docs/specs/school-conceptual-inquiry.md approved 10-30; lead — Храм; регистрация claims 10-30 по чек-листу ЦУ В.1е-ж) |
 | Отдел «Приложений» | ses_eKDfprGN0tGPmzJnQChkmOT | Apps-dev (Р-Д-009, стр. 51; имя отдано УАС словом владельца 10-30) | ~/Projects/OpenCode-Vault | отдел Корабля (organ-structure §1); spec+карточка ЦУ, манифест — УАС после approval |
 | Кафедра контрагентов (при УАСе) | ses_eCounterpartiesTBD | Rector (слово владельца; файл агента готовит УАС — interim librarian) | ~/Projects/OpenCode-Vault | подотдел УАС; выращивание контрагентов (rudrakshas, Р-018); спека docs/specs/department-counterparties-uas.md (УАС) |
+| Отдел «Движков» | ses_euCJx9F9ZX2JXm9SxwMKBfG | interim librarian (имя-агент — слово владельца, Р-Д-009) | ~/Projects/OpenCode-Vault | отдел Корабля (organ-structure §2); parent ИЦ (Р-038-паттерн); спека docs/specs/engines-department.md; первое дело — накат мкода |
 
 ## Правила
 1. **Писать только по этому реестру.** Все сессии живые (сверено по session_v2, 10-18 22:00).
