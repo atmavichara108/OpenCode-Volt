@@ -3,14 +3,14 @@ type: project
 repo: /home/rudra/Projects/SSA/products/seo-outreach
 spec-home: /home/rudra/Projects/SSA/products/seo-outreach/docs/specs/
 kind: коммерция
-status: bootstrap
-stack: "Sheets / SQLite (будущее: web / PostgreSQL / queues)"
-timestamp: 2026-10-10
+status: active
+stack: "Python / Docker / Sheets / SQLite (будущее: web / PostgreSQL / queues)"
+timestamp: 2026-10-29
 ---
 
 # seo-outreach — SEO-аутрич-конвейер
 
-> **Статус:** 🟡 Bootstrap — репозиторий инициализирован, ветка `task/seo-outreach-bootstrap`, ничего не закоммичено; реализация не одобрена.
+> **Статус:** 🟢 Активный продукт SSA — 247 коммитов, ветка `main`, последний коммит 2026-10-30 01:15; релизная линия 0.3.x (0.3.8 — отправка есть, каждое письмо с «да», колонки v0.2).
 > **Связано:** [[SSA]] (контрольный слой портфеля)
 
 **Функция:** первый продукт SSA — полный конвейер SEO-аутрича. Продукт
@@ -30,19 +30,31 @@ timestamp: 2026-10-10
   настроенная БД — за клиентом.
 
 ## Агенты
-Один primary-агент **`top`** — назначен в `AGENTS.md`. **Runtime-конфиг
-`.opencode/agents/top.md` ещё НЕ создан**: договорённость о роли ≠ runtime
-implementation. Список кандидатов в subagent-способности
-(discovery/scoring/contacts/outreach/parsing/reviewer) — плоский список, не
-активный runtime.
+
+Runtime `.opencode/agent/` — 4 агента (сверка 2026-10-29):
+- `top-man.md` — primary
+- `engineer.md`
+- `tg-bridge.md`
+- `office-tg.md` — untracked, новый
+
+Скиллы `.opencode/skill/` — 10:
+campaign, contacts, discovery, export, handoff, inbox, monitor, pre-send-gate, scoring, tg-bridge (последний — untracked).
+
+Команды `.opencode/command/` — 4:
+campaign, dryrun, status, stop.
 
 ## Canonical specs
 `spec-home` = `docs/specs/` в этом репозитории (задано карточкой Vault).
-Execution-спека продукта: `docs/specs/seo-outreach-mvp-v0.1.md` (draft, не
-одобрена — не даёт разрешение на реализацию).
+Execution-спека продукта: `docs/specs/seo-outreach-mvp-v0.1.md` — **status: approved** (2026-10-10).
+Proposal единого первого релиза: `docs/specs/proposals/seo-outreach-first-release-v0.2-proposal.md` (2026-10-13, status: proposed).
+
+Релизная линия: 0.3.8 — сценарий отправки под 0.3.8, выбор [email]-строки по номеру, ручной адрес обходом для [форма], теги строк, ящик, «да» на каждое письмо; install.command шаги 1–6.
 
 ## Окружение
 - `.gitignore` — без секретов и клиентских БД (`*.db`, `*.sqlite`, `data/`, `.env`).
+- Стек по факту: Python (pyproject.toml), Dockerfile, docker-bake.hcl, packaging/dist, tests (619 тестов в истории).
+- Remote-ов нет.
 
 ## Лог изменений
 - 2026-10-10: карточка заведена (bootstrap)
+- 2026-10-29: сверка карточки↔репо (Служитель, по поручению владельца): 247 коммитов, main, релиз 0.3.8; агенты 4 (top-man primary), скиллы 10, команды 4; spec MVP approved; Python/Docker; remote-ов нет.
