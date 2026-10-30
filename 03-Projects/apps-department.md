@@ -4,7 +4,7 @@ title: Отдел «Приложений»
 repo: /home/rudra/Projects/OpenCode-Vault
 spec-home: /home/rudra/Projects/OpenCode-Vault/docs/specs/
 kind: отдел
-parent: корабль
+parent: ic
 status: 🟡 proposed (спека 10-30, ждёт сессии владельца)
 timestamp: 2026-10-30
 ---
