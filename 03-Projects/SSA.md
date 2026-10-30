@@ -3,15 +3,15 @@ type: project
 repo: /home/rudra/Projects/SSA/control
 spec-home: /home/rudra/Projects/SSA/control/docs/specs/
 kind: портфель / control plane
-status: bootstrap
+status: active
 stack: markdown / git
-timestamp: 2026-10-10
+timestamp: 2026-10-29
 ---
 
 # SSA (control) — портфельный/контрольный слой
 
-> **Статус:** 🟡 Bootstrap — репозиторий инициализирован, ветка `task/ssa-bootstrap`, ничего не закоммичено.
-> **Связано:** [[seo-outreach]] (первый продукт)
+> **Статус:** 🟢 Active — репозиторий живой, ветка `task/control-w2`, последний коммит 2026-10-29.
+> **Связано:** [[seo-outreach]] (первый продукт), [[SERPlux]] (поглощение SERP Factory)
 
 **Функция:** контрольный слой портфеля SSA (временное имя). Здесь **нет кода
 продуктов** и **нет клиентских данных**. Ведёт правила агентной инфраструктуры,
@@ -31,7 +31,8 @@ timestamp: 2026-10-10
 ## Продукты портфеля
 | Продукт | Репозиторий | Карточка | Статус |
 |---|---|---|---|
-| seo-outreach (SEO-аутрич-конвейер) | `~/Projects/SSA/products/seo-outreach/` | [[seo-outreach]] | 🟡 bootstrap |
+| seo-outreach (SEO-аутрич-конвейер) | `~/Projects/SSA/products/seo-outreach/` | [[seo-outreach]] | 🟢 active |
+| SERPlux (SERP Factory) | `~/Projects/serp/` | [[SERPlux]] | 🟡 в процессе поглощения SSA |
 
 ## Окружение
 - `~/Projects/SSA/` — рабочая папка портфеля (НЕ Git-workspace).
@@ -39,3 +40,4 @@ timestamp: 2026-10-10
 
 ## Лог изменений
 - 2026-10-10: карточка заведена (bootstrap)
+- 2026-10-29: сверка карточки↔репо (Служитель): статус поднят до active, ветка `task/control-w2` живая; портфель дополнен SERPlux в статусе поглощения SERP Factory; seo-outreach переведен в active.

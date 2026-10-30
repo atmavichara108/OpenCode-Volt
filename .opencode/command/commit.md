@@ -1,4 +1,3 @@
-
 ---
 description: Commit vault changes with auto-generated conventional message. Минимум токенов.
 agent: librarian

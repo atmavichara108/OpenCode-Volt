@@ -1,6 +1,6 @@
 ---
 name: decision-queue
-description: Decision queue management: create, list, resolve dilemma cards. Use when permission blocked, UNROUTABLE, acceptance gate, or user asks "/decisions".
+description: "Decision queue management: create, list, resolve dilemma cards. Use when permission blocked, UNROUTABLE, acceptance gate, or user asks \"/decisions\"."
 ---
 
 # Decision Queue Skill

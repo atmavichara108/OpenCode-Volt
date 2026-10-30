@@ -190,8 +190,8 @@ class Handler(SimpleHTTPRequestHandler):
         op = (q.get("op") or [""])[0]
         ALLOWED = {"workspace-open", "workspace-status", "workspace-status-all", "link-open", "link-resolve",
                    "capture-scan", "term-open",
-                   "term-status", "term-close", "query", "blockers", "next", "dependencies", "notify",
-                   "proposals", "apply", "model-list", "model-models", "model-apply"}
+                    "term-status", "term-close", "query", "blockers", "next", "dependencies", "notify",
+                    "proposals", "apply", "model-list", "model-models", "model-apply", "dq", "igraph"}
         body = None
         code = 200
         if op not in ALLOWED:

@@ -5,7 +5,7 @@ spec-home: /home/rudra/Projects/AndroidOS/docs/specs/
 kind: umbrella / mobile / ecosystem
 status: planning
 stack: Android / Kotlin (to validate) / OpenCode / offline-first data
-timestamp: 2026-08-22
+timestamp: 2026-10-29
 ---
 
 # AndroidOS — модульная персональная ОС
@@ -44,6 +44,11 @@ timestamp: 2026-08-22
 planner, researcher, reviewer, verifier), `.mcode/command/` — 5 команд,
 `.mcode/memory/` и `.mcode/logs/` — служебные. `.opencode/` пуст.
 Карточка ранее агентов не перечисляла — расхождение с диском **закрыто**.
+
+**Сверка 2026-10-29:** `.mcode/agents/` по-прежнему 5 агентов, `.mcode/command/` 5 команд
+(android-build, android-done, android-plan, android-research, android-verify).
+`.opencode/` существует физически, но содержит только `node_modules/package.json`
+— агентской инфраструктуры нет.
 
 ## Граница umbrella
 
@@ -109,3 +114,6 @@ MVP принимается только после демонстрации на
 ## Non-goals for this phase
 
 No Telegram-first MVP, voice replies/voice conversation, autonomous destructive actions, cloud-first storage, or selected vendor/tool claims. Research candidates are recorded only in [[06-Audits/2026-08-22-androidos-open-source-first]].
+
+## Лог изменений
+- 2026-10-29: сверка карточки↔репо (Служитель): ветка `task/git-freed-b11`, последний коммит `bf3c887` 2026-10-07 23:27; `.mcode/agents` 5, `.mcode/command` 5 подтверждены; `.opencode/` без агентской инфраструктуры (только node_modules); timestamp обновлён.

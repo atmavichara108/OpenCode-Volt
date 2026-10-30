@@ -1,7 +1,7 @@
 ---
 type: Reference
 title: OpenCode Providers — Провайдеры и бесплатные лимиты
-description: Полный обзор провайдеров OpenCode с бесплатными лимитами. Проверено: 2026-10-07 (+LinaliAPI, AnyModel, JustDoWork updates)
+description: "Полный обзор провайдеров OpenCode с бесплатными лимитами. Проверено: 2026-10-07 (+LinaliAPI, AnyModel, JustDoWork updates)"
 tags: [opencode, providers, free-tier, models]
 timestamp: 2026-10-07
 ---

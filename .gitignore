@@ -48,3 +48,11 @@ tools/verify-cache/generated/
 # Sessions coverage scanner (generated reports, не коммитить)
 tools/idea-graph/generated/
 .bench-justwoker*.log
+
+# Локальный семантический индекс L9 (runtime, не коммитить)
+.cache/
+# живые worktrees того же репо — embedded gitlinks, НЕ добавлять (не удалять)
+.meta-worktrees/
+
+# Каюта капитана — личная зона владельца (не коммитить)
+Каюта капитана/

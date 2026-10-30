@@ -116,7 +116,49 @@ done | rg -o '\[\[([^\]|]+)' --no-filename --no-line-number 2>/dev/null | sed 's
 
 echo "✅ Все викилинки валидны"
 
-# --- Гейт 5: decode-мусор (garbage-guard, ratified Рудрой 2026-10-07) --------
+# --- Гейт 5: frontmatter — валидность YAML + полнота полей (объединённый, ЦУ одобрила 2026-10-22)
+# Под-проверка (а): YAML-валидность — fm.py lint (инструмент dotfiles tools/vault-frontmatter/)
+# Под-проверка (б): полнота полей type/title/timestamp для новых .md в контент-директориях.
+# Канон полей — 05-Templates/*.md. Отсутствие = red commit. Обход: FRONTMATTER_OK=1.
+
+FRONTMATTER_DIRS="06-Audits/ 02-Methods/ 10-Deck/ 01-Policies/"
+FRONTMATTER_FIELDS="type title timestamp"
+FM_LINT="${FM_LINT:-$HOME/dotfiles/tools/vault-frontmatter/fm.py}"
+
+if [ "${FRONTMATTER_OK:-0}" != "1" ]; then
+  # Под-проверка (а): YAML-валидность всех staged .md (не только новых)
+  for f in $(git diff --cached --name-only --diff-filter=ACM | grep '\.md$'); do
+    [ -f "$f" ] || continue
+    if python3 "$FM_LINT" check "$f" 2>&1 | grep -q 'FAIL\|бит\|error'; then
+      die "Гейт 5(а): $f — невалидный YAML во frontmatter. Обход: FRONTMATTER_OK=1"
+    fi
+  done
+  # Под-проверка (б): полнота полей для НОВЫХ .md в контент-директориях
+  for f in $(git diff --cached --name-only --diff-filter=A); do
+    case "$f" in
+      *.md) ;;
+      *) continue ;;
+    esac
+    matched=""
+    for d in $FRONTMATTER_DIRS; do
+      case "$f" in
+        "$d"*) matched=1; break ;;
+      esac
+    done
+    [ -z "$matched" ] && continue
+    [ -f "$f" ] || continue
+    head -1 "$f" | grep -q '^---' || {
+      die "Гейт 5: $f — нет frontmatter (--- в первой строке). Обход: FRONTMATTER_OK=1"
+    }
+    for field in $FRONTMATTER_FIELDS; do
+      if ! sed -n '/^---$/,/^---$/p' "$f" | head -20 | grep -q "^${field}:"; then
+        die "Гейт 5: $f — обязательное поле '${field}' отсутствует. Обход: FRONTMATTER_OK=1"
+      fi
+    done
+  done
+fi
+
+# --- Гейт 6: decode-мусор (garbage-guard, ratified Рудрой 2026-10-07) --------
 # Детектор zero-LLM живёт в dotfiles-ядре; vault вызывает его как хост-инструмент.
 # Обход: GARBAGE_OK=1 (как MOJIBAKE_OK в dotfiles-гейте 6).
 

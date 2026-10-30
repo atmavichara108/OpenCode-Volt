@@ -1,6 +1,6 @@
 ---
 type: research
-title: Институт — исследование: NotebookLM как «второй brain» Корабля
+title: "Институт — исследование: NotebookLM как «второй brain» Корабля"
 status: draft
 timestamp: 2026-10-13
 project: OpenCode-Vault / dotfiles

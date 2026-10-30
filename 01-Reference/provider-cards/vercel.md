@@ -1,7 +1,7 @@
 ---
 type: Provider Card
 title: Vercel AI Gateway — provider card
-description: Операционная карточка провайдера Vercel AI Gateway. Status ACTIVE: каталог 391 модель, smoke-чат PROBE_OK. Ключей API здесь нет.
+description: "Операционная карточка провайдера Vercel AI Gateway. Status ACTIVE: каталог 391 модель, smoke-чат PROBE_OK. Ключей API здесь нет."
 tags: [reference, provider-card, providers, vercel]
 timestamp: 2026-09-28
 ---

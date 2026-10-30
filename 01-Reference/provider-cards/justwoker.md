@@ -1,7 +1,7 @@
 ---
 type: Provider Card
 title: JustDoWork (justwoker) — provider card
-description: Операционная карточка провайдера JustDoWork (justwoker, New API/One API style). Status WORKING (через шим v4 curl-транспорт): прямое соединение с CF виснет на больших upload'ах (MTU-blackhole), шим гонит через локальный прокси. Стрим-регрессия шлюза ушла 2026-10-09. OpenAI-style /chat/completions закрыт Cloudflare. Баланс $300+.
+description: "Операционная карточка провайдера JustDoWork (justwoker, New API/One API style). Status WORKING (через шим v4 curl-транспорт): прямое соединение с CF виснет на больших upload'ах (MTU-blackhole), шим гонит через локальный прокси. Стрим-регрессия шлюза ушла 2026-10-09. OpenAI-style /chat/completions закрыт Cloudflare. Баланс $300+."
 tags: [reference, provider-card, providers, justwoker]
 timestamp: 2026-10-09
 ---
@@ -166,3 +166,25 @@ crash-guard `dee6f15`; (б) фантомный фикс `headersTimeout:0` — B
 - [[01-Reference/providers]] — обзор провайдеров.
 - `tools/key-rotator/providers.json` — запись провайдера (probe-слой).
 - [[04-Memory/facts]] · [[04-Memory/active-context]]
+## Веб-исследование ИПТ (2026-10-29, ref justwoker-research; письмо 8b1b8ffd5283)
+
+Кто это: JustDoWork — community relay station на панели New API
+(QuantumNous/new-api) за Cloudflare; оператор анонимен, официального сайта/
+ToS/SLA нет, домен .icu. Класс «free-credit relay»: панели живут неделями,
+каталоги прямо предупреждают «keep a second base URL ready».
+
+- **Кредиты**: регистрация GitHub OAuth (аккаунт 365+ дней) + Turnstile;
+  бонус $50–80; ежедневный чек-ин ~$22–30 (расхождение по источникам/датам);
+  баланс во внутренних юнитах ≠ доллары, конвертация скрыта.
+- **GitHub zhonggy/justwoker** — скрипт авто-чек-инов (Qinglong), не оператор.
+- **Почему модели исчезают**: оператор вручную курит каталог по группам
+  ключей; статус сайта флапает (ai-relay: «unavailable» 10-10; ai-coding-
+  welfare: «reachable» 10-29); «заявленное ≠ выданное» (каталоги рекламируют
+  opus 4.8/5 — по факту у нашего ключа 1 модель).
+- **Расхождения с нашей базой**: OpenAI-путь каталоги называют рабочим, наш
+  живой тест — 403 Cloudflare (база сильнее); чек-ин $30 — верх диапазона.
+
+**Вердикт**: только экспериментальный канал низкого приоритета (в ротаторе
+priority 15), никогда критичным; секреты/чувствительное не слать (релей видит
+весь трафик; канон Р-Д-006). Ре-пин стратегических агентов на amd/nvidia
+исполнен (реестр Р-Д-008). Карточка дополнена, вопрос «кто такой» закрыт.

@@ -1,7 +1,7 @@
 ---
 type: Reference
 title: Model Modes — Режимы выбора моделей
-description: Конфигурация 3-х режимов выбора моделей для агентов: Free (бесплатный), Medium (баланс), Premium (топовый)
+description: "Конфигурация 3-х режимов выбора моделей для агентов: Free (бесплатный), Medium (баланс), Premium (топовый)"
 tags: [opencode, modes, config, routing]
 timestamp: 2026-09-01
 ---

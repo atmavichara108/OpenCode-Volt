@@ -1,7 +1,7 @@
 ---
 type: Provider Card
 title: LinaliAPI — provider card
-description: Операционная карточка провайдера LinaliAPI (OpenAI-compatible шлюз). Источник правды по состоянию провайдера; факты отделены от [проверить]. Статус EMPTY: баланс неизвестен, использование ограничено.
+description: "Операционная карточка провайдера LinaliAPI (OpenAI-compatible шлюз). Источник правды по состоянию провайдера; факты отделены от [проверить]. Статус EMPTY: баланс неизвестен, использование ограничено."
 tags: [reference, provider-card, providers, linaliapi]
 timestamp: 2026-10-07
 ---

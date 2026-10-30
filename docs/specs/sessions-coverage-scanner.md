@@ -1,5 +1,3 @@
-# Spec: Sessions Coverage Scanner (B4/B16)
-
 ---
 spec: sessions-coverage-scanner
 kind: task
@@ -10,6 +8,7 @@ mandate: Рудра, 2026-10-06 — «Спека для coverage-сканера 
 sustainability: pass (zero-LLM, детерминированный, запуск по требованию)
 verifier: owner-local (igraphv2), затем handoff Дирижёру
 ---
+# Spec: Sessions Coverage Scanner (B4/B16)
 
 ## S1. Цель
 

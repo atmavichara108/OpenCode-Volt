@@ -20,6 +20,11 @@ stack: Python 3.11+ / requests / gspread / FastAPI / OpenCode Go / SQLite / Dock
 **Провайдер:** OpenCode Go; DeepSeek Go используется для дешёвых review/verifier ролей
 **Сервер:** задеплоено, собственный домен
 
+## SSA-витрина и Mac-миграция (2026-10-28)
+
+- **Витрина SSA:** вариант A2 (строка в `docs/portfolio-registry.md` control) — ADR-0006 control-top, ref `serplux-marketplace-plan`; README SSA «SERPlux не переносится» помечена снятой решением владельца 2026-10-28. Полный перенос (A1, `~/Projects/SSA/products/serplux`) — **только по слову владельца после Mac-миграции**.
+- **Mac-миграция (Михалыч):** комплект `deploy/mac/` в репо SERPlux, ветка `task/mac-migration`, финальный коммит `caffdbd` (гейт 393 passed). Прод-снимок забран Офисом Серплюкс 2026-10-29 в `_prod-takeaway/` (агенты на прод не ходят): живой `.env`, `credentials.json`, БД 79 МБ (integrity ok: 3 клиента, 60212 позиций). Мак тянет **тот же образ, что прод** (ghcr v1.0.7). Статус: **комплект готов, ждёт физики мака** (заказчик — Михаил @BykovM, топик связи 186; переписку с ним по слову владельца 2026-10-29 ведёт Офис Серплюкс; TG-профиль serp — ИС). Открытый вопрос: приватность ghcr-пакета (может понадобиться PAT read:packages).
+
 ---
 
 ## Что сделано (✅ готово)
@@ -193,3 +198,4 @@ env-guard.js · notify.js · compaction.js · commit-guard.js
 - 2026-07-03: **Актуализация карточки по реальному состоянию репо.** Агенты: ui-dev — активен (Google Sheets UI, kimi-k2.7-code), не PAUSED; infra-dev — qwen3.7-plus (не deepseek-v4-flash). Команды: добавлены `/commit` и `/dream`, убран несуществующий `/review`. Убран мусор (stray `}`). Таблицы агентов/команд приведены в соответствие с `.opencode/`.
 - 2026-07-03: **Мультиклиентность + domains mode.** T-001 (новая схема БД clients/positions/labels + migrate.py + тесты), T-002 (режим `domains` разметки + справочник `domain_labels` + `confidence`), T-003 (идемпотентность migrate.py), T-004 (расширение POST /run: client_id, label_mode, force_relabel). 111/111 тестов. Default `label_mode=domains` (без LLM). Плагин commit-guard.js добавлен в список. Приоритет сместился на мультипровайдерность.
 - 2026-08-03/04: **Phase 1 (kernel stabilization, ecosystem upgrade plan v1).** Плагины стабилизированы (loader-контракт T-084: named exports, `event` catch-all, `experimental.session.compacting`), создан project-local verifier.md (T-085), executed тесты = **256/256** на HEAD `f7ccd3e` (T-087/T-098), канон `docs/test-metrics.md`, sync claims → техдолг (за пользователем). Коммит агентского слоя 2026-08-04.
+- 2026-10-29: сверка карточки↔репо (Служитель): ветка `task/mac-migration`, последний коммит `8ff4848` 2026-10-29 18:44; комплект mac-миграции готов (caffdbd), прод-снимок забран Офисом Серплюкс; статус — активный продукт SERP Factory, в процессе поглощения SSA. Каноническая связь с SSA зафиксирована.

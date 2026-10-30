@@ -5,7 +5,7 @@ spec-home: /home/rudra/Projects/recruiting-hr/docs/specs/
 kind: коммерция / рекрутинг
 stack: Python / mammoth / markdownify / docx→md материалы
 status: bootstrap
-timestamp: 2026-10-01
+timestamp: 2026-10-29
 ---
 # recruiting-hr — рекрутинг рабочих на стройку
 
@@ -76,18 +76,19 @@ timestamp: 2026-10-01
   оператора (механизм волта `tools/telegram-capture`); выдать
   sourcing/recruiter с явными границами безопасности.
 
+## Команды (`.opencode/commands/` — 1, сверка 2026-10-29)
+
+`/tg-connect` — подключение TG-аккаунта: заготовка ключей → вход → проверка
+(state-machine, идемпотентно; агент build). Остальные команды — по мере
+постановки задач top-manager'ом.
+
 ## Git
 
-**Статус: не инициализирован** (репо ещё не создано).
-
-Текущее состояние «не git-репозиторий» зафиксировано каноническим `AGENTS.md`
-оператора; git-этап (init → старый `recruiting` как источник → `recruiting_HR`
-как origin, чистая история) выполняет top-manager после первого интервью.
-
-План (не выполняется сейчас):
-1. `git init` в `/home/rudra/Projects/recruiting-hr`.
-2. Подключить старый репо `recruiting` как remote-источник материалов (история контрибьюторов).
-3. Подключить новый репо `recruiting_HR` как `origin` с чистой историей.
+**Статус (сверка 2026-10-29): инициализирован, origin не подключён.** Ветка
+`task/next-20261005-2318`, 3 коммита (импорт материалов → агентская инфра +
+`/tg-connect` → память кейса), последний 05.10.23. **Remote-ов ноль** — пункты
+«recruiting как источник» и «recruiting_HR как origin с чистой историей»
+остаются открытыми (выполняет top-manager).
 
 ## Состояние
 
@@ -110,8 +111,9 @@ timestamp: 2026-10-01
 - CRM: решение принято 2026-10-01 — **EspoCRM на RF-VPS** (ADR-001 в `recruiting-hr/docs/decisions.md`, обоснование — [[06-Audits/2026-10-01-recruiting-hr-crm-research]]); инфра — sysop/dotfiles, домен — агенты recruiting-hr.
 - Локальное хранилище персданных — `data-private/` (в `.gitignore`, вне git).
 - Рабочий TG-акк оператора для парсинга подключён 2026-10-03: AllIsMaya, telethon-сессия `data-private/tg_user.session`, ключи + прокси в `data-private/tg.env` (вне git). Прямой MTProto заблокирован → обязателен локальный SOCKS5 (`TG_PROXY`, python-socks).
-- Интервью top-manager'а — маркер `docs/interviews/`.
-- Пакеты постинга — `docs/post-packages/`.
+- Интервью top-manager'а — `docs/interviews/2026-10-01-operational.md` (77 строк, договорённости выписаны).
+- Память кейса — `docs/memory.md` (журнал дежурного, обновлён 2026-10-03); инструкции: форма заявки, подключение TG.
+- venv содержит также **PySocks 1.7.1** (SOCKS5-прокси обязателен: прямой MTProto заблокирован) — сверка 2026-10-29.
 - Порядок инициализации: сначала `/init` оператором (базовый AGENTS.md, осмотр), слой агентов — ПОВЕРХ канонического каркаса.
 
 ### Продуктовое направление
@@ -137,3 +139,4 @@ EspoCRM (Advanced Pack и др.) не покупаем, пишем своё. С�
 - 2026-10-01: принято решение по CRM — **EspoCRM на RF-VPS** (ADR-001 в `recruiting-hr/docs/decisions.md`); обоснование — [[06-Audits/2026-10-01-recruiting-hr-crm-research]]. Инфра — sysop/dotfiles, домен — агенты recruiting-hr.
 - 2026-10-03: подключён рабочий TG-аккаунт оператора для парсинга — telethon 1.45.0, сессия пересоздана (`data-private/tg_user.session`), ключи+прокси в `data-private/tg.env`, python-socks в `.venv`; `git init` выполнен. Детали и уроки — `recruiting-hr/docs/memory.md`.
 - 2026-10-05: исследование платного контура EspoCRM и пути «свой Recruiting Pack + франшиза» — [[06-Audits/2026-10-05-recruiting-fork-franchise-research]]. Advanced Pack не покупаем; Recruiting Pack как AGPL-расширение по прецеденту Real Estate, агенты через официальный MCP, франшиза агентского пака + управляемые инстансы, форк ядра — только при необходимости. Статус — исследование, развитие позже.
+- 2026-10-29: сверка карточки↔репо (Служитель, по поручению владельца): git инициализирован (3 коммита, ветка task/next-20261005-2318), origin не подключён; команда /tg-connect; interviews — конкретный файл; memory.md и инструкции в docs; venv +PySocks; фантом docs/post-packages/ убран.

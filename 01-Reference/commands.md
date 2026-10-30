@@ -44,6 +44,11 @@ subtask: true           # форсить вызов как subagent (не зас
 | `/project` | librarian | Сводка по проекту |
 | [`/commit`](/.opencode/command/commit.md) | librarian | Закоммитить изменения в волте (subtask) |
 | [`/route`](/.opencode/command/route.md) | librarian | Сформировать scoped capability route и явный handoff без runtime router |
+| [`/canonize`](/.opencode/command/canonize.md) | librarian | Канонизировать слово владельца: дословная цитата (`basis: quoted`) → политика/факт/метод через named executor; конфликт канона — вопросом владельцу |
+| [`/accept`](/.opencode/command/accept.md) | librarian | Приёмка пакета ведомства: факт-сверка по диску → независимый verifier по точному hash/коммиту → вердикт → merge и строка реестра |
+| [`/dispatch`](/.opencode/command/dispatch.md) | librarian | Мандат ведомству: провенанс слова владельца, адрес только из `04-Memory/peer-registry`, постановка, delivery-check по журналу |
+| [`/report`](/.opencode/command/report.md) | librarian | Сводный доклад владельцу: живые линии, что ждёт его слова, блокеры, закрыто с evidence |
+| [`/calibrate`](/.opencode/command/calibrate.md) | librarian | Калибровка ведомства/адресов по модели 6 шагов (`02-Methods/ministry-calibration`), варианты A/B/C |
 | [`/project-add`](/.opencode/command/project-add.md) | librarian | Создать карточку нового проекта: имя путь описание [тип] [стек] |
 | [`/audit`](/.opencode/command/audit.md) | librarian | Аудит проектов: pull, сверка карточки с репо. Без аргумента — все проекты |
 | [`/distill-pipeline`](/.opencode/command/distill-pipeline.md) | librarian | Дистилляция состояния пайплайнов: из .opencode/command/ и агентов → в карточку и VibeOS |

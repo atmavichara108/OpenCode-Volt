@@ -1,0 +1,3683 @@
+{
+ "generated_at": "2026-10-25T06:38:32Z",
+ "providers": {
+  "amd-radeon": {
+   "models": {
+    "DeepSeek-V4-Flash": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "DeepSeek-V4-Flash-Vision-Exp": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "DeepSeek-V4.1-Flash": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "GLM-5.3-Flash": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "MiMo-V2.6-Flash": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "Qwen3.8-27B": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "Qwen3.8-Flash-Next": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    }
+   }
+  },
+  "anymodel": {
+   "models": {
+    "am/free": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "am/nemotron-3-ultra-550b-a55b": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "cc/claude-opus-5": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "cc/claude-sonnet-5": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "cx/gpt-5.6-sol": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "cx/gpt-6-astra": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "cx/gpt-6-luna": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "cx/gpt-6-sol": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "kmc/k3": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    }
+   }
+  },
+  "apinex": {
+   "models": {
+    "free/claude-opus-4.6": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    }
+   }
+  },
+  "justwoker": {
+   "models": {
+    "claude-opus-4-8": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    }
+   }
+  },
+  "local-deepseek": {
+   "models": {
+    "deepseek-chat": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "deepseek-expert": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    }
+   }
+  },
+  "modelhub": {
+   "models": {
+    "codestral-latest": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "gemini-3.1-flash-lite": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    }
+   }
+  },
+  "opencode": {
+   "models": {
+    "beam-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "big-pickle": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "cat-jam-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "claude-3-5-haiku": {
+     "in": true,
+     "cost_in": 0.8,
+     "cost_out": 4,
+     "free": false
+    },
+    "claude-fable-5": {
+     "in": true,
+     "cost_in": 10,
+     "cost_out": 50,
+     "free": false
+    },
+    "claude-fable-5-1": {
+     "in": true,
+     "cost_in": 10,
+     "cost_out": 50,
+     "free": false
+    },
+    "claude-haiku-4-5": {
+     "in": true,
+     "cost_in": 1,
+     "cost_out": 5,
+     "free": false
+    },
+    "claude-haiku-5-5": {
+     "in": true,
+     "cost_in": 0.1,
+     "cost_out": 0.5,
+     "free": false
+    },
+    "claude-opus-4-1": {
+     "in": true,
+     "cost_in": 15,
+     "cost_out": 75,
+     "free": false
+    },
+    "claude-opus-4-5": {
+     "in": true,
+     "cost_in": 5,
+     "cost_out": 25,
+     "free": false
+    },
+    "claude-opus-4-6": {
+     "in": true,
+     "cost_in": 5,
+     "cost_out": 25,
+     "free": false
+    },
+    "claude-opus-4-7": {
+     "in": true,
+     "cost_in": 5,
+     "cost_out": 25,
+     "free": false
+    },
+    "claude-opus-4-8": {
+     "in": true,
+     "cost_in": 5,
+     "cost_out": 25,
+     "free": false
+    },
+    "claude-opus-5": {
+     "in": true,
+     "cost_in": 5,
+     "cost_out": 25,
+     "free": false
+    },
+    "claude-opus-5-5": {
+     "in": true,
+     "cost_in": 4,
+     "cost_out": 20,
+     "free": false
+    },
+    "claude-sonnet-4": {
+     "in": true,
+     "cost_in": 3,
+     "cost_out": 15,
+     "free": false
+    },
+    "claude-sonnet-4-5": {
+     "in": true,
+     "cost_in": 3,
+     "cost_out": 15,
+     "free": false
+    },
+    "claude-sonnet-4-6": {
+     "in": true,
+     "cost_in": 3,
+     "cost_out": 15,
+     "free": false
+    },
+    "claude-sonnet-5": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 10,
+     "free": false
+    },
+    "claude-sonnet-5-5": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 10,
+     "free": false
+    },
+    "deepseek-v4-flash": {
+     "in": true,
+     "cost_in": 0.14,
+     "cost_out": 0.28,
+     "free": false
+    },
+    "deepseek-v4-flash-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "deepseek-v4-flash-vision-exp": {
+     "in": true,
+     "cost_in": 0.14,
+     "cost_out": 0.28,
+     "free": false
+    },
+    "deepseek-v4-pro": {
+     "in": true,
+     "cost_in": 1.74,
+     "cost_out": 3.48,
+     "free": false
+    },
+    "deepseek-v4.1-flash": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "deepseek-v4.1-flash-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "exo-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "fledge-alpha-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "flint-40b-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "gemini-3-flash": {
+     "in": true,
+     "cost_in": 0.5,
+     "cost_out": 3,
+     "free": false
+    },
+    "gemini-3-pro": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 12,
+     "free": false
+    },
+    "gemini-3.1-pro": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 12,
+     "free": false
+    },
+    "gemini-3.5-flash": {
+     "in": true,
+     "cost_in": 1.5,
+     "cost_out": 9,
+     "free": false
+    },
+    "gemini-3.5-flash-lite": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 2.5,
+     "free": false
+    },
+    "gemini-3.6-flash": {
+     "in": true,
+     "cost_in": 1.5,
+     "cost_out": 7.5,
+     "free": false
+    },
+    "gemini-3.7-flash": {
+     "in": true,
+     "cost_in": 1.5,
+     "cost_out": 7.5,
+     "free": false
+    },
+    "gemini-3.8-flash": {
+     "in": true,
+     "cost_in": 1.5,
+     "cost_out": 7.5,
+     "free": false
+    },
+    "gemini-4-argon": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 10,
+     "free": false
+    },
+    "glm-4.6": {
+     "in": true,
+     "cost_in": 0.6,
+     "cost_out": 2.2,
+     "free": false
+    },
+    "glm-4.7": {
+     "in": true,
+     "cost_in": 0.6,
+     "cost_out": 2.2,
+     "free": false
+    },
+    "glm-4.7-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "glm-5": {
+     "in": true,
+     "cost_in": 1,
+     "cost_out": 3.2,
+     "free": false
+    },
+    "glm-5-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "glm-5.1": {
+     "in": true,
+     "cost_in": 1.4,
+     "cost_out": 4.4,
+     "free": false
+    },
+    "glm-5.2": {
+     "in": true,
+     "cost_in": 1.4,
+     "cost_out": 4.4,
+     "free": false
+    },
+    "glm-5.3": {
+     "in": true,
+     "cost_in": 1.4,
+     "cost_out": 4.4,
+     "free": false
+    },
+    "glm-5.3-flash": {
+     "in": true,
+     "cost_in": 0.15,
+     "cost_out": 0.5,
+     "free": false
+    },
+    "glm-5.3-flash-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "gpt-5": {
+     "in": true,
+     "cost_in": 1.07,
+     "cost_out": 8.5,
+     "free": false
+    },
+    "gpt-5-codex": {
+     "in": true,
+     "cost_in": 1.07,
+     "cost_out": 8.5,
+     "free": false
+    },
+    "gpt-5-nano": {
+     "in": true,
+     "cost_in": 0.05,
+     "cost_out": 0.4,
+     "free": false
+    },
+    "gpt-5.1": {
+     "in": true,
+     "cost_in": 1.07,
+     "cost_out": 8.5,
+     "free": false
+    },
+    "gpt-5.1-codex": {
+     "in": true,
+     "cost_in": 1.07,
+     "cost_out": 8.5,
+     "free": false
+    },
+    "gpt-5.1-codex-max": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 10,
+     "free": false
+    },
+    "gpt-5.1-codex-mini": {
+     "in": true,
+     "cost_in": 0.25,
+     "cost_out": 2,
+     "free": false
+    },
+    "gpt-5.2": {
+     "in": true,
+     "cost_in": 1.75,
+     "cost_out": 14,
+     "free": false
+    },
+    "gpt-5.2-codex": {
+     "in": true,
+     "cost_in": 1.75,
+     "cost_out": 14,
+     "free": false
+    },
+    "gpt-5.3-codex": {
+     "in": true,
+     "cost_in": 1.75,
+     "cost_out": 14,
+     "free": false
+    },
+    "gpt-5.3-codex-spark": {
+     "in": true,
+     "cost_in": 1.75,
+     "cost_out": 14,
+     "free": false
+    },
+    "gpt-5.4": {
+     "in": true,
+     "cost_in": 2.5,
+     "cost_out": 15,
+     "free": false
+    },
+    "gpt-5.4-mini": {
+     "in": true,
+     "cost_in": 0.75,
+     "cost_out": 4.5,
+     "free": false
+    },
+    "gpt-5.4-nano": {
+     "in": true,
+     "cost_in": 0.2,
+     "cost_out": 1.25,
+     "free": false
+    },
+    "gpt-5.4-pro": {
+     "in": true,
+     "cost_in": 30,
+     "cost_out": 180,
+     "free": false
+    },
+    "gpt-5.5": {
+     "in": true,
+     "cost_in": 5,
+     "cost_out": 30,
+     "free": false
+    },
+    "gpt-5.5-pro": {
+     "in": true,
+     "cost_in": 30,
+     "cost_out": 180,
+     "free": false
+    },
+    "gpt-5.6-luna": {
+     "in": true,
+     "cost_in": 0.2,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "gpt-5.6-sol": {
+     "in": true,
+     "cost_in": 4,
+     "cost_out": 20,
+     "free": false
+    },
+    "gpt-5.6-terra": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 12,
+     "free": false
+    },
+    "gpt-6-astra": {
+     "in": true,
+     "cost_in": 10,
+     "cost_out": 50,
+     "free": false
+    },
+    "gpt-6-luna": {
+     "in": true,
+     "cost_in": 0.1,
+     "cost_out": 0.5,
+     "free": false
+    },
+    "gpt-6-sol": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 10,
+     "free": false
+    },
+    "gpt-6.1-sol": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 10,
+     "free": false
+    },
+    "grok-4.5": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 6,
+     "free": false
+    },
+    "grok-4.6": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 6,
+     "free": false
+    },
+    "grok-4.7": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 6,
+     "free": false
+    },
+    "grok-build-0.1": {
+     "in": true,
+     "cost_in": 1,
+     "cost_out": 2,
+     "free": false
+    },
+    "grok-code": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "hy3-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "hy3-preview-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "kimi-k2": {
+     "in": true,
+     "cost_in": 0.4,
+     "cost_out": 2.5,
+     "free": false
+    },
+    "kimi-k2-thinking": {
+     "in": true,
+     "cost_in": 0.4,
+     "cost_out": 2.5,
+     "free": false
+    },
+    "kimi-k2.5": {
+     "in": true,
+     "cost_in": 0.6,
+     "cost_out": 3,
+     "free": false
+    },
+    "kimi-k2.5-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "kimi-k2.6": {
+     "in": true,
+     "cost_in": 0.95,
+     "cost_out": 4,
+     "free": false
+    },
+    "kimi-k2.7-code": {
+     "in": true,
+     "cost_in": 0.95,
+     "cost_out": 4,
+     "free": false
+    },
+    "kimi-k3": {
+     "in": true,
+     "cost_in": 3,
+     "cost_out": 15,
+     "free": false
+    },
+    "laguna-s-2.1-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "ling-2.6-flash-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "ling-3.0-flash-fin-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "ling-3.0-flash-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "ling-3.0-tiny-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "ling-3.1-flash-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "ll-alpha-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "longcat-2.0-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "longcat-2.5-preview-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "mimo-v2-flash-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "mimo-v2-omni-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "mimo-v2-pro-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "mimo-v2.5-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "mimo-v2.6-flash-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "minimax-m2.1": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "minimax-m2.1-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "minimax-m2.5": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "minimax-m2.5-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "minimax-m2.7": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "minimax-m3": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "minimax-m3-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "minimax-m3.1-flash-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "mistral-large-4": {
+     "in": true,
+     "cost_in": 0.68,
+     "cost_out": 2.09,
+     "free": false
+    },
+    "muse-spark-1.2": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 4.25,
+     "free": false
+    },
+    "muse-spark-1.2-contributor-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "muse-spark-1.3": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 4.25,
+     "free": false
+    },
+    "muse-spark-1.3-contributor-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "muse-wonder-1.0": {
+     "in": true,
+     "cost_in": 4,
+     "cost_out": 20,
+     "free": false
+    },
+    "nemotron-3-super-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nemotron-3-ultra-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nemotron-3.5-lightning-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nemotron-3.5-super-vl-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "north-mini-code-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "qwen3-coder": {
+     "in": true,
+     "cost_in": 0.45,
+     "cost_out": 1.8,
+     "free": false
+    },
+    "qwen3.5-plus": {
+     "in": true,
+     "cost_in": 0.2,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "qwen3.6-plus": {
+     "in": true,
+     "cost_in": 0.5,
+     "cost_out": 3,
+     "free": false
+    },
+    "qwen3.6-plus-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "qwen3.8-flash": {
+     "in": true,
+     "cost_in": 0.15,
+     "cost_out": 0.47,
+     "free": false
+    },
+    "qwen3.8-max": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 6,
+     "free": false
+    },
+    "ring-2.6-1t-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "space-bunny-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "step-5-preview-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "trinity-large-preview-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "x-preview-f-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    }
+   }
+  },
+  "opencode-go": {
+   "models": {
+    "beam-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "cat-jam-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "claude-haiku-5-5": {
+     "in": true,
+     "cost_in": 0.1,
+     "cost_out": 0.5,
+     "free": false
+    },
+    "deepseek-v4-pro": {
+     "in": true,
+     "cost_in": 0.66,
+     "cost_out": 1.98,
+     "free": false
+    },
+    "deepseek-v4.1-flash": {
+     "in": true,
+     "cost_in": 0.15,
+     "cost_out": 0.6,
+     "free": false
+    },
+    "gemini-4-argon": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 10,
+     "free": false
+    },
+    "gemini-4-argon-contributor": {
+     "in": true,
+     "cost_in": 4,
+     "cost_out": 20,
+     "free": false
+    },
+    "glm-5.2": {
+     "in": true,
+     "cost_in": 1.4,
+     "cost_out": 4.4,
+     "free": false
+    },
+    "glm-5.3": {
+     "in": true,
+     "cost_in": 1.4,
+     "cost_out": 4.4,
+     "free": false
+    },
+    "glm-5.3-flash": {
+     "in": true,
+     "cost_in": 0.15,
+     "cost_out": 0.5,
+     "free": false
+    },
+    "gpt-5.6-luna": {
+     "in": true,
+     "cost_in": 0.2,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "gpt-6-luna": {
+     "in": true,
+     "cost_in": 0.1,
+     "cost_out": 0.5,
+     "free": false
+    },
+    "grok-4.7": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 6,
+     "free": false
+    },
+    "hy3": {
+     "in": true,
+     "cost_in": 0.14,
+     "cost_out": 0.58,
+     "free": false
+    },
+    "hy4-preview": {
+     "in": true,
+     "cost_in": 0.834,
+     "cost_out": 2.501,
+     "free": false
+    },
+    "iceman-contributor-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "jev-1.13": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "jev-1.13-free": {
+     "in": false,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "kimi-k2.7-code": {
+     "in": true,
+     "cost_in": 0.95,
+     "cost_out": 4,
+     "free": false
+    },
+    "kimi-k3": {
+     "in": true,
+     "cost_in": 3,
+     "cost_out": 15,
+     "free": false
+    },
+    "kimi-k3.1-pro": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 10,
+     "free": false
+    },
+    "longcat-2.0": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "longcat-2.5-preview-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "mimo-v2.5": {
+     "in": true,
+     "cost_in": 0.14,
+     "cost_out": 0.28,
+     "free": false
+    },
+    "mimo-v2.5-pro": {
+     "in": true,
+     "cost_in": 0.435,
+     "cost_out": 0.87,
+     "free": false
+    },
+    "mimo-v2.6-flash": {
+     "in": true,
+     "cost_in": 0.14,
+     "cost_out": 0.28,
+     "free": false
+    },
+    "mimo-v2.6-pro": {
+     "in": true,
+     "cost_in": 0.435,
+     "cost_out": 0.87,
+     "free": false
+    },
+    "minimax-m2.7": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "minimax-m3": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "minimax-m3.1-flash": {
+     "in": true,
+     "cost_in": 0.15,
+     "cost_out": 0.6,
+     "free": false
+    },
+    "minimax-m3.1-flash-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "muse-spark-1.2-contributor": {
+     "in": true,
+     "cost_in": 0.1,
+     "cost_out": 0.2,
+     "free": false
+    },
+    "muse-spark-1.3-contributor": {
+     "in": true,
+     "cost_in": 0.1,
+     "cost_out": 0.2,
+     "free": false
+    },
+    "qwen3.7-plus": {
+     "in": true,
+     "cost_in": 0.4,
+     "cost_out": 1.6,
+     "free": false
+    },
+    "qwen3.8-flash": {
+     "in": true,
+     "cost_in": 0.15,
+     "cost_out": 0.47,
+     "free": false
+    },
+    "qwen3.8-max": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 6,
+     "free": false
+    },
+    "space-bunny": {
+     "in": true,
+     "cost_in": 0.15,
+     "cost_out": 0.6,
+     "free": false
+    },
+    "step-5-preview": {
+     "in": true,
+     "cost_in": 1,
+     "cost_out": 2.7,
+     "free": false
+    },
+    "step-5-preview-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    }
+   }
+  },
+  "vercel": {
+   "models": {
+    "alibaba/qwen-3-14b": {
+     "in": true,
+     "cost_in": 0.12,
+     "cost_out": 0.24,
+     "free": false
+    },
+    "alibaba/qwen-3-235b": {
+     "in": true,
+     "cost_in": 0.22,
+     "cost_out": 0.88,
+     "free": false
+    },
+    "alibaba/qwen-3-30b": {
+     "in": true,
+     "cost_in": 0.12,
+     "cost_out": 0.5,
+     "free": false
+    },
+    "alibaba/qwen-3-32b": {
+     "in": true,
+     "cost_in": 0.15,
+     "cost_out": 0.6,
+     "free": false
+    },
+    "alibaba/qwen3-coder": {
+     "in": true,
+     "cost_in": 0.22,
+     "cost_out": 1.8,
+     "free": false
+    },
+    "alibaba/qwen3-coder-30b-a3b": {
+     "in": true,
+     "cost_in": 0.15,
+     "cost_out": 0.6,
+     "free": false
+    },
+    "alibaba/qwen3-coder-next": {
+     "in": true,
+     "cost_in": 0.5,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "alibaba/qwen3-embedding-0.6b": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "alibaba/qwen3-embedding-4b": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "alibaba/qwen3-embedding-8b": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "alibaba/qwen3-max-thinking": {
+     "in": true,
+     "cost_in": 1.2,
+     "cost_out": 6,
+     "free": false
+    },
+    "alibaba/qwen3-next-80b-a3b-instruct": {
+     "in": true,
+     "cost_in": 0.15,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "alibaba/qwen3-next-80b-a3b-thinking": {
+     "in": true,
+     "cost_in": 0.15,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "alibaba/qwen3-vl-instruct": {
+     "in": true,
+     "cost_in": 0.2,
+     "cost_out": 0.88,
+     "free": false
+    },
+    "alibaba/qwen3.5-flash": {
+     "in": true,
+     "cost_in": 0.1,
+     "cost_out": 0.4,
+     "free": false
+    },
+    "alibaba/qwen3.5-plus": {
+     "in": true,
+     "cost_in": 0.4,
+     "cost_out": 2.4,
+     "free": false
+    },
+    "alibaba/qwen3.6-27b": {
+     "in": true,
+     "cost_in": 0.6,
+     "cost_out": 3.6,
+     "free": false
+    },
+    "alibaba/qwen3.6-plus": {
+     "in": true,
+     "cost_in": 0.5,
+     "cost_out": 3,
+     "free": false
+    },
+    "alibaba/qwen3.7-flash": {
+     "in": true,
+     "cost_in": 0.03,
+     "cost_out": 0.13,
+     "free": false
+    },
+    "alibaba/qwen3.7-max": {
+     "in": true,
+     "cost_in": 2.5,
+     "cost_out": 7.5,
+     "free": false
+    },
+    "alibaba/qwen3.7-plus": {
+     "in": true,
+     "cost_in": 0.4,
+     "cost_out": 1.6,
+     "free": false
+    },
+    "alibaba/qwen3.8-2.4t-a95b": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 6,
+     "free": false
+    },
+    "alibaba/qwen3.8-27b": {
+     "in": true,
+     "cost_in": 0.5,
+     "cost_out": 3,
+     "free": false
+    },
+    "alibaba/qwen3.8-flash": {
+     "in": true,
+     "cost_in": 0.15,
+     "cost_out": 0.47,
+     "free": false
+    },
+    "alibaba/qwen3.8-max": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 6,
+     "free": false
+    },
+    "alibaba/qwen3.8-max-0902": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 6,
+     "free": false
+    },
+    "alibaba/qwen3.8-max-prime": {
+     "in": true,
+     "cost_in": 4,
+     "cost_out": 12,
+     "free": false
+    },
+    "alibaba/qwen3.8-omni-flash": {
+     "in": true,
+     "cost_in": 0.15,
+     "cost_out": 0.47,
+     "free": false
+    },
+    "alibaba/wan-v2.5-t2v-preview": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "alibaba/wan-v2.6-i2v": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "alibaba/wan-v2.6-i2v-flash": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "alibaba/wan-v2.6-r2v": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "alibaba/wan-v2.6-r2v-flash": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "alibaba/wan-v2.6-t2v": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "alibaba/wan-v2.7-r2v": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "alibaba/wan-v2.7-t2v": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "alibaba/wan-v3.0-video": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "alibaba/wan-v3.0-video-prime": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "amazon/nova-2-lite": {
+     "in": true,
+     "cost_in": 0.33,
+     "cost_out": 2.75,
+     "free": false
+    },
+    "amazon/nova-lite": {
+     "in": true,
+     "cost_in": 0.06,
+     "cost_out": 0.24,
+     "free": false
+    },
+    "amazon/nova-micro": {
+     "in": true,
+     "cost_in": 0.035,
+     "cost_out": 0.14,
+     "free": false
+    },
+    "amazon/nova-pro": {
+     "in": true,
+     "cost_in": 0.8,
+     "cost_out": 3.2,
+     "free": false
+    },
+    "amazon/titan-embed-text-v2": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "anthropic/claude-fable-5": {
+     "in": true,
+     "cost_in": 10,
+     "cost_out": 50,
+     "free": false
+    },
+    "anthropic/claude-fable-5.1": {
+     "in": true,
+     "cost_in": 10,
+     "cost_out": 50,
+     "free": false
+    },
+    "anthropic/claude-haiku-4.5": {
+     "in": true,
+     "cost_in": 1,
+     "cost_out": 5,
+     "free": false
+    },
+    "anthropic/claude-haiku-5.5": {
+     "in": true,
+     "cost_in": 0.1,
+     "cost_out": 0.5,
+     "free": false
+    },
+    "anthropic/claude-opus-4.5": {
+     "in": true,
+     "cost_in": 5,
+     "cost_out": 25,
+     "free": false
+    },
+    "anthropic/claude-opus-4.6": {
+     "in": true,
+     "cost_in": 5,
+     "cost_out": 25,
+     "free": false
+    },
+    "anthropic/claude-opus-4.7": {
+     "in": true,
+     "cost_in": 5,
+     "cost_out": 25,
+     "free": false
+    },
+    "anthropic/claude-opus-4.8": {
+     "in": true,
+     "cost_in": 5,
+     "cost_out": 25,
+     "free": false
+    },
+    "anthropic/claude-opus-4.8-fast": {
+     "in": true,
+     "cost_in": 10,
+     "cost_out": 50,
+     "free": false
+    },
+    "anthropic/claude-opus-5": {
+     "in": true,
+     "cost_in": 5,
+     "cost_out": 25,
+     "free": false
+    },
+    "anthropic/claude-opus-5-fast": {
+     "in": true,
+     "cost_in": 10,
+     "cost_out": 50,
+     "free": false
+    },
+    "anthropic/claude-opus-5.5": {
+     "in": true,
+     "cost_in": 4,
+     "cost_out": 20,
+     "free": false
+    },
+    "anthropic/claude-opus-5.5-fast": {
+     "in": true,
+     "cost_in": 8,
+     "cost_out": 40,
+     "free": false
+    },
+    "anthropic/claude-sonnet-4.5": {
+     "in": true,
+     "cost_in": 3,
+     "cost_out": 15,
+     "free": false
+    },
+    "anthropic/claude-sonnet-4.6": {
+     "in": true,
+     "cost_in": 3,
+     "cost_out": 15,
+     "free": false
+    },
+    "anthropic/claude-sonnet-5": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 10,
+     "free": false
+    },
+    "anthropic/claude-sonnet-5.5": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 10,
+     "free": false
+    },
+    "arcee-ai/trinity-large-thinking": {
+     "in": true,
+     "cost_in": 0.25,
+     "cost_out": 0.8,
+     "free": false
+    },
+    "bfl/flux-2-flex": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bfl/flux-2-klein-4b": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bfl/flux-2-klein-9b": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bfl/flux-2-max": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bfl/flux-2-pro": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bfl/flux-3-image": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bfl/flux-3-image-klein": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bfl/flux-3-video": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bfl/flux-kontext-max": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bfl/flux-kontext-pro": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bfl/flux-pro-1.0-fill": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bfl/flux-pro-1.1": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bfl/flux-pro-1.1-ultra": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bytedance/seed-1.6": {
+     "in": true,
+     "cost_in": 0.25,
+     "cost_out": 2,
+     "free": false
+    },
+    "bytedance/seed-1.8": {
+     "in": true,
+     "cost_in": 0.25,
+     "cost_out": 2,
+     "free": false
+    },
+    "bytedance/seed-2.1-turbo": {
+     "in": true,
+     "cost_in": 0.5,
+     "cost_out": 2.5,
+     "free": false
+    },
+    "bytedance/seedance-2.0": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bytedance/seedance-2.0-fast": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bytedance/seedance-2.0-mini": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bytedance/seedance-2.5": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bytedance/seedance-v1.0-pro": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bytedance/seedance-v1.0-pro-fast": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bytedance/seedance-v1.5-pro": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bytedance/seedream-4.0": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bytedance/seedream-4.5": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bytedance/seedream-5.0-lite": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "bytedance/seedream-5.0-pro": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "callstack/apex": {
+     "in": true,
+     "cost_in": 0.5,
+     "cost_out": 3,
+     "free": false
+    },
+    "cohere/command-a": {
+     "in": true,
+     "cost_in": 2.5,
+     "cost_out": 10,
+     "free": false
+    },
+    "cohere/embed-v4.0": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "cohere/embed-v5.0-fast": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "cohere/embed-v5.0-pro": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "cohere/rerank-v3.5": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "cohere/rerank-v4-fast": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "cohere/rerank-v4-pro": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "cohere/rerank-v5-fast": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "cohere/rerank-v5-pro": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "deepseek/deepseek-r1": {
+     "in": true,
+     "cost_in": 1.35,
+     "cost_out": 5.4,
+     "free": false
+    },
+    "deepseek/deepseek-v3.1": {
+     "in": true,
+     "cost_in": 0.25,
+     "cost_out": 0.95,
+     "free": false
+    },
+    "deepseek/deepseek-v3.2": {
+     "in": true,
+     "cost_in": 0.62,
+     "cost_out": 1.85,
+     "free": false
+    },
+    "deepseek/deepseek-v3.2-thinking": {
+     "in": true,
+     "cost_in": 0.62,
+     "cost_out": 1.85,
+     "free": false
+    },
+    "deepseek/deepseek-v4-flash": {
+     "in": true,
+     "cost_in": 0.13,
+     "cost_out": 0.26,
+     "free": false
+    },
+    "deepseek/deepseek-v4-flash-0731": {
+     "in": true,
+     "cost_in": 0.076,
+     "cost_out": 0.153,
+     "free": false
+    },
+    "deepseek/deepseek-v4-flash-vision-exp": {
+     "in": true,
+     "cost_in": 0.2156,
+     "cost_out": 0.6468,
+     "free": false
+    },
+    "deepseek/deepseek-v4-pro": {
+     "in": true,
+     "cost_in": 0.66,
+     "cost_out": 1.98,
+     "free": false
+    },
+    "deepseek/deepseek-v4-pro-0813": {
+     "in": true,
+     "cost_in": 0.66,
+     "cost_out": 1.98,
+     "free": false
+    },
+    "deepseek/deepseek-v4.1-flash": {
+     "in": true,
+     "cost_in": 0.075,
+     "cost_out": 0.3,
+     "free": false
+    },
+    "deepseek/deepseek-v4.1-flash-1017": {
+     "in": true,
+     "cost_in": 0.075,
+     "cost_out": 0.3,
+     "free": false
+    },
+    "deepseek/deepseek-v4.1-flash-1017-fast": {
+     "in": true,
+     "cost_in": 0.6,
+     "cost_out": 2.4,
+     "free": false
+    },
+    "deepseek/deepseek-v4.1-flash-fast": {
+     "in": true,
+     "cost_in": 0.6,
+     "cost_out": 2.4,
+     "free": false
+    },
+    "elorian/glimpse": {
+     "in": true,
+     "cost_in": 0.6,
+     "cost_out": 3,
+     "free": false
+    },
+    "fireworks/ember-1": {
+     "in": true,
+     "cost_in": 3,
+     "cost_out": 15,
+     "free": false
+    },
+    "fish-audio/drama-3": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "fish-audio/s1": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "fish-audio/s2-pro": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "fish-audio/s2.1-pro": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "fish-audio/transcribe-1": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "google/gemini-2.5-flash": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 2.5,
+     "free": false
+    },
+    "google/gemini-2.5-flash-image": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 2.5,
+     "free": false
+    },
+    "google/gemini-2.5-flash-lite": {
+     "in": true,
+     "cost_in": 0.1,
+     "cost_out": 0.4,
+     "free": false
+    },
+    "google/gemini-2.5-pro": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 10,
+     "free": false
+    },
+    "google/gemini-3-flash": {
+     "in": true,
+     "cost_in": 0.5,
+     "cost_out": 3,
+     "free": false
+    },
+    "google/gemini-3-pro-image": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 12,
+     "free": false
+    },
+    "google/gemini-3.1-flash-image": {
+     "in": true,
+     "cost_in": 0.5,
+     "cost_out": 3,
+     "free": false
+    },
+    "google/gemini-3.1-flash-image-preview": {
+     "in": true,
+     "cost_in": 0.5,
+     "cost_out": 3,
+     "free": false
+    },
+    "google/gemini-3.1-flash-lite": {
+     "in": true,
+     "cost_in": 0.25,
+     "cost_out": 1.5,
+     "free": false
+    },
+    "google/gemini-3.1-flash-lite-image": {
+     "in": true,
+     "cost_in": 0.25,
+     "cost_out": 1.5,
+     "free": false
+    },
+    "google/gemini-3.1-pro-preview": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 12,
+     "free": false
+    },
+    "google/gemini-3.5-flash": {
+     "in": true,
+     "cost_in": 1.5,
+     "cost_out": 9,
+     "free": false
+    },
+    "google/gemini-3.5-flash-lite": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 2.5,
+     "free": false
+    },
+    "google/gemini-3.5-transcribe": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 12,
+     "free": false
+    },
+    "google/gemini-3.5-transcribe-live": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "google/gemini-3.6-flash": {
+     "in": true,
+     "cost_in": 0.75,
+     "cost_out": 3.75,
+     "free": false
+    },
+    "google/gemini-3.7-flash": {
+     "in": true,
+     "cost_in": 0.75,
+     "cost_out": 3.75,
+     "free": false
+    },
+    "google/gemini-3.8-flash": {
+     "in": true,
+     "cost_in": 0.75,
+     "cost_out": 3.75,
+     "free": false
+    },
+    "google/gemini-3.8-flash-lite-tts": {
+     "in": true,
+     "cost_in": 0.5,
+     "cost_out": 6,
+     "free": false
+    },
+    "google/gemini-3.8-flash-tts": {
+     "in": true,
+     "cost_in": 0.5,
+     "cost_out": 9,
+     "free": false
+    },
+    "google/gemini-3.8-live": {
+     "in": true,
+     "cost_in": 0.75,
+     "cost_out": 4.5,
+     "free": false
+    },
+    "google/gemini-3.8-live-extended-thinking": {
+     "in": true,
+     "cost_in": 0.75,
+     "cost_out": 4.5,
+     "free": false
+    },
+    "google/gemini-4-argon": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 10,
+     "free": false
+    },
+    "google/gemini-embedding-001": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "google/gemini-embedding-2": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "google/gemini-nano-banana-2.1": {
+     "in": true,
+     "cost_in": 1.5,
+     "cost_out": 7.5,
+     "free": false
+    },
+    "google/gemini-omni-flash-preview": {
+     "in": true,
+     "cost_in": 1.5,
+     "cost_out": 9,
+     "free": false
+    },
+    "google/gemma-4-26b-a4b-it": {
+     "in": true,
+     "cost_in": 0.15,
+     "cost_out": 0.6,
+     "free": false
+    },
+    "google/gemma-4-31b-it": {
+     "in": true,
+     "cost_in": 0.14,
+     "cost_out": 0.4,
+     "free": false
+    },
+    "google/text-embedding-005": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "google/text-multilingual-embedding-002": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "google/veo-3.0-fast-generate-001": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "google/veo-3.0-generate-001": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "google/veo-3.1-fast-generate-001": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "google/veo-3.1-generate-001": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "google/veo-3.1-lite-generate-001": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "heygen/heygen-video-1": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "inception/mercury-2": {
+     "in": true,
+     "cost_in": 0.25,
+     "cost_out": 0.75,
+     "free": false
+    },
+    "inception/mercury-2.5": {
+     "in": true,
+     "cost_in": 0.04,
+     "cost_out": 0.15,
+     "free": false
+    },
+    "inception/mercury-3": {
+     "in": true,
+     "cost_in": 0.1,
+     "cost_out": 0.35,
+     "free": false
+    },
+    "inception/mercury-coder-small": {
+     "in": true,
+     "cost_in": 0.25,
+     "cost_out": 1,
+     "free": false
+    },
+    "inclusionai/ling-3.0-flash": {
+     "in": true,
+     "cost_in": 0.021,
+     "cost_out": 0.063,
+     "free": false
+    },
+    "inclusionai/ling-3.0-flash-fin": {
+     "in": true,
+     "cost_in": 0.075,
+     "cost_out": 0.22,
+     "free": false
+    },
+    "inclusionai/ling-3.0-flash-sante": {
+     "in": true,
+     "cost_in": 0.075,
+     "cost_out": 0.22,
+     "free": false
+    },
+    "inclusionai/ling-3.0-flash-vl": {
+     "in": true,
+     "cost_in": 0.075,
+     "cost_out": 0.22,
+     "free": false
+    },
+    "inclusionai/ling-3.1-flash": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 0.9,
+     "free": false
+    },
+    "inference-net/schematron-v2-small": {
+     "in": true,
+     "cost_in": 0.05,
+     "cost_out": 0.23,
+     "free": false
+    },
+    "inference-net/schematron-v2-turbo": {
+     "in": true,
+     "cost_in": 0.03,
+     "cost_out": 0.15,
+     "free": false
+    },
+    "interfaze/interfaze-beta": {
+     "in": true,
+     "cost_in": 1.5,
+     "cost_out": 3.5,
+     "free": false
+    },
+    "klingai/kling-v2.5-turbo-i2v": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "klingai/kling-v2.5-turbo-t2v": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "klingai/kling-v2.6-i2v": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "klingai/kling-v2.6-motion-control": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "klingai/kling-v2.6-t2v": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "klingai/kling-v3.0-i2v": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "klingai/kling-v3.0-motion-control": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "klingai/kling-v3.0-t2v": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "liquid/lfm2.5-24b-a2b": {
+     "in": true,
+     "cost_in": 0.05,
+     "cost_out": 0.7,
+     "free": false
+    },
+    "meituan/longcat-2.5-preview": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "meta/llama-3.1-70b": {
+     "in": true,
+     "cost_in": 0.72,
+     "cost_out": 0.72,
+     "free": false
+    },
+    "meta/llama-3.1-8b": {
+     "in": true,
+     "cost_in": 0.22,
+     "cost_out": 0.22,
+     "free": false
+    },
+    "meta/llama-3.3-70b": {
+     "in": true,
+     "cost_in": 0.72,
+     "cost_out": 0.72,
+     "free": false
+    },
+    "meta/llama-4-maverick": {
+     "in": true,
+     "cost_in": 0.24,
+     "cost_out": 0.97,
+     "free": false
+    },
+    "meta/llama-4-scout": {
+     "in": true,
+     "cost_in": 0.17,
+     "cost_out": 0.66,
+     "free": false
+    },
+    "meta/muse-glimmer-30b": {
+     "in": true,
+     "cost_in": 0.35,
+     "cost_out": 1.5,
+     "free": false
+    },
+    "meta/muse-image-1.0": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "meta/muse-spark-1.1": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 4.25,
+     "free": false
+    },
+    "meta/muse-spark-1.2": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 4.25,
+     "free": false
+    },
+    "meta/muse-spark-1.2-contributor": {
+     "in": true,
+     "cost_in": 0.1,
+     "cost_out": 0.2,
+     "free": false
+    },
+    "meta/muse-spark-1.3": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 4.25,
+     "free": false
+    },
+    "meta/muse-spark-1.3-contributor": {
+     "in": true,
+     "cost_in": 0.1,
+     "cost_out": 0.2,
+     "free": false
+    },
+    "meta/muse-spark-open": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 4.25,
+     "free": false
+    },
+    "meta/muse-wonder-1.0": {
+     "in": true,
+     "cost_in": 4,
+     "cost_out": 20,
+     "free": false
+    },
+    "microsoft/mai-image-2.6": {
+     "in": true,
+     "cost_in": 5,
+     "cost_out": 38,
+     "free": false
+    },
+    "microsoft/mai-image-2.6-flash": {
+     "in": true,
+     "cost_in": 1.75,
+     "cost_out": 19,
+     "free": false
+    },
+    "microsoft/mai-transcribe-2": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "microsoft/mai-transcribe-2-streaming": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "microsoft/mai-voice-2": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "microsoft/mai-voice-2-flash": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "microsoft/mai-voice-2.1": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "microsoft/mai-voice-2.1-flash": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "minimax/minimax-h3": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "minimax/minimax-h3-max": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "minimax/minimax-m2": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "minimax/minimax-m2.1": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "minimax/minimax-m2.1-lightning": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 2.4,
+     "free": false
+    },
+    "minimax/minimax-m2.5": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "minimax/minimax-m2.5-highspeed": {
+     "in": true,
+     "cost_in": 0.6,
+     "cost_out": 2.4,
+     "free": false
+    },
+    "minimax/minimax-m2.7": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "minimax/minimax-m2.7-highspeed": {
+     "in": true,
+     "cost_in": 0.6,
+     "cost_out": 2.4,
+     "free": false
+    },
+    "minimax/minimax-m3": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "minimax/minimax-m3.1-flash": {
+     "in": true,
+     "cost_in": 0.15,
+     "cost_out": 0.6,
+     "free": false
+    },
+    "mistral/codestral": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 0.9,
+     "free": false
+    },
+    "mistral/codestral-embed": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "mistral/ministral-14b": {
+     "in": true,
+     "cost_in": 0.2,
+     "cost_out": 0.2,
+     "free": false
+    },
+    "mistral/ministral-3b": {
+     "in": true,
+     "cost_in": 0.1,
+     "cost_out": 0.1,
+     "free": false
+    },
+    "mistral/ministral-8b": {
+     "in": true,
+     "cost_in": 0.15,
+     "cost_out": 0.15,
+     "free": false
+    },
+    "mistral/mistral-embed": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "mistral/mistral-large-3": {
+     "in": true,
+     "cost_in": 0.5,
+     "cost_out": 1.5,
+     "free": false
+    },
+    "mistral/mistral-large-4": {
+     "in": true,
+     "cost_in": 1.36,
+     "cost_out": 4.18,
+     "free": false
+    },
+    "mistral/mistral-medium-3.5": {
+     "in": true,
+     "cost_in": 1.5,
+     "cost_out": 7.5,
+     "free": false
+    },
+    "mistral/mistral-nemo": {
+     "in": true,
+     "cost_in": 0.029,
+     "cost_out": 0.03,
+     "free": false
+    },
+    "mistral/mistral-small": {
+     "in": true,
+     "cost_in": 0.15,
+     "cost_out": 0.6,
+     "free": false
+    },
+    "mistral/voxtral-mini-transcribe-3": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "mistral/voxtral-mini-tts-3": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "mistral/voxtral-small-transcribe-3": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "mixedbread/toast-1": {
+     "in": true,
+     "cost_in": 0.3,
+     "cost_out": 0.72,
+     "free": false
+    },
+    "moonshotai/kimi-k2": {
+     "in": true,
+     "cost_in": 0.57,
+     "cost_out": 2.3,
+     "free": false
+    },
+    "moonshotai/kimi-k2.5": {
+     "in": true,
+     "cost_in": 0.6,
+     "cost_out": 3,
+     "free": false
+    },
+    "moonshotai/kimi-k2.6": {
+     "in": true,
+     "cost_in": 0.95,
+     "cost_out": 4,
+     "free": false
+    },
+    "moonshotai/kimi-k2.7-code": {
+     "in": true,
+     "cost_in": 0.95,
+     "cost_out": 4,
+     "free": false
+    },
+    "moonshotai/kimi-k2.7-code-highspeed": {
+     "in": true,
+     "cost_in": 1.9,
+     "cost_out": 8,
+     "free": false
+    },
+    "moonshotai/kimi-k3": {
+     "in": true,
+     "cost_in": 3,
+     "cost_out": 15,
+     "free": false
+    },
+    "moonshotai/kimi-k3-fast": {
+     "in": true,
+     "cost_in": 4.5,
+     "cost_out": 22.5,
+     "free": false
+    },
+    "moonshotai/kimi-k3.1-pro": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 10,
+     "free": false
+    },
+    "moonshotai/kimi-k3.1-pro-highspeed": {
+     "in": true,
+     "cost_in": 4,
+     "cost_out": 20,
+     "free": false
+    },
+    "morph/morph-v3-fast": {
+     "in": true,
+     "cost_in": 0.8,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "morph/morph-v3-large": {
+     "in": true,
+     "cost_in": 0.9,
+     "cost_out": 1.9,
+     "free": false
+    },
+    "nvidia/nemotron-3-nano-30b-a3b": {
+     "in": true,
+     "cost_in": 0.05,
+     "cost_out": 0.2,
+     "free": false
+    },
+    "nvidia/nemotron-3-super-120b-a12b": {
+     "in": true,
+     "cost_in": 0.15,
+     "cost_out": 0.65,
+     "free": false
+    },
+    "nvidia/nemotron-3-ultra-550b-a55b": {
+     "in": true,
+     "cost_in": 0.6,
+     "cost_out": 2.4,
+     "free": false
+    },
+    "nvidia/nemotron-3.5-lightning": {
+     "in": true,
+     "cost_in": 0.05,
+     "cost_out": 0.2,
+     "free": false
+    },
+    "nvidia/nemotron-3.5-lightning-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/nemotron-3.5-super-vl": {
+     "in": true,
+     "cost_in": 0.2,
+     "cost_out": 0.5,
+     "free": false
+    },
+    "nvidia/nemotron-nano-12b-v2-vl": {
+     "in": true,
+     "cost_in": 0.2,
+     "cost_out": 0.6,
+     "free": false
+    },
+    "nvidia/nemotron-nano-9b-v2": {
+     "in": true,
+     "cost_in": 0.06,
+     "cost_out": 0.23,
+     "free": false
+    },
+    "openai/gpt-4.1": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 8,
+     "free": false
+    },
+    "openai/gpt-4.1-fast": {
+     "in": true,
+     "cost_in": 3.5,
+     "cost_out": 14,
+     "free": false
+    },
+    "openai/gpt-4.1-mini": {
+     "in": true,
+     "cost_in": 0.4,
+     "cost_out": 1.6,
+     "free": false
+    },
+    "openai/gpt-4.1-mini-fast": {
+     "in": true,
+     "cost_in": 0.7,
+     "cost_out": 2.8,
+     "free": false
+    },
+    "openai/gpt-4.1-nano": {
+     "in": true,
+     "cost_in": 0.1,
+     "cost_out": 0.4,
+     "free": false
+    },
+    "openai/gpt-4o": {
+     "in": true,
+     "cost_in": 2.5,
+     "cost_out": 10,
+     "free": false
+    },
+    "openai/gpt-4o-fast": {
+     "in": true,
+     "cost_in": 4.25,
+     "cost_out": 17,
+     "free": false
+    },
+    "openai/gpt-4o-mini": {
+     "in": true,
+     "cost_in": 0.15,
+     "cost_out": 0.6,
+     "free": false
+    },
+    "openai/gpt-4o-mini-fast": {
+     "in": true,
+     "cost_in": 0.25,
+     "cost_out": 1,
+     "free": false
+    },
+    "openai/gpt-4o-mini-transcribe": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 5,
+     "free": false
+    },
+    "openai/gpt-4o-transcribe": {
+     "in": true,
+     "cost_in": 2.5,
+     "cost_out": 10,
+     "free": false
+    },
+    "openai/gpt-5": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 10,
+     "free": false
+    },
+    "openai/gpt-5-codex": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 10,
+     "free": false
+    },
+    "openai/gpt-5-fast": {
+     "in": true,
+     "cost_in": 2.5,
+     "cost_out": 20,
+     "free": false
+    },
+    "openai/gpt-5-mini": {
+     "in": true,
+     "cost_in": 0.25,
+     "cost_out": 2,
+     "free": false
+    },
+    "openai/gpt-5-mini-fast": {
+     "in": true,
+     "cost_in": 0.45,
+     "cost_out": 3.6,
+     "free": false
+    },
+    "openai/gpt-5-nano": {
+     "in": true,
+     "cost_in": 0.05,
+     "cost_out": 0.4,
+     "free": false
+    },
+    "openai/gpt-5-pro": {
+     "in": true,
+     "cost_in": 15,
+     "cost_out": 120,
+     "free": false
+    },
+    "openai/gpt-5.1-codex": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 10,
+     "free": false
+    },
+    "openai/gpt-5.1-codex-max": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 10,
+     "free": false
+    },
+    "openai/gpt-5.1-codex-mini": {
+     "in": true,
+     "cost_in": 0.25,
+     "cost_out": 2,
+     "free": false
+    },
+    "openai/gpt-5.1-thinking": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 10,
+     "free": false
+    },
+    "openai/gpt-5.1-thinking-fast": {
+     "in": true,
+     "cost_in": 2.5,
+     "cost_out": 20,
+     "free": false
+    },
+    "openai/gpt-5.2": {
+     "in": true,
+     "cost_in": 1.75,
+     "cost_out": 14,
+     "free": false
+    },
+    "openai/gpt-5.2-codex": {
+     "in": true,
+     "cost_in": 1.75,
+     "cost_out": 14,
+     "free": false
+    },
+    "openai/gpt-5.2-fast": {
+     "in": true,
+     "cost_in": 3.5,
+     "cost_out": 28,
+     "free": false
+    },
+    "openai/gpt-5.2-pro": {
+     "in": true,
+     "cost_in": 21,
+     "cost_out": 168,
+     "free": false
+    },
+    "openai/gpt-5.3-codex": {
+     "in": true,
+     "cost_in": 1.75,
+     "cost_out": 14,
+     "free": false
+    },
+    "openai/gpt-5.3-codex-fast": {
+     "in": true,
+     "cost_in": 3.5,
+     "cost_out": 28,
+     "free": false
+    },
+    "openai/gpt-5.4": {
+     "in": true,
+     "cost_in": 2.5,
+     "cost_out": 15,
+     "free": false
+    },
+    "openai/gpt-5.4-fast": {
+     "in": true,
+     "cost_in": 5,
+     "cost_out": 30,
+     "free": false
+    },
+    "openai/gpt-5.4-mini": {
+     "in": true,
+     "cost_in": 0.75,
+     "cost_out": 4.5,
+     "free": false
+    },
+    "openai/gpt-5.4-mini-fast": {
+     "in": true,
+     "cost_in": 1.5,
+     "cost_out": 9,
+     "free": false
+    },
+    "openai/gpt-5.4-nano": {
+     "in": true,
+     "cost_in": 0.2,
+     "cost_out": 1.25,
+     "free": false
+    },
+    "openai/gpt-5.4-pro": {
+     "in": true,
+     "cost_in": 30,
+     "cost_out": 180,
+     "free": false
+    },
+    "openai/gpt-5.5": {
+     "in": true,
+     "cost_in": 5,
+     "cost_out": 30,
+     "free": false
+    },
+    "openai/gpt-5.5-fast": {
+     "in": true,
+     "cost_in": 12.5,
+     "cost_out": 75,
+     "free": false
+    },
+    "openai/gpt-5.5-pro": {
+     "in": true,
+     "cost_in": 30,
+     "cost_out": 180,
+     "free": false
+    },
+    "openai/gpt-5.6-luna": {
+     "in": true,
+     "cost_in": 0.2,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "openai/gpt-5.6-luna-fast": {
+     "in": true,
+     "cost_in": 0.4,
+     "cost_out": 2.4,
+     "free": false
+    },
+    "openai/gpt-5.6-sol": {
+     "in": true,
+     "cost_in": 4,
+     "cost_out": 20,
+     "free": false
+    },
+    "openai/gpt-5.6-sol-fast": {
+     "in": true,
+     "cost_in": 8,
+     "cost_out": 40,
+     "free": false
+    },
+    "openai/gpt-5.6-terra": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 12,
+     "free": false
+    },
+    "openai/gpt-5.6-terra-fast": {
+     "in": true,
+     "cost_in": 4,
+     "cost_out": 24,
+     "free": false
+    },
+    "openai/gpt-6-astra": {
+     "in": true,
+     "cost_in": 10,
+     "cost_out": 50,
+     "free": false
+    },
+    "openai/gpt-6-astra-fast": {
+     "in": true,
+     "cost_in": 20,
+     "cost_out": 100,
+     "free": false
+    },
+    "openai/gpt-6-luna": {
+     "in": true,
+     "cost_in": 0.1,
+     "cost_out": 0.5,
+     "free": false
+    },
+    "openai/gpt-6-luna-fast": {
+     "in": true,
+     "cost_in": 0.2,
+     "cost_out": 1,
+     "free": false
+    },
+    "openai/gpt-6-sol": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 10,
+     "free": false
+    },
+    "openai/gpt-6-sol-fast": {
+     "in": true,
+     "cost_in": 4,
+     "cost_out": 20,
+     "free": false
+    },
+    "openai/gpt-6.1-sol": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 10,
+     "free": false
+    },
+    "openai/gpt-6.1-sol-fast": {
+     "in": true,
+     "cost_in": 4,
+     "cost_out": 20,
+     "free": false
+    },
+    "openai/gpt-image-1-mini": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 8,
+     "free": false
+    },
+    "openai/gpt-image-1.5": {
+     "in": true,
+     "cost_in": 5,
+     "cost_out": 32,
+     "free": false
+    },
+    "openai/gpt-image-2": {
+     "in": true,
+     "cost_in": 5,
+     "cost_out": 30,
+     "free": false
+    },
+    "openai/gpt-image-2.5-flare": {
+     "in": true,
+     "cost_in": 5,
+     "cost_out": 30,
+     "free": false
+    },
+    "openai/gpt-image-2.5-sunburst": {
+     "in": true,
+     "cost_in": 5,
+     "cost_out": 30,
+     "free": false
+    },
+    "openai/gpt-live-1": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "openai/gpt-oss-120b": {
+     "in": true,
+     "cost_in": 0.1,
+     "cost_out": 0.5,
+     "free": false
+    },
+    "openai/gpt-oss-20b": {
+     "in": true,
+     "cost_in": 0.03,
+     "cost_out": 0.14,
+     "free": false
+    },
+    "openai/gpt-oss-safeguard-120b": {
+     "in": true,
+     "cost_in": 0.15,
+     "cost_out": 0.6,
+     "free": false
+    },
+    "openai/gpt-oss-safeguard-20b": {
+     "in": true,
+     "cost_in": 0.07,
+     "cost_out": 0.2,
+     "free": false
+    },
+    "openai/gpt-realtime-1.5": {
+     "in": true,
+     "cost_in": 4,
+     "cost_out": 16,
+     "free": false
+    },
+    "openai/gpt-realtime-2": {
+     "in": true,
+     "cost_in": 4,
+     "cost_out": 24,
+     "free": false
+    },
+    "openai/gpt-realtime-2.1": {
+     "in": true,
+     "cost_in": 4,
+     "cost_out": 24,
+     "free": false
+    },
+    "openai/gpt-realtime-mini": {
+     "in": true,
+     "cost_in": 0.6,
+     "cost_out": 2.4,
+     "free": false
+    },
+    "openai/gpt-realtime-whisper": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "openai/o1": {
+     "in": true,
+     "cost_in": 15,
+     "cost_out": 60,
+     "free": false
+    },
+    "openai/o3": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 8,
+     "free": false
+    },
+    "openai/o3-fast": {
+     "in": true,
+     "cost_in": 3.5,
+     "cost_out": 14,
+     "free": false
+    },
+    "openai/o3-mini": {
+     "in": true,
+     "cost_in": 1.1,
+     "cost_out": 4.4,
+     "free": false
+    },
+    "openai/o3-pro": {
+     "in": true,
+     "cost_in": 20,
+     "cost_out": 80,
+     "free": false
+    },
+    "openai/o4-mini": {
+     "in": true,
+     "cost_in": 1.1,
+     "cost_out": 4.4,
+     "free": false
+    },
+    "openai/text-embedding-3-large": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "openai/text-embedding-3-small": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "openai/text-embedding-ada-002": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "openai/tts-1": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "openai/tts-1-hd": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "openai/whisper-1": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "perplexity/pplx-embed-v1-0.6b": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "perplexity/pplx-embed-v1-4b": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "perplexity/sonar": {
+     "in": true,
+     "cost_in": 0.25,
+     "cost_out": 2.5,
+     "free": false
+    },
+    "poolside/laguna-s-2.1": {
+     "in": true,
+     "cost_in": 0.09,
+     "cost_out": 0.18,
+     "free": false
+    },
+    "poolside/laguna-s-2.1-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "prodia/flux-fast-schnell": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "quiverai/arrow-2": {
+     "in": true,
+     "cost_in": 4,
+     "cost_out": 20,
+     "free": false
+    },
+    "quiverai/arrow-2-telos": {
+     "in": true,
+     "cost_in": 6,
+     "cost_out": 30,
+     "free": false
+    },
+    "recraft/recraft-v2": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "recraft/recraft-v3": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "recraft/recraft-v4": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "recraft/recraft-v4-pro": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "recraft/recraft-v4.1": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "recraft/recraft-v4.1-flash": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "recraft/recraft-v4.1-pro": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "recraft/recraft-v4.1-utility": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "recraft/recraft-v4.1-utility-pro": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "reflection/beam": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "reflection/beam-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "sakana/fugu-max": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 6,
+     "free": false
+    },
+    "sakana/fugu-ultra": {
+     "in": true,
+     "cost_in": 5,
+     "cost_out": 30,
+     "free": false
+    },
+    "sakana/fugu-ultra-v2": {
+     "in": true,
+     "cost_in": 5,
+     "cost_out": 30,
+     "free": false
+    },
+    "sakana/namazu": {
+     "in": true,
+     "cost_in": 0.95,
+     "cost_out": 4,
+     "free": false
+    },
+    "scaledown/scaledown-extract-1": {
+     "in": true,
+     "cost_in": 0.05,
+     "cost_out": 0,
+     "free": false
+    },
+    "scaledown/scaledown-summarize-1": {
+     "in": true,
+     "cost_in": 0.05,
+     "cost_out": 0,
+     "free": false
+    },
+    "spacexai/grok-4.20-multi-agent": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 2.5,
+     "free": false
+    },
+    "spacexai/grok-4.20-multi-agent-beta": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 2.5,
+     "free": false
+    },
+    "spacexai/grok-4.20-non-reasoning": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 2.5,
+     "free": false
+    },
+    "spacexai/grok-4.20-non-reasoning-beta": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 2.5,
+     "free": false
+    },
+    "spacexai/grok-4.20-reasoning": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 2.5,
+     "free": false
+    },
+    "spacexai/grok-4.20-reasoning-beta": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 2.5,
+     "free": false
+    },
+    "spacexai/grok-4.3": {
+     "in": true,
+     "cost_in": 1.25,
+     "cost_out": 2.5,
+     "free": false
+    },
+    "spacexai/grok-4.5": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 6,
+     "free": false
+    },
+    "spacexai/grok-4.6": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 6,
+     "free": false
+    },
+    "spacexai/grok-4.7": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 6,
+     "free": false
+    },
+    "spacexai/grok-build-0.1": {
+     "in": true,
+     "cost_in": 1,
+     "cost_out": 2,
+     "free": false
+    },
+    "spacexai/grok-imagine-image": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "spacexai/grok-imagine-image-2.0": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "spacexai/grok-imagine-video": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "spacexai/grok-imagine-video-1.5": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "spacexai/grok-imagine-video-1.5-lite": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "spacexai/grok-stt": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "spacexai/grok-tts": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "spacexai/grok-voice-think-fast-2.0": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "stealth/glyph-cluster": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "stepfun/step-3.7-flash": {
+     "in": true,
+     "cost_in": 0.2,
+     "cost_out": 1.15,
+     "free": false
+    },
+    "stepfun/step-5-preview": {
+     "in": true,
+     "cost_in": 1,
+     "cost_out": 2.7,
+     "free": false
+    },
+    "tencent/hy-mt2-lite": {
+     "in": true,
+     "cost_in": 0.044,
+     "cost_out": 0.177,
+     "free": false
+    },
+    "tencent/hy-mt2-plus": {
+     "in": true,
+     "cost_in": 0.074,
+     "cost_out": 0.295,
+     "free": false
+    },
+    "tencent/hy-mt2-pro": {
+     "in": true,
+     "cost_in": 0.074,
+     "cost_out": 0.295,
+     "free": false
+    },
+    "tencent/hy3": {
+     "in": true,
+     "cost_in": 0.14,
+     "cost_out": 0.58,
+     "free": false
+    },
+    "tencent/hy4-preview": {
+     "in": true,
+     "cost_in": 0.834,
+     "cost_out": 2.501,
+     "free": false
+    },
+    "thinkingmachines/inkling": {
+     "in": true,
+     "cost_in": 1,
+     "cost_out": 4.05,
+     "free": false
+    },
+    "thinkingmachines/inkling-small": {
+     "in": true,
+     "cost_in": 0.45,
+     "cost_out": 1.2,
+     "free": false
+    },
+    "topaz/proteus": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "topaz/starlight-precise-2.6": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "topaz/wonder-3.5": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "voyage/rerank-2.5": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "voyage/rerank-2.5-lite": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "voyage/rerank-3": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "voyage/rerank-3-lite": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "voyage/voyage-3-large": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "voyage/voyage-3.5": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "voyage/voyage-3.5-lite": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "voyage/voyage-4": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "voyage/voyage-4-large": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "voyage/voyage-4-lite": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "voyage/voyage-code-2": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "voyage/voyage-code-3": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "voyage/voyage-finance-2": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "voyage/voyage-law-2": {
+     "in": true,
+     "cost_in": null,
+     "cost_out": null,
+     "free": false
+    },
+    "xiaomi/mimo-v2.5": {
+     "in": true,
+     "cost_in": 0.119,
+     "cost_out": 0.238,
+     "free": false
+    },
+    "xiaomi/mimo-v2.5-pro": {
+     "in": true,
+     "cost_in": 0.3045,
+     "cost_out": 0.609,
+     "free": false
+    },
+    "xiaomi/mimo-v2.6-flash": {
+     "in": true,
+     "cost_in": 0.14,
+     "cost_out": 0.28,
+     "free": false
+    },
+    "xiaomi/mimo-v2.6-pro": {
+     "in": true,
+     "cost_in": 0.435,
+     "cost_out": 0.87,
+     "free": false
+    },
+    "xiaomi/mimo-v2.6-pro-ultraspeed": {
+     "in": true,
+     "cost_in": 4.35,
+     "cost_out": 8.7,
+     "free": false
+    },
+    "zai/glm-4.5": {
+     "in": true,
+     "cost_in": 0.6,
+     "cost_out": 2.2,
+     "free": false
+    },
+    "zai/glm-4.5-air": {
+     "in": true,
+     "cost_in": 0.2,
+     "cost_out": 1.1,
+     "free": false
+    },
+    "zai/glm-4.5v": {
+     "in": true,
+     "cost_in": 0.6,
+     "cost_out": 1.8,
+     "free": false
+    },
+    "zai/glm-4.6": {
+     "in": true,
+     "cost_in": 0.6,
+     "cost_out": 2.2,
+     "free": false
+    },
+    "zai/glm-4.7": {
+     "in": true,
+     "cost_in": 0.6,
+     "cost_out": 2.2,
+     "free": false
+    },
+    "zai/glm-4.7-flash": {
+     "in": true,
+     "cost_in": 0.07,
+     "cost_out": 0.4,
+     "free": false
+    },
+    "zai/glm-4.7-flashx": {
+     "in": true,
+     "cost_in": 0.06,
+     "cost_out": 0.4,
+     "free": false
+    },
+    "zai/glm-5": {
+     "in": true,
+     "cost_in": 1,
+     "cost_out": 3.2,
+     "free": false
+    },
+    "zai/glm-5-turbo": {
+     "in": true,
+     "cost_in": 1.2,
+     "cost_out": 4,
+     "free": false
+    },
+    "zai/glm-5.1": {
+     "in": true,
+     "cost_in": 1.4,
+     "cost_out": 4.4,
+     "free": false
+    },
+    "zai/glm-5.2": {
+     "in": true,
+     "cost_in": 0.8,
+     "cost_out": 2.55,
+     "free": false
+    },
+    "zai/glm-5.2-fast": {
+     "in": true,
+     "cost_in": 2.8,
+     "cost_out": 8.8,
+     "free": false
+    },
+    "zai/glm-5.3": {
+     "in": true,
+     "cost_in": 1.2,
+     "cost_out": 4,
+     "free": false
+    },
+    "zai/glm-5.3-fast": {
+     "in": true,
+     "cost_in": 2.1,
+     "cost_out": 6.6,
+     "free": false
+    },
+    "zai/glm-5.3-flash": {
+     "in": true,
+     "cost_in": 0.15,
+     "cost_out": 0.5,
+     "free": false
+    },
+    "zai/glm-5.3-flashx": {
+     "in": true,
+     "cost_in": 0.37,
+     "cost_out": 1.25,
+     "free": false
+    },
+    "zai/glm-5v-turbo": {
+     "in": true,
+     "cost_in": 1.2,
+     "cost_out": 4,
+     "free": false
+    }
+   }
+  }
+ }
+}

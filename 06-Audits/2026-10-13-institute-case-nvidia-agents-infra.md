@@ -1,6 +1,6 @@
 ---
 type: research-case
-title: Институт — внешний кейс: архитектура ИИ-агентов (NVIDIA-стек, Manjaro)
+title: "Институт — внешний кейс: архитектура ИИ-агентов (NVIDIA-стек, Manjaro)"
 status: draft
 timestamp: 2026-10-13
 project: OpenCode-Vault / dotfiles

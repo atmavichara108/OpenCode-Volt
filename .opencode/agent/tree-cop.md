@@ -8,7 +8,16 @@ permission:
   edit: deny
   task: deny
   bash:
-    "*": deny
+    "*": allow
+    "sudo *": deny
+    "chown *": deny
+    "chmod *": deny
+    "git push --force*": deny
+    "git reset --hard*": deny
+    "git clean*": deny
+    "rm -rf*": deny
+    "rm*": deny
+    "ssh*": deny
     "python3 *": allow
     ".venv/bin/python *": allow
     "git status*": allow

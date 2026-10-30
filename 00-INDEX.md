@@ -39,6 +39,7 @@ timestamp: 2026-09-01
 | recruiting-hr | коммерция | Python / mammoth / markdownify | — | [[recruiting-hr]] | 🟡 bootstrap |
 | SSA (control) | портфель / control plane | markdown / git | — | [[SSA]] | 🟡 bootstrap |
 | seo-outreach | коммерция | Sheets / SQLite | `top` (назначен; runtime-конфиг не создан) | [[seo-outreach]] | 🟡 bootstrap |
+| УАС | ведомство / агентский контур | models / providers / canvas | librarian (сессия-носитель) | [[uas]] · [[uas-special-rotator]] | ✅ active |
 
 > 📊 **Сводка:** `/audit` — проверить все проекты · Таблица статусов методов ниже · Новые проекты в planning
 
@@ -52,7 +53,7 @@ timestamp: 2026-09-01
 [[opencode-tui-telemetry]] — служебная строка TUI: токены/кэш/шаги/инструкции
 
 ## Methods (мои приёмы)
-[[closed-loop]] · [[verifier-pattern]] · [[context-as-docs]] · [[memory-management]] · [[model-routing]] · [[capability-routing]] · [[distill-pattern]] · [[multi-agent-pipeline]] · [[tool-integration-pattern]] · [[promo-provider-protocol]] · [[peer-comms]] · [[team-protocol]] · [[incident-fix]] · [[sustainability-filter]]
+[[closed-loop]] · [[verifier-pattern]] · [[context-as-docs]] · [[memory-management]] · [[model-routing]] · [[capability-routing]] · [[distill-pattern]] · [[multi-agent-pipeline]] · [[tool-integration-pattern]] · [[promo-provider-protocol]] · [[peer-comms]] · [[team-protocol]] · [[incident-fix]] · [[sustainability-filter]] · [[fail-fast]]
 
 ### Cross-project contracts
 [[user-profile-contract]] · [[06-Audits/2026-08-22-androidos-open-source-first]] · [[TASKS]] T-103–T-105
@@ -91,6 +92,19 @@ timestamp: 2026-09-01
 
 ## Runbooks (07-Runbooks/)
 [[07-Runbooks/README]] · [[07-Runbooks/vibecoding-operator-handbook]] · [[07-Runbooks/ecosystem-kanban-runbook]] · [[07-Runbooks/coordination-bridge-operator-guide]] · [[07-Runbooks/vibecoding-changelog]]
+
+## Doctrine (08-Doctrine/)
+Образ корабля и триггеры доктрины: [[08-Doctrine/00-ship-image]] (целиком, один раз), [[08-Doctrine/doctrine-index]] (по интенту).
+
+## Quests (11-Quests/) — ризомные квесты
+Замена роадмапам и параллельным индексам: [[11-Quests/00-README]] (механика),
+[[11-Quests/quests]] (реестр). Карта — `11-Quests/quests.canvas` (ведёт Служитель).
+
+## Deck (10-Deck/) — капитанский мостик
+Решения, ждущие слова владельца, — интерактивно в Obsidian: [[10-Deck/00-README]] (что это), [[10-Deck/decisions-deck]] (карточки), [[10-Deck/deck.canvas]] (ризома). Агент — Служитель Обсидиан (`obsidian-servant`); ssot:false — проекция реестров.
+
+## Ведомства
+Структура и адреса: [[01-Policies/organ-structure-2026-10-18|organ-structure]] · [[04-Memory/peer-registry]] (канон адресации) · [[02-Methods/ministry-calibration]] (модель калибровки, 6 шагов).
 
 > **Methods** = abstract reusable techniques. **Audits** = dated findings.
 > **Runbooks** = live usage and operator workflows.

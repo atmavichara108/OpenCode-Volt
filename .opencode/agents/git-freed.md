@@ -1,5 +1,5 @@
 ---
-description: Git Liberated — the keeper of the git tree in the repo: README, scope/lease/race, heavy routine, escalation only for concepts.
+description: "Git Liberated — the keeper of the git tree in the repo: README, scope/lease/race, heavy routine, escalation only for concepts."
 mode: primary
 model: opencode-go/gpt-5.6-luna
 temperature: 0.2

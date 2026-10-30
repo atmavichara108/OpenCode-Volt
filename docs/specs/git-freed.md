@@ -1,14 +1,13 @@
-# Spec: Git Freed — гит-агент экосистемы
-
 ---
 spec: git-freed
 kind: contract
 status: proposed
 spec-home: OpenCode-Vault/docs/specs/ (первый контур — волт, рез. Q4)
 mandate: Рудра, 2026-10-06 — имя Git Freed, гибрид kernel/project, рутина без спроса, волт→dotfiles→7 проектов
-related: [[02-Methods/git-worktree-isolation]], tools/tree-cop, tools/peers/peer_lease.py, main-protector.ts, pre-commit, peer-comms (claims.jsonl)
+related: "[[02-Methods/git-worktree-isolation]], tools/tree-cop, tools/peers/peer_lease.py, main-protector.ts, pre-commit, peer-comms (claims.jsonl)"
 verifier: required
 ---
+# Spec: Git Freed — гит-агент экосистемы
 
 ## S1. Роль органа
 

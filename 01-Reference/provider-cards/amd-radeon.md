@@ -1,7 +1,7 @@
 ---
 type: Provider Card
 title: AMD Radeon Cloud Token Factory — provider card
-description: Операционная карточка провайдера AMD Radeon Cloud Token Factory. Официальный бесплатный API от AMD. Status CALIBRATE: probe пройден, DeepSeek-V4-Flash работает.
+description: "Операционная карточка провайдера AMD Radeon Cloud Token Factory. Официальный бесплатный API от AMD. Status CALIBRATE: probe пройден, DeepSeek-V4-Flash работает."
 tags: [reference, provider-card, providers, amd, radeon]
 timestamp: 2026-09-23
 ---

@@ -565,6 +565,28 @@ def do_next(limit: int) -> dict:
                        "verify": len(verify), "in_flight": len(flight)}}
 
 
+# --- decision-queue + idea-graph (сводки из observer-снимка schema 1.1) ---
+
+def do_dq() -> dict:
+    """Сводка decision-queue: counts + high-risk pending (read-only, из снимка)."""
+    eco = _load_ecosystem()
+    dq = eco["snapshot"].get("decision_queue", {})
+    if not dq:
+        return {"ok": False,
+                "error": "в снимке нет decision_queue — регенерируй observer (schema 1.1+)"}
+    return {"ok": True, **dq}
+
+
+def do_igraph() -> dict:
+    """Сводка idea-graph: узлы/рёбра по статусам/графам (read-only, из снимка)."""
+    eco = _load_ecosystem()
+    ig = eco["snapshot"].get("idea_graph", {})
+    if not ig:
+        return {"ok": False,
+                "error": "в снимке нет idea_graph — регенерируй observer (schema 1.1+)"}
+    return {"ok": True, **ig}
+
+
 # --- proposal queue (алгоритмический ecosystem observer + apply) -----------
 
 NEXT_STAGE = {
@@ -1009,6 +1031,8 @@ def main() -> int:
     qq.add_argument("--facet", default="", help="фильтр по facet")
     qq.add_argument("--project", default="", help="фильтр по project")
     qb = sub.add_parser("blockers")
+    qd2 = sub.add_parser("dq")
+    qi = sub.add_parser("igraph")
     qn = sub.add_parser("next")
     qn.add_argument("--limit", type=int, default=10)
     qd = sub.add_parser("dependencies")
@@ -1055,6 +1079,10 @@ def main() -> int:
             res = do_query(args.q, args.facet, args.project)
         elif args.cmd == "blockers":
             res = do_blockers()
+        elif args.cmd == "dq":
+            res = do_dq()
+        elif args.cmd == "igraph":
+            res = do_igraph()
         elif args.cmd == "next":
             res = do_next(args.limit)
         elif args.cmd == "dependencies":
