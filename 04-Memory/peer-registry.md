@@ -16,7 +16,7 @@ timestamp: 2026-10-29
 | Мастерская Багфикс | ses_eda56e1d3ffeyC6AIk1mwgxw1L | sysop | ~/dotfiles | багфикс-цех |
 | Абилити лаб | ses_ecaf0b603ffezygMvp7QG3Iq8h | **Dr.Who** | ~/Projects/ability-lab | лаборатория способностей (переезд 2026-10-19, sessionID не менялся; primary Dr.Who — Р-007, слово владельца 10-19; субагент lab-instrument) |
 | Институт Передовых Технологий (ИПТ) | ses_ecb58b307ffeqrigRxoUEWoXZs | Institute (Р-Д-009) | ~/Projects/OpenCode-Vault | исследования |
-| Храм Практической Философии (ХПФ) | ses_ec84b638fffenmF4JQj5a8a2a9 | librarian | ~/Projects/OpenCode-Vault | структурные/философские концепты |
+| Храм Практической Философии (ХПФ) | ses_ec84b638fffenmF4JQj5a8a2a9 | Philosopher (Р-Д-009) | ~/Projects/OpenCode-Vault | структурные/философские концепты |
 | Центральный Узел (ЦУ, я) | ses_eceb23a71ffeJO9QnFou8VngZC | Hubmaster (Р-Д-009) | ~/Projects/OpenCode-Vault | координация |
 | Control-top (координатор SSA) | ses_ed5fcec4effeZKwSoEmMe6Swlk | Top-manager (Р-Д-009) | ~/Projects/SSA/control | SSA-поток, владелец-панель |
 | Смотритель ДВ-Хаб | ses_ea5bee799ffes5WDriyP61xyB5 | Смотритель ДВ (manifest docs/org/dv-hub-custodian.md = proposed, УАС bc0fa5c5; файл агента — ИЦ) | ~/Projects/dv-hub + ~/Projects/dv-project | смотритель проекта ДВ-Хаб (слово владельца 2026-10-24, basis: quoted: «от ныне назначаю тебя смотрителем проекта дв-хаб»); два репозитория: dv-hub (код/платформа, github.com/atmavichara108/dv-hub) + dv-project (база знания движения, submodule context/ в dv-hub, github.com/atmavichara108/dv-project); тема контрибьюторов — в сессии «командная работа» (создаст владелец) |
