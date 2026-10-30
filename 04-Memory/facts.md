@@ -1159,3 +1159,7 @@ timestamp: 2026-08-17
 - **/goal (skill/command)**: slash-команда работает только из TUI; headless run не вызывает. Исполняю протокол напрямую (goal.json: objective/criteria/kill/wip/evidence). Запрос ИС: --command флаг или cmdline-invokator.
 
 - **Инцидент M Code (10-31)**: sessions.load-failed ConfigInvalidError во всех стримах (OpenCode-Vault, dotfiles, Chat); симптом у владельца — «Agent not found: hubmaster». Проверено ЦУ: агенты и конфиги целы (34 агентских .md + 8 JSON-конфигов валидны), git чист; бэкап /tmp/opencode/opencode.jsonc.broken-backup. Зона первопричины — .mcode (состояние приложения / отсутствующий реестровой файл). Маршрут: Отдел Движков (mcode-config-incident) в рамках WIP-1.
+
+- **amd-квота исчерпана (10-31, живой прогон УАС)**: amd-radeon/GLM-5.3-Flash и DeepSeek-V4.1-Flash — usage limit (оба пина); nvidia жива (step-5, muse-glimmer ok). Р-Д-015: tree-cop + агенты УАС переведены на nvidia в разрешённом наборе; расширение на флот dotfiles вынесено владельцу.
+- **Р-045 (10-31)**: граница ЦСПиМ — сквозной вердикт ИЦ после вводных УАС; 7 находок по владельцам; пилот Р-044 — оформление репо почтового хаба (Apps-dev+ИЦ+ЦУ).
+- **Агенты в строю (10-31)**: SCRUM-master подключён (манифест docs/org/csipm-center.md); Serp-office+Senior-dev (serp), Top-manager (SSA), Dv-custodian+Most-master (dv-hub) — вердикты ACTIVE (УАС).
