@@ -31,6 +31,7 @@ timestamp: 2026-10-29
 | Отдел «Приложений» | ses_eKDfprGN0tGPmzJnQChkmOT | Apps-dev (Р-Д-009, стр. 51; имя отдано УАС словом владельца 10-30) | ~/Projects/OpenCode-Vault | отдел Корабля (organ-structure §1); spec+карточка ЦУ, манифест — УАС после approval |
 | Кафедра контрагентов (при УАСе) | ses_eCounterpartiesTBD | Rector (слово владельца; файл агента готовит УАС — interim librarian) | ~/Projects/OpenCode-Vault | подотдел УАС; выращивание контрагентов (rudrakshas, Р-018); спека docs/specs/department-counterparties-uas.md (УАС) |
 | Отдел «Движков» | ses_euCJx9F9ZX2JXm9SxwMKBfG | interim librarian (имя-агент — слово владельца, Р-Д-009) | ~/Projects/OpenCode-Vault | отдел Корабля (organ-structure §2); parent ИЦ (Р-038-паттерн); спека docs/specs/engines-department.md; первое дело — накат мкода |
+| Центр стратегического планирования и менеджмента (ЦСПиМ) | ses_e0JGLx9sw7hTttx3t1BXQh5 | SCRUM-master (Р-Д-013; имя — слово владельца 10-31) | ~/Projects/OpenCode-Vault | орган планирования Корабля: роадмапы/таски/квесты/очереди; спека docs/specs/csipm-center.md; агент-файл docs/org/drafts/agent-files/scrum-master.md (подключение — УАС) |
 
 ## Правила
 1. **Писать только по этому реестру.** Все сессии живые (сверено по session_v2, 10-18 22:00).
