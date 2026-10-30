@@ -43,6 +43,10 @@ VAULT_ROOT = TOOL_DIR.parents[1]
 CATALOG_PATH = TOOL_DIR / "providers.json"
 ROTATION_PATH = TOOL_DIR / "rotation.json"
 HEALTH_LOG = VAULT_ROOT / "control-plane" / "telemetry" / "provider-health.jsonl"
+# Журнал переключений (Q-005.5): append-only «кто/когда/почему/куда/решение».
+# Отдельный файл: health-log остаётся чисто probe-шкалой (контракт письма —
+# один писатель и своя шкала; source-метка обязательна).
+SWITCH_JOURNAL = VAULT_ROOT / "control-plane" / "telemetry" / "switch-journal.jsonl"
 PROBE_SCRIPT = TOOL_DIR / "probe.py"
 
 
@@ -175,7 +179,7 @@ def choose_candidate(current_provider: str | None, role: str,
 
 # --- применение ------------------------------------------------------------
 
-def append_switch_event(rec: dict, path: Path = HEALTH_LOG) -> bool:
+def append_switch_event(rec: dict, path: Path = SWITCH_JOURNAL) -> bool:
     try:
         path.parent.mkdir(parents=True, exist_ok=True)
         with open(path, "a", encoding="utf-8") as fh:
@@ -313,7 +317,8 @@ def main(argv: list[str] | None = None) -> int:
         if changed and not args.dry_run and not args.no_log:
             append_switch_event({
                 "ts": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-                "event": "switch", "agent": name, "scope": scope,
+                "event": "switch", "source": "rotate-switch",
+                "agent": name, "scope": scope,
                 "project": project, "from": current, "to": new_model,
                 "reason": reason, "verified": True, "redacted": True,
             })
