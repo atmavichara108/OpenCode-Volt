@@ -19,6 +19,12 @@ permission:
     "sudo *": deny
     "chown *": deny
     "chmod *": deny
+    "git push --force*": deny
+    "git push -f*": deny
+    "git branch -D*": deny
+    "git tag -d*": deny
+    "git reset --hard*": ask
+    "git clean*": ask
     "mkfs*": deny
     "shutdown*": deny
     "reboot*": deny
