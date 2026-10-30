@@ -23,8 +23,8 @@ permission:
     "git push -f*": deny
     "git branch -D*": deny
     "git tag -d*": deny
-    "git reset --hard*": ask
-    "git clean*": ask
+    "git reset --hard*": deny
+    "git clean*": deny
     "mkfs*": deny
     "shutdown*": deny
     "reboot*": deny
