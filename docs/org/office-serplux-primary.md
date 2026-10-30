@@ -22,7 +22,7 @@ mandate-source: >
 report-address: ses_eceb23a71ffeJO9QnFou8VngZC
 peer-address: ses_ece7b76c8ffeOkYZqZe38QbTVx
 spec-home: /home/rudra/Projects/serp/docs/specs/
-status: proposed, 2026-10-29
+status: active, 2026-10-31 (вердикт УАС: Serp-office + Senior-dev созданы в serp, коммит b0de867; красные линии verbatim; было proposed 2026-10-29)
 boundaries: >
   Красные линии канона top сохраняются ДОСЛОВНО (именно они — причина
   «не сптыкается», а не права): никогда не читает секреты/креды

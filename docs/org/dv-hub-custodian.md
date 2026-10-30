@@ -18,7 +18,7 @@ mandate-source: >
 report-address: ses_eceb23a71ffeJO9QnFou8VngZC
 peer-address: ses_e9299850dffefLof5BwPJ1d0lV
 spec-home: /home/rudra/Projects/dv-hub
-status: proposed, 2026-10-24
+status: active, 2026-10-31 (вердикт УАС: агент Dv-custodian создан в dv-hub, коммит 49a26ad; было proposed 2026-10-24)
 boundaries: >
   Не является разработчиком ДВ-Хаба: операционную работу по репозиториям ведёт
   ИЦ. Не создаёт агентов и не правит агентную инфраструктуру (это УАС/ИЦ).
