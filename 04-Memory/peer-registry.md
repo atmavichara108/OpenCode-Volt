@@ -33,6 +33,9 @@ timestamp: 2026-10-29
 | Отдел «Движков» | ses_euCJx9F9ZX2JXm9SxwMKBfG | interim librarian (имя-агент — слово владельца, Р-Д-009) | ~/Projects/OpenCode-Vault | отдел Корабля (organ-structure §2); parent ИЦ (Р-038-паттерн); спека docs/specs/engines-department.md; первое дело — накат мкода |
 | Центр стратегического планирования и менеджмента (ЦСПиМ) | ses_e0JGLx9sw7hTttx3t1BXQh5 | SCRUM-master (Р-Д-013; имя — слово владельца 10-31) | ~/Projects/OpenCode-Vault | орган планирования Корабля: роадмапы/таски/квесты/очереди; спека docs/specs/csipm-center.md; агент-файл docs/org/drafts/agent-files/scrum-master.md (подключение — УАС) |
 | Пространство AllIs Maya | ses_e714b5c4bffeh1ri37WHF8Q7Bx | AllIs Maya (мультиагент, Р-Д-016; агент-файл docs/org/drafts/agent-files/allismaya.md) | ~/Projects/OpenCode-Vault | метапроект (не репо); ВЫХОД Корабля в TG (@AllIsMaya), профили ssa/dv/serp/portal; спека docs/specs/space-allis-maya-metaproject.md |
+| Отдел «Реверс-инженерии движков» | ses_ewdWZMlHOJE3UloUrwdXHi | interim librarian (агент reverse-craft — activation-копия УАС) | ~/Projects/OpenCode-Vault | отдел c (Р-051); спека docs/specs/reverse-engineering-department.md; первое дело — разбор контракта движка M Code |
+| Служба Безопасности (SB) | ses_e8UjUKqF812mPjPYs0AfEoo | interim librarian (агент SB — имя Р-050, файл УАС) | ~/Projects/OpenCode-Vault | спека docs/specs/security-service.md; реестр точек-0 первое дело |
+| Кафедра контрагентов (при УАСе) | ses_ekCkATn0MVldNqtLqnWDU3c | interim librarian (агент Rector — файл УАС) | ~/Projects/OpenCode-Vault | спека docs/specs/department-counterparties-uas.md; выращивание контрагентов (рудракши, Р-018) |
 
 ## Правила
 1. **Писать только по этому реестру.** Все сессии живые (сверено по session_v2, 10-18 22:00).
