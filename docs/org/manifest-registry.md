@@ -18,6 +18,9 @@ owner: УАС (куратор по Р-014), операционная запис�
 | `uas-special-rotator` | Спец-отдел «Ротатор моделей» (УАС) | active, 2026-10-23 | [[uas-special-rotator]] |
 | `apps-department` | Отдел «Приложений» (подотдел ИЦ; graduating — Ability Lab; первый клиент — mail-hub) | active, 2026-10-31 (вердикт УАС: сессия ses_eKDfprGN0tGPmzJnQChkmOT есть, агент Apps-dev подключён) | `docs/org/apps-department.md` |
 | `csipm-center` | Центр стратегического планирования и менеджмента (ЦСПиМ; агент SCRUM-master, сессия ses_e0JGLx9sw7hTttx3t1BXQh5) | active, 2026-10-31 (Р-043 + вердикт УАС: сессия и агент-файл подключены) | `docs/org/csipm-center.md` |
+| `sb-service` | Служба Безопасности (агент SB) | active, 2026-10-31 (ночная программа владельца; манифест+агент в глобальном слое) | `docs/org/sb-service.md` |
+| `reverse-craft-department` | Отдел «Реверс-инженерии движков» (Reverse-craft) | active, 2026-10-31 (ночная программа владельца; манифест+агент в глобальном слое) | `docs/org/reverse-craft-department.md` |
+| `counterparties-chair` | Кафедра контрагентов при УАС (Rector) | active, 2026-10-31 (ночная программа владельца; манифест+агент в глобальном слое) | `docs/org/counterparties-chair.md` |
 | `git-freed` | Git Freed (Гит Освобождённый) | proposed, 2026-10-25 (манифест+агент есть; сессии-носителя нет — активен после создания сессии владельцем; функция пока несётся командой /ship + гейтами) | `docs/org/git-freed.md` |
 | `dv-hub-custodian` | Агент «Смотритель ДВ» (ДВ-Хаб) | active, 2026-10-31 (вердикт УАС: файл dv-custodian.md создан в dv-hub, коммит 49a26ad) | `docs/org/dv-hub-custodian.md` |
 | `sero` | Агент «SerO» — Служитель Обсидиан (глобальный) | active, 2026-10-26 (файл 99c9b00, реконсиляция УАС; расхождение чертежа рапортовано ЦУ) | `docs/org/sero.md` |
