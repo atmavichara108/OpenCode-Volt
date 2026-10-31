@@ -1,0 +1,1 @@
+{"ts": "2026-10-31T21:52:03Z", "event": "switch", "source": "rotate-switch", "agent": "rector", "scope": "global", "project": null, "from": "justwoker/claude-opus-4-8", "to": "amd-radeon/DeepSeek-V4.1-Flash", "reason": "provider_blocked", "verified": true, "redacted": true}
