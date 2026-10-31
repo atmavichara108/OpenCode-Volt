@@ -27,7 +27,7 @@ owner: ЦУ
 | Q-005.2 | живой health: probe по расписанию + provider-health.jsonl | ready | УАС | probe.py работает |
 | Q-005.3 | доказать failover на живом прогоне (провайдер выключен → агент переехал → запись в журнале) | done | УАС + ИЦ | Q-005.1 (живой прогон 10-31/11-01: justwoker BLOCKED → rector переехал на amd-radeon/DeepSeek-V4.1-Flash, switch-journal 1 строка, kill-чек PASS — УАС) |
 | Q-005.4 | лимиты и приватность по каждому провайдеру в каталоге (RPM/RPD/кредиты, обучение на данных) | done | УАС | (Mistral: $10/мес; Google: standing free tier; Groq: 1000 req/день, 200k ток/день; Cohere: 1000 вызовов/мес; SambaNova: standing free tier; OpenRouter: 17 моделей бесплатно; Cerebras: trial, сверхскорость; Together AI: \$25-50 старт; Cloudflare: static free tier; HF: ежемесячные кредиты) |
-| Q-005.5 | журнал переключений append-only (кто/когда/почему) | active | УАС | done | УАС (switch-journal.jsonl строка 1, failover PASS 5f8267c3) |
+| Q-005.5 | журнал переключений append-only (кто/когда/почему) | done | УАС | switch-journal.jsonl строка 1 (source=rotate-switch, verified), живой failover PASS 5f8267c3 — подтверждено УАС 11-01; лишняя колонка в строке устранена |
 | Q-005.6 | публичный отчёт «лучший провайдер по роли» (median/p95) → вход для Q-002 | active | УАС | Q-005.4 (лимиты/приватность заполнены) |
 
 | **Q-006** | реализация a/b/c: отделы Корабля по одному | active | ЦУ (a) → далее b, c | слово владельца 10-30 |
