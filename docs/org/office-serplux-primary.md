@@ -10,7 +10,7 @@ jurisdiction: >
   журналирование, доки/changelog. Роль — копия control-канона top
   (source: control, schema-version: 1), как в seo-outreach.
 carrier-sessions: ses_e7936c4f7ffenXVozON2bsu5mk
-agent-file: ~/Projects/serp/.opencode/agent/top-man.md — НЕ создан (проект без агентского слоя; образец: ~/Projects/SSA/products/seo-outreach/.opencode/agent/top-man.md)
+agent-file: "~/Projects/serp/.opencode/agent/top-man.md — НЕ создан (проект без агентского слоя; образец: ~/Projects/SSA/products/seo-outreach/.opencode/agent/top-man.md)"
 agent-location: serp (проектный слой, контур SSA); копия control-канона
 mandate-source: >
   Слово владельца 2026-10-29 (basis: quoted): «нужен примари агент в
@@ -22,7 +22,7 @@ mandate-source: >
 report-address: ses_eceb23a71ffeJO9QnFou8VngZC
 peer-address: ses_ece7b76c8ffeOkYZqZe38QbTVx
 spec-home: /home/rudra/Projects/serp/docs/specs/
-status: active, 2026-10-31 (вердикт УАС: Serp-office + Senior-dev созданы в serp, коммит b0de867; красные линии verbatim; было proposed 2026-10-29)
+status: "active, 2026-10-31 (вердикт УАС: Serp-office + Senior-dev созданы в serp, коммит b0de867; красные линии verbatim; было proposed 2026-10-29)"
 boundaries: >
   Красные линии канона top сохраняются ДОСЛОВНО (именно они — причина
   «не сптыкается», а не права): никогда не читает секреты/креды

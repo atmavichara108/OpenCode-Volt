@@ -21,7 +21,7 @@ mandate-source: >
 report-address: ses_eceb23a71ffeJO9QnFou8VngZC (ЦУ — каноническая точка приёма отчётов)
 peer-address: ses_ece7b76c8ffeOkYZqZe38QbTVx (через родителя ИЦ до создания своей сессии)
 spec-home: /home/rudra/Projects/OpenCode-Vault/docs/specs/
-status: active, 2026-10-31 (вердикт УАС: сессия-носитель ses_eKDfprGN0tGPmzJnQChkmOT есть; агент Apps-dev подключён; манифест по зову ИЦ-куратора)
+status: "active, 2026-10-31 (вердикт УАС: сессия-носитель ses_eKDfprGN0tGPmzJnQChkmOT есть; агент Apps-dev подключён; манифест по зову ИЦ-куратора)"
 boundaries: >
   Не чинит сломанное (это Мастерская); не исследует (ИПТ); graduating/испытания
   зрелости приложения — связка с Ability Lab (подтверждена Лабой); WIP — по
@@ -31,7 +31,7 @@ ports: >
   Вход: заказы от ЦУ/ИЦ (идея → отсек → репо). Выход: рапорты в ЦУ; graduating-
   протокол — Ability Lab (lab-*); перенос в репо-кластер — по критерию >3.
 capabilities: [app-scaffold, container-otsek, repo-graduating, cluster-candidate]
-memory-zones: [apps-department, mail-hub-plan] (до создания своей памяти — зоны родителя ИЦ)
+memory-zones: "[apps-department, mail-hub-plan] (до создания своей памяти — зоны родителя ИЦ)"
 file-zones: >
   write — контейнер-отсеки подвида (реестр отсеков), свой манифест-repo при
   переносе; карточка проекта — 03-Projects/apps-department.md; артефакты планов —
