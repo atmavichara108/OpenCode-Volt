@@ -36,6 +36,7 @@ timestamp: 2026-10-29
 | Отдел «Реверс-инженерии движков» | ses_ewdWZMlHOJE3UloUrwdXHi | interim librarian (агент reverse-craft — activation-копия УАС) | ~/Projects/OpenCode-Vault | отдел c (Р-051); спека docs/specs/reverse-engineering-department.md; первое дело — разбор контракта движка M Code |
 | Служба Безопасности (SB) | ses_e8UjUKqF812mPjPYs0AfEoo | interim librarian (агент SB — имя Р-050, файл УАС) | ~/Projects/OpenCode-Vault | спека docs/specs/security-service.md; реестр точек-0 первое дело |
 | Кафедра контрагентов (при УАСе) | ses_ekCkATn0MVldNqtLqnWDU3c | interim librarian (агент Rector — файл УАС) | ~/Projects/OpenCode-Vault | спека docs/specs/department-counterparties-uas.md; выращивание контрагентов (рудракши, Р-018) |
+| Кафедра изучения вендоров (линия Maya, агентный контур УАС) | ses_eV2O1NnTDdkWQ1sf8BU1m6o | AllIsMaya (примари — слово владельца 11-01; отдельный агент не нужен) | ~/Projects/OpenCode-Vault | спека docs/specs/vendors-chaurea-uas.md; куратор AllIs Maya; первое дело — реестр вендоров-0 (NVIDIA) |
 
 ## Правила
 1. **Писать только по этому реестру.** Все сессии живые (сверено по session_v2, 10-18 22:00).
