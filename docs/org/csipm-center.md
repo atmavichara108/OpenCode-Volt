@@ -21,7 +21,7 @@ mandate-source: >
 report-address: ses_eceb23a71ffeJO9QnFou8VngZC (ЦУ)
 peer-address: ses_e0JGLx9sw7hTttx3t1BXQh5
 spec-home: /home/rudra/Projects/OpenCode-Vault/docs/specs/
-status: active, 2026-10-31 (вердикт УАС: сессия-носитель есть, агент-файл подключён)
+status: "active, 2026-10-31 (вердикт УАС: сессия-носитель есть, агент-файл подключён)"
 boundaries: >
   Не primary кода приложений; не канонизирует (канон — слово владельца через
   ЦУ); не создаёт ведомства/сессии сам (Р-009); WIP=1 (Р-039); секретов не
@@ -31,7 +31,7 @@ ports: >
   (сводная карта), WIP-1 контроль, конфликт-рапорты приоритетов, методические
   консультации любого уровня.
 capabilities: [planning-canvas, scrum-facilitation, kanban-flow, lean-waste-scan, kaizen-retro, drift-watch]
-memory-zones: [csipm-canvas, csipm-retro] (создать при запуске сессии)
+memory-zones: "[csipm-canvas, csipm-retro] (создать при запуске сессии)"
 file-zones: write — 03-Projects/csipm* + свой planning-артефакт + spec-home; чужие реестры — через их сессии
 evidence-policy: независимый verifier PASS + commit для изменений канвы; рапорты — в ЦУ
 ---
