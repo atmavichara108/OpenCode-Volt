@@ -75,6 +75,10 @@ related:
 
 ### 3.1 SSOT-карта planning-слоя (инвентаризация ИЦ, мандат csipm-design-inventory)
 
+Канва ЦСПиМ — проекция, не переписанный SSOT: строится инструментом
+`tools/canvas` (ИЦ), источник данных — те же SSOT read-first; числа — повторяемым
+прогоном (рецепт в §7 канвы docs/specs/csipm-canvas-0.md).
+
 14 артефактов по классам: ПЛАН — TASKS.md, 11-Quests/quests.md, 10-Deck
 (+_gen/quests_data.py), роадмапы проектов (AndroidOS, ability-lab, dv-hub,
 serp), docs/specs/*; ПАМЯТЬ — tech-debt, active-context, facts, ship-versions;
