@@ -14,7 +14,7 @@ owner: ЦУ
 | Q-001.1 | заявка в NVIDIA Inception (бесплатные cloud credits) | ready | ЦУ (текст) + владелец (подача) | аккаунт NVIDIA ✓ |
 | Q-001.2 | курс «Securing Agents With OpenShell and NemoClaw» | ready | владелец (прохождение) + ЦУ (разбор) | — |
 | Q-001.3 | забрать NIM-кредиты и проверить целостность на Nemotron | ready | ИЦ | Q-001.1 или free-кредиты |
-| Q-001.4 | вытянуть все письма NVIDIA + разобрать анонсы | active | ЦУ | mail-hub ✓ |
+| Q-001.4 | вытянуть все письма NVIDIA + разобрать анонсы |→ Q-009 (перекрыто вендорной кафедрой) active | ЦУ | mail-hub ✓ |
 | Q-001.5 | кейс Корабля для блога/форума NVIDIA | locked | ИПТ + ЦУ | Q-001.2 |
 | Q-001.6 | NGC/blueprints разведка (NeMo, Dynamo, NIM) | ready | ИПТ | — |
 | Q-001.7 | платный dedicated NIM — оценка целесообразности | parked | ЦУ | решение владельца о бюджете |
