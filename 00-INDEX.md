@@ -45,7 +45,7 @@ timestamp: 2026-09-01
 
 ## Reference (возможности OpenCode)
 [[agents]] · [[commands]] · [[config]] · [[global-config]] · [[memory]] · [[permissions]] · [[plugins]]
-[[providers]] · [[config-modes]] · [[mcode-desktop]]
+[[providers]] · [[vendors]] · [[config-modes]] · [[mcode-desktop]]
 [[provider-cards/linaliapi]] · [[provider-cards/justwoker]] — канонические операционные карточки провайдеров (schema: [[promo-provider-protocol]])
 
 ## Сторонний софт (01-Reference/tools/)
@@ -101,7 +101,7 @@ timestamp: 2026-09-01
 [[11-Quests/quests]] (реестр). Карта — `11-Quests/quests.canvas` (ведёт Служитель).
 
 ## Deck (10-Deck/) — капитанский мостик
-Решения, ждущие слова владельца, — интерактивно в Obsidian: [[10-Deck/00-README]] (что это), [[10-Deck/decisions-deck]] (карточки), [[10-Deck/deck.canvas]] (ризома). Агент — Служитель Обсидиан (`obsidian-servant`); ssot:false — проекция реестров.
+Решения, ждущие слова владельца, — интерактивно в Obsidian: [[10-Deck/00-README]] (что это), [[10-Deck/decisions-deck]] (карточки), [[10-Deck/DECK.canvas]] (ризома). Агент — Служитель Обсидиан (`obsidian-servant`); ssot:false — проекция реестров.
 
 ## Ведомства
 Структура и адреса: [[01-Policies/organ-structure-2026-10-18|organ-structure]] · [[04-Memory/peer-registry]] (канон адресации) · [[02-Methods/ministry-calibration]] (модель калибровки, 6 шагов).
