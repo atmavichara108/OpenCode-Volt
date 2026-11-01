@@ -23,7 +23,7 @@ owner: ЦУ
 | **Q-003** | инфраструктурный апгрейд ЦУ (снять узкое горло) | locked | ИЦ | положительный ответ NVIDIA (слово владельца) |
 | **Q-004** | rudrakshas: ступени А2→А3 | locked | ИЦ + Лаба | слово владельца |
 | **Q-005** | толковый ротатор моделей (УАС, спец-отдел) | active | УАС (ses_e9884e4a) + ИЦ | УАС в строю ✓ (Р-023) |
-| Q-005.1 | сверка каталога: providers.json ↔ model-catalog.json ↔ opencode.jsonc (отчёт расхождений) | active | УАС | база есть (22 провайдера / 9 в каталоге) |
+| Q-005.1 | сверка каталога: providers.json ↔ model-catalog.json ↔ opencode.jsonc (отчёт расхождений) |отчёт готов, ждёт слова владельца (диф 69ac8e21) active | УАС | база есть (22 провайдера / 9 в каталоге) |
 | Q-005.2 | живой health: probe по расписанию + provider-health.jsonl | ready | УАС | probe.py работает |
 | Q-005.3 | доказать failover на живом прогоне (провайдер выключен → агент переехал → запись в журнале) | done | УАС + ИЦ | Q-005.1 (живой прогон 10-31/11-01: justwoker BLOCKED → rector переехал на amd-radeon/DeepSeek-V4.1-Flash, switch-journal 1 строка, kill-чек PASS — УАС) |
 | Q-005.4 | лимиты и приватность по каждому провайдеру в каталоге (RPM/RPD/кредиты, обучение на данных) | done | УАС | (Mistral: $10/мес; Google: standing free tier; Groq: 1000 req/день, 200k ток/день; Cohere: 1000 вызовов/мес; SambaNova: standing free tier; OpenRouter: 17 моделей бесплатно; Cerebras: trial, сверхскорость; Together AI: \$25-50 старт; Cloudflare: static free tier; HF: ежемесячные кредиты) |
