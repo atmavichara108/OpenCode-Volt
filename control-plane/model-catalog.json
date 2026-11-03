@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-25T06:38:32Z",
+ "generated_at": "2026-11-03T13:07:44Z",
  "providers": {
   "amd-radeon": {
    "models": {
@@ -105,16 +105,6 @@
     }
    }
   },
-  "apinex": {
-   "models": {
-    "free/claude-opus-4.6": {
-     "in": false,
-     "cost_in": null,
-     "cost_out": null,
-     "free": false
-    }
-   }
-  },
   "justwoker": {
    "models": {
     "claude-opus-4-8": {
@@ -154,6 +144,322 @@
      "cost_in": null,
      "cost_out": null,
      "free": false
+    }
+   }
+  },
+  "nvidia": {
+   "models": {
+    "black-forest-labs/flux.1-dev": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "black-forest-labs/flux_1-kontext-dev": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "black-forest-labs/flux_1-schnell": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "black-forest-labs/flux_2-klein-4b": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "deepseek-ai/deepseek-v4.1-flash": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "google/diffusiongemma-26b-a4b-it": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "google/gemma-3-12b-it": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "google/gemma-3-4b-it": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "google/gemma-4-31b-it": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "google/google-paligemma": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "meta/llama-3.2-11b-vision-instruct": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "meta/llama-3.2-90b-vision-instruct": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "meta/llama-guard-4-12b": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "meta/muse-glimmer-30b": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "minimaxai/minimax-m3.1-flash": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "mistralai/magistral-small-2506": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "mistralai/mistral-7b-instruct-v0.3": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "mistralai/mistral-medium-3-instruct": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "moonshotai/kimi-k2.6": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "moonshotai/kimi-k3": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/active-speaker-detection": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/bevformer": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/cosmos-reason2-8b": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/cosmos-transfer2_5-2b": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/llama-3.1-nemotron-70b-instruct": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/llama-3.1-nemotron-safety-guard-8b-v3": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/llama-3.1-nemotron-ultra-253b-v1": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/llama-nemotron-embed-vl-1b-v2": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/llama-nemotron-rerank-vl-1b-v2": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/magpie-tts-zeroshot": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/nemotron-3-ultra-550b-a55b": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/nemotron-3.5-content-safety": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/nemotron-3.5-lightning-30b-a3b": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/nemotron-3.5-super-vl-120b-a12b": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/nemotron-voicechat": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/rerank-qa-mistral-4b": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/riva-translate-4b-instruct-v1.1": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/sparsedrive": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/streampetr": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/studiovoice": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/synthetic-video-detector": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/usdcode": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "nvidia/usdvalidate": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "openai/gpt-oss-20b": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "openai/whisper-large-v3": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "poolside/laguna-xs-2.1": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "qwen/qwen-image": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "qwen/qwen-image-edit": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "stepfun-ai/step-5-preview": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "z-ai/glm-5.3": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
+    "z-ai/glm-5.3-flash": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
     }
    }
   },
@@ -873,6 +1179,12 @@
      "cost_out": 0,
      "free": true
     },
+    "pulse-alpha-free": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
     "qwen3-coder": {
      "in": true,
      "cost_in": 0.45,
@@ -1541,12 +1853,6 @@
      "cost_out": 10,
      "free": false
     },
-    "arcee-ai/trinity-large-thinking": {
-     "in": true,
-     "cost_in": 0.25,
-     "cost_out": 0.8,
-     "free": false
-    },
     "bfl/flux-2-flex": {
      "in": true,
      "cost_in": null,
@@ -1825,14 +2131,14 @@
     },
     "deepseek/deepseek-v4.1-flash": {
      "in": true,
-     "cost_in": 0.075,
-     "cost_out": 0.3,
+     "cost_in": 0.3,
+     "cost_out": 1.2,
      "free": false
     },
     "deepseek/deepseek-v4.1-flash-1017": {
      "in": true,
-     "cost_in": 0.075,
-     "cost_out": 0.3,
+     "cost_in": 0.3,
+     "cost_out": 1.2,
      "free": false
     },
     "deepseek/deepseek-v4.1-flash-1017-fast": {
@@ -2165,6 +2471,12 @@
      "cost_out": 0.9,
      "free": false
     },
+    "inclusionai/ling-3.1-flash-1019": {
+     "in": true,
+     "cost_in": 0,
+     "cost_out": 0,
+     "free": true
+    },
     "inference-net/schematron-v2-small": {
      "in": true,
      "cost_in": 0.05,
@@ -2237,7 +2549,7 @@
      "cost_out": 0.7,
      "free": false
     },
-    "meituan/longcat-2.5-preview": {
+    "meituan/longcat-2.5": {
      "in": true,
      "cost_in": 0.3,
      "cost_out": 1.2,
@@ -2485,8 +2797,8 @@
     },
     "mistral/mistral-large-4": {
      "in": true,
-     "cost_in": 1.36,
-     "cost_out": 4.18,
+     "cost_in": 0.7,
+     "cost_out": 2.1,
      "free": false
     },
     "mistral/mistral-medium-3.5": {
@@ -2957,6 +3269,18 @@
      "cost_out": 20,
      "free": false
     },
+    "openai/gpt-6.1-terra": {
+     "in": true,
+     "cost_in": 1,
+     "cost_out": 5,
+     "free": false
+    },
+    "openai/gpt-6.1-terra-fast": {
+     "in": true,
+     "cost_in": 2,
+     "cost_out": 10,
+     "free": false
+    },
     "openai/gpt-image-1-mini": {
      "in": true,
      "cost_in": 2,
@@ -3119,6 +3443,12 @@
      "cost_out": null,
      "free": false
     },
+    "particle/particle-1": {
+     "in": true,
+     "cost_in": 0.125,
+     "cost_out": 0.5,
+     "free": false
+    },
     "perplexity/pplx-embed-v1-0.6b": {
      "in": true,
      "cost_in": null,
@@ -3141,18 +3471,6 @@
      "in": true,
      "cost_in": 0.09,
      "cost_out": 0.18,
-     "free": false
-    },
-    "poolside/laguna-s-2.1-free": {
-     "in": true,
-     "cost_in": 0,
-     "cost_out": 0,
-     "free": true
-    },
-    "prodia/flux-fast-schnell": {
-     "in": true,
-     "cost_in": null,
-     "cost_out": null,
      "free": false
     },
     "quiverai/arrow-2": {
@@ -3545,18 +3863,6 @@
      "cost_out": null,
      "free": false
     },
-    "xiaomi/mimo-v2.5": {
-     "in": true,
-     "cost_in": 0.119,
-     "cost_out": 0.238,
-     "free": false
-    },
-    "xiaomi/mimo-v2.5-pro": {
-     "in": true,
-     "cost_in": 0.3045,
-     "cost_out": 0.609,
-     "free": false
-    },
     "xiaomi/mimo-v2.6-flash": {
      "in": true,
      "cost_in": 0.14,
@@ -3649,8 +3955,8 @@
     },
     "zai/glm-5.3": {
      "in": true,
-     "cost_in": 1.2,
-     "cost_out": 4,
+     "cost_in": 1.4,
+     "cost_out": 4.4,
      "free": false
     },
     "zai/glm-5.3-fast": {
@@ -3666,6 +3972,12 @@
      "free": false
     },
     "zai/glm-5.3-flashx": {
+     "in": true,
+     "cost_in": 0.37,
+     "cost_out": 1.25,
+     "free": false
+    },
+    "zai/glm-5.3-flashx-legal": {
      "in": true,
      "cost_in": 0.37,
      "cost_out": 1.25,
