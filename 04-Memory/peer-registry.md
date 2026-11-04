@@ -41,6 +41,7 @@ timestamp: 2026-10-29
 | Бизнес-школа | ses_ezBJLD3yZWgyeGcN3K1apVq | interim librarian (агент — слово владельца) | ~/Projects/OpenCode-Vault | спека docs/specs/business-school.md; коммерческие проекты, ресурсная экономика, финансовый учёт, наставничество |
 | Смотритель HR (recruiting-hr) | ses_f0861c5c8ffeLEiG4jYqG1ij3z | interim librarian (имя агента — слово владельца) | ~/Projects/recruiting-hr | проект рекрутингового агентства; снят с паузы словом владельца 11-04 (Р-078) |
 | Офис (recruiting-линия) | ses_ef334a11bffejHH9g55Ez77mE1 | interim librarian (имя агента — слово владельца) | ~/Projects/recruiting-hr | офис рекрутинговой линии; снят с паузы словом владельца 11-04 (Р-078) |
+| Отдел Разработки HR (код и CRM, линия Смотрителя HR) | ses_e57fd2b2dffet24DPEMlq4mEW3 | interim librarian (имя агента — слово владельца) | ~/Projects/recruiting-hr | исполнитель кода/CRM рекрутинговой линии; роли — docs/roles.md проекта + канон ЦУ Р-080 |
 
 ## Правила
 1. **Писать только по этому реестру.** Все сессии живые (сверено по session_v2, 10-18 22:00).
