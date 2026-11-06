@@ -8,7 +8,7 @@ owner: ЦУ (учреждение); parent — Корабль (как ЦСПиМ
 timestamp: 2026-11-02
 related:
   - docs/specs/csipm-center.md (парный орган: план ↔ бизнес-реализация)
-  - 03-Projects/serplux-sso-orchestration.md (коммерческие линии)
+  - 03-Projects/SERPlux.md (коммерческие линии)
 ---
 
 # Бизнес-школа
