@@ -10,8 +10,8 @@ jurisdiction: >
   журналирование, доки/changelog. Роль — копия control-канона top
   (source: control, schema-version: 1), как в seo-outreach.
 carrier-sessions: ses_e7936c4f7ffenXVozON2bsu5mk
-agent-file: "~/Projects/serp/.opencode/agent/top-man.md — НЕ создан (проект без агентского слоя; образец: ~/Projects/SSA/products/seo-outreach/.opencode/agent/top-man.md)"
-agent-location: serp (проектный слой, контур SSA); копия control-канона
+agent-file: "~/.config/opencode/agent/serp-office.md + senior-dev.md (глобальный слой; проектного слоя в ~/Projects/serp нет — сверено 2026-11-07; прежняя запись top-man.md была устаревшей)"
+agent-location: глобальный слой (носители Serp-office + Senior-dev)
 mandate-source: >
   Слово владельца 2026-10-29 (basis: quoted): «нужен примари агент в
   серплюкс. что если перенести top-man из аутрича? в общем вот офис
