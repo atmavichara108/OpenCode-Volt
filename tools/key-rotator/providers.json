@@ -1,8 +1,8 @@
 {
   "meta": {
     "schema": "key-rotator/providers/1.1",
-    "updated": "2026-09-28",
-    "note": "Декларативный каталог провайдеров для probe/ротатора. Ключей здесь НЕТ: резолв env -> vault .env -> auth.json. endpoints без * [проверить] — конвенция <site>/v1, уточняется probe. transport влияет только на smoke-chat (Iter-1); probe всегда ходит GET /models в openai-совместимом стиле. skip=провайдер вне активной ротации (managed/backlog/endpoint_dynamic). models_detail (если есть) — агентские характеристики моделей (ctx/vision/tools).",
+    "updated": "2026-11-14",
+    "note": "Декларативный каталог провайдеров для probe/ротатора. Ключей здесь НЕТ: резолв env -> vault .env -> auth.json. endpoints без * [проверить] — конвенция <site>/v1, уточняется probe. transport влияет только на smoke-chat (Iter-1); probe всегда ходит GET /models в openai-совместимом стиле. skip=провайдер вне активной ротации (managed/backlog/endpoint_dynamic). models_detail (если есть) — агентские характеристики моделей (ctx/vision/tools). Refresh 2026-11-14: добавлены живые провайдеры каталога (nvidia — по слову владельца 14.11; zai/anthropic/amd/newapi/local-deepseek/modelhub/github-copilot); lunaroute выкинут владельцем (freetrial истёк, 402).",
     "last_probe": "2026-09-27T20:00:38Z",
     "last_probe_result": "14 ACTIVE / 3 BLOCKED / 2 ERROR / 3 SKIPPED (read-only, health-log: control-plane/telemetry/provider-health.jsonl)",
     "backlog": {
@@ -39,15 +39,65 @@
       "source": "01-Reference/provider-cards/amd-radeon.md",
       "notes": "Официальный free-кей; лимитация нагрузкой, не квотой. Probe 2026-09-28: ACTIVE, 9 моделей. Все (кроме MinerU) поддерживают tools+json_output. Агентские (tool-calling + большой контекст): DeepSeek-V4.1-Flash/V4-Flash/MiMo-V2.6-Flash = 1M ctx; GLM-5.3-Flash/Qwen3.8-27B/Qwen3.8-Flash-Next = 256K. НЕ агентские: MiniCPM5-2B (2B, слабое понимание — риск вредных действий), MinerU2.5-Pro (парсинг документов, без tools/chat).",
       "models_detail": {
-        "DeepSeek-V4.1-Flash": {"ctx": 1048576, "vision": true, "tools": true, "role": "coding", "note": "топ-выбор: 1M контекст + vision + tools + json"},
-        "DeepSeek-V4-Flash": {"ctx": 1048576, "vision": false, "tools": true, "role": "coding"},
-        "MiMo-V2.6-Flash": {"ctx": 1048576, "vision": true, "tools": true, "role": "coding"},
-        "DeepSeek-V4-Flash-Vision-Exp": {"ctx": 1048576, "vision": true, "tools": true, "role": "vision", "note": "экспериментальная"},
-        "GLM-5.3-Flash": {"ctx": 262144, "vision": false, "tools": true, "role": "general"},
-        "Qwen3.8-27B": {"ctx": 262144, "vision": true, "tools": true, "role": "coding", "note": "27B dense — сильный исполнитель"},
-        "Qwen3.8-Flash-Next": {"ctx": 262144, "vision": true, "tools": true, "role": "vision"},
-        "MiniCPM5-2B": {"ctx": 131072, "vision": false, "tools": true, "role": null, "excluded": "2B слишком слаб для агентских задач"},
-        "MinerU2.5-Pro": {"ctx": null, "vision": false, "tools": false, "role": null, "excluded": "парсинг документов, не chat"}
+        "DeepSeek-V4.1-Flash": {
+          "ctx": 1048576,
+          "vision": true,
+          "tools": true,
+          "role": "coding",
+          "note": "топ-выбор: 1M контекст + vision + tools + json"
+        },
+        "DeepSeek-V4-Flash": {
+          "ctx": 1048576,
+          "vision": false,
+          "tools": true,
+          "role": "coding"
+        },
+        "MiMo-V2.6-Flash": {
+          "ctx": 1048576,
+          "vision": true,
+          "tools": true,
+          "role": "coding"
+        },
+        "DeepSeek-V4-Flash-Vision-Exp": {
+          "ctx": 1048576,
+          "vision": true,
+          "tools": true,
+          "role": "vision",
+          "note": "экспериментальная"
+        },
+        "GLM-5.3-Flash": {
+          "ctx": 262144,
+          "vision": false,
+          "tools": true,
+          "role": "general"
+        },
+        "Qwen3.8-27B": {
+          "ctx": 262144,
+          "vision": true,
+          "tools": true,
+          "role": "coding",
+          "note": "27B dense — сильный исполнитель"
+        },
+        "Qwen3.8-Flash-Next": {
+          "ctx": 262144,
+          "vision": true,
+          "tools": true,
+          "role": "vision"
+        },
+        "MiniCPM5-2B": {
+          "ctx": 131072,
+          "vision": false,
+          "tools": true,
+          "role": null,
+          "excluded": "2B слишком слаб для агентских задач"
+        },
+        "MinerU2.5-Pro": {
+          "ctx": null,
+          "vision": false,
+          "tools": false,
+          "role": null,
+          "excluded": "парсинг документов, не chat"
+        }
       }
     },
     "google": {
@@ -397,6 +447,143 @@
       "source": "opencode runtime",
       "skip": "managed",
       "notes": "Управляется самим opencode; авторизация внутри приложения"
+    },
+    "nvidia": {
+      "display_name": "NVIDIA integrate.api",
+      "endpoint": "https://integrate.api.nvidia.com/v1",
+      "endpoints": [
+        "https://integrate.api.nvidia.com/v1"
+      ],
+      "env": "NVIDIA_API_KEY",
+      "auth_id": "nvidia",
+      "transport": "openai",
+      "roles": [
+        "general",
+        "coding",
+        "vision"
+      ],
+      "priority": 60,
+      "source": "живой каталог /api/provider+model 2026-11-14",
+      "notes": "здоровье неровное: 451/504 в пробах 10-11.11; в общем списке по слову владельца 14.11; пробу перед роутингом"
+    },
+    "zai": {
+      "display_name": "Z.AI GLM",
+      "endpoint": "https://api.z.ai/api/paas/v4",
+      "endpoints": [
+        "https://api.z.ai/api/paas/v4"
+      ],
+      "env": "ZAI_API_KEY",
+      "auth_id": "zai",
+      "transport": "openai",
+      "roles": [
+        "general",
+        "coding"
+      ],
+      "priority": 70,
+      "source": "живой каталог 2026-11-14",
+      "notes": ""
+    },
+    "anthropic": {
+      "display_name": "Anthropic",
+      "endpoint": "https://api.anthropic.com/v1",
+      "endpoints": [
+        "https://api.anthropic.com/v1"
+      ],
+      "env": "ANTHROPIC_API_KEY",
+      "auth_id": "anthropic",
+      "transport": "anthropic",
+      "roles": [
+        "general",
+        "coding"
+      ],
+      "priority": 50,
+      "source": "живой каталог 2026-11-14",
+      "notes": "geo: из RU возможно Country-not-supported (наблюдалось 11.11)"
+    },
+    "amd": {
+      "display_name": "AMD Radeon Cloud (раздел amd)",
+      "endpoint": "https://developer.amd.com.cn/radeon/api/v1",
+      "endpoints": [
+        "https://developer.amd.com.cn/radeon/api/v1"
+      ],
+      "env": "AMD_API_KEY",
+      "auth_id": "amd",
+      "transport": "openai",
+      "roles": [
+        "general",
+        "coding",
+        "vision"
+      ],
+      "priority": 90,
+      "source": "живой каталог 2026-11-14",
+      "notes": "стенд родной amd-radeon (CN); ключ может совпадать по семейству"
+    },
+    "newapi": {
+      "display_name": "NewAPI (локальный шлюз)",
+      "endpoint": "http://localhost:3000/v1",
+      "endpoints": [
+        "http://localhost:3000/v1"
+      ],
+      "env": "NEWAPI_API_KEY",
+      "auth_id": "newapi",
+      "transport": "openai",
+      "roles": [
+        "general"
+      ],
+      "priority": 95,
+      "source": "живой каталог 2026-11-14",
+      "notes": "free-code/free-general/free-vision"
+    },
+    "local-deepseek": {
+      "display_name": "Local DeepSeek",
+      "endpoint": "http://127.0.0.1:8000/v1",
+      "endpoints": [
+        "http://127.0.0.1:8000/v1"
+      ],
+      "env": "LOCAL_DEEPSEEK_API_KEY",
+      "auth_id": "local-deepseek",
+      "transport": "openai",
+      "roles": [
+        "general",
+        "coding"
+      ],
+      "priority": 96,
+      "source": "живой каталог 2026-11-14",
+      "notes": "deepseek-chat/deepseek-expert"
+    },
+    "modelhub": {
+      "display_name": "ModelHub",
+      "endpoint": "https://modelhub.134.209.223.63.sslip.io/v1",
+      "endpoints": [
+        "https://modelhub.134.209.223.63.sslip.io/v1"
+      ],
+      "env": "MODELHUB_API_KEY",
+      "auth_id": "modelhub",
+      "transport": "openai",
+      "roles": [
+        "general"
+      ],
+      "priority": 94,
+      "source": "живой каталог 2026-11-14",
+      "notes": ""
+    },
+    "github-copilot": {
+      "display_name": "GitHub Copilot",
+      "endpoint": "https://api.githubcopilot.com",
+      "endpoints": [
+        "https://api.githubcopilot.com"
+      ],
+      "env": null,
+      "auth_id": "github-copilot",
+      "transport": "openai-responses",
+      "roles": [
+        "general",
+        "coding"
+      ],
+      "priority": 40,
+      "source": "живой каталог 2026-11-14",
+      "skip": "managed",
+      "notes": "0 моделей в /api/model до авторизации аккаунта; Auto pool опционален (2.2.7, PR выбор в пикере)"
     }
   }
 }
