@@ -269,7 +269,7 @@ class NewApiClient:
                 channel.get("base_url", ""),
                 channel.get("models", ""),
                 channel.get("model_mapping", ""),
-                channel.get("group", ["default"]) if isinstance(channel.get("group"), list) else channel.get("group", "default"),
+                (channel.get("group")[0] if isinstance(channel.get("group"), list) and channel.get("group") else channel.get("group", "default")),
                 channel.get("priority", 0),
                 channel.get("weight", 0),
                 1, now, 1,
