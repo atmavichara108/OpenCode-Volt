@@ -1,0 +1,80 @@
+{
+  "provider_id": "nvidia",
+  "model_id": "meta/llama-guard-4-12b",
+  "benchmark_version": "0.2.0",
+  "date": "2026-11-15T11:53:15Z",
+  "gates": {
+    "tools": {
+      "status": "OK",
+      "score": 0.0,
+      "passed_threshold": false,
+      "attempts": 5,
+      "error_count": 0,
+      "cost_tokens": 1224,
+      "tokens_estimated": 7647,
+      "cost_usd_est": null,
+      "latency_ms_median": 490,
+      "notes": "",
+      "truncated_count": 0,
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    "build": {
+      "status": "OK",
+      "score": 0.0,
+      "passed_threshold": false,
+      "attempts": 5,
+      "error_count": 0,
+      "cost_tokens": 1247,
+      "tokens_estimated": 2195,
+      "cost_usd_est": null,
+      "latency_ms_median": 467,
+      "notes": "",
+      "truncated_count": 0,
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    "reasoning": {
+      "status": "OK",
+      "score": 0.0,
+      "passed_threshold": false,
+      "attempts": 4,
+      "error_count": 0,
+      "cost_tokens": 934,
+      "tokens_estimated": 1312,
+      "cost_usd_est": null,
+      "latency_ms_median": 459.5,
+      "notes": "",
+      "truncated_count": 0,
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    "fast": {
+      "status": "OK",
+      "score": 1.0,
+      "passed_threshold": null,
+      "attempts": 3,
+      "error_count": 0,
+      "cost_tokens": 627,
+      "tokens_estimated": 57,
+      "cost_usd_est": null,
+      "latency_ms_median": 439,
+      "notes": "",
+      "truncated_count": 0,
+      "finish_reasons": [
+        "stop"
+      ]
+    }
+  },
+  "recommendation": [],
+  "advisory": true,
+  "task_set_hash": "2fcf9f19daa3",
+  "k": 1,
+  "budget_usd": 0.02,
+  "spent_usd_est": 0.0,
+  "budget_stop": false,
+  "gates_skipped": []
+}

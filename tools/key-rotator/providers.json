@@ -1,7 +1,7 @@
 {
   "meta": {
     "schema": "key-rotator/providers/1.1",
-    "updated": "2026-11-14",
+    "updated": "2026-11-15",
     "note": "Декларативный каталог провайдеров для probe/ротатора. Ключей здесь НЕТ: резолв env -> vault .env -> auth.json. endpoints без * [проверить] — конвенция <site>/v1, уточняется probe. transport влияет только на smoke-chat (Iter-1); probe всегда ходит GET /models в openai-совместимом стиле. skip=провайдер вне активной ротации (managed/backlog/endpoint_dynamic). models_detail (если есть) — агентские характеристики моделей (ctx/vision/tools). Refresh 2026-11-14: добавлены живые провайдеры каталога (nvidia — по слову владельца 14.11; zai/anthropic/amd/newapi/local-deepseek/modelhub/github-copilot); lunaroute выкинут владельцем (freetrial истёк, 402).",
     "last_probe": "2026-09-27T20:00:38Z",
     "last_probe_result": "14 ACTIVE / 3 BLOCKED / 2 ERROR / 3 SKIPPED (read-only, health-log: control-plane/telemetry/provider-health.jsonl)",
@@ -464,7 +464,33 @@
       ],
       "priority": 60,
       "source": "живой каталог /api/provider+model 2026-11-14",
-      "notes": "здоровье неровное: 451/504 в пробах 10-11.11; в общем списке по слову владельца 14.11; пробу перед роутингом"
+      "notes": "здоровье неровное: 451/504 в пробах 10-11.11; в общем списке по слову владельца 14.11; пробу перед роутингом. Free-модели nvidia (без немотрона) введены 15.11 по слову владельца; синк идёт через bench-gate (модель попадает в канал только с PASS-бенчем).",
+      "models_detail": {
+        "muse-glimmer-30b": {
+          "ctx": 32768,
+          "role": "coding",
+          "free": true,
+          "source": "bench nvidia 2026-11-15 tools+build PASS"
+        },
+        "llama-guard-4-12b": {
+          "ctx": 8192,
+          "role": "general",
+          "free": true,
+          "source": "chat OK 2026-11-15; tools-порог не пройден (guard-профиль)"
+        },
+        "laguna-xs-2.1": {
+          "ctx": 32768,
+          "role": "coding",
+          "free": true,
+          "source": "bench nvidia 2026-11-15 tools+build+reasoning PASS"
+        },
+        "minimax-m3.1-flash": {
+          "ctx": 32768,
+          "role": "general",
+          "free": true,
+          "source": "bench nvidia 2026-11-15 tools PASS; build/reasoning ERROR (HTTP) — роль general по tools+fallback"
+        }
+      }
     },
     "zai": {
       "display_name": "Z.AI GLM",

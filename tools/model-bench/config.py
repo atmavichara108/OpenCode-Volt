@@ -117,6 +117,18 @@ def resolve_provider(provider_id):
         models = list((prov.get("models") or {}).keys())
         if base_url:
             return base_url, models
+    # fallback: key-rotator providers.json (auth-интегрированные провайдеры,
+    # напр. nvidia, не имеют provider-блока в opencode-конфигах).
+    kr = VAULT_ROOT / "tools" / "key-rotator" / "providers.json"
+    if kr.exists():
+        try:
+            d = json.loads(kr.read_text(encoding="utf-8"))
+            prov = (d.get("providers") or {}).get(provider_id) or {}
+            endpoints = prov.get("endpoints") or ([prov["endpoint"]] if prov.get("endpoint") else [])
+            if endpoints:
+                return endpoints[0], list((prov.get("models_detail") or {}).keys())
+        except (OSError, json.JSONDecodeError) as exc:
+            log.warning("Не удалось прочитать key-rotator providers.json: %s", exc)
     return None, []
 
 
@@ -146,6 +158,19 @@ def resolve_key(provider_id):
         val = entry.get("key")
         if val:
             return val
+    # fallback: v2 credential-store (opencode auth export) — nvidia и др.
+    try:
+        import subprocess
+        exp = subprocess.run(["opencode", "auth", "export"], capture_output=True, text=True)
+        if exp.returncode == 0:
+            for c in json.loads(exp.stdout):
+                if c.get("integrationID") == provider_id:
+                    v = c.get("value") or {}
+                    key = v.get("key") or v.get("access")
+                    if key:
+                        return key
+    except Exception as exc:  # noqa: BLE001
+        log.warning("Не удалось прочитать v2 credential-store: %s", exc)
     return ""
 
 

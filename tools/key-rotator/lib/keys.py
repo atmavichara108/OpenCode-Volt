@@ -75,5 +75,27 @@ def resolve_key(env_name, auth_id, env=None, dotenv=None, auth=None):
             val = entry.get("key")
             if val:
                 return val, "auth.json"
+        # v2 credential-store (opencode auth export) — nvidia, lunaroute и др.
+        val = _resolve_v2_credential(auth_id)
+        if val:
+            return val, "auth-export"
 
     return "", "none"
+
+
+def _resolve_v2_credential(auth_id):
+    """Ключ из v2 credential-store opencode (opencode auth export)."""
+    try:
+        import subprocess
+        exp = subprocess.run(["opencode", "auth", "export"], capture_output=True, text=True)
+        if exp.returncode != 0:
+            return ""
+        for c in json.loads(exp.stdout):
+            if c.get("integrationID") == auth_id:
+                v = c.get("value") or {}
+                key = v.get("key") or v.get("access")
+                if key:
+                    return key
+    except Exception:  # noqa: BLE001
+        return ""
+    return ""

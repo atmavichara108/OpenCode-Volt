@@ -1,0 +1,86 @@
+{
+  "provider_id": "nvidia",
+  "model_id": "meta/muse-glimmer-30b",
+  "benchmark_version": "0.2.0",
+  "date": "2026-11-15T12:04:23Z",
+  "gates": {
+    "tools": {
+      "status": "OK",
+      "score": 1.0,
+      "passed_threshold": true,
+      "attempts": 5,
+      "error_count": 0,
+      "cost_tokens": 2597,
+      "tokens_estimated": 7647,
+      "cost_usd_est": null,
+      "latency_ms_median": 44905,
+      "notes": "",
+      "truncated_count": 0,
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    "build": {
+      "status": "OK",
+      "score": 0.8,
+      "passed_threshold": true,
+      "attempts": 5,
+      "error_count": 0,
+      "cost_tokens": 2006,
+      "tokens_estimated": 2195,
+      "cost_usd_est": null,
+      "latency_ms_median": 37996,
+      "notes": "",
+      "truncated_count": 1,
+      "finish_reasons": [
+        "length",
+        "stop"
+      ]
+    },
+    "reasoning": {
+      "status": "TRUNCATED",
+      "score": null,
+      "passed_threshold": null,
+      "attempts": 4,
+      "error_count": 0,
+      "error_rate": 0.0,
+      "error_kinds": [],
+      "cost_tokens": 1373,
+      "tokens_estimated": 1312,
+      "cost_usd_est": null,
+      "latency_ms_median": 32132.5,
+      "truncated_count": 2,
+      "finish_reasons": [
+        "length",
+        "stop"
+      ]
+    },
+    "fast": {
+      "status": "OK",
+      "score": 1.0,
+      "passed_threshold": null,
+      "attempts": 3,
+      "error_count": 0,
+      "cost_tokens": 228,
+      "tokens_estimated": 57,
+      "cost_usd_est": null,
+      "latency_ms_median": 2904,
+      "notes": "",
+      "truncated_count": 3,
+      "finish_reasons": [
+        "length"
+      ]
+    }
+  },
+  "recommendation": [
+    "tools",
+    "build"
+  ],
+  "advisory": true,
+  "task_set_hash": "2fcf9f19daa3",
+  "k": 1,
+  "budget_usd": 0.02,
+  "spent_usd_est": 0.0,
+  "budget_stop": false,
+  "gates_skipped": []
+}
