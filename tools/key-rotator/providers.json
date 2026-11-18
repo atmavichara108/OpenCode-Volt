@@ -1,7 +1,7 @@
 {
   "meta": {
     "schema": "key-rotator/providers/1.1",
-    "updated": "2026-11-15",
+    "updated": "2026-11-18",
     "note": "Декларативный каталог провайдеров для probe/ротатора. Ключей здесь НЕТ: резолв env -> vault .env -> auth.json. endpoints без * [проверить] — конвенция <site>/v1, уточняется probe. transport влияет только на smoke-chat (Iter-1); probe всегда ходит GET /models в openai-совместимом стиле. skip=провайдер вне активной ротации (managed/backlog/endpoint_dynamic). models_detail (если есть) — агентские характеристики моделей (ctx/vision/tools). Refresh 2026-11-14: добавлены живые провайдеры каталога (nvidia — по слову владельца 14.11; zai/anthropic/amd/newapi/local-deepseek/modelhub/github-copilot); lunaroute выкинут владельцем (freetrial истёк, 402).",
     "last_probe": "2026-09-27T20:00:38Z",
     "last_probe_result": "14 ACTIVE / 3 BLOCKED / 2 ERROR / 3 SKIPPED (read-only, health-log: control-plane/telemetry/provider-health.jsonl)",
@@ -98,6 +98,14 @@
           "role": null,
           "excluded": "парсинг документов, не chat"
         }
+      },
+      "trial": {
+        "kind": "daily_quota",
+        "expires": "",
+        "auto_reap": false,
+        "on_expiry": "delete_channels",
+        "owner_word": "",
+        "fact": "официальный free-ключ; суточный лимит 1 pt/день (прямая проба 2026-11-15: 429 Daily usage limit exceeded). Период не задан — срок уточнить."
       }
     },
     "google": {
@@ -116,7 +124,15 @@
       ],
       "priority": 80,
       "source": "key-rotator-brief 2026-09-27",
-      "notes": "Бесплатный ключ: flash-lite прошли все гейты бенча; rate-limit в минуту — 429-ретраи обязательны"
+      "notes": "Бесплатный ключ: flash-lite прошли все гейты бенча; rate-limit в минуту — 429-ретраи обязательны",
+      "trial": {
+        "kind": "free_period",
+        "expires": "",
+        "auto_reap": false,
+        "on_expiry": "delete_channels",
+        "owner_word": "",
+        "fact": "бесплатный ключ (flash-lite прошли гейты); срок действия ключа не подтверждён — уточнить."
+      }
     },
     "openrouter": {
       "display_name": "OpenRouter",
@@ -169,7 +185,15 @@
       ],
       "priority": 70,
       "source": "auth.json",
-      "notes": "Experiment tier бесплатен (data opt-in); Codestral/Devstral"
+      "notes": "Experiment tier бесплатен (data opt-in); Codestral/Devstral",
+      "trial": {
+        "kind": "free_tier_credits",
+        "expires": "",
+        "auto_reap": false,
+        "on_expiry": "delete_channels",
+        "owner_word": "",
+        "fact": "Experiment tier бесплатен (data opt-in). Период не задан — уточнить."
+      }
     },
     "apinex": {
       "display_name": "APInex",
@@ -204,7 +228,20 @@
       ],
       "priority": 55,
       "source": "01-Reference/provider-cards/anymodel.md",
-      "notes": "free am/* зависают на нулевом балансе (30с, 0 байт); usage API врёт +2000 — не для учёта"
+      "notes": "free am/* зависают на нулевом балансе (30с, 0 байт); usage API врёт +2000 — не для учёта",
+      "trial": {
+        "kind": "free_period",
+        "started": "2026-07-01",
+        "expires": "2026-11-18",
+        "auto_reap": false,
+        "on_expiry": "delete_channels",
+        "owner_word": "2026-11-18: «anymodel нужно выкинуть»",
+        "fact": "free am/* зависают на нулевом балансе; 402 «Your balance has run out» (2026-11-15)",
+        "reaped_at": "2026-11-18",
+        "reaped_by": "2026-11-18: «anymodel нужно выкинуть»"
+      },
+      "skip": true,
+      "skip_reason": "free period expired 2026-11-18 (2026-11-18: «anymodel нужно выкинуть»)"
     },
     "deepseek-bloodthemes": {
       "display_name": "DeepSeek (bloodthemes relay)",
@@ -355,7 +392,15 @@
       ],
       "priority": 35,
       "source": "auth.json",
-      "notes": "Probe 2026-09-27: ACTIVE, endpoint-гипотеза подтверждена (391 модель)"
+      "notes": "Probe 2026-09-27: ACTIVE, endpoint-гипотеза подтверждена (391 модель)",
+      "trial": {
+        "kind": "free_period",
+        "expires": "",
+        "auto_reap": false,
+        "on_expiry": "delete_channels",
+        "owner_word": "",
+        "fact": "free-ключ Vercel; срок не подтверждён — уточнить."
+      }
     },
     "tabitoken": {
       "display_name": "TabiToken",
@@ -464,7 +509,7 @@
       ],
       "priority": 60,
       "source": "живой каталог /api/provider+model 2026-11-14",
-      "notes": "здоровье неровное: 451/504 в пробах 10-11.11; в общем списке по слову владельца 14.11; пробу перед роутингом. Free-модели nvidia (без немотрона) введены 15.11 по слову владельца; синк идёт через bench-gate (модель попадает в канал только с PASS-бенчем).",
+      "notes": "здоровье неровное: 451/504 в пробах 10-11.11; в общем списке по слову владельца 14.11; пробу перед роутингом. Free-модели nvidia (без немотрона) введены 15.11 по слову владельца; синк идёт через bench-gate (модель попадает в канал только с PASS-бенчем).. step-5-preview: tools PASS, латенси ~43с — тяжёлый, годится как резерв.. step-5-preview назначен в coding+general+vision по слову владельца; мультимодальность подтверждена живой пробой (прочитал изображение).",
       "models_detail": {
         "muse-glimmer-30b": {
           "ctx": 32768,
@@ -489,7 +534,27 @@
           "role": "general",
           "free": true,
           "source": "bench nvidia 2026-11-15 tools PASS; build/reasoning ERROR (HTTP) — роль general по tools+fallback"
+        },
+        "step-5-preview": {
+          "ctx": 32768,
+          "role": "coding",
+          "roles": [
+            "coding",
+            "general",
+            "vision"
+          ],
+          "vision": true,
+          "free": true,
+          "source": "слово владельца 2026-11-15 (мощный мультимодальный флагман) + живая проба: картинка прочитана верно ('3 полосы'), tools PASS; латенси 12-43с — медленный"
         }
+      },
+      "trial": {
+        "kind": "free_tier_credits",
+        "expires": "",
+        "auto_reap": false,
+        "on_expiry": "delete_channels",
+        "owner_word": "",
+        "fact": "Developer Program free tier: 1000 кредитов / 40 RPM (vendors.md A-014). Период не задан — уточнить, когда сгорают кредиты."
       }
     },
     "zai": {

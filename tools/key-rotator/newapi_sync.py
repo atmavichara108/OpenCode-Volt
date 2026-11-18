@@ -145,7 +145,11 @@ def model_roles(provider_cfg: dict, bench: dict) -> list[str]:
     gates = set(bench.get("recommendation") or [])
     md = (provider_cfg or {}).get("models_detail") or {}
     entry = md.get(bare_model(bench.get("model_id", ""))) or {}
-    role_hint = entry.get("role")
+    # Роли из каталога: "role" (одна) и/или "roles" (список — модель в
+    # нескольких алиасах, напр. мультимодальный флагман general+vision).
+    role_hints = list(entry.get("roles") or [])
+    if entry.get("role") and entry["role"] not in role_hints:
+        role_hints.append(entry["role"])
     vision = bool(entry.get("vision"))
     roles = []
     if set(GATE_BY_ROLE["coding"]) <= gates:
@@ -154,9 +158,10 @@ def model_roles(provider_cfg: dict, bench: dict) -> list[str]:
         roles.append("general")
     if set(GATE_BY_ROLE["vision"]) <= gates and vision:
         roles.append("vision")
-    if role_hint in ("coding", "general", "vision") and role_hint not in roles:
-        if "tools" in gates:
-            roles.append(role_hint)
+    for hint in role_hints:
+        if hint in ("coding", "general", "vision") and hint not in roles:
+            if "tools" in gates:
+                roles.append(hint)
     return roles
 
 
@@ -467,6 +472,7 @@ def main(argv: list[str] | None = None) -> int:
 
     errors = 0
     stale_deleted = 0
+    skipped_unhealthy = []
     if args.delete_stale:
         planned = {c["channel"]["name"] for c in channels}
         for chan in existing or []:
@@ -479,6 +485,18 @@ def main(argv: list[str] | None = None) -> int:
                 chan_id = chan_id.get("value")
             if chan_id is None:
                 continue
+            # FAIL-SAFE: канал провайдера, который временно нездоров (ERROR/нет
+            # health-строки) или выпит по протоколу, НЕ удаляется вслепую.
+            # Удаляем только: (а) провайдер помечен skip (выпил), (б) провайдер
+            # здоров, но его модели/канала больше нет в плане (bench-gate).
+            pid = name.split("|", 1)[0]
+            pcfg = (catalog.get("providers") or {}).get(pid) or {}
+            if not pcfg.get("skip"):
+                h = (health or {}).get(pid) or {}
+                if h.get("status") not in OK_STATUSES:
+                    skipped_unhealthy.append({"name": name, "provider_id": pid,
+                                              "health": h.get("status") or "no_health"})
+                    continue
             _, derr = client.delete_channel(int(chan_id))
             if derr:
                 errors += 1
@@ -508,7 +526,10 @@ def main(argv: list[str] | None = None) -> int:
             errors += 1
         results.append(entry)
 
-    summary = {"errors": errors, "stale_deleted": stale_deleted}
+    summary = {"errors": errors, "stale_deleted": stale_deleted,
+               "skipped_unhealthy": len(skipped_unhealthy)}
+    if skipped_unhealthy:
+        summary["skipped_unhealthy_detail"] = skipped_unhealthy[:20]
     payload = {"ok": errors == 0, "stats": stats, "summary": summary,
                "results": results}
     out(redact_mod.redact_obj(payload, keys=[]))
