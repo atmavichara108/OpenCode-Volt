@@ -15,7 +15,7 @@ owner: УАС (куратор по Р-014), операционная запис�
 | id | Ведомство | Статус | Манифест |
 |---|---|---|---|
 | `uas` | Университет Агентских Систем (сетей) | active, 2026-10-23 | [[uas]] |
-| `uas-special-rotator` | Спец-отдел «Ротатор моделей» (УАС) | active, 2026-10-23 | [[uas-special-rotator]] |
+| `uas-special-rotator` | Спец-отдел «Ротатор моделей» (УАС) | active, 2026-10-23 (обновлён 2026-11-18: носитель — линия РМПП ses_e5455a2f2ffe6b9EqBT1aziN2A, примари Keymaster; каталог провайдеров SSOT — tools/key-rotator/providers.json; протокол выпила по сроку бесплатного периода — слово владельца 18.11) | [[uas-special-rotator]] |
 | `apps-department` | Отдел «Приложений» (подотдел ИЦ; graduating — Ability Lab; первый клиент — mail-hub) | active, 2026-10-31 (вердикт УАС: сессия ses_eKDfprGN0tGPmzJnQChkmOT есть, агент Apps-dev подключён) | `docs/org/apps-department.md` |
 | `csipm-center` | Центр стратегического планирования и менеджмента (ЦСПиМ; агент SCRUM-master, сессия ses_e0JGLx9sw7hTttx3t1BXQh5) | active, 2026-10-31 (Р-043 + вердикт УАС: сессия и агент-файл подключены) | `docs/org/csipm-center.md` |
 | `sb-service` | Служба Безопасности (агент SB) | active, 2026-10-31 (ночная программа владельца; манифест+агент в глобальном слое) | `docs/org/sb-service.md` |
