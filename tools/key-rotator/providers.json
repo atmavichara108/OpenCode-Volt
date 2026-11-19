@@ -1,7 +1,7 @@
 {
   "meta": {
     "schema": "key-rotator/providers/1.1",
-    "updated": "2026-11-18",
+    "updated": "2026-11-19",
     "note": "Декларативный каталог провайдеров для probe/ротатора. Ключей здесь НЕТ: резолв env -> vault .env -> auth.json. endpoints без * [проверить] — конвенция <site>/v1, уточняется probe. transport влияет только на smoke-chat (Iter-1); probe всегда ходит GET /models в openai-совместимом стиле. skip=провайдер вне активной ротации (managed/backlog/endpoint_dynamic). models_detail (если есть) — агентские характеристики моделей (ctx/vision/tools). Refresh 2026-11-14: добавлены живые провайдеры каталога (nvidia — по слову владельца 14.11; zai/anthropic/amd/newapi/local-deepseek/modelhub/github-copilot); lunaroute выкинут владельцем (freetrial истёк, 402).",
     "last_probe": "2026-09-27T20:00:38Z",
     "last_probe_result": "14 ACTIVE / 3 BLOCKED / 2 ERROR / 3 SKIPPED (read-only, health-log: control-plane/telemetry/provider-health.jsonl)",
@@ -37,7 +37,7 @@
       ],
       "priority": 85,
       "source": "01-Reference/provider-cards/amd-radeon.md",
-      "notes": "Официальный free-кей; лимитация нагрузкой, не квотой. Probe 2026-09-28: ACTIVE, 9 моделей. Все (кроме MinerU) поддерживают tools+json_output. Агентские (tool-calling + большой контекст): DeepSeek-V4.1-Flash/V4-Flash/MiMo-V2.6-Flash = 1M ctx; GLM-5.3-Flash/Qwen3.8-27B/Qwen3.8-Flash-Next = 256K. НЕ агентские: MiniCPM5-2B (2B, слабое понимание — риск вредных действий), MinerU2.5-Pro (парсинг документов, без tools/chat).",
+      "notes": "Официальный free-кей; лимитация нагрузкой, не квотой. Probe 2026-09-28: ACTIVE, 9 моделей. Все (кроме MinerU) поддерживают tools+json_output. Агентские (tool-calling + большой контекст): DeepSeek-V4.1-Flash/V4-Flash/MiMo-V2.6-Flash = 1M ctx; GLM-5.3-Flash/Qwen3.8-27B/Qwen3.8-Flash-Next = 256K. НЕ агентские: MiniCPM5-2B (2B, слабое понимание — риск вредных действий), MinerU2.5-Pro (парсинг документов, без tools/chat). Qwen3.8-Flash-Next: 19.11 2026 GET /v1/models с живым ключом → 200, модели в каталоге НЕТ (12 моделей, Flash-Next отсутствует) — модель ушла с провайдера; bench 18.11 → ERROR 404 «model not available». Канал снимается через bench-gate после сброса суточной квоты (fail-safe: нездоровый провайдер не сносится вслепую).",
       "models_detail": {
         "DeepSeek-V4.1-Flash": {
           "ctx": 1048576,
@@ -99,14 +99,16 @@
           "excluded": "парсинг документов, не chat"
         }
       },
-      "trial": {
+      "quota": {
         "kind": "daily_quota",
-        "expires": "",
-        "auto_reap": false,
-        "on_expiry": "delete_channels",
-        "owner_word": "",
-        "fact": "официальный free-ключ; суточный лимит 1 pt/день (прямая проба 2026-11-15: 429 Daily usage limit exceeded). Период не задан — срок уточнить."
-      }
+        "registered_at": "2026-11-19",
+        "fact": "ДНЕВНОЙ лимит провайдера на КЛЮЧ: 1 pt/сутки, счёт по Beijing time, сброс 16:00 UTC (20.11 00:00 Beijing). Проверено 2026-11-19: ошибка «Daily usage limit exceeded: at most 1 pt per day (Beijing time) for this key»; GET /v1/models с тем же ключом → 200 (ключ жив, исчерпан только счётчик). Ключ ОДИН на оба имени: amd ≡ amd-radeon (sha256[:12]=ec7d0577891c, префикс rc-806, длина 51); в opencode auth export числится под обоими именами. Развод по квотам не нужен: счётчик на стороне провайдера, отдельного второго аккаунта в хранилище нет.",
+        "owner_word": "2026-11-19: «amd-radeon, google, nvidia, mistral» - постоянная бесплатная квота",
+        "monitor": "probe: сброс 16:00 UTC; 1 запрос в сутки на ключ — не использовать как основной приоритет и не тратить на приёмочные пробы; при исчерпании → 429, выпил только по слову владельца",
+        "shared_account_group": "amd-radeon"
+      },
+      "shared_key_group": "amd-radeon",
+      "shared_key_note": "Тот же ключ и endpoint, что у amd-radeon; одно имя счёта — не два независимых провайдера."
     },
     "google": {
       "display_name": "Google AI Studio (Gemini free key)",
@@ -125,13 +127,12 @@
       "priority": 80,
       "source": "key-rotator-brief 2026-09-27",
       "notes": "Бесплатный ключ: flash-lite прошли все гейты бенча; rate-limit в минуту — 429-ретраи обязательны",
-      "trial": {
-        "kind": "free_period",
-        "expires": "",
-        "auto_reap": false,
-        "on_expiry": "delete_channels",
-        "owner_word": "",
-        "fact": "бесплатный ключ (flash-lite прошли гейты); срок действия ключа не подтверждён — уточнить."
+      "quota": {
+        "kind": "free_tier_credits",
+        "registered_at": "2026-11-18",
+        "fact": "бесплатный ключ Google (flash-lite прошли гейты); квота возобновляется — постоянная.",
+        "owner_word": "2026-11-18: «amd-radeon, google, nvidia, mistral» - постоянная бесплатная квота",
+        "monitor": "probe health + квотный гейт; срок не задан — выпил только по слову владельца"
       }
     },
     "openrouter": {
@@ -147,11 +148,56 @@
         "coding",
         "general"
       ],
-      "priority": 75,
+      "priority": 50,
       "source": "auth.json",
-      "skip": "backlog",
-      "backlog_reason": "awaiting_payment",
-      "notes": "BACKLOG (подготовлен, но вне активной ротации/пилота до +$10 баланса). Probe 2026-09-27: ACTIVE, 460 моделей (17 :free). Конфиг сохранён — реактивация = убрать поля skip/backlog_reason. Free-кодинг :free: qwen/qwen3.8-27b:free, nvidia/nemotron-3-*:free, google/gemma-4-*:free."
+      "skip": false,
+      "notes": "Free-квота есть, но очень маленькая (слово владельца 2026-11-18: «нужно ещё добавить опенроутер, там очень маленькая квота, но она есть»). Введён в ротацию по bench-gate: каналы только для free-моделей с PASS-бенчем. Ранее был BACKLOG (ожидание +$10 баланса) — статус снят по слову владельца 18.11. Немотрон: nemotron-3-ultra-550b-a55b:free — все гейты PASS (2026-11-19).",
+      "quota": {
+        "kind": "free_tier_credits",
+        "registered_at": "2026-11-18",
+        "fact": "free-модели OpenRouter: квота 50 запросов/сутки на аккаунт (X-RateLimit-Limit: 50, сброс 00:00 UTC; при исчерпании — HTTP 429 «free-models-per-day»; +10 кредитов дают 1000/сутки). Подтверждено пробой 2026-11-18. Модели с нулевой ценой: 14 (список :free в /v1/models).",
+        "owner_word": "2026-11-18: «нужно ещё добавить опенроутер, там очень маленькая квота, но она есть»",
+        "monitor": "probe + bench free-моделей; приоритет 50 (резерв после nvidia) — квоту 50/день нельзя тратить на основном потоке; при 429 → деградация, выпил только по слову владельца"
+      },
+      "models_detail": {
+        "ernie-5.5-flash-preview:free": {
+          "ctx": null,
+          "role": "general",
+          "roles": [
+            "coding",
+            "general"
+          ],
+          "free": true,
+          "source": "bench openrouter 2026-11-18: tools+build+reasoning PASS (score 1.0/0.8/1.0), fast 1.7с"
+        },
+        "north-mini-code:free": {
+          "ctx": 256000,
+          "role": "coding",
+          "roles": [
+            "coding",
+            "general"
+          ],
+          "free": true,
+          "source": "bench openrouter 2026-11-18: tools+build+reasoning PASS (1.0/1.0/1.0), fast 0.7с"
+        },
+        "dots-3-note-preview:free": {
+          "ctx": 512000,
+          "role": "general",
+          "roles": [
+            "coding",
+            "general"
+          ],
+          "free": true,
+          "source": "bench openrouter 2026-11-18: tools+build+reasoning PASS (1.0/1.0/0.75), fast 3.3с"
+        },
+        "nemotron-3-ultra-550b-a55b:free": {
+          "ctx": null,
+          "role": "coding",
+          "free": true,
+          "vision": false,
+          "source": "bench openrouter 2026-11-19: tools+build+reasoning PASS (1.0/1.0/1.0), fast 1.0; латенси 1.2–2.6с"
+        }
+      }
     },
     "linaliapi": {
       "display_name": "LinaliAPI",
@@ -186,13 +232,12 @@
       "priority": 70,
       "source": "auth.json",
       "notes": "Experiment tier бесплатен (data opt-in); Codestral/Devstral",
-      "trial": {
+      "quota": {
         "kind": "free_tier_credits",
-        "expires": "",
-        "auto_reap": false,
-        "on_expiry": "delete_channels",
-        "owner_word": "",
-        "fact": "Experiment tier бесплатен (data opt-in). Период не задан — уточнить."
+        "registered_at": "2026-11-18",
+        "fact": "Experiment tier бесплатен (data opt-in) — квота возобновляется, постоянная.",
+        "owner_word": "2026-11-18: «amd-radeon, google, nvidia, mistral» - постоянная бесплатная квота",
+        "monitor": "probe health + квотный гейт; срок не задан — выпил только по слову владельца"
       }
     },
     "apinex": {
@@ -392,14 +437,34 @@
       ],
       "priority": 35,
       "source": "auth.json",
-      "notes": "Probe 2026-09-27: ACTIVE, endpoint-гипотеза подтверждена (391 модель)",
-      "trial": {
-        "kind": "free_period",
-        "expires": "",
-        "auto_reap": false,
-        "on_expiry": "delete_channels",
-        "owner_word": "",
-        "fact": "free-ключ Vercel; срок не подтверждён — уточнить."
+      "notes": "Probe 2026-09-27: ACTIVE, endpoint-гипотеза подтверждена (391 модель) Пин verifier (2026-11-19): recursive/flint-v1.0 — живая сессия, отдельный провайдер от reviewer. Немотрон: nvidia/nemotron-3.5-lightning-free — только tools (build ERROR) — как замена не годится.",
+      "quota": {
+        "kind": "free_tier_credits",
+        "registered_at": "2026-11-18",
+        "fact": "Free tier: доступны не все zero-price модели — reflection/beam, reflection/beam-free, humansand/ampersand-v0.1 → HTTP 403 «Free tier users do not have access»; stealth/glyph-cluster → 403 (нужен Pro с купленными кредитами). Работают и бесплатны (usage.cost=0, market_cost=0): recursive/flint-v1.0, nvidia/nemotron-3.5-lightning-free. Платные модели работают и списывают баланс (qwen-3-14b: usage.cost=1.644e-05) — в free-ротацию не идут. Квота запросов в заголовках не отдаётся; лимитных заголовков нет. Проверено 2026-11-18.",
+        "owner_word": "2026-11-18: «vercel» нужно проверять отдельно, потенциально бесплатно с низкой квотой",
+        "monitor": "проба flint-v1.0 перед роутингом; платные модели в free-группу не заводить (списывают баланс)"
+      },
+      "models_detail": {
+        "flint-v1.0": {
+          "ctx": 262144,
+          "role": "coding",
+          "free": true,
+          "source": "bench vercel 2026-11-18: tools+build PASS (1.0/1.0), fast 1.0с; живая проба usage.cost=0",
+          "checker_pin": {
+            "role": "verifier",
+            "decision": "2026-11-19 (Ротатор, зона каталога и здоровья)",
+            "evidence": "живая сессия opencode run 2026-11-19; bench 2026-11-18 tools+build PASS, usage.cost=0; провайдер отличается от reviewer — Р-109",
+            "owner_word": "2026-11-18: «vercel» нужно проверять отдельно, потенциально бесплатно с низкой квотой"
+          }
+        },
+        "nvidia/nemotron-3.5-lightning-free": {
+          "ctx": null,
+          "role": "general",
+          "free": true,
+          "vision": false,
+          "source": "bench vercel 2026-11-19: tools PASS (1.0), build ERROR, reasoning TRUNCATED — только tools"
+        }
       }
     },
     "tabitoken": {
@@ -509,7 +574,7 @@
       ],
       "priority": 60,
       "source": "живой каталог /api/provider+model 2026-11-14",
-      "notes": "здоровье неровное: 451/504 в пробах 10-11.11; в общем списке по слову владельца 14.11; пробу перед роутингом. Free-модели nvidia (без немотрона) введены 15.11 по слову владельца; синк идёт через bench-gate (модель попадает в канал только с PASS-бенчем).. step-5-preview: tools PASS, латенси ~43с — тяжёлый, годится как резерв.. step-5-preview назначен в coding+general+vision по слову владельца; мультимодальность подтверждена живой пробой (прочитал изображение).",
+      "notes": "здоровье неровное: 451/504 в пробах 10-11.11; в общем списке по слову владельца 14.11; пробу перед роутингом. Free-модели nvidia (без немотрона) введены 15.11 по слову владельца; синк идёт через bench-gate (модель попадает в канал только с PASS-бенчем).. step-5-preview: tools PASS, латенси ~43с — тяжёлый, годится как резерв.. step-5-preview назначен в coding+general+vision по слову владельца; мультимодальность подтверждена живой пробой (прочитал изображение). Пин reviewer (2026-11-19): poolside/laguna-xs-2.1 — живая сессия, отдельный провайдер от verifier. Немотрон (bench 2026-11-19): ultra-550b-a55b — все гейты PASS; super-vl-120b-a12b — все гейты PASS (VL); nano-omni — build PASS; 3.5-lightning — без вердикта.",
       "models_detail": {
         "muse-glimmer-30b": {
           "ctx": 32768,
@@ -527,7 +592,13 @@
           "ctx": 32768,
           "role": "coding",
           "free": true,
-          "source": "bench nvidia 2026-11-15 tools+build+reasoning PASS"
+          "source": "bench nvidia 2026-11-15 tools+build+reasoning PASS",
+          "checker_pin": {
+            "role": "reviewer",
+            "decision": "2026-11-19 (Ротатор, зона каталога и здоровья)",
+            "evidence": "живая сессия opencode run 2026-11-19; УАС — два полных круга по файлу агента",
+            "owner_word": "2026-11-18: «amd-radeon, google, nvidia, mistral» - постоянная бесплатная квота"
+          }
         },
         "minimax-m3.1-flash": {
           "ctx": 32768,
@@ -546,15 +617,43 @@
           "vision": true,
           "free": true,
           "source": "слово владельца 2026-11-15 (мощный мультимодальный флагман) + живая проба: картинка прочитана верно ('3 полосы'), tools PASS; латенси 12-43с — медленный"
+        },
+        "nemotron-3-ultra-550b-a55b": {
+          "ctx": null,
+          "role": "coding",
+          "free": true,
+          "vision": false,
+          "source": "bench nvidia 2026-11-19: tools+build+reasoning PASS (1.0/1.0/0.75), fast 1.0; латенси 1.2–1.9с",
+          "owner_word": "2026-11-18: «немотрон - нужно проверить на что он годиться в рутинных процессах например» (завед в ротацию — отдельное решение владельца)"
+        },
+        "nemotron-3-nano-omni-30b-a3b-reasoning": {
+          "ctx": null,
+          "role": "coding",
+          "free": true,
+          "vision": false,
+          "source": "bench nvidia 2026-11-19: build PASS (1.0), tools 0.8 (порог не пройден), reasoning TRUNCATED; латенси 1.5–2.4с"
+        },
+        "nemotron-3.5-lightning-30b-a3b": {
+          "ctx": null,
+          "role": "general",
+          "free": true,
+          "vision": false,
+          "source": "bench nvidia 2026-11-19: tools 0.8 (порог не пройден), build+reasoning TRUNCATED — вердикта нет, в ротацию не идёт"
+        },
+        "nemotron-3.5-super-vl-120b-a12b": {
+          "ctx": null,
+          "role": "coding",
+          "free": true,
+          "vision": true,
+          "source": "bench nvidia 2026-11-19: tools+build+reasoning PASS (1.0/1.0/1.0), fast 1.0; латенси 0.7–2.2с; мультимодальная (VL)"
         }
       },
-      "trial": {
+      "quota": {
         "kind": "free_tier_credits",
-        "expires": "",
-        "auto_reap": false,
-        "on_expiry": "delete_channels",
-        "owner_word": "",
-        "fact": "Developer Program free tier: 1000 кредитов / 40 RPM (vendors.md A-014). Период не задан — уточнить, когда сгорают кредиты."
+        "registered_at": "2026-11-18",
+        "fact": "Developer Program free tier: 1000 кредитов / 40 RPM (vendors.md A-014); кредиты возобновляются — постоянная.",
+        "owner_word": "2026-11-18: «amd-radeon, google, nvidia, mistral» - постоянная бесплатная квота",
+        "monitor": "probe health + квотный гейт; срок не задан — выпил только по слову владельца"
       }
     },
     "zai": {
@@ -607,7 +706,17 @@
       ],
       "priority": 90,
       "source": "живой каталог 2026-11-14",
-      "notes": "стенд родной amd-radeon (CN); ключ может совпадать по семейству"
+      "notes": "стенд родной amd-radeon (CN); ключ может совпадать по семейству (= amd-radeon: один ключ, один счётчик; см. shared_key_group)",
+      "quota": {
+        "kind": "daily_quota",
+        "registered_at": "2026-11-19",
+        "fact": "ДНЕВНОЙ лимит провайдера на КЛЮЧ: 1 pt/сутки, счёт по Beijing time, сброс 16:00 UTC (20.11 00:00 Beijing). Проверено 2026-11-19: ошибка «Daily usage limit exceeded: at most 1 pt per day (Beijing time) for this key»; GET /v1/models с тем же ключом → 200 (ключ жив, исчерпан только счётчик). Ключ ОДИН на оба имени: amd ≡ amd-radeon (sha256[:12]=ec7d0577891c, префикс rc-806, длина 51); в opencode auth export числится под обоими именами. Развод по квотам не нужен: счётчик на стороне провайдера, отдельного второго аккаунта в хранилище нет.",
+        "owner_word": "2026-11-19: «amd-radeon, google, nvidia, mistral» - постоянная бесплатная квота",
+        "monitor": "probe: сброс 16:00 UTC; 1 запрос в сутки на ключ — не использовать как основной приоритет и не тратить на приёмочные пробы; при исчерпании → 429, выпил только по слову владельца",
+        "shared_account_group": "amd-radeon"
+      },
+      "shared_key_group": "amd-radeon",
+      "shared_key_note": "Тот же ключ и endpoint, что у amd-radeon; одно имя счёта — не два независимых провайдера."
     },
     "newapi": {
       "display_name": "NewAPI (локальный шлюз)",

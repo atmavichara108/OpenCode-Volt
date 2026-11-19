@@ -238,6 +238,85 @@ Hook (spec: /home/rudra/dotfiles/docs/specs/promo-provider-probe-balance-hook.md
 (free-ключ). Для каждого нужно слово владельца с датой — без даты `auto_reap`
 остаётся выключенным.
 
+## Протокол добавления: временный период ↔ постоянная квота (2026-11-18)
+
+Слово владельца (basis: quoted, 2026-11-18): «"amd-radeon, google, nvidia, mistral" —
+постоянная бесплатная квота. "vercel" нужно проверять отдельно, потенциально бесплатно
+с низкой квотой. нужно ещё добавить опенроутер, там очень маленькая квота, но она есть …
+дополнительно создай протокол для добавления как провайдеров с бесплатным периодом
+(временные) так и провайдеров с обновляемой бесплатной квотой (постоянные), причем
+протокол добавления временных должен быть связан с протоколом удаления временных».
+
+### Два типа провайдеров с бесплатной квотой
+
+| Тип | Что значит | Поле в каталоге | Что происходит при исчерпании | Выпил |
+|-----|-----------|-----------------|-------------------------------|-------|
+| **ВРЕМЕННЫЙ** | бесплатный период с датой сгорания (акция, триал) | `trial` (`expires`, `auto_reap`, `on_expiry`, `owner_word`) | каналы перестают работать | **по дате, автоматически** (`trial_expiry.py`) |
+| **ПОСТОЯННЫЙ** | обновляемая квота (free tier, суточный лимит) | `quota` (`kind`, `fact`, `owner_word`, `monitor`) | деградация (DEGRADED/ERROR) + сигнал владельцу | **только по слову владельца** |
+
+Временный и постоянный — не «лучше/хуже», а разные жизненные циклы: у временного
+конечна неопределённость даты (срок горит), у постоянного конечен ресурс, но срок
+не горит (квота возвращается).
+
+### Связка добавления и удаления (обязательная)
+
+Добавление временного провайдера **не завершено**, пока не зарегистрирован срок
+выпила: `onboard-temporary` пишет в каталог блок `trial` в том же формате, который
+читает `trial_expiry.py`. Провайдер без `trial.expires` не может быть временным —
+иначе он навсегда останется в шлюзе.
+
+```
+слово владельца (подключить + срок)
+   └─ provider_lifecycle.py onboard-temporary <pid> --expires <дата> --owner-word "..."
+        └─ блок trial в providers.json → тот же механизм, что читает trial_expiry.py
+             └─ по наступлении даты: trial_expiry.py --apply --owner-word "..."
+                  └─ каналы удалены/отключены, провайдер skip=true, health SKIPPED/trial_expired
+```
+
+### Постоянная квота: квотный гейт вместо выпила по дате
+
+1. `onboard-permanent <pid>` → блок `quota` (без срока, `auto_reap` не выставляется).
+2. `probe` пишет health-строку: ACTIVE / DEGRADED / ERROR + `balance_unknown`.
+3. Исчерпание квоты → DEGRADED/ERROR → сигнал владельцу («квота кончилась, каналы
+   деградировали») — решение (выкинуть / докупить / оставить) принимает владелец.
+4. Если владелец решил убрать — `set-skip` + `trial_expiry.py --force-provider` (тот
+   же путь выпила, что и у временных).
+
+### Команды (`tools/key-rotator/provider_lifecycle.py`)
+
+```bash
+python3 tools/key-rotator/provider_lifecycle.py status
+python3 tools/key-rotator/provider_lifecycle.py onboard-temporary <pid> --expires 2026-12-01 --owner-word "..." [--on-expiry delete_channels|disable_channels]
+python3 tools/key-rotator/provider_lifecycle.py onboard-permanent <pid> [--quota-kind free_tier_credits|daily_quota] [--quota-note "..."]
+python3 tools/key-rotator/provider_lifecycle.py reap [--provider <pid>] [--owner-word "..."] [--apply]
+python3 tools/key-rotator/provider_lifecycle.py set-skip <pid> [--reason "..."] | clear-skip <pid>
+```
+
+`reap` — делегат к `trial_expiry.py` (одна точка входа, один гейт: owner_word).
+
+### Регламент (кто что делает)
+
+1. **Владелец** говорит: «подключить X, бесплатный период до <дата>, убрать когда
+   истечёт» (временный) ИЛИ «подключить Y, у него постоянная бесплатная квота» (постоянный).
+2. **Ротатор** вносит провайдера в каталог через `provider_lifecycle.py` (тип выбирает
+   по слову владельца), затем PROBE → бенч → `newapi_sync --apply` (каналы — только
+   с bench-PASS).
+3. **Ротатор** держит `status` в актуальном состоянии; при наступлении срока
+   (временный) — выпил с owner_word; при исчерпании квоты (постоянный) — сигнал владельцу.
+4. **Отчёт** владельцу: кто временный (сколько дней осталось), кто постоянный (состояние квоты).
+
+### Текущий реестр (18.11)
+
+| Провайдер | Тип | Факт |
+|-----------|-----|------|
+| anymodel | временный (истёк 18.11) | выкинут по слову владельца: 14 каналов удалены |
+| amd-radeon | постоянный (`daily_quota`) | free-ключ, суточный лимит 1 pt/день |
+| google | постоянный (`free_tier_credits`) | бесплатный ключ, квота возобновляется |
+| nvidia | постоянный (`free_tier_credits`) | free tier 1000 кредитов / 40 RPM |
+| mistral | постоянный (`free_tier_credits`) | experiment tier, data opt-in |
+| openrouter | постоянный (`free_tier_credits`) | очень маленькая квота, но есть (слово владельца) |
+| vercel | `verify` | потенциально бесплатно с низкой квотой — проверяется отдельно |
+
 ## Reserved: telemetry slot
 
 Место под будущую measured-телеметрию `control-plane/telemetry/provider-usage.jsonl` (append-only, schema: provider_id/model_id/tokens/cost_estimate/source/checked_at). Реализуется отдельной сессией. Провайдеры без balance-API (AnyModel, AMD-вероятно) будут feed'ить туда из usage полей ответов.

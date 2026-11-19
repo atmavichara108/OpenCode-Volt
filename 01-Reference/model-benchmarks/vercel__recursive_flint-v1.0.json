@@ -1,0 +1,87 @@
+{
+  "provider_id": "vercel",
+  "model_id": "recursive/flint-v1.0",
+  "benchmark_version": "0.2.0",
+  "date": "2026-11-18T16:48:06Z",
+  "gates": {
+    "tools": {
+      "status": "OK",
+      "score": 1.0,
+      "passed_threshold": true,
+      "attempts": 5,
+      "error_count": 0,
+      "cost_tokens": 1147,
+      "tokens_estimated": 7647,
+      "cost_usd_est": null,
+      "latency_ms_median": 2346,
+      "notes": "",
+      "truncated_count": 0,
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    "build": {
+      "status": "OK",
+      "score": 1.0,
+      "passed_threshold": true,
+      "attempts": 5,
+      "error_count": 0,
+      "cost_tokens": 895,
+      "tokens_estimated": 2195,
+      "cost_usd_est": null,
+      "latency_ms_median": 2742,
+      "notes": "",
+      "truncated_count": 0,
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    "reasoning": {
+      "status": "ERROR",
+      "score": null,
+      "passed_threshold": null,
+      "attempts": 4,
+      "error_count": 1,
+      "error_rate": 0.25,
+      "error_kinds": [
+        "rate_limit"
+      ],
+      "cost_tokens": 847,
+      "tokens_estimated": 1312,
+      "cost_usd_est": null,
+      "latency_ms_median": null,
+      "truncated_count": 2,
+      "finish_reasons": [
+        "length",
+        "stop"
+      ]
+    },
+    "fast": {
+      "status": "OK",
+      "score": 1.0,
+      "passed_threshold": null,
+      "attempts": 3,
+      "error_count": 0,
+      "cost_tokens": 66,
+      "tokens_estimated": 57,
+      "cost_usd_est": null,
+      "latency_ms_median": 1003,
+      "notes": "",
+      "truncated_count": 3,
+      "finish_reasons": [
+        "length"
+      ]
+    }
+  },
+  "recommendation": [
+    "tools",
+    "build"
+  ],
+  "advisory": true,
+  "task_set_hash": "2fcf9f19daa3",
+  "k": 1,
+  "budget_usd": 0.02,
+  "spent_usd_est": 0.0,
+  "budget_stop": false,
+  "gates_skipped": []
+}

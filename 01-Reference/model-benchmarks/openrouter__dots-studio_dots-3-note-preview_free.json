@@ -1,0 +1,84 @@
+{
+  "provider_id": "openrouter",
+  "model_id": "dots-studio/dots-3-note-preview:free",
+  "benchmark_version": "0.2.0",
+  "date": "2026-11-18T15:57:13Z",
+  "gates": {
+    "tools": {
+      "status": "OK",
+      "score": 1.0,
+      "passed_threshold": true,
+      "attempts": 5,
+      "error_count": 0,
+      "cost_tokens": 1762,
+      "tokens_estimated": 7647,
+      "cost_usd_est": null,
+      "latency_ms_median": 3694,
+      "notes": "",
+      "truncated_count": 0,
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    "build": {
+      "status": "OK",
+      "score": 1.0,
+      "passed_threshold": true,
+      "attempts": 5,
+      "error_count": 0,
+      "cost_tokens": 1518,
+      "tokens_estimated": 2195,
+      "cost_usd_est": null,
+      "latency_ms_median": 3451,
+      "notes": "",
+      "truncated_count": 0,
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    "reasoning": {
+      "status": "OK",
+      "score": 0.75,
+      "passed_threshold": true,
+      "attempts": 4,
+      "error_count": 0,
+      "cost_tokens": 555,
+      "tokens_estimated": 1312,
+      "cost_usd_est": null,
+      "latency_ms_median": 3700.5,
+      "notes": "",
+      "truncated_count": 0,
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    "fast": {
+      "status": "OK",
+      "score": 1.0,
+      "passed_threshold": null,
+      "attempts": 3,
+      "error_count": 0,
+      "cost_tokens": 99,
+      "tokens_estimated": 57,
+      "cost_usd_est": null,
+      "latency_ms_median": 3341,
+      "notes": "",
+      "truncated_count": 3,
+      "finish_reasons": [
+        "length"
+      ]
+    }
+  },
+  "recommendation": [
+    "tools",
+    "build",
+    "reasoning"
+  ],
+  "advisory": true,
+  "task_set_hash": "2fcf9f19daa3",
+  "k": 1,
+  "budget_usd": 0.02,
+  "spent_usd_est": 0.0,
+  "budget_stop": false,
+  "gates_skipped": []
+}

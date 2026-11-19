@@ -26,3 +26,4 @@
 | nvidia / meta/muse-glimmer-30b | 1.0 / 1.0 ✓ | 0.8 / 0.75 ✓ | TRUNCATED | 1.0 | tools, build | 2026-11-15T12:04:23Z | 0.2.0 | 2fcf9f19daa3 |
 | nvidia / minimaxai/minimax-m3.1-flash | 1.0 / 1.0 ✓ | ERROR | ERROR | 1.0 | tools | 2026-11-15T12:29:55Z | 0.2.0 | 2fcf9f19daa3 |
 | nvidia / poolside/laguna-xs-2.1 | 1.0 / 1.0 ✓ | 1.0 / 0.75 ✓ | 0.75 / 0.7 ✓ | 1.0 | tools, build, reasoning | 2026-11-15T12:30:14Z | 0.2.0 | 2fcf9f19daa3 |
+| nvidia / stepfun-ai/step-5-preview | 1.0 / 1.0 ✓ | — | — | — | tools | 2026-11-15T13:00:26Z | 0.2.0 | 2fcf9f19daa3 |

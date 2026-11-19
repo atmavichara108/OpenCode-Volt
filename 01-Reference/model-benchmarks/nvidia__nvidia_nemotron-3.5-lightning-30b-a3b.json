@@ -1,0 +1,84 @@
+{
+  "provider_id": "nvidia",
+  "model_id": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "benchmark_version": "0.2.0",
+  "date": "2026-11-19T01:31:17Z",
+  "gates": {
+    "tools": {
+      "status": "OK",
+      "score": 0.8,
+      "passed_threshold": false,
+      "attempts": 5,
+      "error_count": 0,
+      "cost_tokens": 2712,
+      "tokens_estimated": 7647,
+      "cost_usd_est": null,
+      "latency_ms_median": 3741,
+      "notes": "",
+      "truncated_count": 0,
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    "build": {
+      "status": "TRUNCATED",
+      "score": null,
+      "passed_threshold": null,
+      "attempts": 5,
+      "error_count": 0,
+      "error_rate": 0.0,
+      "error_kinds": [],
+      "cost_tokens": 2305,
+      "tokens_estimated": 2195,
+      "cost_usd_est": null,
+      "latency_ms_median": 3437,
+      "truncated_count": 4,
+      "finish_reasons": [
+        "length",
+        "stop"
+      ]
+    },
+    "reasoning": {
+      "status": "TRUNCATED",
+      "score": null,
+      "passed_threshold": null,
+      "attempts": 4,
+      "error_count": 0,
+      "error_rate": 0.0,
+      "error_kinds": [],
+      "cost_tokens": 1287,
+      "tokens_estimated": 1312,
+      "cost_usd_est": null,
+      "latency_ms_median": 2299.0,
+      "truncated_count": 2,
+      "finish_reasons": [
+        "length",
+        "stop"
+      ]
+    },
+    "fast": {
+      "status": "OK",
+      "score": 1.0,
+      "passed_threshold": null,
+      "attempts": 3,
+      "error_count": 0,
+      "cost_tokens": 108,
+      "tokens_estimated": 57,
+      "cost_usd_est": null,
+      "latency_ms_median": 551,
+      "notes": "",
+      "truncated_count": 3,
+      "finish_reasons": [
+        "length"
+      ]
+    }
+  },
+  "recommendation": [],
+  "advisory": true,
+  "task_set_hash": "2fcf9f19daa3",
+  "k": 1,
+  "budget_usd": 0.02,
+  "spent_usd_est": 0.0,
+  "budget_stop": false,
+  "gates_skipped": []
+}

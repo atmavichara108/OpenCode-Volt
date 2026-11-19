@@ -169,19 +169,39 @@ def channel_name(provider_id: str, model_id: str, alias: str) -> str:
     return f"{provider_id}|{model_id}|{alias}"
 
 
+def channel_base_url(provider_cfg: dict) -> str:
+    """base_url для канала New API.
+
+    Шлюз сам дописывает `/v1/chat/completions` к base_url (проверено mock-upstream
+    2026-11-18: base_url `.../v1` → запрос уходил на `/v1/v1/chat/completions`).
+    Поэтому хвост `/v1` из endpoint'а каталога срезается — иначе все каналы
+    отдают 404 (amd) / 451 (nvidia), при том что прямые пробы с правильным
+    URL отвечают 200.
+
+    В каталоге endpoint хранится в «пробном» виде (с /v1) — он же используется
+    probe.py и bench.py, которые /v1 добавляют сами.
+    """
+    urls = provider_cfg.get("endpoints") or [provider_cfg.get("endpoint")]
+    base_url = next((u for u in urls if u), "")
+    trimmed = base_url.rstrip("/")
+    if trimmed.endswith("/v1"):
+        base_url = trimmed[: -len("/v1")]
+    return base_url
+
+
 def build_channel(provider_id: str, provider_cfg: dict, model_id: str,
                   alias: str, key_value: str = "") -> dict:
     """Тело канала New API (type 1 = OpenAI-compatible).
 
-    base_url из каталога провайдера. Канал обслуживает ИМЯ АЛИАСА
+    base_url из каталога провайдера (без хвостового /v1 — см. channel_base_url).
+    Канал обслуживает ИМЯ АЛИАСА
     (free-code/…): models = алиас, model_mapping переводит его в реальную
     модель для апстрима — тогда агент зовёт `newapi/free-code`, а дистрибутор
     делает failover между каналами одной роли. Группа — единая GATE_GROUP
     (токен видит все алиасы). Секрет подставляется только при apply,
     никогда в dry-run/вывод.
     """
-    urls = provider_cfg.get("endpoints") or [provider_cfg.get("endpoint")]
-    base_url = next((u for u in urls if u), "")
+    base_url = channel_base_url(provider_cfg)
     priority = provider_cfg.get("priority") or 0
     try:
         priority = int(priority)
