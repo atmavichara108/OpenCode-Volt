@@ -1,8 +1,8 @@
 {
   "meta": {
     "schema": "key-rotator/rotation/1.0",
-    "updated": "2026-10-29",
-    "note": "Конфиг Iter-1 (failover-ротация). preferred — подстроки для матчинга реальных model id (case-insensitive), не точные id: реальный id берётся из model-router models. Причина ротации: current-провайдер BLOCKED/ERROR в health-log, либо --prefer-better (лучший кандидат строго лучше по priority). DEGRADED/ACTIVE/SKIPPED = здоров, не трогаем. preferred упорядочены по агентскому качеству: tool-calling + большой контекст + сильное следование инструкциям сначала; слабые (<=2B) и узкоспециальные (парсеры) исключены. openrouter убран из preferred — backlog (skip в providers.json). | 2026-10-29: justwoker → skip (BLOCKED empty_models), preferred очищен (ложный фолбэк). Смена preferred — сверка ИЦ+ЦУ, канон моделей — владелец."
+    "updated": "2026-11-19",
+    "note": "Конфиг Iter-1 (failover-ротация). preferred — подстроки для матчинга реальных model id (case-insensitive), не точные id: реальный id берётся из model-router models. Причина ротации: current-провайдер BLOCKED/ERROR в health-log, либо --prefer-better (лучший кандидат строго лучше по priority). DEGRADED/ACTIVE/SKIPPED = здоров, не трогаем. 2026-11-19: синхронизация с каталогом и живыми фактами — openrouter возвращён в preferred (причина устарела: skip=false с 18.11, ACTIVE, bench-PASS у 4 free-моделей, слово владельца «нужно ещё добавить опенроутер»; квота 50/суток — каналы остаются при исчерпании); nvidia добавлен (единственный free-контур с ёмкостью: 1000 кредитов / 40 RPM, bench-PASS у многих; УАС перенесла на него 26 файлов агентов); vercel приведён к живому каталогу (518 моделей) и bench-PASS: flint-v1.0 — единственный с PASS, «qwen-3.6-max» в каталоге vercel отсутствует — убран; nemotron ПОДТВЕРЖДЁН бенчем 19.11 (ultra-550b-a55b и super-vl-120b-a12b — все гейты PASS) и заведён в шлюз по слову владельца («Да: ultra + super-vl»); amd-radeon priority 85 при суточной квоте 1 запрос/сутки на ключ — использовать первым запросом дня, остальное — failover. Смена preferred — сверка ИЦ+ЦУ, канон моделей — владелец."
   },
   "default_role": "coding",
   "agent_roles": {
@@ -157,11 +157,13 @@
     },
     "vercel": {
       "coding": [
-        "qwen3-coder",
-        "deepseek-v4"
+        "recursive/flint-v1.0",
+        "alibaba/qwen3-coder-30b-a3b",
+        "deepseek/deepseek-v4-flash"
       ],
       "general": [
-        "qwen-3.6-max"
+        "recursive/flint-v1.0",
+        "deepseek/deepseek-v4-flash"
       ]
     },
     "justwoker": {
@@ -170,6 +172,38 @@
       ],
       "general": [
         "claude-opus"
+      ]
+    },
+    "openrouter": {
+      "coding": [
+        "north-mini-code",
+        "nemotron-3-ultra-550b-a55b:free",
+        "ernie-5.5-flash-preview:free",
+        "dots-3-note-preview:free"
+      ],
+      "general": [
+        "nemotron-3-ultra-550b-a55b:free",
+        "ernie-5.5-flash-preview:free",
+        "dots-3-note-preview:free",
+        "north-mini-code:free"
+      ]
+    },
+    "nvidia": {
+      "coding": [
+        "poolside/laguna-xs-2.1",
+        "nemotron-3-ultra-550b-a55b",
+        "meta/muse-glimmer-30b",
+        "stepfun-ai/step-5-preview"
+      ],
+      "general": [
+        "nemotron-3-ultra-550b-a55b",
+        "poolside/laguna-xs-2.1",
+        "minimaxai/minimax-m3.1-flash",
+        "stepfun-ai/step-5-preview"
+      ],
+      "vision": [
+        "nemotron-3.5-super-vl-120b-a12b",
+        "stepfun-ai/step-5-preview"
       ]
     }
   },
