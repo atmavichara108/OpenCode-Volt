@@ -39,7 +39,7 @@ peer-registry**. Цель — ноль строк реестра без аген
 | Служитель Обсидиан (`ses_ea02cc0d8ffeFXUsAX9UeQWs2D`) | «obsidian-servant» | **SerO** | «SerO (файл obsidian-servant.md)» |
 | Мастерская Багфикс (`ses_eda56e1d3ffeyC6AIk1mwgxw1L`) | «sysop» | **Mechanic** | заменить ячейку |
 | Оперативный Штаб (`ses_e8b9ae95bffeGAoRqZWtPdj2x8`) | «sysop» | **Shtab** | заменить ячейку |
-| Смотритель ДВ-Хаб (`ses_e9299850dffefLof5BwPJ1d0lV`) | «Смотритель ДВ» | **Dv-custodian** | заменить ячейку |
+| Смотритель ДВ-Хаб (`ses_ea5bee799ffes5WDriyP61xyB5`) | «Смотритель ДВ (Dv-custodian; …)» | **Dv-custodian** | привести ячейку к короткому канону |
 | Линия интеграции окон КРУК (`ses_uiux777e2026no7Apps001`) | «ui-ux-dev» | субагент **UI/UX-Dev** при Apps-dev | «UI/UX-Dev (субагент Apps-dev)» |
 
 Строки с «interim librarian» (Отдел «Движков», Реверс-инженерия, СБ, Кафедра
@@ -88,7 +88,7 @@ peer-registry**. Цель — ноль строк реестра без аген
 | E | Школа концептуальных изысканий (`ses_eQRHoixARq3RNJnKLFTS4IW`) | «librarian» | **Skolar** (выбор УАС, не слово владельца) | заменить ячейку **после** переключения сессии на агента `skolar` | файл `skolar.md` создан 19.11 (dotfiles a9999b3); сейчас носитель на встроенном `librarian` (файла `librarian.md` в слое нет) |
 | F | Отдел разработки ДВ-Хаб (`ses_e68e4eb9dffe9odzQJRgs7WgAi`) | «Master-Enginer» | **Master-enginer** | исправить написание | опечатка в реестре (канон — `master-enginer.md`) |
 | G | TradeMind (`ses_e779da1d9ffeYgFTk7C0sQ6qDI`) | «Obsidian Servant» | канона нет | оставить как факт, **не путать с SerO**; при желании — завести отдельную строку имён | изолированный проект, свой примари; в реестре имён не значится |
-| H | Смотритель ДВ-Хаб | две строки: «Смотритель ДВ» и «Dv-custodian» | **Dv-custodian** | привести к одной ячейке | канон уже в имени (Dv-custodian) — расхождение только в написании |
+| H | Смотритель ДВ-Хаб (`ses_ea5bee799ffes5WDriyP61xyB5`) | одна строка, в ячейке оба написания: «Смотритель ДВ (Dv-custodian; …)» | **Dv-custodian** | привести ячейку к короткому канону | канон уже назван в скобках; расхождение — только в длине ячейки, не в ведомстве |
 
 ### Что ещё не дефект (проверено 19.11)
 
