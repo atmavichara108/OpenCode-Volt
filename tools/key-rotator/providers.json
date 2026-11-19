@@ -37,7 +37,7 @@
       ],
       "priority": 85,
       "source": "01-Reference/provider-cards/amd-radeon.md",
-      "notes": "Официальный free-кей; лимитация нагрузкой, не квотой. Probe 2026-09-28: ACTIVE, 9 моделей. Все (кроме MinerU) поддерживают tools+json_output. Агентские (tool-calling + большой контекст): DeepSeek-V4.1-Flash/V4-Flash/MiMo-V2.6-Flash = 1M ctx; GLM-5.3-Flash/Qwen3.8-27B/Qwen3.8-Flash-Next = 256K. НЕ агентские: MiniCPM5-2B (2B, слабое понимание — риск вредных действий), MinerU2.5-Pro (парсинг документов, без tools/chat). Qwen3.8-Flash-Next: 19.11 2026 GET /v1/models с живым ключом → 200, модели в каталоге НЕТ (12 моделей, Flash-Next отсутствует) — модель ушла с провайдера; bench 18.11 → ERROR 404 «model not available». Канал снимается через bench-gate после сброса суточной квоты (fail-safe: нездоровый провайдер не сносится вслепую).",
+      "notes": "Официальный free-кей; лимитация нагрузкой, не квотой. Probe 2026-09-28: ACTIVE, 9 моделей. Все (кроме MinerU) поддерживают tools+json_output. Агентские (tool-calling + большой контекст): DeepSeek-V4.1-Flash/V4-Flash/MiMo-V2.6-Flash = 1M ctx; GLM-5.3-Flash/Qwen3.8-27B/Qwen3.8-Flash-Next = 256K. НЕ агентские: MiniCPM5-2B (2B, слабое понимание — риск вредных действий), MinerU2.5-Pro (парсинг документов, без tools/chat). Qwen3.8-Flash-Next: 19.11 2026 GET /v1/models с живым ключом → 200, модели в каталоге НЕТ (12 моделей, Flash-Next отсутствует) — модель ушла с провайдера; bench 18.11 → ERROR 404 «model not available». Канал снимается через bench-gate после сброса суточной квоты (fail-safe: нездоровый провайдер не сносится вслепую). 2026-11-19 17:02 UTC: re-bench Qwen3.8-Flash-Next после сброса суточной квоты → ERROR на всех гейтах (модели нет в живом каталоге провайдера, 12 моделей) → канал amd-radeon|Qwen3.8-Flash-Next|free-vision снят штатным sync --delete-stale (probe ACTIVE, gate FAIL, без обхода).",
       "models_detail": {
         "DeepSeek-V4.1-Flash": {
           "ctx": 1048576,
@@ -195,7 +195,12 @@
           "role": "coding",
           "free": true,
           "vision": false,
-          "source": "bench openrouter 2026-11-19: tools+build+reasoning PASS (1.0/1.0/1.0), fast 1.0; латенси 1.2–2.6с"
+          "source": "bench openrouter 2026-11-19: tools+build+reasoning PASS (1.0/1.0/1.0), fast 1.0; латенси 1.2–2.6с",
+          "aliases": [
+            "free-code",
+            "free-general"
+          ],
+          "owner_word": "2026-11-19: ответ владельца «Да: ultra + super-vl» — openrouter ultra :free в free-code и free-general (квота 50/суток учитывается планировщиком)."
         }
       }
     },
@@ -624,7 +629,11 @@
           "free": true,
           "vision": false,
           "source": "bench nvidia 2026-11-19: tools+build+reasoning PASS (1.0/1.0/0.75), fast 1.0; латенси 1.2–1.9с",
-          "owner_word": "2026-11-18: «немотрон - нужно проверить на что он годиться в рутинных процессах например» (завед в ротацию — отдельное решение владельца)"
+          "owner_word": "2026-11-19: ответ владельца «Да: ultra + super-vl» — ultra-550b-a55b в free-code и free-general (nvidia).",
+          "aliases": [
+            "free-code",
+            "free-general"
+          ]
         },
         "nemotron-3-nano-omni-30b-a3b-reasoning": {
           "ctx": null,
@@ -645,7 +654,11 @@
           "role": "coding",
           "free": true,
           "vision": true,
-          "source": "bench nvidia 2026-11-19: tools+build+reasoning PASS (1.0/1.0/1.0), fast 1.0; латенси 0.7–2.2с; мультимодальная (VL)"
+          "source": "bench nvidia 2026-11-19: tools+build+reasoning PASS (1.0/1.0/1.0), fast 1.0; латенси 0.7–2.2с; мультимодальная (VL)",
+          "aliases": [
+            "free-vision"
+          ],
+          "owner_word": "2026-11-19: ответ владельца на вопрос «Добавлять в ротацию шлюза?» — «Да: ultra + super-vl»: super-vl-120b-a12b ТОЛЬКО в free-vision (зрение). coding/general гейты тоже PASS, но в согласованный состав не входят — ограничены алиасами."
         }
       },
       "quota": {

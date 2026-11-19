@@ -123,7 +123,23 @@ def cmd_onboard_temporary(args):
             "note": "провайдер зарегистрирован в механизме выпила (trial_expiry.py)"}
 
 
+PERMANENT_QUOTA_KINDS = ("free_tier_credits", "daily_quota")
+
+
 def cmd_onboard_permanent(args):
+    # Инвариант C2 (связка добавление↔выпил): временный тип (free_period)
+    # регистрируется ТОЛЬКО через onboard-temporary с обязательным --expires.
+    # Найденное независимой приёмкой (verifier, 2026-11-19): раньше
+    # --quota-kind free_period пропускал временной тип без срока — провайдер
+    # оставался в шлюзе навсегда. Закрыто: permanent принимает только kind'ы
+    # обновляемой квоты.
+    if args.quota_kind and args.quota_kind not in PERMANENT_QUOTA_KINDS:
+        raise SystemExit(json.dumps({
+            "ok": False,
+            "error": ("quota-kind %r — тип со сроком (free_period): он регистрируется "
+                      "только через onboard-temporary с обязательным --expires, "
+                      "иначе провайдер останется без срока выпила" % args.quota_kind)},
+            ensure_ascii=False))
     catalog = load_catalog()
     p = require_provider(catalog, args.provider_id)
     quota = p.get("quota") or {}
@@ -198,7 +214,7 @@ def main():
     s = sub.add_parser("onboard-permanent", help="добавить провайдера с ПОСТОЯННОЙ обновляемой квотой")
     s.add_argument("provider_id")
     s.add_argument("--quota-kind", default="free_tier_credits",
-                   choices=["free_tier_credits", "daily_quota", "free_period"])
+                   choices=list(PERMANENT_QUOTA_KINDS))
     s.add_argument("--quota-note", default="")
     s.add_argument("--owner-word", default="")
     s.set_defaults(fn=cmd_onboard_permanent)

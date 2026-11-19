@@ -141,6 +141,13 @@ def model_roles(provider_cfg: dict, bench: dict) -> list[str]:
     vision=False, а роль — только из pass-гейтов. Без models_detail модель
     не попадёт в vision-алиас осознанно — не заводим в роутер модель без
     подтверждённого vision-агентства.
+
+    Ограничитель (слово владельца, basis: quoted, 2026-11-19): поле
+    `aliases` в models_detail — белый список алиасов/ролей, куда модель
+    идёт. Без него поведение прежнее (все алиасы, пройденные гейтами).
+    Нужен, чтобы состав каналов точно повторял согласованный: bench PASS
+    по трем гейтам даёт coding+general, но владелец мог согласовать, напр.,
+    super-vl только под зрение — тогда `aliases: ["free-vision"]`.
     """
     gates = set(bench.get("recommendation") or [])
     md = (provider_cfg or {}).get("models_detail") or {}
@@ -162,6 +169,13 @@ def model_roles(provider_cfg: dict, bench: dict) -> list[str]:
         if hint in ("coding", "general", "vision") and hint not in roles:
             if "tools" in gates:
                 roles.append(hint)
+    # Ограничитель aliases: role-имя ("coding"/...) или alias-имя
+    # ("free-code"/...) — оба варианта приводятся к роли и фильтруют.
+    allow = [str(a) for a in (entry.get("aliases") or []) if str(a)]
+    if allow:
+        allowed = set(allow)
+        allowed |= {r for a, r in ALIASES.items() if a in allowed}
+        roles = [r for r in roles if r in allowed]
     return roles
 
 
@@ -300,14 +314,18 @@ class NewApiClient:
                 1, now, 1,
                 channel.get("models", ""),
             ))
+            # id канала берём здесь, ДО вставок в abilities: cur.lastrowid
+            # после _sync_abilities указывал на строку abilities, и отчёт
+            # apply выдавал фальшивые id (в БД — фактические другие).
+            channel_id = cur.lastrowid
             con.commit()
-            self._sync_abilities(cur, cur.lastrowid,
+            self._sync_abilities(cur, channel_id,
                                  channel.get("group") if not isinstance(channel.get("group"), list)
                                  else (channel.get("group") or ["default"])[0],
                                  channel.get("models", ""), channel.get("priority", 0),
                                  channel.get("weight", 0), 1)
             con.commit()
-            return {"id": cur.lastrowid}, None
+            return {"id": channel_id}, None
         except Exception as e:
             return None, f"DB error: {e}"
         finally:
