@@ -656,7 +656,8 @@
           "vision": true,
           "free": true,
           "source": "слово владельца 2026-11-15 (мощный мультимодальный флагман) + живая проба: картинка прочитана верно ('3 полосы'), tools PASS; латенси 12-43с — медленный",
-          "notes": "vision-способна; в слитом free-general на приоритете 60 (вторая vision-ступень после super-vl)."
+          "notes": "vision-способна; в слитом free-general на приоритете 60 (вторая vision-ступень после super-vl). priority 55 в free-code (ниже nvidia-группы 60, выше openrouter 50): watch 20.11 зафиксировал латенси 215с на кодовом промпте при failover — быстрые модели идут primeiro.",
+          "priority": 55
         },
         "nemotron-3-ultra-550b-a55b": {
           "ctx": null,
