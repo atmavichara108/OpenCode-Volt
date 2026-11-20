@@ -218,6 +218,9 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--no-log-scan", action="store_true", help="без скана лога шлюза")
     p.add_argument("--no-catalog", action="store_true",
                    help="не обновлять живой каталог моделей (источник 2 пин-гейта)")
+    p.add_argument("--max-latency-ms", type=int, default=60000,
+                   help="порог латентности smoke: 200, но медленнее порога — "
+                        "DEGRADED с предупреждением slow_alias (0 = выключено)")
     p.add_argument("--quiet", action="store_true", help="только итоговая строка JSON")
     args = p.parse_args(argv)
 
@@ -261,6 +264,19 @@ def main(argv: list[str] | None = None) -> int:
     for s in smokes:
         if not s["ok"]:
             warnings.append(f"smoke_fail:{s['alias']}{'+img' if s['with_image'] else ''}")
+    # Латентность как часть здоровья: 200 за 5 минут — не ACTIVE для
+    # исполнителя (флот ждёт ответа). Живой класс 20.11: AMD ответил 200 за
+    # 320с; при одном таймауте smoke ещё и падал — порог ловит и «медленный
+    # успех», и понижает статус до DEGRADED с предупреждением slow_alias.
+    if args.max_latency_ms > 0 and status == "ACTIVE":
+        slow = [s for s in smokes
+                if s["ok"] and (s.get("latency_ms") or 0) > args.max_latency_ms]
+        if slow:
+            status = "DEGRADED"
+            for s in slow:
+                warnings.append(
+                    f"slow_alias:{s['alias']}{'+img' if s['with_image'] else ''}"
+                    f":{s.get('latency_ms')}ms")
 
     rec = {
         "ts": now_iso(),
