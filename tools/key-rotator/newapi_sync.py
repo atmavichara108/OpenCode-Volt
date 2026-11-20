@@ -42,8 +42,12 @@ BENCH_DIR = VAULT_ROOT / "01-Reference" / "model-benchmarks"
 ALIASES = {
     "free-code": "coding",
     "free-general": "general",
-    "free-vision": "vision",
 }
+# 2026-11-20: алиас free-vision УБРАН по слову владельца («давай вижн и
+# дженерал объеденим в одно»). Vision-способные модели живут в free-general
+# с приоритетом ВЫШЕ текстовых (иначе запрос с картинкой убивает первый
+# текстовый канал ответом 400, а ретрая на другие каналы нет). Роль "vision"
+# в ALIASES не входит — model_roles её не выпускает как алиас.
 
 # Единая группа каналов шлюза: токен пользователя в ней видит все алиасы.
 GATE_GROUP = "free"
@@ -176,7 +180,10 @@ def model_roles(provider_cfg: dict, bench: dict) -> list[str]:
         allowed = set(allow)
         allowed |= {r for a, r in ALIASES.items() if a in allowed}
         roles = [r for r in roles if r in allowed]
-    return roles
+    # Роль без алиаса каналом не становится (после слияния vision+general
+    # роль "vision" алиаса не имеет — vision-модели идут в free-general).
+    live = set(ALIASES.values())
+    return [r for r in roles if r in live]
 
 
 def channel_name(provider_id: str, model_id: str, alias: str) -> str:
@@ -216,9 +223,14 @@ def build_channel(provider_id: str, provider_cfg: dict, model_id: str,
     никогда в dry-run/вывод.
     """
     base_url = channel_base_url(provider_cfg)
-    priority = provider_cfg.get("priority") or 0
+    # Приоритет: override из models_detail (по-модельный) важнее провайдерского.
+    # Нужен для слитого free-general: vision-модели обязаны стоять ВЫШЕ
+    # текстовых, иначе запрос с картинкой бьёт в первый текстовый канал
+    # (400, без ретрая), хотя vision-канал в том же алиасе есть.
+    entry = (provider_cfg.get("models_detail") or {}).get(bare_model(model_id)) or {}
+    raw = entry.get("priority", provider_cfg.get("priority") or 0)
     try:
-        priority = int(priority)
+        priority = int(raw)
     except (TypeError, ValueError):
         priority = 0
     return {

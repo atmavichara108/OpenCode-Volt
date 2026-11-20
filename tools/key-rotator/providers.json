@@ -1,7 +1,7 @@
 {
   "meta": {
     "schema": "key-rotator/providers/1.1",
-    "updated": "2026-11-19",
+    "updated": "2026-11-20",
     "note": "Декларативный каталог провайдеров для probe/ротатора. Ключей здесь НЕТ: резолв env -> vault .env -> auth.json. endpoints без * [проверить] — конвенция <site>/v1, уточняется probe. transport влияет только на smoke-chat (Iter-1); probe всегда ходит GET /models в openai-совместимом стиле. skip=провайдер вне активной ротации (managed/backlog/endpoint_dynamic). models_detail (если есть) — агентские характеристики моделей (ctx/vision/tools). Refresh 2026-11-14: добавлены живые провайдеры каталога (nvidia — по слову владельца 14.11; zai/anthropic/amd/newapi/local-deepseek/modelhub/github-copilot); lunaroute выкинут владельцем (freetrial истёк, 402).",
     "last_probe": "2026-09-27T20:00:38Z",
     "last_probe_result": "14 ACTIVE / 3 BLOCKED / 2 ERROR / 3 SKIPPED (read-only, health-log: control-plane/telemetry/provider-health.jsonl)",
@@ -37,26 +37,39 @@
       ],
       "priority": 85,
       "source": "01-Reference/provider-cards/amd-radeon.md",
-      "notes": "Официальный free-кей; лимитация нагрузкой, не квотой. Probe 2026-09-28: ACTIVE, 9 моделей. Все (кроме MinerU) поддерживают tools+json_output. Агентские (tool-calling + большой контекст): DeepSeek-V4.1-Flash/V4-Flash/MiMo-V2.6-Flash = 1M ctx; GLM-5.3-Flash/Qwen3.8-27B/Qwen3.8-Flash-Next = 256K. НЕ агентские: MiniCPM5-2B (2B, слабое понимание — риск вредных действий), MinerU2.5-Pro (парсинг документов, без tools/chat). Qwen3.8-Flash-Next: 19.11 2026 GET /v1/models с живым ключом → 200, модели в каталоге НЕТ (12 моделей, Flash-Next отсутствует) — модель ушла с провайдера; bench 18.11 → ERROR 404 «model not available». Канал снимается через bench-gate после сброса суточной квоты (fail-safe: нездоровый провайдер не сносится вслепую). 2026-11-19 17:02 UTC: re-bench Qwen3.8-Flash-Next после сброса суточной квоты → ERROR на всех гейтах (модели нет в живом каталоге провайдера, 12 моделей) → канал amd-radeon|Qwen3.8-Flash-Next|free-vision снят штатным sync --delete-stale (probe ACTIVE, gate FAIL, без обхода).",
+      "notes": "Официальный free-кей; лимитация нагрузкой, не квотой. Probe 2026-09-28: ACTIVE, 9 моделей. Все (кроме MinerU) поддерживают tools+json_output. Агентские (tool-calling + большой контекст): DeepSeek-V4.1-Flash/V4-Flash/MiMo-V2.6-Flash = 1M ctx; GLM-5.3-Flash/Qwen3.8-27B/Qwen3.8-Flash-Next = 256K. НЕ агентские: MiniCPM5-2B (2B, слабое понимание — риск вредных действий), MinerU2.5-Pro (парсинг документов, без tools/chat). Qwen3.8-Flash-Next: 19.11 2026 GET /v1/models с живым ключом → 200, модели в каталоге НЕТ (12 моделей, Flash-Next отсутствует) — модель ушла с провайдера; bench 18.11 → ERROR 404 «model not available». Канал снимается через bench-gate после сброса суточной квоты (fail-safe: нездоровый провайдер не сносится вслепую). 2026-11-19 17:02 UTC: re-bench Qwen3.8-Flash-Next после сброса суточной квоты → ERROR на всех гейтах (модели нет в живом каталоге провайдера, 12 моделей) → канал amd-radeon|Qwen3.8-Flash-Next|free-vision снят штатным sync --delete-stale (probe ACTIVE, gate FAIL, без обхода). 2026-11-20: слияние алиасов vision+general по слову владельца — vision-модели (Qwen3.8-27B, DeepSeek-V4.1-Flash, MiMo-V2.6-Flash) получили roles [coding,general] и приоритет 86, чтобы в едином free-general стоять выше текстовых; алиас free-vision удалён.",
       "models_detail": {
         "DeepSeek-V4.1-Flash": {
           "ctx": 1048576,
           "vision": true,
           "tools": true,
           "role": "coding",
-          "note": "топ-выбор: 1M контекст + vision + tools + json"
+          "note": "топ-выбор: 1M контекст + vision + tools + json",
+          "roles": [
+            "coding",
+            "general"
+          ],
+          "priority": 86,
+          "notes": "vision-способна; в слитом free-general приоритет 86 (выше текстовых AMD-каналов 85) — картинка не бьёт в текстовый канал."
         },
         "DeepSeek-V4-Flash": {
           "ctx": 1048576,
           "vision": false,
           "tools": true,
-          "role": "coding"
+          "role": "coding",
+          "priority": 85
         },
         "MiMo-V2.6-Flash": {
           "ctx": 1048576,
           "vision": true,
           "tools": true,
-          "role": "coding"
+          "role": "coding",
+          "roles": [
+            "coding",
+            "general"
+          ],
+          "priority": 86,
+          "notes": "vision-способна; в слитом free-general приоритет 86 (выше текстовых AMD-каналов 85) — картинка не бьёт в текстовый канал."
         },
         "DeepSeek-V4-Flash-Vision-Exp": {
           "ctx": 1048576,
@@ -69,14 +82,21 @@
           "ctx": 262144,
           "vision": false,
           "tools": true,
-          "role": "general"
+          "role": "general",
+          "priority": 85
         },
         "Qwen3.8-27B": {
           "ctx": 262144,
           "vision": true,
           "tools": true,
           "role": "coding",
-          "note": "27B dense — сильный исполнитель"
+          "note": "27B dense — сильный исполнитель",
+          "roles": [
+            "coding",
+            "general"
+          ],
+          "priority": 86,
+          "notes": "vision-способна; в слитом free-general приоритет 86 (выше текстовых AMD-каналов 85) — картинка не бьёт в текстовый канал."
         },
         "Qwen3.8-Flash-Next": {
           "ctx": 262144,
@@ -442,7 +462,7 @@
       ],
       "priority": 35,
       "source": "auth.json",
-      "notes": "Probe 2026-09-27: ACTIVE, endpoint-гипотеза подтверждена (391 модель) Пин verifier (2026-11-19): recursive/flint-v1.0 — живая сессия, отдельный провайдер от reviewer. Немотрон: nvidia/nemotron-3.5-lightning-free — только tools (build ERROR) — как замена не годится.",
+      "notes": "Probe 2026-09-27: ACTIVE, endpoint-гипотеза подтверждена (391 модель) Пин verifier (2026-11-19): recursive/flint-v1.0 — живая сессия, отдельный провайдер от reviewer. Немотрон: nvidia/nemotron-3.5-lightning-free — только tools (build ERROR) — как замена не годится. 2026-11-19: qwen3-coder-30b-a3b — bench tools+build PASS (coding), reasoning ERROR; deepseek/deepseek-v4-flash — bench все гейты ERROR, убран из preferred.",
       "quota": {
         "kind": "free_tier_credits",
         "registered_at": "2026-11-18",
@@ -469,6 +489,21 @@
           "free": true,
           "vision": false,
           "source": "bench vercel 2026-11-19: tools PASS (1.0), build ERROR, reasoning TRUNCATED — только tools"
+        },
+        "alibaba/qwen3-coder-30b-a3b": {
+          "ctx": null,
+          "role": "coding",
+          "free": true,
+          "vision": false,
+          "source": "bench vercel 2026-11-19: tools OK 1.0 (прогон 20:53 UTC) + build OK 1.0 (20:58 UTC) → coding; reasoning ERROR (20:58) → в general НЕ идёт. Артефакт 01-Reference/model-benchmarks/vercel__alibaba_qwen3-coder-30b-a3b.json перезаписывается последним прогоном — evidence по tools из прогона 20:53."
+        },
+        "deepseek/deepseek-v4-flash": {
+          "ctx": null,
+          "role": "general",
+          "free": true,
+          "vision": false,
+          "source": "bench vercel 2026-11-19T20:44:42Z: ВСЕ гейты ERROR (tools/build/reasoning/fast) — модель не отвечает на нашем free-ключе vercel; recommendation []. В preferred убрана — не bench-backed.",
+          "status": "bench_failed"
         }
       }
     },
@@ -616,12 +651,12 @@
           "role": "coding",
           "roles": [
             "coding",
-            "general",
-            "vision"
+            "general"
           ],
           "vision": true,
           "free": true,
-          "source": "слово владельца 2026-11-15 (мощный мультимодальный флагман) + живая проба: картинка прочитана верно ('3 полосы'), tools PASS; латенси 12-43с — медленный"
+          "source": "слово владельца 2026-11-15 (мощный мультимодальный флагман) + живая проба: картинка прочитана верно ('3 полосы'), tools PASS; латенси 12-43с — медленный",
+          "notes": "vision-способна; в слитом free-general на приоритете 60 (вторая vision-ступень после super-vl)."
         },
         "nemotron-3-ultra-550b-a55b": {
           "ctx": null,
@@ -656,9 +691,13 @@
           "vision": true,
           "source": "bench nvidia 2026-11-19: tools+build+reasoning PASS (1.0/1.0/1.0), fast 1.0; латенси 0.7–2.2с; мультимодальная (VL)",
           "aliases": [
-            "free-vision"
+            "free-general"
           ],
-          "owner_word": "2026-11-19: ответ владельца на вопрос «Добавлять в ротацию шлюза?» — «Да: ultra + super-vl»: super-vl-120b-a12b ТОЛЬКО в free-vision (зрение). coding/general гейты тоже PASS, но в согласованный состав не входят — ограничены алиасами."
+          "owner_word": "2026-11-19: ответ владельца «Да: ultra + super-vl»; 2026-11-20: слово владельца «давай вижн и дженерал объеденим в одно» — super-vl идёт в ЕДИНЫЙ алиас free-general головой (приоритет 90, выше всех текстовых): терпит и текст, и картинки.",
+          "roles": [
+            "general"
+          ],
+          "priority": 90
         }
       },
       "quota": {
