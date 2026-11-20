@@ -221,6 +221,9 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--max-latency-ms", type=int, default=60000,
                    help="порог латентности smoke: 200, но медленнее порога — "
                         "DEGRADED с предупреждением slow_alias (0 = выключено)")
+    p.add_argument("--max-latency-img-ms", type=int, default=0,
+                   help="порог для пути с картинкой (0 = удвоенный текстовый; "
+                        "голова алиаса — reasoning-модель с дисперсией)")
     p.add_argument("--quiet", action="store_true", help="только итоговая строка JSON")
     args = p.parse_args(argv)
 
@@ -269,8 +272,14 @@ def main(argv: list[str] | None = None) -> int:
     # 320с; при одном таймауте smoke ещё и падал — порог ловит и «медленный
     # успех», и понижает статус до DEGRADED с предупреждением slow_alias.
     if args.max_latency_ms > 0 and status == "ACTIVE":
-        slow = [s for s in smokes
-                if s["ok"] and (s.get("latency_ms") or 0) > args.max_latency_ms]
+        # Порог разделён по пути: голова free-general с картинкой — reasoning-
+        # модель (super-vl) с дисперсией 0.8–79с; текстовому пути хватает 60с.
+        # «Медленный успех» на картинке — жёлтый, на тексте — уже подозрительнее.
+        img_limit = args.max_latency_img_ms if args.max_latency_img_ms > 0 \
+            else args.max_latency_ms * 2
+        slow = [s for s in smokes if s["ok"] and (
+            (s.get("latency_ms") or 0) > (img_limit if s["with_image"]
+                                          else args.max_latency_ms))]
         if slow:
             status = "DEGRADED"
             for s in slow:
