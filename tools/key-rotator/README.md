@@ -105,3 +105,25 @@ ntfy.sh). Без топика уведомление молча пропуска
 - `tools/ecosystem-map/model-router.py` — правка моделей агентов.
 - `tools/model-bench/` — бенч моделей (отдельный контур).
 - `01-Reference/abuse-providers-inbox.md` · `02-Methods/promo-provider-protocol.md`.
+
+## watch.py — сторож ротатора (с 2026-11-20)
+
+Мандат (слово владельца, basis: quoted, 2026-11-20): «ставить ротатор по
+умолчанию и отслеживать его работу, ловить все ошибки, обрабатывать и
+модернизировать ротатор и в то же время обеспечивать его бесперебойную работу».
+
+```
+provider-health.jsonl ──┐
+                        ├─► watch.py  smoke алиасов + классификация ошибок лога
+gateway log ────────────┘              (курсор: control-plane/telemetry/watch-state.json)
+                                      ──► health-строка (source=watch) + JSON-итог
+```
+
+- smoke: free-code, free-general, free-general+картинка (контракт контента).
+- классы ошибок лога: `geo_block` (451), `quota_or_rate` (429),
+  `content_contract` (400 «does not support image input»/multimodal),
+  `key_resolution` (no_key), `auth`, `channel_error`.
+- Первый прогон 20.11: все smoke 200; в логе найдено content_contract:72,
+  quota_or_rate:85, auth:8, channel_error:3.
+- Периодический прогон — в единое расписание таймеров (зона ИЦ, У-5); до него —
+  ручной/по ходу.
