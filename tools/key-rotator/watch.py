@@ -33,6 +33,7 @@ import datetime
 import json
 import os
 import sqlite3
+import subprocess
 import sys
 import time
 import urllib.error
@@ -191,11 +192,32 @@ def append_health(rec: dict) -> bool:
         return False
 
 
+def refresh_live_catalog(timeout: float) -> dict:
+    """Обновляет живой каталог моделей (полные списки по ключу провайдера).
+
+    Источник 2 для пин-гейта УАС (дыра BF-20261120-01: каталог OpenCode считает
+    мёртвый id живым). Гоняется probe.py подпроцессом — один таймер сторожа
+    покрывает оба источника: health алиасов + health моделей.
+    """
+    probe = TOOL_DIR / "probe.py"
+    out_path = VAULT_ROOT / "control-plane" / "live-model-catalog.json"
+    cmd = [sys.executable, str(probe), "--live-catalog", str(out_path),
+           "--timeout", str(int(timeout)), "--quiet"]
+    try:
+        proc = subprocess.run(cmd, capture_output=True, timeout=timeout * 30)
+        return {"ok": proc.returncode in (0, 1), "path": str(out_path),
+                "probe_exit": proc.returncode}
+    except Exception as exc:
+        return {"ok": False, "path": str(out_path), "error": f"{type(exc).__name__}: {exc}"}
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(prog="watch", description="сторож new-api ротатора")
     p.add_argument("--timeout", type=float, default=120.0, help="таймаут одного smoke")
     p.add_argument("--no-image", action="store_true", help="без smoke с картинкой")
     p.add_argument("--no-log-scan", action="store_true", help="без скана лога шлюза")
+    p.add_argument("--no-catalog", action="store_true",
+                   help="не обновлять живой каталог моделей (источник 2 пин-гейта)")
     p.add_argument("--quiet", action="store_true", help="только итоговая строка JSON")
     args = p.parse_args(argv)
 
@@ -219,6 +241,10 @@ def main(argv: list[str] | None = None) -> int:
         status = "DEGRADED"
     else:
         status = "ERROR"
+
+    catalog = None
+    if not args.no_catalog:
+        catalog = refresh_live_catalog(args.timeout)
 
     errors: dict[str, int] = {}
     log_name = None
@@ -251,7 +277,8 @@ def main(argv: list[str] | None = None) -> int:
                                  "status": s.get("status"),
                                  "upstream": s.get("upstream"),
                                  "latency_ms": s.get("latency_ms")} for s in smokes],
-                    "log_errors": errors, "log_file": log_name},
+                    "log_errors": errors, "log_file": log_name,
+                    "live_catalog": catalog},
     }
     logged = append_health(rec)
 
@@ -263,6 +290,7 @@ def main(argv: list[str] | None = None) -> int:
                              "upstream": s.get("upstream"),
                              "error": s.get("error")} for s in smokes],
                "log_errors": errors,
+               "live_catalog": catalog,
                "warnings": warnings}
     out(payload)
     return 0 if status == "ACTIVE" else (1 if status in ("DEGRADED", "ERROR") else 2)

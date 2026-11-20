@@ -37,7 +37,7 @@
       ],
       "priority": 85,
       "source": "01-Reference/provider-cards/amd-radeon.md",
-      "notes": "Официальный free-кей; лимитация нагрузкой, не квотой. Probe 2026-09-28: ACTIVE, 9 моделей. Все (кроме MinerU) поддерживают tools+json_output. Агентские (tool-calling + большой контекст): DeepSeek-V4.1-Flash/V4-Flash/MiMo-V2.6-Flash = 1M ctx; GLM-5.3-Flash/Qwen3.8-27B/Qwen3.8-Flash-Next = 256K. НЕ агентские: MiniCPM5-2B (2B, слабое понимание — риск вредных действий), MinerU2.5-Pro (парсинг документов, без tools/chat). Qwen3.8-Flash-Next: 19.11 2026 GET /v1/models с живым ключом → 200, модели в каталоге НЕТ (12 моделей, Flash-Next отсутствует) — модель ушла с провайдера; bench 18.11 → ERROR 404 «model not available». Канал снимается через bench-gate после сброса суточной квоты (fail-safe: нездоровый провайдер не сносится вслепую). 2026-11-19 17:02 UTC: re-bench Qwen3.8-Flash-Next после сброса суточной квоты → ERROR на всех гейтах (модели нет в живом каталоге провайдера, 12 моделей) → канал amd-radeon|Qwen3.8-Flash-Next|free-vision снят штатным sync --delete-stale (probe ACTIVE, gate FAIL, без обхода). 2026-11-20: слияние алиасов vision+general по слову владельца — vision-модели (Qwen3.8-27B, DeepSeek-V4.1-Flash, MiMo-V2.6-Flash) получили roles [coding,general] и приоритет 86, чтобы в едином free-general стоять выше текстовых; алиас free-vision удалён. 2026-11-20: инвариант «vision выше текста» распространён на free-code — видение-модели AMD got 86, текстовый DeepSeek-V4-Flash остался 85 (скриншот в кодовой сессии = тот же класс ошибки).",
+      "notes": "Официальный free-кей; лимитация нагрузкой, не квотой. Probe 2026-09-28: ACTIVE, 9 моделей. Все (кроме MinerU) поддерживают tools+json_output. Агентские (tool-calling + большой контекст): DeepSeek-V4.1-Flash/V4-Flash/MiMo-V2.6-Flash = 1M ctx; GLM-5.3-Flash/Qwen3.8-27B/Qwen3.8-Flash-Next = 256K. НЕ агентские: MiniCPM5-2B (2B, слабое понимание — риск вредных действий), MinerU2.5-Pro (парсинг документов, без tools/chat). Qwen3.8-Flash-Next: 19.11 2026 GET /v1/models с живым ключом → 200, модели в каталоге НЕТ (12 моделей, Flash-Next отсутствует) — модель ушла с провайдера; bench 18.11 → ERROR 404 «model not available». Канал снимается через bench-gate после сброса суточной квоты (fail-safe: нездоровый провайдер не сносится вслепую). 2026-11-19 17:02 UTC: re-bench Qwen3.8-Flash-Next после сброса суточной квоты → ERROR на всех гейтах (модели нет в живом каталоге провайдера, 12 моделей) → канал amd-radeon|Qwen3.8-Flash-Next|free-vision снят штатным sync --delete-stale (probe ACTIVE, gate FAIL, без обхода). 2026-11-20: слияние алиасов vision+general по слову владельца — vision-модели (Qwen3.8-27B, DeepSeek-V4.1-Flash, MiMo-V2.6-Flash) получили roles [coding,general] и приоритет 86, чтобы в едином free-general стоять выше текстовых; алиас free-vision удалён. 2026-11-20: инвариант «vision выше текста» распространён на free-code — видение-модели AMD got 86, текстовый DeepSeek-V4-Flash остался 85 (скриншот в кодовой сессии = тот же класс ошибки). 2026-11-20: AMD опущен ниже nvidia (vision-тройка 45, текст 44; было 86/85) — живой факт: 320с ответа на кодовой промпт. nvidia-first: бюджет 1000 кредитов/40 RPM, латентность 0.5–8с; AMD — резерв (1 запрос/сутки, медленный).",
       "models_detail": {
         "DeepSeek-V4.1-Flash": {
           "ctx": 1048576,
@@ -49,7 +49,7 @@
             "coding",
             "general"
           ],
-          "priority": 86,
+          "priority": 45,
           "notes": "vision-способна; в слитом free-general приоритет 86 (выше текстовых AMD-каналов 85) — картинка не бьёт в текстовый канал. priority 86 и в free-code (выше текстового DeepSeek-V4-Flash 85) — картинка в кодовой сессии тоже уходит на vision-модель."
         },
         "DeepSeek-V4-Flash": {
@@ -57,7 +57,7 @@
           "vision": false,
           "tools": true,
           "role": "coding",
-          "priority": 85
+          "priority": 44
         },
         "MiMo-V2.6-Flash": {
           "ctx": 1048576,
@@ -68,7 +68,7 @@
             "coding",
             "general"
           ],
-          "priority": 86,
+          "priority": 45,
           "notes": "vision-способна; в слитом free-general приоритет 86 (выше текстовых AMD-каналов 85) — картинка не бьёт в текстовый канал. priority 86 и в free-code (выше текстового DeepSeek-V4-Flash 85) — картинка в кодовой сессии тоже уходит на vision-модель."
         },
         "DeepSeek-V4-Flash-Vision-Exp": {
@@ -83,7 +83,7 @@
           "vision": false,
           "tools": true,
           "role": "general",
-          "priority": 85
+          "priority": 44
         },
         "Qwen3.8-27B": {
           "ctx": 262144,
@@ -95,8 +95,8 @@
             "coding",
             "general"
           ],
-          "priority": 86,
-          "notes": "vision-способна; в слитом free-general приоритет 86 (выше текстовых AMD-каналов 85) — картинка не бьёт в текстовый канал. priority 86 и в free-code (выше текстового DeepSeek-V4-Flash 85) — картинка в кодовой сессии тоже уходит на vision-модель."
+          "priority": 45,
+          "notes": "vision-способна; в слитом free-general приоритет 86 (выше текстовых AMD-каналов 85) — картинка не бьёт в текстовый канал. priority 86 и в free-code (выше текстового DeepSeek-V4-Flash 85) — картинка в кодовой сессии тоже уходит на vision-модель. 2026-11-20: понижен с 86 до 45 — живой факт watch и лога шлюза: ответ 320с (5м20с) на кодовой промпт при приоритете 86 (AMD первый в цепочке). AMD остаётся резервом (отвечает, но медленно)."
         },
         "Qwen3.8-Flash-Next": {
           "ctx": 262144,
