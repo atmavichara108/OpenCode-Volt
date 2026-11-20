@@ -252,6 +252,9 @@ def probe_provider(pid: str, cfg: dict, *, timeout: int, retries: int,
             cand["warnings"] = warnings
             cand["models_count"] = count
             cand["model_ids_sample"] = ids[:8]
+            # полный список — источник живости пина для гейта УАС (pin-check):
+            # живой каталог OpenCode ≠ жалование модели ключом провайдера.
+            cand["model_ids"] = ids
             cand["latency_ms"] = resp.get("latency_ms")
             cand["endpoint"] = endpoint
             rank = status_rank[status]
@@ -327,6 +330,9 @@ def main(argv: list[str] | None = None) -> int:
                    help="пауза между 429-ретраями, сек (по умолчанию 20)")
     p.add_argument("--no-log", action="store_true",
                    help="не писать в provider-health.jsonl")
+    p.add_argument("--live-catalog", default=None,
+                   help="записать живой каталог моделей по ключу каждого провайдера "
+                        "(второй источник живости пина для гейта УАС)")
     p.add_argument("--quiet", action="store_true", help="только итоговая строка JSON")
 
     args = p.parse_args(argv)
@@ -381,6 +387,30 @@ def main(argv: list[str] | None = None) -> int:
     if not args.no_log:
         logged = append_health_log(records)
 
+    # Второй источник живости пина: живой каталог МОДЕЛЕЙ по ключу каждого
+    # провайдера (что ключ реально обслуживает), в отличие от каталога OpenCode,
+    # где мёртвый id может числиться живым (дыра гейта УАС, BF-20261120-01).
+    live_catalog_written = None
+    if args.live_catalog:
+        payload = {
+            "ts": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            "source": "probe",
+            "providers": {
+                rec.get("provider_id"): {
+                    "status": rec.get("status"),
+                    "models": rec.get("model_ids") or [],
+                } for rec in records if rec.get("provider_id")
+            },
+        }
+        try:
+            lc = Path(args.live_catalog)
+            lc.parent.mkdir(parents=True, exist_ok=True)
+            lc.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
+                          encoding="utf-8")
+            live_catalog_written = str(lc)
+        except OSError as exc:
+            live_catalog_written = f"error: {exc}"
+
     counts: dict[str, int] = {}
     for rec in records:
         status = str(rec.get("status", "ERROR"))
@@ -392,6 +422,7 @@ def main(argv: list[str] | None = None) -> int:
         "total": len(records),
         "counts": counts,
         "health_log_written": logged,
+        "live_catalog_written": live_catalog_written,
         "duration_s": round(time.time() - started, 1),
         "providers": records,
     })

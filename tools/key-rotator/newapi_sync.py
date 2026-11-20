@@ -175,9 +175,12 @@ def model_roles(provider_cfg: dict, bench: dict) -> list[str]:
                 roles.append(hint)
     # Ограничитель aliases: role-имя ("coding"/...) или alias-имя
     # ("free-code"/...) — оба варианта приводятся к роли и фильтруют.
-    allow = [str(a) for a in (entry.get("aliases") or []) if str(a)]
-    if allow:
-        allowed = set(allow)
+    # Ключ ВСТРЕЧЕН (даже пустой список) = фильтр работает: aliases: [] значит
+    # «модель ни в один алиас не идёт» — так исключены модели проверяющих
+    # (Р-109: проверяющий не должен быть моделью линии-исполнителя). Ключ
+    # ОТСУТСТВУЕТ = поведение прежнее (все алиасы, пройденные гейтами).
+    if "aliases" in entry:
+        allowed = {str(a) for a in (entry.get("aliases") or []) if str(a)}
         allowed |= {r for a, r in ALIASES.items() if a in allowed}
         roles = [r for r in roles if r in allowed]
     # Роль без алиаса каналом не становится (после слияния vision+general

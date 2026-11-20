@@ -462,7 +462,7 @@
       ],
       "priority": 35,
       "source": "auth.json",
-      "notes": "Probe 2026-09-27: ACTIVE, endpoint-гипотеза подтверждена (391 модель) Пин verifier (2026-11-19): recursive/flint-v1.0 — живая сессия, отдельный провайдер от reviewer. Немотрон: nvidia/nemotron-3.5-lightning-free — только tools (build ERROR) — как замена не годится. 2026-11-19: qwen3-coder-30b-a3b — bench tools+build PASS (coding), reasoning ERROR; deepseek/deepseek-v4-flash — bench все гейты ERROR, убран из preferred.",
+      "notes": "Probe 2026-09-27: ACTIVE, endpoint-гипотеза подтверждена (391 модель) Пин verifier (2026-11-19): recursive/flint-v1.0 — живая сессия, отдельный провайдер от reviewer. Немотрон: nvidia/nemotron-3.5-lightning-free — только tools (build ERROR) — как замена не годится. 2026-11-19: qwen3-coder-30b-a3b — bench tools+build PASS (coding), reasoning ERROR; deepseek/deepseek-v4-flash — bench все гейты ERROR, убран из preferred. 2026-11-20: flint-v1.0 (pin verifier) исключена из алиасов (Р-109), aliases: [] — канал удалён штатным --delete-stale; пин verifier идёт напрямую. vercel остаётся с qwen3-coder в free-code.",
       "quota": {
         "kind": "free_tier_credits",
         "registered_at": "2026-11-18",
@@ -481,7 +481,9 @@
             "decision": "2026-11-19 (Ротатор, зона каталога и здоровья)",
             "evidence": "живая сессия opencode run 2026-11-19; bench 2026-11-18 tools+build PASS, usage.cost=0; провайдер отличается от reviewer — Р-109",
             "owner_word": "2026-11-18: «vercel» нужно проверять отдельно, потенциально бесплатно с низкой квотой"
-          }
+          },
+          "aliases": [],
+          "notes": "aliases: [] — исключена из каналов алиасов (Р-109, факт УАС 2026-11-20): модель pin verifier; то же основание, что у laguna. Пин verifier работает напрямую (не через шлюз)."
         },
         "nvidia/nemotron-3.5-lightning-free": {
           "ctx": null,
@@ -614,7 +616,7 @@
       ],
       "priority": 60,
       "source": "живой каталог /api/provider+model 2026-11-14",
-      "notes": "здоровье неровное: 451/504 в пробах 10-11.11; в общем списке по слову владельца 14.11; пробу перед роутингом. Free-модели nvidia (без немотрона) введены 15.11 по слову владельца; синк идёт через bench-gate (модель попадает в канал только с PASS-бенчем).. step-5-preview: tools PASS, латенси ~43с — тяжёлый, годится как резерв.. step-5-preview назначен в coding+general+vision по слову владельца; мультимодальность подтверждена живой пробой (прочитал изображение). Пин reviewer (2026-11-19): poolside/laguna-xs-2.1 — живая сессия, отдельный провайдер от verifier. Немотрон (bench 2026-11-19): ultra-550b-a55b — все гейты PASS; super-vl-120b-a12b — все гейты PASS (VL); nano-omni — build PASS; 3.5-lightning — без вердикта.",
+      "notes": "здоровье неровное: 451/504 в пробах 10-11.11; в общем списке по слову владельца 14.11; пробу перед роутингом. Free-модели nvidia (без немотрона) введены 15.11 по слову владельца; синк идёт через bench-gate (модель попадает в канал только с PASS-бенчем).. step-5-preview: tools PASS, латенси ~43с — тяжёлый, годится как резерв.. step-5-preview назначен в coding+general+vision по слову владельца; мультимодальность подтверждена живой пробой (прочитал изображение). Пин reviewer (2026-11-19): poolside/laguna-xs-2.1 — живая сессия, отдельный провайдер от verifier. Немотрон (bench 2026-11-19): ultra-550b-a55b — все гейты PASS; super-vl-120b-a12b — все гейты PASS (VL); nano-omni — build PASS; 3.5-lightning — без вердикта. 2026-11-20: laguna-xs-2.1 (pin reviewer) исключена из алиасов (Р-109), aliases: [] — канал удалён штатным --delete-stale; пин reviewer идёт напрямую.",
       "models_detail": {
         "muse-glimmer-30b": {
           "ctx": 32768,
@@ -638,7 +640,9 @@
             "decision": "2026-11-19 (Ротатор, зона каталога и здоровья)",
             "evidence": "живая сессия opencode run 2026-11-19; УАС — два полных круга по файлу агента",
             "owner_word": "2026-11-18: «amd-radeon, google, nvidia, mistral» - постоянная бесплатная квота"
-          }
+          },
+          "aliases": [],
+          "notes": "aliases: [] — исключена из каналов алиасов (Р-109, факт УАС 2026-11-20): модель pin reviewer; пока она в алиасе, failover исполнителя может посадить исполнителя на модель проверяющего (приёмка = согласие с самим собой). Пин reviewer работает напрямую (не через шлюз)."
         },
         "minimax-m3.1-flash": {
           "ctx": 32768,
