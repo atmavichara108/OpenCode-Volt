@@ -2,7 +2,7 @@
   "meta": {
     "schema": "key-rotator/rotation/1.0",
     "updated": "2026-11-19",
-    "note": "Конфиг Iter-1 (failover-ротация). preferred — подстроки для матчинга реальных model id (case-insensitive), не точные id: реальный id берётся из model-router models. Причина ротации: current-провайдер BLOCKED/ERROR в health-log, либо --prefer-better (лучший кандидат строго лучше по priority). DEGRADED/ACTIVE/SKIPPED = здоров, не трогаем. 2026-11-19: синхронизация с каталогом и живыми фактами — openrouter возвращён в preferred (причина устарела: skip=false с 18.11, ACTIVE, bench-PASS у 4 free-моделей, слово владельца «нужно ещё добавить опенроутер»; квота 50/суток — каналы остаются при исчерпании); nvidia добавлен (единственный free-контур с ёмкостью: 1000 кредитов / 40 RPM, bench-PASS у многих; УАС перенесла на него 26 файлов агентов); vercel приведён к живому каталогу (518 моделей) и bench-PASS: flint-v1.0 — единственный с PASS, «qwen-3.6-max» в каталоге vercel отсутствует — убран; nemotron ПОДТВЕРЖДЁН бенчем 19.11 (ultra-550b-a55b и super-vl-120b-a12b — все гейты PASS) и заведён в шлюз по слову владельца («Да: ultra + super-vl»); amd-radeon priority 85 при суточной квоте 1 запрос/сутки на ключ — использовать первым запросом дня, остальное — failover. Смена preferred — сверка ИЦ+ЦУ, канон моделей — владелец."
+    "note": "Конфиг Iter-1 (failover-ротация). preferred — подстроки для матчинга реальных model id (case-insensitive), не точные id: реальный id берётся из model-router models. Причина ротации: current-провайдер BLOCKED/ERROR в health-log, либо --prefer-better (лучший кандидат строго лучше по priority). DEGRADED/ACTIVE/SKIPPED = здоров, не трогаем. 2026-11-19: синхронизация с каталогом и живыми фактами — openrouter возвращён в preferred (причина устарела: skip=false с 18.11, ACTIVE, bench-PASS у 4 free-моделей, слово владельца «нужно ещё добавить опенроутер»; квота 50/суток — каналы остаются при исчерпании); nvidia добавлен (единственный free-контур с ёмкостью: 1000 кредитов / 40 RPM, bench-PASS у многих; УАС перенесла на него 26 файлов агентов); vercel приведён к живому каталогу (518 моделей) и bench-PASS: flint-v1.0 — единственный с PASS, «qwen-3.6-max» в каталоге vercel отсутствует — убран; nemotron ПОДТВЕРЖДЁН бенчем 19.11 (ultra-550b-a55b и super-vl-120b-a12b — все гейты PASS) и заведён в шлюз по слову владельца («Да: ultra + super-vl»); amd-radeon priority 85 при суточной квоте 1 запрос/сутки на ключ — использовать первым запросом дня, остальное — failover. Смена preferred — сверка ИЦ+ЦУ, канон моделей — владелец. 2026-11-19 (вторая правка): vercel preferred приведён к bench-факту — deepseek/deepseek-v4-flash убран (bench 20:44 UTC: все гейты ERROR, на нашем free-ключе vercel не отвечает); alibaba/qwen3-coder-30b-a3b оставлен в coding (bench tools+build PASS 20:53–20:58 UTC, reasoning ERROR → только coding), регистрирован в providers.json vercel.models_detail. Инвариант: каждый id в preferred имеет bench-вердикт и запись в models_detail."
   },
   "default_role": "coding",
   "agent_roles": {
@@ -158,12 +158,10 @@
     "vercel": {
       "coding": [
         "recursive/flint-v1.0",
-        "alibaba/qwen3-coder-30b-a3b",
-        "deepseek/deepseek-v4-flash"
+        "alibaba/qwen3-coder-30b-a3b"
       ],
       "general": [
-        "recursive/flint-v1.0",
-        "deepseek/deepseek-v4-flash"
+        "recursive/flint-v1.0"
       ]
     },
     "justwoker": {
