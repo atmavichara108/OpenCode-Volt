@@ -234,7 +234,14 @@ def main(argv: list[str] | None = None) -> int:
 
     plan = [(a, False) for a in ALIASES]
     if not args.no_image:
-        plan.append(("free-general", True))
+        # Картинный smoke на ОБА алиаса: контракт контента проверяется там, где
+        # он может сломаться. Порядок «vision выше текста» поддерживается только
+        # там, где модель ОТВЕРГАЕТ картинку (терминальный 400); на головах,
+        # которые её принимают, тотальная перестановка конфликтовала бы с
+        # латентностью (muse 4.5–8с против step-5 215с на coding). Поведение
+        # достовернее инварианта: ловим регрессию таймером, не гадаем.
+        for a in ALIASES:
+            plan.append((a, True))
 
     smokes = []
     for alias, with_image in plan:
