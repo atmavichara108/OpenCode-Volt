@@ -1,5 +1,6 @@
 import json
 import os
+import shutil
 import time
 from pathlib import Path
 
@@ -86,6 +87,29 @@ def resolve_key(env_name, auth_id, env=None, dotenv=None, auth=None):
     return "", "none"
 
 
+def _opencode_binary() -> str | None:
+    """Путь к бинарнику opencode, независимо от PATH окружения.
+
+    Причина (живой дефект 2026-11-20): systemd-user юниты живут с PATH
+    `/usr/local/bin:/usr/bin`, а opencode установлен в `~/.opencode/bin` —
+    под таймером `subprocess.run(["opencode", ...])` давал FileNotFoundError,
+    ключ резолвился в пустоту, и провайдер ложно помечался no_key (дважды за
+    вечер: 17:09 и 20:15). Поэтому: which() сначала, затем известные места.
+    """
+    candidates = [shutil.which("opencode")] if shutil else []
+    home = os.path.expanduser("~")
+    candidates += [
+        os.path.join(home, ".opencode", "bin", "opencode"),
+        os.path.join(home, ".local", "bin", "opencode"),
+        "/usr/local/bin/opencode",
+        "/usr/bin/opencode",
+    ]
+    for c in candidates:
+        if c and os.path.isfile(c) and os.access(c, os.X_OK):
+            return c
+    return None
+
+
 def _resolve_v2_credential(auth_id):
     """Ключ из v2 credential-store opencode (opencode auth export).
 
@@ -96,10 +120,13 @@ def _resolve_v2_credential(auth_id):
     """
     global _v2_export_cache
     if _v2_export_cache is None:
+        binary = _opencode_binary()
         for attempt in range(2):
             try:
+                if not binary:
+                    break
                 import subprocess
-                exp = subprocess.run(["opencode", "auth", "export"],
+                exp = subprocess.run([binary, "auth", "export"],
                                      capture_output=True, text=True, timeout=60)
                 if exp.returncode == 0:
                     data = json.loads(exp.stdout)
