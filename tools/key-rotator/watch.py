@@ -203,8 +203,22 @@ def refresh_live_catalog(timeout: float) -> dict:
     out_path = VAULT_ROOT / "control-plane" / "live-model-catalog.json"
     cmd = [sys.executable, str(probe), "--live-catalog", str(out_path),
            "--timeout", str(int(timeout)), "--quiet"]
+    # NO_PROXY для подпроцесса: systemd-окружение несёт ALL_PROXY (socks), но не
+    # NO_PROXY — curl-based проба уходит на localhost:3000 через прокси и
+    # таймаутит (15–120с), а провайдер newapi ложно помечается ERROR network
+    # (флап ERROR/ACTIVE каждые 30 мин, найдено УАС 21.11). Smoke на urllib
+    # ALL_PROXY не читает — потому и расхождение: alias ACTIVE, newapi ERROR.
+    env = dict(os.environ)
+    no_proxy = env.get("NO_PROXY") or env.get("no_proxy") or ""
+    extra = "localhost,127.0.0.1,::1,.local"
+    parts = [p.strip() for p in no_proxy.split(",") if p.strip()]
+    for p in extra.split(","):
+        if p not in parts:
+            parts.append(p)
+    env["NO_PROXY"] = ",".join(parts)
+    env["no_proxy"] = env["NO_PROXY"]
     try:
-        proc = subprocess.run(cmd, capture_output=True, timeout=timeout * 30)
+        proc = subprocess.run(cmd, capture_output=True, timeout=timeout * 30, env=env)
         return {"ok": proc.returncode in (0, 1), "path": str(out_path),
                 "probe_exit": proc.returncode}
     except Exception as exc:

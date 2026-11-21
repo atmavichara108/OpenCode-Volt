@@ -1,5 +1,5 @@
 {
-  "ts": "2026-11-20T21:40:39Z",
+  "ts": "2026-11-21T05:06:46Z",
   "source": "probe",
   "providers": {
     "amd-radeon": {
@@ -26,6 +26,8 @@
     "openrouter": {
       "status": "ACTIVE",
       "models": [
+        "thinkingmachines/inkling-2-mini",
+        "radixark/daisyrose-27b",
         "mistralai/pixtral-large-2502",
         "google/gemini-4-neon",
         "google/gemini-4-neon:batch",
@@ -169,7 +171,6 @@
         "z-ai/glm-5.3:batch",
         "qwen/qwen3.8-27b",
         "qwen/qwen3.8-27b:batch",
-        "dots-studio/dots-3-note-preview:free",
         "google/gemini-3.7-flash",
         "google/gemini-3.7-flash:batch",
         "bytedance-seed/seed-2-1-turbo",
@@ -197,7 +198,6 @@
         "google/gemini-3.6-flash:batch",
         "google/gemini-3.5-flash-lite",
         "google/gemini-3.5-flash-lite:batch",
-        "meituan/longcat-2.0",
         "thinkingmachines/inkling",
         "moonshotai/kimi-k3",
         "moonshotai/kimi-k3:batch",
@@ -1106,7 +1106,6 @@
         "klingai/kling-v3.0-i2v",
         "klingai/kling-v3.0-motion-control",
         "klingai/kling-v3.0-t2v",
-        "liquid/d1",
         "liquid/d1-ultra",
         "liquid/d1.2",
         "liquid/d1.2-ultra",
@@ -1487,7 +1486,7 @@
       ]
     },
     "anthropic": {
-      "status": "BLOCKED",
+      "status": "ERROR",
       "models": []
     },
     "amd": {
