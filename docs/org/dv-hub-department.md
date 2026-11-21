@@ -15,8 +15,9 @@ mandate-source: >
   Слово владельца 2026-11-01 (basis: quoted): «отныне в этой сессии "Отдел
   разработки ДВ-Хаб"» и «в твоё ведение вся инфраструктура и все субагенты» —
   наречение ведомства. Имя агента-носителя канонизировано по Р-Д-009 —
-  Master-enginer (в peer-registry ячейка «Master-Enginer» — опечатка по аудиту
-  18.11, строка F; правка зоны ЦУ). Мандат не самозванный (Р-009, Р-014).
+  Master-enginer (в peer-registry ячейка была «Master-Enginer» — опечатка по аудиту
+  18.11, строка F; исправлено ЦУ 21.11, коммит `c36d7d47`). Мандат не самозванный
+  (Р-009, Р-014).
 report-address: ses_eceb23a71ffeJO9QnFou8VngZC
 peer-address: ses_e68e4eb9dffe9odzQJRgs7WgAi
 spec-home: /home/rudra/Projects/dv-hub
@@ -39,7 +40,8 @@ evidence-policy: независимый verifier PASS + commit/tag; рапорт
 Наречение владельца 2026-11-01 (basis: quoted): «отныне в этой сессии "Отдел
 разработки ДВ-Хаб"». Имя агента-носителя канонизировано: **Master-enginer**
 (реестр `docs/org/agent-names.md`, Р-Д-009; аудит 18.11, строка F — в peer-registry
-ячейка «Master-Enginer», опечатка, правка зоны ЦУ). Факт на диске 21.11:
+ячейка была «Master-Enginer», опечатка — исправлена ЦУ 21.11, `c36d7d47`). Факт на
+диске 21.11:
 собственного агентского файла у ведомства нет (`dv-hub/.opencode/agent/` — только
 `dv-custodian.md` и `most-master.md`), носитель — глобальный файл
 `master-enginer.md` (Инженерный центр, ИЦ) — вывод УАС по факту на диске 21.11.
