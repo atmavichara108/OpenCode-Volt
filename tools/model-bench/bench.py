@@ -348,7 +348,8 @@ def main(argv=None):
     if not base_url:
         log.error("Не найден baseURL для провайдера %s", args.provider)
         return 3
-    key = config.resolve_key(args.provider)
+    key = config.pick_working_key(config.resolve_key_candidates(args.provider),
+                                  base_url, config.proxies_from_env())
 
     # Повторная оценка с живым GET /models (источник цены для не-табличных моделей).
     est_cost, _est_tokens = estimate_run_cost(

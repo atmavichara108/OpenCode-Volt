@@ -59,6 +59,72 @@ def reset_cache():
     _v2_export_cache = None
 
 
+def _v2_credentials() -> list:
+    """Кешированный список credential'ей v2 (opencode auth export)."""
+    global _v2_export_cache
+    if _v2_export_cache is None:
+        binary = _opencode_binary()
+        if not binary:
+            return []
+        try:
+            import subprocess
+            exp = subprocess.run([binary, "auth", "export"],
+                                 capture_output=True, text=True, timeout=60)
+            if exp.returncode == 0:
+                data = json.loads(exp.stdout)
+                if isinstance(data, list):
+                    _v2_export_cache = data
+        except Exception:  # noqa: BLE001
+            return []
+    return _v2_export_cache or []
+
+
+def resolve_key_candidates(env_name=None, auth_id=None, env=None, dotenv=None,
+                           auth=None) -> list[str]:
+    """Все ключи провайдера в порядке предпочтения (env → dotenv → auth.json → v2).
+
+    Нужен, когда у одного integrationID несколько credential'ей: резолв берёт
+    первый, а он может быть истёкшим (живой дефект 2026-11-21: у opencode-go
+    первый ключ — 401 api_key_expired, второй — рабочий; resolver возвращал
+    мёртвый). Вызывающий код пробует кандидатов по очереди.
+    """
+    if env is None:
+        env = os.environ
+    if dotenv is None:
+        dotenv = load_dotenv_file()
+    if auth is None:
+        auth = load_auth_json()
+    out: list[str] = []
+
+    def _push(v):
+        if v and v not in out:
+            out.append(v)
+
+    for name in [n for n in [env_name] if n]:
+        v = env.get(name)
+        if v:
+            _push(v)
+            return out
+    if env_name:
+        v = (dotenv or {}).get(env_name)
+        if v:
+            _push(v)
+            return out
+    if env_name:
+        v = (auth or {}).get(env_name)
+        if v:
+            _push(v)
+            return out
+    if auth_id:
+        for c in _v2_credentials():
+            if isinstance(c, dict) and c.get("integrationID") == auth_id:
+                v = c.get("value") or {}
+                key = v.get("key") or v.get("access")
+                if key:
+                    _push(key)
+    return out
+
+
 def resolve_key(env_name, auth_id, env=None, dotenv=None, auth=None):
     if env is None:
         env = os.environ

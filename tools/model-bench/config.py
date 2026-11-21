@@ -8,6 +8,7 @@ env/.env/auth.json, строит proxy-dict для urllib. Ключ никогд
 import json
 import logging
 import os
+import sys
 import urllib.request
 from pathlib import Path
 
@@ -130,6 +131,72 @@ def resolve_provider(provider_id):
         except (OSError, json.JSONDecodeError) as exc:
             log.warning("Не удалось прочитать key-rotator providers.json: %s", exc)
     return None, []
+
+
+def resolve_key_candidates(provider_id):
+    """Все ключи провайдера в порядке предпочтения (env → .env → auth.json → v2).
+
+    Живой дефект 2026-11-21: ключей у провайдера несколько из РАЗНЫХ источников,
+    и впереди может оказаться мёртвый — в `​.env` волта лежал устаревший ключ
+    opencode-go (401 api_key_expired), а рабочий — в v2 credential-store. Прежняя
+    логика делала return-early на первом источнике, поэтому bench падал на всех
+    гейтах. Теперь все источники складываются, а `pick_working_key` валидирует.
+    """
+    out: list[str] = []
+
+    def _push(v):
+        if v and v not in out:
+            out.append(v)
+
+    env_var = PROVIDER_ENV.get(provider_id)
+    if env_var:
+        _push(os.getenv(env_var))
+
+    load_dotenv(VAULT_ROOT / ".env")
+    if env_var:
+        _push(os.getenv(env_var))
+
+    auth = _load_auth_json()
+    if auth:
+        entry = auth.get(provider_id) or {}
+        _push(entry.get("key"))
+
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1]
+                               / "key-rotator"))
+        from lib import keys as kr_keys
+        for k in kr_keys.resolve_key_candidates(None, provider_id):
+            _push(k)
+    except Exception as exc:  # noqa: BLE001
+        log.warning("Не удалось прочитать v2 credential-store: %s", exc)
+    return out
+
+
+def pick_working_key(keys, base_url, proxies):
+    """Первый ключ, с которым GET /models отвечает 200; иначе первый кандидат.
+
+    Валидация дешёвая (один запрос на ключ) и делает прогон честным: мёртвый
+    ключ не превращается в «все гейты ERROR».
+    """
+    if not keys:
+        return ""
+    if len(keys) == 1:
+        return keys[0]
+    url = str(base_url).rstrip("/") + "/models"
+    for k in keys:
+        try:
+            opener = build_opener(proxies)
+            req = urllib.request.Request(
+                url, headers={"Authorization": "Bearer " + k,
+                              "User-Agent": "opencode-vault-model-bench/0.1"},
+                method="GET")
+            resp = opener.open(req, timeout=20) if opener else \
+                urllib.request.urlopen(req, timeout=20)
+            if resp.status == 200:
+                return k
+        except Exception:  # noqa: BLE001
+            continue
+    return keys[0]
 
 
 def resolve_key(provider_id):

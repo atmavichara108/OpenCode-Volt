@@ -181,6 +181,41 @@ def _fetch_coefficient(base_url, key, proxies):
     return None
 
 
+def _curl_chat(url, body, headers, timeout):
+    """Через curl-транспорт key-rotator (обход отпечатка Cloudflare-1010).
+
+    Zen (opencode.ai) блокирует Python-TLS: urllib получает 403 1010, curl — 200.
+    Возвращает (reply, usage, latency_ms, error, finish_reason) или None, если
+    транспорт недоступен.
+    """
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1]
+                               / "key-rotator"))
+        from lib import http_client as kr_http
+    except Exception:  # noqa: BLE001
+        return None
+    try:
+        res = kr_http.request("POST", url, headers=headers, json_body=None,
+                              body=body.decode("utf-8"), timeout=timeout)
+        r = res[0] if isinstance(res, tuple) else res
+        status = r.get("status")
+        raw = r.get("body") or ""
+        latency = int(r.get("latency_ms") or 0)
+        if status == 200:
+            data = json.loads(raw)
+            return (_extract_reply(data), data.get("usage") or {}, latency, "",
+                    _extract_finish_reason(data))
+        return "", {}, latency, f"http_{status}: {_redact_str(raw[:200], key_hint(headers))}", None
+    except Exception as exc:  # noqa: BLE001
+        return None
+
+
+def key_hint(headers: dict) -> str:
+    """Ключ из заголовка (для редактирования в тексте ошибки)."""
+    auth = headers.get("Authorization") or ""
+    return auth.replace("Bearer ", "")
+
+
 def chat(base_url, key, model, prompt, max_tokens, timeout=120, proxies=None):
     """Один запрос к chat/completions.
 
@@ -224,6 +259,19 @@ def chat(base_url, key, model, prompt, max_tokens, timeout=120, proxies=None):
                 # 429 — ретраим (rate limit может сброситься), отдельная пауза.
                 last_err = _http_error(exc, key)
                 last_pause = RETRY_429_PAUSE_SECONDS
+            elif code == 403:
+                # Cloudflare-1010 (обрыв по TLS-отпечатку Python) — повтор через
+                # curl-транспорт: Zen (opencode.ai) пускает curl, но не urllib.
+                body_txt = ""
+                try:
+                    body_txt = exc.read().decode("utf-8", "replace")[:400]
+                except Exception:  # noqa: BLE001
+                    pass
+                if "1010" in body_txt or "cloudflare" in body_txt.lower():
+                    got = _curl_chat(url, body, headers, timeout)
+                    if got is not None:
+                        return got
+                return "", {}, 0, _http_error(exc, key), None
             elif 400 <= code < 500:
                 return "", {}, 0, _http_error(exc, key), None
             else:

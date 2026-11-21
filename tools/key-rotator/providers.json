@@ -1,7 +1,7 @@
 {
   "meta": {
     "schema": "key-rotator/providers/1.1",
-    "updated": "2026-11-20",
+    "updated": "2026-11-21",
     "note": "Декларативный каталог провайдеров для probe/ротатора. Ключей здесь НЕТ: резолв env -> vault .env -> auth.json. endpoints без * [проверить] — конвенция <site>/v1, уточняется probe. transport влияет только на smoke-chat (Iter-1); probe всегда ходит GET /models в openai-совместимом стиле. skip=провайдер вне активной ротации (managed/backlog/endpoint_dynamic). models_detail (если есть) — агентские характеристики моделей (ctx/vision/tools). Refresh 2026-11-14: добавлены живые провайдеры каталога (nvidia — по слову владельца 14.11; zai/anthropic/amd/newapi/local-deepseek/modelhub/github-copilot); lunaroute выкинут владельцем (freetrial истёк, 402).",
     "last_probe": "2026-09-27T20:00:38Z",
     "last_probe_result": "14 ACTIVE / 3 BLOCKED / 2 ERROR / 3 SKIPPED (read-only, health-log: control-plane/telemetry/provider-health.jsonl)",
@@ -572,18 +572,27 @@
     },
     "opencode-go": {
       "display_name": "OpenCode Go (subscription)",
-      "endpoint": null,
-      "endpoints": [],
+      "endpoint": "https://opencode.ai/zen/v1",
+      "endpoints": [
+        "https://opencode.ai/zen/v1"
+      ],
       "env": null,
       "auth_id": "opencode-go",
       "transport": "openai",
       "roles": [
-        "coding"
+        "coding",
+        "general"
       ],
-      "priority": 0,
+      "priority": 40,
       "source": "opencode runtime",
-      "skip": "managed",
-      "notes": "Управляется самим opencode; публичного probe-эндпоинта нет"
+      "notes": "Управляется самим opencode; публичного probe-эндпоинта нет 2026-11-21: эндпоинт Zen (opencode.ai/zen/v1) подтверждён живой пробой (Cloudflare-1010 обходится curl-транспортом; Go-шлюз ходит тоже — проверено пробным каналом). Ключей в хранилище два: первый истёк (401 api_key_expired), второй живой — probe.py перебирает кандидатов по auth-провалу. Каталог: 75 моделей, из них бесплатные по суффиксу -free.",
+      "quota": {
+        "kind": "free_tier_credits",
+        "registered_at": "2026-11-21",
+        "fact": "Zen free tier (модели с суфксиком -free): лимиты небольшие, но стабильные (слово владельца 2026-11-21). Ключей у интеграции два — первый истёк (api_key_expired), резолв перебирает кандидатов по 401/403.",
+        "owner_word": "2026-11-21: «добавь ещё бесплатные модели opencode-go у них небольшие лимиты но стабильные»",
+        "monitor": "probe health + квотный гейт; срок не задан — выпил только по слову владельца"
+      }
     },
     "opencode": {
       "display_name": "OpenCode Zen",

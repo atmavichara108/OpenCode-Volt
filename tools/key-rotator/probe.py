@@ -193,6 +193,13 @@ def probe_smoke(cfg: dict, key: str, *, endpoint: str, model: str,
             "error_kind": resp.get("error_kind")}
 
 
+def _looks_auth_failure(rec: dict | None) -> bool:
+    """Похож ли провал на отказ по ключу (401/403) — тогда есть смысл пробовать
+    следующий ключ того же провайдера (живой дефект 21.11: opencode-go)."""
+    w = [str(x) for x in ((rec or {}).get("warnings") or [])]
+    return any(x in ("http_401", "http_403") for x in w)
+
+
 def probe_provider(pid: str, cfg: dict, *, timeout: int, retries: int,
                    pause: float, smoke: bool, smoke_model: str | None) -> dict:
     checked_at = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
@@ -224,45 +231,62 @@ def probe_provider(pid: str, cfg: dict, *, timeout: int, retries: int,
         rec["status"] = "BLOCKED"
         return rec
 
-    key, source = key_store.resolve_key(cfg.get("env"), cfg.get("auth_id"))
-    if not key:
+    keys = key_store.resolve_key_candidates(cfg.get("env"), cfg.get("auth_id"))
+    if not keys:
         rec["warnings"] = ["no_key"]
         rec["exit"] = EXIT_BY_STATUS["ERROR"]
         return rec
-    rec["key_source"] = source
+    key = keys[0]
+    rec["key_source"] = "auth-export" if cfg.get("auth_id") and len(keys) > 1 else \
+        ("env" if cfg.get("env") else "auth-export")
 
     last_rec = rec
     best_rec = None
     best_rank = None
     status_rank = {"ACTIVE": 0, "DEGRADED": 1, "BLOCKED": 2, "ERROR": 3}
-    for endpoint in endpoints:
-        try:
-            resp, _ = probe_models(cfg, key, timeout=timeout, retries=retries,
-                                   pause=pause, endpoint=endpoint)
-        except Exception as exc:
-            cand = dict(rec)
-            cand["status"] = "ERROR"
-            cand["warnings"] = [f"{type(exc).__name__}"]
-            cand["endpoint"] = endpoint
-            rank = status_rank["ERROR"]
-        else:
-            status, warnings, count, ids = classify_models(resp, cfg)
-            cand = dict(rec)
-            cand["status"] = status
-            cand["warnings"] = warnings
-            cand["models_count"] = count
-            cand["model_ids_sample"] = ids[:8]
-            # полный список — источник живости пина для гейта УАС (pin-check):
-            # живой каталог OpenCode ≠ жалование модели ключом провайдера.
-            cand["model_ids"] = ids
-            cand["latency_ms"] = resp.get("latency_ms")
-            cand["endpoint"] = endpoint
-            rank = status_rank[status]
-        last_rec = cand
-        if best_rank is None or rank < best_rank:
-            best_rank = rank
-            best_rec = cand
-        if best_rank == 0:
+    # Кандидаты ключей: у одного integrationID их может быть несколько, и первый
+    # бывает истёкшим (живой дефект 21.11: opencode-go — первый ключ
+    # api_key_expired, второй рабочий). Пробуем следующего, только когда провал
+    # выглядит как auth (401/403) — иначе смысла нет.
+    for key_index, key_try in enumerate(keys):
+        key = key_try
+        if key_index:
+            rec["key_source"] = f"auth-export#{key_index}"
+        for endpoint in endpoints:
+            try:
+                resp, _ = probe_models(cfg, key, timeout=timeout, retries=retries,
+                                       pause=pause, endpoint=endpoint)
+            except Exception as exc:
+                cand = dict(rec)
+                cand["status"] = "ERROR"
+                cand["warnings"] = [f"{type(exc).__name__}"]
+                cand["endpoint"] = endpoint
+                rank = status_rank["ERROR"]
+            else:
+                status, warnings, count, ids = classify_models(resp, cfg)
+                cand = dict(rec)
+                cand["status"] = status
+                cand["warnings"] = warnings
+                cand["models_count"] = count
+                cand["model_ids_sample"] = ids[:8]
+                # полный список — источник живости пина для гейта УАС (pin-check):
+                # живой каталог OpenCode ≠ жалование модели ключом провайдера.
+                cand["model_ids"] = ids
+                cand["latency_ms"] = resp.get("latency_ms")
+                cand["endpoint"] = endpoint
+                rank = status_rank[status]
+            last_rec = cand
+            if best_rank is None or rank < best_rank:
+                best_rank = rank
+                best_rec = cand
+            if best_rank == 0:
+                break
+        chosen = best_rec if best_rec is not None else last_rec
+        # Достижимый ключ найден (ACTIVE/DEGRADED) — дальше перебирать не нужно.
+        if best_rank is not None and best_rank <= 1:
+            break
+        # Иначе, если провал похож на auth (401/403) — пробуем следующий ключ.
+        if not _looks_auth_failure(chosen):
             break
 
     rec = best_rec if best_rec is not None else last_rec
