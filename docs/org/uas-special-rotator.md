@@ -46,7 +46,7 @@ mandate-source: >
 report-address: ses_eceb23a71ffeJO9QnFou8VngZC
 peer-address: ses_e9884e4aeffe7okjn4f7RtavmG
 spec-home: /home/rudra/dotfiles/docs/specs/
-status: active, 2026-10-23 (обновлён 2026-11-21: шлюз по умолчанию для флота — Р-Д-031/Р-Д-032; носитель — РМПП/Keymaster; запись об исполнителе через ИЦ устарела)
+status: "active, 2026-10-23 (обновлён 2026-11-21: шлюз по умолчанию для флота — Р-Д-031/Р-Д-032; носитель — РМПП/Keymaster; запись об исполнителе через ИЦ устарела)"
 boundaries: >
   УАС владеет решением и каталогом; правку глобального opencode.jsonc исполняет
   ИЦ. Не трогает код приложений. Секреты не появляются в файлах каталога, логах

@@ -5,7 +5,7 @@ status: active
 owner: Бизнес-школа (куратор Bizmaster)
 agent: Master-FreeLa
 created: 2026-11-07
-basis: quoted (слово владельца 2026-11-07: «нужен свой примари агент - Master-FreeLa - пускай уас сделает»)
+basis: "quoted (слово владельца 2026-11-07: «нужен свой примари агент - Master-FreeLa - пускай уас сделает»)"
 canon: Р-113
 ---
 
