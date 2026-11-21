@@ -2,7 +2,7 @@
 type: Registry
 title: Реестр имён агентов-носителей ведомств (УАС, канон)
 timestamp: 2026-10-30
-updated: 2026-11-19
+updated: 2026-11-21
 owner: УАС (куратор агентского контура, Р-004/Р-014)
 basis: quoted (слово владельца 2026-10-30, реестр Р-Д-009)
 rule: >
@@ -39,7 +39,7 @@ rule: >
 | Control-top (SSA) | **Top-manager** | панель владельца |
 | Университет Агентских Систем (УАС) | **Professor** | вместо общего sysop |
 | Ротатор моделей (подотдел УАС) | **Keymaster** | квоты/ключи/здоровье |
-| Смотритель ДВ-Хаб | **Dv-custodian** | манифест dv-hub-custodian proposed → активен после файла агента |
+| Смотритель ДВ-Хаб | **Dv-custodian** | манифест `docs/org/dv-hub-custodian.md` — **active** (вердикт УАС 31.10); файл агента `~/.config/opencode/agent/dv-custodian.md` на месте — факт на диске 21.11 |
 | Командная работа (dv-hub) | **Most-master** | координация контрибьюторов |
 | Офис Серплюкс | **Serp-office** | primary; + субагент разработки **Senior-dev** |
 | Офис Серплюкс — субагент разработки | **Senior-dev** | слово владельца 30.10 (Р-Д-009: «Офис Серплюкс - serp-office + добавить агента для разработки (вызывать как субагента) - senior-dev»); файл `~/.config/opencode/agent/senior-dev.md` + продуктовая копия `SSA/products/serp/.opencode/agent/senior-dev.md`. **Коллизия имени** с Аутрич·Цехом (Р-Д-011) — см. раздел «Аутрич (SSA)» |
@@ -65,8 +65,8 @@ rule: >
 
 | Сессия | Primary | Примечание |
 |---|---|---|
-| Аутрич · Офис (seo-outreach) | **Outrich-office** | слово владельца 10-30. Факт на диске 18.11: сессия `ses_ed5dcdf33ffeisHuBX9VKB6XhM` работает на агенте `top-man` (`SSA/products/seo-outreach/.opencode/agent/top-man.md`); файла `outrich-office.md` нет ни в продукте, ни в глобальном слое — расхождение, ждёт решения ЦУ/владельца |
-| Аутрич · Цех (seo-outreach) | **Senior-dev** | слово владельца 2026-10-30 (Р-Д-011). Факт на диске 18.11: сессия `ses_ed9619763ffeVC3GE5q2o2HY5j` работает на агенте `top-man`; файла `senior-dev.md` в продукте seo-outreach нет. **Коллизия имени:** `Senior-dev` — одновременно канон Аутрич·Цеха (Р-Д-011) и субагент разработки Офиса Серплюкс (Р-Д-009, файл `senior-dev.md` в `SSA/products/serp/`). Оба — слова владельца; развести при следующей сверке |
+| Аутрич · Офис (seo-outreach) | **Outrich-office** | слово владельца 10-30. Факт на диске 21.11 (перепроверено): сессия `ses_ed5dcdf33ffeisHuBX9VKB6XhM` работает на агенте `top-man` (`SSA/products/seo-outreach/.opencode/agent/top-man.md`); файла `outrich-office.md` нет ни в продукте (там: `engineer.md`, `office-tg.md`, `tg-bridge.md`, `top-man.md`), ни в глобальном слое — расхождение, ждёт решения ЦУ/владельца |
+| Аутрич · Цех (seo-outreach) | **Senior-dev** | слово владельца 2026-10-30 (Р-Д-011). Факт на диске 21.11 (перепроверено): сессия `ses_ed9619763ffeVC3GE5q2o2HY5j` работает на агенте `top-man`; файла `senior-dev.md` в продукте seo-outreach нет. **Коллизия имени:** `Senior-dev` — одновременно канон Аутрич·Цеха (Р-Д-011) и субагент разработки Офиса Серплюкс (Р-Д-009, файлы `~/.config/opencode/agent/senior-dev.md` + `SSA/products/serp/.opencode/agent/senior-dev.md` — на месте, факт 21.11). Оба — слова владельца; развести по слову владельца (форма подавалась 21.11, ответа нет) |
 
 ## Запланированные (носитель не заведён — имя закреплено заранее)
 
