@@ -21,7 +21,7 @@ mandate-source: >
 report-address: ses_eceb23a71ffeJO9QnFou8VngZC
 peer-address: ses_e68e4eb9dffe9odzQJRgs7WgAi
 spec-home: /home/rudra/Projects/dv-hub
-status: "active, 2026-11-01 (вердикт УАС 21.11: ведомство живо — сессия-носитель в peer-registry; манифест приведён к схеме ministry-manifest и внесён в реестр манифестов — строки ранее не было; написание имени носителя исправлено по Р-Д-009)"
+status: "active, 2026-11-01 (вердикт УАС 21.11: ведомство живо — сессия-носитель в peer-registry; манифест приведён к схеме ministry-manifest и внесён в реестр манифестов — строки ранее не было; написание имени носителя исправлено по Р-Д-009; 22.11 дополнено последним опциональным полем `memory-zones` — полный набор 11+4 схемы на месте)"
 boundaries: >
   Не ремонтирует сломанное (инциденты, /bugfix — в поток Мастерской, Mechanic).
   env-профили — только read-modify-write (инцидент 29-10). Секретов в репо нет;
@@ -32,6 +32,7 @@ boundaries: >
   2026-11-03); владельцу проблема не делегируется по умолчанию.
 ports: манифест-реестр docs/org/manifest-registry.md (куратор УАС); строка реестра создана этим манифестом
 capabilities: [dv-hub-development, project-infrastructure, project-subagents]
+memory-zones: [dv-hub-department]
 file-zones: [docs/org/dv-hub-department.md]
 evidence-policy: независимый verifier PASS + commit/tag; рапорты — в ЦУ
 ---

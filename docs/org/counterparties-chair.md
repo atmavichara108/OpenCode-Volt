@@ -7,15 +7,15 @@ jurisdiction: >
   Выращивание контрагентов цифровых образов (ступени rudrakshas А4→А1→А2→А3):
   стандарты контрагентов, право отказа, протокол маркировки («это модель, не
   Рудра»), анти-симулякрные гейты, учебный полигон с kill-criterion.
-carrier-sessions: (сессию создаёт ЦУ; агент Rector)
+carrier-sessions: "ses_ekCkATn0MVldNqtLqnWDU3c (агент Rector; interim librarian — строка в peer-registry; сессию создал ЦУ)"
 mandate-source: >
   Слово владельца 2026-10-30 (basis: quoted): «Кафедра контрагентов при УАСе -
   так и назовём - отправляй мой апрув и спеку цу, она создаст и сессию, твоя
   роль подключить в кафедру его агента - rector» (Р-Д-010) + ночная программа 10-31.
 report-address: ses_eceb23a71ffeJO9QnFou8VngZC
-peer-address: (после сессии)
+peer-address: ses_ekCkATn0MVldNqtLqnWDU3c
 spec-home: /home/rudra/Projects/OpenCode-Vault/docs/specs/
-status: active, 2026-10-31 (манифест+агент; сессия — ЦУ)
+status: "active, 2026-10-31 (манифест+агент; сессия — ЦУ; 22.11 носитель приведён по факту: ses_ekCkATn0MVldNqtLqnWDU3c — строка в peer-registry, агент Rector)"
 boundaries: >
   Не правит код приложений; не канонизирует; не решает за владельца; периметр
   сырья — только рабочие decision-записи (личное — «не читаем никогда»); WIP=1;
