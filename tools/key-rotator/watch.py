@@ -77,11 +77,23 @@ def gateway_token() -> str | None:
 
 
 def smoke(token: str, alias: str, with_image: bool, timeout: float) -> dict:
-    content = [{"type": "text", "text": "ping, answer one word"}]
+    # Промпт РЕПРЕЗЕНТАТИВЕН роли алиаса. Урок 21.11: «ping, one word» не
+    # выявлял класс «модель отвечает за секунды на трёх словах, но висит
+    # минутами / отказывается на настоящей задаче» — флот это ловил в бою
+    # (free-code, 168–720с на кодовых промптах), а smoke молчал.
+    if alias == "free-code":
+        text, max_tokens = ("Напиши python-функцию разворота односвязного списка. "
+                            "Только код, без пояснений.", 200)
+    elif with_image:
+        text, max_tokens = "Что на изображении? Ответь одним словом.", 60
+    else:
+        text, max_tokens = ("Объясни одним абзацем, зачем нужно версионирование "
+                            "зависимостей.", 120)
+    content = [{"type": "text", "text": text}]
     if with_image:
         content.append({"type": "image_url",
                         "image_url": {"url": f"data:image/png;base64,{TINY_PNG_B64}"}})
-    body = json.dumps({"model": alias, "max_tokens": 12,
+    body = json.dumps({"model": alias, "max_tokens": max_tokens,
                        "messages": [{"role": "user", "content": content}]}).encode()
     req = urllib.request.Request(GATEWAY_URL, data=body, headers={
         "Authorization": f"Bearer {token}", "Content-Type": "application/json"})
@@ -192,6 +204,50 @@ def append_health(rec: dict) -> bool:
         return False
 
 
+def probe_opencode_go_free_pool(timeout: float = 60.0) -> dict:
+    """Дешёвая проверка: вернулся ли бесплатный пул Zen (opencode-go).
+
+    Контекст (слово владельца 2026-11-21): бесплатные модели opencode-go ждут
+    сброса квоты (сейчас 429 FreeUsageLimitError), bench-gate не пропустит их в
+    каналы без PASS-артефакта. Сторож ловит момент возврата: один чат-запрос к
+    -free модели; 200 = пул вернулся (сигнал «можно гнать bench»), 429 = ещё
+    исчерпан (факт в health-строке, не сбой алиасов).
+    """
+    try:
+        from lib import http_client as kr
+        from lib import keys as key_store
+    except Exception as exc:  # noqa: BLE001
+        return {"ok": False, "error": f"import: {exc}"}
+    keys = key_store.resolve_key_candidates(None, "opencode-go")
+    if not keys:
+        return {"ok": False, "error": "no_key"}
+    import json as _json
+    body = _json.dumps({"model": "deepseek-v4.1-flash-free",
+                        "messages": [{"role": "user", "content": "ping"}],
+                        "max_tokens": 8})
+    last: dict = {"ok": False, "error": "no_attempts"}
+    for key in keys:  # первый живой ключ: 401 = истёк, пробуем следующего
+        try:
+            res = kr.request("POST", "https://opencode.ai/zen/v1/chat/completions",
+                             headers={"Authorization": "Bearer " + key,
+                                      "Content-Type": "application/json"},
+                             json_body=None, body=body, timeout=timeout)
+            r = res if isinstance(res, dict) else res[0]
+            status = r.get("status")
+            if status == 200:
+                return {"ok": True, "free_pool": "available"}
+            if status == 429:
+                return {"ok": True, "free_pool": "exhausted",
+                        "detail": (r.get("body") or "")[:120]}
+            last = {"ok": True, "free_pool": f"http_{status}",
+                    "detail": (r.get("body") or "")[:120]}
+            if status != 401:
+                return last
+        except Exception as exc:  # noqa: BLE001
+            last = {"ok": False, "error": f"{type(exc).__name__}: {exc}"}
+    return last
+
+
 def refresh_live_catalog(timeout: float) -> dict:
     """Обновляет живой каталог моделей (полные списки по ключу провайдера).
 
@@ -229,6 +285,10 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(prog="watch", description="сторож new-api ротатора")
     p.add_argument("--timeout", type=float, default=120.0, help="таймаут одного smoke")
     p.add_argument("--no-image", action="store_true", help="без smoke с картинкой")
+    p.add_argument("--code-image", action="store_true",
+                   help="включить картинный smoke для free-code ( Off by default: "
+                        "голова free-code — текстовая код-модель, 400 на картинке "
+                        "by design; картинки → free-general)")
     p.add_argument("--no-log-scan", action="store_true", help="без скана лога шлюза")
     p.add_argument("--no-catalog", action="store_true",
                    help="не обновлять живой каталог моделей (источник 2 пин-гейта)")
@@ -238,6 +298,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--max-latency-img-ms", type=int, default=0,
                    help="порог для пути с картинкой (0 = удвоенный текстовый; "
                         "голова алиаса — reasoning-модель с дисперсией)")
+    p.add_argument("--no-quota-probe", action="store_true",
+                   help="без проверки возврата free-пула opencode-go (Zen)")
     p.add_argument("--quiet", action="store_true", help="только итоговая строка JSON")
     args = p.parse_args(argv)
 
@@ -248,14 +310,16 @@ def main(argv: list[str] | None = None) -> int:
 
     plan = [(a, False) for a in ALIASES]
     if not args.no_image:
-        # Картинный smoke на ОБА алиаса: контракт контента проверяется там, где
-        # он может сломаться. Порядок «vision выше текста» поддерживается только
-        # там, где модель ОТВЕРГАЕТ картинку (терминальный 400); на головах,
-        # которые её принимают, тотальная перестановка конфликтовала бы с
-        # латентностью (muse 4.5–8с против step-5 215с на coding). Поведение
-        # достовернее инварианта: ловим регрессию таймером, не гадаем.
-        for a in ALIASES:
-            plan.append((a, True))
+        # Картинный smoke — на свободный general: у free-code голова —
+        # текстовая код-модель (qwen3-coder, 1.3с на реальном коде), и картинка
+        # на ней даёт терминальный 400. Контракт зафиксирован: изображения
+        # идут в free-general, free-code — текстовый (выбор латентности:
+        # поставить vision-модель во главу free-code = отдать кодовой трафик
+        # модели в 12–25 раз медленнее). Проверка free-code+img включается
+        # флагом --code-image (как willingly, не по умолчанию).
+        plan.append(("free-general", True))
+        if args.code_image:
+            plan.append(("free-code", True))
 
     smokes = []
     for alias, with_image in plan:
@@ -273,6 +337,10 @@ def main(argv: list[str] | None = None) -> int:
     if not args.no_catalog:
         catalog = refresh_live_catalog(args.timeout)
 
+    free_pool = None
+    if not args.no_quota_probe:
+        free_pool = probe_opencode_go_free_pool()
+
     errors: dict[str, int] = {}
     log_name = None
     if not args.no_log_scan:
@@ -288,6 +356,10 @@ def main(argv: list[str] | None = None) -> int:
     for s in smokes:
         if not s["ok"]:
             warnings.append(f"smoke_fail:{s['alias']}{'+img' if s['with_image'] else ''}")
+    # Пул Zen вернулся — сигнал к действию (bench-gate opencode-go), не сбой:
+    # помечаем, чтобы алерт назвал причину (язык: «пул вернулся, гони bench»).
+    if (free_pool or {}).get("free_pool") == "available":
+        warnings.append("opencode_go_free_pool_back")
     # Латентность как часть здоровья: 200 за 5 минут — не ACTIVE для
     # исполнителя (флот ждёт ответа). Живой класс 20.11: AMD ответил 200 за
     # 320с; при одном таймауте smoke ещё и падал — порог ловит и «медленный
@@ -324,7 +396,7 @@ def main(argv: list[str] | None = None) -> int:
                                  "upstream": s.get("upstream"),
                                  "latency_ms": s.get("latency_ms")} for s in smokes],
                     "log_errors": errors, "log_file": log_name,
-                    "live_catalog": catalog},
+                    "live_catalog": catalog, "free_pool": free_pool},
     }
     logged = append_health(rec)
 
@@ -337,6 +409,7 @@ def main(argv: list[str] | None = None) -> int:
                              "error": s.get("error")} for s in smokes],
                "log_errors": errors,
                "live_catalog": catalog,
+               "free_pool": free_pool,
                "warnings": warnings}
     out(payload)
     return 0 if status == "ACTIVE" else (1 if status in ("DEGRADED", "ERROR") else 2)
