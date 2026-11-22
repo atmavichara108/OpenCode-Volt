@@ -17,7 +17,7 @@ mandate-source: >
 report-address: ses_eceb23a71ffeJO9QnFou8VngZC
 peer-address: ses_ezBJLD3yZWgyeGcN3K1apVq
 spec-home: /home/rudra/Projects/OpenCode-Vault/docs/specs/
-status: "active, 2026-11-06 (Р-071; агент Bizmaster — activation УАС 2026-11-05, имя по Р-097; сессия-носитель ses_ezBJLD3yZWgyeGcN3K1apVq; квест Q-012)"
+status: "active, 2026-11-06 (Р-071; агент Bizmaster — activation УАС 2026-11-05, имя по Р-097; сессия-носитель ses_ezBJLD3yZWgyeGcN3K1apVq; квест Q-012). Обновлено 2026-11-22: по Р-Д-034 (слово владельца) куратор канбана конгломерата — Бизнес-школа; фактическое изменение — после ресёрча и проектирования"
 boundaries: >
   Не primary кода приложений. Деньги/обязательства — только слово владельца.
   Секреты — вне репо, через Ворота. Дубли — сверкой не слиянием (Р-056).
