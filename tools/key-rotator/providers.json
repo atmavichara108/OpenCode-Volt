@@ -688,7 +688,7 @@
             "free-general"
           ],
           "priority": 60,
-          "notes": "2026-11-20: в free-code опущен с 60 до 55 — живой факт watch: два жёлтых slow_alias подряд (62.4с и 61.0с) на кодовом пути: ultra имеет хвост латентности ~60с (reasoning-дисперсия), muse-glimmer держит 4.5–8с. muse первым, ultra резервом. В free-general остаётся 55 (голова там super-vl, ответы 0.5–3с)."
+          "notes": "2026-11-20: в free-code опущен с 60 до 55 — живой факт watch: два жёлтых slow_alias подряд (62.4с и 61.0с) на кодовом пути: ultra имеет хвост латентности ~60с (reasoning-дисперсия), muse-glimmer тогда держал 4.5–8с; muse первым, ultra резервом. 2026-11-22: возвращён в 60 — замер realistic-кода показал muse-glimmer не код-моделью (21.7с И отказ от кодового промпта), ultra 4.4с: порядок free-code qwen3-coder 62 → ultra 60 → step-5 55 → muse 50. В free-general тоже 60 (голова super-vl 90, ответы 0.5–3с)."
         },
         "nemotron-3-nano-omni-30b-a3b-reasoning": {
           "ctx": null,
