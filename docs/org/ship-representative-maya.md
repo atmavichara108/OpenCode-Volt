@@ -19,7 +19,7 @@ mandate-source: >
   Задание ЦУ ref: maya-representative-mandate (Р-004/Р-014). Мандат не
   самозванный (Р-009).
 report-address: ses_eceb23a71ffeJO9QnFou8VngZC
-peer-address: ses_e9284e4aeffe7okjn4f7RtavmG
+peer-address: ses_e9884e4aeffe7okjn4f7RtavmG
 spec-home: /home/rudra/dotfiles/docs/specs/ship-representative-role-standard.md
 status: active, 2026-10-29 (слово владельца «активен», реестр Р-Д-002)
 boundaries: >
