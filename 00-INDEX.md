@@ -17,6 +17,7 @@ timestamp: 2026-09-01
 - Извлечь посты из Telegram → `/capture <тема>`
 - Сводка по проекту → `/project <имя>`
 - Дистилляция пайплайнов → `/distill-pipeline`
+- Единое поле решений (Deck) → [[10-Deck/deck]] (реестр Р, карточки, дашборд)
 - Coordination Bridge → FROZEN BY USER 2026-08-30 (historical, не вызывать); local-first → `/android-plan`
 - Capability route → `/route <свободный intent>`
 - Посмотреть дорожную карту → [[DEVELOPMENT-ROADMAP]]
