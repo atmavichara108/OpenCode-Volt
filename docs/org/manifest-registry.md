@@ -36,9 +36,10 @@ owner: УАС (куратор по Р-014), операционная запис�
   поле `carrier-sessions` (`serp-forge` — `ses_e1116cabdffeW9SrcjuL36bhjM`,
   `spells-chair` — `ses_spe11s2026no7Chair01`, `master-freela` —
   `ses_e4bbf9330ffeAQ6hTrv1HmF0yb`);
-- **носитель назван, но строка в peer-registry помечена «мёртв»** — 1:
-  `reverse-craft-department` (`ses_ewdWZMlHOJE3UloUrwdXHi`; preflight 404 на 20.11,
-  пометка по мандату ic-u2-cop-dead-rows-20261108) — действующего носителя нет;
+- **носитель назван, но строка в peer-registry помечена «мёртв»** — 0 (было 1:
+  `reverse-craft-department`); 24.11 прежний носитель `ses_ewdWZMlHOJE3UloUrwdXHi` — 404
+  (префлайт ЦУ и УАС), новый носитель создан УАС — `ses_df5b2a4bfffehIMLNZZGvsRxUi`;
+  внесение новой строки в peer-registry — зона ЦУ (письмо отправлено 24.11);
 - **сессии-носителя нет по замыслу** — 3: `obsidian-plugin-dev` (субагент без своей
   сессии), `sero` (глобальный агент), `ship-representative-maya` (идентичность
   отправителя, а не сессия) — носителями в peer-registry не числятся, расхождения нет;
