@@ -48,6 +48,7 @@ timestamp: 2026-10-29
 | Цех SERP | ses_e1116cabdffeW9SrcjuL36bhjM | Foreman (Р-Д-030) | ~/Projects/SSA/products/serp (перенос 18.11, старый путь — симлинк) | word owner 18.11 (basis: quoted): «ses_e1116cabdffeW9SrcjuL36bhjM - Цех SERP - внеси в реестр»; letter peer-registry-cex-serp-1118 |
 | Линия интеграции окон КРУК (при Отделе «Приложений») | ses_uiux777e2026no7Apps001 | UI/UX-Dev (субагент Apps-dev) | ~/Projects/mail-hub | интеграция read-only кусков окон A-G в пульт (слот 08.11 10:00, подтверждение 10:15, приёмка ЦУ) |
 | Кафедра заклинаний (при УАСе) | ses_spe11s2026no7Chair01 | Spellmaster (Р-118; файл агента spellmaster.md, живая сессия на spellmaster — переключение выполнено УАС 22.11) | ~/dotfiles | производство укреплённых скиллов: SKILL.md + плагины/гейты/верификаторы/хуки; куратор — УАС, линия при Бизнес-школе |
+| Приёмочная сессия конгломерата (SSA/control) | ses_df5e831c0ffeYAzh5csIlq3kEh | sysop | ~/Projects/SSA/control | приёмка конгломерата по мандату Р-Д-034; спека docs/specs/acceptance-session.md (SPEC-DZB-ACC-001); агент sysop, модель newapi/free-general; сессия активирована УАС 24.11 (письмо uas-cu-acceptance-sysop-done-1123); продуктовая копия agente-файла sysop.md — по слову владельца (сейчас глобально: ~/.config/opencode/agent/sysop.md) |
 
 ## Правила
 1. **Писать только по этому реестру.** Все сессии живые (сверено по session_v2, 10-18 22:00).
