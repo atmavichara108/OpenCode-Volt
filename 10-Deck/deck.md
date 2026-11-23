@@ -26,9 +26,10 @@ timestamp: 2026-10-23
 
 ## Решения, ждущие слова владельца
 
-Карточки решений — `decisions-deck.md`, реестр — `01-Policies/decisions-registry.md`.
+Карточки решений — `decisions.base`, реестр — `01-Policies/decisions-registry.md` (121 решение, Р-001…Р-123).
 
-- [[10-Deck/decisions-deck]] — карточки решений
+- `[[10-Deck/decisions]]` — карточки решений (по одной на запись реестра)
+- `[[10-Deck/decisions.base]]` — живые виды: «Все решения» и «Требуют слова владельца»
 
 ## Карта навигации
 

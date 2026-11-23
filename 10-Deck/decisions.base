@@ -1,0 +1,38 @@
+filters:
+  and:
+    - file.inFolder("10-Deck/decisions")
+    - file.ext == "md"
+properties:
+  note.id:
+    displayName: ID
+  note.имя:
+    displayName: Решение
+  note.статус:
+    displayName: Статус
+  note.отметка_слова:
+    displayName: Дата слова
+  note.ведомство:
+    displayName: Ведомство
+  file.name:
+    displayName: Файл
+views:
+  - type: table
+    name: Все решения (реестр Р)
+    filters:
+      and:
+        - file.inFolder("10-Deck/decisions")
+        - file.ext == "md"
+    groupBy:
+      property: note.статус
+      direction: ASC
+    order:
+      - note.id
+  - type: table
+    name: Требуют слова владельца
+    filters:
+      and:
+        - file.inFolder("10-Deck/decisions")
+        - file.ext == "md"
+    order:
+      - note.отметка_слова
+      - note.id

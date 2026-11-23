@@ -1,0 +1,65 @@
+{
+  "nodes": [
+    {
+      "id": "decisions-hub-20261123",
+      "x": 400,
+      "y": 200,
+      "width": 560,
+      "height": 160,
+      "type": "text",
+      "text": "# Решения — единое поле (дашборд)\n\n> Единое поле принятия решений Корабля. Все решения из реестра\n> `01-Policies/decisions-registry.md` (121 шт., Р-001…Р-123) автоматически\n> собираются в карточки `10-Deck/decisions/` и отображаются в `decisions.base`.\n\n**Принцип:** меняется реестр → меняется вид. Ручная правка карточек не требуется.\n\nИсточник правды: реестр решений. Проекция: Deck (Obsidian)."
+    },
+    {
+      "id": "dec-registry",
+      "x": 100,
+      "y": 420,
+      "width": 340,
+      "height": 140,
+      "type": "file",
+      "file": "01-Policies/decisions-registry.md"
+    },
+    {
+      "id": "dec-base-all",
+      "x": 500,
+      "y": 420,
+      "width": 340,
+      "height": 140,
+      "type": "file",
+      "file": "10-Deck/decisions.base"
+    },
+    {
+      "id": "dec-deck",
+      "x": 900,
+      "y": 420,
+      "width": 340,
+      "height": 140,
+      "type": "file",
+      "file": "10-Deck/deck.md"
+    },
+    {
+      "id": "dec-glossary",
+      "x": 100,
+      "y": 620,
+      "width": 340,
+      "height": 140,
+      "type": "file",
+      "file": "01-Reference/glossary.md"
+    },
+    {
+      "id": "dec-card-sample",
+      "x": 500,
+      "y": 620,
+      "width": 340,
+      "height": 140,
+      "type": "file",
+      "file": "10-Deck/decisions/Р-123-slovar-suschnostey-korablya-pravilo-ssylok-v-reshe.md"
+    }
+  ],
+  "edges": [
+    {"fromId": "decisions-hub-20261123", "toId": "dec-registry"},
+    {"fromId": "decisions-hub-20261123", "toId": "dec-base-all"},
+    {"fromId": "decisions-hub-20261123", "toId": "dec-deck"},
+    {"fromId": "decisions-hub-20261123", "toId": "dec-glossary"},
+    {"fromId": "decisions-hub-20261123", "toId": "dec-card-sample"}
+  ]
+}
